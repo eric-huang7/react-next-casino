@@ -1,0 +1,38 @@
+.mainHeader{
+    height: 75px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: black;
+}
+
+.logo {
+    width: 132px;
+    height: 71px;
+
+    margin: 2px 0px 2px 100px;
+}
+
+
+@media screen and (max-width: 1690px) {
+    .logo {
+        margin: 2px 0px 2px 70px;
+    }
+}
+@media screen and (max-width: 1525px) {
+    .logo {
+        margin: 2px 0px 2px 50px;
+    }
+}
+@media screen and (max-width: 1425px) {
+    .logo {
+        margin: 2px 0px 2px 30px;
+    }
+}
+
+@media screen and (max-width: 1325px) {
+    .logo {
+        margin: 2px 0px 2px 20px;
+    }
+}
