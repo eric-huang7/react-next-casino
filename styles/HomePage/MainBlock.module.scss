@@ -1,0 +1,52 @@
+.mainBlockWrapper {
+
+  background-color: #fea0ae;
+
+  width: 100%;
+
+}
+
+.welcomeBonusSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  height: 750px;
+
+  background-image: url("/static/img/homeImg/home_header_bckgr.png");
+}
+
+.welcomeBonusImg {
+  width: 1021px;
+  height: 129px;
+
+  margin-top: 55px;
+  margin-left: 30px;
+}
+
+.slotsDancerWrapper {
+  display: flex;
+
+  position: relative;
+
+  left: 250px;
+  top: -22px;
+}
+
+.slotMachineIng {
+  width: 662px;
+  height: 620px;
+
+}
+
+.dancingGirlImg {
+  width: 404px;
+  height: 634px;
+
+  position: relative;
+
+  left: 40px;
+  top: -15px;
+}

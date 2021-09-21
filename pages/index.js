@@ -9,6 +9,7 @@ import {setLang} from "../redux/actions/lang";
 import {useEffect} from "react";
 
 import styles from '../styles/Home.module.scss';
+import {MainBlock} from "../components/HomePageComponents/MainBlock";
 
 export default function Home(props) {
   const {t} = useTranslation('common');
@@ -23,13 +24,8 @@ export default function Home(props) {
   return (
     <>
       <MainLayout t={t}>
+        <MainBlock />
         <h1 className={styles.headerHomePage}>{t(`header.navbarLinks.home`)}</h1>
-
-        <Link href={'/aboutUs'}>
-          <a>
-            ASDSADASF
-          </a>
-        </Link>
       </MainLayout>
 
       <LangSwitcher locale={locale}/>
