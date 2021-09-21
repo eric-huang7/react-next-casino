@@ -1,5 +1,5 @@
 .langSwitcherBlock {
-  border-radius: 15px;
+  border-radius: 15px 0px 0px 15px;
 
   padding: 0px 15px;
 
@@ -17,11 +17,23 @@
 
   outline: none;
 }
+.clickBlocker {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+}
+.hidden{
+  display: none;
+}
+.notHidden {
+  display: block;
+}
 .active {
   right: 0px
 }
 .disabled {
-  right: -105px;
+  right: -415px;
 }
 
 

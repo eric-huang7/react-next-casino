@@ -1,12 +1,43 @@
+import Link from 'next/link'
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 import styles from '../../styles/LangSwitcher.module.scss'
+import {setLang} from "../../redux/actions/lang";
+import { useRouter } from 'next/router'
 
-const LangSwitcher = () => {
+
+
+const LangSwitcher = (props) => {
+  console.log(props, "PROPS SWITCHER")
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const languages = useSelector(({lang}) => lang.languages);
+  const copyLanguages = [...languages];
+  const [chooseLangArr, setChooseLangArr] = useState(copyLanguages);
+  const activeLang = useSelector(({lang}) => lang.activeLang);
+  const [activeLangBlock, setActiveLangBlock] = useState(false);
+
+  const switchActiveLangBlock = () => {
+    console.log('switchActive', activeLang)
+    if (activeLangBlock) {
+      setActiveLangBlock(false)
+    } else {
+      setActiveLangBlock(true)
+    }
+  }
+
+  chooseLangArr.sort((item) => {
+    let res = item.lang === activeLang ? -1 : 1
+    return res;
+  })
+
 
   return (
     <div
       className={`${styles.langSwitcherBlock} ${activeLangBlock ? styles.active : styles.disabled}`}
       onClick={() => switchActiveLangBlock()}>
+      <div className={`${styles.clickBlocker} ${activeLangBlock ? styles.hidden : styles.notHidden}`}></div>
       <ul className={styles.langSwitcherBlockList}>
         {chooseLangArr.map(language => {
           return (
@@ -14,9 +45,18 @@ const LangSwitcher = () => {
               className={styles.langSwitcherBlockListItem}
               key={language.name}
               data-lang={language.lang}
-              onClick={(e) => changeLanguage(language.lang)}
+              onClick={(e) => console.log(language.lang, ' LANG')}
             >
-              {language.lang.toUpperCase()}
+              <Link
+                href={'/'}
+                locale={language.lang}
+              >
+                <span
+                  onClick={() => console.log(router.locale, "locale")}
+                >
+                  {language.lang.toUpperCase()}
+                </span>
+              </Link>
             </li>
           )
         })}
@@ -24,5 +64,7 @@ const LangSwitcher = () => {
     </div>
   )
 }
+
+
 
 export default LangSwitcher;
