@@ -13,5 +13,12 @@
       "login": "Войти",
       "signIn": "Регистрация"
     }
+  },
+  "pageNames": {
+    "home": "Домашняя Page",
+    "promotions" : "промо акции Page",
+    "contactUs" : "связаться с нами Page",
+    "terms&conditions" : "условия и положения Page",
+    "aboutUs" : "о нас Page"
   }
 }

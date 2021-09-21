@@ -13,5 +13,12 @@
       "login": "Log In",
       "signIn": "Sign In"
     }
+  },
+  "pageNames": {
+    "home": "Home Page",
+    "promotions" : "Promotions Page",
+    "contactUs" : "contactUs Page",
+    "terms&conditions" : "terms&conditions Page",
+    "aboutUs" : "aboutUs Page"
   }
 }

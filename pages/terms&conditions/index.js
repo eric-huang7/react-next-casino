@@ -4,13 +4,12 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from "../../styles/Home.module.scss";
 
 
-const Promotions = (props) => {
-  const { t } = useTranslation('common');
-  console.log(props);
+const TermsConditions = (props) => {
+  const { t } = useTranslation('common')
   return (
     <>
       <MainLayout t={t}>
-        <h1 className={styles.headerHomePage}>{t(`pageNames.promotions`)}</h1>
+        <h1 className={styles.headerHomePage}>{t(`pageNames.terms&conditions`)}</h1>
       </MainLayout>
     </>
   )
@@ -24,4 +23,4 @@ export const getStaticProps = async ({ locale }) => {
   })
 }
 
-export default  Promotions;
+export default  TermsConditions;

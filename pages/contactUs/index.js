@@ -4,13 +4,12 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from "../../styles/Home.module.scss";
 
 
-const Promotions = (props) => {
-  const { t } = useTranslation('common');
-  console.log(props);
+const ContactUs = (props) => {
+  const { t } = useTranslation('common')
   return (
     <>
       <MainLayout t={t}>
-        <h1 className={styles.headerHomePage}>{t(`pageNames.promotions`)}</h1>
+        <h1 className={styles.headerHomePage}>{t(`pageNames.contactUs`)}</h1>
       </MainLayout>
     </>
   )
@@ -19,9 +18,9 @@ const Promotions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['navbarLinks', 'common']),
+      ...await serverSideTranslations(locale, ['common']),
     },
   })
 }
 
-export default  Promotions;
+export default  ContactUs;

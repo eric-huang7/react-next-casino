@@ -24,13 +24,15 @@ export default function Home(props) {
     <>
       <MainLayout t={t}>
         <h1 className={styles.headerHomePage}>{t(`header.navbarLinks.home`)}</h1>
-        <LangSwitcher locale={locale}/>
+
         <Link href={'/aboutUs'}>
           <a>
             ASDSADASF
           </a>
         </Link>
       </MainLayout>
+
+      <LangSwitcher locale={locale}/>
     </>
   )
 }

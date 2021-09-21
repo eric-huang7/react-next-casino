@@ -1,13 +1,17 @@
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import MainLayout from "../../components/MainLayout/MainLayout";
+import styles from "../../styles/Home.module.scss";
+
 
 const aboutUS = (props) => {
-  console.log(props)
   const { t } = useTranslation('common')
   return (
-    <h1>
-      ABOUT US {t('header.navbarLinks.contactUs')}
-    </h1>
+    <>
+      <MainLayout t={t}>
+        <h1 className={styles.headerHomePage}>{t(`pageNames.aboutUs`)}</h1>
+      </MainLayout>
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ const MainLayout = ({children, t}) => {
           <>
             <Header t={t}/>
             {children}
+
           </>
   )
 }
