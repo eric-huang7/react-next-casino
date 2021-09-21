@@ -11,7 +11,6 @@ import { useRouter } from 'next/router'
 const LangSwitcher = (props) => {
   console.log(props, "PROPS SWITCHER")
   const router = useRouter();
-  const dispatch = useDispatch();
   const languages = useSelector(({lang}) => lang.languages);
   const copyLanguages = [...languages];
   const [chooseLangArr, setChooseLangArr] = useState(copyLanguages);

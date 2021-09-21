@@ -1,0 +1,19 @@
+.burgerWrapper {
+    display: none;
+    width: 32px;
+    height: 24px;
+
+    margin-right: 11px;
+}
+
+.burgerWrapper img {
+    width: 32px;
+    height: 24px;
+}
+
+@media screen and (max-width: 1325px) {
+    .burgerWrapper {
+        display: block;
+        outline: none;
+    }
+}
