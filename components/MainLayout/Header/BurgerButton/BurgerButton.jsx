@@ -8,7 +8,7 @@ export const BurgerButton = () => {
   return (
     <div className={styles.burgerWrapper}>
       <Image
-        src={'/static/icons/burger_icon.svg'}
+        src={'/assets/icons/burger_icon.svg'}
         alt="burgerMenu icon"
         width={'32px'}
         height={'24px'}

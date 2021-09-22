@@ -1,8 +1,9 @@
 .headerNavbar {
     margin-top: 8px;
-    margin-left: 80px;
+    margin-left: 10%;
     display: flex;
     align-items: center;
+    width: 730px;
 }
 
 .headerNavbarList {
@@ -11,7 +12,7 @@
     justify-content: space-between;
 
     list-style-type: none;
-    width: 732px;
+    width: 100%;
     padding: 0;
     margin: 0;
 
@@ -55,7 +56,10 @@
 @media screen and (max-width: 1770px) {
     .headerNavbarListItem a {
         font-size: 14px;
-        margin-left: 28px;
+        //margin-left: 28px;
+    }
+    .headerNavbarListItem a:after {
+        right: -15px;
     }
 }
 
@@ -75,7 +79,7 @@
 
 @media screen and (max-width: 1455px) {
     .headerNavbar {
-        margin-left: 20px;
+        margin-left: 10px;
     }
     .headerNavbarList {
         width: 600px;
@@ -85,28 +89,30 @@
     }
     .headerNavbarList a {
         margin-left: 15px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
 }
 
 @media screen and (max-width: 1325px) {
     .headerNavbarListItem a:after{
-        right: -15px;
+        right: -10px;
     }
-    .headerNavbarList {
-        width: 500px;
-    }
+
     .headerNavbarListItem a {
-        margin-left: 10px;
+        margin-left: 5px;
         font-size: 12px;
 
         //text-transform: inherit;
     }
 }
-@media screen and (max-width: 1130px) {
+@media screen and (max-width: 1140px) {
+    .headerNavbar {
+        width: 600px;
+    }
     .headerNavbarListItem a {
-        margin-left: 5px;
+        margin-left: 0px;
+
     }
 }
 @media screen and (max-width: 1065px) {

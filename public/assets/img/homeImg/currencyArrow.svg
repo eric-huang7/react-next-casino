@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 7" width="11" height="7">
+	<title>Deposit</title>
+	<defs>
+		<image  width="11" height="7" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAMAAADpsEdvAAAAAXNSR0IB2cksfwAAAHVQTFRFj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+P8uS0GAAAACd0Uk5TDgsBAAgNbF8QU2uXwH4TbRbIdxJpx4EXBF3Pb2HMBdeo1moDDMZzKVBxhwAAAExJREFUeJwlxtkCQCAURdHLUUmZypB59v+fKOyXvYiCEF8RIy7inzIhpdPMk+VaUcFLY8GqumkJruuHbJzMDAKcXNZtP/Aap7hu6/8AdikDuq9LoYYAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Deposit">
+		<use id="Layer 134 copy" href="#img1" x="0" y="0" />
+	</g>
+</svg>

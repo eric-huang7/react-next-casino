@@ -9,7 +9,7 @@ export const UserBlockNavigation = ({t}) => {
     <div className={styles.userMainBlockWrapper}>
       <div className={styles.userMainBlock}>
         <div className={styles.userMainBlockBellIcon} style={{
-          backgroundImage: `url(/static/icons/bell_icon.svg)`,
+          backgroundImage: `url(/assets/icons/bell_icon.svg)`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
