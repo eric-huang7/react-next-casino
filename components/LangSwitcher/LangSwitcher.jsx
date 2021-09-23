@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 
 import styles from '../../styles/LangSwitcher.module.scss'
-import {setLang} from "../../redux/actions/lang";
+
 import { useRouter } from 'next/router'
 
 

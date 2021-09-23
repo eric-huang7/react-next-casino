@@ -25,7 +25,7 @@ export default function Home(props) {
     <>
       <MainLayout t={t}>
         <MainBlock />
-        <h1 className={styles.headerHomePage}>{t(`header.navbarLinks.home`)}</h1>
+
       </MainLayout>
 
       <LangSwitcher locale={locale}/>

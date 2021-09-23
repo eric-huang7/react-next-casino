@@ -14,6 +14,8 @@
   width: 68.6%;
   height: 74%;
 
+  padding-left: 10%;
+
   background-color: #f1f1f1;
   border: 0.95px solid #ff0e0e;
 
@@ -28,6 +30,18 @@
 .sumInput::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.sumInputLabel {
+  position: absolute;
+
+  top: 12%;
+  left: 7%;
+
+  font-size: 41px;
+  line-height: 27px;
+  color: #3a3a3a;
+  font-family: "Source Sans";
 }
 
 .сurrencyButton {
@@ -60,6 +74,7 @@
   background-image: url("/assets/img/homeImg/currencyArrow.svg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .currencyButtonValue {
@@ -74,12 +89,12 @@
 .dividerDown {
   width: 87%;
 
-  border: 2px solid #787a7b;
+  border-top: 2px solid #787a7b;
   border-radius: 5px;
   margin-left: 3%;
 }
 .dividerDown {
-  border: 1px solid #787a7b;
+  border-top: 1px solid #787a7b;
 }
 
 .bonusInfoBlockWrapper {
@@ -91,8 +106,6 @@
 
 .bonusInfoBlock {
   display: flex;
-
-
 }
 .bonusInfoBlock:before {
   content: '';
@@ -107,6 +120,7 @@
   background-image: url("/assets/icons/home/bonus_info_icon.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 .bonusInfoBlock p,
@@ -138,8 +152,81 @@
   position: relative;
   left: -15%;
 }
+
+// #################Switcher
+
+.bonusSwitcher {
+  position: absolute;
+
+  top: 10%;
+  right: 2%;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 40px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "NO";
+  height: 30px;
+  width: 33px;
+  left: 36px;
+  bottom: 5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 30px;
+  color: #ccc;
+  font-family: "Verdana";
+}
+
+.bonusSwitcherInput:checked + .slider {
+  background-color: #ff0e0e;
+}
+
+.bonusSwitcherInput:focus + .slider {
+  box-shadow: 0 0 1px #ff0e0e;
+}
+
+.bonusSwitcherInput:checked + .slider:before {
+  -webkit-transform: translateX(-32px);
+  -ms-transform: translateX(-32px);
+  transform: translateX(-32px);
+  content: "YES";
+  color: #ff0000;
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+// #################Switcher
+
 .typePayments {
-  //background-color: #ff0e0e;
+  margin-top: 2px;
   width: 100%;
   height: 16%;
   background-image: url("/assets/img/homeImg/type_payments.png");
@@ -147,3 +234,613 @@
   background-position: center;
   background-size: cover;
 }
+
+
+@media screen and (max-width: 1800px) {
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 0.9em;
+    line-height: 27px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+  }
+  .bonusInfoText {
+    font-size: 12px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .sumInputLabel {
+
+    top: 10%;
+    left: 6%;
+
+    font-size: 41px;
+    line-height: 27px;
+
+  }
+  .currencyButtonValue {
+    font-size: 14px;
+    line-height: 23px;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 0.7em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+  }
+  .bonusInfoText {
+    font-size: 10px;
+    line-height: 24px;
+  }
+  .bonusSwitcher {
+    position: absolute;
+
+    top: 10%;
+    right: 2%;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+
+  .switch input {display:none;}
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    height: 23px;
+    width: 23px;
+    left: 33px;
+    bottom: 4px;
+
+    font-size: 10px;
+    line-height: 26px;
+    color: #ccc;
+    font-family: "Verdana";
+  }
+
+  .bonusSwitcherInput:checked + .slider {
+    background-color: #ff0e0e;
+  }
+
+  .bonusSwitcherInput:focus + .slider {
+    box-shadow: 0 0 1px #ff0e0e;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-29px);
+    -ms-transform: translateX(-29px);
+    transform: translateX(-29px);
+    content: "YES";
+    color: #ff0000;
+  }
+}
+@media screen and (max-width: 1380px) {
+  .inputsWrapper {
+    width: 100%;
+    height: 35%;
+
+    padding: 3% 3% 0% 3%;
+
+  }
+  .sumInput {
+    font-size: 32px;
+  }
+  .sumInputLabel {
+
+    top: 8%;
+    left: 6%;
+
+    font-size: 32px;
+    line-height: 27px;
+  }
+  .сurrencyButton {
+    width: 20%;
+    height: 54%;
+
+    padding: 1.2% 2% 1% 3%;
+    margin-top: 5px;
+  }
+  .currencyButtonValue {
+    font-size: 12px;
+    line-height: 19px;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 0.6em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+  }
+  .bonusInfoText {
+    font-size: 9px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .inputsWrapper {
+    width: 100%;
+    height: 35%;
+
+    padding: 3% 3% 0% 3%;
+
+  }
+  .sumInput {
+    font-size: 32px;
+  }
+  .sumInputLabel {
+
+    top: 8%;
+    left: 6%;
+
+    font-size: 32px;
+    line-height: 27px;
+  }
+  .сurrencyButton {
+    width: 20%;
+    height: 60%;
+
+    padding: 1.2% 2% 1% 3%;
+    margin-top: 5px;
+  }
+  .currencyButtonValue {
+    font-size: 12px;
+    line-height: 19px;
+  }
+  .сurrencyButton:after {
+    width: 23%;
+    height: 23%;
+    top: 36%;
+    right: 4%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 0.6em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+  }
+  .bonusInfoText {
+    font-size: 8px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .inputsWrapper {
+    width: 100%;
+    height: 35%;
+
+    padding: 3% 3% 0% 3%;
+
+  }
+  .sumInput {
+    font-size: 56px;
+  }
+  .sumInputLabel {
+
+    top: 12%;
+    left: 6%;
+
+    font-size: 56px;
+    line-height: 27px;
+  }
+  .сurrencyButton {
+    width: 20%;
+    height: 60%;
+
+    padding: 1.2% 2% 1% 3%;
+    margin-top: 5px;
+  }
+  .currencyButtonValue {
+    font-size: 23px;
+    line-height: 43px;
+  }
+  .сurrencyButton:after {
+    width: 23%;
+    height: 23%;
+    top: 36%;
+    right: 4%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 1.2em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoBlock a {
+    text-decoration: none;
+
+    font-style: normal;
+  }
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+  }
+  .bonusInfoText {
+    font-size: 18px;
+    line-height: 81px;
+  }
+  .dividerDown {
+    display: none;
+  }
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -11%;
+    right: 13%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 115px;
+    height: 60px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "NO";
+    height: 48px;
+    width: 48px;
+    left: 60px;
+    bottom: 6px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 50px;
+    color: #ccc;
+    font-family: "Verdana";
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-52px);
+    -ms-transform: translateX(-52px);
+    transform: translateX(-52px);
+    content: "YES";
+    color: #ff0000;
+  }
+
+}
+
+@media screen and (max-width: 940px)  {
+  .sumInput {
+    font-size: 41px;
+  }
+  .sumInputLabel {
+
+    top: 12%;
+    left: 6%;
+
+    font-size: 41px;
+    line-height: 27px;
+  }
+  .currencyButtonValue {
+    font-size: 17px;
+    line-height: 36px;
+  }
+  .сurrencyButton:after {
+    top: 38%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 1em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoText {
+    font-size: 14px;
+    line-height: 56px;
+  }
+
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -11%;
+    right: 13%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "NO";
+    height: 34px;
+    width: 34px;
+    left: 40px;
+    bottom: 3px;
+
+    text-align: center;
+    font-size: 16px;
+    line-height: 37px;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-35px);
+    -ms-transform: translateX(-35px);
+    transform: translateX(-35px);
+    content: "YES";
+    color: #ff0000;
+  }
+}
+
+@media screen and (max-width: 640px)  {
+  .sumInput {
+    font-size: 41px;
+  }
+  .sumInputLabel {
+
+    top: 12%;
+    left: 6%;
+
+    font-size: 39px;
+    line-height: 20px;
+  }
+  .currencyButtonValue {
+    font-size: 17px;
+    line-height: 36px;
+  }
+  .сurrencyButton:after {
+    top: 38%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 1em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoText {
+    font-size: 14px;
+    line-height: 40px;
+  }
+
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -11%;
+    right: 13%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    left: 33px;
+    bottom: 3px;
+
+    text-align: center;
+    font-size: 12px;
+    line-height: 28px;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-29px);
+    -ms-transform: translateX(-29px);
+    transform: translateX(-29px);
+    content: "YES";
+    color: #ff0000;
+  }
+}
+
+@media screen and (max-width: 520px)  {
+  .sumInput {
+    font-size: 41px;
+  }
+  .sumInputLabel {
+
+    top: 12%;
+    left: 6%;
+
+    font-size: 39px;
+    line-height: 20px;
+  }
+  .currencyButtonValue {
+    font-size: 17px;
+    line-height: 30px;
+  }
+  .сurrencyButton:after {
+    top: 38%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 0.9em;
+    line-height: 23px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoText {
+    font-size: 12px;
+    line-height: 30px;
+  }
+
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -11%;
+    right: 5%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 53px;
+    height: 26px;
+  }
+  .slider:before {
+    height: 23px;
+    width: 22px;
+    left: 29px;
+    bottom: 1px;
+
+    text-align: center;
+    font-size: 10px;
+    line-height: 25px;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-27px);
+    -ms-transform: translateX(-27px);
+    transform: translateX(-27px);
+    content: "YES";
+    color: #ff0000;
+  }
+}
+@media screen and (max-width: 520px)  {
+  .sumInput {
+    margin-left: 6px;
+    margin-top: 4px;
+
+    font-size: 41px;
+    width: 59.6%;
+    height: 78%;
+
+    padding-left: 7%;
+
+    background-color: #f1f1f1;
+    border: 0.95px solid #ff0e0e;
+
+    outline: none;
+
+    font-size: 19px;
+    line-height: 27px;
+  }
+  .sumInputLabel {
+
+    top: 12%;
+    left: 8%;
+
+    font-size: 19px;
+    line-height: 22px;
+  }
+  .сurrencyButton {
+    width: 20%;
+    height: 54%;
+
+    padding: 1% 1% 1% 2%;
+    margin-top: 10px;
+    margin-right: 9px;
+  }
+  .currencyButtonValue {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .сurrencyButton:after {
+    top: 38%;
+  }
+
+  .bonusInfoBlock {
+   margin-left: 22px;
+  }
+  .bonusInfoBlock:before {
+    content: '';
+
+    position: absolute;
+    top: -52%;
+    left: -15%;
+
+    width: 19%;
+    height: 110%;
+  }
+  .bonusInfoBlock p,
+  .bonusInfoBlock a {
+    font-size: 10px;
+    line-height: 25px;
+    color: #b2b1b1;
+    font-family: "Verdana";
+    white-space: nowrap;
+  }
+  .bonusInfoText {
+    font-size: 10px;
+    line-height: 28px;
+
+    margin-top: 8px;
+    margin-left: 28px;
+  }
+
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -6%;
+    right: 6%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 59px;
+    height: 26px;
+  }
+  .slider:before {
+    height: 23px;
+    width: 22px;
+    left: 34px;
+    bottom: 1px;
+
+    text-align: center;
+    font-size: 10px;
+    line-height: 25px;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-31px);
+    -ms-transform: translateX(-31px);
+    transform: translateX(-31px);
+    content: "YES";
+    color: #ff0000;
+  }
+
+  .typePayments {
+    margin-top: 0px;
+    width: 97%;
+    height: 10%;
+  }
+}
+

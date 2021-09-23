@@ -46,7 +46,9 @@
   top: -22px;
 
 }
-
+.slotsMachineIng:after {
+  content: '';
+}
 .slotMachineIng img{
   width: 34vw;
 }
@@ -68,12 +70,28 @@
   }
 }
 
+@media screen and (max-width: 1570px) {
+  .slotMachineIng img{
+    width: 36vw;
+  }
+}
+
 @media screen and (max-width: 1380px) {
   .slotsDancer {
     top: -16px;
 
   }
+  .slotMachineIng img{
+    width: 34vw;
+  }
 }
+
+@media screen and (max-width: 1280px) {
+  .slotMachineIng img{
+    width: 36vw;
+  }
+}
+
 @media screen and (max-width: 1065px) {
   .welcomeBonusSection {
     background-image: url("/assets/img/homeImg/home_header_bckgr-mobile.png");
