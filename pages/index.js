@@ -10,6 +10,7 @@ import {useEffect} from "react";
 
 import styles from '../styles/Home.module.scss';
 import {MainBlock} from "../components/HomePageComponents/MainBlock";
+import {JackpotBlock} from "../components/HomePageComponents/JackpotBlock/JackpotBlock";
 
 export default function Home(props) {
   const {t} = useTranslation('common');
@@ -25,7 +26,7 @@ export default function Home(props) {
     <>
       <MainLayout t={t}>
         <MainBlock />
-
+        <JackpotBlock />
       </MainLayout>
 
       <LangSwitcher locale={locale}/>
