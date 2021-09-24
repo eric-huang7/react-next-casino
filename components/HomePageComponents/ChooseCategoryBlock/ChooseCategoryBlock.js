@@ -35,13 +35,13 @@ export const ChooseCategoryBlock = () => {
           })
         }
       </ul>
-      <div className={styles.categoryInputsWrapper}>
-        <select name="country" className={styles.categorySelect}>
-          {listData.map((e, key) => {
-            return <option key={key} value={e.value}>{e.name}</option>;
-          })}
-        </select>
-      </div>
+      {/*<div className={styles.categoryInputsWrapper}>*/}
+      {/*  <select name="country" className={styles.categorySelect}>*/}
+      {/*    {listData.map((e, key) => {*/}
+      {/*      return <option key={key} value={e.value}>{e.name}</option>;*/}
+      {/*    })}*/}
+      {/*  </select>*/}
+      {/*</div>*/}
     </div>
   )
 }
