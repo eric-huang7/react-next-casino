@@ -1,17 +1,27 @@
 .jackpotWrapper {
 width: 100%;
 
-  background-color: #ffffff;
-          //rgba(0,0,0,0.51);
+  background-color: rgba(0,0,0,0.51);
 
   //margin-top: -46px;
 
-  z-index: 100;
+  z-index: 1;
 }
 .jackpotHeader {
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 100%;
+  margin: 0 auto;
+}
 
+@media screen and (max-width: 428px) {
+  .jackpotWrapper {
+    padding: 27px 0 0 0;
+  }
+  .jackpotHeader {
+    width: 36%;
+    margin-bottom: 10px;
+  }
 }

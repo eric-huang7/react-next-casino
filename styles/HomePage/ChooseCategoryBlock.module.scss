@@ -1,0 +1,99 @@
+.categoryWrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  background-color: rgba(0,0,0,0.51);
+
+  padding: 10px 22px 10px 25px;
+
+}
+
+.categoryList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  list-style-type: none;
+
+  padding: 0;
+  margin: 0;
+
+  width: 929px;
+}
+
+.categoryListItem {
+  position: relative;
+
+}
+
+
+.categoryListItem a {
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 58px;
+  color: #ffffff;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  width: 165px;
+}
+
+.categoryListItem a:before {
+  content: '';
+  width: 43px;
+  height: 43px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  position: absolute;
+  top: 5px;
+  left: -50px;
+}
+.categoryListItem:nth-child(1) a:before {
+  background-image: url("/assets/icons/home/btc_games_icon.svg");
+}
+.categoryListItem:nth-child(2) a:before {
+  background-image: url("/assets/icons/home/new_games_icon.svg");
+}
+.categoryListItem:nth-child(3) a:before {
+  background-image: url("/assets/icons/home/top_games_icon.svg");
+}
+.categoryListItem:nth-child(4) a:before {
+  background-image: url("/assets/icons/home/jackpot_games_icon.svg");
+}
+.categoryListItem:nth-child(5) a:before {
+  background-image: url("/assets/icons/home/table_games_icon.svg");
+}
+
+.categoryInputsWrapper {
+
+}
+
+.categorySelect {
+  outline: none;
+
+  background: url('/assets/icons/home/arr_select.svg') no-repeat right;
+
+  color: #ffffff;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+}
+.categorySelect option{
+  background: transparent;
+  color: #00242a;
+}
+
+@media screen and (max-width: 920px) {
+  .categoryWrapper {
+    overflow-x: scroll;
+  }
+}

@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 44" width="41" height="44">
+	<title>Game Menu</title>
+	<defs>
+		<image  width="41" height="44" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAsCAMAAADPc2F3AAAAAXNSR0IB2cksfwAAAi5QTFRF/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA1yi5jgAAALp0Uk5TAIK/wL6ZA9L//Pj67AnEQxUu++Exk5eWlec1GvNGpkUnqJ6fYmTLUDLfY4Gjb0C7MKBqknyJVaqOT7BSsW5wJDlyAtr5HxzJP90iAdH9IwvpHv7KVqdcJtQEiIsRfl4I5DOdikHXBaJYzu0Z6iUOV5u4ZzzQB/JEnO8+ZuYS9R3gNsd9TNUKyLl23Bs7gw+3DLKPYE7r6MysrS0Xw7ru2SF5pa5TSm2Gc0mFSHGExuNHKXWpYX8gtLO1KVPLVAAAAoFJREFUeJytlPtfy1EYx5+lts823cZaU6Lauii6uSupZClrWhgTISshJBS5VLrMIo0iud/v1zD+O+e7Vb5r55QffH54Xs/nOe/X95zneZ3zJfJLETZPpPAIJcmkglrDlxbzI+VkFKJj+IrVLZhkFurjDIZ4IxYRXwmaxAgD02JKQkBLBORSbWA9mVKQajKb0pAuIDOQucxsykI2KbCc+TiYBOQK5LCYizzKRwHLVmKVgFyNNSymYy2tw3qWbUChgCyCnkUFNlKxWsWyTUgTkBEoYbGQ9VFatrmcaIvOGMknLaggUm7VVRIlS81UbbNWc0HbdnUNa8hey/IdCGdxJ3ZxSYd99x4iJ/ayvC5R2n6ffwSh2s/GQ/UH7AclcwgNRIfhauSRTaxpOoLmKsnk4ugxsh23t3DAE0b2NaUKJwM2FaeIWnGaQ7bBpWQjPXM2YBPOoZ3MCOOQTnRQ5XlcmPKduFh5SXf5SgjY2IVuWw/i5ed2xTThagjZi77+Vgz0/63Uu9F3Tevpn0m6UeCGa1BeikyCVQfzDPC6FRr0lM+o3lADmUPBtZvsrmcPh5yp2wvcCqrcBqJGQjhJIzq1/DVVj/ovHFcK3HFMm6G7GBOBVHoPXeOT+f0HUNUJSRp+iEdmaValvR48fiIG2bQ6AI/+aUMzkDM4G8hUMvmneFY1B0jReD6S/yIeWXOB9NL/al/h9T+QcSy++a/kWxhI6uvdnOR7/739gI+zY+N5n8owaqm1fIZxYKxdDH5JZIPU2jEVi0SgzQN9bLEjoJav37Qah4CsQHOQn8B3YTMTQd6JTj442Al3sVwp+PGTB2aowRFv/5oxn/fXb7l8Xp+3bXr9DxRCicy4J86yAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Game Menu">
+		<use id="Layer 634" href="#img1" x="0" y="0" />
+	</g>
+</svg>
