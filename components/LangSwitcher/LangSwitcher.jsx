@@ -18,7 +18,6 @@ const LangSwitcher = (props) => {
   const [activeLangBlock, setActiveLangBlock] = useState(false);
 
   const switchActiveLangBlock = () => {
-    console.log('switchActive', activeLang)
     if (activeLangBlock) {
       setActiveLangBlock(false)
     } else {

@@ -1,0 +1,31 @@
+.sliderMainWrapper {
+  width: 100%;
+  height: 200px;
+
+  background-color: #47b14c;
+
+}
+
+.slideItemsWrapper div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.slideItemsWrapper div h1 {
+  width: 20%;
+
+  //white-space: nowrap;
+
+}
+
+.gamesWrapper {
+  width: 1300px;
+  height: 772px;
+
+  margin: 0 auto;
+}
+
+.slideItem {
+  background-color: #9fabba;
+
+  width: 500px;
+}
