@@ -28,7 +28,7 @@ export default function Home(props) {
       <MainLayout t={t}>
         <MainBlock />
         <JackpotBlock />
-        {/*<ChooseCategoryBlock />*/}
+        <ChooseCategoryBlock t={t}/>
       </MainLayout>
 
       <LangSwitcher locale={locale}/>

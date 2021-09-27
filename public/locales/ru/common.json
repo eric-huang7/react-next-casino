@@ -20,5 +20,9 @@
     "contactUs" : "связаться с нами Page",
     "terms&conditions" : "условия и положения Page",
     "aboutUs" : "о нас Page"
+  },
+  "homePage": {
+    "providers": "провайдеры",
+    "searchBar": "поиск..."
   }
 }

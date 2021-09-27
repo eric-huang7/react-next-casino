@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" width="24" height="25">
+	<title>Game Menu</title>
+	<defs>
+		<image  width="24" height="25" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAMAAAAc9R5vAAAAAXNSR0IB2cksfwAAAVlQTFRFYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiCqbOmgAAAHN0Uk5TACN3xeHp59ytWQ0FetGFU0FEYZrKSQyw6hmV8nAKsdMnWGfsIWXzLyXrXbh40AhALseDAeBUqaO15EjZZrySqKQW3k/uJG4RB6YbOHMLvVuB9ClQz1cECSJ/4u3+jwIek7qiycj/mR1SkHI/l52boAahnmZhYiIAAAEKSURBVHicY2AAAUYmZhZWNnYOTi4GZMDNw8bLxy8gKCTMKiKKJC4mLiEkBmFKSknLwMVl5eQVEKoUpZVgTB5lFWRzVdXUIQwNTS0UCxk4tCG0jq4eqoQ+mwGYNjRCFWcw5tUB0yamaBIMZuZgik0QXULKAkxZWqFLCIuDKWsbdAlbOzBl74Am7uikCKadXVxRJdxY3MG0B7MniriXpQ6U5e3igyTua+HnC2P7qwVww9iMfoFBCFXBLCGhjmEMDOERkVHRMbFxCJn4BBO2xCTPZJcUVUfz1DTkwEvPiEzIzMoGxpevZ2oONwM24JGUmuuBVcbXITUPu4xHfmpeAVYZvcLUIqwSDOG5fgC67iVrEGLCKwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Game Menu">
+		<use id="Layer 213" href="#img1" x="0" y="0" />
+	</g>
+</svg>

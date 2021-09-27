@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useState} from "react";
 
 
-export const ChooseCategoryBlock = () => {
+export const ChooseCategoryBlock = ({t}) => {
 
   const linksData = [
     {href: '#', name: "btc games", icon: '/assets/icons/home/btc_games_icon.svg'},
@@ -12,13 +12,6 @@ export const ChooseCategoryBlock = () => {
     {href: '#', name: "jackpot games", icon: '/assets/icons/home/jackpot_games_icon.svg'},
     {href: '#', name: "table games", icon: '/assets/icons/home/table_games_icon.svg'},
   ]
-
-  const chooseListData = [
-    { value: 'USA', name: 'USA' },
-    { value: 'CANADA', name: 'CANADA' }
-  ]
-
-  const [listData, setListData] = useState(chooseListData);
 
   return (
     <div className={styles.categoryWrapper}>
@@ -35,13 +28,15 @@ export const ChooseCategoryBlock = () => {
           })
         }
       </ul>
-      {/*<div className={styles.categoryInputsWrapper}>*/}
-      {/*  <select name="country" className={styles.categorySelect}>*/}
-      {/*    {listData.map((e, key) => {*/}
-      {/*      return <option key={key} value={e.value}>{e.name}</option>;*/}
-      {/*    })}*/}
-      {/*  </select>*/}
-      {/*</div>*/}
+      <div className={styles.categoryInputsWrapper}>
+        <div className={styles.providersButton}>
+          <span>{t('homePage.providers')}</span>
+        </div>
+        <label className={styles.searchInputLabel}>
+          <input placeholder={t("homePage.searchBar")} className={styles.searchInput}/>
+        </label>
+      </div>
+      <div className={styles.divider}></div>
     </div>
   )
 }

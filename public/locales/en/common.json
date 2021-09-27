@@ -20,5 +20,9 @@
     "contactUs" : "contactUs Page",
     "terms&conditions" : "terms&conditions Page",
     "aboutUs" : "aboutUs Page"
+  },
+  "homePage": {
+    "providers": "providers",
+    "searchBar": "search..."
   }
 }
