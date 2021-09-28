@@ -60,9 +60,12 @@ a {
 
 #__next{
   overflow-x: hidden;
+  overflow-y: hidden;
   position: relative;
 }
 
 * {
   box-sizing: border-box;
 }
+
+

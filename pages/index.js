@@ -42,7 +42,7 @@ export default function Home(props) {
         <JackpotBlock />
         <ChooseCategoryBlock t={t}/>
         <GamesSliderBlock type={'NEW_GAMES'} games={games}/>
-        {/*<GamesSliderBlock type={'JACKPOT_GAMES'} games={games}/>*/}
+        <GamesSliderBlock type={'JACKPOT_GAMES'} games={games}/>
       </MainLayout>
 
       <LangSwitcher locale={locale}/>

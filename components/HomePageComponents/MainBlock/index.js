@@ -5,7 +5,6 @@ import {SlotMachineInterface} from "./SlotMachineInterface/SlotMachineInterfase"
 export const MainBlock = () => {
   const {height, width} = useWindowDimensions();
 
-  console.log('height> ',height, "width> ", width);
   return  (
     <div className={styles.mainBlockWrapper}>
       <section className={styles.welcomeBonusSection}>
