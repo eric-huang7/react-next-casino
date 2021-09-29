@@ -7,15 +7,16 @@ import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import {useEffect} from "react";
+
+
 import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
-  let images = [];
 
   let itemsCount = 5;
   if (width <= 1165) {

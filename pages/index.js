@@ -15,6 +15,7 @@ import {JackpotBlock} from "../components/HomePageComponents/JackpotBlock/Jackpo
 import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
 import {GamesSliderBlock} from "../components/HomePageComponents/GamesSliderBlock/GamesSliderBlock";
 import {getGames} from "../redux/actions/games";
+import {PromotionsBlock} from "../components/HomePageComponents/PromotionsBlock/PromotionsBlock";
 
 export default function Home(props) {
   const {t} = useTranslation('common');
@@ -22,17 +23,12 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  const games = useSelector((games) => games.games);
-
   useEffect(() => {
     dispatch(setLang(locale));
     dispatch(getGames())
   }, []);
 
-
-  useEffect(() => {
-
-  }, []);
+  const games = useSelector((games) => games.games);
 
   return (
 
@@ -43,6 +39,7 @@ export default function Home(props) {
         <ChooseCategoryBlock t={t}/>
         <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
         <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
+        <PromotionsBlock t={t}/>
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
       </MainLayout>
 
