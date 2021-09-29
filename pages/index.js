@@ -16,6 +16,8 @@ import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCatego
 import {GamesSliderBlock} from "../components/HomePageComponents/GamesSliderBlock/GamesSliderBlock";
 import {getGames} from "../redux/actions/games";
 import {PromotionsBlock} from "../components/HomePageComponents/PromotionsBlock/PromotionsBlock";
+import {getWinners} from "../redux/actions/latestWinners";
+import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpotsAmount/TotalJackpotsAmount";
 
 export default function Home(props) {
   const {t} = useTranslation('common');
@@ -25,10 +27,13 @@ export default function Home(props) {
 
   useEffect(() => {
     dispatch(setLang(locale));
-    dispatch(getGames())
+    dispatch(getGames());
+    dispatch(getWinners());
   }, []);
 
   const games = useSelector((games) => games.games);
+  const winners = useSelector((winners) => winners.winners);
+
 
   return (
 
@@ -41,6 +46,7 @@ export default function Home(props) {
         <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
         <PromotionsBlock t={t}/>
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
+        <TotalJackpotsAmount t={t} winners={winners}/>
       </MainLayout>
 
       <LangSwitcher locale={locale}/>

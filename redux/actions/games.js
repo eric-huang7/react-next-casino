@@ -1,8 +1,6 @@
 import axios from "axios";
 
-import {
-  GET_GAMES
-} from "./types";
+import {GET_GAMES} from "./types";
 
 import {games_url} from '../url/url';
 
