@@ -13,16 +13,15 @@ import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
 
 
-export const GamesSliderBlock = ({type, games}) => {
+export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
-
   let images = [];
 
-  let itemsCount = 10;
+  let itemsCount = 5;
   if (width <= 1165) {
-    itemsCount = 6;
+    itemsCount = 3;
   } else {
-    itemsCount = 10;
+    itemsCount = 5;
   }
   let slides = [];
 
@@ -38,95 +37,19 @@ export const GamesSliderBlock = ({type, games}) => {
       console.log('loading')
       return <h1>Loading...</h1>
     } else {
+      // filter by type 4 not found any games
       slides = games.games.results.filter((a) => a.type === 1);
-      console.log(slides, 'slidessssssss')
+    }
+  } else if (type === 'TABLE_GAMES') {
+    if (games.loading) {
+      console.log('loading')
+      return <h1>Loading...</h1>
+    } else {
+      // filter by type 2 not found any games
+      slides = games.games.results.filter((a) => a.type === 1);
+      // console.log(slides, 'slidessssssss')
     }
   }
-  //
-  //   let countSlides = sorted.length / itemsCount;
-  //   let items = [];
-  //   sorted.forEach((el, ind, arr) => {
-  //     if ( ind % itemsCount === 0 && ind !== 0 ) {
-  //       slides.push(
-  //         <div key={ind}>
-  //           {items}
-  //         </div>
-  //       )
-  //       items = [];
-  //       items.push(
-  //         <div key={el.id}>
-  //           <GameHoverButtons />
-  //           <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //         </div>
-  //       )
-  //     } else if (ind === arr.length - 1 ) {
-  //       items.push(
-  //         <div key={el.id}>
-  //           <GameHoverButtons />
-  //           <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //         </div>
-  //       )
-  //       slides.push(
-  //         <div key={ind}>
-  //           {items}
-  //         </div>
-  //       )
-  //     } else {
-  //       items.push(
-  //         <div key={el.id}>
-  //           <GameHoverButtons />
-  //           <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //         </div>
-  //       )
-  //     }
-  //   });
-  // }
-  //   else if (type === 'JACKPOT_GAMES') {
-  //   if (games.loading) {
-  //     console.log('loading')
-  //     return <h1>Loading...</h1>
-  //   } else {
-  //     let sorted = games.games.results.sort((a, b) => b.times_played - a.times_played);
-  //
-  //     let countSlides = sorted.length / itemsCount;
-  //     let items = [];
-  //     sorted.forEach((el, ind, arr) => {
-  //       if ( ind % itemsCount === 0 && ind !== 0 ) {
-  //         slides.push(
-  //           <div key={ind}>
-  //             {items}
-  //           </div>
-  //         )
-  //         items = [];
-  //         items.push(
-  //           <div key={el.id}>
-  //             <GameHoverButtons />
-  //             <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //           </div>
-  //         )
-  //       } else if (ind === arr.length - 1 ) {
-  //         items.push(
-  //           <div key={el.id}>
-  //             <GameHoverButtons />
-  //             <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //           </div>
-  //         )
-  //         slides.push(
-  //           <div key={ind}>
-  //             {items}
-  //           </div>
-  //         )
-  //       } else {
-  //         items.push(
-  //           <div key={el.id}>
-  //             <GameHoverButtons />
-  //             <img src={urlGen(el.id)} alt={'game ' + el.name}/>
-  //           </div>
-  //         )
-  //       }
-  //     });
-  //   }
-  // }
 
     function SampleNextArrow(props) {
       const { className, onClick } = props;
@@ -153,14 +76,18 @@ export const GamesSliderBlock = ({type, games}) => {
     speed: 500,
     slidesToShow: 1,
     rows: 2,
-    slidesPerRow: 5,
+    slidesPerRow: itemsCount,
     // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
   }
   return (
     <section className={styles.sliderMainWrapper}>
-      <div className={`${type === 'NEW_GAMES' ? styles.sliderHeadingNewGames : styles.sliderHeadingJackpotGames} ${styles.sliderHeading}`}></div>
+      <div className={`${type === 'NEW_GAMES' 
+        ? styles.sliderHeadingNewGames : type === 'JACKPOT_GAMES' 
+        ? styles.sliderHeadingJackpotGames : type === 'TABLE_GAMES'
+        ? styles.sliderHeadingTableGames : styles.sliderHeadingTableGames
+      } ${styles.sliderHeading}`}></div>
       <div className={styles.gamesWrapper}>
         <Slider {...sliderSettings}>
           {slides.map((el, ind) => {
@@ -168,7 +95,7 @@ export const GamesSliderBlock = ({type, games}) => {
                 <div className={styles.slideItemsWrapperDesc} key={ind}>
                   {
                     <div className={styles.gameItemWrapper}>
-                      <GameHoverButtons />
+                      <GameHoverButtons t={t} gameData={el}/>
                       <img key={el.id} src={urlGen(el.id)} alt={`game ${el.name}`}/>
                     </div>
                   }

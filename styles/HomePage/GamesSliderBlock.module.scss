@@ -5,7 +5,7 @@
 }
 
 
-.sliderHeadingNewGames {
+.sliderHeadingNewGames, .sliderHeadingJackpotGames, .sliderHeadingTableGames {
   width: 44%;
   height: 90px;
 
@@ -18,16 +18,10 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   background-repeat: no-repeat;
 }
 .sliderHeadingJackpotGames {
-  width: 44%;
-  height: 90px;
-
-  margin-top: 35px;
-  margin-bottom: 16px;
-
   background-image: url("/assets/img/gamesSlider/jackpot_head.svg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+}
+.sliderHeadingTableGames {
+  background-image: url("/assets/img/gamesSlider/table_head.svg");
 }
 
 .gamesWrapper {
@@ -39,8 +33,9 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 
 .slideItemsWrapperDesc  {
   & > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      display: flex;
+      align-self: flex-start;
+    position: relative;
   }
 }
 
@@ -50,12 +45,14 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
       height: auto;
       margin: 6px;
 
-      position: relative;
+      width: 245px;
+      height: 180px;
+
     }
   }
 }
 .slideItemsWrapperDesc {
-  & > div :hover {
+  & > div:hover {
       & > .hoverWrapper {
         display: flex;
         flex-direction: column;
@@ -77,11 +74,21 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 }
 
 .playButton, .playForFunButton {
-  width: 65%;
-  height: 25%;
+  width: 55%;
+  height: 20%;
 
   margin: 0 auto 5px auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > span {
+    font-size: 17px;
+    letter-spacing: 0px;
+    line-height: 48px;
+    color: #1e2127;
+    text-transform: uppercase;
+  }
 }
 .playButton {
   background-color: #00e3ff;
@@ -89,18 +96,11 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 .playForFunButton {
   background-color: #15171b;
   border: 1px solid #909091;
+  & > span {
+    color: #ffffff;
+  }
 }
 
-.slideItemsWrapperDesc > div > img {
-  width: 100%;
-  height: 100%;
-}
-
-.slideItem {
-  background-color: #9fabba;
-
-  width: 500px;
-}
 
 .controlPanel {
   background-color: rgba(0,0,0,0.4);
@@ -153,7 +153,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   width: 60px;
   height: 50px;
 
-  top: 109.5%;
+  top: 108.6%;
 }
 .prevArr {
   left: 37%;
@@ -173,6 +173,15 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   .gamesWrapper {
     width: 890px;
   }
+  .slideItemsWrapperDesc {
+    & > div {
+      & > img {
+        width: 165px;
+        height: 143px;
+
+      }
+    }
+  }
   .controlPanel a {
     left: 0px;
     top: 2px;
@@ -187,7 +196,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
     width: 45px;
     height: 45px;
 
-    top: 114.9%;
+    top: 111.9%;
   }
   .prevArr {
     left: 37%;
@@ -195,21 +204,31 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   .nextArr {
     right: 37%;
   }
+  .playButton, .playForFunButton {
+
+    & > span {
+      font-size: 10px;
+      line-height: 48px;
+    }
+  }
 }
 
 @media screen and (max-width: 1165px) {
   .gamesWrapper {
     width: 740px;
   }
+  .slideItemsWrapperDesc {
+    & > div {
+      & > img {
+        width: 235px;
+        height: 170px;
+
+      }
+    }
+  }
   .sliderHeading{
     margin-left: auto;
     margin-right: auto;
-  }
-  .slideItemsWrapperDesc > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    background-color: rgba(255,255,255,0);
   }
 
   .controlPanel a {
@@ -226,13 +245,20 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
     width: 45px;
     height: 45px;
 
-    top: 110.5%;
+    top: 109.8%;
   }
   .prevArr {
     left: 34%;
   }
   .nextArr {
     right: 34%;
+  }
+  .playButton, .playForFunButton {
+
+    & > span {
+      font-size: 14px;
+      line-height: 48px;
+    }
   }
 }
 
@@ -244,6 +270,15 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
     width: 50%;
     margin-top: 19px;
     margin-bottom: -25px;
+  }
+  .slideItemsWrapperDesc {
+    & > div {
+      & > img {
+        width: 170px;
+        height: 135px;
+
+      }
+    }
   }
   .controlPanel a {
     left: 0px;
@@ -258,7 +293,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
     width: 40px;
     height: 36px;
 
-    top: 115.7%;
+    top: 113.7%;
   }
   .prevArr {
     left: 32%;
@@ -266,10 +301,27 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   .nextArr {
     right: 32%;
   }
+  .playButton, .playForFunButton {
+
+    & > span {
+      font-size: 12px;
+      line-height: 48px;
+    }
+  }
 }
 @media screen and (max-width: 590px) {
   .gamesWrapper {
     width: 410px;
+  }
+
+  .slideItemsWrapperDesc {
+    & > div {
+      & > img {
+        width: 125px;
+        height: 95px;
+
+      }
+    }
   }
   .controlPanel {
     height: 55px;
@@ -291,7 +343,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
     width: 40px;
     height: 34px;
 
-    top: 116.7%;
+    top: 114.7%;
   }
   .prevArr {
     left: 24%;
@@ -299,32 +351,24 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   .nextArr {
     right: 24%;
   }
+  .playButton, .playForFunButton {
+
+    & > span {
+      font-size: 9px;
+      line-height: 48px;
+    }
+  }
 }
 @media screen and (max-width: 428px) {
   .gamesWrapper {
     width: 410px;
-  }
-  .controlPanel {
-    height: 55px;
-
-    margin-top: 21px;
-  }
-
-  .controlPanel a {
-    left: 0px;
-    top: 1px;
-
-    font-size: 10px;
-
-    width: 120px;
-    height: 35px;
   }
 
   .prevArr, .nextArr {
     width: 40px;
     height: 34px;
 
-    top: 116.7%;
+    top: 114.7%;
   }
   .prevArr {
     left: 24%;
