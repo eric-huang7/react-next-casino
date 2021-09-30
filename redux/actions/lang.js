@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   activeLang: "en",
   languages: [
-    {name: "eng", lang: "en"},
-    {name: "rus", lang: "ru"},
-    {name: "chn", lang: "cn"},
-    {name: "jpn", lang: "jp"},
-    {name: "prt", lang: "pt"},
-    {name: "esp", lang: "es"},
-    {name: "deu", lang: "de"},
-    {name: "fra", lang: "fr"},
-    {name: "swe", lang: "se"},
-    {name: "ita", lang: "it"},
+    {name: "eng", lang: "en", language: "English"},
+    {name: "rus", lang: "ru", language: "Русский"},
+    {name: "chn", lang: "cn", language: "中国人"},
+    {name: "jpn", lang: "jp", language: "日本"},
+    {name: "prt", lang: "pt", language: "português"},
+    {name: "esp", lang: "es", language: "Español"},
+    {name: "deu", lang: "de", language: "Deutsch"},
+    {name: "fra", lang: "fr", language: "français"},
+    {name: "swe", lang: "se", language: "svenska"},
+    {name: "ita", lang: "it", language: "Italiano"},
   ]
 };
 

@@ -1,24 +1,125 @@
 import styles from '../../../styles/Footer/Footer.module.scss'
 
+import Link from "next/link";
+import Image from "next/image";
+import {ChooseLangDropdown} from "./ChooseLangDropdown";
+import {useSelector} from "react-redux";
+import {useState} from "react";
 
 
 export const Footer = ({t}) => {
-  const linkKey = [
-    {key: 'liveChat', route: '#', name: `Live Chat <span>7/24</span>>`}
+  const linkKeyFirs = [
+    {key: 'liveChat', route: '#livechat', name: `Live Chat`},
+    {key: 'tel', route: '#tel', name: `7-55-7-99-8-487`},
+    {key: 'faqs', route: '#faq', name: `FAQs`},
+    {key: 'contactUs', route: '#contactus', name: `Contact us`},
   ]
+  const linkKeySecond = [
+    {key: 'news', route: '#news', name: `News`},
+    {key: 'security', route: '#security', name: `Security`},
+    {key: 'privacy', route: '#privacy', name: `Privacy`},
+    {key: 'termsAndConditions', route: '#termsAndConditions', name: `Terms And Conditions`},
+  ]
+  const coinsImg = [
+    {key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.png'},
+    {key: 'binance', src: '/assets/img/footer/binance.png'},
+    {key: 'cardano', src: '/assets/img/footer/cardano.png'},
+    {key: 'chainlink', src: '/assets/img/footer/chainlink.png'},
+    {key: 'ethereum', src: '/assets/img/footer/ethereum.png'},
+    {key: 'litecoin', src: '/assets/img/footer/litecoin.png'},
+    {key: 'monero', src: '/assets/img/footer/monero.png'},
+    {key: 'polkadot', src: '/assets/img/footer/polkadot.png'},
+    {key: 'stellar', src: '/assets/img/footer/stellar.png'},
+  ]
+
+  const socilaLinks = [
+    {key: 'facebook', href: '#facebook', img: '/assets/img/footer/facebook.png'},
+    {key: 'twitter', href: '#twitter', img: '/assets/img/footer/twitter.png'},
+    {key: 'youtube', href: '#youtube', img: '/assets/img/footer/youtube.png'},
+    {key: 'instagram', href: 'https://www.instagram.com/?hl=ru', img: '/assets/img/footer/instagram.png'},
+    {key: 'linkedin', href: '#linkedin', img: '/assets/img/footer/linkedin.png'},
+  ]
+
+  const languages = useSelector(({lang}) => lang.languages);
+  const copyLanguages = [...languages];
+  const [chooseLangArr, setChooseLangArr] = useState(copyLanguages);
+  const activeLang = useSelector(({lang}) => lang.activeLang);
+  const [activeChooseLangBlock, setActiveChooseLangBlock] = useState(false);
+
+  const switchActiveLangBlock = () => {
+    if (activeChooseLangBlock) {
+      setActiveChooseLangBlock(false)
+    } else {
+      setActiveChooseLangBlock(true)
+    }
+  }
+
+  chooseLangArr.sort((item) => {
+    let res = item.lang === activeLang ? -1 : 1
+    return res;
+  })
+  let language = chooseLangArr[0].language.toUpperCase();
+
 
   return (
     <footer className={styles.mainFooter}>
       <section className={styles.footerUpperBlock}>
-        <ul>
-
+        <ul className={styles.linksFirst}>
+          {linkKeyFirs.map((el) => {
+            return (
+              <li key={el.key}>
+                <Link href={el.route}><a>{el.name}</a></Link>
+              </li>
+            )
+          } )}
+        </ul>
+        <ul className={styles.linksSecond}>
+          {linkKeySecond.map((el) => {
+            return (
+              <li key={el.key}>
+                <Link href={el.route}><a>{el.name}</a></Link>
+              </li>
+            )
+          } )}
         </ul>
       </section>
       <section className={styles.footerMiddleBlock}>
-
+        <div className={styles.footerMiddleInnerWrapper}>
+          {coinsImg.map((el) => {
+            return (
+              <div className={styles.coinImgWrapper} key={el.key}>
+                <Image src={el.src} width={110} height={33} alt={el.key}/>
+              </div>
+            )
+          })}
+        </div>
       </section>
       <section className={styles.footerLowerBlock}>
-
+        <div className={styles.divider}></div>
+        <div className={styles.lowerFooter}>
+          <div className={styles.socialBlock}>
+            {socilaLinks.map((el) => {
+              return (
+                <a className={styles.socialLink} target="_blank" key={el.key} href={el.href}>
+                  <img className={styles.socialImage} src={el.img} alt={el.key}/>
+                </a>
+              )
+            })}
+          </div>
+          <div className={styles.languageRightInfo}>
+            <div className={styles.languageSelectBlock}>
+              <p>Select language:</p>
+              <div
+                className={styles.chooseLanguageButton}
+                onClick={() => switchActiveLangBlock()}>
+              >
+                <ChooseLangDropdown isVis={activeChooseLangBlock}/>
+                <span>{language}</span>
+              </div>
+            </div>
+            <p>2020SlotsIdol.com&#169;All Rights Reserved</p>
+          </div>
+        </div>
       </section>
     </footer>
   )
