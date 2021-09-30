@@ -1,10 +1,18 @@
+
 .totalJackpotsMainWrapper {
   margin-top: 200px;
+
+  position: relative;
+
 }
 .totalJackpotsWrapper {
+  position: relative;
+
+  z-index: 4;
+
   width: 100%;
 
-  background-color: rgba(20, 75, 136, 0.7);
+  background-color: rgba(20, 75, 136, 0.5);
 
   padding-top: 57px;
   padding-bottom: 30px;
@@ -12,7 +20,7 @@
 .totalJackpotsHeading {
   margin: 0 auto;
 
-  width: 560px;
+  width: 32%;
 }
 
 .totalMountHeading {
@@ -29,6 +37,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 76%;
+  margin: 0 auto;
 }
 .winnersBlockWrapper h1 {
   text-align: center;
@@ -41,10 +51,13 @@
 }
 
 .winnersListWrapper {
-  margin-left: 20px;
+  margin-left: 8px;
+
   & ul {
-    width: 440px;
-    height: 550px;
+    width: 97%;
+    //440
+    //height: 45%;
+    //550
     list-style-type: none;
 
     background-color: rgba(0,0,0, 0.2);
@@ -67,8 +80,10 @@
 }
 
 .winnersImageWrapper {
-  width: 184px;
-  height: 121px;
+  width: 33.5%;
+  //184
+  //height: 121px;
+  //121
 
   border: 2px solid #47f9fd;
 
@@ -92,6 +107,8 @@
   letter-spacing: 0px;
   color: #ffffff;
   font-family: "Lato Latin Sem Bd";
+
+  margin: 0;
 }
 
 .winnersName {
@@ -99,4 +116,275 @@
   letter-spacing: 0px;
   color: #ffa8a8;
   font-family: "Swiss721 BT";
+
+  margin: 0;
 }
+
+.flamingo {
+  position: absolute;
+
+  width: 14.6%;
+          //276px;
+
+  height: 33.6%;
+          //309px;
+
+  background-image: url('/assets/img/totalJackpot/flamingo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  bottom: 0px;
+  right: 0px;
+
+  z-index: 5;
+
+}
+.moveFlamingo{
+  position: absolute;
+
+  width: 650px;
+
+  height:405px;
+
+
+  bottom: -95px;
+  right: -482px;
+
+  transform: rotateZ(200deg);
+
+  background-image: url('/assets/img/totalJackpot/move_eff.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  z-index: 4
+}
+
+.leaf {
+  position: absolute;
+
+  width: 17.6%;
+          //319px;
+  height: 36.6%;
+          //324px;
+
+  background-image: url('/assets/img/totalJackpot/leaf.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  top: 80px;
+  left: 120px;
+
+  z-index: 5;
+}
+
+.moveLeaf {
+  position: absolute;
+
+  width: 650px;
+
+  height:405px;
+
+
+  top: 180px;
+  left: -300px;
+
+  background-image: url('/assets/img/totalJackpot/move_eff.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  z-index: 4
+}
+
+.cherry {
+  position: absolute;
+
+  width: 14.6%;
+          //248px;
+  height: 33.6%;
+  //247px;
+
+  background-image: url('/assets/img/totalJackpot/cherry.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  top: 120px;
+  right: 215px;
+
+  z-index: 5;
+}
+.moveCherry {
+  position: absolute;
+
+
+  width: 650px;
+
+  height:405px;
+
+
+  top: 135px;
+  right: -215px;
+
+  transform: rotateX(160deg) rotateZ(185deg);
+
+
+  background-image: url('/assets/img/totalJackpot/move_eff.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  z-index: 4
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1700px) {
+  .moveCherry {
+    width: 650px;
+    height:405px;
+
+    top: 110px;
+    right: -215px;
+  }
+  .moveLeaf {
+    width: 650px;
+    height:405px;
+
+    top: 155px;
+    left: -300px;
+  }
+  .moveFlamingo {
+    width: 650px;
+    height: 405px;
+
+    bottom: -85px;
+    right: -500px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .moveCherry {
+    width: 580px;
+    height:315px;
+
+    top: 130px;
+    right: -150px;
+  }
+  .moveLeaf {
+    width: 580px;
+    height:315px;
+
+    top: 200px;
+    left: -267px;
+  }
+  .moveFlamingo {
+    width: 580px;
+    height:315px;
+
+    bottom: -45px;
+    right: -400px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .moveCherry {
+    width: 580px;
+    height:315px;
+
+    top: 140px;
+    right: -180px;
+  }
+  .moveLeaf {
+    width: 580px;
+    height:315px;
+
+    top: 165px;
+    left: -270px;
+  }
+  .moveFlamingo {
+    width: 580px;
+    height:315px;
+
+    bottom: -40px;
+    right: -450px;
+  }
+  .totalMountHeading {
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .totalMountHeading {
+    font-size: 70px;
+  }
+  .winnersBlockWrapper h1 {
+    font-size: 25px;
+  }
+  .moveCherry {
+    width: 530px;
+    height:260px;
+
+    top: 150px;
+    right: -140px;
+  }
+  .moveLeaf {
+    width: 530px;
+    height:260px;
+
+    top: 185px;
+    left: -230px;
+  }
+  .moveFlamingo {
+    width: 530px;
+    height:260px;
+
+    bottom: -50px;
+    right: -390px;
+  }
+}
+@media screen and (max-width: 1225px) {
+  .totalJackpotsHeading {
+    width: 42%;
+  }
+  .totalMountHeading {
+    font-size: 50px;
+  }
+  .winnersBlockWrapper h1 {
+    font-size: 20px;
+  }
+  .moveCherry,
+  .moveLeaf,
+  .moveFlamingo,
+  .cherry,
+  .flamingo,
+  .leaf{
+  display: none;
+  }
+
+}
+@media screen and (max-width: 1165px) {
+  .totalJackpotsHeading {
+    width: 52%;
+  }
+  .winnersBlockWrapper h1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .totalJackpotsHeading {
+    width: 72%;
+  }
+  .totalMountHeading {
+    font-size: 40px;
+  }
+  .winnersBlockWrapper h1 {
+    display: none;
+  }
+}
+
+

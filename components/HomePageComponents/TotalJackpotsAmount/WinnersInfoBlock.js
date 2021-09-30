@@ -1,10 +1,10 @@
 import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
 import {urlGen} from "./url";
 
-export const WinnersInfoBlock = ({heading, winnersData}) => {
+export const WinnersInfoBlock = ({isHidden, heading, winnersData}) => {
 
   return(
-    <div className={styles.winnersBlockWrapper}>
+    <div className={`${styles.winnersBlockWrapper} ${isHidden ? styles.hidden : ''}`}>
       <h1>{heading}</h1>
       <div className={styles.winnersListWrapper}>
         <ul>

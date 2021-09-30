@@ -2,8 +2,17 @@ import Image from "next/image";
 
 import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
 import {WinnersInfoBlock} from "./WinnersInfoBlock";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 export const TotalJackpotsAmount = ({t, winners}) => {
+  const {height, width} = useWindowDimensions();
+
+  let isHidden = false;
+  if (width <= 1165) {
+    isHidden = true;
+  } else {
+    isHidden = false;
+  }
 
   let latestWinnersArr = [];
   let topWinnersArr = [];
@@ -32,15 +41,22 @@ export const TotalJackpotsAmount = ({t, winners}) => {
   console.log(jackpotsWinnersArr, 'winners')
   return (
     <div className={styles.totalJackpotsMainWrapper}>
+      <div className={styles.flamingo}></div>
+      <div className={styles.leaf}></div>
+      <div className={styles.cherry}></div>
+      <div className={styles.moveFlamingo}></div>
+      <div className={styles.moveLeaf}></div>
+      <div className={styles.moveCherry}></div>
+
       <div className={styles.totalJackpotsHeading}>
-        <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.svg'} alt="total jackpot heading"/>
+        <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.png'} alt="total jackpot heading"/>
       </div>
       <div className={styles.totalJackpotsWrapper}>
         <h1 className={styles.totalMountHeading}>${totalMount}</h1>
         <div className={styles.winnersInfoBlockWrapper}>
-          <WinnersInfoBlock heading={headings.latestWinn} winnersData={latestWinnersArr}/>
-          <WinnersInfoBlock heading={headings.topWinn} winnersData={topWinnersArr}/>
-          <WinnersInfoBlock heading={headings.jackpots} winnersData={jackpotsWinnersArr}/>
+          <WinnersInfoBlock isHidden={false} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
+          <WinnersInfoBlock isHidden={isHidden} heading={headings.topWinn} winnersData={topWinnersArr}/>
+          <WinnersInfoBlock isHidden={isHidden} heading={headings.jackpots} winnersData={jackpotsWinnersArr}/>
         </div>
       </div>
     </div>
