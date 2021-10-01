@@ -9,7 +9,7 @@ import Link from "next/link";
 import {newsData} from "./newsData";
 
 
-export const NewsBlock = ({t}) => {
+export const NewsBlock = ({t, isBackShow}) => {
   const {height, width} = useWindowDimensions();
 
   let itemsCount = 4;
@@ -54,7 +54,7 @@ let data = newsData();
   return (
     <section className={styles.newsMainWrapper}>
       <div className={styles.newsHeading}></div>
-      <div className={styles.newsBackground}>
+      <div className={`${styles.newsBackground} ${isBackShow ? styles.backShow : ''}`}>
         <div className={styles.darkBackground}>
           <div className={styles.newsSliderWrapper}>
             <Slider {...sliderSettings}>

@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {setLang} from "../redux/actions/lang";
 import {useEffect} from "react";
+import Head from "next/head";
 
 
 import styles from '../styles/Home.module.scss';
@@ -41,6 +42,9 @@ export default function Home(props) {
   return (
 
     <>
+      <Head>
+        <script type="text/javascript" src="/chatWidget/chatWidget.js"></script>
+      </Head>
       <MainLayout t={t}>
         <MainBlock />
         <JackpotBlock />
@@ -50,7 +54,7 @@ export default function Home(props) {
         <PromotionsBlock t={t}/>
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
         <TotalJackpotsAmount t={t} winners={winners}/>
-        <NewsBlock t={t}/>
+        <NewsBlock t={t} isBackShow={true}/>
         <WhySlotsIdol t={t}/>
         <Footer t={t}/>
       </MainLayout>

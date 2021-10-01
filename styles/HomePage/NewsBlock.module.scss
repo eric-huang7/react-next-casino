@@ -18,15 +18,14 @@
 }
 
 .newsBackground {
-
-
+  padding-bottom: 67px;
+  width: 100%;
+}
+.backShow {
   background-image: url("/assets/img/newsSlider/news_back.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
-  padding-bottom: 67px;
-  width: 100%;
 }
 .darkBackground {
   background-color: rgba(0,0,0,0.3);

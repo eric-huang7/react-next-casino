@@ -230,8 +230,8 @@ background-color: #202c42;
   .chooseLanguageButton {
     width: 96px;
     height: 30px;
-
-
+    justify-content: center;
+    padding: 0;
     margin-left: 5px;
 
   }
@@ -242,6 +242,7 @@ background-color: #202c42;
     color: #9bfffd;
     text-transform: uppercase;
     font-size: 12px;
+
   }
   .socialBlock {
     margin-top: 10px;
