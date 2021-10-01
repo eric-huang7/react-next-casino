@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import styles from '../../../styles/Footer/Footer.module.scss'
 
-export const ChooseLangDropdown = ({isVis}) => {
+export const ChooseLangDropdown = ({t, isVis}) => {
   const router = useRouter();
   const languages = useSelector(({lang}) => lang.languages);
   const copyLanguages = [...languages];

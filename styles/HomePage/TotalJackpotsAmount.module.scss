@@ -245,6 +245,9 @@
 }
 
 @media screen and (max-width: 1700px) {
+  .winnersBlockWrapper h1 {
+    font-size: 25px;
+  }
   .moveCherry {
     width: 650px;
     height:405px;
@@ -293,6 +296,9 @@
 }
 
 @media screen and (max-width: 1400px) {
+  .winnersBlockWrapper h1 {
+    font-size: 23px;
+  }
   .moveCherry {
     width: 580px;
     height:315px;
@@ -323,7 +329,7 @@
     font-size: 70px;
   }
   .winnersBlockWrapper h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .moveCherry {
     width: 530px;

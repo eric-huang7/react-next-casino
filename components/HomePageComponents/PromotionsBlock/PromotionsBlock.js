@@ -9,7 +9,7 @@ import Link from "next/link";
 import {promoData} from "./promoData";
 
 
-export const PromotionsBlock = () => {
+export const PromotionsBlock = ({t}) => {
   const {height, width} = useWindowDimensions();
 
   let itemsCount = 4;
@@ -78,7 +78,7 @@ let data = promoData();
             })}
           </Slider>
           <div className={styles.controlPanel}>
-            <Link href={'/#'}><a>more...</a></Link>
+            <Link href={'/#'}><a>{t(`homePage.moreButton`)}</a></Link>
           </div>
         </div>
       </div>

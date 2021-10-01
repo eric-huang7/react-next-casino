@@ -20,6 +20,7 @@ import {getWinners} from "../redux/actions/latestWinners";
 import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpotsAmount/TotalJackpotsAmount";
 import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {Footer} from "../components/MainLayout/Footer/Footer";
+import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
 
 export default function Home(props) {
   const {t} = useTranslation('common');
@@ -49,8 +50,9 @@ export default function Home(props) {
         <PromotionsBlock t={t}/>
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
         <TotalJackpotsAmount t={t} winners={winners}/>
+        <NewsBlock t={t}/>
         <WhySlotsIdol t={t}/>
-        <Footer />
+        <Footer t={t}/>
       </MainLayout>
 
       <LangSwitcher locale={locale}/>

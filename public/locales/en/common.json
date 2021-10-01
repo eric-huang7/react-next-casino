@@ -22,11 +22,41 @@
     "aboutUs" : "aboutUs Page"
   },
   "homePage": {
+    "btcGames" : "btc games",
+    "newGames" : "new games",
+    "topGames" : "top games",
+    "jackpotGames": "jackpot games",
+    "tableGames": "table games",
     "providers": "providers",
-    "searchBar": "search..."
+    "searchBar": "search...",
+    "moreButton": "more..."
+  },
+  "totalJackpots" : {
+    "latestWinners" : "latest winners",
+    "topWinners": "top winners",
+    "jackpots" : "jackpots"
+  },
+  "whySlotsIdol" : {
+    "minuteRegistration" : "1 Minute Registration",
+    "InstantDeposits": "Instant Deposits",
+    "FastPayouts": "Fast Payouts",
+    "LicensedAndRegulated": "Licensed and Regulated",
+    "GetMoreCustomerSupport": "Get More Customer Support",
+    "getSupportInnerText": "Casino representatives are available 24/7 via email and live chat. We assist with registrations, deposits, withdraws and everything about SlotsIdol Casino!"
   },
   "gameButtons": {
     "play": "play",
     "playForFun": "play for fun"
+  },
+  "footer" : {
+    "LiveChat" : "Live Chat",
+    "Tel:7-55-7-99-8-487" : "Tel: 7-55-7-99-8-487",
+    "FAQs": "FAQs",
+    "ContactUs": "Contact us",
+    "News": "News",
+    "Security": "Security",
+    "Privacy": "Privacy",
+    "TermsAndConditions": "Terms And Conditions",
+    "SelectLanguage": "Select language:"
   }
 }

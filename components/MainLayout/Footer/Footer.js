@@ -9,16 +9,16 @@ import {useState} from "react";
 
 export const Footer = ({t}) => {
   const linkKeyFirs = [
-    {key: 'liveChat', route: '#livechat', name: `Live Chat`},
-    {key: 'tel', route: '#tel', name: `7-55-7-99-8-487`},
+    {key: 'liveChat', route: '#livechat', name: `LiveChat`},
+    {key: 'tel', route: '#tel', name: `Tel:7-55-7-99-8-487`},
     {key: 'faqs', route: '#faq', name: `FAQs`},
-    {key: 'contactUs', route: '#contactus', name: `Contact us`},
+    {key: 'contactUs', route: '#contactus', name: `ContactUs`},
   ]
   const linkKeySecond = [
     {key: 'news', route: '#news', name: `News`},
     {key: 'security', route: '#security', name: `Security`},
     {key: 'privacy', route: '#privacy', name: `Privacy`},
-    {key: 'termsAndConditions', route: '#termsAndConditions', name: `Terms And Conditions`},
+    {key: 'termsAndConditions', route: '#termsAndConditions', name: `TermsAndConditions`},
   ]
   const coinsImg = [
     {key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.png'},
@@ -36,7 +36,7 @@ export const Footer = ({t}) => {
     {key: 'facebook', href: '#facebook', img: '/assets/img/footer/facebook.png'},
     {key: 'twitter', href: '#twitter', img: '/assets/img/footer/twitter.png'},
     {key: 'youtube', href: '#youtube', img: '/assets/img/footer/youtube.png'},
-    {key: 'instagram', href: 'https://www.instagram.com/?hl=ru', img: '/assets/img/footer/instagram.png'},
+    {key: 'instagram', href: '#instagram', img: '/assets/img/footer/instagram.png'},
     {key: 'linkedin', href: '#linkedin', img: '/assets/img/footer/linkedin.png'},
   ]
 
@@ -68,7 +68,7 @@ export const Footer = ({t}) => {
           {linkKeyFirs.map((el) => {
             return (
               <li key={el.key}>
-                <Link href={el.route}><a>{el.name}</a></Link>
+                <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
               </li>
             )
           } )}
@@ -77,7 +77,7 @@ export const Footer = ({t}) => {
           {linkKeySecond.map((el) => {
             return (
               <li key={el.key}>
-                <Link href={el.route}><a>{el.name}</a></Link>
+                <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
               </li>
             )
           } )}
@@ -108,12 +108,12 @@ export const Footer = ({t}) => {
           </div>
           <div className={styles.languageRightInfo}>
             <div className={styles.languageSelectBlock}>
-              <p>Select language:</p>
+              <p>{t(`footer.SelectLanguage`)}</p>
               <div
                 className={styles.chooseLanguageButton}
                 onClick={() => switchActiveLangBlock()}>
               >
-                <ChooseLangDropdown isVis={activeChooseLangBlock}/>
+                <ChooseLangDropdown t={t} isVis={activeChooseLangBlock}/>
                 <span>{language}</span>
               </div>
             </div>

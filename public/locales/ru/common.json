@@ -22,11 +22,41 @@
     "aboutUs" : "о нас Page"
   },
   "homePage": {
+    "btcGames" : "btc игры",
+    "newGames" : "новые игры",
+    "topGames" : "топ игры",
+    "jackpotGames": "jackpot игры",
+    "tableGames": "настольные игры",
     "providers": "провайдеры",
-    "searchBar": "поиск..."
+    "searchBar": "поиск...",
+    "moreButton": "больше..."
+  },
+  "totalJackpots" : {
+    "latestWinners" : "последние победители",
+    "topWinners": "топ победителей",
+    "jackpots" : "джекпоты"
+  },
+  "whySlotsIdol" : {
+    "minuteRegistration" : "1 Минута Регистрации",
+    "InstantDeposits": "Мгновенные Депозиты",
+    "FastPayouts": "Быстрые Выплаты",
+    "LicensedAndRegulated": "Лицензировано и Регулируемо",
+    "GetMoreCustomerSupport": "Получите Дополнительную Поддержку Клиентов",
+    "getSupportInnerText": "Представители казино доступны 24/7 по электронной почте и в чате. Мы помогаем с регистрацией, депозитами, снятием средств и всем, что касается казино SlotsIdol!"
   },
   "gameButtons": {
     "play": "играть",
     "playForFun": "тренировка"
+  },
+  "footer" : {
+    "LiveChat" : "Живой Чат",
+    "Tel:7-55-7-99-8-487" : "Тел: 7-55-7-99-8-487",
+    "FAQs": "FAQs",
+    "ContactUs": "Связаться с нами",
+    "News": "Новости",
+    "Security": "Безопасность",
+    "Privacy": "Конфиденциальность",
+    "TermsAndConditions": "Условия и Положения",
+    "SelectLanguage": "Выбрать язык:"
   }
 }

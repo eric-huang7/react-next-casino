@@ -18,9 +18,9 @@ export const TotalJackpotsAmount = ({t, winners}) => {
   let topWinnersArr = [];
   let jackpotsWinnersArr = [];
   let headings = {
-    latestWinn: 'latest winners',
-    topWinn: 'top winners',
-    jackpots: 'jackpots'
+    latestWinn: t('totalJackpots.latestWinners'),
+    topWinn: t('totalJackpots.topWinners'),
+    jackpots: t('totalJackpots.jackpots')
   }
   let totalMount = 0;
   if (winners.loading) {
