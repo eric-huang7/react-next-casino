@@ -70,7 +70,7 @@ a {
 
 
 // Fix for slider color view
-.slick-slide:nth-child(odd) > div > div > div {
+._promotionsBlock div.slick-slide:nth-child(odd) > div > div > div {
   background-color: #2280eb;
   & > div:nth-child(2) {
     background-color: #2280eb;

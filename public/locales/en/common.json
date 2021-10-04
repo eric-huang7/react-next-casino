@@ -58,5 +58,36 @@
     "Privacy": "Privacy",
     "TermsAndConditions": "Terms And Conditions",
     "SelectLanguage": "Select language:"
+  },
+  "aboutUsPage": {
+    "mainBlock": {
+      "providers": "30 provider",
+      "games": "2000+ games",
+      "flexibleSystem": {
+        "flexible": "flexible",
+        "cryptocurrency": "cryptocurrency",
+        "system": "system"
+      },
+      "cashouts": "instant cashouts"
+    },
+    "textBlocks": {
+      "slotsIdolBlock": {
+        "heading": "SlotsIdol",
+        "firstPar": "Our fun and friendly online casino is bursting with exciting games, unbeatable offers, giant jackpots – and you can explore them all on our user-friendly, mobile adaptive site.",
+        "secondPar": "Fancy a flutter as well as a spin? Head over to our Sports tab to take advantage of competitive odds on all your favourite sports. From football and horse racing, golf and boxing, to Virtual Sports and everything in between.",
+        "thirdPar": "We pride ourselves on producing the smoothest products, whether you prefer to play from your computer or on-the-go via mobile, tablet or app. No matter what device you use, you’ll find hundreds of incredible games at CasinoCasinoCasino.com."
+      },
+      "theFunStuf": {
+        "heading": "The Fun Stuf",
+        "firstPar": "What’s more, we believe in rewarding our players. As a thank you for choosing us, our unrivalled Loyalty Points scheme pays you to play! Spend enough time with us, and you could also become a VIP, living the casino highlife.",
+        "secondPar": "The Serious StuffNow on to the serious stuff – our parent company, Mansion Group Ltd., winners of Best Customer Service Company 2020 and Online Casino Operator of the Year 2018 at the International Gaming Awards, is an online casino heavyweight. With over 15 years of industry experience, Mansion boast an impressive portfolio of brands."
+      },
+      "theSeriousStuff" : {
+        "heading": "The Serious Stuff",
+        "firstPar": "Now on to the serious stuff – our parent company, ............Group Ltd., winners of Best Customer Service Company 2020 and Online Casino Operator of the Year 2018 at the International Gaming Awards, is an online casino heavyweight. With over 15 years of industry experience, ........... boast an impressive portfolio of brands.",
+        "secondPar": "When you play at ............com, you're guaranteed a fair, responsible and secure environment. We're licensed and regulated by the globally respected ............................both of whom are recognised for their stringent standards.",
+        "thirdPar": "Staffed by attentive and knowledgeable experts, our Customer Support team is here to make sure your time with us is hassle-free and as enjoyable as possible. Whether you need help with a big issue or a minor query, or even just fancy a chat – we’re available 24/7."
+      }
+    }
   }
 }

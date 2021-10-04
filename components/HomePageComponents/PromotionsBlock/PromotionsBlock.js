@@ -52,7 +52,7 @@ let data = promoData();
     prevArrow: <SamplePrevArrow />,
   }
   return (
-    <section className={styles.promotionsMainWrapper}>
+    <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
       <div className={styles.promotionsHeading}></div>
       <div className={styles.promotionsBackground}>
         <div className={styles.promotionsSliderWrapper}>

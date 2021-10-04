@@ -1,0 +1,362 @@
+.mainSectionWrapper {
+
+
+  background-image: url("/assets/img/aboutUs/aboutUsMainBack.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  min-height: 420px;
+}
+
+.mainItemsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 1300px;
+
+  margin: 0 auto;
+
+  position: relative;
+}
+
+.providerImg, .gamesImg, .flexibleSystemImg, .instantCashoutsImg {
+  width: 21%;
+          //273px;
+  height: 269px;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 2%;
+}
+
+.providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+  text-align: center;
+  font-size: 32px;
+  color: #ff7d7d;
+  font-weight: 800;
+  font-family: "Swiss721 BT";
+  text-transform: uppercase;
+  line-height: 25px;
+  word-wrap: break-word;
+
+  width: 70%;
+
+  margin: 0;
+}
+
+.flexibleSystemImg p, .bigSpan {
+  color: #6be2ff;
+}
+.smallSpan {
+  font-size: 16px;
+  word-wrap: normal;
+}
+
+.providerImg {
+  background-image: url("/assets/img/aboutUs/providerCashouts.png");
+
+  position: relative;
+}
+
+//.providerImg
+.arrProvider, .arrGames, .arrFlexible {
+  width: 20%;
+  //261px;
+  height: 68px;
+
+  position: absolute;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrProvider {
+
+  top: 12%;
+          //-10px;
+  left: 18%;
+          //-170px;
+
+  background-image: url("/assets/img/aboutUs/arrProvider.png");
+
+}
+.arrGames {
+
+  top: 70%;
+  left: 42%;
+
+  background-image: url("/assets/img/aboutUs/arrGames.png");
+}
+
+.arrFlexible {
+  top: 13%;
+  left: 65%;
+
+  background-image: url("/assets/img/aboutUs/arrFlexible.png");
+}
+
+.gamesImg {
+  background-image: url("/assets/img/aboutUs/games.png");
+
+  margin-top: 115px;
+}
+.gamesImg p {
+  color: #ffffff;
+}
+
+.flexibleSystemImg {
+  background-image: url("/assets/img/aboutUs/flexibleSystem.png");
+
+  margin-bottom: 115px;
+}
+
+.instantCashoutsImg {
+  background-image: url("/assets/img/aboutUs/providerCashouts.png");
+  margin-top: 115px;
+}
+
+@media screen and (max-width: 1110px) {
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 25px;
+    line-height: 25px;
+
+    width: 70%;
+  }
+  .smallSpan {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 22px;
+    line-height: 25px;
+
+    width: 70%;
+  }
+  .smallSpan {
+    font-size: 14px;
+  }
+  .arrProvider, .arrGames, .arrFlexible {
+    width: 20%;
+    //261px;
+    height: 50px;
+  }
+  .arrProvider {
+    top: 24%;
+    //-10px;
+    left: 19%;
+    //-170px;
+  }
+  .arrGames {
+    top: 62%;
+    left: 43%;
+  }
+  .arrFlexible {
+    top: 25%;
+    left: 66%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .mainItemsWrapper {
+    flex-wrap: wrap;
+
+    padding-top: 2%;
+  }
+  .providerImg, .gamesImg, .flexibleSystemImg, .instantCashoutsImg {
+    width: 30%;
+    //273px;
+    height: 269px;
+
+    margin-right: 2%;
+  }
+  .providerImg {
+    margin-right: 14%;
+
+  }
+  .gamesImg {
+    margin-top: 0px;
+    margin-right: 10%;
+  }
+  .instantCashoutsImg {
+    margin-top: 0px;
+
+    margin-left: 10%;
+  }
+  .flexibleSystemImg {
+    margin-bottom: 0px;
+    margin-right: 14%;
+    margin-left: 10%;
+  }
+
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 28px;
+    line-height: 25px;
+
+    width: 70%;
+  }
+  .smallSpan {
+    font-size: 14px;
+  }
+  .arrProvider, .arrGames, .arrFlexible {
+    width: 27%;
+    //261px;
+    height: 65px;
+  }
+  .arrProvider {
+    top: 3%;
+    //-10px;
+    left: 30%;
+    //-170px;
+  }
+  .arrGames {
+    top: 41%;
+    left: 31%;
+
+    transform: rotateZ(160deg);
+  }
+  .arrFlexible {
+    top: 60%;
+    left: 40%;
+    transform: rotateZ(-12deg);
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 24px;
+    line-height: 25px;
+
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .providerImg, .gamesImg, .flexibleSystemImg, .instantCashoutsImg {
+    width: 32%;
+    //273px;
+    height: 269px;
+  }
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 21px;
+    line-height: 20px;
+    width: 70%;
+  }
+  .smallSpan {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .mainSectionWrapper {
+
+    min-height: 380px;
+  }
+  .providerImg, .gamesImg, .flexibleSystemImg, .instantCashoutsImg {
+    width: 36%;
+    //273px;
+    height: 180px;
+  }
+  .flexibleSystemImg {
+    margin-bottom: 0px;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .instantCashoutsImg {
+    margin-top: 0px;
+
+    margin-left: 0%;
+  }
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 16px;
+    line-height: 16px;
+    width: 55%;
+  }
+  .smallSpan {
+    font-size: 10px;
+  }
+  .arrProvider, .arrGames, .arrFlexible {
+    width: 27%;
+    //261px;
+    height: 40px;
+  }
+  .arrProvider {
+    top: 3%;
+    //-10px;
+    left: 30%;
+    //-170px;
+  }
+  .arrGames {
+    top: 41%;
+    left: 31%;
+
+    transform: rotateZ(160deg);
+  }
+  .arrFlexible {
+    top: 53%;
+    left: 38%;
+    transform: rotateZ(-12deg);
+  }
+}
+@media screen and (max-width: 450px) {
+  .mainSectionWrapper {
+
+    background-image: url("/assets/img/aboutUs/aboutUsMainBack_mobile.jpg");
+    height: 320px;
+  }
+  .providerImg, .gamesImg, .flexibleSystemImg, .instantCashoutsImg {
+    width: 36%;
+    //273px;
+    height: 180px;
+  }
+  .flexibleSystemImg {
+    margin-bottom: 0px;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .instantCashoutsImg {
+    margin-top: 0px;
+
+    margin-left: 0%;
+  }
+  .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
+    font-size: 20px;
+    line-height: 16px;
+    width: 77%;
+
+  }
+  .smallSpan {
+    font-size: 10px;
+  }
+  .arrProvider, .arrGames, .arrFlexible {
+    width: 27%;
+    //261px;
+    height: 40px;
+  }
+  .arrProvider {
+    top: 3%;
+    //-10px;
+    left: 30%;
+    //-170px;
+  }
+  .arrGames {
+    top: 41%;
+    left: 31%;
+
+    transform: rotateZ(160deg);
+  }
+  .arrFlexible {
+    top: 53%;
+    left: 38%;
+    transform: rotateZ(-12deg);
+  }
+}

@@ -16,6 +16,8 @@
   transition: right 0.5s ease-in-out;
 
   outline: none;
+
+  z-index: 20;
 }
 .clickBlocker {
   width: 100%;

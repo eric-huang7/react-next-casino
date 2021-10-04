@@ -1,15 +1,22 @@
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/AboutUs.module.scss";
+import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
+import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
+import {MainBlock} from "../../components/AboutUsPageComponents/MainBlock/MainBlock";
+import {TextBlocks} from "../../components/AboutUsPageComponents/TextBlocks/TextBlocks";
 
 
-const aboutUS = (props) => {
+const AboutUS = (props) => {
   const { t } = useTranslation('common')
   return (
     <>
       <MainLayout t={t}>
-        <h1 className={styles.headerHomePage}>{t(`pageNames.aboutUs`)}</h1>
+        <MainBlock t={t}/>
+        <TextBlocks t={t}/>
+        <WhySlotsIdol t={t}/>
+        <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>
   )
@@ -23,4 +30,4 @@ export const getStaticProps = async ({ locale }) => {
   })
 }
 
-export default  aboutUS;
+export default  AboutUS;

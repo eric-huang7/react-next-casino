@@ -1,6 +1,7 @@
 import {Header} from "./Header/Header";
 
 import styles from '../../styles/MainLayout.module.scss'
+import {Footer} from "./Footer/Footer";
 
 const MainLayout = ({children, t}) => {
 
@@ -8,7 +9,7 @@ const MainLayout = ({children, t}) => {
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             {children}
-
+            <Footer t={t}/>
           </div>
   )
 }

@@ -10,6 +10,8 @@ import {useEffect} from "react";
 import Head from "next/head";
 
 
+
+
 import styles from '../styles/Home.module.scss';
 import {MainBlock} from "../components/HomePageComponents/MainBlock";
 import {JackpotBlock} from "../components/HomePageComponents/JackpotBlock/JackpotBlock";
@@ -56,7 +58,7 @@ export default function Home(props) {
         <TotalJackpotsAmount t={t} winners={winners}/>
         <NewsBlock t={t} isBackShow={true}/>
         <WhySlotsIdol t={t}/>
-        <Footer t={t}/>
+
       </MainLayout>
 
       <LangSwitcher locale={locale}/>
