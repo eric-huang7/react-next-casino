@@ -89,5 +89,13 @@
         "thirdPar": "Staffed by attentive and knowledgeable experts, our Customer Support team is here to make sure your time with us is hassle-free and as enjoyable as possible. Whether you need help with a big issue or a minor query, or even just fancy a chat – we’re available 24/7."
       }
     }
+  },
+  "contactUsPage": {
+    "headers": {
+      "hoursAday": "24 hours a day",
+      "daysAweek": "7 days a week",
+      "daysAyear": "365 days a year",
+      "textBottom" : "If you have any questions, comments, or suggestions,\n please feel free to contact us anytime – we’re here to help you."
+    }
   }
 }
