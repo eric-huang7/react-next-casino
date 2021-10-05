@@ -1,14 +1,19 @@
 .textBlockWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+
+  padding: 110px 30px 0px 30px;
 }
 
 .textBlockInnerWrapper {
   max-width: 1300px;
+  min-height: 770px;
+
+  margin: 0 auto;
 
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   flex-wrap: wrap;
 
@@ -16,11 +21,12 @@
 }
 
 .textBlockInnerWrapper > div {
-  width: 33.3%;
+  width: 32.3%;
+  min-height: inherit;
 
-  height: 770px;
 
   padding: 5px;
+  margin-bottom: 10px;
 
   background-color: rgba(0,0,0, 0.3);
 }
@@ -28,10 +34,11 @@
 .frame {
   width: 100%;
   height: 100%;
+  //min-height: 770px;
 
   border: 1px solid #6f6c65;
 
-  padding: 35px 17px;
+  padding: 35px 17px 0px 17px;
 }
 
 .textBlockInnerWrapper > div div h2 {
@@ -48,4 +55,41 @@
   font-family: "Verdana";
 
   margin-bottom: 45px;
+}
+
+@media screen and (max-width: 1065px) {
+  .textBlockInnerWrapper {
+    justify-content: center;
+  }
+  .textBlockInnerWrapper > div {
+    margin-left: 10px;
+    width: 50%;
+    min-height: auto;
+  }
+  .frame {
+    padding: 20px 17px 10px 17px;
+  }
+  .textBlockInnerWrapper > div div h2 {
+    font-size: 30px;
+    line-height: 30px;
+    font-family: "Verdana";
+
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
+  .textBlockInnerWrapper > div div p {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Verdana";
+
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .textBlockInnerWrapper > div {
+    margin-left: 0px;
+    width: 100%;
+    min-height: auto;
+  }
 }

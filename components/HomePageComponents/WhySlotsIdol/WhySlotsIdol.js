@@ -1,11 +1,11 @@
 import styles from '../../../styles/HomePage/WhySlotsIdol .module.scss'
 
-export const WhySlotsIdol = ({t}) => {
+export const WhySlotsIdol = ({t, isBackShow}) => {
 
   return (
-      <div className={styles.whySlotsMainwrapper}>
+      <div className={`${styles.whySlotsMainwrapper} ${isBackShow ? styles.backShow : ''}`}>
         <div className={styles.whySlotsHeading}>
-          <img src={'/assets/img/whySlotsIdol/why_slots_heading.svg'} alt="why slots idol heading"/>
+          <img src={'/assets/img/whySlotsIdol/why_slots_heading.png'} alt="why slots idol heading"/>
         </div>
         <div className={styles.whySlotsItems}>
           <div className={`${styles.minuteBlock} ${styles.whySlotsInnerItem}`}>

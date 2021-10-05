@@ -14,8 +14,10 @@ const AboutUS = (props) => {
     <>
       <MainLayout t={t}>
         <MainBlock t={t}/>
-        <TextBlocks t={t}/>
-        <WhySlotsIdol t={t}/>
+        <div className={styles.textWhyslotsBack}>
+          <TextBlocks t={t}/>
+          <WhySlotsIdol t={t} isBackShow={false}/>
+        </div>
         <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>

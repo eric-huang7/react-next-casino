@@ -57,7 +57,7 @@ export default function Home(props) {
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
         <TotalJackpotsAmount t={t} winners={winners}/>
         <NewsBlock t={t} isBackShow={true}/>
-        <WhySlotsIdol t={t}/>
+        <WhySlotsIdol t={t} isBackShow={true}/>
 
       </MainLayout>
 

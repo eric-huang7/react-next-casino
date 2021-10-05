@@ -7,7 +7,7 @@ import {UserBlockNavigation} from "./UserBlock/UserBlock";
 export const Header = ({t}) => {
   return (
     <header className={styles.mainHeader}>
-      <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.svg'} alt="logo"/>
+      <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       <Navigation t={t}/>
       <UserBlockNavigation t={t}/>
     </header>

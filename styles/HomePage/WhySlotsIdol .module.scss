@@ -1,12 +1,18 @@
 .whySlotsMainwrapper {
   width: 100%;
 
+  //background-image: url("/assets/img/whySlotsIdol/whySlotsIdol_back.jpg");
+  //background-position: center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+
+  padding: 162px 0 35px 0;
+}
+.backShow {
   background-image: url("/assets/img/whySlotsIdol/whySlotsIdol_back.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  padding: 162px 0 35px 0;
 }
 
 .whySlotsHeading {
@@ -45,7 +51,7 @@
     }
   }
   & > p {
-    font-size: 27px;
+    font-size: 23px;
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Verdana";
