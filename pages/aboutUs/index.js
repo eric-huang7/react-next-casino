@@ -6,10 +6,15 @@ import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {MainBlock} from "../../components/AboutUsPageComponents/MainBlock/MainBlock";
 import {TextBlocks} from "../../components/AboutUsPageComponents/TextBlocks/TextBlocks";
+import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
+import {useRouter} from "next/router";
 
 
 const AboutUS = (props) => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
+
+  const loc = useRouter();
+  // console.log(loc, 'LOCALE')
   return (
     <>
       <MainLayout t={t}>
@@ -20,14 +25,16 @@ const AboutUS = (props) => {
         </div>
         <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
+
+      <LangSwitcher href={loc.route} locale={loc}/>
     </>
   )
 }
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['navbarLinks', 'common']),
+      ...await serverSideTranslations(locale, ['common']),
     },
   })
 }

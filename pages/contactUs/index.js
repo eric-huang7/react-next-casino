@@ -7,10 +7,13 @@ import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/Why
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 import {MainBlock} from "../../components/ContactUsPageComponents/MainBlock/MainBlock";
 import {HeadersBlock} from "../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock";
+import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
+import {useRouter} from "next/router";
 
 
 const ContactUs = (props) => {
   const { t } = useTranslation('common')
+  const loc = useRouter();
   return (
     <>
       <MainLayout t={t}>
@@ -22,6 +25,8 @@ const ContactUs = (props) => {
         </div>
         <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
+
+      <LangSwitcher href={loc.route} locale={loc}/>
     </>
   )
 }

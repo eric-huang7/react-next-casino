@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 
 const LangSwitcher = (props) => {
-  console.log(props, "PROPS SWITCHER")
+  // console.log(props, "PROPS SWITCHER")
   const router = useRouter();
   const languages = useSelector(({lang}) => lang.languages);
   const copyLanguages = [...languages];
@@ -24,12 +24,13 @@ const LangSwitcher = (props) => {
       setActiveLangBlock(true)
     }
   }
-
   chooseLangArr.sort((item) => {
     let res = item.lang === activeLang ? -1 : 1
     return res;
   })
 
+
+  console.log(chooseLangArr);
 
   return (
     <div
@@ -46,7 +47,7 @@ const LangSwitcher = (props) => {
               onClick={(e) => console.log(language.lang, ' LANG')}
             >
               <Link
-                href={'/'}
+                href={props.href}
                 locale={language.lang}
               >
                 <span

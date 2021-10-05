@@ -61,7 +61,7 @@ export default function Home(props) {
 
       </MainLayout>
 
-      <LangSwitcher locale={locale}/>
+      <LangSwitcher href={'/'} locale={locale}/>
     </>
   )
 }
