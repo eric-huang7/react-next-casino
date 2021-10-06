@@ -16,7 +16,7 @@ export const ContactsBlocks = ({t}) => {
         {
           blocksInfo.map((el) => {
             return (
-              <div className={styles.contactItem}>
+              <div key={el.id} className={styles.contactItem}>
                 <div className={styles.contactFrame}>
                   <div className={styles.contactTextBlock}>
                     <h3>
