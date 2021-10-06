@@ -111,5 +111,47 @@
         "textInfo": "(+00000) 00 00 00 (+00000) 00 00 00"
       }
     }
+  },
+  "faq": {
+    "mostPopular": {
+      "heading": "most popular",
+      "question1": {
+        "question" : "What happens if my deposit is not showing?",
+        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+      },
+      "question2" : {
+        "question": "How long does it take for deposits for show in my account?",
+        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+      },
+      "question3" : {
+        "question": "What happens if I sent my deposit to another address or if I deposited lower than the minimum amount?",
+        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+      },
+      "question4": {
+        "question": "What are the rules to withdrawing my balance?",
+        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+      }
+    },
+    "account" : {
+      "heading": "account"
+    },
+    "depositsWithdrawals" : {
+      "heading": "deposits & withdrawals"
+    },
+    "bonuses" : {
+      "heading": "bonuses"
+    },
+    "theCasino" : {
+      "heading": "theCasino"
+    },
+    "security" : {
+      "heading": "security"
+    },
+    "responsibleGaming" : {
+      "heading": "responsible gaming"
+    },
+    "affiliate" : {
+      "heading": "affiliate faq"
+    }
   }
 }

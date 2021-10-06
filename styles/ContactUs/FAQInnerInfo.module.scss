@@ -1,9 +1,45 @@
 .faqItemInnerInfo {
 
 }
+.faqItemInnerInfoHeading{
+  color: #ff0e0e;
+  position: relative;
+
+  user-select: none;
+
+  margin: 0 0 15px 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+
+  &.showMenuPoints:before {
+    content: '';
+
+    position: absolute;
+    top: 6px;
+    left: -15px;
+
+    width: 5px;
+    height: 5px;
+
+    border-right: 1px solid #848282;
+    border-bottom: 1px solid #848282;
+
+
+    transition: transform 0.2s ease-in-out;
+    transform: rotateZ(-45deg);
+  }
+  &.menuActive:before {
+    transform: rotateZ(45deg);
+  }
+}
+
 
 .itemInnerInfoText{
   font-size: 0;
+  color: #7b7b7b;
 
   transition: font-size 0.2s ease-in-out;
 }
@@ -11,3 +47,10 @@
   font-size: 12px;
 }
 
+@media screen and (max-width: 500px) {
+  .faqItemInnerInfoHeading {
+    font-size: 14px;
+
+    color: #ff0e0e;
+  }
+}
