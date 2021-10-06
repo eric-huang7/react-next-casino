@@ -9,6 +9,7 @@ import {MainBlock} from "../../components/ContactUsPageComponents/MainBlock/Main
 import {HeadersBlock} from "../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock";
 import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
+import {ContactsBlocks} from "../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks";
 
 
 const ContactUs = (props) => {
@@ -19,6 +20,7 @@ const ContactUs = (props) => {
       <MainLayout t={t}>
         <MainBlock />
         <HeadersBlock t={t}/>
+        <ContactsBlocks t={t}/>
         <div className={styles.textWhyslotsBack}>
 
           <WhySlotsIdol t={t} isBackShow={false}/>

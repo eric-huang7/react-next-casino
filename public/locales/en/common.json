@@ -96,6 +96,20 @@
       "daysAweek": "7 days a week",
       "daysAyear": "365 days a year",
       "textBottom" : "If you have any questions, comments, or suggestions,\n please feel free to contact us anytime – we’re here to help you."
+    },
+    "contactsBlock": {
+      "liveChat": {
+        "heading": "Live Chat",
+        "textInfo": "Our 24/7 Live Support service is always happy to help you."
+      },
+      "email": {
+        "heading": "Email",
+        "textInfo": "For customer queries, write to us at support@slotsidol.com. For other questions or offers, drop us a line at info@vivarobet.am and we will make sure the right person receives your email. Or use docs@slotsidol.com when sending us your documents."
+      },
+      "phone": {
+        "heading": "Phone",
+        "textInfo": "(+00000) 00 00 00 (+00000) 00 00 00"
+      }
     }
   }
 }

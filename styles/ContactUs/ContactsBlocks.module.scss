@@ -1,0 +1,164 @@
+.contactsSection {
+  width: 100%;
+
+  padding: 0 20px;
+}
+
+.contactsInnerWrapper {
+  max-width: 1300px;
+
+  margin: 0 auto;
+}
+
+.contactItem {
+  background-color: rgba(0,0,0, 0.4);
+
+  padding: 10px;
+  margin: 0 auto 35px;
+
+  min-height: 205px;
+  max-width: 830px;
+}
+
+.contactFrame {
+  border: 1px solid #65686b;
+
+  padding: 10px 11% 10px 150px;
+
+  display: flex;
+  align-items: center;
+
+
+  min-height: inherit;
+
+  position: relative;
+}
+
+.contactItem:nth-child(1) .contactFrame:before,
+.contactItem:nth-child(2) .contactFrame:before,
+.contactItem:nth-child(3) .contactFrame:before {
+  content: '';
+
+  width: 20%;
+  height: 20%;
+
+  position: absolute;
+  top: 33%;
+  left: 35px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+.contactItem:nth-child(1) .contactFrame:before {
+  width: 12%;
+  height: 40%;
+  background-image: url("/assets/img/contactUs/icons/liveChat.png");
+
+}
+.contactItem:nth-child(2) .contactFrame:before {
+  width: 20%;
+  height: 30%;
+  background-image: url("/assets/img/contactUs/icons/email.png");
+
+}
+.contactItem:nth-child(3) .contactFrame:before {
+  width: 20%;
+  height: 40%;
+  background-image: url("/assets/img/contactUs/icons/phone.png");
+
+}
+
+.contactTextBlock {
+  & > h3 {
+    font-size: 18px;
+    line-height: 30px;
+    color: #ff0000;
+    font-family: "Verdana";
+    text-transform: uppercase;
+
+    margin: 0;
+  }
+  & > p {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 30px;
+    margin: 0;
+    white-space: break-spaces;
+  }
+}
+.contactItem:nth-child(3) {
+ &  p {
+   width: 200px;
+ }
+}
+
+@media screen and (max-width: 700px) {
+  .contactFrame {
+    padding: 10px 1% 10px 140px;
+  }
+  .contactItem:nth-child(1) .contactFrame:before,
+  .contactItem:nth-child(2) .contactFrame:before,
+  .contactItem:nth-child(3) .contactFrame:before {
+    width: 20%;
+    height: 20%;
+    top: 33%;
+    left: 35px;
+  }
+
+  .contactItem:nth-child(1) .contactFrame:before {
+    width: 20%;
+    height: 40%;
+  }
+  .contactItem:nth-child(2) .contactFrame:before {
+    width: 20%;
+    height: 30%;
+  }
+  .contactItem:nth-child(3) .contactFrame:before {
+    width: 20%;
+    height: 40%;
+  }
+    .contactTextBlock {
+    & > h3 {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    & > p {
+      font-size: 14px;
+      line-height: 30px;
+
+    }
+  }
+  .contactItem:nth-child(3) {
+    &  p {
+      width: 150px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .contactFrame {
+    padding: 10px 1% 10px 110px;
+  }
+  .contactItem:nth-child(1) .contactFrame:before,
+  .contactItem:nth-child(2) .contactFrame:before,
+  .contactItem:nth-child(3) .contactFrame:before {
+    width: 20%;
+    height: 20%;
+    top: 39%;
+    left: 20px;
+  }
+
+  .contactItem:nth-child(1) .contactFrame:before {
+    width: 12%;
+    height: 40%;
+  }
+  .contactItem:nth-child(2) .contactFrame:before {
+    width: 16%;
+    height: 16%;
+  }
+  .contactItem:nth-child(3) .contactFrame:before {
+    width: 12%;
+    height: 30%;
+  }
+}
