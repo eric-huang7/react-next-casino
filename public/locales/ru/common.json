@@ -114,44 +114,44 @@
   },
   "faq": {
     "mostPopular": {
-      "heading": "most popular",
+      "heading": "самый популярный",
       "question1": {
-        "question" : "What happens if my deposit is not showing?",
-        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+        "question" : "Что произойдет, если мой депозит не отображается?",
+        "text": "Если ваш криптовалютный депозит не отображается, это, скорее всего, означает, что он еще не подтвержден в блокчейне, или что ваш кошелек еще не отправил средства, вы всегда можете проверить блокчейн, чтобы увидеть, виден ли ваш перевод там, или спросите у поддержки, нужна ли вам помощь с этим."
       },
       "question2" : {
-        "question": "How long does it take for deposits for show in my account?",
-        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+        "question": "Сколько времени нужно, чтобы депозиты отобразились на моем счету?",
+        "text": "Если ваш криптовалютный депозит не отображается, это, скорее всего, означает, что он еще не подтвержден в блокчейне, или что ваш кошелек еще не отправил средства, вы всегда можете проверить блокчейн, чтобы увидеть, виден ли ваш перевод там, или спросите у поддержки, нужна ли вам помощь с этим."
       },
       "question3" : {
-        "question": "What happens if I sent my deposit to another address or if I deposited lower than the minimum amount?",
-        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+        "question": "Что произойдет, если я отправлю свой депозит на другой адрес или если я внесу депозит меньше минимальной суммы?",
+        "text": "Если ваш криптовалютный депозит не отображается, это, скорее всего, означает, что он еще не подтвержден в блокчейне, или что ваш кошелек еще не отправил средства, вы всегда можете проверить блокчейн, чтобы увидеть, виден ли ваш перевод там, или спросите у поддержки, нужна ли вам помощь с этим."
       },
       "question4": {
-        "question": "What are the rules to withdrawing my balance?",
-        "text": "If your crypto deposit is now showing, this most likely means that it has not yet been confirmed in the blockchain, or that your wallet has not yet sent the funds, you can always check the blockchain to see if your transfer is visible there, or ask the support if you need a hand with this."
+        "question": "Каковы правила вывода моего баланса?",
+        "text": "Если ваш криптовалютный депозит не отображается, это, скорее всего, означает, что он еще не подтвержден в блокчейне, или что ваш кошелек еще не отправил средства, вы всегда можете проверить блокчейн, чтобы увидеть, виден ли ваш перевод там, или спросите у поддержки, нужна ли вам помощь с этим."
       }
     },
     "account" : {
-      "heading": "account"
+      "heading": "учетная запись"
     },
     "depositsWithdrawals" : {
-      "heading": "deposits & withdrawals"
+      "heading": "депозиты и снятие средств"
     },
     "bonuses" : {
-      "heading": "bonuses"
+      "heading": "бонусы"
     },
     "theCasino" : {
-      "heading": "theCasino"
+      "heading": "казино"
     },
     "security" : {
-      "heading": "security"
+      "heading": "безопасность"
     },
     "responsibleGaming" : {
-      "heading": "responsible gaming"
+      "heading": "ответственная игра"
     },
     "affiliate" : {
-      "heading": "affiliate faq"
+      "heading": "партнерские часто задаваемые вопросы"
     }
   }
 }
