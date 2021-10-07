@@ -14,7 +14,6 @@ export const RegisterSignup = ({t}) => {
     {id: 6, currensy: "LTC", active: false},
     {id: 7, currensy: "BCH", active: false}
   ]
-
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
@@ -22,10 +21,11 @@ export const RegisterSignup = ({t}) => {
   const [isShowCurrency, setIsShowCurrency] = useState(false);
   const [activeCurrency, setActiveCurrency] = useState('USD');
 
+  let currencyRef = useRef('')
+
   const setCurrency = (e) => {
     setActiveCurrency(e.target.innerText);
     setIsShowCurrency(false);
-    console.log(e.target.innerText, 'currency')
   }
 
   function showCurrencyBlock() {
@@ -35,6 +35,10 @@ export const RegisterSignup = ({t}) => {
       setIsShowCurrency(true);
     }
   }
+
+  useEffect(() => {
+    console.log(currencyRef.current.value);
+  }, [activeCurrency])
 
   function showPass(){
     if (isPassShow) {
@@ -93,6 +97,7 @@ export const RegisterSignup = ({t}) => {
               </label>
                 <input
                   readOnly={true}
+                  ref={currencyRef}
                   className={styles.currencyInput}
                   onChange={(e) => console.log(e.target.value)}
                   onClick={() => showCurrencyBlock()}
