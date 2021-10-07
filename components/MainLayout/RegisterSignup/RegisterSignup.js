@@ -1,11 +1,38 @@
 import styles from '../../../styles/RegisterSignup.module.scss'
 import {Header} from "../Header/Header";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
 export const RegisterSignup = ({t}) => {
+  let currensyVariants = [
+    {id: 1, currensy: "BRL", active: false},
+    {id: 2, currensy: "RUB", active: false},
+    {id: 3, currensy: "USD", active: true},
+    {id: 4, currensy: "BTC", active: false},
+    {id: 5, currensy: "ETH", active: false},
+    {id: 6, currensy: "LTC", active: false},
+    {id: 7, currensy: "BCH", active: false}
+  ]
 
-  const [activeBonus, setActiveBonus] = useState(false)
+  const [activeBonus, setActiveBonus] = useState(false);
+  const [isPassShow, setIsPassShow] = useState(false);
+  const [passwordInputType, setPasswordInputType] = useState('password')
+  const [activeCurrency, setActiveCurrency] = useState('USD')
+
+  function setCurrency(e) {
+    // setActiveCurrency()
+    console.log(e, 'currency')
+  }
+
+  function showPass(){
+    if (isPassShow) {
+      setIsPassShow(false);
+      setPasswordInputType("password");
+    } else {
+      setIsPassShow(true);
+      setPasswordInputType('text');
+    }
+  }
 
   function showBonusInput() {
     if (activeBonus) {
@@ -43,12 +70,27 @@ export const RegisterSignup = ({t}) => {
               <label htmlFor={'passwordIn'}>
                 {'Password'}
               </label>
-                <input id={'passwordIn'} type="password"/>
+              <label className={styles.passwordEye}   htmlFor={'passwordIn'}>
+                <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
+                <input id={'passwordIn'} type={passwordInputType}/>
+              </label>
+
 
               <label htmlFor={'currencyIn'}>
                 {'Currensy'}
               </label>
-                <input id={'currencyIn'} type="text"/>
+                <input readOnly={true} className={styles.currencyInput} value={activeCurrency || "USD"} id={'currencyIn'} type="text"/>
+                <div className={styles.currencyVariants}>
+                  {
+                    currensyVariants.map((el) => {
+                      return (
+                        <div key={el.id} className={styles.currencyItem}>
+                          <p onClick={(e) => setCurrency(e)}>{el.currensy}</p>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
 
                 <div className={`${styles.iHaveBonus} ${activeBonus ? styles.showBonusInput : ''}`}>
                   <p onClick={() => showBonusInput()}>I have a bonus code</p>
