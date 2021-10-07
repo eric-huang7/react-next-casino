@@ -1,0 +1,368 @@
+.registerSignupWrapper {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 19;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0,0,0, 0.8);
+
+  overflow-y: scroll;
+}
+
+.registerMainBlock {
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  padding: 0 50px;
+}
+
+.registerHeading h2{
+  font-size: 33px;
+  letter-spacing: 1px;
+  line-height: 64px;
+  color: #ff0000;
+  font-weight: bold;
+  font-family: "Gobold";
+  text-transform: uppercase;
+  text-align: center;
+
+  margin: 0;
+}
+
+.registerInnerBlock {
+  max-width: 430px;
+
+  background-color: #ffffff;
+
+  border-radius: 15px;
+
+  margin: 0 auto;
+  padding: 4px;
+}
+
+.registerInnerBlockHead {
+  background-color: #ff0000;
+
+  border-radius: 15px 15px 0 0;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+
+.registerInnerBlockHead h3{
+  font-size: 24px;
+  letter-spacing: 1px;
+  line-height: 64px;
+  color: #ffffff;
+  font-family: "Myriad Pro";
+  text-align: center;
+
+  margin: 0 ;
+
+  flex: 1;
+}
+
+.registerInnerCloseButton {
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  width: 28px;
+  height: 28px;
+
+  position: absolute;
+  top: 17px;
+  right: 10px;
+
+}
+
+.closeOne, .closeTwo {
+  position: absolute;
+  top: 13px;
+
+  width: 25px;
+
+  border-top: 3px solid #ffffff;
+  border-radius: 2px;
+}
+.closeOne {
+  transform: rotateZ(45deg);
+}
+.closeTwo {
+  transform: rotateZ(-45deg);
+}
+
+.registerInnerBlockForms {
+  & form {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 34px 10px;
+
+    & label {
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: column;
+
+      font-size: 14px;
+      color: #8f8f8f;
+      font-family: "Verdana";
+
+    }
+
+    & input {
+      height: 6vh;
+              //51px;
+
+      font-size: 15px;
+      font-family: Verdana;
+
+      border: 1px solid #babbbc;
+      border-radius: 0px;
+
+      background-color: #f2f6f9;
+
+      outline: none;
+
+      margin-bottom: 5.5%;
+              //20px;
+      padding-left: 15px;
+    }
+    & input:focus {
+      border: 1px solid #ff0000;
+      border-radius: 0px;
+
+    }
+    & input:focus-visible {
+      border: 1px solid #ff0000;
+      border-radius: 0px;
+    }
+  }
+}
+
+.iHaveBonus {
+  overflow: hidden;
+  height: 40px;
+  & p {
+    color: #ff0000;
+
+    text-align: center;
+  }
+  & input.bonusInput {
+    width: 100%;
+
+  }
+}
+.showBonusInput {
+  height: auto;
+  & p {
+    display: none;
+  }
+  & input.bonusInput {
+    margin-top: 5.5%;
+    color: #ff0000;
+  }
+  & input.bonusInput::-moz-placeholder {
+    color: #ff0000;
+  }
+  & input.bonusInput::-webkit-input-placeholder {
+    color: #ff0000;
+  }
+}
+
+.agreeTermsWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 5.5%;
+          //20px;
+  & input.agreeTermsCheckbox {
+    position: absolute;
+    z-index: -1;
+  }
+
+  & .iReadAndAgreeLabel {
+    display: inline-block;
+    position: relative;
+
+    margin-left: 40px;
+  }
+  & .iReadAndAgreeLabel:before {
+    content: '';
+
+    width: 18%;
+            //38px;
+    height: 188%;
+            //34px;
+
+
+    border: 1px solid #babbbc;
+    border-radius: 5px;
+
+    position: absolute;
+    top: -10px;
+    left: -50px;
+  }
+  & input.agreeTermsCheckbox:checked + .iReadAndAgreeLabel:before {
+    background-color: #ff0e0e;
+
+    background-image: url("/assets/img/registerSignup/checked.svg");
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  & a {
+    color: #452562;
+    text-decoration: underline;
+
+    margin-left: 10px;
+
+    position: relative;
+    top: -2px;
+  }
+}
+
+.alredyRegistered {
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  & p {
+    font-size: 15px;
+    color: #8f8f8f;
+    font-family: "Verdana";
+  }
+  & .LogInText {
+    color: #ff0000;
+    margin-left: 10px;
+  }
+  & .LogInText:hover {
+    cursor: pointer;
+  }
+}
+
+.submitButtonWrapper {
+  max-width: 430px;
+  height: 75px;
+
+  margin: 18px auto;
+  padding: 4px;
+
+  border-radius: 15px;
+
+  background-color: #ffffff;
+
+  & .submitButton {
+    font-size: 18px;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-family: "Myriad Pro";
+
+    background-color: #ff0000;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+    border: none;
+    outline: none;
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .registerInnerCloseButton {
+    display: none;
+  }
+
+  .agreeTermsWrapper {
+
+    & .iReadAndAgreeLabel {
+      font-size: 12px;
+      margin-left: 40px;
+    }
+    & a {
+      font-size: 12px;
+    }
+  }
+  .submitButtonWrapper {
+
+    height: 65px;
+
+    margin: 10px auto;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .registerHeading h2{
+    font-size: 22px;
+  }
+  .agreeTermsWrapper {
+
+    & .iReadAndAgreeLabel {
+      font-size: 12px;
+      margin-left: 15px;
+    }
+    & .iReadAndAgreeLabel:before {
+      content: '';
+
+      width: 14%;
+      //38px;
+      height: 150%;
+      //34px;
+
+
+      border: 1px solid #babbbc;
+      border-radius: 5px;
+
+      position: absolute;
+      top: -5px;
+      left: -30px;
+    }
+    & a {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .registerHeading h2{
+    font-size: 20px;
+  }
+  .agreeTermsWrapper {
+
+    & .iReadAndAgreeLabel {
+      font-size: 10px;
+      margin-left: 15px;
+    }
+    & .iReadAndAgreeLabel:before {
+      content: '';
+
+      width: 14%;
+      //38px;
+      height: 150%;
+      //34px;
+
+
+      border: 1px solid #babbbc;
+      border-radius: 5px;
+
+      position: absolute;
+      top: -5px;
+      left: -30px;
+    }
+    & a {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+  }
+}

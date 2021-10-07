@@ -9,7 +9,7 @@ export const Navigation = ({t}) => {
     {key: 'home', route: '/'},
     {key: 'promotions', route: '/promotions'},
     {key: 'contactUs', route: '/contactUs'},
-    {key: 'terms&conditions', route: '/terms&conditions'},
+    {key: 'termsAndConditions', route: '/termsAndConditions'},
     {key: 'aboutUs', route: '/aboutUs'},
   ]
 
