@@ -2,6 +2,7 @@ import styles from '../../../styles/RegisterSignup.module.scss'
 import {Header} from "../Header/Header";
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
+import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 
 export const RegisterSignup = ({t}) => {
   let currensyVariants = [
@@ -16,12 +17,23 @@ export const RegisterSignup = ({t}) => {
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
-  const [passwordInputType, setPasswordInputType] = useState('password')
-  const [activeCurrency, setActiveCurrency] = useState('USD')
+  const [passwordInputType, setPasswordInputType] = useState('password');
 
-  function setCurrency(e) {
-    // setActiveCurrency()
-    console.log(e, 'currency')
+  const [isShowCurrency, setIsShowCurrency] = useState(false);
+  const [activeCurrency, setActiveCurrency] = useState('USD');
+
+  const setCurrency = (e) => {
+    setActiveCurrency(e.target.innerText);
+    setIsShowCurrency(false);
+    console.log(e.target.innerText, 'currency')
+  }
+
+  function showCurrencyBlock() {
+    if (isShowCurrency) {
+      setIsShowCurrency(false);
+    } else {
+      setIsShowCurrency(true);
+    }
   }
 
   function showPass(){
@@ -79,13 +91,23 @@ export const RegisterSignup = ({t}) => {
               <label htmlFor={'currencyIn'}>
                 {'Currensy'}
               </label>
-                <input readOnly={true} className={styles.currencyInput} value={activeCurrency || "USD"} id={'currencyIn'} type="text"/>
-                <div className={styles.currencyVariants}>
+                <input
+                  readOnly={true}
+                  className={styles.currencyInput}
+                  onChange={(e) => console.log(e.target.value)}
+                  onClick={() => showCurrencyBlock()}
+                  value={activeCurrency || "USD"} id={'currencyIn'}
+                  type="text"/>
+                <div className={`${styles.currencyVariants} ${isShowCurrency ? styles.activeCurrency : ''}`}>
                   {
                     currensyVariants.map((el) => {
                       return (
-                        <div key={el.id} className={styles.currencyItem}>
-                          <p onClick={(e) => setCurrency(e)}>{el.currensy}</p>
+                        <div
+                          key={el.id}
+                          onClick={(e) => setCurrency(e)}
+                          className={styles.currencyItem}
+                        >
+                          <p>{el.currensy}</p>
                         </div>
                       )
                     })

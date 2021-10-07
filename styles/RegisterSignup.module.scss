@@ -289,17 +289,16 @@
 }
 
 .currencyVariants {
-  display: none;
+  //display: none;
 
   overflow: hidden;
   width: 100%;
-  //height: 200px;
-
-  border: 1px solid #ff0000;
+  height: 0px;
+  border: 0px solid transparent;
 
   margin-top: -20px;
 
-  //display: flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 
@@ -316,14 +315,19 @@
     margin: 5px;
   }
   & div:hover {
+
     background-color: #ff0000;
+
     & p {
       color: #ffffff;
     }
   }
 }
-.currencyInput:focus ~ .currencyVariants {
+.currencyVariants.activeCurrency {
   display: flex;
+
+  height: auto;
+  border: 1px solid #ff0000;
 }
 
 @media screen and (max-width: 1065px) {
