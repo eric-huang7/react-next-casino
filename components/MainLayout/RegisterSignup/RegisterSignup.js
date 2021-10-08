@@ -4,7 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 
-export const RegisterSignup = ({t}) => {
+export const RegisterSignup = ({t, isShow}) => {
   let currensyVariants = [
     {id: 1, currensy: "BRL", active: false},
     {id: 2, currensy: "RUB", active: false},
@@ -59,7 +59,7 @@ export const RegisterSignup = ({t}) => {
   }
 
   return (
-    <div className={styles.registerSignupWrapper}>
+    <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
       <Header t={t}/>
       <div className={styles.registerMainBlock}>
         <div className={styles.registerHeading}>

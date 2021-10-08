@@ -1,3 +1,7 @@
+.hideRegister {
+  display: none;
+}
+
 .registerSignupWrapper {
   position: fixed;
 
@@ -157,10 +161,12 @@
   & img {
     position: absolute;
 
-    top: 15%;
+    top: 24%;
     right: 14px;
   }
-
+  & img:hover {
+    cursor: pointer;
+  }
 }
 
 .iHaveBonus {
