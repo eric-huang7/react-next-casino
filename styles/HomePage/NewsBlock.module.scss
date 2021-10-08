@@ -18,7 +18,7 @@
 }
 
 .newsBackground {
-  padding-bottom: 67px;
+  padding-bottom: 1px;
   width: 100%;
 }
 .backShow {
@@ -115,17 +115,17 @@
 }
 
 .controlPanel {
-  background-color: rgba(0,0,0,0.3);
+  //background-color: rgba(0,0,0,0.3);
 
-  position: absolute;
-  width: 100vw;
-  left: 0;
+  //position: absolute;
+  width: 100%;
+  //left: 0;
   height: 85px;
 
   display: flex;
   align-items: center;
 
-  margin-top: 0px;
+  margin: 0px auto 0 auto;
 }
 .controlPanel a {
   display: flex;
@@ -133,7 +133,7 @@
   justify-content: center;
 
   position: relative;
-  left: -8px;
+  //left: -8px;
   top: 1px;
 
   font-size: 14px;
@@ -355,6 +355,7 @@
     z-index: 1;
   }
   .controlPanel {
+    background-color: rgba(0,0,0,0.3);
     position: relative;
     margin: 20px auto 0 auto;
     left: 0;

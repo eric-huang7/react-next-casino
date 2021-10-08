@@ -104,6 +104,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
             )
           })}
         </Slider>
+
         <div className={styles.controlPanel}>
           <Link href={'/#'}><a>{t(`homePage.moreButton`)}</a></Link>
         </div>
