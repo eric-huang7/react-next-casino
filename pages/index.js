@@ -25,6 +25,7 @@ import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlo
 import {Footer} from "../components/MainLayout/Footer/Footer";
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
 
+
 export default function Home(props) {
   const {t} = useTranslation('common');
   const dispatch = useDispatch();
@@ -37,9 +38,12 @@ export default function Home(props) {
     dispatch(getWinners());
   }, []);
 
+
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
 
+  // const userInfo = useSelector((userInfo) => userInfo.authInfo);
+  // console.log('AUTH INFORM', userInfo);
 
   return (
 

@@ -1,6 +1,6 @@
 import styles from '../../../styles/LogIn.module.scss';
 import {Header} from "../Header/Header";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
@@ -42,6 +42,15 @@ export const LogIn = ({t, isShow}) => {
   console.log(userInfo, 'USer INFO');
   console.log(loginData, 'LOGIN DATA');
   console.log(passwordData, 'passwordData');
+
+  useEffect(() => {
+    if (userInfo.isAuthenticated) {
+      setLoginData('');
+      setPasswordData('');
+      dispatch(showLogin(false));
+    }
+
+  }, [userInfo.isAuthenticated])
 
   let site_id = 1;
   let auth_type_id = 1;

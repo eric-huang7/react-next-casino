@@ -17,5 +17,13 @@ export const HIDE_LOGIN = 'HIDE_LOGIN';
 
 // ############### LOGIN REQ
 
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const LOGIN_FAIL = 'LOGIN_FAIL'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+// ############### AUTH REQ
+
+export const AUTH = 'AUTH';
+
+// ############### BALANCE
+
+export const BALANCE = 'BALANCE';

@@ -36,9 +36,9 @@ export const TotalJackpotsAmount = ({t, winners}) => {
     jackpotsWinnersArr = winners.winners.results;
     totalMount = '12.522.478';
   }
-  console.log(latestWinnersArr, 'winners')
-  console.log(topWinnersArr, 'winners')
-  console.log(jackpotsWinnersArr, 'winners')
+  // console.log(latestWinnersArr, 'winners')
+  // console.log(topWinnersArr, 'winners')
+  // console.log(jackpotsWinnersArr, 'winners')
   return (
     <div className={styles.totalJackpotsMainWrapper}>
       <div className={styles.flamingo}></div>
