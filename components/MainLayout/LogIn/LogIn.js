@@ -4,6 +4,7 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
+import {login} from "../../../redux/actions/login";
 
 
 export const LogIn = ({t, isShow}) => {
@@ -24,7 +25,6 @@ export const LogIn = ({t, isShow}) => {
 
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
-
   function showPass(){
     if (isPassShow) {
       setIsPassShow(false);
@@ -35,6 +35,22 @@ export const LogIn = ({t, isShow}) => {
     }
   }
 
+  const userInfo = useSelector((userInfo) => userInfo.authInfo);
+  const [loginData, setLoginData] = useState('');
+  const [passwordData, setPasswordData] = useState('');
+
+  console.log(userInfo, 'USer INFO');
+  console.log(loginData, 'LOGIN DATA');
+  console.log(passwordData, 'passwordData');
+
+  let site_id = 1;
+  let auth_type_id = 1;
+  let isAdmin = false;
+
+  function loginUser() {
+    console.log('send req')
+    dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin))
+  }
 
   return (
     <div className={`${styles.loginWrapper} ${isShow ? "" : styles.hideLogIn}`}>
@@ -57,14 +73,14 @@ export const LogIn = ({t, isShow}) => {
               <label htmlFor={'usernameLogIn'}>
                 {'Username'}
               </label>
-              <input id={'usernameLogIn'} type="text"/>
+              <input onChange={(e) => setLoginData(e.target.value)} id={'usernameLogIn'} type="text"/>
 
               <label htmlFor={'passwordLogIn'}>
                 {'Password'}
               </label>
               <label className={styles.passwordEye}   htmlFor={'passwordLogIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
-                <input id={'passwordLogIn'} type={passwordInputType}/>
+                <input onChange={(e) => setPasswordData(e.target.value)} id={'passwordLogIn'} type={passwordInputType}/>
               </label>
 
             </form>
@@ -75,7 +91,7 @@ export const LogIn = ({t, isShow}) => {
           </div>
         </div>
         <div className={styles.submitButtonWrapper}>
-          <button className={styles.submitButton}>
+          <button onClick={() => loginUser()} className={styles.submitButton}>
             {'LOG IN'}
           </button>
         </div>

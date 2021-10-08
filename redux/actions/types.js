@@ -14,3 +14,8 @@ export const HIDE_REGISTER = 'HIDE_REGISTER';
 
 export const SHOW_LOGIN = 'SHOW_LOGIN';
 export const HIDE_LOGIN = 'HIDE_LOGIN';
+
+// ############### LOGIN REQ
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAIL = 'LOGIN_FAIL'
