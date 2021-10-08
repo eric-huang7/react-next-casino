@@ -3,8 +3,26 @@ import {Header} from "../Header/Header";
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import {loadGetInitialProps} from "next/dist/shared/lib/utils";
+import {useDispatch, useSelector} from "react-redux";
+import {showRegister} from "../../../redux/actions/registerShow";
+import {showLogin} from "../../../redux/actions/loginShow";
 
 export const RegisterSignup = ({t, isShow}) => {
+  const dispatch = useDispatch();
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+
+  function registerCloseButtonHandler() {
+    if (isShowRegister) {
+      dispatch(showRegister(false))
+    } else {
+      dispatch(showRegister(true))
+    }
+  }
+  function openLogin() {
+    dispatch(showLogin(true));
+    dispatch(showRegister(false));
+  }
+
   let currensyVariants = [
     {id: 1, currensy: "BRL", active: false},
     {id: 2, currensy: "RUB", active: false},
@@ -61,6 +79,7 @@ export const RegisterSignup = ({t, isShow}) => {
   return (
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
       <Header t={t}/>
+      <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div className={styles.registerMainBlock}>
         <div className={styles.registerHeading}>
           <h2>Deposit $ 100 and get $ 200</h2>
@@ -68,7 +87,7 @@ export const RegisterSignup = ({t, isShow}) => {
         <div className={styles.registerInnerBlock}>
           <div className={styles.registerInnerBlockHead}>
             <h3>Welcome To SlotsIdol</h3>
-            <div className={styles.registerInnerCloseButton}>
+            <div onClick={() => registerCloseButtonHandler()} className={styles.registerInnerCloseButton}>
               <span className={styles.closeOne}></span>
               <span className={styles.closeTwo}></span>
             </div>
@@ -129,12 +148,12 @@ export const RegisterSignup = ({t, isShow}) => {
                   <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
                     {'I have read and agree to the'}
                   </label>
-                  <Link href={'/termsAndConditions'}><a>{'Terms of Use'}</a></Link>
+                  <Link href={'/termsAndConditions'}><a onClick={() => registerCloseButtonHandler()}>{'Terms of Use'}</a></Link>
                 </div>
             </form>
             <div className={styles.alredyRegistered}>
               <p className={styles.alredyText}>Alredy registered?</p>
-              <p className={styles.LogInText}>Log in</p>
+              <p onClick={() => openLogin()} className={styles.LogInText}>Log in</p>
             </div>
           </div>
         </div>

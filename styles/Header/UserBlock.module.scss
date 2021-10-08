@@ -16,6 +16,11 @@
     height: 45px;
 
     margin-right: 23px;
+
+    background-image: url('/assets/icons/bell_icon.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .userMainBlockBellIconNotification {
     position: absolute;
@@ -87,5 +92,9 @@
     .userMainBlock {
         display: none;
     }
+}
+
+.hide {
+    display: none;
 }
 

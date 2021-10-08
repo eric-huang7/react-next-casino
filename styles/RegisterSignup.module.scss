@@ -1,6 +1,3 @@
-.hideRegister {
-  display: none;
-}
 
 .registerSignupWrapper {
   position: fixed;
@@ -8,7 +5,7 @@
   top: 0;
   left: 0;
 
-  z-index: 19;
+  z-index: 17;
 
   width: 100vw;
   height: 100vh;
@@ -18,7 +15,17 @@
   overflow-y: scroll;
 }
 
+.forClosePopup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 18;
+}
+
 .registerMainBlock {
+  position: relative;
+  z-index: 19;
+
   max-width: 600px;
 
   margin: 0 auto;
@@ -86,6 +93,9 @@
   top: 17px;
   right: 10px;
 
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .closeOne, .closeTwo {
@@ -432,4 +442,8 @@
       margin-left: 5px;
     }
   }
+}
+
+.hideRegister {
+  display: none;
 }

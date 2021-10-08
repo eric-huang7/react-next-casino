@@ -1,19 +1,17 @@
 
 import styles from '../../../../styles/Header/UserBlock.module.scss'
 
-import {HeaderButtons} from "../HeaderButtons/HeaderButtons";
+import {HeaderButtonsDeposit} from "../HeaderButtons/HeaderButtonsDeposit";
 import {BurgerButton} from "../BurgerButton/BurgerButton";
+import {HeaderButtonsRegistration} from "../HeaderButtons/HeaderButtonsRegistration";
 
 export const UserBlockNavigation = ({t}) => {
+  let userLogined = false;
+
   return (
     <div className={styles.userMainBlockWrapper}>
-      <div className={styles.userMainBlock}>
-        <div className={styles.userMainBlockBellIcon} style={{
-          backgroundImage: `url(/assets/icons/bell_icon.svg)`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-        }}>
+      <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
+        <div className={styles.userMainBlockBellIcon}>
           <span className={styles.userMainBlockBellIconNotification}>3</span>
         </div>
         <div className={styles.userMainBlockUserInfoBlock}>
@@ -21,7 +19,8 @@ export const UserBlockNavigation = ({t}) => {
           <span>2.021 BTC</span>
         </div>
       </div>
-      <HeaderButtons  t={t}/>
+      <HeaderButtonsDeposit isUserLogined={userLogined} t={t}/>
+      <HeaderButtonsRegistration isUserLogined={userLogined} t={t}/>
       <BurgerButton />
     </div>
 
