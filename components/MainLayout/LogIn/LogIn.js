@@ -1,13 +1,24 @@
 import styles from '../../../styles/LogIn.module.scss';
-import {Header} from "../Header/Header";
+
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {useForm} from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {login} from "../../../redux/actions/login";
+import {schemaLogin} from '../../../schemasForms/loginForm'
+
 
 
 export const LogIn = ({t, isShow}) => {
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+    resolver: yupResolver(schemaLogin),
+  });
+
+
   const dispatch = useDispatch();
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
 
@@ -25,6 +36,7 @@ export const LogIn = ({t, isShow}) => {
 
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
+
   function showPass(){
     if (isPassShow) {
       setIsPassShow(false);
@@ -40,16 +52,11 @@ export const LogIn = ({t, isShow}) => {
   const [passwordData, setPasswordData] = useState('');
 
   console.log(userInfo, 'USer INFO');
-  console.log(loginData, 'LOGIN DATA');
-  console.log(passwordData, 'passwordData');
 
   useEffect(() => {
     if (userInfo.isAuthenticated) {
-      setLoginData('');
-      setPasswordData('');
       dispatch(showLogin(false));
     }
-
   }, [userInfo.isAuthenticated])
 
   let site_id = 1;
@@ -60,6 +67,10 @@ export const LogIn = ({t, isShow}) => {
     console.log('send req')
     dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin))
   }
+  const onSubmitHandler = (data) => {
+    loginUser()
+    reset();
+  }
 
   return (
     <div className={`${styles.loginWrapper} ${isShow ? "" : styles.hideLogIn}`}>
@@ -67,41 +78,58 @@ export const LogIn = ({t, isShow}) => {
       <div onClick={() => loginCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div className={styles.logInMainBlock}>
         <div className={styles.logInHeading}>
-          <h2>Deposit $ 100 and get $ 200</h2>
+          <h2>{t('loginForm.mainHeading')}</h2>
         </div>
         <div className={styles.logInInnerBlock}>
           <div className={styles.logInInnerBlockHead}>
-            <h3>Welcome To SlotsIdol</h3>
+            <h3>{t('loginForm.innerHeading')}</h3>
             <div onClick={() => loginCloseButtonHandler()} className={styles.logInInnerCloseButton}>
               <span className={styles.closeOne}></span>
               <span className={styles.closeTwo}></span>
             </div>
           </div>
           <div className={styles.logInInnerBlockForms}>
-            <form >
+            <form
+              id={'login_form'}
+              onSubmit={handleSubmit(onSubmitHandler)}
+            >
               <label htmlFor={'usernameLogIn'}>
-                {'Username'}
+                {t('loginForm.usernameInput')}
               </label>
-              <input onChange={(e) => setLoginData(e.target.value)} id={'usernameLogIn'} type="text"/>
-
+              <input {...register("username")}
+                onChange={(e) => setLoginData(e.target.value)}
+                id={'usernameLogIn'}
+                type="text"/>
+              <span className={styles.errorMessage}>{t(errors.username?.message)}</span>
               <label htmlFor={'passwordLogIn'}>
-                {'Password'}
+                {t('loginForm.passwordInput')}
               </label>
               <label className={styles.passwordEye}   htmlFor={'passwordLogIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
-                <input onChange={(e) => setPasswordData(e.target.value)} id={'passwordLogIn'} type={passwordInputType}/>
+                <input {...register("password")}
+                       onChange={(e) => setPasswordData(e.target.value)}
+                       id={'passwordLogIn'}
+                       type={passwordInputType}
+                />
               </label>
+              <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
+
 
             </form>
             <div className={styles.notAlreadyRegistered}>
-              <p className={styles.alredyText}>Not registered yet?</p>
-              <p onClick={() => openRegister()} className={styles.logInText}>Register</p>
+              <p className={styles.alredyText}>{t('loginForm.alreadyRegistered')}</p>
+              <p onClick={() => openRegister()} className={styles.logInText}>{t('loginForm.registerLink')}</p>
             </div>
           </div>
         </div>
         <div className={styles.submitButtonWrapper}>
-          <button onClick={() => loginUser()} className={styles.submitButton}>
-            {'LOG IN'}
+          <button
+            // onClick={() => loginUser()}
+            type={"submit"}
+            form={'login_form'}
+            className={styles.submitButton}
+          >
+            {t('loginForm.signUpButton')}
           </button>
         </div>
 

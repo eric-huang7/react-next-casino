@@ -1,13 +1,22 @@
 import styles from '../../../styles/RegisterSignup.module.scss'
-import {Header} from "../Header/Header";
+
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 import {useDispatch, useSelector} from "react-redux";
+import {useForm} from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
+import {schemaRegister} from "../../../schemasForms/registerForm";
 
 export const RegisterSignup = ({t, isShow}) => {
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+    resolver: yupResolver(schemaRegister),
+  });
+
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
 
@@ -75,6 +84,11 @@ export const RegisterSignup = ({t, isShow}) => {
       setActiveBonus(true);
     }
   }
+  const onSubmitHandler = (data) => {
+   // registerUser()
+    console.log(data, 'dataRegister');
+    reset();
+  }
 
   return (
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
@@ -82,37 +96,55 @@ export const RegisterSignup = ({t, isShow}) => {
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div className={styles.registerMainBlock}>
         <div className={styles.registerHeading}>
-          <h2>Deposit $ 100 and get $ 200</h2>
+          <h2>{t('registrationForm.mainHeading')}</h2>
         </div>
         <div className={styles.registerInnerBlock}>
           <div className={styles.registerInnerBlockHead}>
-            <h3>Welcome To SlotsIdol</h3>
+            <h3>{t('registrationForm.innerHeading')}</h3>
             <div onClick={() => registerCloseButtonHandler()} className={styles.registerInnerCloseButton}>
               <span className={styles.closeOne}></span>
               <span className={styles.closeTwo}></span>
             </div>
           </div>
           <div className={styles.registerInnerBlockForms}>
-            <form >
-              <label htmlFor={'emailIn'}>{'Email'}</label>
-                <input id={'emailIn'} type="email"/>
+            <form
+              id={'register_form'}
+              onSubmit={handleSubmit(onSubmitHandler)}
+            >
+              <label htmlFor={'emailIn'}>{t('registrationForm.emailInput')}</label>
+                <input
+                  {...register("email")}
+                  id={'emailIn'}
+                  type="text"
+                />
+              <span className={styles.errorMessage}>{t(errors.email?.message)}</span>
 
               <label htmlFor={'usernameIn'}>
-                {'Username'}
+                {t('registrationForm.usernameInput')}
               </label>
-                <input id={'usernameIn'} type="text"/>
+                <input
+                  {...register("username")}
+                  id={'usernameIn'}
+                  type="text"
+                />
+              <span className={styles.errorMessage}>{t(errors.username?.message)}</span>
 
               <label htmlFor={'passwordIn'}>
-                {'Password'}
+                {t('registrationForm.passwordInput')}
               </label>
               <label className={styles.passwordEye}   htmlFor={'passwordIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
-                <input id={'passwordIn'} type={passwordInputType}/>
+                <input
+                  id={'passwordIn'}
+                  type={passwordInputType}
+                  {...register("password")}
+                />
               </label>
+              <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
 
 
               <label htmlFor={'currencyIn'}>
-                {'Currensy'}
+                {t('registrationForm.currencyInput')}
               </label>
                 <input
                   readOnly={true}
@@ -139,27 +171,30 @@ export const RegisterSignup = ({t, isShow}) => {
                 </div>
 
                 <div className={`${styles.iHaveBonus} ${activeBonus ? styles.showBonusInput : ''}`}>
-                  <p onClick={() => showBonusInput()}>I have a bonus code</p>
-                  <input className={styles.bonusInput} id={'bonusIn'} type="text" placeholder={'bonus code'}/>
+                  <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
+                  <input className={styles.bonusInput} id={'bonusIn'} type="text" placeholder={t('registrationForm.bonusCodeInput')}/>
                 </div>
 
                 <div className={styles.agreeTermsWrapper}>
                   <input className={styles.agreeTermsCheckbox} id={"agreeTerms"} type="checkbox"/>
                   <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
-                    {'I have read and agree to the'}
+                    {t('registrationForm.iReadAndAgree')}
                   </label>
-                  <Link href={'/termsAndConditions'}><a onClick={() => registerCloseButtonHandler()}>{'Terms of Use'}</a></Link>
+                  <Link href={'/termsAndConditions'}><a onClick={() => registerCloseButtonHandler()}>{t('registrationForm.termsOfUseLink')}</a></Link>
                 </div>
             </form>
             <div className={styles.alredyRegistered}>
-              <p className={styles.alredyText}>Alredy registered?</p>
-              <p onClick={() => openLogin()} className={styles.LogInText}>Log in</p>
+              <p className={styles.alredyText}>{t('registrationForm.alreadyRegistered')}</p>
+              <p onClick={() => openLogin()} className={styles.LogInText}>{t('registrationForm.logInLink')}</p>
             </div>
           </div>
         </div>
         <div className={styles.submitButtonWrapper}>
-          <button className={styles.submitButton}>
-            {'SIGN UP'}
+          <button
+            type={"submit"}
+            form={'register_form'}
+            className={styles.submitButton}>
+            {t('registrationForm.signUpButton')}
           </button>
         </div>
       </div>

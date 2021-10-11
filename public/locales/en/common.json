@@ -11,8 +11,32 @@
       "cashOut": "Cash Out",
       "deposit": "Deposit",
       "login": "Log In",
-      "signIn": "Sign In"
+      "signIn": "Sign Up"
     }
+  },
+  "registrationForm": {
+    "mainHeading": "DEPOSIT $ 100 AND GET $ 200",
+    "innerHeading": "Welcome To SlotsIdol",
+    "emailInput": "Email",
+    "usernameInput": "Username",
+    "passwordInput": "Password",
+    "currencyInput": "Currency",
+    "iHaveBonusHeading": "I have a bonus code",
+    "bonusCodeInput": "bonus code",
+    "iReadAndAgree": "I have read and agree to the",
+    "termsOfUseLink": "terms of Use",
+    "alreadyRegistered": "Already registered?",
+    "logInLink": "Log in",
+    "signUpButton": "Sign Up"
+  },
+  "loginForm": {
+    "mainHeading": "DEPOSIT $ 100 AND GET $ 200",
+    "innerHeading": "Welcome To SlotsIdol",
+    "usernameInput": "Username",
+    "passwordInput": "Password",
+    "alreadyRegistered": "Not registered yet?",
+    "registerLink": "Register",
+    "signUpButton": "Log In"
   },
   "pageNames": {
     "home": "Home Page",
@@ -153,5 +177,12 @@
     "affiliate" : {
       "heading": "affiliate faq"
     }
+  },
+  "errors": {
+    "username": "Username must be at least 4 characters.",
+    "passwordMinimum": "Password must be at least 8 characters.",
+    "passwordMaximum": "Password must be no more than 32 characters.",
+    "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
+    "email": "Email must be a valid email"
   }
 }

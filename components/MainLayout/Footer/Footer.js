@@ -11,14 +11,14 @@ export const Footer = ({t}) => {
   const linkKeyFirs = [
     {key: 'liveChat', route: '#livechat', name: `LiveChat`},
     {key: 'tel', route: '#tel', name: `Tel:7-55-7-99-8-487`},
-    {key: 'faqs', route: '#faq', name: `FAQs`},
-    {key: 'contactUs', route: '#contactus', name: `ContactUs`},
+    {key: 'faqs', route: '/contactUs#faq', name: `FAQs`},
+    {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
   ]
   const linkKeySecond = [
     {key: 'news', route: '#news', name: `News`},
     {key: 'security', route: '#security', name: `Security`},
     {key: 'privacy', route: '#privacy', name: `Privacy`},
-    {key: 'termsAndConditions', route: '#termsAndConditions', name: `TermsAndConditions`},
+    {key: 'termsAndConditions', route: '/termsAndConditions', name: `TermsAndConditions`},
   ]
   const coinsImg = [
     {key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.png'},

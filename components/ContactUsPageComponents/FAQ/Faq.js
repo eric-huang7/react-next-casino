@@ -9,9 +9,9 @@ export const Faq = ({t}) => {
   console.log(data , 'data');
 
   return (
-    <section className={styles.faqSection}>
+    <section   className={styles.faqSection}>
       <div className={styles.faqInnerWrapper}>
-        <h2 className={styles.faqHeading}>FAQ</h2>
+        <h2 id={'faq'} className={styles.faqHeading}>FAQ</h2>
         <ul className={styles.faqItemsList}>
           {
             data.map((el) => {

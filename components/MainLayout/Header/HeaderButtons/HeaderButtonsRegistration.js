@@ -6,6 +6,8 @@ import {showLogin} from "../../../../redux/actions/loginShow";
 
 
 export const HeaderButtonsRegistration = ({t, isUserLogined}) => {
+  const router
+
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
@@ -22,6 +24,7 @@ export const HeaderButtonsRegistration = ({t, isUserLogined}) => {
     if (isShowLogin) {
       dispatch(showLogin(false));
     } else {
+
       dispatch(showLogin(true));
       dispatch(showRegister(false));
     }

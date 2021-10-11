@@ -28,7 +28,7 @@
   position: relative;
   z-index: 19;
 
-  max-width: 600px;
+  max-width: 700px;
 
   margin: 0 auto;
 
@@ -37,7 +37,6 @@
 
 .logInHeading h2{
   font-size: 33px;
-  letter-spacing: 1px;
   line-height: 64px;
   color: #ff0000;
   font-weight: bold;
@@ -46,6 +45,8 @@
   text-align: center;
 
   margin: 0;
+
+  white-space: nowrap;
 }
 
 .logInInnerBlock {
@@ -69,8 +70,7 @@
   position: relative;
 
   & h3 {
-    font-size: 24px;
-    letter-spacing: 1px;
+    font-size: 23px;
     line-height: 64px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -131,7 +131,8 @@
     }
 
     & input {
-      height: 6vh;
+      height: 51px;
+              //6vh;
       //51px;
 
       font-size: 15px;
@@ -221,6 +222,14 @@
   }
 }
 
+.errorMessage {
+  font-size: 12px;
+  color: #ff0e0e;
+
+  position: relative;
+  top: -10px;
+}
+
 @media screen and (max-width: 1065px) {
   .logInInnerCloseButton {
     display: none;
@@ -234,6 +243,12 @@
 
   }
 }
+@media screen and (max-width: 650px) {
+
+  .logInHeading h2 {
+    font-size: 30px;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .logInHeading {
@@ -241,7 +256,23 @@
       font-size: 22px;
     }
   }
+  .logInInnerBlockHead {
+    h3 {
+    font-size: 24px;
+    letter-spacing: 0px;
+    }
 
+  }
+  .notAlreadyRegistered {
+
+    & p {
+      font-size: 12px;
+
+    }
+    & .logInText {
+      margin-left: 10px;
+    }
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -249,5 +280,27 @@
     & h2 {
       font-size: 20px;
     }
+  }
+  .logInInnerBlockHead {
+    h3 {
+    font-size: 20px;
+    letter-spacing: 0px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .logInHeading {
+    & h2 {
+      font-size: 20px;
+    }
+  }
+  .logInInnerBlockHead {
+    h3 {
+    font-size: 19px;
+    letter-spacing: 0px;
+    }
+
   }
 }

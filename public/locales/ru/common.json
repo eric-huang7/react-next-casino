@@ -14,6 +14,30 @@
       "signIn": "Регистрация"
     }
   },
+  "registrationForm": {
+    "mainHeading": "ВНЕСИТЕ $ 100 И ПОЛУЧИТЕ $ 200",
+    "innerHeading": "Добро пожаловать в SlotsIdol",
+    "emailInput": "Эл. адрес",
+    "usernameInput": "Имя пользователя",
+    "passwordInput": "Пароль",
+    "currencyInput": "Валюта",
+    "iHaveBonusHeading": "У меня есть бонусный код",
+    "bonusCodeInput": "бонусный код",
+    "iReadAndAgree": "Я прочитал и согласен с",
+    "termsOfUseLink": "Условия пользования",
+    "alreadyRegistered": "Уже зарегистрирован?",
+    "logInLink": "Авторизоваться",
+    "signUpButton": "Зарегистрироваться"
+  },
+  "loginForm": {
+    "mainHeading": "ВНЕСИТЕ $ 100 И ПОЛУЧИТЕ $ 200",
+    "innerHeading": "Добро пожаловать в SlotsIdol",
+    "usernameInput": "Имя пользователя",
+    "passwordInput": "Пароль",
+    "alreadyRegistered": "Еще не регистрировались?",
+    "registerLink": "Зарегистрироваться",
+    "signUpButton": "Войти"
+  },
   "pageNames": {
     "home": "Домашняя Page",
     "promotions" : "промо акции Page",
@@ -153,5 +177,12 @@
     "affiliate" : {
       "heading": "партнерские часто задаваемые вопросы"
     }
+  },
+  "errors": {
+    "username": "Имя пользователя должно состоять не менее чем из 4 символов.",
+    "passwordMinimum": "Пароль должен состоять не менее чем из 8 символов.",
+    "passwordMaximum": "Пароль должен состоять не более чем из 32 символов.",
+    "passwordGeneral": "Пароль должен содержать числа, строчные и прописные буквы и специальные символы.",
+    "email": "Электронная почта должна быть действующей."
   }
 }
