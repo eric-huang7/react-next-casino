@@ -29,6 +29,14 @@ export const LogIn = ({t, isShow}) => {
       dispatch(showLogin(true));
     }
   }
+  function closePopupHandler(e) {
+    if (e.target.className.split('_')[1] === 'logInMainBlock') {
+      dispatch(showLogin(false));
+    } else {
+      return
+    }
+  }
+
   function openRegister() {
     dispatch(showRegister(true));
     dispatch(showLogin(false));
@@ -53,21 +61,31 @@ export const LogIn = ({t, isShow}) => {
 
   console.log(userInfo, 'USer INFO');
 
+
+  let wrongPassOrLog = false;
   useEffect(() => {
     if (userInfo.isAuthenticated) {
       dispatch(showLogin(false));
+    } else if (userInfo.error) {
+      console.log(userInfo.error, '!!!!!!!!!!!!!!')
+      wrongPassOrLog = true;
     }
-  }, [userInfo.isAuthenticated])
+  }, [userInfo.isAuthenticated, userInfo.error])
+
+
 
   let site_id = 1;
   let auth_type_id = 1;
   let isAdmin = false;
 
+
   function loginUser() {
     console.log('send req')
-    dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin))
+    dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin));
+
   }
   const onSubmitHandler = (data) => {
+
     loginUser()
     reset();
   }
@@ -76,7 +94,7 @@ export const LogIn = ({t, isShow}) => {
     <div className={`${styles.loginWrapper} ${isShow ? "" : styles.hideLogIn}`}>
       <Header t={t}/>
       <div onClick={() => loginCloseButtonHandler()} className={styles.forClosePopup}></div>
-      <div className={styles.logInMainBlock}>
+      <div onClick={(e) => closePopupHandler(e)} className={styles.logInMainBlock}>
         <div className={styles.logInHeading}>
           <h2>{t('loginForm.mainHeading')}</h2>
         </div>
@@ -113,6 +131,9 @@ export const LogIn = ({t, isShow}) => {
                 />
               </label>
               <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
+              <span className={styles.errorMessage}>{
+                wrongPassOrLog ? "t('errors.wrongPasswordOrEmail')" : 'no errr'
+              }</span>
 
 
             </form>

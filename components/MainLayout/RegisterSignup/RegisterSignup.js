@@ -27,6 +27,13 @@ export const RegisterSignup = ({t, isShow}) => {
       dispatch(showRegister(true))
     }
   }
+  function closePopupHandler(e) {
+    if (e.target.className.split('_')[1] === 'registerMainBlock') {
+      dispatch(showRegister(false));
+    } else {
+      return
+    }
+  }
   function openLogin() {
     dispatch(showLogin(true));
     dispatch(showRegister(false));
@@ -94,7 +101,7 @@ export const RegisterSignup = ({t, isShow}) => {
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
       <Header t={t}/>
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
-      <div className={styles.registerMainBlock}>
+      <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
         <div className={styles.registerHeading}>
           <h2>{t('registrationForm.mainHeading')}</h2>
         </div>
