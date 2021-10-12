@@ -20,6 +20,12 @@ export const HIDE_LOGIN = 'HIDE_LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
+// ############## REGISTER REQ
+
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAIL = 'SIGNUP_FAIL';
+
+
 // ############### AUTH REQ
 
 export const AUTH = 'AUTH';
@@ -27,3 +33,12 @@ export const AUTH = 'AUTH';
 // ############### BALANCE
 
 export const BALANCE = 'BALANCE';
+
+// ############### PLAY GAMES
+
+export const PLAY_FREE_GAME = 'PLAY_FREE_GAME';
+export const PLAY_GAME = 'PLAY_GAME';
+
+// ############## CURRENCIES
+
+export const GET_CURRENCY = "GET_CURRENCY";

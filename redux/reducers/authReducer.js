@@ -1,4 +1,4 @@
-import {AUTH, BALANCE, LOGIN_FAIL, LOGIN_SUCCESS} from "../actions/types";
+import {AUTH, BALANCE, LOGIN_FAIL, LOGIN_SUCCESS, SIGNUP_FAIL, SIGNUP_SUCCESS} from "../actions/types";
 
 const initialState = {
   isAuthenticated: null,
@@ -42,6 +42,23 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         balance: { ...payload }
+      }
+    case SIGNUP_SUCCESS :
+      return {
+        ...state,
+        user: {...payload},
+        isAuthenticated: true,
+        loading: false,
+        error: null
+      }
+    case SIGNUP_FAIL :
+      return {
+        ...state,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        bonuses: null,
+        error: {...payload}
       }
     default:
       return state

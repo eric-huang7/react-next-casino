@@ -23,6 +23,7 @@ export const Header = ({t}) => {
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
 
+
 console.log(userInfo, 'HEADERR!!!')
 
   return (

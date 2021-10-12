@@ -24,6 +24,8 @@ import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpot
 import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {Footer} from "../components/MainLayout/Footer/Footer";
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
+import {auth} from "../redux/actions/login";
+import {getCurrency} from "../redux/actions/currency";
 
 
 export default function Home(props) {
@@ -32,18 +34,25 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
+  const userInfo = useSelector((store) => store.authInfo)
+  console.log(userInfo, "userINfo main")
+
   useEffect(() => {
     dispatch(setLang(locale));
     dispatch(getGames());
     dispatch(getWinners());
+    // dispatch(getCurrency()); //ask if need it
+    if(userInfo.isAuthenticated) {
+      return
+    } else {
+      dispatch(auth());
+    }
   }, []);
 
 
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
 
-  // const userInfo = useSelector((userInfo) => userInfo.authInfo);
-  // console.log('AUTH INFORM', userInfo);
 
   return (
 

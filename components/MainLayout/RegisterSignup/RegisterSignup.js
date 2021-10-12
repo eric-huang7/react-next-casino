@@ -11,6 +11,19 @@ import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
+import {signUp} from "../../../redux/actions/login";
+
+let currensyVariants = [
+  {id: 1, currensy: "BRL", active: false},
+  {id: 2, currensy: "RUB", active: false},
+  {id: 3, currensy: "USD", active: true},
+  {id: 4, currensy: "BTC", active: false},
+  {id: 5, currensy: "ETH", active: false},
+  {id: 6, currensy: "LTC", active: false},
+  {id: 7, currensy: "BCH", active: false}
+]
+
+
 
 export const RegisterSignup = ({t, isShow}) => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
@@ -19,6 +32,15 @@ export const RegisterSignup = ({t, isShow}) => {
 
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  const userData = useSelector((userData) => userData.authInfo);
+  // const currency = useSelector((state) => state.getCurrency);
+  // console.log(currency, "!!!!!!user CUrrency!!!");
+  console.log(userData, '!!!!USER DATA register!!!!');
+
+
+  if (userData.isAuthenticated) {
+    dispatch(showRegister(false));
+  }
 
   function registerCloseButtonHandler() {
     if (isShowRegister) {
@@ -39,25 +61,26 @@ export const RegisterSignup = ({t, isShow}) => {
     dispatch(showRegister(false));
   }
 
-  let currensyVariants = [
-    {id: 1, currensy: "BRL", active: false},
-    {id: 2, currensy: "RUB", active: false},
-    {id: 3, currensy: "USD", active: true},
-    {id: 4, currensy: "BTC", active: false},
-    {id: 5, currensy: "ETH", active: false},
-    {id: 6, currensy: "LTC", active: false},
-    {id: 7, currensy: "BCH", active: false}
-  ]
+
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
 
   const [isShowCurrency, setIsShowCurrency] = useState(false);
-  const [activeCurrency, setActiveCurrency] = useState('USD');
+
+  const [activeCurrency, setActiveCurrency] = useState('USD'); // default need change
+
+  const [usernameData, setUsernameData] = useState('');
+  const [passwordData, setPasswordData] = useState('');
+  const [userEmailData, setUserEmailData] = useState('');
+  const [bonusCodeData, setBonusCodedata] = useState('');
+  const [currencyChoose, setCurrencyChoose] = useState('3'); // default need change
 
   let currencyRef = useRef('')
 
   const setCurrency = (e) => {
+    // console.log(e.target.dataset.currency);
+    setCurrencyChoose(e.target.dataset.currency)
     setActiveCurrency(e.target.innerText);
     setIsShowCurrency(false);
   }
@@ -91,8 +114,19 @@ export const RegisterSignup = ({t, isShow}) => {
       setActiveBonus(true);
     }
   }
+
+
+  let site_id = 1;
+  let auth_type_id = 1;
+  let isAdmin = false;
+
+  function registerUser() {
+    console.log('send req')
+    dispatch(signUp(site_id, auth_type_id, usernameData, passwordData, userEmailData, currencyChoose, bonusCodeData));
+
+  }
   const onSubmitHandler = (data) => {
-   // registerUser()
+    registerUser();
     console.log(data, 'dataRegister');
     reset();
   }
@@ -120,6 +154,7 @@ export const RegisterSignup = ({t, isShow}) => {
             >
               <label htmlFor={'emailIn'}>{t('registrationForm.emailInput')}</label>
                 <input
+                  onChange={(e) => setUserEmailData(e.target.value)}
                   {...register("email")}
                   id={'emailIn'}
                   type="text"
@@ -130,6 +165,7 @@ export const RegisterSignup = ({t, isShow}) => {
                 {t('registrationForm.usernameInput')}
               </label>
                 <input
+                  onChange={(e) => setUsernameData(e.target.value)}
                   {...register("username")}
                   id={'usernameIn'}
                   type="text"
@@ -142,6 +178,7 @@ export const RegisterSignup = ({t, isShow}) => {
               <label className={styles.passwordEye}   htmlFor={'passwordIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
                 <input
+                  onChange={(e) => setPasswordData(e.target.value)}
                   id={'passwordIn'}
                   type={passwordInputType}
                   {...register("password")}
@@ -167,10 +204,11 @@ export const RegisterSignup = ({t, isShow}) => {
                       return (
                         <div
                           key={el.id}
+                          data-currency={el.id}
                           onClick={(e) => setCurrency(e)}
                           className={styles.currencyItem}
                         >
-                          <p>{el.currensy}</p>
+                          <p data-currency={el.id}>{el.currensy}</p>
                         </div>
                       )
                     })
@@ -179,7 +217,12 @@ export const RegisterSignup = ({t, isShow}) => {
 
                 <div className={`${styles.iHaveBonus} ${activeBonus ? styles.showBonusInput : ''}`}>
                   <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
-                  <input className={styles.bonusInput} id={'bonusIn'} type="text" placeholder={t('registrationForm.bonusCodeInput')}/>
+                  <input
+                    onChange={(e) => setBonusCodedata(e.target.value)}
+                    className={styles.bonusInput}
+                    id={'bonusIn'}
+                    type="text"
+                    placeholder={t('registrationForm.bonusCodeInput')}/>
                 </div>
 
                 <div className={styles.agreeTermsWrapper}>

@@ -7,6 +7,8 @@ import winnersReducer from "./reducers/winnersReducer";
 import showRegisterReducer from "./reducers/showRegisterReducer";
 import showLoginReducer from "./reducers/showLoginReducer";
 import authReducer from "./reducers/authReducer";
+import playGameReducer from "./reducers/playGameReducer";
+import getCurrency from "./reducers/currencyReducer";
 
 export const rootReducer = combineReducers({
   lang: langReducer,
@@ -16,4 +18,6 @@ export const rootReducer = combineReducers({
   showRegister: showRegisterReducer,
   showLogin: showLoginReducer,
   authInfo: authReducer,
+  playGame: playGameReducer,
+  getCurrency : getCurrency,
 })

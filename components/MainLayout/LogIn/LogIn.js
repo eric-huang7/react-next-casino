@@ -63,12 +63,13 @@ export const LogIn = ({t, isShow}) => {
 
 
   let wrongPassOrLog = false;
+  if (userInfo.error) {
+    console.log(userInfo.error, '!!!!!!!!!!!!!!')
+    wrongPassOrLog = true;
+  }
   useEffect(() => {
     if (userInfo.isAuthenticated) {
       dispatch(showLogin(false));
-    } else if (userInfo.error) {
-      console.log(userInfo.error, '!!!!!!!!!!!!!!')
-      wrongPassOrLog = true;
     }
   }, [userInfo.isAuthenticated, userInfo.error])
 
@@ -132,7 +133,7 @@ export const LogIn = ({t, isShow}) => {
               </label>
               <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
               <span className={styles.errorMessage}>{
-                wrongPassOrLog ? "t('errors.wrongPasswordOrEmail')" : 'no errr'
+                wrongPassOrLog ? t('errors.wrongPasswordOrEmail') : ''
               }</span>
 
 
