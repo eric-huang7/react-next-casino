@@ -64,7 +64,6 @@ export const LogIn = ({t, isShow}) => {
 
   let wrongPassOrLog = false;
   if (userInfo.error) {
-    console.log(userInfo.error, '!!!!!!!!!!!!!!')
     wrongPassOrLog = true;
   }
   useEffect(() => {

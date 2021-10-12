@@ -24,6 +24,13 @@ export const UserBlockNavigation = ({t, userInfo}) => {
     if (userLogined) {
       setUserName(userInfo.user.user.username);
       dispatch(userBalance());
+      if (userInfo.balance) {
+        setUserBalanceInfo(`$ ${Number(userInfo.balance.balances[0].current_balance).toFixed(2)}`)
+      } else {
+        setUserBalanceInfo('$ 0.00')
+      }
+
+      // dispatch(userBalance());
       console.log(userBalanceInfo, 'USER BALANCE');
     }
   }, [userLogined]);
@@ -34,7 +41,7 @@ export const UserBlockNavigation = ({t, userInfo}) => {
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
         <div className={styles.userMainBlockBellIcon}>
-          <span className={styles.userMainBlockBellIconNotification}>3</span>
+          <span className={styles.userMainBlockBellIconNotification}>0</span>
         </div>
         <div className={styles.userMainBlockUserInfoBlock}>
           <span>{userName}</span>

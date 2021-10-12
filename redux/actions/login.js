@@ -66,13 +66,14 @@ export const userBalance = () => async dispatch => {
   }
 }
 
-export const signUp = (site_id, auth_type_id, username, email, password, currency, current_bonus_code ) => async dispatch => {
+export const signUp = (site_id, auth_type_id, username, password, email, currency, current_bonus_code ) => async dispatch => {
   const config = {
+    withCredentials: false,
     headers: {
       'Content-Type': 'application/json',
     },
   }
-  const body = JSON.stringify({site_id, auth_type_id, username, email, password, currency, current_bonus_code});
+  const body = JSON.stringify({site_id, auth_type_id, username, password, email, currency, current_bonus_code});
   try {
     const res = await axios.post(signUp_url, body, config);
     console.log(res, "REGISTER RESPONSE")

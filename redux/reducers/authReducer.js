@@ -4,7 +4,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
-  balance: 0,
+  balance: null,
   bonuses: null,
   error: null
 }

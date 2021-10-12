@@ -24,7 +24,7 @@ import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpot
 import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {Footer} from "../components/MainLayout/Footer/Footer";
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
-import {auth} from "../redux/actions/login";
+import {auth, userBalance} from "../redux/actions/login";
 import {getCurrency} from "../redux/actions/currency";
 
 
@@ -43,6 +43,7 @@ export default function Home(props) {
     dispatch(getWinners());
     // dispatch(getCurrency()); //ask if need it
     if(userInfo.isAuthenticated) {
+      dispatch(userBalance());
       return
     } else {
       dispatch(auth());

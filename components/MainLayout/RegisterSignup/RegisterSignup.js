@@ -75,6 +75,14 @@ export const RegisterSignup = ({t, isShow}) => {
   const [userEmailData, setUserEmailData] = useState('');
   const [bonusCodeData, setBonusCodedata] = useState('');
   const [currencyChoose, setCurrencyChoose] = useState('3'); // default need change
+  const [youAgree, setYouAgree] = useState(false);
+  const [youAgreeError, setYouAgreeError] = useState('');
+  const [registerError, setRegisterError] =useState('');
+
+  const youAgreeHandler = (e) => {
+    console.log(e.target.checked)
+    setYouAgree(e.target.checked);
+  }
 
   let currencyRef = useRef('')
 
@@ -120,16 +128,28 @@ export const RegisterSignup = ({t, isShow}) => {
   let auth_type_id = 1;
   let isAdmin = false;
 
-  function registerUser() {
+  function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
     console.log('send req')
-    dispatch(signUp(site_id, auth_type_id, usernameData, passwordData, userEmailData, currencyChoose, bonusCodeData));
+    dispatch(signUp(site_id, auth_type_id, userNameInfo, userPasswordInfo, userEmailInfo, currencyChoose, bonusCodeData));
 
   }
   const onSubmitHandler = (data) => {
-    registerUser();
-    console.log(data, 'dataRegister');
-    reset();
+    if (youAgree) {
+      registerUser(data.username, data.password, data.email);
+      console.log(data, 'dataRegister');
+      reset();
+    } else {
+      setYouAgreeError('Read terms!');
+    }
   }
+  const userInfo = useSelector((userInfo) => userInfo.authInfo);
+
+  useEffect(() => {
+    if (userInfo.error) {
+      setRegisterError(userInfo.error.extra_error_info.message);
+    }
+  },[userInfo.error])
+
 
   return (
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
@@ -226,12 +246,14 @@ export const RegisterSignup = ({t, isShow}) => {
                 </div>
 
                 <div className={styles.agreeTermsWrapper}>
-                  <input className={styles.agreeTermsCheckbox} id={"agreeTerms"} type="checkbox"/>
+                  <input onChange={(e) => youAgreeHandler(e)} className={styles.agreeTermsCheckbox} id={"agreeTerms"} type="checkbox"/>
                   <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
                     {t('registrationForm.iReadAndAgree')}
                   </label>
                   <Link href={'/termsAndConditions'}><a onClick={() => registerCloseButtonHandler()}>{t('registrationForm.termsOfUseLink')}</a></Link>
                 </div>
+              <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
+              <span className={styles.errorMessageRegister}>{registerError}</span>
             </form>
             <div className={styles.alredyRegistered}>
               <p className={styles.alredyText}>{t('registrationForm.alreadyRegistered')}</p>
