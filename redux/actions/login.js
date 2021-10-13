@@ -18,7 +18,7 @@ export const auth = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN AUTH', e);
+    console.log('SOME ERROR IN AUTH', e.response.data);
   }
 
 }
@@ -62,7 +62,7 @@ export const userBalance = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response)
+    console.log(e.response.data)
   }
 }
 

@@ -10,9 +10,9 @@ export const GameHoverButtons = ({t, gameData}) => {
   const user = useSelector((state) => state.authInfo);
 
   useEffect(() => {
-    // if (games.startGame?.game_link) {
-    //   window.location.replace(games.startGame.game_link)
-    // }
+    if (games.startGame?.game_link) {
+      window.location.replace(games.startGame.game_link)
+    }
     if (games.freeGame?.game_link) {
       window.location.replace(games.freeGame.game_link)
     }

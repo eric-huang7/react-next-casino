@@ -17,24 +17,31 @@ export const TotalJackpotsAmount = ({t, winners}) => {
   let latestWinnersArr = [];
   let topWinnersArr = [];
   let jackpotsWinnersArr = [];
+  let totalMount = 0;
   let headings = {
     latestWinn: t('totalJackpots.latestWinners'),
     topWinn: t('totalJackpots.topWinners'),
     jackpots: t('totalJackpots.jackpots')
   }
-  let totalMount = 0;
+
   if (winners.loading) {
     console.log('loading');
     return (
       <h1>LOADING...</h1>
     )
   } else {
-    winners.winners.results.length = 4;
+    let sortedWinners = winners.winners.results.sort((a,b) => Number(b.winnings) - Number(a.winnings));
+    let allNumber = 0
+    let allMount = sortedWinners.filter((item) => item.winnings !== null && Number(item.winnings) > 0).map((item) => {
+      allNumber += Number(item.winnings);
+    })
+    totalMount = Number(allNumber.toFixed(0)).toLocaleString('de');
+    console.log(sortedWinners, "!!!!!!");
     // make filters for each arr
-    latestWinnersArr = winners.winners.results;
-    topWinnersArr = winners.winners.results;
-    jackpotsWinnersArr = winners.winners.results;
-    totalMount = '12.522.478';
+    latestWinnersArr = sortedWinners.slice(0, 4); // filter by begin_date
+    topWinnersArr = sortedWinners.slice(0, 4); // no filter
+    jackpotsWinnersArr = sortedWinners.filter((item) => Number(item.winnings) > 10000).slice(0, 4); // choose by win amount more then 10.000
+    // totalMount = '12.522.478';
   }
   // console.log(latestWinnersArr, 'winners')
   // console.log(topWinnersArr, 'winners')
@@ -52,7 +59,7 @@ export const TotalJackpotsAmount = ({t, winners}) => {
         <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.png'} alt="total jackpot heading"/>
       </div>
       <div className={styles.totalJackpotsWrapper}>
-        <h1 className={styles.totalMountHeading}>${totalMount}</h1>
+        <h1 className={styles.totalMountHeading}>$ {totalMount}</h1>
         <div className={styles.winnersInfoBlockWrapper}>
           <WinnersInfoBlock isHidden={false} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
           <WinnersInfoBlock isHidden={isHidden} heading={headings.topWinn} winnersData={topWinnersArr}/>

@@ -5,15 +5,10 @@ import {Footer} from "./Footer/Footer";
 import {RegisterSignup} from "./RegisterSignup/RegisterSignup";
 import {LogIn} from "./LogIn/LogIn";
 import {useDispatch, useSelector} from "react-redux";
-import {auth} from "../../redux/actions/login";
-import {useEffect} from "react";
+
 
 const MainLayout = ({children, t}) => {
-  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(auth());
-  // },[])
 
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);

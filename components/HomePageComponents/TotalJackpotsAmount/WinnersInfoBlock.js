@@ -15,7 +15,7 @@ export const WinnersInfoBlock = ({isHidden, heading, winnersData}) => {
                   <img src={urlGen(el.game_id)} alt={`game ${el.game_id}`}/>
                 </div>
                 <div className={styles.winnersTextblock}>
-                    <p className={styles.winnersAmount}>${el.winnings ? el.winnings : 1000}</p>
+                    <p className={styles.winnersAmount}>${Number(Number(el.winnings).toFixed(0)).toLocaleString('de')}</p>
                     <p className={styles.winnersName}>{el.username}</p>
                 </div>
               </li>

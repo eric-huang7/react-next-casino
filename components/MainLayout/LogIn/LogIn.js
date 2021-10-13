@@ -59,7 +59,7 @@ export const LogIn = ({t, isShow}) => {
   const [loginData, setLoginData] = useState('');
   const [passwordData, setPasswordData] = useState('');
 
-  console.log(userInfo, 'USer INFO');
+  // console.log(userInfo, 'USer INFO');
 
 
   let wrongPassOrLog = false;
@@ -80,7 +80,7 @@ export const LogIn = ({t, isShow}) => {
 
 
   function loginUser() {
-    console.log('send req')
+    // console.log('send req')
     dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin));
 
   }

@@ -11,7 +11,7 @@ import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
-import {signUp} from "../../../redux/actions/login";
+import {auth, signUp, userBalance} from "../../../redux/actions/login";
 
 let currensyVariants = [
   {id: 1, currensy: "BRL", active: false},
@@ -35,11 +35,13 @@ export const RegisterSignup = ({t, isShow}) => {
   const userData = useSelector((userData) => userData.authInfo);
   // const currency = useSelector((state) => state.getCurrency);
   // console.log(currency, "!!!!!!user CUrrency!!!");
-  console.log(userData, '!!!!USER DATA register!!!!');
+  // console.log(userData, '!!!!USER DATA register!!!!');
 
 
   if (userData.isAuthenticated) {
     dispatch(showRegister(false));
+    // dispatch(auth());
+    // dispatch(userBalance());
   }
 
   function registerCloseButtonHandler() {
@@ -80,7 +82,6 @@ export const RegisterSignup = ({t, isShow}) => {
   const [registerError, setRegisterError] =useState('');
 
   const youAgreeHandler = (e) => {
-    console.log(e.target.checked)
     setYouAgree(e.target.checked);
   }
 
@@ -129,14 +130,14 @@ export const RegisterSignup = ({t, isShow}) => {
   let isAdmin = false;
 
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
-    console.log('send req')
+    // console.log('send req')
     dispatch(signUp(site_id, auth_type_id, userNameInfo, userPasswordInfo, userEmailInfo, currencyChoose, bonusCodeData));
 
   }
   const onSubmitHandler = (data) => {
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
-      console.log(data, 'dataRegister');
+      // console.log(data, 'dataRegister');
       reset();
     } else {
       setYouAgreeError('Read terms!');

@@ -28,14 +28,14 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
   if (type === 'NEW_GAMES') {
     if (games.loading) {
-      console.log('loading')
+      // console.log('loading')
       return <h1>Loading...</h1>
     } else {
       slides = games.games.results.sort((a, b) => a.release_date - b.release_date);
     }
   } else if (type === 'JACKPOT_GAMES') {
     if (games.loading) {
-      console.log('loading')
+      // console.log('loading')
       return <h1>Loading...</h1>
     } else {
       // filter by type 4 not found any games
@@ -43,7 +43,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
     }
   } else if (type === 'TABLE_GAMES') {
     if (games.loading) {
-      console.log('loading')
+      // console.log('loading')
       return <h1>Loading...</h1>
     } else {
       // filter by type 2 not found any games

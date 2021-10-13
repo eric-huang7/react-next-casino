@@ -4,12 +4,13 @@ import styles from '../../../../styles/Header/UserBlock.module.scss'
 import {HeaderButtonsDeposit} from "../HeaderButtons/HeaderButtonsDeposit";
 import {BurgerButton} from "../BurgerButton/BurgerButton";
 import {HeaderButtonsRegistration} from "../HeaderButtons/HeaderButtonsRegistration";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {userBalance} from "../../../../redux/actions/login";
 import {useEffect, useState} from "react";
 
-export const UserBlockNavigation = ({t, userInfo}) => {
+export const UserBlockNavigation = ({t}) => {
   const dispatch = useDispatch();
+  const userInfo = useSelector((userInfo) => userInfo.authInfo);
 
   let userLogined = userInfo.isAuthenticated;
 

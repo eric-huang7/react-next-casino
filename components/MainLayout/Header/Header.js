@@ -12,7 +12,6 @@ export const Header = ({t}) => {
 
 
   function closePopups(e) {
-    console.log(e);
     if(e.target.nodeName.toUpperCase() !== 'button'.toUpperCase()) {
       dispatch(showLogin(false));
       dispatch(showRegister(false));
@@ -21,16 +20,12 @@ export const Header = ({t}) => {
     }
   }
 
-  const userInfo = useSelector((userInfo) => userInfo.authInfo);
-
-
-console.log(userInfo, 'HEADERR!!!')
 
   return (
     <header onClick={(e) => closePopups(e)} className={styles.mainHeader}>
       <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       <Navigation t={t}/>
-      <UserBlockNavigation userInfo={userInfo} t={t}/>
+      <UserBlockNavigation t={t}/>
     </header>
   )
 }
