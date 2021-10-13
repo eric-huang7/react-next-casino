@@ -24,14 +24,14 @@ export const freeGame = (game_provider_id, game_id) => async dispatch => {
   }
 }
 
-export const playPayGame = (user_id, game_provider_id, game_id, balance_id, is_bonus, bonus_id) => async dispatch => {
+export const playPayGame = (game_provider_id, game_id, user_id, is_bonus, balance_id) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   }
 
-  const body = JSON.stringify({ user_id, game_provider_id, game_id, balance_id, is_bonus, bonus_id });
+  const body = JSON.stringify({ game_provider_id, game_id, user_id, is_bonus, balance_id });
 
   try {
     const res = await axios.post(payGame_url, body, config);

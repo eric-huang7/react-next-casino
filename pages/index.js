@@ -34,20 +34,20 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  const userInfo = useSelector((store) => store.authInfo)
-  console.log(userInfo, "userINfo main")
+  // const userInfo = useSelector((store) => store.authInfo)
+  // console.log(userInfo, "userINfo main")
 
   useEffect(() => {
     dispatch(setLang(locale));
     dispatch(getGames());
     dispatch(getWinners());
     // dispatch(getCurrency()); //ask if need it
-    if(userInfo.isAuthenticated) {
-      dispatch(userBalance());
-      return
-    } else {
-      dispatch(auth());
-    }
+    // if(userInfo.isAuthenticated) {
+    //   dispatch(userBalance());
+    //   return
+    // } else {
+    //   dispatch(auth());
+    // }
   }, []);
 
 

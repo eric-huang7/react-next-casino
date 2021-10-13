@@ -56,7 +56,7 @@ export const userBalance = () => async dispatch => {
   try {
 
     const res = await axios.get(user_balance_url, config)
-    console.log(res)
+    // console.log(res)
     dispatch({
       type: BALANCE,
       payload: res.data
@@ -68,7 +68,7 @@ export const userBalance = () => async dispatch => {
 
 export const signUp = (site_id, auth_type_id, username, password, email, currency, current_bonus_code ) => async dispatch => {
   const config = {
-    withCredentials: false,
+    withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },

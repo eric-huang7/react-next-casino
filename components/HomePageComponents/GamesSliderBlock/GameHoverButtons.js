@@ -24,14 +24,17 @@ export const GameHoverButtons = ({t, gameData}) => {
     dispatch(freeGame(gameData.game_provider_id, gameData.game_provided_id))
   }
   const playGameClickHAndler = () => {
-    if (user.isAuthenticated) {
+    if (user.isAuthenticated && (user.balance.balances.length > 0)) {
       console.log(gameData, 'GAME DATA!!!')
       console.log(user.user.user, "USER!!!S")
       console.log(user, "USER!!!S bonus")
       let is_bonus = false; // default val
       let bonus_id = null; // default val
-      dispatch(playPayGame(user.user.user.id, gameData.game_provider_id, gameData.game_provided_id, user.balance.balances[0].id, is_bonus, bonus_id));
+      // game_provider_id, game_id, user_id, is_bonus, balance_id
+      dispatch(playPayGame(gameData.game_provider_id, gameData.game_provided_id, user.user.user.id, is_bonus, user.balance.balances[0].id));
     } else {
+      console.log(gameData, 'GAME DATA!!!')
+      console.log('ERROR no balance', user.balance);
       console.log(user, "USER!!!S")
       return
     }
@@ -39,7 +42,9 @@ export const GameHoverButtons = ({t, gameData}) => {
 
   return (
     <div className={styles.hoverWrapper}>
-      <div onClick={playGameClickHAndler} className={`${styles.playButton} ${user.isAuthenticated ? "" : styles.playButtonInactive}`}>
+      <div
+        onClick={playGameClickHAndler}
+        className={`${styles.playButton} ${user.isAuthenticated ? "" : styles.playButtonInactive}`}>
         {/*<Link  href={'#'}>*/}
           <span>{t('gameButtons.play')}</span>
         {/*</Link>*/}

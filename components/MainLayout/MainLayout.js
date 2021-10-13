@@ -12,7 +12,7 @@ const MainLayout = ({children, t}) => {
 
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
-  console.log('AUTH INFORM', userInfo);
+  // console.log('AUTH INFORM', userInfo);
 
 
 

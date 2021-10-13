@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
 import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import {useState} from "react";
 
 export const TotalJackpotsAmount = ({t, winners}) => {
   const {height, width} = useWindowDimensions();
@@ -25,11 +26,11 @@ export const TotalJackpotsAmount = ({t, winners}) => {
   }
 
   if (winners.loading) {
-    console.log('loading');
     return (
       <h1>LOADING...</h1>
     )
   } else {
+
     let sortedWinners = winners.winners.results.sort((a,b) => Number(b.winnings) - Number(a.winnings));
     let allNumber = 0
     let allMount = sortedWinners.filter((item) => item.winnings !== null && Number(item.winnings) > 0).map((item) => {
