@@ -1,4 +1,5 @@
 import styles from '../../../styles/HomePage/ChooseCategoryBlock.module.scss'
+// import styles from '../../../public/styles/HomePage/ChooseCategoryBlock.module.scss'
 import Link from "next/link";
 import {useState} from "react";
 

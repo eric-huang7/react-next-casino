@@ -5,6 +5,7 @@ import {Footer} from "./Footer/Footer";
 import {RegisterSignup} from "./RegisterSignup/RegisterSignup";
 import {LogIn} from "./LogIn/LogIn";
 import {useDispatch, useSelector} from "react-redux";
+import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 
 
 const MainLayout = ({children, t}) => {
@@ -21,6 +22,7 @@ const MainLayout = ({children, t}) => {
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
+            <MobileSideMenu t={t} userInform={userInfo}/>
             <RegisterSignup isShow={registerShow} t={t}/>
             <LogIn isShow={logInShow} t={t}/>
             {children}

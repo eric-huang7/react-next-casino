@@ -1,0 +1,122 @@
+.sideMenuMainWrapper {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  width: 428px;
+  background-color: #393939;
+
+  padding: 10px 5px;
+
+  z-index: 21;
+}
+
+.sideMenuHeader {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.sideMenuCloseButton {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+
+  right: 15px;
+  top: 10px;
+  & span {
+    display: block;
+    background-color: #ffffff;
+
+    width: 100%;
+    height: 2px;
+
+    position: absolute;
+
+  }
+  & span:nth-child(1) {
+    transform: rotateZ(45deg);
+  }
+  & span:nth-child(2) {
+    transform: rotateZ(-45deg);
+  }
+}
+
+.sideMenuLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+}
+
+.userInfoBlock {
+
+  & .username {
+    color: #b2b2b2;
+    font-size: 14px;
+
+    margin: 0 0 20px 15px;
+  }
+
+  & .userMoney {
+    color: #d2d1d1;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    margin: 0 0 20px 15px;
+  }
+
+  & .userInfoDivider {
+    height: 3px;
+
+    background-color: #535353;
+
+    margin-bottom: 10px;
+  }
+
+  .userBonusesInfo {
+    display: flex;
+    justify-content: space-between;
+
+    color: #d2d1d1;
+
+    margin: 0 15px 20px 15px;
+
+    & .realMoneyBlock {
+      display: flex;
+      flex-direction: column;
+
+      & .realMoneyCount {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        margin-bottom: 10px;
+      }
+      & .realMoneyText {
+        font-size: 14px;
+      }
+    }
+
+    & .bonusMoneyBlock {
+      display: flex;
+      flex-direction: column;
+
+      text-align: right;
+
+      & .bonusMoneyCount {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        margin-bottom: 10px;
+      }
+      & .bonusMoneyText {
+        font-size: 14px;
+      }
+    }
+  }
+}
