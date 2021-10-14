@@ -13,11 +13,12 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
+import {useEffect, useState} from "react";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
-
+  let load = games.loading;
   let itemsCount = 5;
   if (width <= 1165) {
     itemsCount = 3;
@@ -25,32 +26,38 @@ export const GamesSliderBlock = ({t, type, games}) => {
     itemsCount = 5;
   }
   let slides = [];
-
+  const [someSlides, setSomeSlides] = useState([]);
+useEffect(() => {
   if (type === 'NEW_GAMES') {
     if (games.loading) {
-      // console.log('loading')
+
       return <h1>Loading...</h1>
     } else {
-      slides = games.games.results.sort((a, b) => a.release_date - b.release_date);
+      setSomeSlides(games.games.results)
+      // setSomeSlides(games.games.results.slice(0, games.games.results.length).sort((a, b) => a.release_date - b.release_date));
+      console.log(someSlides, 'GAMES SLIDERs');
     }
   } else if (type === 'JACKPOT_GAMES') {
     if (games.loading) {
-      // console.log('loading')
+
       return <h1>Loading...</h1>
     } else {
-      // filter by type 4 not found any games
-      slides = games.games.results.filter((a) => a.type === 1);
+      // filter by type 4 not found any games .filter((a) => a.type === 1)
+      setSomeSlides(games.games.results);
     }
   } else if (type === 'TABLE_GAMES') {
     if (games.loading) {
-      // console.log('loading')
+
       return <h1>Loading...</h1>
     } else {
-      // filter by type 2 not found any games
-      slides = games.games.results.filter((a) => a.type === 1);
-      // console.log(slides, 'slidessssssss')
+      // filter by type 2 not found any games .filter((a) => a.type === 1)
+      setSomeSlides(games.games.results);
+
     }
   }
+}, [load])
+
+
 
     function SampleNextArrow(props) {
       const { className, onClick } = props;
@@ -73,7 +80,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
   const sliderSettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     rows: 2,
@@ -91,7 +98,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
       } ${styles.sliderHeading}`}></div>
       <div className={styles.gamesWrapper}>
         <Slider {...sliderSettings}>
-          {slides.map((el, ind) => {
+          {someSlides.map((el, ind) => {
             return (
                 <div className={styles.slideItemsWrapperDesc} key={ind}>
                   {

@@ -40,6 +40,10 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Swiss721 BT";
+  src: url("/fonts/swiss721bt/swiss721BlackBt.ttf");
+}
 
 html,
 body {
@@ -75,6 +79,11 @@ a {
   & > div:nth-child(2) {
     background-color: #2280eb;
   }
+}
 
+.loadingHeader {
+  margin: 0 auto;
+  text-align: center;
+  color: #ff0e0e;
 }
 

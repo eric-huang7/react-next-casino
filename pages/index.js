@@ -9,10 +9,6 @@ import {setLang} from "../redux/actions/lang";
 import {useEffect} from "react";
 import Head from "next/head";
 
-
-
-
-import styles from '../styles/Home.module.scss';
 import {MainBlock} from "../components/HomePageComponents/MainBlock";
 import {JackpotBlock} from "../components/HomePageComponents/JackpotBlock/JackpotBlock";
 import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
@@ -22,10 +18,10 @@ import {PromotionsBlock} from "../components/HomePageComponents/PromotionsBlock/
 import {getWinners} from "../redux/actions/latestWinners";
 import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpotsAmount/TotalJackpotsAmount";
 import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
-import {Footer} from "../components/MainLayout/Footer/Footer";
+
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
-import {auth, userBalance} from "../redux/actions/login";
 import {getCurrency} from "../redux/actions/currency";
+
 
 
 export default function Home(props) {
@@ -34,20 +30,17 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  // const userInfo = useSelector((store) => store.authInfo)
-  // console.log(userInfo, "userINfo main")
 
   useEffect(() => {
     dispatch(setLang(locale));
     dispatch(getGames());
+    // dispatch(getGames()); //new games
+    // dispatch(getGames());
+    // dispatch(getGames());
+
     dispatch(getWinners());
-    // dispatch(getCurrency()); //ask if need it
-    // if(userInfo.isAuthenticated) {
-    //   dispatch(userBalance());
-    //   return
-    // } else {
-    //   dispatch(auth());
-    // }
+    dispatch(getCurrency());
+
   }, []);
 
 
@@ -63,7 +56,8 @@ export default function Home(props) {
       </Head>
       <MainLayout t={t}>
         <MainBlock />
-        <JackpotBlock />
+        {/*<JackpotBlock />*/}
+        {/*API for jackpots will add in future */}
         <ChooseCategoryBlock t={t}/>
         <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
         <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>

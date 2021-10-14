@@ -1,7 +1,10 @@
 // ########## Games url
-export const games_url = 'http://t-gpb.slotsidol.com:7000/games';
-export const freeGame_url = 'http://t-gpb.slotsidol.com:7000/free_game';
-export const payGame_url = 'http://t-gpb.slotsidol.com:7000/start_game';
+export const games_url = 'http://t-gpb.slotsidol.com:7001/games';
+export const newGames_url = 'http://t-gpb.slotsidol.com:7001/games?ordering=release_date-DESC';
+export const jackpotGames_url = 'http://t-gpb.slotsidol.com:7001/games?type=4';
+export const tableGames_url = 'http://t-gpb.slotsidol.com:7001/games?type=2';
+export const freeGame_url = 'http://t-gpb.slotsidol.com:7001/free_game';
+export const payGame_url = 'http://t-gpb.slotsidol.com:7001/start_game';
 
 
 // ########## Winners url
@@ -10,18 +13,18 @@ export const winners_url = 'http://t-gpb.slotsidol.com:7000/winners';
 
 // ########## login & auth & register url
 
-export const login_url = 'http://t-gpb.slotsidol.com:7000/login';
+export const login_url = 'http://t-gpb.slotsidol.com:7001/login';
 
-export const auth_url = 'http://t-gpb.slotsidol.com:7000/auth';
+export const auth_url = 'http://t-gpb.slotsidol.com:7001/auth';
 
 // ########## register
 
-export const signUp_url = 'http://t-gpb.slotsidol.com:7000/user';
+export const signUp_url = 'http://t-gpb.slotsidol.com:7001/user';
 
 // ######### user information
 
-export const user_balance_url = 'http://t-gpb.slotsidol.com:7000/balance';
+export const user_balance_url = 'http://t-gpb.slotsidol.com:7001/balance';
 
 // ######## get currencies
 
-export const currency_url = 'http://t-gpb.slotsidol.com:7000/currencies';
+export const currency_url = 'http://t-gpb.slotsidol.com:7001/currencies';

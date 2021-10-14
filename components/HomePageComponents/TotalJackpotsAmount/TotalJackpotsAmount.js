@@ -27,7 +27,7 @@ export const TotalJackpotsAmount = ({t, winners}) => {
 
   if (winners.loading) {
     return (
-      <h1>LOADING...</h1>
+      <h1 className={'loadingHeader'}>LOADING...</h1>
     )
   } else {
 

@@ -40,8 +40,10 @@
   align-items: center;
 
   margin-right: 15px;
+
   & > div {
-    width: 100%;
+    fl
+    //width: 100%;
             //293px;
     //height: 10%;
     //293px;
@@ -50,6 +52,7 @@
       height: 100%;
     }
   }
+
   & > p {
     font-size: 23px;
     letter-spacing: 1px;

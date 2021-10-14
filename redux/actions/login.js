@@ -18,7 +18,7 @@ export const auth = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN AUTH', e.response.data);
+    console.log('SOME ERROR IN AUTH', e.response);
   }
 
 }
@@ -41,7 +41,7 @@ export const login = (site_id, auth_type_id, username, auth_info, is_admin) => a
   } catch (e) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: e.response.data
+      payload: e.response
     })
   }
 }
@@ -62,18 +62,18 @@ export const userBalance = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response.data)
+    console.log(e.response)
   }
 }
 
-export const signUp = (site_id, auth_type_id, username, password, email, currency, current_bonus_code ) => async dispatch => {
+export const signUp = (currency, user_id, site_id, auth_type_id, username, email, password) => async dispatch => {
   const config = {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
   }
-  const body = JSON.stringify({site_id, auth_type_id, username, password, email, currency, current_bonus_code});
+  const body = JSON.stringify({currency, user_id, site_id, auth_type_id, username, email, password});
   try {
     const res = await axios.post(signUp_url, body, config);
     console.log(res, "REGISTER RESPONSE")
@@ -85,7 +85,7 @@ export const signUp = (site_id, auth_type_id, username, password, email, currenc
     console.log(e.response, "SOME ERROR WHEN REGISTER USER");
     dispatch({
       type: SIGNUP_FAIL,
-      payload: e.response.data
+      payload: e.response
     })
   }
 }

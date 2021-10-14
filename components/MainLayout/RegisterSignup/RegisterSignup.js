@@ -14,13 +14,21 @@ import {schemaRegister} from "../../../schemasForms/registerForm";
 import {auth, signUp, userBalance} from "../../../redux/actions/login";
 
 let currensyVariants = [
-  {id: 1, currensy: "BRL", active: false},
-  {id: 2, currensy: "RUB", active: false},
-  {id: 3, currensy: "USD", active: true},
-  {id: 4, currensy: "BTC", active: false},
-  {id: 5, currensy: "ETH", active: false},
-  {id: 6, currensy: "LTC", active: false},
-  {id: 7, currensy: "BCH", active: false}
+  {id: 1, currensy: "BTC", active: false},
+  {id: 2, currensy: "LTC", active: false},
+  {id: 5702, currensy: "EUR", active: false},
+  {id: 3982, currensy: "CAD", active: false},
+  {id: 5694, currensy: "AUD", active: true},
+  {id: 5713, currensy: "NOK", active: false},
+  {id: 5693, currensy: "USD", active: false},
+  {id: 5718, currensy: "RUB", active: false},
+  {id: 5717, currensy: "PLN", active: false},
+  {id: 5714, currensy: "NZD", active: false},
+  {id: 5709, currensy: "JPY", active: false},
+  {id: 5695, currensy: "BRL", active: false},
+  {id: 391, currensy: "BCH", active: false},
+  {id: 168, currensy: "ETH", active: false},
+  {id: 29, currensy: "DOGE", active: false},
 ]
 
 
@@ -33,36 +41,6 @@ export const RegisterSignup = ({t, isShow}) => {
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
   const userData = useSelector((userData) => userData.authInfo);
-  // const currency = useSelector((state) => state.getCurrency);
-  // console.log(currency, "!!!!!!user CUrrency!!!");
-  // console.log(userData, '!!!!USER DATA register!!!!');
-
-
-  if (userData.isAuthenticated) {
-    dispatch(showRegister(false));
-    // dispatch(auth());
-    // dispatch(userBalance());
-  }
-
-  function registerCloseButtonHandler() {
-    if (isShowRegister) {
-      dispatch(showRegister(false))
-    } else {
-      dispatch(showRegister(true))
-    }
-  }
-  function closePopupHandler(e) {
-    if (e.target.className.split('_')[1] === 'registerMainBlock') {
-      dispatch(showRegister(false));
-    } else {
-      return
-    }
-  }
-  function openLogin() {
-    dispatch(showLogin(true));
-    dispatch(showRegister(false));
-  }
-
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
@@ -76,10 +54,36 @@ export const RegisterSignup = ({t, isShow}) => {
   const [passwordData, setPasswordData] = useState('');
   const [userEmailData, setUserEmailData] = useState('');
   const [bonusCodeData, setBonusCodedata] = useState('');
-  const [currencyChoose, setCurrencyChoose] = useState('3'); // default need change
+  const [currencyChoose, setCurrencyChoose] = useState(5693); // default need change
   const [youAgree, setYouAgree] = useState(false);
   const [youAgreeError, setYouAgreeError] = useState('');
   const [registerError, setRegisterError] =useState('');
+
+
+  if (userData.isAuthenticated) {
+    dispatch(showRegister(false));
+  }
+
+  function registerCloseButtonHandler() {
+    if (isShowRegister) {
+      dispatch(showRegister(false))
+    } else {
+      dispatch(showRegister(true))
+    }
+  }
+
+  function closePopupHandler(e) {
+    if (e.target.className.split('_')[1] === 'registerMainBlock') {
+      dispatch(showRegister(false));
+    } else {
+      return
+    }
+  }
+
+  function openLogin() {
+    dispatch(showLogin(true));
+    dispatch(showRegister(false));
+  }
 
   const youAgreeHandler = (e) => {
     setYouAgree(e.target.checked);
@@ -88,8 +92,8 @@ export const RegisterSignup = ({t, isShow}) => {
   let currencyRef = useRef('')
 
   const setCurrency = (e) => {
-    // console.log(e.target.dataset.currency);
-    setCurrencyChoose(e.target.dataset.currency)
+    // console.log(e.target.dataset.currency, '!!!!!!');
+    setCurrencyChoose(Number(e.target.dataset.currency));
     setActiveCurrency(e.target.innerText);
     setIsShowCurrency(false);
   }
@@ -124,32 +128,38 @@ export const RegisterSignup = ({t, isShow}) => {
     }
   }
 
-
   let site_id = 1;
   let auth_type_id = 1;
   let isAdmin = false;
-
+  let userId = 100000;
+//currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
-    // console.log('send req')
-    dispatch(signUp(site_id, auth_type_id, userNameInfo, userPasswordInfo, userEmailInfo, currencyChoose, bonusCodeData));
-
+    dispatch(signUp(currencyChoose, userId, site_id, auth_type_id, userNameInfo, userEmailInfo, userPasswordInfo));
   }
+
   const onSubmitHandler = (data) => {
+    console.log(data, 'formDATA');
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
-      // console.log(data, 'dataRegister');
       reset();
     } else {
       setYouAgreeError('Read terms!');
     }
   }
+
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
 
   useEffect(() => {
-    if (userInfo.error) {
-      setRegisterError(userInfo.error.extra_error_info.message);
+    reset();
+    setYouAgreeError('');
+    setRegisterError('');
+  },[isShowRegister]);
+
+  useEffect(() => {
+    if (userInfo.registerError) {
+      setRegisterError(userInfo.registerError.data.extra_error_info.message);
     }
-  },[userInfo.error])
+  },[userInfo.registerError])
 
 
   return (

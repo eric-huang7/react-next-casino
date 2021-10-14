@@ -18,6 +18,6 @@ export const getWinners = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get winners endpoint', err)
+    console.log('error in get winners endpoint', err.response)
   }
 }

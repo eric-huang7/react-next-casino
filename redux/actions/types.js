@@ -1,5 +1,11 @@
 // ################# GET GAMES
+import {tableGames_url} from "../url/url";
+
 export const GET_GAMES = 'GET_GAMES';
+export const GET_TABLE_GAMES = 'GET_TABLE_GAMES';
+export const GET_NEW_GAMES = 'GET_NEW_GAMES';
+export const GET_JACKPOT_GAMES = 'GET_JACKPOT_GAMES';
+
 
 export const GET_IMAGES = 'GET_IMAGES';
 

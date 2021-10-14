@@ -6,6 +6,7 @@ axios.defaults.withCredentials = true;
 
 export const freeGame = (game_provider_id, game_id) => async dispatch => {
   const config = {
+    withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -26,6 +27,7 @@ export const freeGame = (game_provider_id, game_id) => async dispatch => {
 
 export const playPayGame = (game_provider_id, game_id, user_id, is_bonus, balance_id) => async dispatch => {
   const config = {
+    withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },

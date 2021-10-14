@@ -117,7 +117,7 @@ export const Footer = ({t}) => {
                 <span>{language}</span>
               </div>
             </div>
-            <p>2020SlotsIdol.com&#169;All Rights Reserved</p>
+            <p>2020S lotsIdol.com&#169; All Rights Reserved</p>
           </div>
         </div>
       </section>

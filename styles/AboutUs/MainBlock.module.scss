@@ -39,12 +39,12 @@
 
 .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
   text-align: center;
-  font-size: 32px;
+  font-size: 35px;
   color: #ff7d7d;
-  font-weight: 800;
+  font-weight: 900;
   font-family: "Swiss721 BT";
   text-transform: uppercase;
-  line-height: 25px;
+  line-height: 36px;
   word-wrap: break-word;
 
   width: 70%;
@@ -54,6 +54,7 @@
 
 .flexibleSystemImg p, .bigSpan {
   color: #6be2ff;
+  line-height: 27px;
 }
 .smallSpan {
   font-size: 16px;
@@ -129,8 +130,8 @@
   //  width: 19%;
   //}
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 25px;
-    line-height: 25px;
+    font-size: 30px;
+    line-height: 27px;
 
     width: 60%;
   }
@@ -141,8 +142,8 @@
 
 @media screen and (max-width: 1110px) {
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 23px;
-    line-height: 25px;
+    font-size: 27px;
+    line-height: 27px;
 
     width: 60%;
   }
@@ -156,8 +157,8 @@
 
 @media screen and (max-width: 980px) {
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 22px;
-    line-height: 25px;
+    font-size: 26px;
+    line-height: 26px;
 
     width: 70%;
   }
@@ -221,8 +222,8 @@
   }
 
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 28px;
-    line-height: 25px;
+    font-size: 32px;
+    line-height: 32px;
 
     width: 70%;
   }
@@ -255,8 +256,8 @@
 
 @media screen and (max-width: 740px) {
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 24px;
-    line-height: 25px;
+    font-size: 28px;
+    line-height: 28px;
 
     width: 70%;
   }
@@ -275,12 +276,12 @@
     width: 31%;
   }
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 21px;
-    line-height: 20px;
+    font-size: 25px;
+    line-height: 25px;
     width: 70%;
   }
   .smallSpan {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 @media screen and (max-width: 520px) {
@@ -304,14 +305,14 @@
     margin-left: 0%;
   }
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 20px;
     width: 55%;
 
     word-wrap: normal;
   }
   .smallSpan {
-    font-size: 10px;
+    font-size: 12px;
   }
   .arrProvider, .arrGames, .arrFlexible {
     width: 27%;
@@ -358,8 +359,8 @@
     margin-left: 0%;
   }
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 20px;
-    line-height: 16px;
+    font-size: 24px;
+    line-height: 21px;
     width: 77%;
 
   }
@@ -395,7 +396,7 @@
 
   }
   .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
-    font-size: 16px;
+    font-size: 19px;
     line-height: 16px;
     width: 77%;
 

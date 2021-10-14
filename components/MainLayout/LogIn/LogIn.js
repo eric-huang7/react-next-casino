@@ -22,22 +22,28 @@ export const LogIn = ({t, isShow}) => {
   const dispatch = useDispatch();
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
 
+
   function loginCloseButtonHandler() {
     if (isShowLogin) {
       dispatch(showLogin(false))
+
     } else {
+
       dispatch(showLogin(true));
     }
   }
   function closePopupHandler(e) {
     if (e.target.className.split('_')[1] === 'logInMainBlock') {
       dispatch(showLogin(false));
+
     } else {
+
       return
     }
   }
 
   function openRegister() {
+
     dispatch(showRegister(true));
     dispatch(showLogin(false));
   }
@@ -58,20 +64,26 @@ export const LogIn = ({t, isShow}) => {
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const [loginData, setLoginData] = useState('');
   const [passwordData, setPasswordData] = useState('');
+  const [wrongPassOrLog, setWrongPassOrLog] = useState(false);
 
   // console.log(userInfo, 'USer INFO');
 
 
-  let wrongPassOrLog = false;
-  if (userInfo.error) {
-    wrongPassOrLog = true;
-  }
+  // let wrongPassOrLog = false;
+
   useEffect(() => {
+    if (userInfo.error) {
+      setWrongPassOrLog(true);
+    }
     if (userInfo.isAuthenticated) {
       dispatch(showLogin(false));
     }
   }, [userInfo.isAuthenticated, userInfo.error])
 
+  useEffect(() => {
+    reset();
+    setWrongPassOrLog(false);
+  },[isShowLogin])
 
 
   let site_id = 1;

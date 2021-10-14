@@ -6,7 +6,8 @@ const initialState = {
   user: null,
   balance: null,
   bonuses: null,
-  error: null
+  error: null,
+  registerError: null,
 }
 
 function authReducer(state = initialState, action) {
@@ -19,7 +20,8 @@ function authReducer(state = initialState, action) {
         user: {...payload},
         isAuthenticated: true,
         loading: false,
-        error: null
+        error: null,
+        registerError: null,
       }
     case LOGIN_FAIL :
       return {
@@ -28,7 +30,8 @@ function authReducer(state = initialState, action) {
         loading: false,
         user: null,
         bonuses: null,
-        error: {...payload}
+        error: {...payload},
+        registerError: null,
       }
     case AUTH :
       return {
@@ -36,7 +39,8 @@ function authReducer(state = initialState, action) {
         user: {...payload},
         isAuthenticated: true,
         loading: false,
-        error: null
+        error: null,
+        registerError: null,
       }
     case BALANCE:
       return {
@@ -49,7 +53,8 @@ function authReducer(state = initialState, action) {
         user: {...payload},
         isAuthenticated: true,
         loading: false,
-        error: null
+        error: null,
+        registerError: null,
       }
     case SIGNUP_FAIL :
       return {
@@ -58,7 +63,8 @@ function authReducer(state = initialState, action) {
         loading: false,
         user: null,
         bonuses: null,
-        error: {...payload}
+        error: null,
+        registerError: {...payload},
       }
     default:
       return state
