@@ -21,6 +21,7 @@ import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlo
 
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
 import {getCurrency} from "../redux/actions/currency";
+import {getJackpots} from "../redux/actions/latestJackpots";
 
 
 
@@ -30,8 +31,6 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  console.log(props, 'PROPS INDEX');
-
 
   useEffect(() => {
     dispatch(setLang(locale));
@@ -40,6 +39,7 @@ export default function Home(props) {
     // dispatch(getGames());
     // dispatch(getGames());
 
+    dispatch(getJackpots());
     dispatch(getWinners());
     dispatch(getCurrency());
 
@@ -48,7 +48,7 @@ export default function Home(props) {
 
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
-
+  const jackpots = useSelector((jackpots) => jackpots.jackpots);
 
   return (
 
@@ -65,7 +65,7 @@ export default function Home(props) {
         <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
         <PromotionsBlock t={t}/>
         <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
-        <TotalJackpotsAmount t={t} winners={winners}/>
+        <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
         <NewsBlock t={t} isBackShow={true}/>
         <WhySlotsIdol t={t} isBackShow={true}/>
 
@@ -77,13 +77,10 @@ export default function Home(props) {
 }
 
 export const getServerSideProps = async ({ locale }) => {
-  const jackpotsRes = await fetch('http://t-gpb.slotsidol.com:7001/jackpots');
-  const jackpotsData = await jackpotsRes.json();
 
   return ({
     props: {
       ...await serverSideTranslations(locale, ['common']),
-      jackpotsData: jackpotsData
     },
   })
 }

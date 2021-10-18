@@ -9,9 +9,9 @@ export const payGame_url = 'http://t-gpb.slotsidol.com:7001/start_game';
 
 // ########## Winners && Jackpots url
 
-export const winners_url = 'http://t-gpb.slotsidol.com:7000/winners';
+export const winners_url = 'http://t-gpb.slotsidol.com:7001/winners';
 
-export const jackpots_url = 'http://t-gpb.slotsidol.com:7000/jackpots';
+export const jackpots_url = 'http://t-gpb.slotsidol.com:7001/jackpots?amount=10000';
 
 
 // ########## login & auth & register url

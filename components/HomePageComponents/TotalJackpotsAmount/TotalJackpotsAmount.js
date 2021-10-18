@@ -5,10 +5,11 @@ import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {useState} from "react";
 
-export const TotalJackpotsAmount = ({t, winners}) => {
+export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
 
   console.log(winners, 'WINNERS INFO BLOCK!');
+  // console.log(jackpots, 'jackpots INFO BLOCK!');
 
   let isHidden = false;
   if (width <= 1165) {
@@ -20,6 +21,10 @@ export const TotalJackpotsAmount = ({t, winners}) => {
   let latestWinnersArr = [];
   let topWinnersArr = [];
   let jackpotsWinnersArr = [];
+
+  let JAC = [];
+  let resJAC = [];
+
   let totalMount = 0;
   let headings = {
     latestWinn: t('totalJackpots.latestWinners'),
@@ -27,7 +32,7 @@ export const TotalJackpotsAmount = ({t, winners}) => {
     jackpots: t('totalJackpots.jackpots')
   }
 
-  if (winners.loading) {
+  if (winners.loading || jackpots.loading) {
     return (
       <h1 className={'loadingHeader'}>LOADING...</h1>
     )
@@ -43,12 +48,19 @@ export const TotalJackpotsAmount = ({t, winners}) => {
     // make filters for each arr
     latestWinnersArr = sortedWinners.slice(0, 4); // filter by begin_date
     topWinnersArr = sortedWinners.slice(0, 4); // no filter
-    jackpotsWinnersArr = sortedWinners.filter((item) => Number(item.winnings) > 10000).slice(0, 4); // choose by win amount more then 10.000
-    // totalMount = '12.522.478';
+    jackpotsWinnersArr = sortedWinners.slice(0, 4);
+
+    JAC = jackpots.jackpots.results.filter((item) => {
+      if (item.games.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+
   }
-  // console.log(latestWinnersArr, 'winners')
-  // console.log(topWinnersArr, 'winners')
-  // console.log(jackpotsWinnersArr, 'winners')
+  console.log(JAC, 'JAC jackpots INFO BLOCK!');
+
   return (
     <div className={styles.totalJackpotsMainWrapper}>
       <div className={styles.flamingo}></div>
