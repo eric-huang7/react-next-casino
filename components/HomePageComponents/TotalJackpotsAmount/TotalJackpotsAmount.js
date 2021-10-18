@@ -8,6 +8,8 @@ import {useState} from "react";
 export const TotalJackpotsAmount = ({t, winners}) => {
   const {height, width} = useWindowDimensions();
 
+  console.log(winners, 'WINNERS INFO BLOCK!');
+
   let isHidden = false;
   if (width <= 1165) {
     isHidden = true;

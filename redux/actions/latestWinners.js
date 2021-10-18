@@ -9,7 +9,6 @@ export const getWinners = () => async dispatch => {
       'Content-Type': 'application/json'
     }
   }
-
   try {
     const res = await axios.get(winners_url, config)
     console.log('response data from winners endpoint=====', res)

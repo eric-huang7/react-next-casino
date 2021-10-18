@@ -30,6 +30,8 @@ export default function Home(props) {
   const router = useRouter();
   const locale = router.locale;
 
+  console.log(props, 'PROPS INDEX');
+
 
   useEffect(() => {
     dispatch(setLang(locale));
@@ -75,9 +77,13 @@ export default function Home(props) {
 }
 
 export const getServerSideProps = async ({ locale }) => {
+  const jackpotsRes = await fetch('http://t-gpb.slotsidol.com:7001/jackpots');
+  const jackpotsData = await jackpotsRes.json();
+
   return ({
     props: {
       ...await serverSideTranslations(locale, ['common']),
+      jackpotsData: jackpotsData
     },
   })
 }

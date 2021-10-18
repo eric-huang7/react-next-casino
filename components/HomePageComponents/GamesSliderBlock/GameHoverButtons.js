@@ -17,15 +17,15 @@ export const GameHoverButtons = ({t, gameData}) => {
 
   useEffect(() => {
     if (games.startGame?.game_link) {
-      // router.push(games.startGame.game_link);
-      window.location.replace(games.startGame.game_link)
+      router.push(games.startGame.game_link);
+      // window.location.replace(games.startGame.game_link)
       console.log(games.startGame.game_link)
     }
     if (games.freeGame?.game_link) {
-      // router.push(games.freeGame.game_link);
+      router.push(games.freeGame.game_link);
       // window.open(games.freeGame.game_link);
       console.log(games.freeGame.game_link)
-      window.location.replace(games.freeGame.game_link)
+      // window.location.replace(games.freeGame.game_link)
     }
   }, [games]);
 

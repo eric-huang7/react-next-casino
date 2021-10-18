@@ -7,9 +7,12 @@ export const freeGame_url = 'http://t-gpb.slotsidol.com:7001/free_game';
 export const payGame_url = 'http://t-gpb.slotsidol.com:7001/start_game';
 
 
-// ########## Winners url
+// ########## Winners && Jackpots url
 
 export const winners_url = 'http://t-gpb.slotsidol.com:7000/winners';
+
+export const jackpots_url = 'http://t-gpb.slotsidol.com:7000/jackpots';
+
 
 // ########## login & auth & register url
 

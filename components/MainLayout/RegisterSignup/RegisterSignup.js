@@ -134,7 +134,7 @@ export const RegisterSignup = ({t, isShow}) => {
   let userId = 100000;
 //currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
-    dispatch(signUp(currencyChoose, userId, site_id, auth_type_id, userNameInfo, userEmailInfo, userPasswordInfo));
+    dispatch(signUp(currencyChoose, userId, site_id, auth_type_id, userNameInfo, userEmailInfo, userPasswordInfo, bonusCodeData));
   }
 
   const onSubmitHandler = (data) => {

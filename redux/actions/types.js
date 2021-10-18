@@ -9,8 +9,10 @@ export const GET_JACKPOT_GAMES = 'GET_JACKPOT_GAMES';
 
 export const GET_IMAGES = 'GET_IMAGES';
 
-// ################# GET WINNERS
+// ################# GET WINNERS && JACKPOTS
 export const GET_WINNERS = "GET_WINNERS";
+
+export const GET_JACKPOTS = "GET_JACKPOTS";
 
 
 // ################# SHOW POPUP REGISTER & LOGIN
