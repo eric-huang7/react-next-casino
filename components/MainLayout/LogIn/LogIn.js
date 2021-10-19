@@ -1,6 +1,6 @@
 import styles from '../../../styles/LogIn.module.scss';
 
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -26,9 +26,7 @@ export const LogIn = ({t, isShow}) => {
   function loginCloseButtonHandler() {
     if (isShowLogin) {
       dispatch(showLogin(false))
-
     } else {
-
       dispatch(showLogin(true));
     }
   }
@@ -37,7 +35,6 @@ export const LogIn = ({t, isShow}) => {
       dispatch(showLogin(false));
 
     } else {
-
       return
     }
   }
@@ -66,13 +63,9 @@ export const LogIn = ({t, isShow}) => {
   const [passwordData, setPasswordData] = useState('');
   const [wrongPassOrLog, setWrongPassOrLog] = useState(false);
 
-  // console.log(userInfo, 'USer INFO');
-
-
-  // let wrongPassOrLog = false;
-
   useEffect(() => {
     if (userInfo.error) {
+      setPasswordData('');
       setWrongPassOrLog(true);
     }
     if (userInfo.isAuthenticated) {
@@ -81,7 +74,9 @@ export const LogIn = ({t, isShow}) => {
   }, [userInfo.isAuthenticated, userInfo.error])
 
   useEffect(() => {
-    reset();
+    setLoginData('');
+    setPasswordData('');
+    // reset();
     setWrongPassOrLog(false);
   },[isShowLogin])
 
@@ -92,14 +87,15 @@ export const LogIn = ({t, isShow}) => {
 
 
   function loginUser() {
-    // console.log('send req')
+    console.log('send req', loginData, passwordData)
+
     dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin));
 
   }
-  const onSubmitHandler = (data) => {
 
-    loginUser()
-    reset();
+  const onSubmitHandler = (data) => {
+    loginUser();
+    // reset();
   }
 
   return (
@@ -127,7 +123,8 @@ export const LogIn = ({t, isShow}) => {
                 {t('loginForm.usernameInput')}
               </label>
               <input {...register("username")}
-                onChange={(e) => setLoginData(e.target.value)}
+                onInput={(e) => setLoginData(e.target.value)}
+                value={loginData}
                 id={'usernameLogIn'}
                 type="text"/>
               <span className={styles.errorMessage}>{t(errors.username?.message)}</span>
@@ -137,7 +134,8 @@ export const LogIn = ({t, isShow}) => {
               <label className={styles.passwordEye}   htmlFor={'passwordLogIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
                 <input {...register("password")}
-                       onChange={(e) => setPasswordData(e.target.value)}
+                       onInput={(e) => setPasswordData(e.target.value)}
+                       value={passwordData}
                        id={'passwordLogIn'}
                        type={passwordInputType}
                 />

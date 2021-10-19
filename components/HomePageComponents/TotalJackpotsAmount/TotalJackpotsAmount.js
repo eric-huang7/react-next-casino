@@ -9,7 +9,7 @@ import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
 
-  // console.log(winners, 'WINNERS INFO BLOCK!');
+  console.log(jackpots, 'jackpots INFO BLOCK!!');
   // console.log(jackpots, 'jackpots INFO BLOCK!');
 
   let isHidden = false;
@@ -23,9 +23,10 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   let topWinnersArr = [];
   let jackpotsWinnersArr = [];
 
-  let JAC = [];
+  let jackpotsFilteredArr = [];
   let countGames = 0;
   let totalMount = 0;
+  let currency = '';
 
   let headings = {
     latestWinn: t('totalJackpots.latestWinners'),
@@ -33,32 +34,43 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     jackpots: t('totalJackpots.jackpots')
   }
 
-  if (winners.loading || jackpots.loading) {
+  if (winners.loading || jackpots.loading || winners.loadingLatestWinners) {
     return (
       <h1 className={'loadingHeader'}>LOADING...</h1>
     )
   } else {
-
-    let sortedWinners = winners.winners.results.sort((a,b) => Number(b.winnings) - Number(a.winnings));
+    // ########### TOTAL JACKPOT MOUNT
     let allNumber = 0
-    let allMount = sortedWinners.filter((item) => item.winnings !== null && Number(item.winnings) > 0).map((item) => {
-      allNumber += Number(item.winnings);
+    let allMount = jackpots.jackpots.results.map((el) => {
+      currency = el.jackpot_amounts[0].currency;
+      if (currency === 'EUR') {
+        currency = '€';
+      } else if (currency === 'USD') {
+        currency = '$';
+      }
+      allNumber += Number(el.jackpot_amounts[0].amount);
     })
     totalMount = Number(allNumber.toFixed(0)).toLocaleString('de');
 
-    // make filters for each arr
-    latestWinnersArr = sortedWinners.slice(0, 4); // filter by begin_date
-    topWinnersArr = sortedWinners.slice(0, 4); // no filter
-    // jackpotsWinnersArr = sortedWinners.slice(0, 4);
+    // ########## TOP WINNERS
 
-    JAC = jackpots.jackpots.results.filter((item) => {
+    let sortedWinners = winners.winners.results.sort((a,b) => Number(b.winnings) - Number(a.winnings));
+    topWinnersArr = sortedWinners.slice(0, 4); // no filter
+
+    // ######### LATEST WINNERS
+
+    latestWinnersArr = winners.latestWinners.results.slice(0, 4) // latest winner came empty data
+
+    // ######### JACKPOTS
+
+    jackpotsFilteredArr = jackpots.jackpots.results.filter((item) => {
       if (item.games.length > 0) {
         return true;
       } else {
         return false;
       }
     })
-    JAC.map((el) => {
+    jackpotsFilteredArr.map((el) => {
       el.games.map((game) => {
         if (countGames > 3) {
           return game;
@@ -69,7 +81,6 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
         }
       })
     })
-
   }
 
   return (
@@ -85,7 +96,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
         <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.png'} alt="total jackpot heading"/>
       </div>
       <div className={styles.totalJackpotsWrapper}>
-        <h1 className={styles.totalMountHeading}>$ {totalMount}</h1>
+        <h1 className={styles.totalMountHeading}>{`${currency} ${totalMount}`}</h1>
         <div className={styles.winnersInfoBlockWrapper}>
           <WinnersInfoBlock isHidden={isHidden} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
           <WinnersInfoBlock isHidden={isHidden} heading={headings.topWinn} winnersData={topWinnersArr}/>

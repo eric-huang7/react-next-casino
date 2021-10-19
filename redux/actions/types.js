@@ -11,6 +11,7 @@ export const GET_IMAGES = 'GET_IMAGES';
 
 // ################# GET WINNERS && JACKPOTS
 export const GET_WINNERS = "GET_WINNERS";
+export const GET_LATEST_WINNERS = 'GET_LATEST_WINNERS';
 
 export const GET_JACKPOTS = "GET_JACKPOTS";
 

@@ -6,11 +6,10 @@ import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderBut
 import {HeaderButtonsRegistration} from "../MainLayout/Header/HeaderButtons/HeaderButtonsRegistration";
 
 const socilaLinks = [
- {key: 'facebook', href: '#facebook', img: '/assets/img/footer/facebook.png'},
- {key: 'twitter', href: '#twitter', img: '/assets/img/footer/twitter.png'},
- {key: 'youtube', href: '#youtube', img: '/assets/img/footer/youtube.png'},
- {key: 'instagram', href: '#instagram', img: '/assets/img/footer/instagram.png'},
- {key: 'linkedin', href: '#linkedin', img: '/assets/img/footer/linkedin.png'},
+ {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
+ {key: 'twitter', href: '#twitter', img: '/assets/img/mobileSideMenu/twitter.svg'},
+ {key: 'youtube', href: '#youtube', img: '/assets/img/mobileSideMenu/youtube.svg'},
+ {key: 'instagram', href: '#instagram', img: '/assets/img/mobileSideMenu/instagram.svg'},
 ]
 
 export const MobileSideMenu = ({t, userInform}) => {

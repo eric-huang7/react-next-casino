@@ -1,8 +1,10 @@
-import {GET_WINNERS} from "../actions/types";
+import {GET_LATEST_WINNERS, GET_WINNERS} from "../actions/types";
 
 const initialState = {
   winners: null,
   loading: true,
+  latestWinners: null,
+  loadingLatestWinners: true
 }
 
 function winnersReducer(state = initialState, action) {
@@ -14,6 +16,12 @@ function winnersReducer(state = initialState, action) {
         ...state,
         winners: {...payload},
         loading: false
+      }
+    case GET_LATEST_WINNERS:
+      return {
+        ...state,
+        latestWinners: {...payload},
+        loadingLatestWinners: false,
       }
     default:
       return state

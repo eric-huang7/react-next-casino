@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
+  <g id="icon" transform="translate(0.509 0.207)">
+    <circle id="Эллипс_4" data-name="Эллипс 4" cx="20.5" cy="20.5" r="20.5" transform="translate(-0.009 0.293)" fill="none" stroke="#00d3ff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="1"/>
+    <path id="Контур_14" data-name="Контур 14" d="M24.135,29.276H9.641A5.141,5.141,0,0,1,4.5,24.135V9.641A5.141,5.141,0,0,1,9.641,4.5H24.135a5.141,5.141,0,0,1,5.141,5.141V24.135A5.141,5.141,0,0,1,24.135,29.276Z" transform="translate(3.759 3.759)" fill="none" stroke="#00d3ff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="1"/>
+    <circle id="Эллипс_5" data-name="Эллипс 5" cx="6.111" cy="6.111" r="6.111" transform="translate(14.535 14.535)" fill="none" stroke="#00d3ff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="1"/>
+    <circle id="Эллипс_6" data-name="Эллипс 6" cx="1.941" cy="1.941" r="1.941" transform="translate(25.891 11.521)" fill="#00d3ff"/>
+  </g>
+</svg>

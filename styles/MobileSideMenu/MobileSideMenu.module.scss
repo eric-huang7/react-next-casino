@@ -120,3 +120,16 @@
     }
   }
 }
+
+.sideMenuFooterIconsBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 55px;
+
+  & a {
+    width: 45px;
+    height: 45px;
+  }
+}

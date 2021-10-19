@@ -15,7 +15,7 @@ import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCatego
 import {GamesSliderBlock} from "../components/HomePageComponents/GamesSliderBlock/GamesSliderBlock";
 import {getGames} from "../redux/actions/games";
 import {PromotionsBlock} from "../components/HomePageComponents/PromotionsBlock/PromotionsBlock";
-import {getWinners} from "../redux/actions/latestWinners";
+import {getLatestWinners, getWinners} from "../redux/actions/latestWinners";
 import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpotsAmount/TotalJackpotsAmount";
 import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 
@@ -35,12 +35,13 @@ export default function Home(props) {
   useEffect(() => {
     dispatch(setLang(locale));
     dispatch(getGames());
-    // dispatch(getGames()); //new games
-    // dispatch(getGames());
-    // dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
 
     dispatch(getJackpots());
     dispatch(getWinners());
+    dispatch(getLatestWinners());
     dispatch(getCurrency());
 
   }, []);
@@ -49,6 +50,8 @@ export default function Home(props) {
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
+
+  console.log(winners, 'winners latest index');
 
   return (
 
