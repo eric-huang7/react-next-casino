@@ -19,6 +19,9 @@ import {useEffect, useState} from "react";
 export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
   let load = games.loading;
+
+  console.log(games, 'GAmES from game slider');
+
   let itemsCount = 5;
   if (width <= 1165) {
     itemsCount = 3;
@@ -27,35 +30,36 @@ export const GamesSliderBlock = ({t, type, games}) => {
   }
   let slides = [];
   const [someSlides, setSomeSlides] = useState([]);
-useEffect(() => {
-  if (type === 'NEW_GAMES') {
-    if (games.loading) {
+  useEffect(() => {
+    if (type === 'NEW_GAMES') {
+      if (games.loadingNewGames) {
 
-      return <h1>Loading...</h1>
-    } else {
-      setSomeSlides(games.games.results)
-      // setSomeSlides(games.games.results.slice(0, games.games.results.length).sort((a, b) => a.release_date - b.release_date));
-      console.log(someSlides, 'GAMES SLIDERs');
+        return <h1>Loading...</h1>
+      } else {
+
+        setSomeSlides(games.newGames.results)
+        // setSomeSlides(games.games.results.slice(0, games.games.results.length).sort((a, b) => a.release_date - b.release_date));
+        // console.log(someSlides, 'GAMES SLIDERs');
+      }
+    } else if (type === 'JACKPOT_GAMES') {
+      if (games.loadingJackpotGames) {
+
+        return <h1>Loading...</h1>
+      } else {
+        // filter by type 4
+        setSomeSlides(games.jackpotGames.results);
+      }
+    } else if (type === 'TABLE_GAMES') {
+      if (games.loadingTableGames) {
+
+        return <h1>Loading...</h1>
+      } else {
+        // filter by type 2
+        setSomeSlides(games.tableGames.results);
+
+      }
     }
-  } else if (type === 'JACKPOT_GAMES') {
-    if (games.loading) {
-
-      return <h1>Loading...</h1>
-    } else {
-      // filter by type 4 not found any games .filter((a) => a.type === 1)
-      setSomeSlides(games.games.results);
-    }
-  } else if (type === 'TABLE_GAMES') {
-    if (games.loading) {
-
-      return <h1>Loading...</h1>
-    } else {
-      // filter by type 2 not found any games .filter((a) => a.type === 1)
-      setSomeSlides(games.games.results);
-
-    }
-  }
-}, [load])
+  }, [load, games.loadingNewGames, games.loadingJackpotGames, games.loadingJackpotGames])
 
 
 
@@ -85,6 +89,7 @@ useEffect(() => {
     slidesToShow: 1,
     rows: 2,
     slidesPerRow: itemsCount,
+
     // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
@@ -104,7 +109,15 @@ useEffect(() => {
                   {
                     <div className={styles.gameItemWrapper}>
                       <GameHoverButtons t={t} gameData={el}/>
-                      <img key={el.id} src={urlGen(el.id)} alt={`game ${el.name}`}/>
+                      <Image
+                        placeholder={"blur"}
+                        blurDataURL={'/assets/img/empty.webp'}
+                        // width={245}
+                        // height={180}
+                        layout={"fill"}
+                        key={el.id}
+                        src={urlGen(el.id)}
+                        alt={`game ${el.name}`}/>
                     </div>
                   }
                 </div>

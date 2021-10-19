@@ -9,8 +9,7 @@ import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
 
-  console.log(jackpots, 'jackpots INFO BLOCK!!');
-  // console.log(jackpots, 'jackpots INFO BLOCK!');
+  // console.log(jackpots, 'jackpots INFO BLOCK!!');
 
   let isHidden = false;
   if (width <= 1165) {

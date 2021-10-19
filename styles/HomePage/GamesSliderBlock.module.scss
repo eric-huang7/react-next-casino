@@ -29,6 +29,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 .gamesWrapper {
   & > div:first-child {
     background-color: rgba(255,255,255,0.1);
+    padding: 10px;
   }
 
   width: 1290px;
@@ -39,21 +40,26 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 }
 
 .slideItemsWrapperDesc  {
+
+
   & > div {
-      display: flex;
-      align-self: flex-start;
+      //display: flex;
+      //align-self: flex-start;
+      //align-self: flex-start;
     position: relative;
   }
 }
 
 .slideItemsWrapperDesc {
   & > div {
-    & > img {
-      height: auto;
-      margin: 6px;
+    height: 180px;
+    margin: 3px;
+    & > div:nth-child(2) {
+      //height: auto;
+      //margin: 6px;
 
-      width: 245px;
-      height: 180px;
+      width: inherit;
+      height: inherit;
 
     }
   }
@@ -75,6 +81,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   border: 1px solid #00e3ff;
 
   position: absolute;
+  z-index: 10;
 
   width: 100%;
   height: 100%;
@@ -92,7 +99,7 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   & > span {
     font-size: 17px;
     letter-spacing: 0px;
-    line-height: 48px;
+    //line-height: 48px;
     color: #1e2127;
     text-transform: uppercase;
   }
@@ -101,7 +108,10 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   background-color: #00e3ff;
 }
 .playButtonInactive {
-  background-color: #6a6a6a;
+  & > span {
+    color: #7e7e7e;
+  }
+  background-color: #452222;
 }
 .playForFunButton {
   background-color: #15171b;
@@ -205,13 +215,16 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   }
   .slideItemsWrapperDesc {
     & > div {
-      & > img {
-        width: 165px;
-        height: 143px;
+      height: 143px;
+      margin: 3px;
+      & > div:nth-child(2) {
+        width: inherit;
+        height: inherit;
 
       }
     }
   }
+
   .controlPanel a {
     left: 0px;
     top: 2px;
@@ -249,9 +262,11 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   }
   .slideItemsWrapperDesc {
     & > div {
-      & > img {
-        width: 235px;
-        height: 170px;
+      height: 170px;
+      margin: 3px;
+      & > div:nth-child(2) {
+        width: inherit;
+        height: inherit;
 
       }
     }
@@ -303,9 +318,11 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
   }
   .slideItemsWrapperDesc {
     & > div {
-      & > img {
-        width: 170px;
-        height: 135px;
+      height: 135px;
+      margin: 3px;
+      & > div:nth-child(2) {
+        width: inherit;
+        height: inherit;
 
       }
     }
@@ -346,9 +363,11 @@ background-image: url("/assets/img/gamesSlider/new_games_head.svg");
 
   .slideItemsWrapperDesc {
     & > div {
-      & > img {
-        width: 125px;
-        height: 95px;
+      height: 95px;
+      margin: 3px;
+      & > div:nth-child(2) {
+        width: inherit;
+        height: inherit;
 
       }
     }
