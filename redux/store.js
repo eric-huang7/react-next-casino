@@ -6,5 +6,7 @@ const middleware = [thunk];
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({thunk: true}).concat(middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    thunk: true,
+  }).concat(middleware),
 });

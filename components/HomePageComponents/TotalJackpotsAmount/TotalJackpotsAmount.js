@@ -52,17 +52,17 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     totalMount = Number(allNumber.toFixed(0)).toLocaleString('de');
 
     // ########## TOP WINNERS
-
-    let sortedWinners = winners.winners.results.sort((a,b) => Number(b.winnings) - Number(a.winnings));
+    let slicedTopWinners = winners.winners.results.slice();
+    let sortedWinners = slicedTopWinners.sort((a,b) => Number(b.winnings) - Number(a.winnings));
     topWinnersArr = sortedWinners.slice(0, 4); // no filter
 
     // ######### LATEST WINNERS
-
-    latestWinnersArr = winners.latestWinners.results.slice(0, 4) // latest winner came empty data
+    let slicedLatestWinners = winners.latestWinners.results.slice();
+    latestWinnersArr = slicedLatestWinners.slice(0, 4) // latest winner came empty data
 
     // ######### JACKPOTS
-
-    jackpotsFilteredArr = jackpots.jackpots.results.filter((item) => {
+    let jackpotSlicedArr = jackpots.jackpots.results.slice();
+    jackpotsFilteredArr = jackpotSlicedArr.filter((item) => {
       if (item.games.length > 0) {
         return true;
       } else {

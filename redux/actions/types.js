@@ -51,3 +51,8 @@ export const PLAY_GAME = 'PLAY_GAME';
 // ############## CURRENCIES
 
 export const GET_CURRENCY = "GET_CURRENCY";
+
+// ############## SIDE MOBILE MENU
+
+export const SHOW_MOBILE_MENU = 'SHOW_MOBILE_MENU';
+export const HIDE_MOBILE_MENU = 'HIDE_MOBILE_MENU';

@@ -17,7 +17,7 @@ export const getWinners = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get winners endpoint', err.data)
+    console.log('error in get winners endpoint', err)
   }
 }
 export const getLatestWinners = () => async dispatch => {
@@ -28,12 +28,12 @@ export const getLatestWinners = () => async dispatch => {
   }
   try {
     const res = await axios.get(winners_latest_url, config)
-    console.log('response data from winners endpoint=====', res)
+    console.log('response data from latest winners endpoint=====', res)
     dispatch({
       type: GET_LATEST_WINNERS,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get latest winners endpoint', err.data)
+    console.log('error in get latest winners endpoint', err)
   }
 }

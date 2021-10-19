@@ -31,10 +31,7 @@ export const GameHoverButtons = ({t, gameData}) => {
 
 
   const playFunClickHandler = () => {
-
     dispatch(freeGame(gameData.game_provider_id, gameData.game_provided_id));
-
-    console.log(games.freeGame)
   }
   const playGameClickHAndler = () => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {

@@ -1,6 +1,4 @@
 import styles from '../../../styles/HomePage/GamesSliderBlock.module.scss';
-import axios from 'axios';
-import {gamesImagesUrl} from "../../../redux/url/url";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,14 +11,12 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
-import {useEffect, useState} from "react";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
   let load = games.loading;
 
-  console.log(games, 'GAmES from game slider');
 
   let itemsCount = 5;
   if (width <= 1165) {
@@ -29,17 +25,15 @@ export const GamesSliderBlock = ({t, type, games}) => {
     itemsCount = 5;
   }
   let slides = [];
-  const [someSlides, setSomeSlides] = useState([]);
-  useEffect(() => {
+
     if (type === 'NEW_GAMES') {
       if (games.loadingNewGames) {
 
         return <h1>Loading...</h1>
       } else {
+        let newGamesSlicedArr = games.newGames.results.slice();
+        slides = newGamesSlicedArr;
 
-        setSomeSlides(games.newGames.results)
-        // setSomeSlides(games.games.results.slice(0, games.games.results.length).sort((a, b) => a.release_date - b.release_date));
-        // console.log(someSlides, 'GAMES SLIDERs');
       }
     } else if (type === 'JACKPOT_GAMES') {
       if (games.loadingJackpotGames) {
@@ -47,7 +41,9 @@ export const GamesSliderBlock = ({t, type, games}) => {
         return <h1>Loading...</h1>
       } else {
         // filter by type 4
-        setSomeSlides(games.jackpotGames.results);
+        let jackpotSlicedArr = games.jackpotGames.results.slice();
+        slides = jackpotSlicedArr;
+
       }
     } else if (type === 'TABLE_GAMES') {
       if (games.loadingTableGames) {
@@ -55,11 +51,12 @@ export const GamesSliderBlock = ({t, type, games}) => {
         return <h1>Loading...</h1>
       } else {
         // filter by type 2
-        setSomeSlides(games.tableGames.results);
+        let tableSlicedGames = games.tableGames.results.slice();
+        slides = tableSlicedGames;
+
 
       }
     }
-  }, [load, games.loadingNewGames, games.loadingJackpotGames, games.loadingJackpotGames])
 
 
 
@@ -103,21 +100,19 @@ export const GamesSliderBlock = ({t, type, games}) => {
       } ${styles.sliderHeading}`}></div>
       <div className={styles.gamesWrapper}>
         <Slider {...sliderSettings}>
-          {someSlides.map((el, ind) => {
+          {slides.map((el, ind) => {
             return (
                 <div className={styles.slideItemsWrapperDesc} key={ind}>
                   {
                     <div className={styles.gameItemWrapper}>
                       <GameHoverButtons t={t} gameData={el}/>
                       <Image
-                        placeholder={"blur"}
-                        blurDataURL={'/assets/img/empty.webp'}
-                        // width={245}
-                        // height={180}
+                        // placeholder={"blur"}
+                        // blurDataURL={'/assets/img/empty.webp'}
                         layout={"fill"}
                         key={el.id}
                         src={urlGen(el.id)}
-                        alt={`game ${el.name}`}/>
+                        alt={`Game ${el.name}`}/>
                     </div>
                   }
                 </div>
