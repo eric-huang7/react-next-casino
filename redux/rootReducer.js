@@ -11,6 +11,8 @@ import authReducer from "./reducers/authReducer";
 import playGameReducer from "./reducers/playGameReducer";
 import getCurrency from "./reducers/currencyReducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
+import showPopupsReducer from './reducers/showPopupsReducer'
+import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer'
 
 
 export const rootReducer = combineReducers({
@@ -25,4 +27,6 @@ export const rootReducer = combineReducers({
   playGame: playGameReducer,
   getCurrency : getCurrency,
   showMobileMenu: showMobileMenuReducer,
+  showPopupsReducer : showPopupsReducer,
+  userSelectedCurrency: setUserCurrencyReducer
 })

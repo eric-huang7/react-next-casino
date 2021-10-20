@@ -1,4 +1,4 @@
-import { SHOW_MOBILE_MENU} from "./types";
+import { SHOW_MOBILE_MENU } from "./types";
 
 export const showMobileMenu = (isShow) => {
   return {
