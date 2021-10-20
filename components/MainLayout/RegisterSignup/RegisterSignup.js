@@ -227,7 +227,8 @@ export const RegisterSignup = ({t, isShow}) => {
                   className={styles.currencyInput}
                   onChange={(e) => console.log(e.target.value)}
                   onClick={() => showCurrencyBlock()}
-                  value={activeCurrency || "USD"} id={'currencyIn'}
+                  value={activeCurrency || "USD"}
+                  id={'currencyIn'}
                   type="text"/>
                 <div className={`${styles.currencyVariants} ${isShowCurrency ? styles.activeCurrency : ''}`}>
                   {
