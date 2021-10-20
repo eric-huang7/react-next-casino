@@ -6,7 +6,7 @@ import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderBut
 import {HeaderButtonsRegistration} from "../MainLayout/Header/HeaderButtons/HeaderButtonsRegistration";
 import {MobileSideList} from "./MobileSideList";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 
 const socilaLinks = [
@@ -18,29 +18,50 @@ const socilaLinks = [
 
 export const MobileSideMenu = ({t, userInform}) => {
  const dispatch = useDispatch();
- console.log(userInform, 'fromSideMenu')
+
 
  const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow);
  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
+ const currency = useSelector((state) => state.getCurrency);
 
- // const userInfo = useSelector((userInfo) => userInfo);
- // console.log(userInfo, 'side menu')
- // let userObj = {
- //  name: '',
- //  balance: '',
- //  bonuses: '',
- //  currency: '',
- // }
+ const [username, setUsername] = useState('');
+ const [userBalance, setUserBalance] = useState('');
+ const [userRealMoney, setUserRealMoney] = useState('');
+ const [userBonuses, setUserBonuses] = useState('');
+ const [userCurrency, setUserCurrency] = useState('');
+
 
  useEffect(() => {
-  if (userInform.isAuthenticated, userInform.balance.success) {
-   userObj.name = userInform.user.user.username;
-   userObj.balance = userInform.balance.balances[0].current_balance;
+  if (userInform.isAuthenticated && userInform.balance) {
+   setUsername(userInform.user.user.username);
+
+   if (userInform.balance.balances.length > 0) {
+    setUserBalance(Number(userInform.balance.balances[0].current_balance).toFixed(2));
+    setUserRealMoney(Number(userInform.balance.balances[0].current_balance).toFixed(2));
+   } else {
+    setUserBalance("00,00");
+    setUserRealMoney("00,00");
+   }
   }
   // userObj.bonuses = userInform.bonuses // no data now
- }, [userInform.isAuthenticated])
+ }, [userInform.isAuthenticated, userInform.balance]);
 
+ useEffect(() => {
+  if (!currency.loading && userInform.isAuthenticated && userInform.balance) {
+   setUserCurrency(currency.currency?.results.find((el) => {
+    if (userInform.user.user?.currency) {
+     return Number(el.id) === Number(userInform.user.user.currency_id);
+    } else if (!userInform.user.user.base_currency_id) {
+     return Number(el.id) === 1;
+    } else {
+     return Number(el.id) === Number(userInform.user.user.base_currency_id);
+    }
+   }).abbreviation);
+  } else {
+   setUserCurrency('')
+  }
+ },[currency.currency, userInform.isAuthenticated, userInform.balance])
 
 
  const closeClickHandler = () => {
@@ -66,12 +87,12 @@ export const MobileSideMenu = ({t, userInform}) => {
         <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
      </div>
      <div className={styles.userInfoBlock}>
-      <p className={styles.username}>{userObj.name}</p>
-      <p className={styles.userMoney}>{userObj.balance} BTC</p>
+      <p className={styles.username}>{username}</p>
+      <p className={styles.userMoney}>{`${userBalance} ${userCurrency}`}</p>
       <div className={styles.userInfoDivider}></div>
       <div className={styles.userBonusesInfo}>
        <div className={styles.realMoneyBlock}>
-        <span className={styles.realMoneyCount}>0 BTC</span>
+        <span className={styles.realMoneyCount}>{`${userRealMoney} ${userCurrency}`}</span>
         <span className={styles.realMoneyText}>Real money</span>
        </div>
        <div className={styles.bonusMoneyBlock}>

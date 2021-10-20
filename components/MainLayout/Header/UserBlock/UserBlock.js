@@ -45,7 +45,7 @@ useEffect(() => {
   if (!currency.loading && userInfo.isAuthenticated) {
     setUserCurrency(currency.currency?.results.find((el) => {
       if (userInfo.user.user?.currency) {
-        return Number(el.id) === Number(userInfo.user.user.currency);
+        return Number(el.id) === Number(userInfo.user.user.currency_id);
       } else if (!userInfo.user.user.base_currency_id) {
         return Number(el.id) === 1;
       } else {

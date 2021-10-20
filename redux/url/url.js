@@ -10,7 +10,7 @@ export const payGame_url = 'http://t-gpb.slotsidol.com:7001/start_game';
 // ########## Winners && Jackpots url
 
 export const winners_url = 'http://t-gpb.slotsidol.com:7001/winners';
-export const winners_latest_url = `http://t-gpb.slotsidol.com:7001/winners?begin_date=${(Date.now() - 604800000)}`; // 604800000 milliseconds for 7 days
+export const winners_latest_url = `http://t-gpb.slotsidol.com:7001/winners?begin_date=${Math.ceil((Date.now() - 604800000) / 1000)}&min_win=20`; // 604800000 milliseconds for 7 days
 
 export const jackpots_url = 'http://t-gpb.slotsidol.com:7001/jackpots?amount=10000';
 

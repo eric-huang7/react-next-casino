@@ -22,7 +22,7 @@ const MainLayout = ({children, t}) => {
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
-            {/*<MobileSideMenu t={t} userInform={userInfo}/>*/}
+            <MobileSideMenu t={t} userInform={userInfo}/>
             <RegisterSignup isShow={registerShow} t={t}/>
             <LogIn isShow={logInShow} t={t}/>
             {children}
