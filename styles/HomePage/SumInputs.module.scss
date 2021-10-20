@@ -48,7 +48,8 @@
   //width: 20%;
   height: 46%;
 
-  padding: 1.2% 6% 1% 3%;
+  padding-right: 25px;
+  padding-left: 5px;
   margin-top: 10px;
 
   border-radius: 5px;
@@ -58,6 +59,9 @@
   position: relative;
 
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
 }
 
 .currencyButton:after {
@@ -75,11 +79,6 @@
   border-bottom: 2px solid #ABADAD;
 
   transform: rotateZ(45deg);
-
-  //background-image: url("/assets/img/homeImg/currencyArrow.svg");
-  //background-position: center;
-  //background-repeat: no-repeat;
-  //background-size: contain;
 }
 
 .currencyButtonValue {
@@ -242,6 +241,10 @@
 
 
 @media screen and (max-width: 1800px) {
+  .currencyButton:after {
+    top: 23%;
+    right: 6%;
+  }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
     font-size: 0.9em;
@@ -267,6 +270,10 @@
     font-size: 41px;
     line-height: 27px;
 
+  }
+  .currencyButton:after {
+    top: 19%;
+    right: 6%;
   }
   .currencyButtonValue {
     font-size: 14px;
@@ -361,11 +368,18 @@
     line-height: 27px;
   }
   .currencyButton {
-    width: 20%;
+    //width: 20%;
     height: 54%;
 
-    padding: 1.2% 2% 1% 3%;
     margin-top: 5px;
+    padding-right: 20px;
+  }
+  .currencyButton:after {
+    width: 9px;
+    height: 9px;
+
+    top: 17%;
+    right: 6%;
   }
   .currencyButtonValue {
     font-size: 12px;
@@ -408,21 +422,20 @@
     line-height: 27px;
   }
   .currencyButton {
-    width: 20%;
     height: 60%;
 
-    padding: 1.2% 2% 1% 3%;
     margin-top: 5px;
+  }
+  .currencyButton:after {
+    width: 7px;
+    height: 7px;
+
+    top: 18%;
+    right: 6%;
   }
   .currencyButtonValue {
     font-size: 12px;
     line-height: 19px;
-  }
-  .currencyButton:after {
-    width: 23%;
-    height: 23%;
-    top: 36%;
-    right: 4%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
@@ -461,10 +474,10 @@
     line-height: 27px;
   }
   .currencyButton {
-    width: 20%;
+    //width: 20%;
     height: 60%;
 
-    padding: 1.2% 2% 1% 3%;
+    padding-right: 35px;
     margin-top: 5px;
   }
   .currencyButtonValue {
@@ -472,10 +485,10 @@
     line-height: 43px;
   }
   .currencyButton:after {
-    width: 23%;
-    height: 23%;
-    top: 36%;
-    right: 4%;
+    width: 12px;
+    height: 12px;
+    top: 29%;
+    right: 8%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
@@ -554,12 +567,19 @@
     font-size: 41px;
     line-height: 27px;
   }
+  .currencyButton {
+    //width: 20%;
+    height: 50%;
+
+    padding-right: 25px;
+    margin-top: 10px;
+  }
   .currencyButtonValue {
     font-size: 17px;
     line-height: 36px;
   }
   .currencyButton:after {
-    top: 38%;
+    top: 20%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
@@ -626,7 +646,9 @@
     line-height: 36px;
   }
   .currencyButton:after {
-    top: 38%;
+    width: 10px;
+    height: 10px;
+    top: 22%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
@@ -690,8 +712,15 @@
     font-size: 17px;
     line-height: 30px;
   }
+  .currencyButton {
+    //width: 20%;
+    height: 54%;
+
+    margin-top: 10px;
+    margin-right: 9px;
+  }
   .currencyButton:after {
-    top: 38%;
+    top: 20%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
@@ -738,12 +767,12 @@
     color: #ff0000;
   }
 }
-@media screen and (max-width: 520px)  {
+@media screen and (max-width: 460px)  {
   .sumInput {
     margin-left: 6px;
     margin-top: 4px;
 
-    font-size: 41px;
+    font-size: 32px;
     width: 59.6%;
     height: 78%;
 
@@ -762,14 +791,12 @@
     top: 12%;
     left: 8%;
 
-    font-size: 19px;
+    font-size: 32px;
     line-height: 22px;
   }
   .currencyButton {
-    width: 20%;
     height: 54%;
 
-    padding: 1% 1% 1% 2%;
     margin-top: 10px;
     margin-right: 9px;
   }
@@ -778,7 +805,7 @@
     line-height: 20px;
   }
   .currencyButton:after {
-    top: 38%;
+    top: 20%;
   }
 
   .bonusInfoBlock {
@@ -788,11 +815,11 @@
     content: '';
 
     position: absolute;
-    top: -52%;
+    top: -32%;
     left: -15%;
 
     width: 19%;
-    height: 110%;
+    height: 80%;
   }
   .bonusInfoBlock p,
   .bonusInfoBlock a {
