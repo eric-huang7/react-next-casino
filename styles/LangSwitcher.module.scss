@@ -1,103 +1,80 @@
 .langSwitcherBlock {
-  border-radius: 15px 0px 0px 15px;
-
-  padding: 0px 15px;
-
-  display: flex;
-  align-items: center;
-
-  position: fixed;
-  top: 440px;
-
-
-  background-color: #ffffff;
 
   cursor: pointer;
   transition: right 0.5s ease-in-out;
 
   outline: none;
 
-  z-index: 20;
+  position: relative;
+
+
+  margin-right: 10px;
 }
-.clickBlocker {
+
+.activeLangBlock {
+  width: 100px;
+  padding: 8px;
+  background-color: #a7a7a7;
+  border-radius: 10px 10px 10px 10px;
+
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & span {
+    font-size: 14px;
+  }
+}
+
+.langSwitcherBlock:hover .activeLangBlock {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.langSwitcherBlock:hover .langSwitcherBlockList {
+  background-color: #a7a7a7;
+
   width: 100%;
-  height: 100%;
 
-  position: absolute;
-}
-.hidden{
-  display: none;
-}
-.notHidden {
-  display: block;
-}
-.active {
-  right: 0px
-}
-.disabled {
-  right: -410px;
-}
-
-
-.langSwitcherBlockList {
   margin: 0;
   padding: 0;
 
   list-style-type: none;
 
   display: flex;
+  flex-direction: column;
+  align-items: center;
 
   outline: none;
+
+  position: absolute;
+  top: 0;
+
+  border-radius: 10px;
 }
-.langSwitcherBlockList li:first-child{
-  margin-left: 0px;
+
+.langSwitcherBlockList {
+  display: none;
 }
 
 .langSwitcherBlockListItem {
-  margin-left: 15px;
-
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 24px;
-  letter-spacing: 1px;
-  line-height: 58px;
-  color: #47b14c;
-
-  height: 61px;
-
-  outline: none;
+  padding: 10px 0 10px 0;
+  margin-bottom: 5px;
 }
 
-@media screen and (min-width: 500px) and (max-width: 767px) {
-  .langSwitcherBlock {
-    padding: 0px 10px;
-    border-radius: 6px;
-    top: 242px;
-  }
-  .disabled {
-    right: -325px;
-  }
-  .langSwitcherBlockListItem {
-    font-size: 16px;
+.langSwitcherBlockListItem:hover {
+  border-radius: 3px;
 
-    height: 33px;
-  }
+  text-align: center;
+  width: 90%;
+  background-color: #d5d5d5;
 }
-@media screen and (min-width: 220px) and (max-width: 500px) {
-  .langSwitcherBlock {
-    padding: 0px 10px;
-    border-radius: 6px;
-    top: 242px;
-  }
-  .disabled {
-    right: -325px;
-  }
-  .langSwitcherBlockListItem {
-    font-size: 16px;
 
-    height: 33px;
-  }
+.langSwitcherBlockListItem:first-child:hover {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1435px) {
+
 }

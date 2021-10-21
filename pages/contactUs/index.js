@@ -29,7 +29,6 @@ const ContactUs = (props) => {
         <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
 
-      <LangSwitcher href={loc.route} locale={loc}/>
     </>
   )
 }

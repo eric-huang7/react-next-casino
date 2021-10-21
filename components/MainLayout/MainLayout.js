@@ -7,10 +7,13 @@ import {LogIn} from "./LogIn/LogIn";
 import {useDispatch, useSelector} from "react-redux";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
+import {useRouter} from "next/router";
+import LangSwitcher from "../LangSwitcher/LangSwitcher";
 
 
 const MainLayout = ({children, t}) => {
-
+  const router = useRouter();
+  const locale = router.locale;
 
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
@@ -29,7 +32,7 @@ const MainLayout = ({children, t}) => {
             <SelectCurrency t={t}/>
             {children}
             <Footer t={t}/>
-
+            {/*<LangSwitcher href={router.route} locale={locale}/>*/}
           </div>
   )
 }

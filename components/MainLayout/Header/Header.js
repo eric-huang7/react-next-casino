@@ -7,10 +7,14 @@ import {showLogin} from "../../../redux/actions/loginShow";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {auth, userBalance} from "../../../redux/actions/login";
 import {useEffect} from "react";
+import LangSwitcher from "../../LangSwitcher/LangSwitcher";
+import {useRouter} from "next/router";
 
 
 export const Header = ({t}) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const locale = router.locale;
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
   let userLogined = userLogin.isAuthenticated;
@@ -55,6 +59,7 @@ export const Header = ({t}) => {
     <header onClick={(e) => closePopups(e)} className={styles.mainHeader}>
       <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       <Navigation t={t}/>
+      <LangSwitcher href={router.route} locale={locale}/>
       <UserBlockNavigation t={t} userInfo={userInfo}/>
     </header>
   )
