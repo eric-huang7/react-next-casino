@@ -1,21 +1,31 @@
-.sideMenuMainWrapper {
-  position: absolute;
-  right: -428px;
+.sideMenuWrapper {
+  position: fixed;
   top: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
 
-  width: 428px;
-  //height: 800px;
+  overflow: scroll;
+  transform: translateX(200%);
+  transition: transform 0.2s ease-in-out;
+
+  z-index: 21;
+}
+
+.sideMenuMainWrapper {
+
+  //right: -100%;
+
+
   background-color: #393939;
 
   padding: 10px 0px;
 
-  z-index: 21;
 
-  //overflow-y: scroll;
-  transition: transform 0.2s ease-in-out;
+
 }
 .showMobileMenu {
-  transform: translateX(-428px);
+  transform: translateX(0%);
 }
 
 .sideMenuHeader {
@@ -129,7 +139,10 @@
     }
   }
   & .sideMenuButtonsBlock {
-    margin-left: 125px;
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 }
@@ -139,11 +152,11 @@
 }
 .mobileSideList {
   list-style-type: none;
-  padding: 0 0 0 10px;
+  padding: 0 10px 0 10px;
   margin: 0;
   & .mobileSideListItem {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
 
     border-bottom: 1px solid #a7a7a7;
@@ -152,13 +165,107 @@
     & > img {
       width: 35px;
       height: 35px;
-      margin-right: 20px;
+      margin: 10px 20px 10px 0;
     }
-    & > p {
+    & > a, p {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      width: 100%;
       color: #a7a7a7;
+
+      margin: 19px 0 18px 0;
     }
   }
 }
+
+.dropMenu {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: -51px;
+
+  overflow: hidden;
+  & a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    width: 100%;
+    color: #a7a7a7;
+  }
+  & .dropMenuListItem {
+    border-top: 1px solid #a7a7a7;
+    position: relative;
+    & a {
+      display: block;
+      margin: 19px 0 18px 51px;
+    }
+  }
+}
+.helpMenuBlock {
+  margin-left: 0px;
+  border-top: 1px solid #a7a7a7;
+  & p.helpMenuHeading, p.helpMenuInfo {
+    //border-top: 1px solid #a7a7a7;
+
+    width: 80%;
+    margin: 19px 0 18px 51px;
+  }
+  & .helpMenuLinksWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 19px 0 18px 51px;
+    & .helpMenuLinkBlock {
+      margin-right: 20px;
+      margin-top: 10px;
+
+      background-color: #3C3955;
+
+      padding: 10px;
+
+      border-radius: 5px;
+      & a {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.wrapperItemsDrop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+
+  &:after {
+    content: '';
+
+    width: 10px;
+    height: 10px;
+
+    position: absolute;
+    top: 25px;
+    right: 20px;
+
+    border-right: 1px solid #848282;
+    border-bottom: 1px solid #848282;
+
+    transform: rotateZ(45deg);
+    transition: transform 0.2s ease-in-out;
+  }
+  &.dropHide:after {
+    transform: rotateZ(-45deg);
+  }
+}
+
+.dropHide {
+  & .dropMenu{
+    background-color: #ff0e0e;
+    height: 0px;
+  }
+}
+
+
 
 .sideMenuFooter {
   & .sideFooterRights {

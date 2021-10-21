@@ -8,6 +8,7 @@ import {MobileSideList} from "./MobileSideList";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
+import {MobileListContainer} from "./MobileListContainer";
 
 const socilaLinks = [
  {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
@@ -77,51 +78,57 @@ export const MobileSideMenu = ({t, userInform}) => {
  }, [isShowLogin, isShowRegister])
 
  return (
-   <div className={`${styles.sideMenuMainWrapper} ${isShowMobileMenu ? styles.showMobileMenu : ''}`}>
-    <div className={styles.sideMenuHeader}>
-     <div className={styles.sideMenuCloseButton} onClick={() => closeClickHandler()}>
-      <span></span>
-      <span></span>
-     </div>
-     <div className={styles.sideMenuLogo}>
-        <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
-     </div>
-     <div className={styles.userInfoBlock}>
-      <p className={styles.username}>{username}</p>
-      <p className={styles.userMoney}>{`${userBalance} ${userCurrency}`}</p>
-      <div className={styles.userInfoDivider}></div>
-      <div className={styles.userBonusesInfo}>
-       <div className={styles.realMoneyBlock}>
-        <span className={styles.realMoneyCount}>{`${userRealMoney} ${userCurrency}`}</span>
-        <span className={styles.realMoneyText}>Real money</span>
-       </div>
-       <div className={styles.bonusMoneyBlock}>
-        <span className={styles.bonusMoneyCount}>0 BTC</span>
-        <span className={styles.bonusMoneyText}>Locked by bonus</span>
+   <div className={`${styles.sideMenuWrapper} ${isShowMobileMenu ? styles.showMobileMenu : ''}`}>
+    <div className={`${styles.sideMenuMainWrapper}`}>
+     <div className={styles.sideMenuHeader}>
+      <div className={styles.sideMenuCloseButton} onClick={() => closeClickHandler()}>
+       <span></span>
+       <span></span>
+      </div>
+      <div className={styles.sideMenuLogo}>
+       <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
+      </div>
+      <div className={styles.userInfoBlock}>
+       <p className={styles.username}>{username}</p>
+       <p className={styles.userMoney}>{`${userBalance} ${userCurrency}`}</p>
+       <div className={styles.userInfoDivider}></div>
+       {
+        userInform.isAuthenticated ? <div className={styles.userBonusesInfo}>
+         <div className={styles.realMoneyBlock}>
+          <span className={styles.realMoneyCount}>{`${userRealMoney} ${userCurrency}`}</span>
+          <span className={styles.realMoneyText}>Real money</span>
+         </div>
+         <div className={styles.bonusMoneyBlock}>
+          <span className={styles.bonusMoneyCount}>0 BTC</span>
+          <span className={styles.bonusMoneyText}>Locked by bonus</span>
+         </div>
+        </div> : ""
+       }
+
+       <div className={styles.sideMenuButtonsBlock}>
+        {userInform.isAuthenticated ? <HeaderButtonsDeposit t={t} isUserLogined={userInform}/> : <HeaderButtonsRegistration isUserLogined={userInform.isAuthenticated} t={t}/>}
        </div>
       </div>
-      <div className={styles.sideMenuButtonsBlock}>
-       {userInform.isAuthenticated ? <HeaderButtonsDeposit t={t} isUserLogined={userInform}/> : <HeaderButtonsRegistration isUserLogined={userInform.isAuthenticated} t={t}/>}
+      <div className={styles.mobileSideListWrapper}>
+       <MobileListContainer t={t}/>
       </div>
-     </div>
-     <div className={styles.mobileSideListWrapper}>
-      <MobileSideList />
-     </div>
-     <div className={styles.sideMenuFooter}>
+      <div className={styles.sideMenuFooter}>
        <div className={styles.sideMenuFooterIconsBlock}>
-         {socilaLinks.map((el) => {
-          return (
-            <a className={styles.socialLink} target="_blank" key={`${el.key} footer`} href={el.href}>
-             <Image className={styles.socialImage} height={35} width={35} src={el.img} alt={el.key}/>
-            </a>
-          )
-         })}
+        {socilaLinks.map((el) => {
+         return (
+           <a className={styles.socialLink} target="_blank" key={`${el.key} footer`} href={el.href}>
+            <Image className={styles.socialImage} height={35} width={35} src={el.img} alt={el.key}/>
+           </a>
+         )
+        })}
        </div>
        <p className={styles.sideFooterRights}>2020 SlotsIdol.com&#169; All Rights Reserved</p>
+      </div>
      </div>
+
+
     </div>
-
-
    </div>
+
  )
 }

@@ -185,5 +185,54 @@
     "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
     "email": "Email must be a valid email",
     "wrongPasswordOrEmail": "Incorrect password or email!"
+  },
+  "selectCurrency": {
+    "heading": "Select Currency",
+    "suggestedCurrencies": "Suggested Currencies",
+    "otherRealMoneyCurrencies": "Other Real Money Currencies",
+    "otherCryptoCurrencies": "Other Crypto Currencies"
+  },
+  "mobileSideMenu": {
+    "userBlock": {
+      "realMoney": "Real money",
+      "bonus": "Locked by bonus"
+    },
+    "listMenu": {
+      "home": "Home",
+      "user": "User",
+      "notifications": "Notifications",
+      "gifts": "Gifts",
+      "tournament": "Tournament",
+      "help": "Help",
+      "info": "Info",
+      "termsAndConditions": "Terms & Conditions",
+      "news": "Casino News"
+    },
+    "innerLists": {
+      "tournament": {
+        "slotWars": "Slot Wars",
+        "tableWars": "Table Wars",
+        "lastManStanding": "Last Man Standing"
+      },
+      "help": {
+        "heading": "Premium Support",
+        "information": "For general questions and issues, please contact our premium support via the email below or via live chat.",
+        "liveChat": "Live Chat",
+        "aboutBitcoin": "About Bitcoin",
+        "instantExchanger": "Instant BTC to EUR exchanger",
+        "provabilityExplained": "Provability Explained",
+        "playSafe": "Play Safe",
+        "complains": "Complains",
+        "howToBuyCrypto": "How to Buy Crypto"
+      },
+      "info": {
+        "aboutUs": "About Us",
+        "termsAndConditions": "Terms & Conditions",
+        "bonusTermsAndConditions": "Bonus Terms & Conditions",
+        "payments": "Payments",
+        "privacyPolicy": "Privacy Policy",
+        "affiliateProgram": "Affiliate Program"
+      }
+    }
   }
 }

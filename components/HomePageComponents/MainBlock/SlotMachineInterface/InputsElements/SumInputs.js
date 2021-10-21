@@ -29,11 +29,11 @@ export const SumInputs = () => {
     } else {
       setIsChecked(true);
     }
-    console.log(e);
+    // console.log(e);
   }
 
   const currencyButtonClickHAndler = () => {
-    console.log(isShowCurrencySwitcher, userSelectedCurrency);
+    // console.log(isShowCurrencySwitcher, userSelectedCurrency);
     if (isShowCurrencySwitcher) {
       dispatch(showCurrencySwitcher(false));
     } else {

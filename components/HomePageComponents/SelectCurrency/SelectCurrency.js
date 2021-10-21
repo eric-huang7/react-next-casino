@@ -26,7 +26,7 @@ export const SelectCurrency = ({t}) => {
             className={styles.selectCurrencyBackButton}
           >
           </div>
-          <h3 className={styles.selectCurrencyHeading}>{'SELECT CURRENCY'}</h3>
+          <h3 className={styles.selectCurrencyHeading}>{t("selectCurrency.heading")}</h3>
           <div
             className={styles.selectCurrencyCloseButton}
             onClick={() => closeCurrenciesClickHandler()}

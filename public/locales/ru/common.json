@@ -185,5 +185,54 @@
     "passwordGeneral": "Пароль должен содержать числа, строчные и прописные буквы и специальные символы.",
     "email": "Электронная почта должна быть действующей.",
     "wrongPasswordOrEmail": "Неправильный пароль или емейл!"
+  },
+  "selectCurrency": {
+    "heading": "Выберите валюту",
+    "suggestedCurrencies": "Предлагаемые валюты",
+    "otherRealMoneyCurrencies": "Другие валюты реальных денег",
+    "otherCryptoCurrencies": "Другие криптовалюты"
+  },
+  "mobileSideMenu": {
+    "userBlock": {
+      "realMoney": "Реальные деньги",
+      "bonus": "Заблокировано бонусом"
+    },
+    "listMenu": {
+      "home": "Домашняя",
+      "user": "Юзер",
+      "notifications": "Уведомления",
+      "gifts": "Подарки",
+      "tournament": "Турнир",
+      "help": "Помощь",
+      "info": "Информация",
+      "termsAndConditions": "Условия и положения",
+      "news": "Новости казино"
+    },
+    "innerLists": {
+      "tournament": {
+        "slotWars": "Слот-войны",
+        "tableWars": "Настольные войны",
+        "lastManStanding": "Последний герой"
+      },
+      "help": {
+        "heading": "Премиум-поддержка",
+        "information": "По общим вопросам и проблемам обращайтесь в нашу службу поддержки премиум-класса по электронной почте ниже или через чат.",
+        "liveChat": "Живой чат",
+        "aboutBitcoin": "О биткойне",
+        "instantExchanger": "Мгновенный обмен BTC на EUR",
+        "provabilityExplained": "Объяснение доказуемости",
+        "playSafe": "Безопасная игра",
+        "complains": "Жалобы",
+        "howToBuyCrypto": "Как купить криптовалюту"
+      },
+      "info": {
+        "aboutUs": "О нас",
+        "termsAndConditions": "Условия и положения",
+        "bonusTermsAndConditions": "Бонусные условия и положения",
+        "payments": "Платежи",
+        "privacyPolicy": "Политика конфиденциальности",
+        "affiliateProgram": "Партнерская программа"
+      }
+    }
   }
 }

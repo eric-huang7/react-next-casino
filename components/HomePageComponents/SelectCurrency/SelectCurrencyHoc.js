@@ -22,9 +22,9 @@ const otherCryptoCurrencies = [
   {id: 29, abbreviation: "DOGE", symbol: ""},
 ]
 const headingsCurrencies = {
-  suggestedCurrencies: 'Suggested Currencies',
-  otherRealMoney: 'Other Real Money Currencies',
-  otherCryptoCurrencies: 'Other Crypto Currencies'
+  suggestedCurrencies: 'selectCurrency.suggestedCurrencies',
+  otherRealMoney: 'selectCurrency.otherRealMoneyCurrencies',
+  otherCryptoCurrencies: 'selectCurrency.otherCryptoCurrencies'
 }
 
 export const SelectCurrencyHoc = ({t}) => {

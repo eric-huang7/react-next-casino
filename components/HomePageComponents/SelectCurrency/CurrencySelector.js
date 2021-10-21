@@ -18,7 +18,7 @@ export const CurrencySelector = ({t, heading, currenciesList}) => {
   return (
     <div className={styles.selectorCurrenciesWrapper}>
       <h3 className={styles.selectorCurrenciesHeading}>
-        {heading}
+        {t(heading)}
       </h3>
       <ul className={styles.selectorCurrenciesList}>
         {
