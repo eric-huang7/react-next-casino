@@ -206,7 +206,8 @@
       "help": "Помощь",
       "info": "Информация",
       "termsAndConditions": "Условия и положения",
-      "news": "Новости казино"
+      "news": "Новости",
+      "logout": "Выйти"
     },
     "innerLists": {
       "tournament": {

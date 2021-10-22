@@ -12,9 +12,16 @@ import {useRouter} from "next/router";
 
 
 export const Header = ({t}) => {
+
+
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
+
+  useEffect(() => {
+
+  }, [])
+
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
   let userLogined = userLogin.isAuthenticated;

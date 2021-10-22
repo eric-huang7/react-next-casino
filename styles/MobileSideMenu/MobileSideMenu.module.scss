@@ -183,6 +183,8 @@
   display: flex;
   flex-direction: column;
 
+  background-color: #393939;
+
   margin-left: -51px;
 
   overflow: hidden;
@@ -219,14 +221,17 @@
       margin-right: 20px;
       margin-top: 10px;
 
-      background-color: #3C3955;
+      background-color: #5D5D5D;
 
       padding: 10px;
 
-      border-radius: 5px;
+      border: 2px solid #ffffff;
+      border-radius: 15px;
+      width: 160px;
+      text-align: center;
       & a {
+        font-size: 13px;
         color: #ffffff;
-        text-decoration: underline;
       }
     }
   }
@@ -260,11 +265,86 @@
 
 .dropHide {
   & .dropMenu{
-    background-color: #ff0e0e;
     height: 0px;
   }
 }
 
+.mobileSideLangSwitcherButton {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+
+  border-bottom: 1px solid #a7a7a7;
+
+  padding: 10px;
+
+  & > img {
+    width: 35px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+  }
+  & > a, p {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    width: 100%;
+    color: #a7a7a7;
+
+    margin: 19px 0 18px 0;
+  }
+}
+.languageWrapper {
+  width: 100%;
+}
+.mobileSideLanguagesWrapper {
+
+  width: 100%;
+  & .mobileSideLanguageItem {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    & .languageFlagWrapper {
+      width: 35px;
+      height: 35px;
+      border-radius: 100%;
+
+      background-color: #ff0e0e;
+
+
+    }
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+.logoutLinkWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+
+  border-bottom: 1px solid #a7a7a7;
+
+  padding: 10px;
+
+  & > img {
+    width: 35px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+  }
+  & > p {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    width: 100%;
+    color: #a7a7a7;
+
+    margin: 19px 0 18px 0;
+  }
+}
 
 
 .sideMenuFooter {

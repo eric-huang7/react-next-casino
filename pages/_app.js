@@ -4,10 +4,21 @@ import {Provider} from "react-redux";
 import {store} from "../redux/store";
 
 import "../styles/globals.scss"
+import {useCookies} from "react-cookie";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
 
 
 const MyApp = ({ Component, pageProps }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['language']);
+  const router = useRouter();
+  useEffect(() => {
+    if (cookies.language) {
+      console.log(cookies.language, router, "APPPPPPPPPPPPPPPPP")
+      router.push(router.route, router.route, {locale: cookies.language})
+    }
+  }, [])
 
 
   return (

@@ -206,7 +206,8 @@
       "help": "Help",
       "info": "Info",
       "termsAndConditions": "Terms & Conditions",
-      "news": "Casino News"
+      "news": "Casino News",
+      "logout": "Log Out"
     },
     "innerLists": {
       "tournament": {

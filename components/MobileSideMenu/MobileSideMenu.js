@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 import {MobileListContainer} from "./MobileListContainer";
+import {MobileSideLangswitcher} from "./MobileSideLangswitcher";
 
 const socilaLinks = [
  {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
@@ -111,6 +112,17 @@ export const MobileSideMenu = ({t, userInform}) => {
       </div>
       <div className={styles.mobileSideListWrapper}>
        <MobileListContainer t={t}/>
+       <div className={styles.mobileSideLangSwitcherButton}>
+        <img  alt=""/>
+        <div className={styles.languageWrapper}>
+         <p>Language</p>
+         {/*<MobileSideLangswitcher />*/}
+        </div>
+       </div>
+       <div className={styles.logoutLinkWrapper}>
+        <img alt=""/>
+        <p>{t('mobileSideMenu.listMenu.logout')}</p>
+       </div>
       </div>
       <div className={styles.sideMenuFooter}>
        <div className={styles.sideMenuFooterIconsBlock}>

@@ -1,16 +1,14 @@
 import Link from 'next/link'
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import LangSwitcher from "../components/LangSwitcher/LangSwitcher";
 import MainLayout from '../components/MainLayout/MainLayout'
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
-import {setLang} from "../redux/actions/lang";
 import {useEffect} from "react";
 import Head from "next/head";
 
 import {MainBlock} from "../components/HomePageComponents/MainBlock";
-import {JackpotBlock} from "../components/HomePageComponents/JackpotBlock/JackpotBlock";
+
 import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
 import {GamesSliderBlock} from "../components/HomePageComponents/GamesSliderBlock/GamesSliderBlock";
 import {getGames, getJackpotGames, getNewGames, getTableGames} from "../redux/actions/games";

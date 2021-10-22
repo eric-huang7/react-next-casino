@@ -6,7 +6,7 @@ import styles from '../../styles/LangSwitcher.module.scss'
 
 import {useRouter} from 'next/router'
 import {setLang} from "../../redux/actions/lang";
-
+import {useCookies} from "react-cookie";
 
 let arrLanguages = [
   {name: "eng", lang: "en", language: "English", icon: "/assets/icons/flags/United-Kingdom.png"},
@@ -19,13 +19,13 @@ let arrLanguages = [
   {name: "deu", lang: "de", language: "German", icon: "/assets/icons/flags/Germany.png"},
   {name: "fra", lang: "fr", language: "French", icon: "/assets/icons/flags/France.png"},
   {name: "swe", lang: "se", language: "Swedish", icon: "/assets/icons/flags/Sweden.png"},
-]
+];
 
 
 const LangSwitcher = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const [cookies, setCookie, removeCookie] = useCookies(['language']);
 
 
 
@@ -43,11 +43,10 @@ const LangSwitcher = (props) => {
   }
 
   // let sortedLang = arrLanguages;
-  dispatch(setLang(router.locale));
+
 
   useEffect(() => {
-    console.log(router.locale, '!!!!!!!!!!!!!!')
-
+    dispatch(setLang(router.locale));
     let sortedLang = arrLanguages.sort((item) => {
       let res = item.lang === activeLang ? -1 : 1
       return res;
@@ -55,18 +54,24 @@ const LangSwitcher = (props) => {
 
     setArrLang(sortedLang);
 
-  }, [])
+  }, [activeLang])
 
 
-  useEffect(() => {
-    let sortedLang = arrLanguages.sort((item) => {
-      let res = item.lang === activeLang ? -1 : 1;
-      return res;
-    })
-    setArrLang(sortedLang);
-  }, [activeLang]);
+  // useEffect(() => {
+  //   dispatch(setLang(router.locale));
+  //   let sortedLang = arrLanguages.sort((item) => {
+  //     let res = item.lang === activeLang ? -1 : 1;
+  //     return res;
+  //   })
+  //   setArrLang(sortedLang);
+  // }, [activeLang]);
 
   const langChooser = (e) => {
+    let today = new Date();
+    let nextYear = new Date();
+    nextYear.setFullYear(today.getFullYear() + 1);
+    setCookie('language', e.target.dataset.lang, {path: '/', expires: nextYear});
+
     dispatch(setLang(e.target.dataset.lang));
   }
 

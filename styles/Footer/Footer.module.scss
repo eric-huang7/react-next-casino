@@ -140,6 +140,9 @@ background-color: #202c42;
   text-transform: uppercase;
   font-size: 16px;
 }
+.chooseLanguageButton span:hover {
+  cursor: pointer;
+}
 
 .dropdownWrapper {
   position: absolute;
@@ -172,7 +175,19 @@ background-color: #202c42;
 .langChooserListItem {
   margin-top: 10px;
   cursor: pointer;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & a {
+    color: #9bfffd;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
 }
+
 .langChooserListItem:first-child {
   margin-top: 0px;
 }

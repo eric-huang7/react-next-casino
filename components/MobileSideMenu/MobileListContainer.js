@@ -51,7 +51,7 @@ export const MobileListContainer = ({t}) => {
           type: "block",
           // path: '',
           blockData: [
-              {id: "6.1.1", name: "slotsIdol@support.com", path: "mailto:"},
+              {id: "6.1.1", name: "support@slotsIdol.com", path: "mailto:"},
               {id: "6.1.2", name: "mobileSideMenu.innerLists.help.liveChat", path: "#liveChat"}
             ]
           },
