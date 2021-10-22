@@ -15,7 +15,7 @@ import {Faq} from "../../components/ContactUsPageComponents/FAQ/Faq";
 
 const ContactUs = (props) => {
   const { t } = useTranslation('common')
-  const loc = useRouter();
+
   return (
     <>
       <MainLayout t={t}>

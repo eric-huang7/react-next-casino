@@ -30,10 +30,10 @@ export default function Home(props) {
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
-
+  // console.log(router, "home LOCALE")
 
   useEffect(() => {
-    dispatch(setLang(locale));
+    // dispatch(setLang(locale));
     dispatch(getGames());
     dispatch(getNewGames()); //new games
     dispatch(getJackpotGames()); // Jackpot Games

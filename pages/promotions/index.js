@@ -6,7 +6,7 @@ import styles from "../../styles/Home.module.scss";
 
 const Promotions = (props) => {
   const { t } = useTranslation('common');
-  console.log(props);
+  // console.log(props);
   return (
     <>
       <MainLayout t={t}>

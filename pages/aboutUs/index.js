@@ -8,13 +8,24 @@ import {MainBlock} from "../../components/AboutUsPageComponents/MainBlock/MainBl
 import {TextBlocks} from "../../components/AboutUsPageComponents/TextBlocks/TextBlocks";
 import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
+import {setLang} from "../../redux/actions/lang";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 
 
 const AboutUS = (props) => {
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  const loc = useRouter();
-  // console.log(loc, 'LOCALE')
+  // const activeLang = useSelector(({lang}) => lang.activeLang);
+  //
+  // useEffect(() => {
+  //   dispatch(setLang(router.locale));
+  //   console.log( router, "$$$$$$$$$$$$$$$$$$")
+  // },[])
+
+
   return (
     <>
       <MainLayout t={t}>

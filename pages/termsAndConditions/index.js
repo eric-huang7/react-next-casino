@@ -5,7 +5,7 @@ import styles from "../../styles/Home.module.scss";
 
 
 const TermsConditions = (props) => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
   return (
     <>
       <MainLayout t={t}>
