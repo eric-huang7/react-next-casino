@@ -166,7 +166,7 @@
       "heading": "bonuses"
     },
     "theCasino" : {
-      "heading": "theCasino"
+      "heading": "the Casino"
     },
     "security" : {
       "heading": "security"
@@ -199,9 +199,9 @@
     },
     "listMenu": {
       "home": "Home",
-      "user": "User",
+      "user": "My Account",
       "notifications": "Notifications",
-      "gifts": "Gifts",
+      "gifts": "Promotions",
       "tournament": "Tournament",
       "help": "Help",
       "info": "Info",
@@ -223,7 +223,8 @@
         "provabilityExplained": "Provability Explained",
         "playSafe": "Play Safe",
         "complains": "Complains",
-        "howToBuyCrypto": "How to Buy Crypto"
+        "howToBuyCrypto": "How to Buy Crypto",
+        "manageSubscriptions": "Manage subscriptions"
       },
       "info": {
         "aboutUs": "About Us",

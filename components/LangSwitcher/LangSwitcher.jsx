@@ -13,16 +13,16 @@ const LangSwitcher = (props) => {
 const dispatch = useDispatch();
   const router = useRouter();
   let arrLanguages = [
-    {name: "eng", lang: "en", language: "English"},
-    {name: "rus", lang: "ru", language: "Русский"},
-    {name: "chn", lang: "cn", language: "中国人"},
-    {name: "jpn", lang: "jp", language: "日本"},
-    {name: "prt", lang: "pt", language: "Português"},
-    {name: "esp", lang: "es", language: "Español"},
-    {name: "deu", lang: "de", language: "Deutsch"},
-    {name: "fra", lang: "fr", language: "Français"},
-    {name: "swe", lang: "se", language: "Svenska"},
-    {name: "ita", lang: "it", language: "Italiano"},
+    {name: "eng", lang: "en", language: "English", icon: "/assets/icons/flags/United-Kingdom.png"},
+    {name: "rus", lang: "ru", language: "Russian", icon: "/assets/icons/flags/Russia.png"},
+    {name: "chn", lang: "cn", language: "Chinese", icon: "/assets/icons/flags/China.png"},
+    {name: "jpn", lang: "jp", language: "Japanese", icon: "/assets/icons/flags/Japan.png"},
+    {name: "prt", lang: "pt", language: "Portuguese", icon: "/assets/icons/flags/Portugal.png"},
+    {name: "esp", lang: "es", language: "Spanish", icon: "/assets/icons/flags/Spain.png"},
+    {name: "deu", lang: "de", language: "German", icon: "/assets/icons/flags/Germany.png"},
+    {name: "fra", lang: "fr", language: "French", icon: "/assets/icons/flags/France.png"},
+    {name: "swe", lang: "se", language: "Swedish", icon: "/assets/icons/flags/Sweden.png"},
+    {name: "ita", lang: "it", language: "Italian", icon: "/assets/icons/flags/Italy.png"},
   ]
   const activeLang = useSelector(({lang}) => lang.activeLang);
   const [activeLangBlock, setActiveLangBlock] = useState(false);
@@ -58,6 +58,7 @@ useEffect(() => {
       onClick={() => switchActiveLangBlock()}
     >
       <div className={styles.activeLangBlock}>
+        <img className={styles.langSwitcherActiveLangFlag} src={sortedLang[0].icon} alt="flag icon"/>
         <span>
           {sortedLang[0].language}
         </span>
@@ -70,6 +71,7 @@ useEffect(() => {
               key={language.name}
               onClick={(e) => langChooser(e)}
             >
+              <img className={styles.langSwitcherLangFlag} src={language.icon} alt="flag icon"/>
               <Link
                 href={props.href}
                 locale={language.lang}

@@ -199,9 +199,9 @@
     },
     "listMenu": {
       "home": "Домашняя",
-      "user": "Юзер",
+      "user": "Мой аккаунт",
       "notifications": "Уведомления",
-      "gifts": "Подарки",
+      "gifts": "Промо акции",
       "tournament": "Турнир",
       "help": "Помощь",
       "info": "Информация",
@@ -223,7 +223,8 @@
         "provabilityExplained": "Объяснение доказуемости",
         "playSafe": "Безопасная игра",
         "complains": "Жалобы",
-        "howToBuyCrypto": "Как купить криптовалюту"
+        "howToBuyCrypto": "Как купить криптовалюту",
+        "manageSubscriptions": "Управление подписками"
       },
       "info": {
         "aboutUs": "О нас",

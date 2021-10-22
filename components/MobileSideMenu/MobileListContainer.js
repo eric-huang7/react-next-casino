@@ -52,7 +52,7 @@ export const MobileListContainer = ({t}) => {
           // path: '',
           blockData: [
               {id: "6.1.1", name: "slotsIdol@support.com", path: "mailto:"},
-              {id: "6.1.2", name: "mobileSideMenu.help.liveChat", path: "#liveChat"}
+              {id: "6.1.2", name: "mobileSideMenu.innerLists.help.liveChat", path: "#liveChat"}
             ]
           },
         {id: "6.2", name: "FAQ", type: "link", path: "/contactUs#faq"},
@@ -62,6 +62,7 @@ export const MobileListContainer = ({t}) => {
         {id: "6.6", name: "mobileSideMenu.innerLists.help.playSafe", type: "link", path: "#PlaySafe"},
         {id: "6.7", name: "mobileSideMenu.innerLists.help.complains", type: "link", path: "#Complains"},
         {id: "6.8", name: "mobileSideMenu.innerLists.help.howToBuyCrypto", type: "link", path: "#HowToBuyCrypto"},
+        {id: "6.9", name: "mobileSideMenu.innerLists.help.manageSubscriptions", type: "link", path: "#manageSubscriptions"}
       ]
     },
     {id: 7,
@@ -85,7 +86,7 @@ export const MobileListContainer = ({t}) => {
     },
     {id: 9,
       name: "mobileSideMenu.listMenu.news",
-      icon: '/assets/img/mobileSideMenu/arrow.svg',
+      icon: '/assets/img/mobileSideMenu/files.svg',
       type: "link",
       path: "#news"
     },
