@@ -30,16 +30,16 @@ export const MobileListContainer = ({t}) => {
       type: "link",
       path: "#gifts"
     },
-    {id: 5,
-      name: "mobileSideMenu.listMenu.tournament",
-      icon: '/assets/img/mobileSideMenu/cup.svg',
-      type: "block",
-      blockData: [
-        {id: "5.1", name: "mobileSideMenu.innerLists.tournament.slotWars", type: "link", path: "#slotWars"},
-        {id: "5.2", name: "mobileSideMenu.innerLists.tournament.tableWars", type: "link", path: "#tableWars"},
-        {id: "5.3", name: "mobileSideMenu.innerLists.tournament.lastManStanding", type: "link", path: "#lastManStanding"},
-      ]
-    },
+    // {id: 5,
+    //   name: "mobileSideMenu.listMenu.tournament",
+    //   icon: '/assets/img/mobileSideMenu/cup.svg',
+    //   type: "block",
+    //   blockData: [
+    //     {id: "5.1", name: "mobileSideMenu.innerLists.tournament.slotWars", type: "link", path: "#slotWars"},
+    //     {id: "5.2", name: "mobileSideMenu.innerLists.tournament.tableWars", type: "link", path: "#tableWars"},
+    //     {id: "5.3", name: "mobileSideMenu.innerLists.tournament.lastManStanding", type: "link", path: "#lastManStanding"},
+    //   ]
+    // },
     {id: 6,
       name: "mobileSideMenu.listMenu.help",
       icon: '/assets/img/mobileSideMenu/question.svg',

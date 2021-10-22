@@ -73,6 +73,17 @@ export const MobileSideMenu = ({t, userInform}) => {
    dispatch(showMobileMenu(true));
   }
  }
+ const [isOpenLanguages, setIsOpenLanguages] = useState(false);
+
+ function openLanguagesClickHandler() {
+  console.log('asdas')
+  if (isOpenLanguages) {
+   setIsOpenLanguages(false);
+  } else {
+   setIsOpenLanguages(true);
+  }
+ }
+
 
  useEffect(() => {
   dispatch(showMobileMenu(false));
@@ -112,11 +123,11 @@ export const MobileSideMenu = ({t, userInform}) => {
       </div>
       <div className={styles.mobileSideListWrapper}>
        <MobileListContainer t={t}/>
-       <div className={styles.mobileSideLangSwitcherButton}>
+       <div className={`${styles.mobileSideLangSwitcherButton} ${isOpenLanguages ? styles.activeLangMenu : ""}`}>
         <img  alt=""/>
         <div className={styles.languageWrapper}>
-         <p>Language</p>
-         {/*<MobileSideLangswitcher />*/}
+         <p onClick={() => openLanguagesClickHandler()}>{t('mobileSideMenu.listMenu.language')}</p>
+         <MobileSideLangswitcher isOpenLanguages={isOpenLanguages}/>
         </div>
        </div>
        <div className={styles.logoutLinkWrapper}>
