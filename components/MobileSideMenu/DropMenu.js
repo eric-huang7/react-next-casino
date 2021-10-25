@@ -27,7 +27,6 @@ export const DropMenu = ({t,el}) => {
     e.preventDefault();
     const liveChatButton = document.getElementById('lhc_status_widget_v2').contentWindow.document.body.childNodes[0];
     liveChatButton.click();
-    console.log(liveChatButton, '!!!!!!!!!!!!!!!!!!!!SSS');
   }
 
 

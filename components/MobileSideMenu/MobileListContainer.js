@@ -109,10 +109,10 @@ export const MobileListContainer = ({t, isAuth}) => {
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[3]}/>
       </li>
-      <li className={styles.mobileSideListItem}>
-        <img src={listArr[4].icon} alt='side menu icon'/>
-        <DropMenu el={listArr[4]} t={t}/>
-      </li>
+      {/*<li className={styles.mobileSideListItem}>*/}
+      {/*  <img src={listArr[4].icon} alt='side menu icon'/>*/}
+      {/*  <DropMenu el={listArr[4]} t={t}/>*/}
+      {/*</li>*/}
       <li className={styles.mobileSideListItem}>
         <img src={listArr[5].icon} alt='side menu icon'/>
         <DropMenu el={listArr[5]} t={t}/>
