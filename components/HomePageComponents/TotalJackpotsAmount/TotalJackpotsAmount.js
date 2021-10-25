@@ -5,6 +5,7 @@ import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
+import {login} from "../../../redux/actions/login";
 
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
@@ -40,6 +41,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   } else {
     // ########### TOTAL JACKPOT MOUNT
     let allNumber = 0
+    console.log(jackpots.jackpots, "JJJJJJJJJJJJJJJJJJJ")
     let allMount = jackpots.jackpots.results.map((el) => {
       currency = el.jackpot_amounts[0].currency;
       if (currency === 'EUR') {

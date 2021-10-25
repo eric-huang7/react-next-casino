@@ -22,6 +22,15 @@ export const DropMenu = ({t,el}) => {
     }
   }, [isShowMobileMenu])
 
+  const liveChatClick = (e) => {
+
+    e.preventDefault();
+    const liveChatButton = document.getElementById('lhc_status_widget_v2').contentWindow.document.body.childNodes[0];
+    liveChatButton.click();
+    console.log(liveChatButton, '!!!!!!!!!!!!!!!!!!!!SSS');
+  }
+
+
   return (
 
       <div
@@ -40,15 +49,33 @@ export const DropMenu = ({t,el}) => {
               } else {
                 return (
                   <div className={styles.helpMenuBlock} key={innerEl.id}>
-                    <p className={styles.helpMenuHeading}>{t(innerEl.name)}</p>
+                    <p className={styles.helpMenuHeading}>
+                      <img src='/assets/img/mobileSideMenu/helpPremium.svg' alt="help premium icon"/>
+                      {t(innerEl.name)}</p>
                     <p className={styles.helpMenuInfo}>{t(innerEl.info)}</p>
                     <div className={styles.helpMenuLinksWrapper}>
                       {innerEl.blockData.map((links) => {
-                        return (
-                          <div className={styles.helpMenuLinkBlock} key={links.id}>
-                            <Link href={links.path}><a className={styles.helpMenuLinks}>{t(links.name)}</a></Link>
-                          </div>
-                        )
+                        if (links.path === "#liveChat") {
+                          return (
+                            <div className={styles.helpMenuLinkBlock} key={links.id}>
+                              <Link href={links.path}>
+                                <a onClick={(e) => liveChatClick(e)} className={styles.helpMenuLinks}>
+                                  {t(links.name)}
+                                </a>
+                              </Link>
+                            </div>
+                          )
+                        } else {
+                          return (
+                            <div className={styles.helpMenuLinkBlock} key={links.id}>
+                              <Link href={links.path}>
+                                <a className={styles.helpMenuLinks}>
+                                  {t(links.name)}
+                                </a>
+                              </Link>
+                            </div>
+                          )
+                        }
                       })}
                     </div>
                   </div>

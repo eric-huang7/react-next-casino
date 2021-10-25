@@ -6,12 +6,12 @@ const initialState = {
     {name: "eng", lang: "en", language: "English"},
     {name: "rus", lang: "ru", language: "Русский"},
     {name: "chn", lang: "cn", language: "中国人"},
-    {name: "jpn", lang: "jp", language: "日本"},
+    {name: "jpn", lang: "ja", language: "日本"},
     {name: "prt", lang: "pt", language: "Português"},
     {name: "esp", lang: "es", language: "Español"},
     {name: "deu", lang: "de", language: "Deutsch"},
     {name: "fra", lang: "fr", language: "Français"},
-    {name: "swe", lang: "se", language: "Svenska"},
+    {name: "swe", lang: "sv", language: "Svenska"},
     {name: "ita", lang: "it", language: "Italiano"},
   ]
 };

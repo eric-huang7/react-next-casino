@@ -9,7 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 import {MobileListContainer} from "./MobileListContainer";
-import {MobileSideLangswitcher} from "./MobileSideLangswitcher";
+import {MobileSideLangSwitcher} from "./MobileSideLangswitcher";
+import {LogoutButtonMobileMenu} from "./LogoutButtonMobileMenu";
 
 const socilaLinks = [
  {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
@@ -45,6 +46,10 @@ export const MobileSideMenu = ({t, userInform}) => {
     setUserBalance("00,00");
     setUserRealMoney("00,00");
    }
+  } else {
+   setUserBalance('');
+   setUserRealMoney("");
+   setUsername("");
   }
   // userObj.bonuses = userInform.bonuses // no data now
  }, [userInform.isAuthenticated, userInform.balance]);
@@ -122,18 +127,15 @@ export const MobileSideMenu = ({t, userInform}) => {
        </div>
       </div>
       <div className={styles.mobileSideListWrapper}>
-       <MobileListContainer t={t}/>
+       <MobileListContainer isAuth={userInform.isAuthenticated} t={t}/>
        <div className={`${styles.mobileSideLangSwitcherButton} ${isOpenLanguages ? styles.activeLangMenu : ""}`}>
-        <img  alt=""/>
+        <img src={'/assets/img/mobileSideMenu/globe.svg'} alt="language icon"/>
         <div className={styles.languageWrapper}>
          <p onClick={() => openLanguagesClickHandler()}>{t('mobileSideMenu.listMenu.language')}</p>
-         <MobileSideLangswitcher isOpenLanguages={isOpenLanguages}/>
+         <MobileSideLangSwitcher isOpenLanguages={isOpenLanguages}/>
         </div>
        </div>
-       <div className={styles.logoutLinkWrapper}>
-        <img alt=""/>
-        <p>{t('mobileSideMenu.listMenu.logout')}</p>
-       </div>
+       <LogoutButtonMobileMenu t={t} isLogined={userInform.isAuthenticated}/>
       </div>
       <div className={styles.sideMenuFooter}>
        <div className={styles.sideMenuFooterIconsBlock}>

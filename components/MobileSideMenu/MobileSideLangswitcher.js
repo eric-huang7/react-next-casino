@@ -10,15 +10,15 @@ let arrLanguages = [
   {name: "rus", lang: "ru", language: "Russian", icon: "/assets/icons/roundFlags/Russia.png"},
   {name: "ita", lang: "it", language: "Italian", icon: "/assets/icons/roundFlags/Italy.png"},
   {name: "chn", lang: "cn", language: "Chinese", icon: "/assets/icons/roundFlags/China.png"},
-  {name: "jpn", lang: "jp", language: "Japanese", icon: "/assets/icons/roundFlags/Japan.png"},
+  {name: "jpn", lang: "ja", language: "Japanese", icon: "/assets/icons/roundFlags/Japan.png"},
   {name: "prt", lang: "pt", language: "Portuguese", icon: "/assets/icons/roundFlags/Portugal.png"},
   {name: "esp", lang: "es", language: "Spanish", icon: "/assets/icons/roundFlags/Spain.png"},
   {name: "deu", lang: "de", language: "German", icon: "/assets/icons/roundFlags/Germany.png"},
   {name: "fra", lang: "fr", language: "French", icon: "/assets/icons/roundFlags/France.png"},
-  {name: "swe", lang: "se", language: "Swedish", icon: "/assets/icons/roundFlags/Sweden.png"},
+  {name: "swe", lang: "sv", language: "Swedish", icon: "/assets/icons/roundFlags/Sweden.png"},
 ];
 
-export const MobileSideLangswitcher = ({isOpenLanguages}) => {
+export const MobileSideLangSwitcher = ({isOpenLanguages}) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [cookies, setCookie, removeCookie] = useCookies(['language']);

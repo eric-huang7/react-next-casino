@@ -56,6 +56,17 @@
   font-family: "Franklin Gothic";
   src: url("/fonts/franklinGothic/franklingothic.ttf");
 }
+@font-face {
+  font-family: 'Segoe UI';
+  src: url("/fonts/segoeUI/SegoeUI.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe UI Bold';
+  src: url("/fonts/segoeUI/SegoeUIBold.ttf");
+  font-style: normal;
+}
+
 
 html,
 body {

@@ -25,6 +25,10 @@ export const auth_url = 'http://t-gpb.slotsidol.com:7000/auth';
 
 export const signUp_url = 'http://t-gpb.slotsidol.com:7000/user';
 
+// ########## logout
+
+export const logout_url = 'http://t-gpb.slotsidol.com:7000/logout';
+
 // ######### user information
 
 export const user_balance_url = 'http://t-gpb.slotsidol.com:7000/balance';

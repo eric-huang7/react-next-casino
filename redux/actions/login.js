@@ -1,6 +1,15 @@
 import axios from "axios";
-import {AUTH, BALANCE, LOGIN_FAIL, LOGIN_SUCCESS, SIGNUP_FAIL, SIGNUP_SUCCESS} from "./types";
-import {auth_url, login_url, user_balance_url, signUp_url} from "../url/url";
+import {
+  AUTH,
+  BALANCE,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  LOGOUT_FAIL,
+  LOGOUT_SUCCESS,
+  SIGNUP_FAIL,
+  SIGNUP_SUCCESS
+} from "./types";
+import {auth_url, login_url, user_balance_url, signUp_url, logout_url} from "../url/url";
 
 axios.defaults.withCredentials = true;
 
@@ -86,6 +95,30 @@ export const signUp = (currency_id, user_id, site_id, auth_type_id, username, em
     dispatch({
       type: SIGNUP_FAIL,
       payload: e.response
+    })
+  }
+}
+
+export const logout = () => async dispatch => {
+  const config = {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  try {
+    const res = await axios.delete(logout_url, config);
+    console.log(res, "LOGOUT RESPONSE");
+    dispatch({
+      type: LOGOUT_SUCCESS,
+      payload: res.data,
+    })
+  } catch (e) {
+    console.log(e, "SOME ERROR WHEN LOGOUT USER");
+    dispatch({
+      type: LOGOUT_FAIL,
+      payload: e.response,
     })
   }
 }

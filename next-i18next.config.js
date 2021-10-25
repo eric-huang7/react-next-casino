@@ -3,6 +3,6 @@ module.exports = {
     defaultLocale: "en",
     locales: ["en", "ru"],
     defaultNS: [],
-    localeDetection: false,
+    localeDetection: true,
   },
 };
