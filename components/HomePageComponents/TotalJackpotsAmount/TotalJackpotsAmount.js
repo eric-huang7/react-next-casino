@@ -41,7 +41,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   } else {
     // ########### TOTAL JACKPOT MOUNT
     let allNumber = 0
-    console.log(jackpots.jackpots, "JJJJJJJJJJJJJJJJJJJ")
+
     let allMount = jackpots.jackpots.results.map((el) => {
       currency = el.jackpot_amounts[0].currency;
       if (currency === 'EUR') {

@@ -1,0 +1,596 @@
+.depositPageWrapper {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0,0,0, 0.8);;
+
+  z-index: 12;
+
+  overflow: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.depositsMainBlock {
+  width: 500px;
+
+  margin: 0 auto;
+
+  & h2 {
+    margin: 25px 0;
+
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: #ff0000;
+    font-family: "Gobold";
+    text-transform: uppercase;
+
+    text-align: center;
+  }
+}
+
+.depositInnerBlockWrapper {
+  border-radius: 15px;
+
+  background-color: #ffffff;
+
+  padding: 5px;
+
+  max-width: 430px;
+
+  margin: 0 auto;
+}
+
+.depositHeadingBlock {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ff0000;
+
+  border-radius: 15px 15px 0 0;
+
+  & h3 {
+    margin: 20px 0 15px 0;
+
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-family: "Myriad Pro";
+    text-transform: uppercase;
+
+  }
+  & .depositPageCloseButton {
+    position: absolute;
+
+    top: 13px;
+    right: 0px;
+
+    width: 35px;
+    height: 35px;
+
+    & .closeOne, .closeTwo{
+      display: block;
+
+      position: relative;
+
+      background-color: #ffffff;
+      width: 26px;
+      height: 2px;
+    }
+    & .closeOne {
+      transform: rotateZ(-45deg);
+      top: 15px;
+    }
+    & .closeTwo {
+      transform: rotateZ(45deg);
+      top: 13px;
+    }
+  }
+  & .depositPageCloseButton:hover {
+    cursor: pointer;
+  }
+}
+
+.depositInputsBlock {
+
+  padding: 15px 30px;
+
+  & .depositInputCurrencyBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    & .depositInputCountWrapper {
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+
+      & .labelEnterSum {
+        font-size: 14px;
+        color: #8f8f8f;
+        font-family: "Verdana";
+
+        margin-bottom: 5px;
+      }
+
+      & .depositSummInput {
+        background-color: #f2f6f9;
+
+        border: 0.75px solid #ff0000;
+
+        width: 221px;
+        height: 50px;
+
+        font-size: 36px;
+        color: #3a3a3a;
+        font-family: "Source Sans Roman";
+
+        outline: none;
+
+        padding-left: 45px;
+
+        -moz-appearance: textfield;
+      }
+      & input.depositSummInput::-webkit-outer-spin-button,
+      input.depositSummInput::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      & .labelIconCurrency {
+
+        font-size: 36px;
+        color: #3a3a3a;
+        font-family: "Source Sans";
+
+        position: absolute;
+
+        top: 23px;
+        left: 10px;
+      }
+    }
+
+    & .depositCurrencyButton {
+      width: 68px;
+      height: 33px;
+
+      border-radius: 5px;
+      background-color: #f2f6f9;
+
+      border: 0.88px solid #9fabba;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0px 10px;
+      margin-top: 20px;
+
+      position: relative;
+
+      & .depositCurrencyButtonArrow {
+        width: 8px;
+        height: 8px;
+
+        border-bottom: 1px solid #3a3a3a;
+        border-right: 1px solid #3a3a3a;
+
+        transform: rotateZ(45deg);
+
+        position: absolute;
+
+        right: 8px;
+      }
+    }
+    & .depositCurrencyButton:hover {
+      cursor: pointer;
+    }
+
+  }
+}
+
+.depositsBonusesBlock {
+  padding: 0px 30px;
+
+  position: relative;
+  & .selectBonus {
+    font-size: 14px;
+    color: #868686;
+    font-family: "Verdana";
+    text-transform: uppercase;
+  }
+
+  & .bonusesInformationBlock {
+    width: 357px;
+    height: 74px;
+    background-color: #f2f6f9;
+    border: 0.75px solid #a6a6a6;
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    position: relative;
+
+
+    & .activeBonusInfo {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+
+      & img {
+        width: 44px;
+        height: 50px;
+
+        margin-bottom: 5px;
+        margin-right: 15px;
+        margin-left: 5px;
+      }
+
+      & .bonusInfoBlock {
+        width: 255px;
+
+        & .bonusHeadingBlock {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
+
+          font-size: 14px;
+          line-height: 24px;
+          color: #b2b1b1;
+          font-family: "Verdana";
+          & span {
+            margin-right: 35px;
+          }
+          & a {
+            text-decoration: underline;
+          }
+        }
+
+        & .bonusDescriptionInfo {
+          font-size: 12px;
+          font-weight: bold;
+          letter-spacing: 0px;
+          color: #ff0000;
+          font-family: "Verdana";
+          text-transform: uppercase;
+          white-space: nowrap;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          margin: 10px 0 0 0;
+        }
+      }
+    }
+    & .notActiveBonusInfo {
+      & img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  & .bonusesInformationBlock:after {
+    position: absolute;
+
+    top: 30px;
+    right: 15px;
+
+    content: '';
+
+    width:  10px;
+    height: 10px;
+
+    border-bottom: 2px solid #ff0000;
+    border-right: 2px solid #ff0000;
+
+    transform: rotateZ(45deg);
+  }
+  & .bonusesInformationBlock:hover {
+    cursor: pointer;
+  }
+
+  & .bonusesSwitcher {
+    position: absolute;
+    top: -20px;
+    right: 30px;
+
+    & .switch {
+      position: relative;
+      display: inline-block;
+      width: 67px;
+      height: 37px;
+    }
+    & .switch input {
+      display:none;
+    }
+    & .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    & .slider:before {
+      position: absolute;
+      content: "NO";
+      height: 30px;
+      width: 33px;
+      left: 31px;
+      bottom: 3px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 30px;
+      color: #ccc;
+      font-family: "Verdana";
+    }
+
+    & .bonusSwitcherInput:checked + .slider {
+      background-color: #ff0e0e;
+    }
+
+    & .bonusSwitcherInput:focus + .slider {
+      box-shadow: 0 0 1px #ff0e0e;
+    }
+
+    & .bonusSwitcherInput:checked + .slider:before {
+      -webkit-transform: translateX(-27px);
+      -ms-transform: translateX(-27px);
+      transform: translateX(-27px);
+      content: "YES";
+      color: #ff0000;
+    }
+    & .slider.round {
+      border-radius: 34px;
+    }
+
+    & .slider.round:before {
+      border-radius: 50%;
+    }
+  }
+
+  .bonusCodeInputWrapper {
+    margin-top: 10px;
+
+    width: 357px;
+    height: 0px;
+    overflow: hidden;
+
+    background-color: #47b14c;
+    & input {
+      width: 100%;
+      height: 100%;
+
+      background-color: #f2f6f9;
+
+      color: #ff0000;
+
+      border: 0.75px solid #ff0000;
+
+      outline: none;
+
+      padding: 0 15px;
+    }
+  }
+  & .showDepositsBonusInput {
+    height: 40px;
+  }
+}
+.depositPayments {
+  width: 100%;
+
+  padding: 40px 30px 10px;
+
+  & .depositPaymentsImages {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+}
+
+.depositsIhaveBonusCodeBlock {
+  cursor: pointer;
+  & > p {
+    font-size: 15px;
+    color: #ff0000;
+    font-family: "Verdana";
+
+    text-align: center;
+  }
+
+}
+
+.depositsButton {
+  margin: 20px auto 0px;
+
+  width: 429px;
+  height: 75px;
+
+  border: 4px solid #ffffff;
+  border-radius: 15px;
+
+  background-color: #ff0000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & p {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-family: "Myriad Pro";
+    text-transform: uppercase;
+  }
+}
+.depositsButton:hover {
+  cursor: pointer;
+}
+
+.depositsChoosePaymentWrapper {
+
+  & .choosePaymentHeading {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #a1a1a1;
+    font-family: "Myriad Pro";
+    text-transform: uppercase;
+    text-align: center;
+
+    margin: 20px 0px 0px 0px;
+  }
+  & .paymentMethodsBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & div {
+      width: 67px;
+      height: 40px;
+
+      border: 1px solid #dadada;
+
+      background-color: #f7f7f7;
+
+      margin: 9px;
+
+      cursor: pointer;
+
+      & img {
+        width: 100%;
+        height: 100%;
+
+
+      }
+    }
+  }
+}
+
+.depositLastWrapper {
+
+  & .chosenPaymentMethodBlock {
+    width: 67px;
+    height: 40px;
+
+    border: 1px solid #dadada;
+
+    background-color: #f7f7f7;
+
+    margin: 0 auto;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  & .inputsWrapper {
+    & .emailInputContainer {
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 15px;
+      & label {
+        color: #ff0000;
+        font-size: 16px;
+
+        margin-left: 15px;
+      }
+      & input {
+        background-color: #f2f6f9;
+
+        border: 0.75px solid #a6a6a6;
+
+        width: 100%;
+        height: 40px;
+
+        font-size: 24px;
+        color: #3a3a3a;
+        font-family: "Source Sans Roman";
+
+        outline: none;
+      }
+      & input:focus {
+        border: 0.75px solid #ff0000;
+      }
+    }
+
+    & .amountPaymentContainer {
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+      & input {
+        background-color: #f2f6f9;
+
+        border: 0.75px solid #a6a6a6;
+
+        width: 100%;
+        height: 40px;
+
+        font-size: 24px;
+        color: #3a3a3a;
+        font-family: "Source Sans Roman";
+
+        padding-left: 30px;
+
+        outline: none;
+        -moz-appearance: textfield;
+      }
+    & input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+      & input:focus {
+        border: 0.75px solid #ff0000;
+      }
+
+      & .amountPaymentInfo {
+        color: #ff0000;
+        font-size: 16px;
+
+        margin-left: 15px;
+      }
+      & .currencyIcon {
+        position: absolute;
+
+        color: #3a3a3a;
+        font-size: 20px;
+
+        top: 26px;
+        left: 10px;
+      }
+    }
+  }
+
+  & .paymentSecureInfo {
+    color: #A0A1A5;
+    font-size: 12px;
+    text-align: center;
+
+    margin-top: 20px;
+  }
+}

@@ -9,6 +9,7 @@ import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
 import {useRouter} from "next/router";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
+import {DepositPage} from "./DepositPage/DepositPage";
 
 
 const MainLayout = ({children, t}) => {
@@ -30,6 +31,7 @@ const MainLayout = ({children, t}) => {
             <RegisterSignup isShow={registerShow} t={t}/>
             <LogIn isShow={logInShow} t={t}/>
             <SelectCurrency t={t}/>
+            <DepositPage t={t}/>
             {children}
             <Footer t={t}/>
             {/*<LangSwitcher href={router.route} locale={locale}/>*/}

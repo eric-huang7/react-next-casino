@@ -13,6 +13,8 @@ import getCurrency from "./reducers/currencyReducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
 import showPopupsReducer from './reducers/showPopupsReducer'
 import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer'
+import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
+
 
 
 export const rootReducer = combineReducers({
@@ -28,5 +30,6 @@ export const rootReducer = combineReducers({
   getCurrency : getCurrency,
   showMobileMenu: showMobileMenuReducer,
   showPopupsReducer : showPopupsReducer,
-  userSelectedCurrency: setUserCurrencyReducer
+  userSelectedCurrency: setUserCurrencyReducer,
+  userPaymentMethod: setUserPaymentMethodReducer,
 })

@@ -1,4 +1,4 @@
-
+import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
