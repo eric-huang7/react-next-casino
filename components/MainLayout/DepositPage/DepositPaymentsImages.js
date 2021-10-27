@@ -11,14 +11,16 @@ export const DepositImages = () => {
 
 
   return (
-    <div className={styles.depositPaymentsImages}>
-      {
-        paymentImages.map((el) => {
-          return (
-            <img className={styles.paymantLogo} key={el.id} src={el.src} alt={el.name}/>
-          )
-        })
-      }
+    <div className={styles.depositPayments}>
+      <div className={styles.depositPaymentsImages}>
+        {
+          paymentImages.map((el) => {
+            return (
+              <img className={styles.paymantLogo} key={el.id} src={el.src} alt={el.name}/>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }

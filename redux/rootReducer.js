@@ -1,7 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import langReducer from './actions/lang'
-import sumInputReducer from './actions/sumInputChange'
+import langReducer from './actions/lang';
 import gameReducer from "./reducers/gamesReducer";
 import winnersReducer from "./reducers/winnersReducer";
 import jackpotsReducer from "./reducers/jackpotsReducer";
@@ -11,15 +10,18 @@ import authReducer from "./reducers/authReducer";
 import playGameReducer from "./reducers/playGameReducer";
 import getCurrency from "./reducers/currencyReducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
-import showPopupsReducer from './reducers/showPopupsReducer'
-import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer'
+import showPopupsReducer from './reducers/showPopupsReducer';
+import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
 import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
+import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
+
+
 
 
 
 export const rootReducer = combineReducers({
   lang: langReducer,
-  sumInput: sumInputReducer,
+  userDepositValue: setUserDepositValueReducer,
   games: gameReducer,
   winners: winnersReducer,
   jackpots: jackpotsReducer,

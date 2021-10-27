@@ -3,14 +3,17 @@
 
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+
+  width: 100vw;
+  height: 100vh;
+  //right: 0;
+  //bottom: 0;
 
   background-color: rgba(0,0,0, 0.8);;
 
   z-index: 12;
 
-  overflow: auto;
+  overflow-y: scroll;
 }
 
 .hide {
@@ -491,7 +494,8 @@
 }
 
 .depositLastWrapper {
-
+  margin-top: 10px;
+  padding: 0 30px;
   & .chosenPaymentMethodBlock {
     width: 67px;
     height: 40px;

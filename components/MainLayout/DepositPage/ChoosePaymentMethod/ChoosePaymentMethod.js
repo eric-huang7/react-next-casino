@@ -28,11 +28,9 @@ export const ChoosePaymentMethod = () => {
   const dispatch = useDispatch();
 
   const paymentSelector = (e) => {
-
     let chosenPayment = paymentsMethods.filter((el) => {
       return el.id === Number(e.target.dataset.payment_id);
     })
-    console.log(e.target.dataset.payment_id, chosenPayment);
 
     dispatch(setUserPaymentMethod({
       paymentId: chosenPayment[0].id,

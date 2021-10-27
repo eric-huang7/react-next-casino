@@ -1,14 +1,12 @@
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import {Header} from "../Header/Header";
-import {DepositInputCount} from "./DepositInputs/DepositInputCount";
-import {BonusesBlock} from "./BonusesBlock/BonusesBlock";
-import {BonusesBlockContainer} from "./BonusesBlock/BonusesBlockContainer";
-import {DepositImages} from "./DepositPaymentsImages";
 import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
-import {ChoosePaymentMethod} from "./ChoosePaymentMethod/ChoosePaymentMethod";
-import {DepositLastPage} from "./DepositLastPage/DepositLastPage";
+import {DepositPageStepper} from "./DepositPageStepper";
+import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
+import {LOGOUT_FAIL} from "../../../redux/actions/types";
+
 
 
 export const DepositPage = ({t}) => {
@@ -17,9 +15,16 @@ export const DepositPage = ({t}) => {
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
   const isShowCurrencyModal = useSelector((state) => state.showPopupsReducer.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+  const userDepositValue = useSelector((state) => state.userDepositValue.value);
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
+  const [step, setStep] = useState(1);
+
+  const stepHandler = (step) => {
+    setStep(step + 1);
+  }
 
   console.log(userCurrency, "@@@@@@@")
 
@@ -30,7 +35,6 @@ export const DepositPage = ({t}) => {
     } else {
       setIsChecked(true);
     }
-    // console.log(e);
   }
 
   const bonusCodeInputActiveHandler = () => {
@@ -42,74 +46,41 @@ export const DepositPage = ({t}) => {
   }
 
   const currencySwitcherShowHandler = () => {
-    console.log(userCurrency, '!!!!')
     dispatch(showCurrencySwitcher(true));
   }
 
   const closeDepositModalHandler = () => {
     dispatch(showDepositModal(false));
+    setStep(1);
+  }
+  const depositValueInputHandler = (e) => {
+    dispatch(setUserDepositValue(e.target.value));
   }
 
+  const submitHandler = () => {
+
+    console.log('Submit');
+  }
   return (
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
       <Header t={t}/>
       <div className={styles.depositsMainBlock}>
         <h2>DEPOSIT $ 100 AND GET $ 200</h2>
-        <div className={styles.depositInnerBlockWrapper}>
-          <div className={styles.depositHeadingBlock}>
-            <h3>
-              DEPOSIT AMOUNT
-            </h3>
-            <div onClick={() => closeDepositModalHandler()} className={styles.depositPageCloseButton}>
-              <span className={styles.closeOne}></span>
-              <span className={styles.closeTwo}></span>
-            </div>
-          </div>
-          <div className={styles.depositInputsBlock}>
-            {/*<DepositLastPage />*/}
-            <div className={styles.depositInputCurrencyBlock}>
-              <DepositInputCount currencySymbol={userCurrency.currencySymbol}/>
-              <div
-                onClick={() => currencySwitcherShowHandler()}
-                className={styles.depositCurrencyButton}
-              >
-                {userCurrency.currencyAbbreviation}
-                <div className={styles.depositCurrencyButtonArrow}>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.depositsBonusesBlock}>
-            <p className={styles.selectBonus}>SELECT YOUR BONUS</p>
-            <div className={styles.bonusesInformationBlock}>
-              <BonusesBlockContainer t={t} isUseBonus={isChecked} bonusData={'bonusData'}/>
-            </div>
-            <div className={styles.bonusesSwitcher}>
-              <label className={styles.switch}>
-                <input onChange={(e) => checkedInputHandler(e)} className={styles.bonusSwitcherInput} type="checkbox" checked={isChecked} />
-                <span className={`${styles.slider} ${styles.round}`}>
-                </span>
-              </label>
-            </div>
-            <div  className={`${styles.bonusCodeInputWrapper} ${isActiveBonusInput ? styles.showDepositsBonusInput : ''}`}>
-              <input
-                className={styles.depositsBonusInput}
-                id={'depositsBonusIn'}
-                type="text"
-                placeholder={'Enter your bonus code'}/>
-            </div>
-          </div>
-          <div className={styles.depositPayments}>
-            <DepositImages />
-            <ChoosePaymentMethod />
-          </div>
-          <div onClick={() => bonusCodeInputActiveHandler()} className={styles.depositsIhaveBonusCodeBlock}>
-            <p>{isActiveBonusInput ? "I don't have a promo code" : 'I have a bonus code'}</p>
-          </div>
-        </div>
-        <div className={styles.depositsButton}>
-          <p>PLAY WITH $100 PLUS 200 FREE SPINS</p>
-        </div>
+        <DepositPageStepper
+          step={step}
+          t={t}
+          bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
+          isActiveBonusInput={isActiveBonusInput}
+          checkedInputHandler={checkedInputHandler}
+          currencySwitcherShowHandler={currencySwitcherShowHandler}
+          closeDepositModalHandler={closeDepositModalHandler}
+          isChecked={isChecked}
+          userCurrency={userCurrency}
+          stepHandler={stepHandler}
+          submitHandler={submitHandler}
+          userDepositValue={userDepositValue}
+          depositValueInputHandler={depositValueInputHandler}
+        />
       </div>
     </div>
   )

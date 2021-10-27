@@ -1,6 +1,7 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 
-export const DepositInputCount = ({t, currencySymbol}) => {
+export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositValueInputHandler}) => {
+
 
   return (
     <div className={styles.depositInputCountWrapper}>
@@ -10,6 +11,8 @@ export const DepositInputCount = ({t, currencySymbol}) => {
         type="number"
         id="depositInputCount"
         className={styles.depositSummInput}
+        defaultValue={userDepositValue}
+        onChange={(e) => depositValueInputHandler(e)}
       />
     </div>
   )

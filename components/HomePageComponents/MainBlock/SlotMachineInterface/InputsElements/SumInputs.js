@@ -2,13 +2,13 @@ import Link from "next/link";
 
 import styles from '../../../../../styles/HomePage/SumInputs.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {setVal} from "../../../../../redux/actions/sumInputChange";
+
 import {useEffect, useState} from "react";
 import {showCurrencySwitcher} from "../../../../../redux/actions/showPopups";
 
 
 export const SumInputs = () => {
-  const sumInputVall = useSelector(({sumInput}) => sumInput.value);
+  const sumInputVall = useSelector(({userDepositValue}) => userDepositValue.value);
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
   const userSelectedCurrency = useSelector((state) => state.userSelectedCurrency);
 
@@ -16,12 +16,13 @@ export const SumInputs = () => {
   const [isChecked, setIsChecked] = useState(true)
 
   const sumInputChangeHandler = (e) => {
-    let val = e.target.value
-    if (val.length > 10) {
-      return false
-    } else {
-      dispatch(setVal(val));
-    }
+    console.log(e.target.value);
+    // let val = e.target.value
+    // if (val.length > 10) {
+    //   return false
+    // } else {
+    //   // dispatch(setVal(val));
+    // }
   }
   const checkedInputHandler = (e) => {
     if (isChecked) {

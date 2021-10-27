@@ -2,7 +2,7 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useSelector} from "react-redux";
 
 
-export const DepositLastPage = ({t}) => {
+export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler}) => {
   const chosenPayment = useSelector((state) => state.userPaymentMethod)
 
   console.log(chosenPayment, '@@@@@@@@')
@@ -19,7 +19,7 @@ export const DepositLastPage = ({t}) => {
         <div className={styles.amountPaymentContainer}>
           <label className={styles.amountPaymentInfo} htmlFor="">Amount (min 10.00, max 5000.00)</label>
           <label className={styles.currencyIcon} htmlFor="paymentAmount">{"$"}</label>
-          <input id='paymentAmount' type="number"/>
+          <input id='paymentAmount' type="number" defaultValue={userDepositValue} onChange={(e) => depositValueInputHandler(e)}/>
         </div>
       </div>
       <p className={styles.paymentSecureInfo}>{'Secure Payment Processing Time: Instant Fee 3.0%'}</p>
