@@ -1,0 +1,38 @@
+.withdrawBlockWrapper {
+  width: 100%;
+
+  margin-top: 55px;
+}
+.withdrawHeading{
+  font-size: 24px;
+  line-height: 0px;
+  color: #ff0000;
+  font-family: "Myriad Pro";
+  text-transform: uppercase;
+
+  margin-left: 20px;
+}
+
+.withdrawItemsWrapper {
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0.3);
+
+  padding: 13px;
+
+  margin-top: 30px;
+}
+
+.withdrawItemsFrame {
+  border: 1px solid #66686d;
+
+  width: 100%;
+  min-height: 100%;
+
+  padding: 20px 20px 20px 20px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
