@@ -24,6 +24,9 @@ export const DepositPageStepper = ({
                                      stepHandler,
                                      depositValueInputHandler,
                                      userDepositValue,
+                                     userDepositValueError,
+                                     userPayment,
+                                     userInfo
                                    }) => {
 
 
@@ -37,14 +40,17 @@ export const DepositPageStepper = ({
                                     t={t}
                                     userDepositValue={userDepositValue}
                                     depositValueInputHandler={depositValueInputHandler}
-                                    currencySwitcherShowHandler={currencySwitcherShowHandler}/>
+                                    currencySwitcherShowHandler={currencySwitcherShowHandler}
+                                    userDepositValueError={userDepositValueError}
+            />
+            <div className={styles.divider}></div>
             <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
                                        isActiveBonusInput={isActiveBonusInput}/>
             <DepositImages/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
                                 bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
           </div>
-          <DepositButtonSubmit stepHandler={stepHandler} step={step} t={t}
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler} step={step} t={t}
                                buttonText={'PLAY WITH $100 PLUS 200 FREE SPINS'}/>
         </>
       )
@@ -57,14 +63,16 @@ export const DepositPageStepper = ({
                                     t={t}
                                     userDepositValue={userDepositValue}
                                     depositValueInputHandler={depositValueInputHandler}
-                                    currencySwitcherShowHandler={currencySwitcherShowHandler}/>
+                                    currencySwitcherShowHandler={currencySwitcherShowHandler}
+                                    userDepositValueError={userDepositValueError}
+            />
             <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
                                        isActiveBonusInput={isActiveBonusInput}/>
-            <ChoosePaymentMethod t={t}/>
+            <ChoosePaymentMethod t={t} userPayment={userPayment}/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
                                 bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
           </div>
-          <DepositButtonSubmit stepHandler={stepHandler} step={step} t={t}
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler} step={step} t={t}
                                buttonText={'PLAY WITH $100 PLUS 200 FREE SPINS'}/>
         </>
       )
@@ -77,9 +85,11 @@ export const DepositPageStepper = ({
               t={t}
               userDepositValue={userDepositValue}
               depositValueInputHandler={depositValueInputHandler}
+              userDepositValueError={userDepositValueError}
+              userInfo={userInfo}
             />
           </div>
-          <DepositButtonSubmit submitHandler={submitHandler} stepHandler={stepHandler} step={step} t={t}
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} submitHandler={submitHandler} stepHandler={stepHandler} step={step} t={t}
                                buttonText={"Submit"}/>
         </>
       )

@@ -4,19 +4,22 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
 import {DepositPageStepper} from "./DepositPageStepper";
-import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
+import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {LOGOUT_FAIL} from "../../../redux/actions/types";
+import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 
 
 
 export const DepositPage = ({t}) => {
   const dispatch = useDispatch();
 
+  const userInfo = useSelector((state) => state.authInfo.user);
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
   const isShowCurrencyModal = useSelector((state) => state.showPopupsReducer.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userPayment = useSelector((state) => state.userPaymentMethod);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage);
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
@@ -51,6 +54,13 @@ export const DepositPage = ({t}) => {
 
   const closeDepositModalHandler = () => {
     dispatch(showDepositModal(false));
+    dispatch(setErrorUserDepositValue(''));
+    dispatch(setErrorUserPaymentMethod(''));
+    dispatch(setUserPaymentMethod({
+      paymentId: null,
+      paymentName: null,
+      paymentImg: null
+    }))
     setStep(1);
   }
   const depositValueInputHandler = (e) => {
@@ -80,6 +90,9 @@ export const DepositPage = ({t}) => {
           submitHandler={submitHandler}
           userDepositValue={userDepositValue}
           depositValueInputHandler={depositValueInputHandler}
+          userDepositValueError={userDepositValueError}
+          userPayment={userPayment}
+          userInfo={userInfo}
         />
       </div>
     </div>

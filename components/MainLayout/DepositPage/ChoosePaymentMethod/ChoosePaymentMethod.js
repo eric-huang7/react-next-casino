@@ -24,7 +24,7 @@ const paymentsMethods = [
   {id: 19, name: 'WesternUnion', img: '/assets/img/depositPage/payments/WesternUnion.svg'}
 ]
 
-export const ChoosePaymentMethod = () => {
+export const ChoosePaymentMethod = ({t, userPayment}) => {
   const dispatch = useDispatch();
 
   const paymentSelector = (e) => {
@@ -62,6 +62,7 @@ export const ChoosePaymentMethod = () => {
           })
         }
       </div>
+      <span className={styles.errorMessage}>{userPayment.paymentError}</span>
     </div>
   )
 }

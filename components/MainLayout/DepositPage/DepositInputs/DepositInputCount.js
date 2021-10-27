@@ -1,6 +1,6 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 
-export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositValueInputHandler}) => {
+export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositValueInputHandler, userDepositValueError}) => {
 
 
   return (
@@ -14,6 +14,7 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
         defaultValue={userDepositValue}
         onChange={(e) => depositValueInputHandler(e)}
       />
+      <span className={styles.errorMessage}>{userDepositValueError}</span>
     </div>
   )
 }

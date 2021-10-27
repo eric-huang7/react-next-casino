@@ -8,9 +8,7 @@ export const HeaderButtonsDeposit = ({t, isUserLogined}) => {
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
   const closeDepositModalHandler = () => {
-    if (isShowDepositModal) {
-      dispatch(showDepositModal(false));
-    } else {
+    if (!isShowDepositModal) {
       dispatch(showDepositModal(true));
     }
   }

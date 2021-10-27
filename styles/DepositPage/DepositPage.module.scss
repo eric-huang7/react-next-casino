@@ -21,7 +21,7 @@
 }
 
 .depositsMainBlock {
-  width: 500px;
+  max-width: 500px;
 
   margin: 0 auto;
 
@@ -427,7 +427,7 @@
 .depositsButton {
   margin: 20px auto 0px;
 
-  width: 429px;
+  max-width: 429px;
   height: 75px;
 
   border: 4px solid #ffffff;
@@ -596,5 +596,521 @@
     text-align: center;
 
     margin-top: 20px;
+  }
+}
+
+span.errorMessage {
+  font-size: 10px;
+  color: #ff0000;
+}
+
+.divider{
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .depositsMainBlock {
+
+    & h2 {
+      margin: 25px 0;
+      font-size: 30px;
+    }
+  }
+
+  .depositInnerBlockWrapper {
+    max-width: 320px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .depositHeadingBlock {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ff0000;
+
+    border-radius: 10px 10px 0 0;
+
+    & h3 {
+      margin: 20px 0 15px 0;
+
+      font-size: 20px;
+
+    }
+    & .depositPageCloseButton {
+
+    }
+  }
+
+  .depositInputsBlock {
+
+    padding: 30px 25px 15px;
+
+    & .depositInputCurrencyBlock {
+
+      & .depositInputCountWrapper {
+
+        & .labelEnterSum {
+          display: none;
+        }
+
+        & .depositSummInput {
+
+          width: 170px;
+          height: 48px;
+
+          font-size: 25px;
+
+          font-family: "Segoe UI";
+
+          outline: none;
+
+          padding-left: 35px;
+
+          -moz-appearance: textfield;
+        }
+        & input.depositSummInput::-webkit-outer-spin-button,
+        input.depositSummInput::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+
+        & .labelIconCurrency {
+
+          font-size: 25px;
+          color: #3a3a3a;
+          font-family: "Segoe UI";
+
+          position: absolute;
+
+          top: 7px;
+          left: 10px;
+        }
+      }
+
+      & .depositCurrencyButton {
+        width: 90px;
+        height: 40px;
+
+        border-radius: 10px;
+        background-color: #f2f6f9;
+        border: 1px solid #cad2d8;
+
+        padding: 0px 10px;
+        margin-top: 0px;
+        margin-left: 17px;
+
+
+        & .depositCurrencyButtonArrow {
+          width: 8px;
+          height: 8px;
+
+          border-bottom: 1px solid #3a3a3a;
+          border-right: 1px solid #3a3a3a;
+
+          transform: rotateZ(45deg);
+
+          position: absolute;
+
+          right: 8px;
+        }
+      }
+
+    }
+  }
+  .divider {
+    display: block;
+
+    height: 2px;
+    width: 100%;
+
+    background-color: #e8e7e7;
+  }
+
+  .depositsBonusesBlock {
+    padding: 0px 10px;
+
+    position: relative;
+    & .selectBonus {
+      font-size: 15px;
+      color: #545454;
+      font-family: "Segoe UI";
+
+      text-transform: uppercase;
+
+      margin-left: 10px;
+    }
+
+    & .bonusesInformationBlock {
+      width: 285px;
+      height: 81px;
+
+      background-color: #f2f6f9;
+      border: 1px solid #cad2d8;
+
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      position: relative;
+
+      margin-top: 27px;
+
+
+      & .activeBonusInfo {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        & img {
+          width: 37px;
+          height: 41px;
+
+          margin-bottom: 30px;
+          margin-right: 8px;
+          margin-left: 5px;
+        }
+
+        & .bonusInfoBlock {
+          width: 175px;
+
+          & .bonusHeadingBlock {
+            margin-top: 10px;
+
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+
+            font-size: 16px;
+            color: #545454;
+            font-family: "Segoe UI";
+            line-height: 24px;
+
+            & span {
+              margin-right: 35px;
+
+              white-space: nowrap;
+            }
+            & a {
+              text-decoration: underline;
+            }
+          }
+
+          & .bonusDescriptionInfo {
+            width: 255px;
+
+            font-size: 15px;
+            color: #ff0000;
+            font-family: "Segoe UI";
+            font-weight: normal;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            white-space: nowrap;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            margin: 10px 0 0 -40px;
+          }
+        }
+      }
+      & .notActiveBonusInfo {
+        & img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+    & .bonusesInformationBlock:after {
+      position: absolute;
+
+      top: 22px;
+      right: 23px;
+
+      content: '';
+
+      width:  10px;
+      height: 10px;
+
+      border-bottom: 2px solid #ff0000;
+      border-right: 2px solid #ff0000;
+
+      transform: rotateZ(45deg);
+    }
+    & .bonusesInformationBlock:hover {
+      cursor: pointer;
+    }
+
+    & .bonusesSwitcher {
+      position: absolute;
+      top: -11px;
+      right: 30px;
+
+      & .switch {
+        position: relative;
+        display: inline-block;
+        //width: 67px;
+        //height: 37px;
+
+        width: 87px;
+        height: 43px;
+      }
+      & .switch input {
+        display:none;
+      }
+      & .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      & .slider:before {
+        position: absolute;
+        content: "NO";
+        height: 37px;
+        width: 40px;
+        left: 42px;
+        bottom: 3px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+
+        text-align: center;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 39px;
+        color: #ccc;
+        font-family: "Verdana";
+      }
+
+      & .bonusSwitcherInput:checked + .slider {
+        background-color: #ff0e0e;
+      }
+
+      & .bonusSwitcherInput:focus + .slider {
+        box-shadow: 0 0 1px #ff0e0e;
+      }
+
+      & .bonusSwitcherInput:checked + .slider:before {
+        -webkit-transform: translateX(-37px);
+        -ms-transform: translateX(-37px);
+        transform: translateX(-37px);
+        content: "YES";
+        color: #ff0000;
+      }
+      & .slider.round {
+        border-radius: 34px;
+      }
+
+      & .slider.round:before {
+        border-radius: 50%;
+      }
+    }
+
+    .bonusCodeInputWrapper {
+      margin-top: 10px;
+
+      width: 285px;
+      height: 0px;
+      overflow: hidden;
+
+      background-color: #47b14c;
+      & input {
+        width: 100%;
+        height: 100%;
+
+        background-color: #f2f6f9;
+
+        color: #ff0000;
+
+        border: 0.75px solid #ff0000;
+
+        outline: none;
+
+        padding: 0 15px;
+      }
+    }
+    & .showDepositsBonusInput {
+      height: 40px;
+    }
+  }
+
+  .depositsChoosePaymentWrapper {
+
+    & .choosePaymentHeading {
+      font-size: 15px;
+      color: #545454;
+      font-family: "Segoe UI";
+      font-weight: 400;
+      letter-spacing: 0px;
+
+      margin: 20px 0px 0px 0px;
+    }
+    & .paymentMethodsBlock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      & div {
+        width: 62px;
+        height: 35px;
+
+        border: 1px solid #dadada;
+
+        background-color: #f7f7f7;
+
+        margin: 6px;
+
+        cursor: pointer;
+
+        & img {
+          width: 100%;
+          height: 100%;
+
+
+        }
+      }
+    }
+  }
+
+  .depositLastWrapper {
+    margin-top: 10px;
+    padding: 0 15px;
+    & .chosenPaymentMethodBlock {
+      width: 67px;
+      height: 40px;
+
+      border: 1px solid #dadada;
+
+      background-color: #f7f7f7;
+
+      margin: 0 auto;
+      & img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    & .inputsWrapper {
+      & .emailInputContainer {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 15px;
+        & label {
+          color: #ff0000;
+          font-size: 14px;
+
+          margin-left: 15px;
+
+
+        }
+        & input {
+          background-color: #f2f6f9;
+
+          border: 0.75px solid #a6a6a6;
+
+          width: 100%;
+          height: 40px;
+
+          font-size: 24px;
+          color: #3a3a3a;
+          font-family: "Source Sans Roman";
+
+          outline: none;
+        }
+        & input:focus {
+          border: 0.75px solid #ff0000;
+        }
+      }
+
+      & .amountPaymentContainer {
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+        & input {
+          background-color: #f2f6f9;
+
+          border: 0.75px solid #a6a6a6;
+
+          width: 100%;
+          height: 40px;
+
+          font-size: 24px;
+          color: #3a3a3a;
+          font-family: "Source Sans Roman";
+
+          padding-left: 25px;
+
+          outline: none;
+          -moz-appearance: textfield;
+        }
+        & input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+        & input:focus {
+          border: 0.75px solid #ff0000;
+        }
+
+        & .amountPaymentInfo {
+          color: #ff0000;
+          font-size: 14px;
+          white-space: nowrap;
+
+          margin-left: 15px;
+        }
+        & .currencyIcon {
+          position: absolute;
+
+          color: #3a3a3a;
+          font-size: 20px;
+
+          top: 24px;
+          left: 10px;
+        }
+      }
+    }
+
+    & .paymentSecureInfo {
+      color: #A0A1A5;
+      font-size: 14px;
+      text-align: center;
+
+      margin-top: 20px;
+    }
+  }
+
+  .depositsButton {
+    margin: 18px auto 0px;
+
+    max-width: 320px;
+    height: 56px;
+
+    border: 4px solid #ffffff;
+    border-radius: 15px;
+
+    background-color: #ff0000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & p {
+      font-size: 18px;
+      font-weight: normal;
+      letter-spacing: 0px;
+      color: #ffffff;
+      font-family: "Myriad Pro";
+      text-transform: uppercase;
+    }
   }
 }
