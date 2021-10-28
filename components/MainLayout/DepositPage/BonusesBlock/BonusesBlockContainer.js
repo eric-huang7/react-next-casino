@@ -17,7 +17,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData}) => {
         bonusImage={'/assets/icons/home/bonus_info_icon.svg'}
         bonusHeading={'BonusHeading'}
         bonusDescription={'Bonus Description sdf sdf sdfa sdfwer wer dfsdf '}
-        bonusLink={'#bonusLink'}
+        bonusLink={'/#bonusLink'}
         isUseBonus={isUseBonus}
       />
     )

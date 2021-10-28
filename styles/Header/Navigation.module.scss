@@ -20,7 +20,7 @@
 
 }
 
-.headerNavbarListItem a {
+.headerNavbarListItem > a {
     text-decoration: none;
     white-space: nowrap;
     font-size: 14px;
@@ -33,9 +33,20 @@
     position: relative;
 
     margin-right: 20px;
+
+    cursor: pointer;
 }
 
-.headerNavbarListItem a:after {
+.termsConditionsLink {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.headerNavbarListItem > a:after {
     display: block;
 
     content: '';
@@ -50,6 +61,44 @@
 }
 .headerNavbarListItem:nth-last-child(1) a:after{
     display: none;
+}
+.headerNavbarTerms {
+    position: relative;
+}
+.termsConditionsPopup {
+    display: none;
+
+    position: absolute;
+
+    top: 55px;
+    left: -5px;
+
+    background-color: #000000;
+
+    list-style-type: none;
+
+    margin: 0;
+    padding: 15px;
+
+    & .termsConditionsPopupItem {
+        text-decoration: none;
+        white-space: nowrap;
+        font-size: 14px;
+        letter-spacing: 0px;
+        color: #ffffff;
+        font-family: "Verdana";
+
+        margin-bottom: 15px;
+        padding: 0;
+    }
+    & .termsConditionsPopupItem:hover {
+        transform: scale(1.05);
+        color: #fea0ae;
+    }
+}
+
+.termsConditionsPopupActive {
+    display: block;
 }
 
 @media screen and (max-width: 1770px) {

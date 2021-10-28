@@ -12,6 +12,12 @@
       "deposit": "Deposit",
       "login": "Log In",
       "signIn": "Sign Up"
+    },
+    "termsAndConditionsLinks": {
+      "termsAndConditions": "Terms & Conditions",
+      "responsibleGaming": "Responsible gaming",
+      "kycPolicy": "KYC Policy",
+      "amlPolicy" : "AML Policy"
     }
   },
   "registrationForm": {
@@ -42,7 +48,7 @@
     "home": "Home Page",
     "promotions" : "Promotions Page",
     "contactUs" : "contactUs Page",
-    "terms&conditions" : "terms&conditions Page",
+    "terms&conditions" : "Terms & Conditions Page",
     "aboutUs" : "aboutUs Page"
   },
   "homePage": {

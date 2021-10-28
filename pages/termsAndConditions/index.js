@@ -2,6 +2,8 @@ import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from "../../styles/Home.module.scss";
+import {MainBlock} from "../../components/TermsAndConditionsComponents/MainBlock";
+import {PlayerBlock} from "../../components/TermsAndConditionsComponents/PlayerBlock";
 
 
 const TermsConditions = (props) => {
@@ -9,7 +11,8 @@ const TermsConditions = (props) => {
   return (
     <>
       <MainLayout t={t}>
-        <h1 className={styles.headerHomePage}>{t(`pageNames.terms&conditions`)}</h1>
+        <MainBlock />
+        <PlayerBlock />
       </MainLayout>
     </>
   )
@@ -18,7 +21,7 @@ const TermsConditions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['navbarLinks', 'common']),
+      ...await serverSideTranslations(locale, ['common']),
     },
   })
 }

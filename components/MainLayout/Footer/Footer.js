@@ -9,15 +9,15 @@ import {useState} from "react";
 
 export const Footer = ({t}) => {
   const linkKeyFirs = [
-    {key: 'liveChat', route: '#livechat', name: `LiveChat`},
-    {key: 'tel', route: '#tel', name: `Tel:7-55-7-99-8-487`},
+    {key: 'liveChat', route: '/#livechat', name: `LiveChat`},
+    {key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487`},
     {key: 'faqs', route: '/contactUs#faq', name: `FAQs`},
     {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
   ]
   const linkKeySecond = [
-    {key: 'news', route: '#news', name: `News`},
-    {key: 'security', route: '#security', name: `Security`},
-    {key: 'privacy', route: '#privacy', name: `Privacy`},
+    {key: 'news', route: '/#news', name: `News`},
+    {key: 'security', route: '/#security', name: `Security`},
+    {key: 'privacy', route: '/#privacy', name: `Privacy`},
     {key: 'termsAndConditions', route: '/termsAndConditions', name: `TermsAndConditions`},
   ]
   const coinsImg = [
@@ -33,11 +33,11 @@ export const Footer = ({t}) => {
   ]
 
   const socilaLinks = [
-    {key: 'facebook', href: '#facebook', img: '/assets/img/footer/facebook.png'},
-    {key: 'twitter', href: '#twitter', img: '/assets/img/footer/twitter.png'},
-    {key: 'youtube', href: '#youtube', img: '/assets/img/footer/youtube.png'},
-    {key: 'instagram', href: '#instagram', img: '/assets/img/footer/instagram.png'},
-    {key: 'linkedin', href: '#linkedin', img: '/assets/img/footer/linkedin.png'},
+    {key: 'facebook', href: '/#facebook', img: '/assets/img/footer/facebook.png'},
+    {key: 'twitter', href: '/#twitter', img: '/assets/img/footer/twitter.png'},
+    {key: 'youtube', href: '/#youtube', img: '/assets/img/footer/youtube.png'},
+    {key: 'instagram', href: '/#instagram', img: '/assets/img/footer/instagram.png'},
+    {key: 'linkedin', href: '/#linkedin', img: '/assets/img/footer/linkedin.png'},
   ]
 
   const languages = useSelector(({lang}) => lang.languages);

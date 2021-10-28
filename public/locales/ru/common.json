@@ -12,6 +12,12 @@
       "deposit": "Депозит",
       "login": "Войти",
       "signIn": "Регистрация"
+    },
+    "termsAndConditionsLinks": {
+      "termsAndConditions": "Условия и положения",
+      "responsibleGaming": "Ответственная игра",
+      "kycPolicy": "Политика KYC",
+      "amlPolicy" : "Политика AML"
     }
   },
   "registrationForm": {

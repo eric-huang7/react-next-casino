@@ -2,6 +2,7 @@ import Link from 'next/link'
 import {useTranslation} from "next-i18next";
 
 import styles from '../../../../styles/Header/Navigation.module.scss';
+import {useState} from "react";
 
 
 export const Navigation = ({t}) => {
@@ -12,6 +13,23 @@ export const Navigation = ({t}) => {
     {key: 'termsAndConditions', route: '/termsAndConditions'},
     {key: 'aboutUs', route: '/aboutUs'},
   ]
+  const termsConditionsLinks = [
+    {key: "termsAndConditionsInner", name: "header.termsAndConditionsLinks.termsAndConditions", route: '/termsAndConditions'},
+    {key: "responsibleGamingInner", name: "header.termsAndConditionsLinks.responsibleGaming", route: '/termsAndConditions/responsibleGaming'},
+    {key: "kycPolicy", name: "header.termsAndConditionsLinks.kycPolicy", route: '/termsAndConditions/kycpolicy'},
+    {key: "amlPolicy", name: "header.termsAndConditionsLinks.amlPolicy", route: '/termsAndConditions/amlpolicy'}
+  ]
+
+  const [isTermsPopupActive, setIsTermsPopupActive] = useState(false);
+
+  const termsPopupClickHandler = (e) => {
+    e.preventDefault();
+    if (isTermsPopupActive) {
+      setIsTermsPopupActive(false);
+    } else {
+      setIsTermsPopupActive(true);
+    }
+  }
 
   return (
     <nav className={styles.headerNavbar}>
@@ -19,8 +37,32 @@ export const Navigation = ({t}) => {
         {linksKey.map((link) => {
           if (link.key === 'termsAndConditions') {
             return (
-              <li key={link.key} className={styles.headerNavbarListItem}>
-                <a>Terms & conditions</a>
+              <li key={link.key} className={`${styles.headerNavbarListItem} ${styles.headerNavbarTerms}`}>
+                <a
+                  onClick={(e) => termsPopupClickHandler(e)}
+                  className={styles.termsConditionsLink}
+                >
+                  {
+                    t(`header.navbarLinks.${link.key}`)
+                  }
+                </a>
+                <ul className={`${styles.termsConditionsPopup} ${isTermsPopupActive ? styles.termsConditionsPopupActive : '' }`}>
+                  {
+                    termsConditionsLinks.map((el) => {
+                      return (
+                        <li key={el.key} className={styles.termsConditionsPopupItem}>
+                          <Link href={el.route}>
+                            <a>
+                              {
+                                t(el.name)
+                              }
+                            </a>
+                          </Link>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
               </li>
             )
           } else {

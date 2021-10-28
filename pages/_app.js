@@ -15,7 +15,6 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   useEffect(() => {
     if (cookies.language) {
-      console.log(cookies.language, router, "APPPPPPPPPPPPPPPPP")
       router.push(router.route, router.route, {locale: cookies.language})
     }
   }, [])

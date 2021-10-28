@@ -53,7 +53,7 @@ const LangSwitcher = (props) => {
     });
 
     setArrLang(sortedLang);
-
+    console.log(router.locale, activeLang, '****************************************************')
   }, [activeLang])
 
 
