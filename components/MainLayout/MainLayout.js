@@ -16,14 +16,11 @@ const MainLayout = ({children, t}) => {
   const router = useRouter();
   const locale = router.locale;
 
-
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
-  // console.log('AUTH INFORM', userInfo);
-
-
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
+
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>

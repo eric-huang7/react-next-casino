@@ -7,6 +7,7 @@ import styles from '../../styles/LangSwitcher.module.scss'
 import {useRouter} from 'next/router'
 import {setLang} from "../../redux/actions/lang";
 import {useCookies} from "react-cookie";
+import {LangSwitcherPopup} from "./LangSwitcherPopup";
 
 let arrLanguages = [
   {name: "eng", lang: "en", language: "English", icon: "/assets/icons/flags/United-Kingdom.png"},
@@ -22,7 +23,7 @@ let arrLanguages = [
 ];
 
 
-const LangSwitcher = (props) => {
+const LangSwitcher = ({href, locale}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
@@ -31,7 +32,7 @@ const LangSwitcher = (props) => {
 
   const activeLang = useSelector(({lang}) => lang.activeLang);
   const [activeLangBlock, setActiveLangBlock] = useState(false);
-  const [arrLang, setArrLang] = useState(arrLanguages);
+  // const [arrLang, setArrLang] = useState(arrLanguages);
 
 
   const switchActiveLangBlock = () => {
@@ -42,29 +43,15 @@ const LangSwitcher = (props) => {
     }
   }
 
-  // let sortedLang = arrLanguages;
-
+  const [activeLangNow, setActiveLang] = useState({})
 
   useEffect(() => {
-    dispatch(setLang(router.locale));
-    let sortedLang = arrLanguages.sort((item) => {
-      let res = item.lang === activeLang ? -1 : 1
-      return res;
+    let active = arrLanguages.find((el) => {
+     return el.lang === router.locale;
     });
+    setActiveLang(active);
+  }, [])
 
-    setArrLang(sortedLang);
-    console.log(router.locale, activeLang, '****************************************************')
-  }, [activeLang])
-
-
-  // useEffect(() => {
-  //   dispatch(setLang(router.locale));
-  //   let sortedLang = arrLanguages.sort((item) => {
-  //     let res = item.lang === activeLang ? -1 : 1;
-  //     return res;
-  //   })
-  //   setArrLang(sortedLang);
-  // }, [activeLang]);
 
   const langChooser = (e) => {
     let today = new Date();
@@ -82,35 +69,12 @@ const LangSwitcher = (props) => {
       onClick={() => switchActiveLangBlock()}
     >
       <div className={styles.activeLangBlock}>
-        <img className={styles.langSwitcherActiveLangFlag} src={arrLang[0].icon} alt="flag icon"/>
+        <img className={styles.langSwitcherActiveLangFlag} src={activeLangNow.icon} alt="flag icon"/>
         <span>
-          {arrLang[0].language}
+          {activeLangNow.language}
         </span>
       </div>
-      <ul className={styles.langSwitcherBlockList}>
-        {arrLang.map(language => {
-          return (
-            <li
-              className={styles.langSwitcherBlockListItem}
-              key={language.name}
-              onClick={(e) => langChooser(e)}
-            >
-              <img className={styles.langSwitcherLangFlag} src={language.icon} alt="flag icon"/>
-              <Link
-                href={props.href}
-                locale={language.lang}
-              >
-                <a
-                  data-lang={language.lang}
-                  onClick={() => console.log(router, "locale")}
-                >
-                  {language.language}
-                </a>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
+      <LangSwitcherPopup arrLang={arrLanguages} langChooser={langChooser} hrefMain={href}/>
     </div>
   )
 }

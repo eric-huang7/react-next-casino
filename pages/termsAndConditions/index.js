@@ -8,10 +8,20 @@ import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/Why
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
 import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
+import {useDispatch} from "react-redux";
+import {useRouter} from "next/router";
+import {setLang} from "../../redux/actions/lang";
+import {useEffect} from "react";
 
 
 const TermsConditions = (props) => {
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const locale = router.locale;
+
+
+
   return (
     <>
       <MainLayout t={t}>

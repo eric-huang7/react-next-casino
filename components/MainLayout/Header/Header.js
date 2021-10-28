@@ -1,4 +1,3 @@
-
 import styles from '../../../styles/Header/Header.module.scss'
 import {Navigation} from "./Navigation/Navigation";
 import {UserBlockNavigation} from "./UserBlock/UserBlock";
@@ -13,14 +12,9 @@ import {useRouter} from "next/router";
 
 export const Header = ({t}) => {
 
-
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
-
-  useEffect(() => {
-
-  }, [])
 
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
@@ -28,12 +22,10 @@ export const Header = ({t}) => {
   let userInfo = userLogin;
 
 
-
-
   useEffect(() => {
     if (userLogined) {
       dispatch(userBalance());
-      console.log(userLogin, 'From userlogined effect')
+      // console.log(userLogin, 'From userlogined effect')
     } else {
       dispatch(auth());
     }
@@ -41,15 +33,11 @@ export const Header = ({t}) => {
 
   useEffect(() => {
     if (!userLogin.balance) {
-      console.log(userLogin, 'From userBalance effect')
+      // console.log(userLogin, 'From userBalance effect')
       dispatch(userBalance());
-      // const newUserLogin = useSelector((userInfo) => userInfo.authInfo);
-      // userInfo = userLogin;
     }
-    console.log(userLogin.balance, 'From userBalance effect if true')
+    // console.log(userLogin.balance, 'From userBalance effect if true')
   }, [userLogin.balance])
-
-
 
 
   function closePopups(e) {
