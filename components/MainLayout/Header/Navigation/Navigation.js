@@ -17,15 +17,24 @@ export const Navigation = ({t}) => {
     <nav className={styles.headerNavbar}>
       <ul className={styles.headerNavbarList}>
         {linksKey.map((link) => {
-          return(
-            <li key={link.key} className={styles.headerNavbarListItem}>
-              <Link  href={link.route}>
-                {
-                 t(`header.navbarLinks.${link.key}`)
-                }
-              </Link>
-            </li>
-          )
+          if (link.key === 'termsAndConditions') {
+            return (
+              <li key={link.key} className={styles.headerNavbarListItem}>
+                <a>Terms & conditions</a>
+              </li>
+            )
+          } else {
+            return(
+              <li key={link.key} className={styles.headerNavbarListItem}>
+                <Link  href={link.route}>
+                  {
+                    t(`header.navbarLinks.${link.key}`)
+                  }
+                </Link>
+              </li>
+            )
+          }
+
         })}
       </ul>
     </nav>

@@ -152,6 +152,27 @@
   }
 }
 
+.withdrawItemButton {
+  max-width: 287px;
+  height: 55px;
+  border-radius: 15px;
+  background-color: #ff0000;
+  border: 3px solid #ffffff;
+
+  display: none;
+
+  margin-bottom: 35px;
+
+  & span {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-family: "Myriad Pro";
+    text-transform: uppercase;
+  }
+}
+
 @media screen and (max-width: 665px) {
   .depositItemMainWrapper {
     max-width: 380px;
@@ -173,5 +194,12 @@
         background-color: #f0f6fa;
       }
     }
+  }
+  .withdrawItemButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 380px;
   }
 }

@@ -20,15 +20,15 @@ export const PaymentsWithdrawBlock = ({t}) => {
   const {height, width} = useWindowDimensions();
 
   let arrItemsFullScreen = [
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 1`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 2`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 3`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 4`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
   ];
   let arrItemMobile = [
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
-    <PaymentDataItem t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 1`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 2`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
+    <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 3`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,
   ];
 
 

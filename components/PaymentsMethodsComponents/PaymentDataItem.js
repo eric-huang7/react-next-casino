@@ -40,7 +40,9 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
         <div className={styles.depositItemButton}>
           <span>deposit</span>
         </div> :
-        ""
+        <div className={styles.withdrawItemButton}>
+          <span>deposit</span>
+        </div>
       }
 
     </div>

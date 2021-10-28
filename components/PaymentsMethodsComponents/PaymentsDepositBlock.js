@@ -24,19 +24,19 @@ export const PaymentsDepositBlock = ({t, }) => {
 
 
   let arrItemsFullScreen =  [
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 1`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 2`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 3`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 4`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 5`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 6`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 7`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 8`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
   ];
   let arrItemMobile = [
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
-    <PaymentDataItem t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 1`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 2`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
+    <PaymentDataItem key={`${depositInfo.depositId} deposit 3`} t={t} dataInfo={depositInfo} type={"deposit"}/>,
   ]
 
  let usedArrItems = arrItemsFullScreen;
