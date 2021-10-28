@@ -1,30 +1,50 @@
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../../components/MainLayout/MainLayout";
-import styles from "../../../styles/Home.module.scss";
+import styles from '../../../styles/TermsAndConditions/TermsAndConditions.module.scss';
 import {useRouter} from "next/router";
+import {MainBlock} from "../../../components/TermsAndConditionsComponents/MainBlock";
+import {PlayerBlock} from "../../../components/TermsAndConditionsComponents/PlayerBlock";
+import {TextBlock} from "../../../components/TermsAndConditionsComponents/TextBlock";
+import {
+  termsAndConditions
+} from "../../../components/TermsAndConditionsComponents/textData";
+import {WhySlotsIdol} from "../../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
+import {NewsBlock} from "../../../components/HomePageComponents/NewsBlock/NewsBlock";
 
 
 const TermsConditions = (props) => {
   const { t } = useTranslation('common');
   const router = useRouter();
-  const {id} = router.query
+  const {id} = router.query;
+
   console.log(router, "ROUTER PID! !!!!!!!!!!")
   console.log(props, "ROUTER props PID! !!!!!!!!!!")
   // console.log(id, "ROUTER id PID! !!!!!!!!!!")
 
-  let text = "Some TEXT terms";
+  let text = termsAndConditions.data;
+  let heading = 'Terms and Conditions'
 
-  if (id === 'responsibleGaming') {
-    text = "Responsible gaming";
-  } else if (id === 'termsAndConditions') {
-    text = "terms And Conditions"
+  if (id === 'amlpolicy') {
+    text = termsAndConditions.amlPolicy;
+    heading = 'AML Policy';
+  } else if (id === 'kycpolicy') {
+    text = termsAndConditions.kycPolicy;
+    heading = 'KYC Policy';
+  } else {
+    text = termsAndConditions.responsibleGambling;
+    heading = 'Responsible Gambling';
   }
   return (
     <>
       <MainLayout t={t}>
-        {/*<h1 className={styles.headerHomePage}>{t(`pageNames.terms&conditions`)}</h1>*/}
-        <p>Some pid {text}</p>
+        <MainBlock />
+        <PlayerBlock />
+        <div className={styles.textWhyslotsBack}>
+          <TextBlock t={t} textData={text} textHeading={heading}/>
+          <WhySlotsIdol t={t} isBackShow={false}/>
+        </div>
+        <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>
   )

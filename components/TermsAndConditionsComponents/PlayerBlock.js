@@ -1,5 +1,5 @@
 import styles from '../../styles/TermsAndConditions/TermsPlayerBlock.module.scss';
-// import {Player} from "./Player";
+import {Player} from "./Player";
 
 
 export const PlayerBlock = () => {
@@ -7,7 +7,7 @@ export const PlayerBlock = () => {
   return (
     <div  className={styles.playerBlockWrapper}>
       <div className={styles.playerBlock}>
-        {/*<Player url={'https://youtu.be/FOIjvHjK0Rw'}/>*/}
+        <Player url={'https://youtu.be/FOIjvHjK0Rw'}/>
       </div>
     </div>
   )

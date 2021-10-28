@@ -15,7 +15,7 @@ export const Navigation = ({t}) => {
   ]
   const termsConditionsLinks = [
     {key: "termsAndConditionsInner", name: "header.termsAndConditionsLinks.termsAndConditions", route: '/termsAndConditions'},
-    {key: "responsibleGamingInner", name: "header.termsAndConditionsLinks.responsibleGaming", route: '/termsAndConditions/responsibleGaming'},
+    {key: "responsibleGamingInner", name: "header.termsAndConditionsLinks.responsibleGaming", route: '/termsAndConditions/responsibleGambling'},
     {key: "kycPolicy", name: "header.termsAndConditionsLinks.kycPolicy", route: '/termsAndConditions/kycpolicy'},
     {key: "amlPolicy", name: "header.termsAndConditionsLinks.amlPolicy", route: '/termsAndConditions/amlpolicy'}
   ]
@@ -52,7 +52,7 @@ export const Navigation = ({t}) => {
                       return (
                         <li key={el.key} className={styles.termsConditionsPopupItem}>
                           <Link href={el.route}>
-                            <a>
+                            <a onClick={() => setIsTermsPopupActive(false)}>
                               {
                                 t(el.name)
                               }

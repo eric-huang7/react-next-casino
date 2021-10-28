@@ -5,4 +5,16 @@
   padding: 25px 20px;
 
   background-color: rgba(0,0,0, 0.3);
+
+  & .playerBlock {
+
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .playerBlockWrapper {
+    background-color: rgba(0,0,0,0);
+  }
+
 }

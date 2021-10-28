@@ -1,9 +1,13 @@
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from "../../styles/Home.module.scss";
+import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss';
 import {MainBlock} from "../../components/TermsAndConditionsComponents/MainBlock";
 import {PlayerBlock} from "../../components/TermsAndConditionsComponents/PlayerBlock";
+import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
+import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
+import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
+import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
 
 
 const TermsConditions = (props) => {
@@ -13,6 +17,11 @@ const TermsConditions = (props) => {
       <MainLayout t={t}>
         <MainBlock />
         <PlayerBlock />
+        <div className={styles.textWhyslotsBack}>
+          <TextBlock t={t} textData={termsAndConditions.data} textHeading={'Terms and Conditions'}/>
+          <WhySlotsIdol t={t} isBackShow={false}/>
+        </div>
+        <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>
   )
