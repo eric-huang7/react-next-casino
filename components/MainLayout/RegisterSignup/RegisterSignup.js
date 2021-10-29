@@ -164,7 +164,7 @@ export const RegisterSignup = ({t, isShow}) => {
 
   return (
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
-      <Header t={t}/>
+      {/*<Header t={t}/>*/}
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
         <div className={styles.registerHeading}>

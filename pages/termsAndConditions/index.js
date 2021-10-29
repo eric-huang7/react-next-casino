@@ -20,8 +20,6 @@ const TermsConditions = (props) => {
   const router = useRouter();
   const locale = router.locale;
 
-
-
   return (
     <>
       <MainLayout t={t}>

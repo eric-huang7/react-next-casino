@@ -19,5 +19,4 @@ export const getCurrency = () => async dispatch => {
   } catch (e) {
     console.log('SOME ERROR IN GET CURRENCY', e);
   }
-
 }

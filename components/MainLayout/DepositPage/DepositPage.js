@@ -2,7 +2,7 @@ import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
+import {backButtonShouldDo, showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
 import {DepositPageStepper} from "./DepositPageStepper";
 import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {LOGOUT_FAIL} from "../../../redux/actions/types";
@@ -25,11 +25,12 @@ export const DepositPage = ({t}) => {
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
   const [step, setStep] = useState(1);
 
+
   const stepHandler = (step) => {
     setStep(step + 1);
   }
 
-  console.log(userCurrency, "@@@@@@@")
+  // console.log(userCurrency, "@@@@@@@")
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
@@ -47,9 +48,15 @@ export const DepositPage = ({t}) => {
       setIsActiveBonusInput(true);
     }
   }
+  const hideCurrencyShowDepositModal = () => {
+    dispatch(showCurrencySwitcher(false));
+    dispatch(showDepositModal(true));
+  }
 
   const currencySwitcherShowHandler = () => {
     dispatch(showCurrencySwitcher(true));
+    dispatch(showDepositModal(false));
+    dispatch(backButtonShouldDo(hideCurrencyShowDepositModal));
   }
 
   const closeDepositModalHandler = () => {
@@ -73,7 +80,7 @@ export const DepositPage = ({t}) => {
   }
   return (
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
-      <Header t={t}/>
+      {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
         <h2>DEPOSIT $ 100 AND GET $ 200</h2>
         <DepositPageStepper

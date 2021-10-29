@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
 
-  z-index: 17;
+  z-index: 18;
 
   width: 100vw;
   height: 100vh;
@@ -16,6 +16,7 @@
   background-color: rgba(0,0,0, 0.8);
 
   overflow-y: scroll;
+
 }
 .forClosePopup {
   position: absolute;
@@ -30,7 +31,7 @@
 
   max-width: 700px;
 
-  margin: 0 auto;
+  margin: 100px auto;
 
   padding: 0 50px;
 }

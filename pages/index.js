@@ -47,7 +47,9 @@ export default function Home(props) {
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
+  const currencies = useSelector((state) => state.getCurrency);
 
+  console.log(currencies, "@@@@@@@ MAin page");
 
   return (
 

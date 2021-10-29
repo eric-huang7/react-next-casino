@@ -12,7 +12,7 @@ export const CurrencySelector = ({t, heading, currenciesList}) => {
       currencyAbbreviation: e.target.dataset.currency_abbr,
       currencySymbol: e.target.dataset.currency_symbol,
     }))
-    dispatch(showCurrencySwitcher(false));
+    // dispatch(showCurrencySwitcher(false));
   }
 
   return (

@@ -100,7 +100,7 @@ export const LogIn = ({t, isShow}) => {
 
   return (
     <div className={`${styles.loginWrapper} ${isShow ? "" : styles.hideLogIn}`}>
-      <Header t={t}/>
+      {/*<Header t={t}/>*/}
       <div onClick={() => loginCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.logInMainBlock}>
         <div className={styles.logInHeading}>
