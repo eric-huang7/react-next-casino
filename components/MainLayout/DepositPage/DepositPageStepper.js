@@ -26,9 +26,16 @@ export const DepositPageStepper = ({
                                      userDepositValue,
                                      userDepositValueError,
                                      userPayment,
-                                     userInfo
+                                     userInfo,
+                                     showAllBonuses,
+                                     showAllBonusesHandler,
+                                     chosenBonus,
+                                     chooseBonusClickHandler
                                    }) => {
-
+let buttonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
+  const setDepositButtonText = (newButtonText) => {
+      buttonText = newButtonText;
+  }
 
   switch (step) {
     case  1:
@@ -45,13 +52,21 @@ export const DepositPageStepper = ({
             />
             <div className={styles.divider}></div>
             <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
-                                       isActiveBonusInput={isActiveBonusInput}/>
+                                       isActiveBonusInput={isActiveBonusInput}
+                                       userCurrency={userCurrency}
+                                       showAllBonuses={showAllBonuses}
+                                       showAllBonusesHandler={showAllBonusesHandler}
+                                       chosenBonus={chosenBonus}
+                                       chooseBonusClickHandler={chooseBonusClickHandler}
+                                       setDepositButtonText={setDepositButtonText}
+            />
             <DepositImages/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
                                 bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler} step={step} t={t}
-                               buttonText={'PLAY WITH $100 PLUS 200 FREE SPINS'}/>
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler}
+                               step={step} t={t}
+                               buttonText={buttonText}/>
         </>
       )
     case 2:
@@ -67,13 +82,21 @@ export const DepositPageStepper = ({
                                     userDepositValueError={userDepositValueError}
             />
             <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
-                                       isActiveBonusInput={isActiveBonusInput}/>
+                                       isActiveBonusInput={isActiveBonusInput}
+                                       userCurrency={userCurrency}
+                                       showAllBonuses={showAllBonuses}
+                                       showAllBonusesHandler={showAllBonusesHandler}
+                                       chosenBonus={chosenBonus}
+                                       chooseBonusClickHandler={chooseBonusClickHandler}
+                                       setDepositButtonText={setDepositButtonText}
+            />
             <ChoosePaymentMethod t={t} userPayment={userPayment}/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
                                 bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler} step={step} t={t}
-                               buttonText={'PLAY WITH $100 PLUS 200 FREE SPINS'}/>
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler}
+                               step={step} t={t}
+                               buttonText={buttonText}/>
         </>
       )
     case 3:
@@ -89,7 +112,8 @@ export const DepositPageStepper = ({
               userInfo={userInfo}
             />
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} submitHandler={submitHandler} stepHandler={stepHandler} step={step} t={t}
+          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue}
+                               submitHandler={submitHandler} stepHandler={stepHandler} step={step} t={t}
                                buttonText={"Submit"}/>
         </>
       )

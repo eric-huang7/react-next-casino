@@ -18,8 +18,8 @@ const TermsConditions = (props) => {
   const router = useRouter();
   const {id} = router.query;
 
-  console.log(router, "ROUTER PID! !!!!!!!!!!")
-  console.log(props, "ROUTER props PID! !!!!!!!!!!")
+  // console.log(router, "ROUTER PID! !!!!!!!!!!")
+  // console.log(props, "ROUTER props PID! !!!!!!!!!!")
   // console.log(id, "ROUTER id PID! !!!!!!!!!!")
 
   let text = termsAndConditions.data;

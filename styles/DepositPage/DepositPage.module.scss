@@ -201,6 +201,8 @@
   }
 }
 
+
+
 .depositsBonusesBlock {
   padding: 0px 30px;
 
@@ -211,6 +213,10 @@
     font-family: "Verdana";
     text-transform: uppercase;
   }
+  & .bonusesInformationBlock.showAllBonuses {
+    height: 214px;
+    //overflow-y: auto;
+  }
 
   & .bonusesInformationBlock {
     width: 357px;
@@ -220,12 +226,31 @@
 
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 
     position: relative;
 
+    overflow-y: hidden;
 
+    & .bonusesDropdownWrapper {
+      background-color: #f2f6f9;
+
+      position: absolute;
+
+      top: 100px;
+      left: 0;
+
+      & > div {
+        margin-bottom: 20px;
+      }
+
+    }
+    & .dropdownWrapperActive {
+      top: 0;
+    }
     & .activeBonusInfo {
+      margin-top: 5px;
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
@@ -255,7 +280,8 @@
           & span {
             margin-right: 35px;
           }
-          & a {
+          & span.infoLable {
+            margin-right: 0px;
             text-decoration: underline;
           }
         }
@@ -297,7 +323,12 @@
     border-bottom: 2px solid #ff0000;
     border-right: 2px solid #ff0000;
 
+    transition: transform 0.2s ease-in-out, top 0.2s ease-in-out;
     transform: rotateZ(45deg);
+  }
+  & .bonusesInformationBlock.showAllBonuses:after {
+    top: 50%;
+    transform: rotateZ(-135deg);
   }
   & .bonusesInformationBlock:hover {
     cursor: pointer;
@@ -378,7 +409,6 @@
     height: 0px;
     overflow: hidden;
 
-    background-color: #47b14c;
     & input {
       width: 100%;
       height: 100%;

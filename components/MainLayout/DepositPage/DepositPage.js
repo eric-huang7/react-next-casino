@@ -23,8 +23,22 @@ export const DepositPage = ({t}) => {
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
+  const [showAllBonuses, setShowAllBonuses] = useState(false);
   const [step, setStep] = useState(1);
+  const [chosenBonus, setChosenBonus] = useState({});
 
+  const chooseBonusClickHandler = (chosenBonus) => {
+    console.log(chosenBonus, 'chosenBonus');
+    setChosenBonus(chosenBonus);
+  }
+
+  const showAllBonusesHandler = () => {
+    if (showAllBonuses){
+      setShowAllBonuses(false);
+    } else {
+      setShowAllBonuses(true);
+    }
+  }
 
   const stepHandler = (step) => {
     setStep(step + 1);
@@ -75,9 +89,9 @@ export const DepositPage = ({t}) => {
   }
 
   const submitHandler = () => {
-
     console.log('Submit');
   }
+
   return (
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
       {/*<Header t={t}/>*/}
@@ -100,6 +114,10 @@ export const DepositPage = ({t}) => {
           userDepositValueError={userDepositValueError}
           userPayment={userPayment}
           userInfo={userInfo}
+          showAllBonuses={showAllBonuses}
+          showAllBonusesHandler={showAllBonusesHandler}
+          chosenBonus={chosenBonus}
+          chooseBonusClickHandler={chooseBonusClickHandler}
         />
       </div>
     </div>
