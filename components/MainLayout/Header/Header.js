@@ -8,6 +8,7 @@ import {auth, userBalance} from "../../../redux/actions/login";
 import {useEffect} from "react";
 import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
+import {getActiveBonuses} from "../../../redux/actions/getBonuses";
 
 
 export const Header = ({t}) => {
@@ -25,6 +26,7 @@ export const Header = ({t}) => {
   useEffect(() => {
     if (userLogined) {
       dispatch(userBalance());
+      dispatch(getActiveBonuses());
       // console.log(userLogin, 'From userlogined effect')
     } else {
       dispatch(auth());

@@ -12,6 +12,7 @@ import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
 import {setLang} from "../../redux/actions/lang";
 import {useEffect} from "react";
+import {allDataTermsAndConditions} from "../../components/TermsAndConditionsComponents/allDatatermsAndConditions";
 
 
 const TermsConditions = (props) => {
@@ -26,7 +27,7 @@ const TermsConditions = (props) => {
         <MainBlock />
         <PlayerBlock />
         <div className={styles.textWhyslotsBack}>
-          <TextBlock t={t} textData={termsAndConditions.data} textHeading={'Terms and Conditions'}/>
+          <TextBlock t={t} textData={allDataTermsAndConditions.data} textHeading={'Terms and Conditions'}/>
           <WhySlotsIdol t={t} isBackShow={false}/>
         </div>
         <NewsBlock t={t} isBackShow={false}/>

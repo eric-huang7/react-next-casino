@@ -10,6 +10,7 @@ import {useEffect} from "react";
 
 
 
+
 const MyApp = ({ Component, pageProps }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
   const router = useRouter();
@@ -18,6 +19,8 @@ const MyApp = ({ Component, pageProps }) => {
       router.push(router.route, router.route, {locale: cookies.language})
     }
   }, [])
+
+
 
 
   return (

@@ -14,9 +14,7 @@ import showPopupsReducer from './reducers/showPopupsReducer';
 import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
 import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
 import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
-
-
-
+import getBonuses from "./reducers/getBonuses";
 
 
 export const rootReducer = combineReducers({
@@ -34,4 +32,5 @@ export const rootReducer = combineReducers({
   showPopupsReducer : showPopupsReducer,
   userSelectedCurrency: setUserCurrencyReducer,
   userPaymentMethod: setUserPaymentMethodReducer,
+  bonuses: getBonuses,
 })

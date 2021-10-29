@@ -19,6 +19,7 @@ import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlo
 import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
 import {getCurrency} from "../redux/actions/currency";
 import {getJackpots} from "../redux/actions/latestJackpots";
+import {getActiveBonuses} from "../redux/actions/getBonuses";
 
 
 
@@ -40,16 +41,19 @@ export default function Home(props) {
     dispatch(getWinners());
     dispatch(getLatestWinners());
     dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
 
   }, []);
+  const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
 
 
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
   const currencies = useSelector((state) => state.getCurrency);
+  const activeBonuses = useSelector((state) => state.bonuses);
 
-  console.log(currencies, "@@@@@@@ MAin page");
+  console.log(currencies, activeBonuses, "@@@@@@@ MAin page");
 
   return (
 
