@@ -2,14 +2,14 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {BonusesBlockContainer} from "./BonusesBlockContainer";
 
 export const BonusesBlockMainContainer = ({t, isChecked, checkedInputHandler, isActiveBonusInput, userCurrency, showAllBonuses, showAllBonusesHandler, chosenBonus,
-                                            chooseBonusClickHandler, setDepositButtonText}) => {
+                                            chooseBonusClickHandler, setDepositButtonText, userDepositValue, userSelectedBonus}) => {
 
   return (
     <div className={styles.depositsBonusesBlock}>
       <p className={styles.selectBonus}>SELECT YOUR BONUS</p>
       <div onClick={() => showAllBonusesHandler()} className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : ''}`}>
         <BonusesBlockContainer showAllBonuses={showAllBonuses} userCurrency={userCurrency} t={t} isUseBonus={isChecked} bonusData={'bonusData'} chosenBonus={chosenBonus}
-                               chooseBonusClickHandler={chooseBonusClickHandler} setDepositButtonText={setDepositButtonText}/>
+                               chooseBonusClickHandler={chooseBonusClickHandler} setDepositButtonText={setDepositButtonText} userDepositValue={userDepositValue} userSelectedBonus={userSelectedBonus}/>
       </div>
       <div className={styles.bonusesSwitcher}>
         <label className={styles.switch}>

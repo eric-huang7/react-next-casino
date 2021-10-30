@@ -7,8 +7,6 @@ import {BonusCodeActivator} from "./BonusCodeActivator";
 import {DepositButtonSubmit} from "./DepositButtonSubmit";
 import {ChoosePaymentMethod} from "./ChoosePaymentMethod/ChoosePaymentMethod";
 import {DepositLastPage} from "./DepositLastPage/DepositLastPage";
-import {useState} from "react";
-
 
 export const DepositPageStepper = ({
                                      step,
@@ -30,12 +28,11 @@ export const DepositPageStepper = ({
                                      showAllBonuses,
                                      showAllBonusesHandler,
                                      chosenBonus,
-                                     chooseBonusClickHandler
+                                     chooseBonusClickHandler,
+                                     setDepositButtonText,
+                                     buttonText,
+                                     userSelectedBonus
                                    }) => {
-let buttonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
-  const setDepositButtonText = (newButtonText) => {
-      buttonText = newButtonText;
-  }
 
   switch (step) {
     case  1:
@@ -59,6 +56,8 @@ let buttonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositV
                                        chosenBonus={chosenBonus}
                                        chooseBonusClickHandler={chooseBonusClickHandler}
                                        setDepositButtonText={setDepositButtonText}
+                                       userDepositValue={userDepositValue}
+                                       userSelectedBonus={userSelectedBonus}
             />
             <DepositImages/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
@@ -89,6 +88,8 @@ let buttonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositV
                                        chosenBonus={chosenBonus}
                                        chooseBonusClickHandler={chooseBonusClickHandler}
                                        setDepositButtonText={setDepositButtonText}
+                                       userDepositValue={userDepositValue}
+                                       userSelectedBonus={userSelectedBonus}
             />
             <ChoosePaymentMethod t={t} userPayment={userPayment}/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
@@ -110,6 +111,7 @@ let buttonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositV
               depositValueInputHandler={depositValueInputHandler}
               userDepositValueError={userDepositValueError}
               userInfo={userInfo}
+              userCurrency={userCurrency}
             />
           </div>
           <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue}

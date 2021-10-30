@@ -5,8 +5,8 @@ import {useEffect, useState} from "react";
 import {backButtonShouldDo, showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
 import {DepositPageStepper} from "./DepositPageStepper";
 import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
-import {LOGOUT_FAIL} from "../../../redux/actions/types";
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import {setUserBonus} from "../../../redux/actions/setUserBonus";
 
 
 
@@ -20,6 +20,7 @@ export const DepositPage = ({t}) => {
   const userPayment = useSelector((state) => state.userPaymentMethod);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage);
+  const userSelectedBonus = useSelector((state) => state.userBonus)
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
@@ -27,9 +28,15 @@ export const DepositPage = ({t}) => {
   const [step, setStep] = useState(1);
   const [chosenBonus, setChosenBonus] = useState({});
 
-  const chooseBonusClickHandler = (chosenBonus) => {
-    console.log(chosenBonus, 'chosenBonus');
-    setChosenBonus(chosenBonus);
+  let newButtonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
+  const [buttonText, setNewButtonText] = useState(newButtonText);
+  const setDepositButtonText = (newButtonText) => {
+    setNewButtonText(newButtonText);
+  }
+
+  const chooseBonusClickHandler = (chosenUserBonus) => {
+    dispatch(setUserBonus(chosenUserBonus));
+    setChosenBonus(chosenUserBonus);
   }
 
   const showAllBonusesHandler = () => {
@@ -44,12 +51,14 @@ export const DepositPage = ({t}) => {
     setStep(step + 1);
   }
 
-  // console.log(userCurrency, "@@@@@@@")
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
+    console.log(userSelectedBonus, 'selctedBonus')
     if (isChecked) {
+      chooseBonusClickHandler(0);
       setIsChecked(false);
+      setNewButtonText(newButtonText);
     } else {
       setIsChecked(true);
     }
@@ -86,6 +95,7 @@ export const DepositPage = ({t}) => {
   }
   const depositValueInputHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value));
+    setNewButtonText(`Play with ${(e.target.value < 0) ? "0" : Number(e.target.value)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`)
   }
 
   const submitHandler = () => {
@@ -118,6 +128,9 @@ export const DepositPage = ({t}) => {
           showAllBonusesHandler={showAllBonusesHandler}
           chosenBonus={chosenBonus}
           chooseBonusClickHandler={chooseBonusClickHandler}
+          setDepositButtonText={setDepositButtonText}
+          buttonText={buttonText}
+          userSelectedBonus={userSelectedBonus}
         />
       </div>
     </div>

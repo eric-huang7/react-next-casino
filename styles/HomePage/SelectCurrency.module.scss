@@ -7,6 +7,8 @@
 
   background-color: rgba(0,0,0, 0.8);
 
+  padding: 0 20px;
+
   width: 100vw;
   height: 100vh;
 
@@ -21,7 +23,7 @@
 
 .selectCurrencyMainContainer {
   max-width: 500px;
-  min-width: 360px;
+  min-width: 340px;
 
   align-self: center;
 
@@ -43,6 +45,8 @@
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
 
+    cursor: pointer;
+    
     width: 20px;
     height: 20px;
 
@@ -68,6 +72,8 @@
     position: absolute;
     top: 13px;
     right: 0px;
+
+    cursor: pointer;
 
     width: 35px;
     height: 35px;

@@ -25,23 +25,23 @@ const bonusData = [
 
 const iDontNeedBonus = {id: 1, heading: "I don't need a bonus.", info: "", icon: '/assets/icons/stop.png'};
 
-export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, showAllBonuses, chosenBonus, chooseBonusClickHandler, setDepositButtonText}) => {
-  const dispatch = useDispatch();
-  const currencies = useSelector((state) => state.getCurrency);
+export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, showAllBonuses, chosenBonus, chooseBonusClickHandler, setDepositButtonText, userDepositValue}) => {
   const activeBonuses = useSelector((state) => state.bonuses);
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
   const [bonusesArr, setBonusesArr] = useState([]);
 
-
-
   useEffect(() => {
     if (userLogin) {
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
-      setBonusesArr(bonuses);
-      console.log(activeBonuses, userCurrency, bonuses, '@@@@ Bonus Block');
-      // bonusesCalculator(bonuses);
+      if (bonuses.length > 0) {
+        setBonusesArr(bonuses);
+      } else {
+        setBonusesArr([]);
+        chooseBonusClickHandler(0);
+      }
+
     } else {
 
     }
@@ -53,19 +53,10 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
     if (bonusesArr.length > 0) {
       let activeBonus = bonusesArr.find((el) => el.id === chosenBonus);
 
-      let buttonText = bonusesCalculator(activeBonus, userCurrency);
-      console.log(activeBonus,buttonText, '@@@ACTIVE BONUS')
-      dispatch(setUserBonus(bonusesArr[0].id));
+      let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue);
+      setDepositButtonText(buttonText);
       return (
         <>
-          <BonusesBlock
-            t={t}
-            bonusImage={`https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/icons/${(activeBonus) ? activeBonus.icon : bonusesArr[0].icon}`}
-            bonusHeading={(activeBonus) ? activeBonus.title : bonusesArr[0].title}
-            bonusDescription={(activeBonus) ? activeBonus.description_short : bonusesArr[0].description_short}
-            isUseBonus={isUseBonus}
-            bonusLink={'/#bonusLink'}
-          />
           <BonusesDropdown
             t={t}
             bonusImage={'/assets/icons/home/bonus_info_icon.svg'}
@@ -77,10 +68,13 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
             showAllBonuses={showAllBonuses}
             chosenBonus={chosenBonus}
             chooseBonusClickHandler={chooseBonusClickHandler}
+
           />
         </>
       )
     } else {
+      // chooseBonusClickHandler(0)
+      setDepositButtonText(`Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
       return (
         <BonusesBlock
           t={t}
@@ -93,6 +87,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
       )
     }
   } else {
+    setDepositButtonText(`Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
     return (
       <BonusesBlock
         t={t}

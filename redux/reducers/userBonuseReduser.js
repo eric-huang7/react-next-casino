@@ -2,7 +2,7 @@ import {SET_ERROR_WRONG_DEPOSIT_VALUE, SET_INPUT_DEPOSIT_VALUE, SET_USER_BONUS} 
 
 const initialState = {
   bonus_id: null,
-
+  value: 0,
 }
 
 function setUserBonusReducer(state = initialState, action) {
@@ -12,7 +12,7 @@ function setUserBonusReducer(state = initialState, action) {
     case SET_USER_BONUS :
       return {
         ...state,
-        value: payload,
+        bonus_id: payload,
       }
 
     default :

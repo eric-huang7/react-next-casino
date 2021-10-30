@@ -1,23 +1,26 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {BonusesBlock} from "./BonusesBlock";
-import {useDispatch} from "react-redux";
-import {setUserBonus} from "../../../../redux/actions/setUserBonus";
+import {useSelector} from "react-redux";
+
 
 const iDontNeedBonus = {id: 1, heading: "I don't need a bonus.", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chosenBonus,
                                   chooseBonusClickHandler}) => {
-  const dispatch = useDispatch();
-  // console.log(allBonuses, "DROPDOWN")
-
-
+  const userSelectedBonus = useSelector((state) => state.userBonus)
 
   if (allBonuses.length > 0) {
-
+    console.log(allBonuses, 'All bonuses');
     return (
       <div className={`${styles.bonusesDropdownWrapper} ${showAllBonuses ? styles.dropdownWrapperActive : ''}`}>
         {
-          allBonuses.map((el) => {
+          allBonuses.sort((el) => {
+            let res = el.id === userSelectedBonus.bonus_id ? -1 : 1
+            if (userSelectedBonus.bonus_id === 0){
+              res = el.id === 1 ? -1 : 1
+            }
+  return res
+  }).map((el) => {
             return(
               <BonusesBlock
                 key={`${el.id} bonus`}
@@ -36,6 +39,7 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
       </div>
     )
   } else {
+    chooseBonusClickHandler(0)
     return (
       <BonusesBlock
         t={t}

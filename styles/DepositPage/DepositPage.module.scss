@@ -33,6 +33,7 @@
     color: #ff0000;
     font-family: "Gobold";
     text-transform: uppercase;
+    white-space: nowrap;
 
     text-align: center;
   }
@@ -214,7 +215,7 @@
     text-transform: uppercase;
   }
   & .bonusesInformationBlock.showAllBonuses {
-    height: 214px;
+    height: auto;
     //overflow-y: auto;
   }
 
@@ -226,19 +227,21 @@
 
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: column;
+    //flex-direction: column;
     align-items: flex-start;
 
     position: relative;
 
-    overflow-y: hidden;
+    overflow: hidden;
 
     & .bonusesDropdownWrapper {
       background-color: #f2f6f9;
 
-      position: absolute;
+      position: relative;
 
-      top: 100px;
+      z-index: 2;
+
+      top: 0px;
       left: 0;
 
       & > div {
@@ -247,7 +250,7 @@
 
     }
     & .dropdownWrapperActive {
-      top: 0;
+      top: 0px;
     }
     & .activeBonusInfo {
       margin-top: 5px;
@@ -780,7 +783,7 @@ span.errorMessage {
 
       display: flex;
       flex-wrap: nowrap;
-      align-items: center;
+      align-items: flex-start;
 
       position: relative;
 
@@ -818,7 +821,8 @@ span.errorMessage {
             line-height: 24px;
 
             & span {
-              margin-right: 35px;
+
+              margin-right: 10px;
 
               white-space: nowrap;
             }
