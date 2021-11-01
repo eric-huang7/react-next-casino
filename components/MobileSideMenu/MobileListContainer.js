@@ -72,10 +72,10 @@ let listArr = [
     blockData: [
       {id: "7.1", name: "mobileSideMenu.innerLists.info.aboutUs", type: "link", path: "/aboutUs"},
       {id: "7.2", name: "mobileSideMenu.innerLists.info.termsAndConditions", type: "link", path: "/termsAndConditions"},
-      {id: "7.3", name: "mobileSideMenu.innerLists.info.bonusTermsAndConditions", type: "link", path: "/#BonusTermsAndConditions"},
-      {id: "7.4", name: "mobileSideMenu.innerLists.info.payments", type: "link", path: "/paymentsMethods"},
-      {id: "7.5", name: "mobileSideMenu.innerLists.info.privacyPolicy", type: "link", path: "/#PrivacyPolicy"},
-      {id: "7.6", name: "mobileSideMenu.innerLists.info.affiliateProgram", type: "link", path: "/#AffiliateProgram"},
+      {id: "7.3", name: "mobileSideMenu.innerLists.info.payments", type: "link", path: "/paymentsMethods"},
+      {id: "7.4", name: "mobileSideMenu.innerLists.info.privacyPolicy", type: "link", path: "/#PrivacyPolicy"},
+      {id: "7.5", name: "mobileSideMenu.innerLists.info.affiliateProgram", type: "link", path: "/#AffiliateProgram"},
+      // {id: "7.6", name: "mobileSideMenu.innerLists.info.bonusTermsAndConditions", type: "link", path: "/#BonusTermsAndConditions"},
     ]
   },
   {id: 8,

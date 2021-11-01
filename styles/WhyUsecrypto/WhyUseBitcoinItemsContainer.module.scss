@@ -1,0 +1,219 @@
+.whyUseBitcoinMainWrapper {
+
+  background-color: #ffffff;
+
+  width: 100%;
+}
+
+.whyUseBitcoinItemsContainer {
+
+  max-width: 1350px;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding-top: 40px;
+
+
+}
+
+.itemMainContainer {
+
+
+  max-width: 620px;
+
+  margin-left: 60px;
+
+  & .itemHeading {
+    max-width: 450px;
+    height: 75px;
+
+    font-size: 24px;
+    font-weight: normal;
+    color: #ff0000;
+    font-family: "Verdana";
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: flex-end;
+
+    margin-left: 35px;
+    margin-bottom: 20px;
+  }
+
+  & .itemTextBlock {
+    background-color: #b7c2db;
+
+    border-radius: 35px;
+
+    border-top: 10px solid #b4bdd0;
+
+    padding: 85px 45px 40px 35px;
+
+    position: relative;
+
+    min-height: 400px;
+
+    & .upperAngle {
+      position: absolute;
+
+      top: -81px;
+      right: -52px;
+
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      background-color: #ffffff;
+    }
+    & .upperAngleIconContainer {
+      position: absolute;
+
+      top: -60px;
+      right: -12px;
+    }
+
+    &  p{
+      font-size: 24px;
+      font-weight: normal;
+      color: #ffffff;
+      font-family: "Verdana";
+      white-space: pre-line;
+
+      margin: 0;
+    }
+  }
+  & .itemTextBlock.international {
+    & div.upperAngleIconContainer {
+      top: -52px;
+      right: -50px;
+    }
+  }
+  & .itemTextBlock.fees {
+    & div.upperAngleIconContainer {
+      top: -55px;
+      right: -30px;
+    }
+  }
+  & .itemTextBlock.decentralized {
+    & div.upperAngleIconContainer {
+      top: -65px;
+      right: -36px;
+    }
+  }
+  & .itemTextBlock.identity {
+    & div.upperAngleIconContainer {
+      top: -85px;
+      right: -60px;
+    }
+  }
+}
+
+
+
+
+
+.whyUseBitcoinItemsContainer div.itemMainContainer:nth-child(odd) {
+  margin-left: 0px;
+}
+.whyUseBitcoinItemsContainer div.itemMainContainer:last-child {
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 1350px) {
+  .whyUseBitcoinItemsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .itemMainContainer {
+    margin-left: 0;
+
+    margin-left: 70px;
+    margin-right: 70px;
+
+    & .itemHeading {
+      max-width: 280px;
+    }
+  }
+  .whyUseBitcoinItemsContainer div.itemMainContainer:nth-child(odd) {
+    margin-left: 70px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .itemMainContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+    & .itemHeading {
+      //max-width: 200px;
+      font-size: 18px;
+      //align-items: flex-start;
+    }
+
+    & .itemTextBlock {
+
+
+      & .upperAngle {
+
+      }
+      & .upperAngleIconContainer {
+        width: 65px;
+
+        top: -25px;
+        right: 0px;
+        & img {
+          width: 100%;
+        }
+      }
+
+      &  p{
+        font-size: 18px;
+
+      }
+    }
+    & .itemTextBlock.international {
+      & div.upperAngleIconContainer {
+        width: 85px;
+        top: -20px;
+        right: 0px;
+
+      }
+    }
+    & .itemTextBlock.fees {
+      & div.upperAngleIconContainer {
+        width: 90px;
+
+        top: -30px;
+        right: -10px;
+      }
+    }
+    & .itemTextBlock.decentralized {
+      & div.upperAngleIconContainer {
+        width: 90px;
+
+        top: -30px;
+        right: -10px;
+      }
+    }
+    & .itemTextBlock.identity {
+      & div.upperAngleIconContainer {
+        width: 85px;
+
+        top: -40px;
+        right: -13px;
+      }
+    }
+  }
+  .whyUseBitcoinItemsContainer div.itemMainContainer:nth-child(odd) {
+    margin-left: 10px;
+  }
+
+}

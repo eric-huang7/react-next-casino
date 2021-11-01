@@ -243,5 +243,11 @@
         "affiliateProgram": "Affiliate Program"
       }
     }
+  },
+  "whyUseCryptoPage": {
+    "whyUseBitcoinBlock": {
+      "heading": "Why use Bitcoin?",
+      "infoText": "We know it can be a little tricky to wrap your head around the virtual currency of Bitcoin. We think it’s the way forward in online payments and we want you to know why, so let’s break it down."
+    }
   }
 }

@@ -18,11 +18,7 @@ export const MainBlockWhyUseCrypto = () => {
         <img src={whyUseCryptoHeading} alt="Why use crypto heading"/>
       </div>
       <div className={styles.mainBlockImg}>
-
         <img className={styles.mainBlockImg_bitcoinLightBulb} src="/assets/img/whyUseCrypto/bitcoinLightBulbIcon.png" alt="bitcoin light bulb icon"/>
-        {/*<img className={styles.mainBlockImg_rubinIcon} src="/assets/img/whyUseCrypto/r-coin.svg" alt="rubin icon"/>*/}
-        {/*<img className={styles.mainBlockImg_bitcoinIcon} src="/assets/img/whyUseCrypto/b-coin.svg" alt="bitcoin icon"/>*/}
-        {/*<img className={styles.mainBlockImg_litecoinIcon} src="/assets/img/whyUseCrypto/l-coin.svg" alt="litecoin icon"/>*/}
       </div>
     </div>
   )
