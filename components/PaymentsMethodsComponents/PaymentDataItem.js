@@ -1,7 +1,17 @@
 import styles from '../../styles/PaymentsMethodsPage/PaymentsDepositBlock.module.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {showDepositModal} from "../../redux/actions/showPopups";
 
 
 export const PaymentDataItem = ({t, dataInfo, type}) => {
+  const dispatch = useDispatch();
+  let isOpenDepositWindow = useSelector((state) => state.showPopupsReducer.isShowDepositModal)
+
+  const depositPaymentsClickHandler = () => {
+    dispatch(showDepositModal(true));
+    console.log(isOpenDepositWindow);
+  }
+
 
   return (
     <div className={styles.depositItemMainWrapper}>
@@ -37,10 +47,10 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
         </div>
       </div>
       {type === 'deposit' ?
-        <div className={styles.depositItemButton}>
+        <div onClick={() => depositPaymentsClickHandler()} className={styles.depositItemButton}>
           <span>deposit</span>
         </div> :
-        <div className={styles.withdrawItemButton}>
+        <div onClick={() => depositPaymentsClickHandler()} className={styles.withdrawItemButton}>
           <span>deposit</span>
         </div>
       }
