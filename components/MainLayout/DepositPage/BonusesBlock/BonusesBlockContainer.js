@@ -30,7 +30,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
-  const [bonusesArr, setBonusesArr] = useState([]);
+  const [bonusesArr, setBonusesArr] = useState([{id: 1}]);
 
   useEffect(() => {
     if (userLogin) {
@@ -43,9 +43,9 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
       }
 
     } else {
-
+      setBonusesArr([]);
     }
-  }, [userCurrency, isShowDepositModal]);
+  }, [userLogin, userCurrency, isShowDepositModal]);
 
 
 

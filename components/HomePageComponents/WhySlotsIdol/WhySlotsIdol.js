@@ -1,4 +1,4 @@
-import styles from '../../../styles/HomePage/WhySlotsIdol .module.scss'
+import styles from '../../../styles/HomePage/WhySlotsIdol.module.scss'
 
 export const WhySlotsIdol = ({t, isBackShow}) => {
 

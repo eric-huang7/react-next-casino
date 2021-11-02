@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 74" width="58" height="74">
+	<title>Get Started</title>
+	<defs>
+		<image width="58" height="74" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAABKCAYAAADqmUfpAAAAAXNSR0IArs4c6QAABJJJREFUeF7dnLmOXEUUhr8CsUc8AxISsoT8BA4JWWZYJCSQwE4IjA0Rb0DIGrBJBOwJIZJZbL+CJWQ58isY49DBRWe6GvX0dNX569apnp65YXfdv+qbqvPXX/fOTAKY4E3gdeA+8G2CX+3z1itKp7VfpX2a4ALw9Vrj9xJ8rAgs20TptPTZ0tZAbwDPbrjp/QQfqWJROmp/re0M9CbwTOHGywk+UUSjdJS+5rQx0A+ADys3S7BROnMglHsM9CHgC+Dtyg3vJvisJhilowx6TpuUXfcB4BvgrYqIW7MThOjMAfHuOQDNsA9m963Bust4ghAdb+Ct3/8P2jCzCqwys65OK0yt/SHQFdgvWeyvpetSgk+dmjXYbp0o2COgGdY+/yoANkQnAnYj6MrMGuz5SkdugsoG1a3TC1sEXYG1eFjbelTYbp0e2CroaXJjF/S0GJQE2lCzSoIyN/Zq1tVpXcYyaAOsmqA8WFenBbYJdKVmbZC9BmUJqltHhW0GbUhQqht7GdvVUWBngZ5Eg5oNetISVBdog0G5y290guoGPSkJKgS0IUEppx7lPOvqrBtUGOiuG1QoaAOsm3xyzXrnWVdnObPhoCtubKeV2hHPTT4T2Pi6dWxMQ0B3MUENA921BDUUtKFmXRcVa7aoMxx0VxLUVkB3IUFtDfS4E9RWQRsSlPtwu/WNwNZBGwxKgVUekh/oHAtoA+wbCb6vHaxFNzad47ty8rHXke+weBO3ft1IcNYboajjyYz9foKXgF9YvKddv24neEoZgaCjyIxpM8GLwA/A44UePk9w0etd1PFkxnw/wQvAjxXI34FXE9x1alTVGQPiDG4vQz5SaGeQLye4F6WzdTPKtWTL9bECxJ/AfoJ/HUirbVlnq6AZ8iegNJN/5JlUIJt0tgaaDcNqsjSTV4DXhJo0A2vW2Qponkkb3KOF5WiQrwg1act1ls5w0An2ge8qM2nGY5Decu3SGQqaIW0GHq64qwrZpTMMVFiuf2V39fZJb7lKOkNABUg1DHiQko6tpnBQwV3VfdJzV0lnWTKhoBN4iUfdJ0N0Vn0hDFSYyavAXsA+Kemsm18IaIa0pFLaJ80wLLv+48Q6W67dOpv66AbNpxAbXCnxqJB2CunWKf0gu0AneB742QnoNpPeFhKiU1sts0GFw+61XJPKcq0dviUd77A5C1SoSTMMO2opkLWalHQ8yFn7qPBk4HqeyTudTwYkHQWyGTRDWk2W3NU2ccuu3kya8XTrqJBNoNl4bJmVHmRJmTNKpwVSBhVq0mZScVdvn5R0WiElUHGfNOPxthBln3R15kC6oEJNqsvVq0lJZy5kFVSoJQvo9tzVMx4LA7XalnR6IIugQuJRTyFe4pF0eiE3ggqJRzKMKJ0IyCOgp8Fd3VAvJB7pHBilEzWTh54w5Jq0V3elxCM9m4nSiYY8WLoTnAN+A54odKDWZIjOCMglqD0lf64C6b7wsXsnCNEZCfo3cGZDB1JNLu+bIERnJKj9Zf7ltQ6ak8q0+Av/bp2RoE+y+J8LT+dObgH2O/DVxLM+oAlCdEaB/gfPgQIPlxmnwwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Get Started">
+		<use id="Layer 24 copy 6" href="#img1" transform="matrix(1,0,0,1,0,0)"/>
+	</g>
+</svg>

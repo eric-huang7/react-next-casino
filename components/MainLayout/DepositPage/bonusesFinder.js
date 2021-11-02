@@ -21,6 +21,6 @@ export const bonusesFinder = (offers, userCurrency) => {
     return needetBonuses
 
   } else {
-    return false
+    return []
   }
 }

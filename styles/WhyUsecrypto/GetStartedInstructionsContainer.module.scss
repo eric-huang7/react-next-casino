@@ -1,15 +1,138 @@
+.instructionsMainWrapper {
+  margin-bottom: 140px;
+}
+
 .instructionsIconsWrapper {
   max-width: 1350px;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+
 
   margin: 0 auto;
+
+  position: relative;
+
+
+}
+.redArea {
+  position: absolute;
+
+  background-color: #ff0e0e;
+
+  z-index: 1;
+
+  width: 10000vw;
+  height: 100px;
+
+  bottom: -32px;
+  bottom: -32px;
+  left: -500px;
 }
 
 .iconItemWrapper {
+  width: 360px;
+  height: 215px;
+
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  //justify-content: ;
+
+  margin-left: 100px;
+
+  z-index: 3;
+  position: relative;
+}
+.iconItemWrapper:after {
+  content: "";
+
+  background-image: url("/assets/img/whyUseCrypto/itemsIcons/redArrows.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  position: absolute;
+  top: 15px;
+  right: -84px;
+
+  width: 58px;
+  height: 74px;
+
+}
+.iconItemWrapper.spendingItem:after {
+  display: none;
+}
+
+
+.iconItemWrapper:first-child {
+  margin-left: 0px;
+}
+.iconItemPicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 130px;
+
+margin-bottom: 50px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.iconItemHeading {
+  font-size: 30px;
+  color: #ffffff;
+  font-family: "Verdana";
+  white-space: nowrap;
+
+  margin: 0;
+}
+
+@media screen and (max-width: 1350px) {
+  .instructionsMainWrapper {
+    margin-bottom: 70px;
+  }
+  .iconItemWrapper{
+    height: 175px;
+  }
+  .iconItemWrapper:after {
+    width: 40px;
+    height: 52px;
+
+    top: 22px;
+    right: 56px;
+  }
+
+  .iconItemPicture {
+    width: 110px;
+    height: 115px;
+
+    margin-bottom: 35px;
+  }
+
+  .iconItemHeading {
+    font-size: 21px;
+
+    position: relative;
+  }
+  .iconItemHeading:after {
+    content: "";
+
+    position: absolute;
+    top: -16px;
+    right: -900px;
+
+    height: 60px;
+    width: 1000vw;
+
+    background-color: #ff0e0e;
+
+    z-index: -1;
+  }
 }

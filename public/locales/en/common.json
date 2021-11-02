@@ -277,9 +277,43 @@
       "heading": "Why use Bitcoin?",
       "infoText": "We know it can be a little tricky to wrap your head around the virtual currency of Bitcoin. We think it’s the way forward in online payments and we want you to know why, so let’s break it down."
     },
+    "whyUseBitcoinInnerBlocks": {
+      "security": {
+        "heading": "Security and control over your money",
+        "textInfo": "The state-of-the-art encryption that secures your Bitcoin transactions is used in government and military transactions, so you know it’s the safest around. As long as you take the required steps to ensure your wallet is protected, no one can ever get their hands on your money."
+      },
+      "international": {
+        "heading": "FAST INTERNATIONAL PAYMENTS",
+        "textInfo": "FAST INTERNATIONAL PAYMENTS \nThe Bitcoin network is working tirelessly to make sure you’re never waiting on a transfer. You can pay someone on the other side of the world as quickly as you can pay your neighbour, with transfers from Africa to Canada only taking around 10 minutes. There’s no bank, with their snails-pace processes, to slow the whole procedure"
+      },
+      "fees": {
+        "heading": "ZERO OR LOW FEES",
+        "textInfo": "ZERO OR LOW FEES \nHaving to pay high transaction fees can be a real pain. The Bitcoin network is completely free, with an option to speed up transaction processes by paying a voluntary fee."
+      },
+      "decentralized": {
+        "heading": "OPEN AND FULLY DECENTRALIZED",
+        "textInfo": "Unlike your bank and credit card accounts, Bitcoin isn’t owned by anyone. It’s open-source, with a community of developers maintaining the most popular clients. You’re free to spend and play without worrying about some shady banker dipping his fingers into your winnings."
+      },
+      "identity": {
+        "heading": "IDENTITY PROTECTION",
+        "textInfo": "Criminals are clever and once they have your credit card information they can steal your identity and your money. That’s a thing of the past with Bitcoin. No case sensitive information is required and you can even send a payment without revealing your identity at all."
+      }
+    },
     "getStartedWithBlock": {
       "heading": "Get Started With Bitcoins:",
       "infoText": "So now you know more about Bitcoins, we’re sure you’re wondering how to get started with them. Just follow these simple steps and get playing in no time. Here’s what you have to do."
+    },
+    "instructionsSection": {
+      "iconsHeadings": {
+        "wallet": "1. PICK YOUR WALLET",
+        "bitcoin": "2. GET YOUR BITCOINS",
+        "spending": "3. GET SPENDING"
+      },
+      "textBlocks": {
+        "blockOne": "Firstly, you'll need to choose which wallet you want to use for your Bitcoin transactions. Just like real money, you'll need somewhere to keep them. Web wallets are the easiest most convenient to use. There are plenty of online wallet options out there, including .................., ................ or ................",
+        "blockTwo": "Once you’ve chosen your wallet, it’s time to actually purchase some Bitcoins. This process is getting easier and easier all the time, with lots of websites helping you to get your hands on the virtual currency.\n\nMany sites let you exchange multiple currencies for Bitcoins. These include ..........., .............. and .............. You can even buy Bitcoins directly from other members in your community by finding them on sites like ...........................com.",
+        "blockThree": "Once you have your Bitcoins it's time to get spending. You can use them to purchase just about anything, from homes to holidays, cars to coats and of course, our fantastic casino games too."
+      }
     }
   },
   "paymentsMethodsPage": {

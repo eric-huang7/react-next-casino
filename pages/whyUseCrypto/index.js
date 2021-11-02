@@ -7,6 +7,7 @@ import {WhyUseBitcoinBlock} from "../../components/WhyUseCrypto/WhyUseBitcoinBlo
 import {WhyUseBitcoinItemsContainer} from "../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer";
 import {GetStartedWith} from "../../components/WhyUseCrypto/GetStartedWith";
 import {GetStartedInstructionsContainer} from "../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer";
+import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 
 
 const WhyUseCrypto = (props) => {
@@ -20,6 +21,7 @@ const WhyUseCrypto = (props) => {
         <WhyUseBitcoinItemsContainer t={t}/>
         <GetStartedWith t={t} />
         <GetStartedInstructionsContainer t={t}/>
+        <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>
   )

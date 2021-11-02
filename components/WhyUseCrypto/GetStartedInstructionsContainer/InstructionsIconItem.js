@@ -4,13 +4,14 @@ import styles from '../../../styles/WhyUsecrypto/GetStartedInstructionsContainer
 export const InstructionsIconItem = ({t, data}) => {
 
   return (
-    <div className={styles.iconItemWrapper}>
+    <div className={`${styles.iconItemWrapper} ${styles[data.itemClass]}`}>
       <div className={styles.iconItemPicture}>
         <img src={data.icon} alt={data.itemClass}/>
       </div>
       <h2 className={styles.iconItemHeading}>
-        {data.heading}
+        {t(data.heading)}
       </h2>
+
     </div>
   )
 }
