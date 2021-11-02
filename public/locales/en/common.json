@@ -281,5 +281,27 @@
       "heading": "Get Started With Bitcoins:",
       "infoText": "So now you know more about Bitcoins, we’re sure you’re wondering how to get started with them. Just follow these simple steps and get playing in no time. Here’s what you have to do."
     }
+  },
+  "paymentsMethodsPage": {
+    "mainBlock": {
+      "heading": "Payments methods",
+      "textInfo": "We are proud to be a safe multi-currency online casino. Currently, we accept the following currencies: Euro, US Dollars, Canadian Dollar, Australian Dollar, New Zealand Dollar, Japanese Yen, Renminbi, Polish Złoty, Russian Ruble, Norwegian Krone, Bitcoins, Bitcoin Cash, Ethereum, Dogecoin, Tether and Litecoin."
+    },
+    "depositBlock": {
+      "heading": "Deposit"
+    },
+    "withdrawBlock": {
+      "heading": "Withdraw"
+    },
+    "paymentDataItems": {
+      "type": "Type",
+      "fee": "Fee",
+      "processingTime": "Processing time",
+      "limit": "Limit per translation"
+    },
+    "buttonText": "Deposit"
+  },
+  "termsAndConditions": {
+    "data": ""
   }
 }

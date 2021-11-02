@@ -49,7 +49,7 @@ export const PaymentsDepositBlock = ({t, }) => {
 
   return (
     <section className={styles.depositBlockWrapper}>
-      <h2 className={styles.depositHeading}>Deposit</h2>
+      <h2 className={styles.depositHeading}>{t("paymentsMethodsPage.depositBlock.heading")}</h2>
       <div className={styles.depositItemsWrapper}>
         <div className={styles.depositsItemsFrame}>
           {

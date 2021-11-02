@@ -26,19 +26,19 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
         </div>
         <div className={styles.depositItemInfoMainBlock}>
           <div className={styles.depositItemTypeBlock}>
-            <p>Type</p>
+            <p>{t("paymentsMethodsPage.paymentDataItems.type")}</p>
             <p>{dataInfo.depositType}</p>
           </div>
           <div className={styles.depositItemFeeBlock}>
-            <p>Fee</p>
+            <p>{t("paymentsMethodsPage.paymentDataItems.fee")}</p>
             <p>{dataInfo.depositFee}</p>
           </div>
           <div className={styles.depositItemProcessingTimeBlock}>
-            <p>Processing time</p>
+            <p>{t("paymentsMethodsPage.paymentDataItems.processingTime")}</p>
             <p>{dataInfo.depositProcessingTime}</p>
           </div>
           <div className={styles.depositItemLimitBlock}>
-            <p>Limit per translation</p>
+            <p>{t("paymentsMethodsPage.paymentDataItems.limit")}</p>
             <div>
               <p>Min {dataInfo.depositLimitPerTransaction.minLimit}</p>
               <p>Max {dataInfo.depositLimitPerTransaction.maxLimit}</p>
@@ -48,10 +48,10 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
       </div>
       {type === 'deposit' ?
         <div onClick={() => depositPaymentsClickHandler()} className={styles.depositItemButton}>
-          <span>deposit</span>
+          <span>{t("paymentsMethodsPage.buttonText")}</span>
         </div> :
         <div onClick={() => depositPaymentsClickHandler()} className={styles.withdrawItemButton}>
-          <span>deposit</span>
+          <span>{t("paymentsMethodsPage.buttonText")}</span>
         </div>
       }
 

@@ -41,7 +41,7 @@ export const PaymentsWithdrawBlock = ({t}) => {
   }
   return (
     <section className={styles.withdrawBlockWrapper}>
-      <h2 className={styles.withdrawHeading}>Withdraw</h2>
+      <h2 className={styles.withdrawHeading}>{t("paymentsMethodsPage.withdrawBlock.heading")}</h2>
       <div className={styles.withdrawItemsWrapper}>
         <div className={styles.withdrawItemsFrame}>
           {
