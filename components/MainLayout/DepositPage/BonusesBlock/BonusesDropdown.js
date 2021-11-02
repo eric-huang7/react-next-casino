@@ -3,7 +3,7 @@ import {BonusesBlock} from "./BonusesBlock";
 import {useSelector} from "react-redux";
 
 
-const iDontNeedBonus = {id: 1, heading: "I don't need a bonus.", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chosenBonus,
                                   chooseBonusClickHandler}) => {
@@ -43,6 +43,7 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
     return (
       <BonusesBlock
         t={t}
+        classImageNotActive={'imageNotActive'}
         bonusImage={iDontNeedBonus.icon}
         bonusHeading={iDontNeedBonus.heading}
         bonusDescription={iDontNeedBonus.info}

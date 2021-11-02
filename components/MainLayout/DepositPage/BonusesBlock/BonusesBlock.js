@@ -3,7 +3,7 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 
 
 export const BonusesBlock = ({t, isUseBonus, bonusHeading, bonusImage, bonusDescription, bonusLink, chosenBonus,
-                               chooseBonusClickHandler, bonusId}) => {
+                               chooseBonusClickHandler, bonusId, classImageNotActive}) => {
   const bonusClickHandler = () => {
     if (chooseBonusClickHandler) {
       chooseBonusClickHandler(bonusId)
@@ -16,11 +16,11 @@ export const BonusesBlock = ({t, isUseBonus, bonusHeading, bonusImage, bonusDesc
       onClick={() => bonusClickHandler()}
       className={`${styles.activeBonusInfo} ${isUseBonus ? styles.activeBonusInfo : styles.notActiveBonusInfo}`}
     >
-      <img src={bonusImage} alt="bonus image"/>
+      <img className={styles[classImageNotActive]} src={bonusImage} alt="bonus image"/>
       <div className={styles.bonusInfoBlock}>
         <div className={styles.bonusHeadingBlock}>
-          <span>{bonusHeading}</span>
-          <span title={bonusLink} className={styles.infoLable}>info</span>
+          <span className={styles.bonusInfoHeading}>{t(bonusHeading)}</span>
+          <span title={bonusLink} className={styles.infoLable}>{t("depositPage.bonusBlockInfoLink")}</span>
         </div>
         <p className={styles.bonusDescriptionInfo}>{bonusDescription}</p>
       </div>

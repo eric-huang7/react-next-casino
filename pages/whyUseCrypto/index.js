@@ -5,6 +5,8 @@ import styles from "../../styles/WhyUsecrypto/WhyUseCrypto.module.scss";
 import {MainBlockWhyUseCrypto} from "../../components/WhyUseCrypto/MainBlockWhyUseCrypto";
 import {WhyUseBitcoinBlock} from "../../components/WhyUseCrypto/WhyUseBitcoinBlock";
 import {WhyUseBitcoinItemsContainer} from "../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer";
+import {GetStartedWith} from "../../components/WhyUseCrypto/GetStartedWith";
+import {GetStartedInstructionsContainer} from "../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer";
 
 
 const WhyUseCrypto = (props) => {
@@ -16,6 +18,8 @@ const WhyUseCrypto = (props) => {
         <MainBlockWhyUseCrypto />
         <WhyUseBitcoinBlock t={t}/>
         <WhyUseBitcoinItemsContainer t={t}/>
+        <GetStartedWith t={t} />
+        <GetStartedInstructionsContainer t={t}/>
       </MainLayout>
     </>
   )

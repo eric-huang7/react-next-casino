@@ -23,7 +23,7 @@ const bonusData = [
   },
 ]
 
-const iDontNeedBonus = {id: 1, heading: "I don't need a bonus.", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, showAllBonuses, chosenBonus, chooseBonusClickHandler, setDepositButtonText, userDepositValue}) => {
   const activeBonuses = useSelector((state) => state.bonuses);
@@ -53,7 +53,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
     if (bonusesArr.length > 0) {
       let activeBonus = bonusesArr.find((el) => el.id === chosenBonus);
 
-      let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue);
+      let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue, t);
       setDepositButtonText(buttonText);
       return (
         <>
@@ -61,7 +61,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
             t={t}
             bonusImage={'/assets/icons/home/bonus_info_icon.svg'}
             bonusHeading={'BonusHeading'}
-            bonusDescription={'Bonus Description sdf sdf sdfa sdfwer wer dfsdf '}
+            bonusDescription={'Bonus Description'}
             bonusLink={'/#bonusLink'}
             isUseBonus={isUseBonus}
             allBonuses={bonusesArr}
@@ -74,10 +74,11 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
       )
     } else {
       // chooseBonusClickHandler(0)
-      setDepositButtonText(`Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
+      setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
       return (
         <BonusesBlock
           t={t}
+          classImageNotActive={'imageNotActive'}
           bonusImage={iDontNeedBonus.icon}
           bonusHeading={iDontNeedBonus.heading}
           bonusDescription={iDontNeedBonus.info}
@@ -87,10 +88,11 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
       )
     }
   } else {
-    setDepositButtonText(`Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
+    setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
     return (
       <BonusesBlock
         t={t}
+        classImageNotActive={'imageNotActive'}
         bonusImage={iDontNeedBonus.icon}
         bonusHeading={iDontNeedBonus.heading}
         bonusDescription={iDontNeedBonus.info}

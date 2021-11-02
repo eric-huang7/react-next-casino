@@ -28,7 +28,7 @@ export const DepositPage = ({t}) => {
   const [step, setStep] = useState(1);
   const [chosenBonus, setChosenBonus] = useState({});
 
-  let newButtonText = `Play with ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
+  let newButtonText = `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
   const [buttonText, setNewButtonText] = useState(newButtonText);
   const setDepositButtonText = (newButtonText) => {
     setNewButtonText(newButtonText);
@@ -95,7 +95,7 @@ export const DepositPage = ({t}) => {
   }
   const depositValueInputHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value));
-    setNewButtonText(`Play with ${(e.target.value < 0) ? "0" : Number(e.target.value)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`)
+    setNewButtonText(`${t("depositPage.bonusInfo.playWith")} ${(e.target.value < 0) ? "0" : Number(e.target.value)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`)
   }
 
   const submitHandler = () => {
@@ -106,7 +106,7 @@ export const DepositPage = ({t}) => {
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
       {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
-        <h2>DEPOSIT $ 100 AND GET $ 200</h2>
+        <h2>{t("depositPage.mainHeading")}</h2>
         <DepositPageStepper
           step={step}
           t={t}

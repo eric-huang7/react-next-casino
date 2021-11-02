@@ -13,17 +13,17 @@ export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler, 
       </div>
       <div className={styles.inputsWrapper}>
         <div className={styles.emailInputContainer}>
-          <label htmlFor="paymentEmail">Email</label>
+          <label htmlFor="paymentEmail">{t("depositPage.depositLastPage.emailLabel")}</label>
           <input id='paymentEmail' type="text" defaultValue={userInfo.user.email}/>
         </div>
         <div className={styles.amountPaymentContainer}>
-          <label className={styles.amountPaymentInfo} htmlFor="">Amount (min 10.00, max 5000.00)</label>
+          <label className={styles.amountPaymentInfo} htmlFor="">{t("depositPage.depositLastPage.amountPayment")}</label>
           <label className={styles.currencyIcon} htmlFor="paymentAmount">{userCurrency.currencySymbol}</label>
           <input id='paymentAmount' type="number" defaultValue={userDepositValue} onChange={(e) => depositValueInputHandler(e)}/>
-          <span className={styles.errorMessage}>{userDepositValueError}</span>
+          <span className={styles.errorMessage}>{t(userDepositValueError)}</span>
         </div>
       </div>
-      <p className={styles.paymentSecureInfo}>{'Secure Payment Processing Time: Instant Fee 3.0%'}</p>
+      <p className={styles.paymentSecureInfo}>{t("depositPage.depositLastPage.secureInfo")}</p>
     </div>
   )
 }

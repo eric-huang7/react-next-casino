@@ -21,7 +21,7 @@
 }
 
 .depositsMainBlock {
-  max-width: 500px;
+  max-width: 1500px;
 
   margin: 130px auto;
 
@@ -33,7 +33,7 @@
     color: #ff0000;
     font-family: "Gobold";
     text-transform: uppercase;
-    white-space: nowrap;
+    //white-space: nowrap;
 
     text-align: center;
   }
@@ -138,7 +138,7 @@
 
         font-size: 36px;
         color: #3a3a3a;
-        font-family: "Source Sans Roman";
+        font-family: "Source Sans Roman", sans-serif;
 
         outline: none;
 
@@ -155,11 +155,11 @@
 
         font-size: 36px;
         color: #3a3a3a;
-        font-family: "Source Sans";
+        font-family: "Source Sans", sans-serif;
 
         position: absolute;
 
-        top: 23px;
+        top: 24px;
         left: 10px;
       }
     }
@@ -213,6 +213,7 @@
     color: #868686;
     font-family: "Verdana";
     text-transform: uppercase;
+
   }
   & .bonusesInformationBlock.showAllBonuses {
     height: auto;
@@ -221,7 +222,8 @@
 
   & .bonusesInformationBlock {
     width: 357px;
-    height: 74px;
+    height: 62px;
+
     background-color: #f2f6f9;
     border: 0.75px solid #a6a6a6;
 
@@ -244,8 +246,8 @@
       top: 0px;
       left: 0;
 
-      & > div {
-        margin-bottom: 20px;
+      & > div:hover {
+        //margin-bottom: 20px;
       }
 
     }
@@ -253,13 +255,14 @@
       top: 0px;
     }
     & .activeBonusInfo {
+
       margin-top: 5px;
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
 
       & img {
-        width: 44px;
+        width: 50px;
         height: 50px;
 
         margin-bottom: 5px;
@@ -274,7 +277,7 @@
           display: flex;
           flex-wrap: nowrap;
           align-items: center;
-          justify-content: space-between;
+          //justify-content: space-evenly;
 
           font-size: 14px;
           line-height: 24px;
@@ -282,6 +285,15 @@
           font-family: "Verdana";
           & span {
             margin-right: 35px;
+            white-space: nowrap;
+
+          }
+          & .bonusInfoHeading {
+            text-overflow: ellipsis;
+
+            display: block;
+            overflow: hidden;
+            max-width: 200px;
           }
           & span.infoLable {
             margin-right: 0px;
@@ -306,6 +318,7 @@
       }
     }
     & .notActiveBonusInfo {
+      margin-top: 5px;
       & img {
         width: 50px;
         height: 50px;
@@ -315,7 +328,7 @@
   & .bonusesInformationBlock:after {
     position: absolute;
 
-    top: 30px;
+    top: 21px;
     right: 15px;
 
     content: '';
@@ -333,6 +346,7 @@
     top: 50%;
     transform: rotateZ(-135deg);
   }
+
   & .bonusesInformationBlock:hover {
     cursor: pointer;
   }
@@ -479,6 +493,7 @@
     color: #ffffff;
     font-family: "Myriad Pro";
     text-transform: uppercase;
+    text-align: center;
   }
 }
 .depositsButton:hover {
@@ -714,6 +729,7 @@ span.errorMessage {
           color: #3a3a3a;
           font-family: "Segoe UI";
 
+
           position: absolute;
 
           top: 7px;
@@ -771,12 +787,14 @@ span.errorMessage {
 
       text-transform: uppercase;
 
+      max-width: 170px;
+
       margin-left: 10px;
     }
 
     & .bonusesInformationBlock {
       width: 285px;
-      height: 81px;
+      height: 87px;
 
       background-color: #f2f6f9;
       border: 1px solid #cad2d8;
@@ -789,12 +807,15 @@ span.errorMessage {
 
       margin-top: 27px;
 
+      & .bonusesDropdownWrapper {
+        min-height: 85px;
+      }
 
       & .activeBonusInfo {
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
-
+        min-height: 80px;
         & img {
           width: 37px;
           height: 41px;
@@ -803,7 +824,9 @@ span.errorMessage {
           margin-right: 8px;
           margin-left: 5px;
         }
-
+        & img.imageNotActive{
+          margin-bottom: 0px;
+        }
         & .bonusInfoBlock {
           width: 175px;
 
@@ -850,17 +873,19 @@ span.errorMessage {
         }
       }
       & .notActiveBonusInfo {
+
         & img {
-          width: 50px;
-          height: 50px;
+          margin-bottom: 0px;
+          width: 37px;
+          height: 41px;
         }
       }
     }
     & .bonusesInformationBlock:after {
       position: absolute;
 
-      top: 22px;
-      right: 23px;
+      top: 27px;
+      right: 18px;
 
       content: '';
 
@@ -875,6 +900,7 @@ span.errorMessage {
     & .bonusesInformationBlock:hover {
       cursor: pointer;
     }
+
 
     & .bonusesSwitcher {
       position: absolute;

@@ -46,7 +46,7 @@ export const ChoosePaymentMethod = ({t, userPayment}) => {
   return (
     <div className={styles.depositsChoosePaymentWrapper}>
       <h3 className={styles.choosePaymentHeading}>
-        Choose a payment method
+        {t("depositPage.choosePaymentMethod")}
       </h3>
       <div className={styles.paymentMethodsBlock}>
         {
@@ -66,7 +66,7 @@ export const ChoosePaymentMethod = ({t, userPayment}) => {
           })
         }
       </div>
-      <span className={styles.errorMessage}>{userPayment.paymentError}</span>
+      <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
     </div>
   )
 }

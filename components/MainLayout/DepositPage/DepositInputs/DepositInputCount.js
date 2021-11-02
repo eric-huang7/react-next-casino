@@ -5,7 +5,7 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
 
   return (
     <div className={styles.depositInputCountWrapper}>
-      <label className={styles.labelEnterSum} htmlFor="depositInputCount">Enter sum of deposit</label>
+      <label className={styles.labelEnterSum} htmlFor="depositInputCount">{t("depositPage.depositInputLabel")}</label>
       <label className={styles.labelIconCurrency} htmlFor="depositInputCount">{currencySymbol}</label>
       <input
         type="number"
@@ -14,7 +14,7 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
         defaultValue={userDepositValue}
         onChange={(e) => depositValueInputHandler(e)}
       />
-      <span className={styles.errorMessage}>{userDepositValueError}</span>
+      <span className={styles.errorMessage}>{t(userDepositValueError)}</span>
     </div>
   )
 }

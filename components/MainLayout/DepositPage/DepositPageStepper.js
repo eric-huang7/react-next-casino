@@ -39,7 +39,7 @@ export const DepositPageStepper = ({
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading closeDepositModalHandler={closeDepositModalHandler}/>
+            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
             <DepositInputsContainer userCurrency={userCurrency}
                                     t={t}
                                     userDepositValue={userDepositValue}
@@ -72,7 +72,7 @@ export const DepositPageStepper = ({
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading closeDepositModalHandler={closeDepositModalHandler}/>
+            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
             <DepositInputsContainer userCurrency={userCurrency}
                                     t={t}
                                     userDepositValue={userDepositValue}
@@ -104,7 +104,7 @@ export const DepositPageStepper = ({
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading closeDepositModalHandler={closeDepositModalHandler}/>
+            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
             <DepositLastPage
               t={t}
               userDepositValue={userDepositValue}

@@ -244,10 +244,42 @@
       }
     }
   },
+  "depositPage": {
+    "mainHeading": "DEPOSIT $ 100 AND GET $ 200",
+    "innerHeading": "DEPOSIT AMOUNT",
+    "depositInputLabel": "Enter sum of deposit",
+    "bonusBlockHeading": "SELECT YOUR BONUS",
+    "bonusBlockInput": "Enter your bonus code",
+    "bonusBlockInfoNotBonus": "I don't need a bonus.",
+    "bonusBlockInfoLink": "info",
+    "iHaveBonusCodeButton": "I have a bonus code",
+    "iDontHaveBonusCodeButton": "I don't have a promo code",
+    "choosePaymentMethod": "Choose a payment method",
+    "submitButton": "SUBMIT",
+    "depositLastPage": {
+      "emailLabel": "Email",
+      "amountPayment": "Amount (min 10.00, max 5000.00)",
+      "secureInfo": "Secure Payment Processing Time: Instant Fee 3.0%"
+    },
+    "bonusInfo": {
+      "maximumBonusAmount": "Maximum bonus amount based on award amount",
+      "bonusUpTo": "Bonus up to",
+      "freeSpins": "Free Spins",
+      "playWith": "Play with"
+    },
+    "errors": {
+      "wrongValue": "Wrong value",
+      "choosePaymentMethod" : "Choose payment method!"
+    }
+  },
   "whyUseCryptoPage": {
     "whyUseBitcoinBlock": {
       "heading": "Why use Bitcoin?",
       "infoText": "We know it can be a little tricky to wrap your head around the virtual currency of Bitcoin. We think it’s the way forward in online payments and we want you to know why, so let’s break it down."
+    },
+    "getStartedWithBlock": {
+      "heading": "Get Started With Bitcoins:",
+      "infoText": "So now you know more about Bitcoins, we’re sure you’re wondering how to get started with them. Just follow these simple steps and get playing in no time. Here’s what you have to do."
     }
   }
 }

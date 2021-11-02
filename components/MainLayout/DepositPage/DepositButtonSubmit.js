@@ -18,14 +18,14 @@ const dispatch = useDispatch();
         }
       } else {
         console.log('unsuccess')
-        dispatch(setErrorUserDepositValue('Wrong value'));
+        dispatch(setErrorUserDepositValue("depositPage.errors.wrongValue"));
       }
     } else if (step === 2) {
       if (!!userPayment.paymentId) {
         stepHandler(step);
         dispatch(setErrorUserPaymentMethod(''));
       } else {
-        dispatch(setErrorUserPaymentMethod('Choose payment method!'));
+        dispatch(setErrorUserPaymentMethod("depositPage.errors.choosePaymentMethod"));
       }
     }
 

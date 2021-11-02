@@ -6,8 +6,8 @@ export const BonusesBlockMainContainer = ({t, isChecked, checkedInputHandler, is
 
   return (
     <div className={styles.depositsBonusesBlock}>
-      <p className={styles.selectBonus}>SELECT YOUR BONUS</p>
-      <div onClick={() => showAllBonusesHandler()} className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : ''}`}>
+      <p className={styles.selectBonus}>{t("depositPage.bonusBlockHeading")}</p>
+      <div onClick={() => showAllBonusesHandler()} className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : styles.hideBonuses}`}>
         <BonusesBlockContainer showAllBonuses={showAllBonuses} userCurrency={userCurrency} t={t} isUseBonus={isChecked} bonusData={'bonusData'} chosenBonus={chosenBonus}
                                chooseBonusClickHandler={chooseBonusClickHandler} setDepositButtonText={setDepositButtonText} userDepositValue={userDepositValue} userSelectedBonus={userSelectedBonus}/>
       </div>
@@ -23,7 +23,7 @@ export const BonusesBlockMainContainer = ({t, isChecked, checkedInputHandler, is
           className={styles.depositsBonusInput}
           id={'depositsBonusIn'}
           type="text"
-          placeholder={'Enter your bonus code'}/>
+          placeholder={t("depositPage.bonusBlockInput")}/>
       </div>
     </div>
   )

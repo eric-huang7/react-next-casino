@@ -4,7 +4,7 @@ export const BonusCodeActivator = ({t, bonusCodeInputActiveHandler, isActiveBonu
 
   return (
     <div onClick={() => bonusCodeInputActiveHandler()} className={styles.depositsIhaveBonusCodeBlock}>
-      <p>{isActiveBonusInput ? "I don't have a promo code" : 'I have a bonus code'}</p>
+      <p>{isActiveBonusInput ? t("depositPage.iDontHaveBonusCodeButton") : t("depositPage.iHaveBonusCodeButton")}</p>
     </div>
   )
 }
