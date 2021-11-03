@@ -1,4 +1,4 @@
-import {BACK_BUTTON_SHOULD_DO, SHOW_CURRENCY_SWITCHER, SHOW_DEPOSIT_MODAL} from "./types";
+import {BACK_BUTTON_SHOULD_DO, SHOW_CURRENCY_SWITCHER, SHOW_DEPOSIT_MODAL, SHOW_MANAGE_SUBSCRIPTIONS} from "./types";
 
 export const showCurrencySwitcher = (isShow) => {
   return {
@@ -18,5 +18,12 @@ export const backButtonShouldDo = (backButtonAction) => {
   return {
     type: BACK_BUTTON_SHOULD_DO,
     payload: backButtonAction,
+  }
+}
+
+export const showManageSubscriptions = (isShow) => {
+  return {
+    type : SHOW_MANAGE_SUBSCRIPTIONS,
+    payload: isShow,
   }
 }

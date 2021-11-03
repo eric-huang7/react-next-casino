@@ -10,6 +10,7 @@ import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrenc
 import {useRouter} from "next/router";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import {DepositPage} from "./DepositPage/DepositPage";
+import {ManageSubscriptions} from "./ManageSubscriptions/ManageSubscriptions";
 
 
 const MainLayout = ({children, t}) => {
@@ -20,7 +21,7 @@ const MainLayout = ({children, t}) => {
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
-
+  console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
@@ -28,7 +29,10 @@ const MainLayout = ({children, t}) => {
             <RegisterSignup isShow={registerShow} t={t}/>
             <LogIn isShow={logInShow} t={t}/>
             <SelectCurrency t={t}/>
-            <DepositPage t={t}/>
+            {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
+            {/*<DepositPage t={t}/>*/}
+            {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
+
             {children}
             <Footer t={t}/>
             {/*<LangSwitcher href={router.route} locale={locale}/>*/}

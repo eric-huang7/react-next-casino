@@ -45,7 +45,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
     } else {
       setBonusesArr([]);
     }
-  }, [userLogin, userCurrency, isShowDepositModal]);
+  }, [userCurrency, isShowDepositModal]);
 
 
 

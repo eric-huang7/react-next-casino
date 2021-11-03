@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 13" width="19" height="13">
+	<title>Group 15</title>
+	<defs>
+		<image  width="19" height="13" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAANCAMAAAB8UqUVAAAAAXNSR0IB2cksfwAAAKJQTFRF/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAA/wAAgLrJAgAAADZ0Uk5TAAVKtkwDT/b9iQJS/6kHF1T3qJnqUVX4pwaOWPmhpfJDWfqdAfA9XK3sNFf8lgqz8ZIMuQ+uTbKaOAAAAIFJREFUeJxdz+cSgkAMBOClKMXlBFEULMiJXbC//6spg4pcfm2+mWQSQClNBUA3zI5CXct23Db1LHoCEP2G/ICDNyEcjr4UjTmJq5Aw0Guazjiv94sF02UVMslV/pmIPa43wFYyzH+bxY77w/HEoiGgPPMieW2fdbuTifrR4+n8dS/ODAd/W/cZpQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Group 15">
+		<use id="Layer 144 copy 3" href="#img1" x="0" y="0" />
+	</g>
+</svg>

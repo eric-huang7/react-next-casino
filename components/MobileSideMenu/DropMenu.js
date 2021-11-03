@@ -2,9 +2,14 @@ import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import Link from "next/link";
 import {MobileSideListLinks} from "./MobileSideList";
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {MobileSideButtons} from "./MobileSideButtons";
+import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
+import {showManageSubscriptions} from "../../redux/actions/showPopups";
 
-export const DropMenu = ({t,el}) => {
+export const DropMenu = ({t,el, isAuth}) => {
+  const dispatch = useDispatch();
+
   const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow);
   const [isDropActive, setIsDropActive] = useState(false);
 
@@ -14,6 +19,12 @@ export const DropMenu = ({t,el}) => {
     } else {
       setIsDropActive(true);
     }
+  }
+  const manageSubscriptionHandler = (e) => {
+    e.preventDefault();
+    dispatch(showMobileMenu(false));
+    dispatch(showManageSubscriptions(true));
+    console.log(e);
   }
 
   useEffect(() => {
@@ -45,7 +56,7 @@ export const DropMenu = ({t,el}) => {
                     <MobileSideListLinks t={t} dataList={innerEl}/>
                   </div>
                 )
-              } else {
+              } else if (innerEl.type === "block") {
                 return (
                   <div className={styles.helpMenuBlock} key={innerEl.id}>
                     <p className={styles.helpMenuHeading}>
@@ -79,6 +90,18 @@ export const DropMenu = ({t,el}) => {
                     </div>
                   </div>
                 )
+              } else if (innerEl.type === "button") {
+                if (isAuth) {
+                  return (
+                    <div className={styles.dropMenuListItem} key={innerEl.id}>
+                      <MobileSideButtons t={t} buttonData={innerEl} shouldDo={manageSubscriptionHandler}/>
+                    </div>
+                  )
+                } else {
+                 return (
+                   <></>
+                 )
+                }
               }
             })
           }

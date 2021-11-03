@@ -62,7 +62,7 @@ let listArr = [
       {id: "6.6", name: "mobileSideMenu.innerLists.help.playSafe", type: "link", path: "/#PlaySafe"},
       {id: "6.7", name: "mobileSideMenu.innerLists.help.complains", type: "link", path: "/#Complains"},
       {id: "6.8", name: "mobileSideMenu.innerLists.help.howToBuyCrypto", type: "link", path: "/#HowToBuyCrypto"},
-      {id: "6.9", name: "mobileSideMenu.innerLists.help.manageSubscriptions", type: "link", path: "/#manageSubscriptions"}
+      {id: "6.9", name: "mobileSideMenu.innerLists.help.manageSubscriptions", type: "button", path: "/#manageSubscriptions"}
     ]
   },
   {id: 7,
@@ -111,15 +111,15 @@ export const MobileListContainer = ({t, isAuth}) => {
       </li>
       {/*<li className={styles.mobileSideListItem}>*/}
       {/*  <img src={listArr[4].icon} alt='side menu icon'/>*/}
-      {/*  <DropMenu el={listArr[4]} t={t}/>*/}
+      {/*  <DropMenu el={listArr[4]} t={t} isAuth={isAuth}/>*/}
       {/*</li>*/}
       <li className={styles.mobileSideListItem}>
         <img src={listArr[5].icon} alt='side menu icon'/>
-        <DropMenu el={listArr[5]} t={t}/>
+        <DropMenu el={listArr[5]} t={t} isAuth={isAuth}/>
       </li>
       <li className={styles.mobileSideListItem}>
         <img src={listArr[6].icon} alt='side menu icon'/>
-        <DropMenu el={listArr[6]} t={t}/>
+        <DropMenu el={listArr[6]} t={t} isAuth={isAuth}/>
       </li>
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[7]}/>
