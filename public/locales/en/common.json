@@ -337,5 +337,12 @@
   },
   "termsAndConditions": {
     "data": ""
+  },
+  "manageSubscriptions": {
+    "heading": "Manage Subscriptions",
+    "emailSubscript": "Receive Email Promos",
+    "smsSubscript": "Receive SMS Promos",
+    "notifySubscript": "Receive Browser Notifications",
+    "subscriptionsButton": "update subscription"
   }
 }

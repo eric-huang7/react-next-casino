@@ -17,7 +17,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
           name='emailSubscript'
           className={styles.emailSubscript}
         />
-        <label htmlFor="emailSubscript" className={styles.emailSubscriptLabel}>Receive Email Promos</label>
+        <label htmlFor="emailSubscript" className={styles.emailSubscriptLabel}>{t("manageSubscriptions.emailSubscript")}</label>
       </div>
       <div className={styles.inputItemWrapper}>
         <input
@@ -28,7 +28,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
           name='smsSubscript'
           className={styles.smsSubscript}
         />
-        <label htmlFor="smsSubscript" className={styles.smsSubscriptLabel}>Receive SMS Promos</label>
+        <label htmlFor="smsSubscript" className={styles.smsSubscriptLabel}>{t("manageSubscriptions.smsSubscript")}</label>
       </div>
       <div className={styles.inputItemWrapper}>
         <input
@@ -39,7 +39,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
           name='notifySubscript'
           className={styles.notifySubscript}
         />
-        <label htmlFor="notifySubscript" className={styles.notifySubscriptLabel}>Receive Browser Notifications</label>
+        <label htmlFor="notifySubscript" className={styles.notifySubscriptLabel}>{t("manageSubscriptions.notifySubscript")}</label>
       </div>
     </div>
   )

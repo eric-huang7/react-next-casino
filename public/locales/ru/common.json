@@ -334,5 +334,15 @@
       "limit": "Ограничение перевода"
     },
     "buttonText": "Депозит"
+  },
+  "termsAndConditions": {
+    "data": ""
+  },
+  "manageSubscriptions": {
+    "heading": "Управление подписками",
+    "emailSubscript": "Рассылка по электронной почте",
+    "smsSubscript": "Получать SMS-сообщения",
+    "notifySubscript": "Получать уведомления браузера",
+    "subscriptionsButton": "обновить подписку"
   }
 }

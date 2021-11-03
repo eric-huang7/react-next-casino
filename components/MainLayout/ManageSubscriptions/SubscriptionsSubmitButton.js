@@ -20,7 +20,7 @@ export const SubscriptionsSubmitButton = ({t, emailSubscript, smsSubscript, noti
   return (
     <div onClick={() => submitButtonClickHandler()} className={styles.subscriptionsSubmitButton}>
       <p>
-        update subscription
+        {t("manageSubscriptions.subscriptionsButton")}
       </p>
     </div>
   )

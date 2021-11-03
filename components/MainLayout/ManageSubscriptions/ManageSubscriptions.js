@@ -46,7 +46,7 @@ export const ManageSubscriptions = ({t}) => {
       <div className={styles.subscriptions__MainBlockWrapper}>
         <div className={styles.subscriptions__MainBlock}>
           <div className={styles.subscriptions__heading}>
-            <h3>Manage Subscriptions</h3>
+            <h3>{t("manageSubscriptions.heading")}</h3>
             <div onClick={() => closeButtonHandler()} className={styles.closeButton}>
               <div className={styles.closeOne}></div>
               <div className={styles.closeTwo}></div>
