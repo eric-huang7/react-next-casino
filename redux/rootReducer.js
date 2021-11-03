@@ -16,6 +16,7 @@ import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
 import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
 import getBonuses from "./reducers/getBonuses";
 import setUserBonusReducer from "./reducers/userBonuseReduser";
+import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
 
 
 export const rootReducer = combineReducers({
@@ -35,4 +36,5 @@ export const rootReducer = combineReducers({
   userPaymentMethod: setUserPaymentMethodReducer,
   bonuses: getBonuses,
   userBonus: setUserBonusReducer,
+  userSubscriptionsData: userSubscriptionsDataReducer,
 })

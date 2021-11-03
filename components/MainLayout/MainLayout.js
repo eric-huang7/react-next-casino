@@ -26,13 +26,11 @@ const MainLayout = ({children, t}) => {
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             <MobileSideMenu t={t} userInform={userInfo}/>
-            <RegisterSignup isShow={registerShow} t={t}/>
+            {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
             <LogIn isShow={logInShow} t={t}/>
             <SelectCurrency t={t}/>
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
-            {/*<DepositPage t={t}/>*/}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
-
             {children}
             <Footer t={t}/>
             {/*<LangSwitcher href={router.route} locale={locale}/>*/}

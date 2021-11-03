@@ -57,6 +57,7 @@
 
       width: 30px;
       height: 30px;
+      cursor: pointer;
 
       & .closeOne, .closeTwo {
         width: 30px;
@@ -89,7 +90,7 @@
     
     & input {
       position: absolute;
-      z-index: 100;
+      z-index: -1;
     }
 
     & label {
@@ -97,6 +98,12 @@
       -moz-user-select: none;
       -khtml-user-select: none;
       user-select: none;
+
+      font-size: 14px;
+      color: #8f8f8f;
+      font-family: "Verdana";
+
+      cursor: pointer;
     }
     & label:before {
       content: '';
@@ -142,6 +149,8 @@
   align-items: center;
   justify-content: center;
 
+  cursor: pointer;
+
   & p {
     font-size: 18px;
     font-weight: bold;
@@ -150,4 +159,103 @@
     font-family: "Myriad Pro";
     text-transform: uppercase;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .subscriptions__MainBlockWrapper {
+    margin-top: 100px;
+  }
+
+  .subscriptions__MainBlock {
+    border: 3px solid #ffffff;
+
+    width: 330px;
+
+    background-color: #ffffff;
+
+    & .subscriptions__heading {
+      background-color: #ff0000;
+
+      border-radius: 15px 15px 0 0;
+
+      position: relative;
+
+      & h3 {
+        margin: 0;
+
+        font-size: 18px;
+        line-height: 52px;
+        color: #ffffff;
+        font-family: "Arial";
+        font-weight: normal;
+        text-align: center;
+      }
+
+      & .closeButton {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 23px;
+        height: 23px;
+
+        & .closeOne, .closeTwo {
+          width: 25px;
+          height: 2px;
+          top: 10px;
+          left: 0;
+        }
+      }
+    }
+  }
+  .subscriptions__inputsBlock {
+    padding: 22px;
+
+    & .inputItemWrapper {
+      margin-bottom: 60px;
+      position: relative;
+
+      & input {
+        position: absolute;
+        z-index: -1;
+      }
+
+      & label {
+        margin-left: 60px;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+
+        font-size: 14px;
+        color: #8f8f8f;
+        font-family: "Verdana";
+      }
+      & label:before {
+        content: '';
+
+        width: 45px;
+        height: 45px;
+
+        top: -11px;
+        left: 0px;
+      }
+
+    }
+  }
+  .subscriptionsSubmitButton {
+    width: 331px;
+    height: 56px;
+
+    border: 3px solid #ffffff;
+
+    & p {
+      font-size: 20px;
+      font-weight: normal;
+      letter-spacing: 0px;
+      color: #ffffff;
+      font-family: "Arial";
+      text-transform: uppercase;
+    }
+  }
+
 }

@@ -24,7 +24,6 @@ export const DropMenu = ({t,el, isAuth}) => {
     e.preventDefault();
     dispatch(showMobileMenu(false));
     dispatch(showManageSubscriptions(true));
-    console.log(e);
   }
 
   useEffect(() => {
@@ -99,7 +98,7 @@ export const DropMenu = ({t,el, isAuth}) => {
                   )
                 } else {
                  return (
-                   <></>
+                   ""
                  )
                 }
               }
