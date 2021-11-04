@@ -1,0 +1,364 @@
+.MainBlockWrapper {
+  width: 100%;
+  height: 600px;
+
+
+  background-image: url("/assets/img/promotionsPage/mainBlockBg.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.getAbonusWrapper {
+  min-width: 611px;
+
+  background-color: rgba(0,0,0, 0.3);
+
+  padding: 9px;
+
+ & .getAbonusFrame {
+   border: 1px solid #888487;
+
+
+   padding: 15px 15px 20px 25px;
+
+   & .upperTextBlock {
+     font-family: "Neon";
+
+     display: flex;
+     flex-direction: column;
+
+     margin-bottom: 40px;
+
+     text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+     & .mainText {
+       font-size: 72px;
+       letter-spacing: 2px;
+       color: #ffffff;
+       text-transform: uppercase;
+
+     }
+     & .addText {
+       font-size: 37px;
+       letter-spacing: 2px;
+       color: #a8f4ff;
+       text-transform: uppercase;
+     }
+   }
+   & .lowerTextBlock {
+     font-family: "Neon";
+
+     display: flex;
+     flex-direction: column;
+
+     text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+    & .lowerMainText {
+      font-size: 47px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+     & .lowerAddText {
+       font-size: 37px;
+       letter-spacing: 2px;
+       color: #a8f4ff;
+       text-transform: uppercase;
+     }
+   }
+ }
+}
+
+.welcomeWrapper {
+  position: relative;
+
+  margin-bottom: 76px;
+  margin-top: 36px;
+  & .welcomeMainText {
+    font-size: 72px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Monoton";
+    text-transform: uppercase;
+
+    display: block;
+
+    transform: rotateZ(-4deg);
+
+    filter: drop-shadow(0px 0px 10px #002AFFFF);
+    text-shadow: #002aff 0px 0px 3px;
+
+    position: relative;
+    top: 0px;
+  }
+
+  & .imageWrapper {
+    position: relative;
+    top: -50px;
+
+    & .welcomeImage {
+      width: 470px;
+      height: 370px;
+
+      //position: absolute;
+    }
+
+    & .welcomeValue {
+      font-size: 90px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      font-weight: 400;
+      font-family: "Monoton";
+
+      position: absolute;
+      top: 72px;
+      left: 94px;
+
+      transform: rotateZ(-3deg);
+
+      text-shadow: #ff0000 2px 3px 1px, #ff0000 3px 4px 1px;
+      filter: drop-shadow(1px 2px 5px #ffe73a);
+    }
+    & .welcomeAddText {
+      font-size: 30px;
+      letter-spacing: 1px;
+      line-height: 0px;
+      color: #15b3fc;
+      font-family: "Neon";
+      text-shadow: #0014af 1px 1px 1px, #55c2fa 2px 2px 1px, #e4fffd 3px 3px 2px, #eefdf8 4px 4px 4px;
+
+      position: absolute;
+      top: 210px;
+      left: 135px;
+
+      transform: rotateZ(-3deg);
+    }
+  }
+  & .depositButton {
+    width: 215px;
+    height: 75px;
+
+    position: absolute;
+
+    bottom: 0px;
+    left: 112px;
+
+    border-radius: 26px;
+    border: 2px solid #c1f6ff;
+
+    filter: drop-shadow(0 0 5.5px #00fff6);
+    box-shadow: #00fff6 0px 0px 7px;
+
+    transform: rotateZ(-3deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .welcomeDepositButton {
+      font-size: 22px;
+      color: #aaf0ff;
+      font-family: "Neon";
+      text-transform: uppercase;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+    }
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .MainBlockWrapper {
+    height: 400px;
+  }
+
+  .getAbonusWrapper {
+    min-width: 511px;
+
+    & .getAbonusFrame {
+
+      padding: 10px 10px 15px 20px;
+
+      & .upperTextBlock {
+
+        margin-bottom: 20px;
+
+        text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+        & .mainText {
+          font-size: 52px;
+        }
+        & .addText {
+          font-size: 27px;
+        }
+      }
+      & .lowerTextBlock {
+
+        text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+        & .lowerMainText {
+          font-size: 34px;
+        }
+        & .lowerAddText {
+          font-size: 27px;
+          letter-spacing: 2px;
+          color: #a8f4ff;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .welcomeWrapper {
+    position: relative;
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    & .welcomeMainText {
+      font-size: 52px;
+
+      top: 0px;
+      left: 20px;
+    }
+
+    & .imageWrapper {
+      position: relative;
+      top: -40px;
+
+      & .welcomeImage {
+        width: 370px;
+        height: 270px;
+
+      }
+
+      & .welcomeValue {
+        font-size: 70px;
+
+        top: 46px;
+        left: 70px;
+      }
+      & .welcomeAddText {
+        font-size: 25px;
+
+        top: 150px;
+        left: 105px;
+
+        transform: rotateZ(-3deg);
+      }
+    }
+    & .depositButton {
+      width: 214px;
+      height: 90px;
+
+      position: absolute;
+
+      bottom: -7px;
+      left: 75px;
+      & .welcomeDepositButton {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 890px) {
+
+  .getAbonusWrapper {
+    min-width: 311px;
+
+    padding: 3px;
+    & .getAbonusFrame {
+
+      padding: 5px 5px 10px 15px;
+
+      & .upperTextBlock {
+
+        margin-bottom: 20px;
+
+        text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+        & .mainText {
+          font-size: 32px;
+        }
+        & .addText {
+          font-size: 20px;
+        }
+      }
+      & .lowerTextBlock {
+
+        text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+        & .lowerMainText {
+          font-size: 24px;
+        }
+        & .lowerAddText {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .welcomeWrapper {
+    position: relative;
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    & .welcomeMainText {
+      font-size: 36px;
+
+      top: -3px;
+      left: 54px;
+
+      filter: drop-shadow(0px 0px 5px #002AFFFF);
+      text-shadow: #002aff 0px 0px 0px;
+    }
+
+    & .imageWrapper {
+      position: relative;
+      top: -40px;
+
+      & .welcomeImage {
+        width: 358px;
+        height: 277px;
+
+      }
+
+      & .welcomeValue {
+        font-size: 56px;
+
+        top: 46px;
+        left: 90px;
+
+        text-shadow: none;
+        filter: drop-shadow(1px 2px 5px #ff0000);
+      }
+      & .welcomeAddText {
+        font-size: 30px;
+
+        top: 142px;
+        left: 96px;
+        text-shadow: #0014af 1px 1px 1px;
+        transform: rotateZ(-3deg);
+      }
+    }
+    & .depositButton {
+      width: 198px;
+      height: 97px;
+
+      position: absolute;
+
+      bottom: 23px;
+      left: 110px;
+      & .welcomeDepositButton {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

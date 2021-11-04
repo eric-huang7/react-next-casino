@@ -13,7 +13,7 @@ export const ManageSubscriptions = ({t}) => {
   const isShowSubscriptions = useSelector((state) => state.showPopupsReducer.isShowManageSubscriptions);
 
   const closeButtonHandler = () => {
-    console.log(userInfo, "state")
+    // console.log(userInfo)
     dispatch(showManageSubscriptions(false));
   }
 
@@ -21,14 +21,13 @@ export const ManageSubscriptions = ({t}) => {
   const [smsSubscript, setSmsSubscript] = useState(userInfo.authInfo.user.user.transactional_sms_opt_in);
   const [notifySubscript, setNotifySubscript] = useState(userInfo.authInfo.user.user.browser_opt_in);
 
-
   useEffect(() => {
     dispatch(changeLocalUserSubscriptions({
       transactional_email_opt_in: emailSubscript,
       transactional_sms_opt_in: smsSubscript,
       browser_opt_in: notifySubscript
     }))
-  }, [isShowSubscriptions])
+  }, [])
 
 
   const inputsCheckedHandler = (e) => {
