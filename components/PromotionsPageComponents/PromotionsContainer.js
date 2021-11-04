@@ -1,6 +1,8 @@
 import styles from '../../styles/PromotionsPage/PromotionsPage.module.scss';
 import {MainBlock} from "./MainBlock/MainBlock";
 
+
+
 const dataForMainBlock = {
   getAddBonus: {
     upperText: {
@@ -27,6 +29,7 @@ export const PromotionsContainer = ({t}) => {
   return (
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
+      <p>asdsafd gsd gsdfg sdfg sd gsdf {213123} </p>
     </div>
   )
 }

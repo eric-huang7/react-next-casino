@@ -9,6 +9,7 @@ import {useEffect} from "react";
 
 const Promotions = (props) => {
   const { t } = useTranslation('common');
+
   console.log(props, 'promotions');
   return (
     <>
@@ -22,7 +23,7 @@ const Promotions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['navbarLinks', 'common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
       locale: locale
     },
   })
