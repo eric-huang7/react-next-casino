@@ -1,5 +1,22 @@
 {
-  "someText": "Привет акции",
+  "mainBlock": {
+    "getBonusBlock": {
+      "upperTextBlock": {
+        "lineOne": "Получите 100%",
+        "lineTwo": "бонус матча"
+      },
+      "lowerTextBlock": {
+        "lineOne": "до $300 и 50",
+        "lineTwo": "бесплатных вращений"
+      }
+    },
+    "welcomeBonusBlock": {
+      "welcomeMainText": "приветсвуем",
+      "welcomeValue": "$500",
+      "welcomeAddText": "150 бесплатных спинов",
+      "depositButtonText": "внести сейчас"
+    }
+  },
 
   "1" : {
     "description": {

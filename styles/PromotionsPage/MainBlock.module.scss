@@ -95,7 +95,9 @@
     position: relative;
     top: 0px;
   }
-
+  & .welcomeMainText.ru {
+    font-size: 60px;
+  }
   & .imageWrapper {
     position: relative;
     top: -50px;
@@ -136,6 +138,9 @@
       left: 135px;
 
       transform: rotateZ(-3deg);
+    }
+    & .welcomeAddText.ru {
+      font-size: 22px;
     }
   }
   & .depositButton {
@@ -227,6 +232,9 @@
       top: 0px;
       left: 20px;
     }
+    & .welcomeMainText.ru {
+      font-size: 40px;
+    }
 
     & .imageWrapper {
       position: relative;
@@ -251,6 +259,9 @@
         left: 105px;
 
         transform: rotateZ(-3deg);
+      }
+      & .welcomeAddText.ru {
+        font-size: 17px;
       }
     }
     & .depositButton {
@@ -340,6 +351,9 @@
 
       filter: drop-shadow(0px 0px 5px #002AFFFF);
       text-shadow: #002aff 0px 0px 0px;
+    }
+    & .welcomeMainText.ru {
+      left: 19px;
     }
 
     & .imageWrapper {

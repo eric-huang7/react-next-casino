@@ -1,17 +1,17 @@
 import styles from '../../../styles/PromotionsPage/MainBlock.module.scss';
 
-export const WelcomeBlock = ({t, dataForMainBlock}) => {
+export const WelcomeBlock = ({t, dataForMainBlock, locale}) => {
 
   return (
     <div className={styles.welcomeWrapper}>
-      <span className={styles.welcomeMainText}>{dataForMainBlock.welcomeMainText}</span>
+      <span className={`${styles.welcomeMainText} ${styles[locale]}`}>{t(dataForMainBlock.welcomeMainText)}</span>
       <div className={styles.imageWrapper}>
-        <img className={styles.welcomeImage} src={dataForMainBlock.welcomeMainImg} alt="welcome bonus image"/>
-        <span className={styles.welcomeValue}>{dataForMainBlock.welcomeValue}</span>
-        <span className={styles.welcomeAddText}>{dataForMainBlock.welcomeAddText}</span>
+        <img className={styles.welcomeImage} src={t(dataForMainBlock.welcomeMainImg)} alt="welcome bonus image"/>
+        <span className={styles.welcomeValue}>{t(dataForMainBlock.welcomeValue)}</span>
+        <span className={`${styles.welcomeAddText} ${styles[locale]}`}>{t(dataForMainBlock.welcomeAddText)}</span>
       </div>
       <div className={styles.depositButton}>
-        <span className={styles.welcomeDepositButton}>{dataForMainBlock.depositButtonText}</span>
+        <span className={styles.welcomeDepositButton}>{t(dataForMainBlock.depositButtonText)}</span>
         {/*<img className={styles.welcomeDepositButton} src={dataForMainBlock.welcomeDepositButton} alt="deposit button"/>*/}
       </div>
     </div>

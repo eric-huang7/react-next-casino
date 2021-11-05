@@ -59,9 +59,9 @@ export default function Home(props) {
   return (
 
     <>
-      <Head>
-        <script type="text/javascript" src="/chatWidget/chatWidget.js"></script>
-      </Head>
+      {/*<Head>*/}
+      {/*  /!*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*!/*/}
+      {/*</Head>*/}
       <MainLayout t={t}>
         <MainBlock />
         {/*<JackpotBlock />*/}

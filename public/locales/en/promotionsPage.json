@@ -1,5 +1,22 @@
 {
-  "someText": "Hello promotions",
+  "mainBlock": {
+    "getBonusBlock": {
+      "upperTextBlock": {
+        "lineOne": "Get a 100%",
+        "lineTwo": "match bonus"
+      },
+      "lowerTextBlock": {
+        "lineOne": "up to $300 and 50",
+        "lineTwo": "free spins"
+      }
+    },
+    "welcomeBonusBlock": {
+      "welcomeMainText": "welcome",
+      "welcomeValue": "$500",
+      "welcomeAddText": "150 free spin",
+      "depositButtonText": "deposit now"
+    }
+  },
   "1" : {
     "description": {
       "lineOne": "Get 15% Reload Bonus up to $500 Plus 30 {{key}}",

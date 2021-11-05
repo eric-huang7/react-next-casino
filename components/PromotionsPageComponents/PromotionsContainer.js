@@ -7,19 +7,19 @@ import {useTranslation} from "next-i18next";
 const dataForMainBlock = {
   getAddBonus: {
     upperText: {
-      mainText: "Get a 100%",
-      addText: "match bonus"
+      mainText: "mainBlock.getBonusBlock.upperTextBlock.lineOne",
+      addText: "mainBlock.getBonusBlock.upperTextBlock.lineTwo"
     },
     lowerText: {
-      lowerMainText: "up to $300 and 50",
-      lowerAddText: "free spins"
+      lowerMainText: "mainBlock.getBonusBlock.lowerTextBlock.lineOne",
+      lowerAddText: "mainBlock.getBonusBlock.lowerTextBlock.lineTwo"
     }
   },
   welcomeBonus: {
-    welcomeMainText: "welcome",
-    welcomeValue: "$500",
-    welcomeAddText: "150 free spin",
-    depositButtonText: "deposit now",
+    welcomeMainText: "mainBlock.welcomeBonusBlock.welcomeMainText",
+    welcomeValue: "mainBlock.welcomeBonusBlock.welcomeValue",
+    welcomeAddText: "mainBlock.welcomeBonusBlock.welcomeAddText",
+    depositButtonText: "mainBlock.welcomeBonusBlock.depositButtonText",
     welcomeMainImg: "/assets/img/promotionsPage/welcomeImage.png",
     welcomeDepositButton: "/assets/img/promotionsPage/welcomeDepositButton.png",
   }
@@ -32,7 +32,6 @@ export const PromotionsContainer = ({}) => {
   return (
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
-      <p>asdsafd gsd gsdfg sdfg sd gsdf {213123} {t("1.description.lineOne", {key: '9999'})}</p>
     </div>
   )
 }

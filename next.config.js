@@ -5,7 +5,6 @@ module.exports = {
     localeDetection: true,
     locales: ["en", "ru"],
     defaultLocale: "en",
-    http: true
   },
   images: {
     domains: ['cimagehost1.sos-ch-gva-2.exoscale-cdn.com']
