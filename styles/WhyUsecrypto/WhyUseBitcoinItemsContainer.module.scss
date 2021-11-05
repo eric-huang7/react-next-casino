@@ -222,3 +222,73 @@
   }
 
 }
+
+@media screen and (max-width: 427px) {
+  .itemMainContainer {
+
+    & .itemHeading {
+      max-width: 200px;
+      font-size: 18px;
+      z-index: 3;
+
+      position: relative;
+      margin-bottom: 25px;
+      //align-items: flex-start;
+    }
+
+    & .itemTextBlock {
+
+
+      & .upperAngle {
+
+      }
+      & .upperAngleIconContainer {
+        width: 65px;
+
+        top: -25px;
+        right: 0px;
+        & img {
+          width: 100%;
+        }
+      }
+
+      &  p{
+        font-size: 18px;
+
+      }
+    }
+    & .itemTextBlock.international {
+      & div.upperAngleIconContainer {
+        width: 85px;
+        top: -20px;
+        right: 0px;
+
+      }
+    }
+    & .itemTextBlock.fees {
+      & div.upperAngleIconContainer {
+        width: 90px;
+
+        top: -30px;
+        right: -10px;
+      }
+    }
+    & .itemTextBlock.decentralized {
+      & div.upperAngleIconContainer {
+        width: 90px;
+
+        top: -30px;
+        right: -10px;
+      }
+    }
+    & .itemTextBlock.identity {
+      & div.upperAngleIconContainer {
+        width: 85px;
+
+        top: -40px;
+        right: -13px;
+      }
+    }
+  }
+
+}

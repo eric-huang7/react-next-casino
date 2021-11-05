@@ -21,7 +21,7 @@ const MainLayout = ({children, t}) => {
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
-  console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
+  // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>

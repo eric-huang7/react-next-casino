@@ -1,5 +1,6 @@
 import styles from '../../styles/PromotionsPage/PromotionsPage.module.scss';
 import {MainBlock} from "./MainBlock/MainBlock";
+import {useTranslation} from "next-i18next";
 
 
 
@@ -24,12 +25,14 @@ const dataForMainBlock = {
   }
 }
 
-export const PromotionsContainer = ({t}) => {
+export const PromotionsContainer = ({}) => {
+  const { t, i18n } = useTranslation('promotionsPage');
+  console.log(t, i18n, 'container translate')
 
   return (
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
-      <p>asdsafd gsd gsdfg sdfg sd gsdf {213123} </p>
+      <p>asdsafd gsd gsdfg sdfg sd gsdf {213123} {t("1.description.lineOne", {key: '9999'})}</p>
     </div>
   )
 }

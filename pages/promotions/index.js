@@ -14,17 +14,18 @@ const Promotions = (props) => {
   return (
     <>
       <MainLayout t={t}>
-        <PromotionsContainer t={t}/>
+        <PromotionsContainer />
       </MainLayout>
     </>
   )
 }
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async (context) => {
+  console.log(context, 'props')
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
-      locale: locale
+      ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),
+      locale: context.locale
     },
   })
 }

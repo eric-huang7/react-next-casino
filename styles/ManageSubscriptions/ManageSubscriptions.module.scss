@@ -229,6 +229,8 @@
         font-size: 14px;
         color: #8f8f8f;
         font-family: "Verdana";
+
+        display: block;
       }
       & label:before {
         content: '';
@@ -258,4 +260,51 @@
     }
   }
 
+}
+
+@media screen and (max-width: 350px) {
+  .subscriptions__MainBlock {
+    border: 3px solid #ffffff;
+
+    width: 300px;
+
+    margin: 0 auto;
+
+    background-color: #ffffff;
+
+    & .subscriptions__heading {
+      background-color: #ff0000;
+
+      border-radius: 15px 15px 0 0;
+
+      position: relative;
+
+      & h3 {
+        margin: 0;
+
+        font-size: 16px;
+        line-height: 52px;
+        color: #ffffff;
+        font-family: "Arial";
+        font-weight: normal;
+        text-align: center;
+      }
+
+      & .closeButton {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 23px;
+        height: 23px;
+
+        & .closeOne, .closeTwo {
+          width: 25px;
+          height: 2px;
+          top: 10px;
+          left: 0;
+        }
+      }
+    }
+  }
 }
