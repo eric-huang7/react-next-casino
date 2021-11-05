@@ -31,13 +31,15 @@ export const PromotionsContainer = ({}) => {
   const { t, i18n } = useTranslation('promotionsPage');
   // console.log(t, i18n, 'container translate')
   const store = useSelector((store) => store);
+  const activeBonuses = useSelector((state) => state.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   console.log(store, 'promotions store')
 
   return (
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
-      <BonusesContainer t={t}/>
+      <BonusesContainer userCurrency={userCurrency} activeBonuses={activeBonuses} t={t}/>
     </div>
   )
 }

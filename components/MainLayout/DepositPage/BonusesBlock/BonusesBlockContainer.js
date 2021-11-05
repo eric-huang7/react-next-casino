@@ -25,27 +25,44 @@ const bonusData = [
 
 const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
-export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, showAllBonuses, chosenBonus, chooseBonusClickHandler, setDepositButtonText, userDepositValue}) => {
-  const activeBonuses = useSelector((state) => state.bonuses);
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
+export const BonusesBlockContainer = (props) => {
+  let {
+    t,
+    isUseBonus,
+    bonusData,
+    userCurrency,
+    showAllBonuses,
+    chosenBonus,
+    chooseBonusClickHandler,
+    setDepositButtonText,
+    userDepositValue,
+    userLogin,
+    activeBonuses,
+    isShowDepositModal,
+    userSelectedBonus,
+    bonusesArr
+  } = props;
+  // const activeBonuses = useSelector((state) => state.bonuses);
+  // console.log(activeBonuses, "@@@@@@@@@@@@@@@@@@@@@@");
+  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
+  // const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
-  const [bonusesArr, setBonusesArr] = useState([{id: 1}]);
 
-  useEffect(() => {
-    if (userLogin) {
-      let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
-      if (bonuses.length > 0) {
-        setBonusesArr(bonuses);
-      } else {
-        setBonusesArr([]);
-        chooseBonusClickHandler(0);
-      }
-
-    } else {
-      setBonusesArr([]);
-    }
-  }, [userCurrency, isShowDepositModal]);
+  // const [bonusesArr, setBonusesArr] = useState([]);
+  // useEffect(() => {
+  //   if (userLogin) {
+  //     let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
+  //     if (bonuses.length > 0) {
+  //       setBonusesArr(bonuses);
+  //     } else {
+  //       setBonusesArr([]);
+  //       chooseBonusClickHandler(0);
+  //     }
+  //
+  //   } else {
+  //     setBonusesArr([]);
+  //   }
+  // }, [userCurrency, isShowDepositModal]);
 
 
 
@@ -68,7 +85,7 @@ export const BonusesBlockContainer = ({t, isUseBonus, bonusData, userCurrency, s
             showAllBonuses={showAllBonuses}
             chosenBonus={chosenBonus}
             chooseBonusClickHandler={chooseBonusClickHandler}
-
+            userSelectedBonus={userSelectedBonus}
           />
         </>
       )

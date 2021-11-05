@@ -8,31 +8,37 @@ import {DepositButtonSubmit} from "./DepositButtonSubmit";
 import {ChoosePaymentMethod} from "./ChoosePaymentMethod/ChoosePaymentMethod";
 import {DepositLastPage} from "./DepositLastPage/DepositLastPage";
 
-export const DepositPageStepper = ({
-                                     step,
-                                     t,
-                                     closeDepositModalHandler,
-                                     userCurrency,
-                                     currencySwitcherShowHandler,
-                                     isChecked,
-                                     checkedInputHandler,
-                                     isActiveBonusInput,
-                                     bonusCodeInputActiveHandler,
-                                     submitHandler,
-                                     stepHandler,
-                                     depositValueInputHandler,
-                                     userDepositValue,
-                                     userDepositValueError,
-                                     userPayment,
-                                     userInfo,
-                                     showAllBonuses,
-                                     showAllBonusesHandler,
-                                     chosenBonus,
-                                     chooseBonusClickHandler,
-                                     setDepositButtonText,
-                                     buttonText,
-                                     userSelectedBonus
-                                   }) => {
+export const DepositPageStepper = (props) => {
+let {
+  step,
+  t,
+  closeDepositModalHandler,
+  userCurrency,
+  currencySwitcherShowHandler,
+  isChecked,
+  checkedInputHandler,
+  isActiveBonusInput,
+  bonusCodeInputActiveHandler,
+  submitHandler,
+  stepHandler,
+  depositValueInputHandler,
+  userDepositValue,
+  userDepositValueError,
+  userPayment,
+  userInfo,
+  showAllBonuses,
+  showAllBonusesHandler,
+  chosenBonus,
+  chooseBonusClickHandler,
+  setDepositButtonText,
+  buttonText,
+  userSelectedBonus,
+  userLogin,
+  activeBonuses,
+  isShowDepositModal,
+  bonusesArr
+} = props;
+
 
   switch (step) {
     case  1:
@@ -48,7 +54,8 @@ export const DepositPageStepper = ({
                                     userDepositValueError={userDepositValueError}
             />
             <div className={styles.divider}></div>
-            <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
+            <BonusesBlockMainContainer t={t} isChecked={isChecked}
+                                       checkedInputHandler={checkedInputHandler}
                                        isActiveBonusInput={isActiveBonusInput}
                                        userCurrency={userCurrency}
                                        showAllBonuses={showAllBonuses}
@@ -58,6 +65,10 @@ export const DepositPageStepper = ({
                                        setDepositButtonText={setDepositButtonText}
                                        userDepositValue={userDepositValue}
                                        userSelectedBonus={userSelectedBonus}
+                                       userLogin={userLogin}
+                                       activeBonuses={activeBonuses}
+                                       isShowDepositModal={isShowDepositModal}
+                                       bonusesArr={bonusesArr}
             />
             <DepositImages/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
@@ -80,7 +91,8 @@ export const DepositPageStepper = ({
                                     currencySwitcherShowHandler={currencySwitcherShowHandler}
                                     userDepositValueError={userDepositValueError}
             />
-            <BonusesBlockMainContainer t={t} isChecked={isChecked} checkedInputHandler={checkedInputHandler}
+            <BonusesBlockMainContainer t={t} isChecked={isChecked}
+                                       checkedInputHandler={checkedInputHandler}
                                        isActiveBonusInput={isActiveBonusInput}
                                        userCurrency={userCurrency}
                                        showAllBonuses={showAllBonuses}
@@ -90,6 +102,10 @@ export const DepositPageStepper = ({
                                        setDepositButtonText={setDepositButtonText}
                                        userDepositValue={userDepositValue}
                                        userSelectedBonus={userSelectedBonus}
+                                       userLogin={userLogin}
+                                       activeBonuses={activeBonuses}
+                                       isShowDepositModal={isShowDepositModal}
+                                       bonusesArr={bonusesArr}
             />
             <ChoosePaymentMethod t={t} userPayment={userPayment}/>
             <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}

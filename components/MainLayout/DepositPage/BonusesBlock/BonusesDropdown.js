@@ -6,8 +6,8 @@ import {useSelector} from "react-redux";
 const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chosenBonus,
-                                  chooseBonusClickHandler}) => {
-  const userSelectedBonus = useSelector((state) => state.userBonus)
+                                  chooseBonusClickHandler, userSelectedBonus}) => {
+  // const userSelectedBonus = useSelector((state) => state.userBonus)
 
   if (allBonuses.length > 0) {
     console.log(allBonuses, 'All bonuses');

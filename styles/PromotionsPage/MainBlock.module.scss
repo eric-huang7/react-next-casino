@@ -27,7 +27,7 @@
    padding: 15px 15px 20px 25px;
 
    & .upperTextBlock {
-     font-family: "Neon";
+     font-family: "Neon", Arial;
 
      display: flex;
      flex-direction: column;
@@ -50,7 +50,7 @@
      }
    }
    & .lowerTextBlock {
-     font-family: "Neon";
+     font-family: "Neon", Arial;
 
      display: flex;
      flex-direction: column;
@@ -82,7 +82,7 @@
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 400;
-    font-family: "Monoton";
+    font-family: "Monoton", Arial;
     text-transform: uppercase;
 
     display: block;
@@ -116,6 +116,7 @@
       font-weight: 400;
       font-family: "Monoton";
 
+
       position: absolute;
       top: 72px;
       left: 94px;
@@ -130,7 +131,7 @@
       letter-spacing: 1px;
       line-height: 0px;
       color: #15b3fc;
-      font-family: "Neon";
+      font-family: "Neon", Arial;
       text-shadow: #0014af 1px 1px 1px, #55c2fa 2px 2px 1px, #e4fffd 3px 3px 2px, #eefdf8 4px 4px 4px;
 
       position: absolute;
@@ -167,8 +168,9 @@
     & .welcomeDepositButton {
       font-size: 22px;
       color: #aaf0ff;
-      font-family: "Neon";
+      font-family: "Neon", Arial;
       text-transform: uppercase;
+      white-space: nowrap;
 
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -410,6 +412,7 @@
         color: #aaf0ff;
         font-family: "Neon";
         text-transform: uppercase;
+
 
         -webkit-touch-callout: none;
         -webkit-user-select: none;

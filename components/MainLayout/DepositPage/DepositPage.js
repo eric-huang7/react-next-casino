@@ -7,6 +7,7 @@ import {DepositPageStepper} from "./DepositPageStepper";
 import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {setUserBonus} from "../../../redux/actions/setUserBonus";
+import {bonusesFinder} from "./bonusesFinder";
 
 
 
@@ -14,19 +15,23 @@ export const DepositPage = ({t}) => {
   const dispatch = useDispatch();
 
   const userInfo = useSelector((state) => state.authInfo.user);
+  const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
   const isShowCurrencyModal = useSelector((state) => state.showPopupsReducer.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userPayment = useSelector((state) => state.userPaymentMethod);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage);
-  const userSelectedBonus = useSelector((state) => state.userBonus)
+  const activeBonuses = useSelector((state) => state.bonuses);
+  const userSelectedBonus = useSelector((state) => state.userBonus);
+
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
   const [showAllBonuses, setShowAllBonuses] = useState(false);
   const [step, setStep] = useState(1);
   const [chosenBonus, setChosenBonus] = useState({});
+  const [bonusesArr, setBonusesArr] = useState([]);
 
   let newButtonText = `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`;
   const [buttonText, setNewButtonText] = useState(newButtonText);
@@ -102,6 +107,22 @@ export const DepositPage = ({t}) => {
     console.log('Submit');
   }
 
+  useEffect(() => {
+    if (userLogin) {
+      let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
+      if (bonuses.length > 0) {
+        setBonusesArr(bonuses);
+      } else {
+        setBonusesArr([]);
+        chooseBonusClickHandler(0);
+      }
+
+    } else {
+      setBonusesArr([]);
+    }
+  }, [userCurrency, isShowDepositModal]);
+
+
   return (
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
       {/*<Header t={t}/>*/}
@@ -131,6 +152,10 @@ export const DepositPage = ({t}) => {
           setDepositButtonText={setDepositButtonText}
           buttonText={buttonText}
           userSelectedBonus={userSelectedBonus}
+          userLogin={userLogin}
+          activeBonuses={activeBonuses}
+          isShowDepositModal={isShowDepositModal}
+          bonusesArr={bonusesArr}
         />
       </div>
     </div>
