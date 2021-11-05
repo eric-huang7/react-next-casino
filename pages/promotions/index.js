@@ -10,7 +10,7 @@ import {useEffect} from "react";
 const Promotions = (props) => {
   const { t } = useTranslation('common');
 
-  console.log(props, 'promotions');
+  // console.log(props, 'promotions');
   return (
     <>
       <MainLayout t={t}>
@@ -20,8 +20,7 @@ const Promotions = (props) => {
   )
 }
 
-export const getStaticProps = async (context) => {
-  console.log(context, 'props')
+export const getServerSideProps = async (context) => {
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),

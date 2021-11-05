@@ -1,6 +1,8 @@
 import styles from '../../styles/PromotionsPage/PromotionsPage.module.scss';
 import {MainBlock} from "./MainBlock/MainBlock";
 import {useTranslation} from "next-i18next";
+import {BonusesContainer} from "./BonusesContainer/BonusesContainer";
+import {useSelector} from "react-redux";
 
 
 
@@ -27,11 +29,15 @@ const dataForMainBlock = {
 
 export const PromotionsContainer = ({}) => {
   const { t, i18n } = useTranslation('promotionsPage');
-  console.log(t, i18n, 'container translate')
+  // console.log(t, i18n, 'container translate')
+  const store = useSelector((store) => store);
+
+  console.log(store, 'promotions store')
 
   return (
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
+      <BonusesContainer t={t}/>
     </div>
   )
 }

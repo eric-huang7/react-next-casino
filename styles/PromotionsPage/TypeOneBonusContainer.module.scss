@@ -1,0 +1,402 @@
+.bonusMainHeadingBlock {
+  & p {
+    font-size: 48px;
+    letter-spacing: 1px;
+    line-height: 52px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Monoton";
+    filter: drop-shadow(2.046px 2.194px 0px #15130d);
+    text-transform: uppercase;
+
+    margin: 0;
+  }
+  & .headingLineTwo {
+    color: #ff0000;
+    font-size: 28px;
+  }
+}
+
+.typeOneBonusWrapper {
+  width: 100%;
+  min-height: 490px;
+
+  position: relative;
+
+  background-color: rgba(255, 155, 155, 0.5);
+
+  padding: 10px;
+
+  overflow: hidden;
+
+  margin-bottom: 40px;
+}
+
+.imageBackground {
+  width: 460px;
+  min-height: 100%;
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  background-color: #ff0000;
+
+
+
+
+  & img {
+    position: absolute;
+    bottom: -2px;
+    z-index: 2;
+  }
+}
+
+.bonusFrame {
+  width: 100%;
+  min-height: inherit;
+
+  border: 1px solid rgba(255,255,255, 0.4);
+
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-start;
+  //justify-content: flex-end;
+
+  & .bonusInfoBlock {
+    max-width: 825px;
+    min-height: inherit;
+
+    padding: 30px 120px 0 35px;
+    margin-left: 450px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  & .bonusButtonBlock {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    cursor: pointer;
+
+    //& .bonusButton {
+    //  position: absolute;
+    //  top: 25px;
+    //  right: 72px;
+    //
+    //  width: 59%;
+    //  height: 59%;
+    //
+    //  border: 2px solid #ffffff;
+    //  border-radius: 50%;
+    //}
+  }
+}
+
+.bonusHeadingBlock {
+  //margin-bottom: 180px;
+  & .bonusHeadingLineOne, .bonusHeadingLineTwo {
+    font-size: 38px;
+    letter-spacing: 1px;
+    line-height: 48px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Neon";
+    text-transform: uppercase;
+
+    margin: 0px;
+
+  }
+  & .bonusHeadingLineTwo {
+    color: #57a7ff;
+  }
+
+}
+.bonusAmountInfo {
+  & p {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 22px;
+    color: #fdfdfe;
+    font-family: "Myriad Pro";
+    margin: 0;
+  }
+}
+
+.bonusDescriptionBlock {
+  & p {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 22px;
+    color: #fdfdfe;
+    font-family: "Myriad Pro";
+  }
+}
+
+@media screen and (max-width: 1135px) {
+  .typeOneBonusWrapper {
+
+    min-height: 390px;
+
+  }
+  .imageBackground {
+    width: 360px;
+    min-height: 100%;
+
+
+    & img {
+      position: absolute;
+      bottom: -2px;
+      z-index: 2;
+
+      width: 370px;
+    }
+  }
+
+  .bonusFrame {
+
+    & .bonusInfoBlock {
+      max-width: 825px;
+      height: 100%;
+
+      padding: 30px 120px 0 35px;
+      margin-left: 350px;
+
+    }
+    & .bonusButtonBlock {
+      width: 200px;
+
+      position: absolute;
+
+      top: 0;
+      right: 0;
+
+      border-radius: 50%;
+
+      & img {
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 935px) {
+  .imageBackground {
+    width: 260px;
+    height: 390px;
+
+
+    & img {
+      position: absolute;
+      bottom: -2px;
+      z-index: 2;
+
+      width: 270px;
+    }
+  }
+
+  .bonusFrame {
+
+    & .bonusInfoBlock {
+      max-width: 825px;
+      height: 100%;
+
+      padding: 30px 120px 0 35px;
+      margin-left: 250px;
+
+    }
+    & .bonusButtonBlock {
+      width: 200px;
+
+      position: absolute;
+
+      top: 0;
+      right: 0;
+
+      border-radius: 50%;
+
+      & img {
+        width: 100%;
+      }
+    }
+  }
+
+  .bonusHeadingBlock {
+    //margin-bottom: 180px;
+    & .bonusHeadingLineOne, .bonusHeadingLineTwo {
+      font-size: 24px;
+      letter-spacing: 1px;
+      line-height: 28px;
+
+
+      margin: 0px;
+
+    }
+    & .bonusHeadingLineTwo {
+      color: #57a7ff;
+    }
+
+  }
+  .bonusAmountInfo {
+    & p {
+      font-size: 14px;
+
+    }
+  }
+  .bonusDescriptionBlock {
+    & p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .bonusMainHeadingBlock {
+
+    & p {
+      font-size: 32px;
+      letter-spacing: 0px;
+      line-height: 38px;
+    }
+    & .headingLineTwo {
+      color: #52a4ff;
+      font-size: 24px;
+      line-height: 26px;
+    }
+  }
+  .typeOneBonusWrapper {
+    width: 100%;
+    min-height: 310px;
+
+    margin-bottom: 30px;
+    padding: 4px;
+  }
+
+  .imageBackground {
+    width: 100%;
+    height: unset;
+    min-height: 175px;
+
+    position: absolute;
+
+    bottom: unset;
+    top: 0;
+    left: 0;
+    background-color: #ff0000;
+
+    & img {
+      position: absolute;
+      bottom: 0px;
+      z-index: 2;
+
+      width: 170px;
+    }
+  }
+
+
+  .bonusFrame {
+
+    display: block;
+
+    min-height: inherit;
+    //align-items: flex-start;
+    //justify-content: flex-end;
+
+    & .bonusInfoBlock {
+      max-width: 825px;
+      min-height: 175px;
+
+      padding: 5px 0px 0 0px;
+      margin-left: 165px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    & .bonusButtonBlock {
+      position: absolute;
+
+      top: 75px;
+
+      right: -25px;
+
+      width: 132px;
+    }
+  }
+
+  .bonusHeadingBlock {
+    //margin-bottom: 180px;
+    & .bonusHeadingLineOne, .bonusHeadingLineTwo {
+      font-size: 16px;
+      letter-spacing: 0px;
+      line-height: 18px;
+      color: #ffffff;
+      font-weight: 400;
+      font-family: "Neon";
+      text-transform: uppercase;
+      margin: 0px;
+    }
+    & .bonusHeadingLineTwo {
+      font-size: 18px;
+      color: #ffffff;
+    }
+  }
+
+  .bonusAmountInfo {
+    & p {
+      font-size: 14px;
+      letter-spacing: 0px;
+      line-height: 18px;
+      color: #ffffff;
+      font-family: "Arial";
+      margin: 0;
+    }
+  }
+  .bonusDescriptionBlock {
+    & p {
+      font-size: 16px;
+      letter-spacing: 0px;
+      line-height: 20px;
+      color: #ffffff;
+      font-family: "Arial";
+
+      margin: 20px 15px 15px 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 427px) {
+  .imageBackground {
+    & img {
+      width: 140px;
+    }
+  }
+
+  .bonusFrame {
+    & .bonusInfoBlock {
+      margin-left: 135px;
+
+    }
+  }
+  .bonusAmountInfo {
+    position: relative;
+    z-index: 2;
+    & p {
+      font-size: 14px;
+      letter-spacing: 0px;
+      line-height: 18px;
+      color: #ffffff;
+      font-family: "Arial";
+      margin: 0;
+    }
+  }
+}
