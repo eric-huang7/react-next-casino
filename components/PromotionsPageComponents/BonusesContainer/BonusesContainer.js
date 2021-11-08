@@ -3,7 +3,7 @@ import {TypeOneBonusContainer} from "./TypeOneBonusContainer/TypeOneBonusContain
 import {TypeTwoBonusContainer} from "./TypeTwoBonusContainer/TypeTwoBonusContainer";
 import {bonusesFinder} from "../../MainLayout/DepositPage/bonusesFinder";
 import {useRouter} from "next/router";
-import {bonusesCalculator} from "./TypeOneBonusContainer/bonusesCalculator";
+import {bonusesCalculator} from "./bonusesCalculator";
 
 export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
   const router = useRouter();
@@ -17,7 +17,6 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
         {
           bonuses.map((bonus, index) => {
             if (index % 2 === 0) {
-              console.log(bonusesCalculator(bonus, userCurrency), 'bonus info ' + index);
               let bonusCalculations = bonusesCalculator(bonus, userCurrency, t);
               return (
                 <div key={bonus.id}>
@@ -25,7 +24,6 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
                 </div>
               )
             } else {
-              console.log(bonusesCalculator(bonus, userCurrency), 'bonus info 2 ' + index);
               let bonusCalculations = bonusesCalculator(bonus, userCurrency);
               return (
                 <div key={bonus.id}>
