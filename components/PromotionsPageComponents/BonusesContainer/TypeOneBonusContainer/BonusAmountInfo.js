@@ -1,18 +1,18 @@
 import styles from "../../../../styles/PromotionsPage/TypeOneBonusContainer.module.scss";
 
 
-export const BonusAmountInfo = () => {
+export const BonusAmountInfo = ({t, bonusInfo, bonusCalculations}) => {
 
   return (
     <div className={styles.bonusAmountInfo}>
       <p>
-        Maximum bonus amount is $45550
+        {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.max_bonus_amount`, {y_key: bonusCalculations.y_key})}
       </p>
       <p>
-        Minimum deposit to qualify $25
+        {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.min_deposit_amount`, {min_deposit_key: bonusCalculations.min_deposit_key})}
       </p>
       <p>
-        35x playthrough
+        {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.playthrough_value`, {wagner_require_key: bonusCalculations.wagner_require_key})}
       </p>
     </div>
   )

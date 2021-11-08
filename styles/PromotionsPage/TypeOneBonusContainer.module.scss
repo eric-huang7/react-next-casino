@@ -16,6 +16,11 @@
     font-size: 28px;
   }
 }
+.bonusMainHeadingBlock.ru {
+  & p {
+    font-family: "Arial";
+  }
+}
 
 .typeOneBonusWrapper {
   width: 100%;
@@ -119,6 +124,15 @@
   }
 
 }
+.bonusHeadingBlock.ru {
+  & .bonusHeadingLineOne, .bonusHeadingLineTwo {
+    font-family: "Arial";
+  }
+  & .bonusHeadingLineTwo {
+    font-size: 28px;
+  }
+}
+
 .bonusAmountInfo {
   & p {
     font-size: 18px;
@@ -244,6 +258,11 @@
       color: #57a7ff;
     }
 
+  }
+  .bonusHeadingBlock.ru {
+    & .bonusHeadingLineTwo {
+      font-size: 18px;
+    }
   }
   .bonusAmountInfo {
     & p {

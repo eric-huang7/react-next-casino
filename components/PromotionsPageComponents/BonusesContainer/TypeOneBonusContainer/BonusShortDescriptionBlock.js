@@ -1,12 +1,12 @@
 import styles from "../../../../styles/PromotionsPage/TypeOneBonusContainer.module.scss";
 
 
-export const BonusShortDescriptionBlock = () => {
+export const BonusShortDescriptionBlock = ({t, bonusInfo, locale}) => {
 
   return (
-    <div className={styles.bonusHeadingBlock}>
-      <p className={styles.bonusHeadingLineOne}>Up to $300 and 50</p>
-      <p className={styles.bonusHeadingLineTwo}>free spins</p>
+    <div className={`${styles.bonusHeadingBlock} ${styles[locale]}`}>
+      <p className={styles.bonusHeadingLineOne}>{t(`bonuses.${bonusInfo?.id}.description_short.line_one`)}</p>
+      <p className={styles.bonusHeadingLineTwo}>{t(`bonuses.${bonusInfo?.id}.description_short.line_two`)}</p>
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import {SET_USER_CURRENCY_SWITCHER} from "../actions/types";
 
 const initialState = {
-  currencyId: 5693,
-  currencyAbbreviation: "USD",
-  currencySymbol: '$',
+  currencyId: 1,
+  currencyAbbreviation: "BTC",
+  currencySymbol: '',
 }
 
 function setUserCurrencyReducer(state = initialState, action) {

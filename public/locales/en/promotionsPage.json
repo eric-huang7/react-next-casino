@@ -17,10 +17,466 @@
       "depositButtonText": "deposit now"
     }
   },
-  "1" : {
-    "description": {
-      "lineOne": "Get 15% Reload Bonus up to $500 Plus 30 {{key}}",
-      "lineTwo": "Free Spins"
+  "bonuses": {
+    "1" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus":"maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "2" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "3" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "4" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "5" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "6" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "7" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "8" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "9" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "10" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "11" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "12" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "13" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "14" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "15" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "16" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "17" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "18" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "19" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "20" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "21" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "22" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "23" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "24" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "25" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "26" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
+    },
+    "27" : {
+      "heading": {
+        "line_one": "get a 100%",
+        "line_two": "matchbonus"
+      },
+      "bonus_amount_info": {
+        "max_bonus_amount": "Maximum bonus amount is {{y_key}}",
+        "min_deposit_amount": "Minimum deposit to qualify {{min_deposit_key}}",
+        "playthrough_value" : "{{wagner_require_key}}x playthrough"
+      },
+      "description_short": {
+        "line_one": "up to $300 Plus 30",
+        "line_two": "Free Spins"
+      },
+      "max_bonus": "maximum bonus amount based on award amount",
+      "description_long": "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Slotsidol, we will give you a {{x_key}} percent welcome bonus worth up to {{y_key}}! That's right, just make a deposit and we will {{wagner_require_key}}X it and hand you the money in bonus cash!"
     }
   }
+
 }

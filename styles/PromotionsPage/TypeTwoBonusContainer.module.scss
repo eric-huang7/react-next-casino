@@ -20,6 +20,11 @@
     font-size: 28px;
   }
 }
+.bonusMainHeadingBlock.ru {
+  & p {
+    font-family: "Arial";
+  }
+}
 
 .typeTwoBonusWrapper {
   width: 100%;
@@ -52,7 +57,7 @@
   & img {
     position: absolute;
     bottom: -2px;
-    right: 53px;
+    //right: 53px;
     z-index: 2;
   }
 }
@@ -116,6 +121,14 @@
     color: #ff0000;
   }
 
+}
+.bonusHeadingBlock.ru {
+  & .bonusHeadingLineOne, .bonusHeadingLineTwo {
+    font-family: "Arial";
+  }
+  & .bonusHeadingLineTwo {
+    font-size: 28px;
+  }
 }
 
 .bonusAmountInfo {
@@ -243,8 +256,13 @@
     & .bonusHeadingLineTwo {
       color: #57a7ff;
     }
-
   }
+  .bonusHeadingBlock.ru {
+    & .bonusHeadingLineTwo {
+      font-size: 18px;
+    }
+  }
+
   .bonusAmountInfo {
     & p {
       font-size: 14px;

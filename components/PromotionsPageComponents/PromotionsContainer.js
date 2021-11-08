@@ -3,6 +3,7 @@ import {MainBlock} from "./MainBlock/MainBlock";
 import {useTranslation} from "next-i18next";
 import {BonusesContainer} from "./BonusesContainer/BonusesContainer";
 import {useSelector} from "react-redux";
+import {NewsBlock} from "../HomePageComponents/NewsBlock/NewsBlock";
 
 
 
@@ -40,6 +41,7 @@ export const PromotionsContainer = ({}) => {
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
       <BonusesContainer userCurrency={userCurrency} activeBonuses={activeBonuses} t={t}/>
+      <NewsBlock t={t} isBackShow={false}/>
     </div>
   )
 }
