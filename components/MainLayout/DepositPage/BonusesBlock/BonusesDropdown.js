@@ -3,7 +3,7 @@ import {BonusesBlock} from "./BonusesBlock";
 import {useSelector} from "react-redux";
 
 
-const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chosenBonus,
                                   chooseBonusClickHandler, userSelectedBonus}) => {
@@ -27,8 +27,8 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
                 t={t}
                 bonusId={el.id}
                 bonusImage={`https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/icons/${el.icon}`}
-                bonusHeading={el.title}
-                bonusDescription={el.description_short}
+                bonusHeading={`bonuses.${el.id}.deposit_bonus.heading`}
+                bonusDescription={`bonuses.${el.id}.deposit_bonus.description`}
                 isUseBonus={isUseBonus}
                 chooseBonusClickHandler={chooseBonusClickHandler}
                 chosenBonus={chosenBonus}

@@ -23,7 +23,7 @@ const bonusData = [
   },
 ]
 
-const iDontNeedBonus = {id: 1, heading: "depositPage.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
 export const BonusesBlockContainer = (props) => {
   let {

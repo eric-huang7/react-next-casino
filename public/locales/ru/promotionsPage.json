@@ -19,10 +19,16 @@
   },
   "bonuses": {
     "max_bonus": "максимальную сумму бонуса в зависимости от суммы награды",
+    "bonusBlockInfoNotBonus": "Мне не нужен бонус.",
+    "bonusBlockInfoLink": "инфо",
     "1" : {
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -40,6 +46,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -55,6 +65,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -72,6 +86,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -87,6 +105,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -104,6 +126,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -119,6 +145,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -136,6 +166,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -151,6 +185,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -168,6 +206,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -183,6 +225,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -200,6 +246,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -215,6 +265,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -232,6 +286,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -247,6 +305,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -264,6 +326,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -279,6 +345,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -296,6 +366,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -311,6 +385,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -328,6 +406,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -343,6 +425,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -360,6 +446,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -375,6 +465,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -392,6 +486,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -407,6 +505,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
@@ -424,6 +526,10 @@
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
       },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
+      },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
         "min_deposit_amount": "Минимальный депозит {{min_deposit_key}}",
@@ -439,6 +545,10 @@
       "heading": {
         "line_one": "получить 100%",
         "line_two": "матч-бонуса"
+      },
+      "deposit_bonus": {
+        "heading": "100% бонус на первый депозит",
+        "description": "100% бонус до $300 + 30 бесплатных спинов"
       },
       "bonus_amount_info": {
         "max_bonus_amount": "Максимальная сумма бонуса {{y_key}}",
