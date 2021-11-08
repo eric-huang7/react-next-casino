@@ -41,7 +41,6 @@ export const PromotionsContainer = ({}) => {
     <div className={styles.promotionsWrapper}>
       <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
       <BonusesContainer userCurrency={userCurrency} activeBonuses={activeBonuses} t={t}/>
-      <NewsBlock t={t} isBackShow={false}/>
     </div>
   )
 }

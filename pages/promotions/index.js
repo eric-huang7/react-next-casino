@@ -5,6 +5,7 @@ import styles from "../../styles/Home.module.scss";
 import {PromotionsContainer} from "../../components/PromotionsPageComponents/PromotionsContainer";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
+import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 
 
 const Promotions = (props) => {
@@ -15,6 +16,7 @@ const Promotions = (props) => {
     <>
       <MainLayout t={t}>
         <PromotionsContainer />
+        <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
     </>
   )

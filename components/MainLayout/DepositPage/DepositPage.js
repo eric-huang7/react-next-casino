@@ -89,6 +89,7 @@ export const DepositPage = ({t}) => {
 
   const closeDepositModalHandler = () => {
     dispatch(showDepositModal(false));
+    dispatch(setUserBonus(0));
     dispatch(setErrorUserDepositValue(''));
     dispatch(setErrorUserPaymentMethod(''));
     dispatch(setUserPaymentMethod({

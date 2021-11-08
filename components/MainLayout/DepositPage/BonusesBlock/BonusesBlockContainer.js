@@ -68,8 +68,8 @@ export const BonusesBlockContainer = (props) => {
 
   if (isUseBonus) {
     if (bonusesArr.length > 0) {
-      let activeBonus = bonusesArr.find((el) => el.id === chosenBonus);
-
+      let activeBonus = bonusesArr.find((el) => el.id === userSelectedBonus.bonus_id);
+      console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus');
       let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue, t);
       setDepositButtonText(buttonText);
       return (
