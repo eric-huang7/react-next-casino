@@ -22,7 +22,6 @@ const MyApp = ({ Component, pageProps }) => {
 
 
 
-
   return (
     <Provider store={store}>
       <Component {...pageProps} />

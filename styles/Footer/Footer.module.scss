@@ -89,12 +89,20 @@ background-color: #202c42;
 
 .languageRightInfo {
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  & .licensingBlock {
+    margin: 0 55px 0 20px;
+  }
 }
 .languageRightInfo p {
   color: #4e7877;
   white-space: nowrap;
 
   display: block;
+  margin-left: 5px;
+}
+p.rightInfoText {
   margin-left: 45px;
 }
 
@@ -216,7 +224,7 @@ background-color: #202c42;
     display: none;
   }
   .lowerFooter{
-    padding: 20px 45px 0 20px;
+    padding: 20px 15px 0 20px;
     flex-direction: column-reverse;
     align-items: flex-start;
   }
@@ -230,6 +238,9 @@ background-color: #202c42;
 @media screen and (max-width: 700px) {
   .footerUpperBlock {
     padding: 5.2% 0 0% 7.6%;
+  }
+  .languageRightInfo{
+    margin-top: 0;
   }
   .languageRightInfo p {
     color: #949495;

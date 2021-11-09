@@ -42,29 +42,6 @@ export const BonusesBlockContainer = (props) => {
     userSelectedBonus,
     bonusesArr
   } = props;
-  // const activeBonuses = useSelector((state) => state.bonuses);
-  // console.log(activeBonuses, "@@@@@@@@@@@@@@@@@@@@@@");
-  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
-  // const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
-
-
-  // const [bonusesArr, setBonusesArr] = useState([]);
-  // useEffect(() => {
-  //   if (userLogin) {
-  //     let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
-  //     if (bonuses.length > 0) {
-  //       setBonusesArr(bonuses);
-  //     } else {
-  //       setBonusesArr([]);
-  //       chooseBonusClickHandler(0);
-  //     }
-  //
-  //   } else {
-  //     setBonusesArr([]);
-  //   }
-  // }, [userCurrency, isShowDepositModal]);
-
-
 
   if (isUseBonus) {
     if (bonusesArr.length > 0) {

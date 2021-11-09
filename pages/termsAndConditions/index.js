@@ -13,6 +13,7 @@ import {useRouter} from "next/router";
 import {setLang} from "../../redux/actions/lang";
 import {useEffect} from "react";
 import {allDataTermsAndConditions} from "../../components/TermsAndConditionsComponents/allDatatermsAndConditions";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const TermsConditions = (props) => {
@@ -20,6 +21,21 @@ const TermsConditions = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
+
+  useEffect(() => {
+    // dispatch(setLang(locale));
+    // dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
+
+    // dispatch(getJackpots());
+    // dispatch(getWinners());
+    // dispatch(getLatestWinners());
+    dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
+
+  }, []);
 
   return (
     <>
@@ -39,7 +55,7 @@ const TermsConditions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
     },
   })
 }

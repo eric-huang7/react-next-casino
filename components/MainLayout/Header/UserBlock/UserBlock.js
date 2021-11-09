@@ -55,7 +55,7 @@ useEffect(() => {
   } else {
     setUserCurrency('')
   }
-},[currency.currency, userInfo.isAuthenticated])
+},[currency.loading, userInfo.isAuthenticated])
 
 
   return (

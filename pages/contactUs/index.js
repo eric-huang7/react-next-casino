@@ -11,10 +11,29 @@ import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
 import {ContactsBlocks} from "../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks";
 import {Faq} from "../../components/ContactUsPageComponents/FAQ/Faq";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const ContactUs = (props) => {
   const { t } = useTranslation('common')
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(setLang(locale));
+    // dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
+
+    // dispatch(getJackpots());
+    // dispatch(getWinners());
+    // dispatch(getLatestWinners());
+    dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
+
+  }, []);
 
   return (
     <>
@@ -36,7 +55,7 @@ const ContactUs = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
     },
   })
 }

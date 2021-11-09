@@ -117,7 +117,10 @@ export const Footer = ({t}) => {
                 <span>{language}</span>
               </div>
             </div>
-            <p>2020 SlotsIdol.com&#169; All Rights Reserved</p>
+            <p className={styles.rightInfoText}>2020 SlotsIdol.com&#169; All Rights Reserved</p>
+            <div className={styles.licensingBlock}>
+              <iframe src="https://licensing.gaming-curacao.com/validator/?lh=39be67de0ffa98b11f0dd2b6aec51152&template=seal" width="150" height="50" style={{ border: 'none' }} />
+            </div>
           </div>
         </div>
       </section>

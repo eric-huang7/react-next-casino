@@ -59,9 +59,6 @@ export default function Home(props) {
   return (
 
     <>
-      {/*<Head>*/}
-      {/*  /!*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*!/*/}
-      {/*</Head>*/}
       <MainLayout t={t}>
         <MainBlock />
         {/*<JackpotBlock />*/}
@@ -74,7 +71,6 @@ export default function Home(props) {
         <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
         <NewsBlock t={t} isBackShow={true}/>
         <WhySlotsIdol t={t} isBackShow={true}/>
-
       </MainLayout>
 
     </>
@@ -85,7 +81,7 @@ export const getServerSideProps = async ({ locale }) => {
 
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
     },
   })
 }

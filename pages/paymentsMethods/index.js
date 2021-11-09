@@ -6,11 +6,31 @@ import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock
 import {PaymentsInformationBlock} from "../../components/PaymentsMethodsComponents/PaymentsInformationBlock";
 import {PaymentsDepositBlock} from "../../components/PaymentsMethodsComponents/PaymentsDepositBlock";
 import {PaymentsWithdrawBlock} from "../../components/PaymentsMethodsComponents/PaymentsWithdrawBlock";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const PaymentsMethods = (props) => {
   const { t } = useTranslation('common');
   // console.log(props);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(setLang(locale));
+    // dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
+
+    // dispatch(getJackpots());
+    // dispatch(getWinners());
+    // dispatch(getLatestWinners());
+    dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
+
+  }, []);
+
   return (
     <>
       <MainLayout t={t}>
@@ -29,7 +49,7 @@ const PaymentsMethods = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
     },
   })
 }

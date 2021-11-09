@@ -11,6 +11,7 @@ import {useRouter} from "next/router";
 import {setLang} from "../../redux/actions/lang";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const AboutUS = (props) => {
@@ -24,6 +25,21 @@ const AboutUS = (props) => {
   //   dispatch(setLang(router.locale));
   //   console.log( router, "$$$$$$$$$$$$$$$$$$")
   // },[])
+
+  useEffect(() => {
+    // dispatch(setLang(locale));
+    // dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
+
+    // dispatch(getJackpots());
+    // dispatch(getWinners());
+    // dispatch(getLatestWinners());
+    dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
+
+  }, []);
 
 
   return (
@@ -44,7 +60,7 @@ const AboutUS = (props) => {
 export const getServerSideProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['common']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common']),
     },
   })
 }
