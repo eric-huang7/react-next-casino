@@ -11,6 +11,7 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
+import {GameItemContainer} from "./GameItemContainer";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
@@ -103,18 +104,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
           {slides.map((el, ind) => {
             return (
                 <div className={styles.slideItemsWrapperDesc} key={ind}>
-                  {
-                    <div className={styles.gameItemWrapper}>
-                      <GameHoverButtons t={t} gameData={el}/>
-                      <Image
-                        // placeholder={"blur"}
-                        // blurDataURL={'/assets/img/empty.webp'}
-                        layout={"fill"}
-                        key={el.id}
-                        src={urlGen(el.id)}
-                        alt={`Game ${el.name}`}/>
-                    </div>
-                  }
+                  <GameItemContainer ind={ind} t={t} gameData={el}/>
                 </div>
             )
           })}

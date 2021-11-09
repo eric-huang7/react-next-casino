@@ -1,10 +1,10 @@
 import styles from '../../../styles/HomePage/ChooseCategoryBlock.module.scss'
-// import styles from '../../../public/styles/HomePage/ChooseCategoryBlock.module.scss'
+
 import Link from "next/link";
 import {useState} from "react";
 
 
-export const ChooseCategoryBlock = ({t}) => {
+export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
 
   const linksData = [
     {href: '#', name: "btcGames", icon: '/assets/icons/home/btc_games_icon.svg'},
@@ -30,8 +30,10 @@ export const ChooseCategoryBlock = ({t}) => {
         }
       </ul>
       <div className={styles.categoryInputsWrapper}>
-        <div className={styles.providersButton}>
-          <span>{t('homePage.providers')}</span>
+        <div className={`${styles.providersButton} ${isProvidersPage ? styles.isProviders : ''}`}>
+          <Link href={'/providers-page'}>
+            <a>{t('homePage.providers')}</a>
+          </Link>
         </div>
         <label className={styles.searchInputLabel}>
           <input placeholder={t("homePage.searchBar")} className={styles.searchInput}/>
