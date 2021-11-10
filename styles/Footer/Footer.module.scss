@@ -109,7 +109,10 @@ p.rightInfoText {
 .languageSelectBlock {
   display: flex;
   flex-wrap: nowrap;
-
+}
+.rightsLicenseContainer {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .chooseLanguageButton {
@@ -199,7 +202,21 @@ p.rightInfoText {
 .langChooserListItem:first-child {
   margin-top: 0px;
 }
+@media screen and (max-width: 1361px) {
+  .lowerFooter{
+    padding: 20px 15px 0 20px;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .languageRightInfo {
+    width: 100%;
+    justify-content: space-between;
+  }
+  p.rightInfoText {
+    margin-left: 5px;
+  }
 
+}
 @media screen and (max-width: 1180px) {
   .footerUpperBlock {
     padding: 5.2% 0 4% 7.6%;
@@ -253,6 +270,10 @@ p.rightInfoText {
   }
   .languageRightInfo > p {
     font-size: 10px;
+  }
+  .rightsLicenseContainer {
+    display: flex;
+    flex-wrap: wrap;
   }
   .chooseLanguageButton {
     width: 96px;
