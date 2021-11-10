@@ -1,6 +1,6 @@
 import styles from '../../styles/ProvidersPage/ProvidersContainer.module.scss';
 
-export const AllProvidersItem = ({t, providerData}) => {
+export const AllProvidersItem = ({t, providerData, countOfGames}) => {
 
   return (
     <div className={styles.providerItemBlock}>
@@ -8,7 +8,7 @@ export const AllProvidersItem = ({t, providerData}) => {
         <span>all providers</span>
       </div>
       <div className={styles.providerItem__infoBlock}>
-        <span>{`${providerData.games} ${'games'}`}</span>
+        <span>{`${countOfGames} ${'games'}`}</span>
       </div>
     </div>
   )
