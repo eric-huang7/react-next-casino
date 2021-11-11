@@ -1,9 +1,9 @@
 import styles from '../../styles/ProvidersPage/ProvidersContainer.module.scss';
 
-export const AllProvidersItem = ({t, providerData, countOfGames}) => {
+export const AllProvidersItem = ({t, providerData, countOfGames, allGamesClickHandler}) => {
 
   return (
-    <div className={styles.providerItemBlock}>
+    <div onClick={() => allGamesClickHandler()} className={styles.providerItemBlock}>
       <div className={styles.allProviderItem__heading}>
         <span>all providers</span>
       </div>

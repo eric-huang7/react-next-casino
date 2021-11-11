@@ -15,8 +15,10 @@ const GamesPage = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation('common');
   const router = useRouter();
-  const {pid} = router.query;
-  console.log(pid, 'zxczxc');
+  const {id} = router.query;
+  console.log(router, 'zxczxc');
+
+  console.log(props, 'PROPS GAMES')
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -42,7 +44,7 @@ const GamesPage = (props) => {
         <ChooseCategoryBlock isProvidersPage={false} t={t}/>
         <div>
           <h2 style={{color: "white"}}>
-            {`${pid}     provider`}
+            {`${id}     provider`}
           </h2>
 
 
@@ -53,30 +55,21 @@ const GamesPage = (props) => {
   )
 }
 
-// export async function getStaticPaths(context) {
-//   console.log(context, 'static path')
-//   return {
-//     // Only `/posts/1` and `/posts/2` are generated at build time
-//     paths: [
-//       { params: { id: 'responsibleGaming' } },
-//       { params: { id: 'termsAndConditions' } },
-//       { params: { id: 'kycpolicy' } },
-//       { params: { id: 'amlpolicy' } },
-//     ],
-//     // Enable statically generating additional pages
-//     // For example: `/posts/3`
-//     fallback: "blocking",
-//   }
-// }
 
 export const getServerSideProps = async (context) => {
-  console.log(context.query.pid, 'server pid');
-  const res = await fetch(`http://t-gpb.slotsidol.com:7000/games?producers=${context.query.pid}`);
-  const providersData = await res.json();
+  console.log(context, 'server pid');
+  let res;
+  if (context.query.id === 'all-games') {
+    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?start_index=${context.query.start_index}&quantity=${context.query.quantity}`);
+  } else {
+    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?producers=${context.query.id}`);
+  }
+  //
+  const gamesData = await res.json();
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['common']),
-      providersData: {...providersData},
+      gamesData: {...gamesData},
     },
   })
 }

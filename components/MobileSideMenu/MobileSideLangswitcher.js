@@ -43,7 +43,13 @@ export const MobileSideLangSwitcher = ({isOpenLanguages}) => {
               className={styles.mobileSideLanguageItem}
             >
                 <img src={el.icon} alt={`${el.lang} icon`}/>
-              <Link href={router.route} locale={el.lang}>
+              <Link
+                href={{
+                  pathname: router.route,
+                  query: {...router.query}
+                }}
+                locale={el.lang}
+              >
                 <a
                   data-lang={el.lang}
                   onClick={(e) => langChooser(e)}

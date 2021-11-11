@@ -23,7 +23,10 @@ export const LangSwitcherPopup = ({arrLang, langChooser, hrefMain}) => {
           >
             <img className={styles.langSwitcherLangFlag} src={language.icon} alt="flag icon"/>
             <Link
-              href={hrefRoute}
+              href={{
+                pathname: hrefRoute,
+                query: {...router.query}
+              }}
               locale={language.lang}
             >
               <a

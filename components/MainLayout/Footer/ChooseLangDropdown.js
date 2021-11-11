@@ -46,7 +46,10 @@ export const ChooseLangDropdown = ({t, isVis}) => {
                 onClick={(e) => langChooser(e)}
               >
                 <Link
-                  href={router.route}
+                  href={{
+                    pathname: router.route,
+                    query: {...router.query}
+                  }}
                   locale={language.lang}
                 >
                   <a
