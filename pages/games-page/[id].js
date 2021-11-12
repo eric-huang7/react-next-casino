@@ -60,7 +60,7 @@ export const getServerSideProps = async (context) => {
   console.log(context, 'server pid');
   let res;
   if (context.query.id === 'all-games') {
-    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?start_index=${context.query.start_index}&quantity=${context.query.quantity}`);
+    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?start_index=0&quantity=100`);
   } else {
     res = await fetch(`http://t-gpb.slotsidol.com:7000/games?producers=${context.query.id}`);
   }

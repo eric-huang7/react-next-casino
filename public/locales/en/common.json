@@ -344,5 +344,11 @@
     "smsSubscript": "Receive SMS Promos",
     "notifySubscript": "Receive Browser Notifications",
     "subscriptionsButton": "update subscription"
+  },
+  "providersPage": {
+    "heading": "Providers",
+    "allProviders": "All Providers",
+    "providerItem": "games",
+    "providerItemIconDescription": "provider icon"
   }
 }

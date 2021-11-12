@@ -14,7 +14,6 @@ const MyApp = ({Component, pageProps}) => {
 
   useEffect(() => {
     if (cookies.language) {
-      console.log(`/${cookies.language}${router.route}`)
       if (cookies.language === 'en') {
         router.push(
           {
@@ -33,7 +32,8 @@ const MyApp = ({Component, pageProps}) => {
           {locale: cookies.language})
       }
     }
-  }, [cookies.language])
+  }, [])
+  // TODO: need to change
   //cookies.language, router.route
 
 

@@ -344,5 +344,11 @@
     "smsSubscript": "Получать SMS-сообщения",
     "notifySubscript": "Получать уведомления браузера",
     "subscriptionsButton": "обновить подписку"
+  },
+  "providersPage": {
+    "heading": "Провайдеры",
+    "allProviders": "Все провайдеры",
+    "providerItem": "игр",
+    "providerItemIconDescription": "иконка провайдера"
   }
 }

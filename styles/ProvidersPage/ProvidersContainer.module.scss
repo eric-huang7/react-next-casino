@@ -154,6 +154,11 @@
         text-transform: uppercase;
       }
     }
+    & .allProviderItem__heading.ru {
+      & span {
+        font-size: 14px;
+      }
+    }
     & .providerItem__infoBlock {
       background-color: #b9b9b9;
 

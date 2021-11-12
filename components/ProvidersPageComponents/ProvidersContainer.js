@@ -15,22 +15,15 @@ export const ProvidersContainer = ({t, providersData}) => {
   const allGamesClickHandler = () => {
     router.push({
       pathname: '/games-page/[id]',
-      query: {id: "all-games", start_index: 0, quantity: 100}
-    } ,`/games-page/all-games`, {locale: router.locale})
+      query: {id: "all-games"}
+    })
   }
 
   const providerClickHandler = (provider) => {
-    if (typeof window !== 'undefined') {
       router.push({
-        pathname: `/games-page/${provider.game_producer}/`,
+        pathname: `/games-page/[id]/`,
         query: {id: provider.game_producer},
       })
-    }
-    // {
-    //         pathname: `/games-page/${provider.game_producer}`,
-    //         query: {pid: provider.game_producer, id: provider.game_producer}
-    //       }
-    // `/providers-page/${provider.game_producer}`
   }
 
   let providers = providersData.map((el, index) => {
@@ -41,9 +34,9 @@ export const ProvidersContainer = ({t, providersData}) => {
 
   return (
       <div className={styles.providersMainContainer}>
-        <h2 className={styles.providersMainHeading}>Providers</h2>
+        <h2 className={styles.providersMainHeading}>{t('providersPage.heading')}</h2>
         <div className={styles.providersItemsContainer}>
-          <AllProvidersItem allGamesClickHandler={allGamesClickHandler} t={t} providerData={'asd'} countOfGames={countOfGames}/>
+          <AllProvidersItem locale={router.locale} allGamesClickHandler={allGamesClickHandler} t={t} providerData={'asd'} countOfGames={countOfGames}/>
           {providers}
         </div>
       </div>
