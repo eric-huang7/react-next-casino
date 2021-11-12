@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userBalance} from "../../../../redux/actions/login";
 import {useEffect, useState} from "react";
 import {getCurrency} from "../../../../redux/actions/currency";
-import {BellNotification} from "./BellNotification";
+import {Notification} from "./Notification";
 import {UserInformationBlock} from "./UserInformationBlock";
 
 export const UserBlockNavigation = ({t, userInfo}) => {
@@ -63,7 +63,7 @@ useEffect(() => {
   return (
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
-        { userLogined ? <BellNotification /> : "" }
+        { userLogined ? <Notification /> : "" }
         { userLogined ? <UserInformationBlock userName={userName} userCurrency={userCurrency} userBalanceInfo={userBalanceInfo}/> : "" }
       </div>
       {

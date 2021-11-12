@@ -88,6 +88,7 @@ export const DepositPage = ({t}) => {
   }
 
   const closeDepositModalHandler = () => {
+    setShowAllBonuses(false);
     dispatch(showDepositModal(false));
     dispatch(setUserBonus(0));
     dispatch(setErrorUserDepositValue(''));

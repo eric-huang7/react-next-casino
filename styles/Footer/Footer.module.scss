@@ -257,6 +257,7 @@ p.rightInfoText {
     padding: 5.2% 0 0% 7.6%;
   }
   .languageRightInfo{
+    flex-direction: column;
     margin-top: 0;
   }
   .languageRightInfo p {

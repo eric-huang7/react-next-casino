@@ -10,7 +10,7 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
   let locale = router.locale
   let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
 
-  console.log(bonuses, "adasdasdasd")
+  // console.log(bonuses, "adasdasdasd")
   if (bonuses.length > 0) {
     return (
       <div className={styles.bonusesContainerMainWrapper}>

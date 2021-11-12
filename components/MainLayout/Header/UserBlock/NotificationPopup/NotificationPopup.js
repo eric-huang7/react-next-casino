@@ -7,8 +7,6 @@ import {useSelector} from "react-redux";
 export const NotificationPopup = ({isShowNotifications}) => {
 
 
-  console.log(isShowNotifications)
-
   return (
     <div className={`${styles.notificationPopupWrapper} ${isShowNotifications ? "" : styles.hide}`}>
       <div className={styles.notificationHeading}>

@@ -25,10 +25,10 @@ let listArr = [
     path: "/#notifications"
   },
   {id: 4,
-    name: "mobileSideMenu.listMenu.gifts",
+    name: "mobileSideMenu.listMenu.promotions",
     icon: '/assets/img/mobileSideMenu/gift.svg',
     type: "link",
-    path: "/#gifts"
+    path: "/promotions"
   },
   {id: 5,
     name: "mobileSideMenu.listMenu.tournament",

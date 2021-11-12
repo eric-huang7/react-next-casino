@@ -35,7 +35,9 @@ export const PromotionsContainer = ({}) => {
   const activeBonuses = useSelector((state) => state.bonuses);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
-  console.log(store, 'promotions store')
+  // console.log(store, 'promotions store');
+
+
 
   return (
     <div className={styles.promotionsWrapper}>
