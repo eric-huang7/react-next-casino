@@ -6,7 +6,7 @@ import {useEffect} from "react";
 
 export const ProvidersContainer = ({t, providersData}) => {
   const router = useRouter()
-  console.log(router, 'router')
+  // console.log(router, 'router')
   let countOfGames = 0;
   providersData.map((el) => {
     countOfGames += Number(el.games);

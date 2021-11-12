@@ -1,0 +1,133 @@
+.notificationPopupWrapper {
+  position: absolute;
+
+  top: 72px;
+  right: 250px;
+
+  color: #ffffff;
+
+  width: 301px;
+  max-height: 442px;
+
+  padding: 5px 0px 10px 0px;
+
+  background-color: #000000;
+}
+.hide {
+  display: none;
+}
+
+.notificationHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+
+  & span {
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #bfbfbf;
+    font-family: "Franklin Gothic";
+
+    margin-left: 15px;
+  }
+  & img {
+    width: 28px;
+    height: 19px;
+
+    margin-right: 15px;
+  }
+}
+
+.moreButtonBlock {
+  height: 20px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  margin-top: 5px;
+
+  & span {
+    font-size: 14px;
+    letter-spacing: 0px;
+    line-height: 18px;
+    color: #848484;
+    font-family: "Franklin Gothic";
+  }
+}
+
+.messageItemWrapper {
+  height: 100px;
+
+  border-top: 2px solid #484848;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #393939;
+
+  & .messageIcon {
+    width: 45px;
+    height: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .messageData {
+    height: 100%;
+
+    padding: 10px 0 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-right: 15px;
+    & .messageDescription {
+      font-size: 14px;
+      letter-spacing: 0px;
+      color: #ffffff;
+      font-family: "Franklin Gothic";
+
+      margin: 0;
+    }
+    & a {
+      font-size: 14px;
+      letter-spacing: 0px;
+      color: #fda3a2;
+      font-family: "Franklin Gothic";
+    }
+    & .time {
+      font-size: 14px;
+      letter-spacing: 0px;
+      color: #848484;
+      font-family: "Franklin Gothic";
+    }
+  }
+}
+
+.messageItemWrapper:nth-child(2n) {
+  background-color: #2d2c2c;
+}
+
+@media screen and (max-width: 1435px) {
+  .notificationPopupWrapper {
+    top: 72px;
+    right: 120px;
+  }
+}
+@media screen and (max-width: 1325px) {
+  .notificationPopupWrapper {
+    top: 62px;
+    right: 120px;
+  }
+}

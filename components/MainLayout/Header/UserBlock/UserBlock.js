@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {userBalance} from "../../../../redux/actions/login";
 import {useEffect, useState} from "react";
 import {getCurrency} from "../../../../redux/actions/currency";
+import {BellNotification} from "./BellNotification";
+import {UserInformationBlock} from "./UserInformationBlock";
 
 export const UserBlockNavigation = ({t, userInfo}) => {
   const dispatch = useDispatch();
@@ -61,13 +63,8 @@ useEffect(() => {
   return (
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
-        <div className={styles.userMainBlockBellIcon}>
-          <span className={styles.userMainBlockBellIconNotification}>{'0'}</span>
-        </div>
-        <div className={styles.userMainBlockUserInfoBlock}>
-          <span>{userName}</span>
-          <span>{`${userBalanceInfo} ${userCurrency}`}</span>
-        </div>
+        { userLogined ? <BellNotification /> : "" }
+        { userLogined ? <UserInformationBlock userName={userName} userCurrency={userCurrency} userBalanceInfo={userBalanceInfo}/> : "" }
       </div>
       {
         userLogined ? <HeaderButtonsDeposit isUserLogined={userLogined} t={t}/> : <HeaderButtonsRegistration isUserLogined={userLogined} t={t}/>

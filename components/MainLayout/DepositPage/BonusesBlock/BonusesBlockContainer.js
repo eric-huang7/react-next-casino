@@ -38,7 +38,6 @@ export const BonusesBlockContainer = (props) => {
     userDepositValue,
     userLogin,
     activeBonuses,
-    isShowDepositModal,
     userSelectedBonus,
     bonusesArr
   } = props;

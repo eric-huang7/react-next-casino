@@ -52,9 +52,9 @@ export default function Home(props) {
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
   const currencies = useSelector((state) => state.getCurrency);
   const activeBonuses = useSelector((state) => state.bonuses);
-  // const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
 
-  // console.log(userLogin, state, "@@@@@@@ MAin page");
+  console.log(state, "@@@@@@@ MAin page");
 
   return (
 

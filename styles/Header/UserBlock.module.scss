@@ -21,13 +21,15 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    cursor: pointer;
 }
 .userMainBlockBellIconNotification {
     position: absolute;
     top: 0px;
     right: -5px;
 
-    padding: 3px 3px;
+    padding: 1px 3px;
 
     background-color: #4fa053;
 
@@ -74,7 +76,7 @@
         top: 0px;
         right: -5px;
 
-        padding: 1px 1px;
+        padding: 0px 1px;
 
         width: 13px;
         height: 13px;

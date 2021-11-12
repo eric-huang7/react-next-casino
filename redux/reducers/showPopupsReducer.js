@@ -2,7 +2,8 @@ import {
   BACK_BUTTON_SHOULD_DO,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
-  SHOW_MANAGE_SUBSCRIPTIONS
+  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_NOTIFICATIONS_POPUP
 } from "../actions/types";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   isShowDepositModal: false,
   actionForBackButton: false,
   isShowManageSubscriptions: false,
+  isShowNotifications: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -36,6 +38,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowManageSubscriptions: payload,
+      }
+    case SHOW_NOTIFICATIONS_POPUP:
+      return {
+        ...state,
+        isShowNotifications: payload,
       }
 
     default:
