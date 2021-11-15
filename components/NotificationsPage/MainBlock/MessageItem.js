@@ -1,8 +1,7 @@
-import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss';
+import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
+import {urlGen} from "../../MainLayout/Header/UserBlock/url";
 import Link from "next/link";
-import {urlGen} from "../url";
 import {formatDistance} from "date-fns";
-
 
 
 export const MessageItem = ({messageType, icon, additionalText, text, link, time}) => {

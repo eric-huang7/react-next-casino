@@ -16,6 +16,7 @@ export const MessagesContainer = ({notifyData}) => {
             additionalText={el.text_additional}
             icon={el.image}
             link={el.link}
+            time={el.time_created}
           />
         )
       })
