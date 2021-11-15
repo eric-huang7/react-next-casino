@@ -4,7 +4,7 @@ import {MoreButton} from "./MoreButton";
 import {useSelector} from "react-redux";
 
 
-export const NotificationPopup = ({isShowNotifications}) => {
+export const NotificationPopup = ({isShowNotifications, notifyData}) => {
 
 
   return (
@@ -14,7 +14,7 @@ export const NotificationPopup = ({isShowNotifications}) => {
         <img src={`/assets/icons/notifications/sound_on.svg`} alt="notification sound icon"/>
       </div>
       <div className={styles.messagesBlock}>
-        <MessagesContainer />
+        <MessagesContainer notifyData={notifyData}/>
       </div>
       <MoreButton />
     </div>

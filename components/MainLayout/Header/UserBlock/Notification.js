@@ -1,42 +1,65 @@
 import styles from "../../../../styles/Header/UserBlock.module.scss";
 import {NotificationPopup} from "./NotificationPopup/NotificationPopup";
 import {useDispatch, useSelector} from "react-redux";
-import {showNotifications} from "../../../../redux/actions/showPopups";
-import {useEffect, useState} from "react";
-// import {io} from 'socket.io-client'
+import {useCallback, useEffect, useState} from "react";
 import {BellNotification} from "./BellNotification";
+import {useRouter} from "next/router";
+
 
 
 export const Notification = () => {
+  const router = useRouter();
+  const isBrowser = typeof window !== "undefined";
   const dispatch = useDispatch()
-  // const isShowNotifications = useSelector((store) => store.showPopupsReducer.isShowNotifications);
 
   const userInfo = useSelector((store) => store.authInfo.user)
-  // useEffect(() => {
-  //   let socket = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInfo.token}`);
-  //   socket.onopen = function (e) {
-  //     console.log('open')
-  //   }
-  //   socket.onclose = function (e) {
-  //     if (e.wasClean) {
-  //       console.log('close clear', e.code, "@", e.reason)
-  //       // alert(`[close] Соединение закрыто чисто, код=${e.code} причина=${e.reason}`);
-  //     } else {
-  //       console.log('close dirt', e)
-  //       // например, сервер убил процесс или сеть недоступна
-  //       // обычно в этом случае event.code 1006
-  //       // alert('[close] Соединение прервано');
-  //     }
-  //   }
-  //   socket.onmessage = function(e) {
-  //     console.log('=>', JSON.parse(e.data));
-  //     // console.log('===>>>', JSON.parse(e.data.msg));
-  //     // alert(`[message] Данные получены с сервера: ${event.data}`);
-  //   };
-  // }, [])
+
+  const [socketMessages, setSocketMessages] = useState([]);
+  const [socketInstance, setSocketInstance] = useState(null);
 
 
-  const [isShowNotifications, setisShowNotifications] =useState(false)
+  useEffect(() => {
+    if (isBrowser) {
+
+      let socket = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInfo.token}&locale=${router.locale}`);
+      // setSocketInstance(socket);
+
+      socket.onopen = function (e) {
+        console.log('open!')
+      };
+
+      socket.onclose = function (e) {
+        if (e.wasClean) {
+          console.log('close clear', e.code, "@", e.reason);
+        } else {
+          console.log('close dirt', e);
+        }
+      };
+
+      socket.onmessage = function (e) {
+        console.log('=>', JSON.parse(e.data));
+        let data = JSON.parse(e.data);
+        let message = JSON.parse(data.msg);
+        console.log('message ===>>>', message);
+        if (Object.keys(message).length > 0) {
+          setSocketMessages([...socketMessages, message])
+        }
+      };
+      socket.onerror = function (error) {
+        console.log('some error ===> ', error)
+      };
+    }
+
+    return () => {
+        if (socketInstance && socketInstance?.readyState !== 3) {
+          socketInstance.close(1000);
+        }
+    }
+  }, [socketMessages])
+
+  console.log(socketMessages, 'asdsa');
+  const [isShowNotifications, setisShowNotifications] = useState(false)
+
   const clickBellHandler = () => {
     if (isShowNotifications) {
       // dispatch(showNotifications(false));
@@ -49,8 +72,8 @@ export const Notification = () => {
 
   return (
     <>
-      <BellNotification messageCount={3}/>
-      <NotificationPopup isShowNotifications={isShowNotifications}/>
+      <BellNotification clickBellHandler={clickBellHandler} messageCount={socketMessages.length}/>
+      <NotificationPopup notifyData={socketMessages} isShowNotifications={isShowNotifications}/>
     </>
 
   )

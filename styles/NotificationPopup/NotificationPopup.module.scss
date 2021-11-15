@@ -7,7 +7,7 @@
   color: #ffffff;
 
   width: 301px;
-  max-height: 442px;
+  max-height: 840px;
 
   padding: 5px 0px 10px 0px;
 
@@ -58,21 +58,37 @@
   }
 }
 
+.messagesBlock {
+  max-height: 720px;
+  overflow: hidden;
+}
+
 .messageItemWrapper {
-  height: 100px;
+  min-height: 100px;
 
   border-top: 2px solid #484848;
 
   display: flex;
   align-items: center;
 
+  padding-right: 10px;
+
   background-color: #393939;
+
+  & .noNotifications {
+    text-align: center;
+    width: 100%;
+
+    color: #bfbfbf;
+    font-family: "Franklin Gothic", sans-serif;
+  }
 
   & .messageIcon {
     width: 45px;
     height: 100%;
     margin-right: 15px;
     margin-left: 15px;
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
@@ -83,17 +99,27 @@
   }
 
   & .messageData {
-    height: 100%;
+    min-height: 100px;
 
     padding: 10px 0 5px;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 
     margin-right: 15px;
     & .messageDescription {
       font-size: 14px;
+      letter-spacing: 0px;
+      color: #ffffff;
+      font-family: "Franklin Gothic";
+
+      word-wrap: break-word;
+
+      margin: 0;
+    }
+    & .messageAdditionalDescription {
+      font-size: 12px;
       letter-spacing: 0px;
       color: #ffffff;
       font-family: "Franklin Gothic";

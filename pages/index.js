@@ -20,6 +20,7 @@ import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
 import {getCurrency} from "../redux/actions/currency";
 import {getJackpots} from "../redux/actions/latestJackpots";
 import {getActiveBonuses} from "../redux/actions/getBonuses";
+import {HomePageContainer} from "../components/HomePageComponents/HomePageContainer";
 
 
 
@@ -30,47 +31,42 @@ export default function Home(props) {
   const locale = router.locale;
   // console.log(router, "home LOCALE")
 
-  useEffect(() => {
-    // dispatch(setLang(locale));
-    dispatch(getGames());
-    dispatch(getNewGames()); //new games
-    dispatch(getJackpotGames()); // Jackpot Games
-    dispatch(getTableGames()); // Table Games
+  // useEffect(() => {
+  //   // dispatch(setLang(locale));
+  //   dispatch(getGames());
+  //   dispatch(getNewGames()); //new games
+  //   dispatch(getJackpotGames()); // Jackpot Games
+  //   dispatch(getTableGames()); // Table Games
+  //
+  //   dispatch(getJackpots());
+  //   dispatch(getWinners());
+  //   dispatch(getLatestWinners());
+  //   dispatch(getCurrency());
+  //   // dispatch(getActiveBonuses());
+  //
+  // }, []);
+  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
+  //
+  //
+  // const games = useSelector((games) => games.games);
+  // const winners = useSelector((winners) => winners.winners);
+  // const jackpots = useSelector((jackpots) => jackpots.jackpots);
+  // const currencies = useSelector((state) => state.getCurrency);
+  // const activeBonuses = useSelector((state) => state.bonuses);
+  // const state = useSelector((state) => state);
 
-    dispatch(getJackpots());
-    dispatch(getWinners());
-    dispatch(getLatestWinners());
-    dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
-
-  }, []);
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-
-
-  const games = useSelector((games) => games.games);
-  const winners = useSelector((winners) => winners.winners);
-  const jackpots = useSelector((jackpots) => jackpots.jackpots);
-  const currencies = useSelector((state) => state.getCurrency);
-  const activeBonuses = useSelector((state) => state.bonuses);
-  const state = useSelector((state) => state);
-
-  console.log(state, "@@@@@@@ MAin page");
+  console.log( "@@@@@@@ MAin page");
 
   return (
 
     <>
       <MainLayout t={t}>
-        <MainBlock />
-        {/*<JackpotBlock />*/}
-        {/*API for jackpots will add in future */}
-        <ChooseCategoryBlock t={t}/>
-        <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
-        <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
-        <PromotionsBlock t={t}/>
-        <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
-        <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
-        <NewsBlock t={t} isBackShow={true}/>
-        <WhySlotsIdol t={t} isBackShow={true}/>
+        <HomePageContainer
+          t={t}
+          // games={games}
+          // jackpots={jackpots}
+          // winners={winners}
+        />
       </MainLayout>
 
     </>

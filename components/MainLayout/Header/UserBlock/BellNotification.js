@@ -1,7 +1,7 @@
 import styles from "../../../../styles/Header/UserBlock.module.scss";
 
 
-export const BellNotification = ({messageCount}) => {
+export const BellNotification = ({messageCount, clickBellHandler}) => {
 
   return (
     <div onClick={() => clickBellHandler()} className={styles.userMainBlockBellIcon}>
