@@ -28,7 +28,7 @@ const NotificationsPage = () => {
     // dispatch(getJackpots());
     // dispatch(getWinners());
     // dispatch(getLatestWinners());
-    // dispatch(getCurrency());
+    dispatch(getCurrency());
     // dispatch(getActiveBonuses());
 
   }, []);
@@ -41,14 +41,17 @@ const NotificationsPage = () => {
   //TODO: uncomment upper redirection
 
 
-
-
+  const userInfo = useSelector((store) => store.authInfo)
+  // console.log(userInfo, '!!!!!!')
   return (
     <>
       <MainLayout t={t}>
         <div className={styles.mainWrapper}>
           <div className={styles.innerWrapper}>
-            <MainBlockContainer t={t}/>
+            {
+              userInfo.isAuthenticated ? <MainBlockContainer userInfo={userInfo.user} t={t}/> : ''
+            }
+            {/*<MainBlockContainer userInfo={userInfo} t={t}/>*/}
             <SideGamesContainer t={t}/>
           </div>
         </div>

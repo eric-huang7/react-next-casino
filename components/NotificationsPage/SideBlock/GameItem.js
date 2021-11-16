@@ -4,7 +4,7 @@ import {PlayGameHoverButtons} from "./PlayGameHoverButtons";
 
 
 export const GameItem = ({gameData, isLoading, t, user, playFunClickHandler, playGameClickHandler}) => {
-  console.log(gameData, 'items')
+
   return (
     <div className={styles.gameItemWrapper}>
       <div className={styles.gameImgBlock}>

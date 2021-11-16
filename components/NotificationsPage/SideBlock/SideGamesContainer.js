@@ -14,9 +14,6 @@ export const SideGamesContainer = ({t}) => {
   let gamesStoredData = useSelector((store) => store.games);
   const playGames = useSelector((state) => state.playGame);
 
-  console.log(gamesStoredData, 'games');
-
-
   useEffect(() => {
     if (playGames.startGame?.game_link) {
       router.push(playGames.startGame.game_link);

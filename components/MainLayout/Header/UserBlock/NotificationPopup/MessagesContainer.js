@@ -10,7 +10,7 @@ export const MessagesContainer = ({notifyData}) => {
       messages = notifyData.map((el, ind) => {
         return (
           <MessageItem
-            key={el.id}
+            key={`notification ${el.id}`}
             messageType={el.type}
             text={el.text}
             additionalText={el.text_additional}
@@ -24,12 +24,13 @@ export const MessagesContainer = ({notifyData}) => {
       messages = notifyData.slice(notifyData.length - 5, notifyData.length - 1).map((el, ind) => {
         return (
           <MessageItem
-            key={el.id}
+            key={`notification ${el.id}`}
             messageType={el.type}
             text={el.text}
             additionalText={el.text_additional}
             icon={el.image}
             link={el.link}
+            time={el.time_created}
           />
         )
       })
@@ -38,7 +39,7 @@ export const MessagesContainer = ({notifyData}) => {
   } else {
     messages = noMessage.map((el) => {
       return (
-        <div className={styles.messageItemWrapper}>
+        <div key={'no message'} className={styles.messageItemWrapper}>
           <p className={styles.noNotifications}>no notifications</p>
         </div>
       )

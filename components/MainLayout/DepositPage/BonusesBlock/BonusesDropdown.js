@@ -10,7 +10,7 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
   // const userSelectedBonus = useSelector((state) => state.userBonus)
 
   if (allBonuses.length > 0) {
-    console.log(allBonuses, 'All bonuses');
+    // console.log(allBonuses, 'All bonuses');
     return (
       <div className={`${styles.bonusesDropdownWrapper} ${showAllBonuses ? styles.dropdownWrapperActive : ''}`}>
         {

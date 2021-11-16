@@ -2,6 +2,7 @@ import styles from '../../../../../styles/NotificationPopup/NotificationPopup.mo
 import Link from "next/link";
 import {urlGen} from "../url";
 import {formatDistance} from "date-fns";
+import {logout} from "../../../../../redux/actions/login";
 
 
 
@@ -20,7 +21,6 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
   } else {
     messageIcon = '/assets/icons/notifications/sound.svg';
   }
-
 
   return (
     <div className={styles.messageItemWrapper}>
