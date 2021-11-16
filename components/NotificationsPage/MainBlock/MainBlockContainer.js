@@ -8,7 +8,7 @@ export const MainBlockContainer = ({t}) => {
   return (
     <div className={styles.notifyContainer}>
       <NotifyHeader t={t}/>
-      <MessagesContainer />
+      <MessagesContainer t={t}/>
 
     </div>
   )

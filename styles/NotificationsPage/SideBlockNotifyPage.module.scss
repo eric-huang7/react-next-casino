@@ -18,6 +18,8 @@
 
   margin-bottom: 10px;
 
+  position: relative;
+
   & .gameImgBlock {
     width: 100%;
     padding: 0px;
@@ -33,5 +35,56 @@
     font-family: "Verdana";
     text-transform: uppercase;
     text-align: center;
+  }
+}
+
+.gameItemWrapper:hover  .hoverWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hoverWrapper {
+  display: none;
+
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #00e3ff;
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.playButton, .playForFunButton {
+  width: 55%;
+  height: 20%;
+
+  margin: 0 auto 5px auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  & > span {
+    font-size: 17px;
+    letter-spacing: 0px;
+    //line-height: 48px;
+    color: #1e2127;
+    text-transform: uppercase;
+  }
+}
+.playButton {
+  background-color: #00e3ff;
+}
+.playForFunButton {
+  background-color: #15171b;
+  border: 1px solid #909091;
+  & > span {
+    color: #ffffff;
   }
 }
