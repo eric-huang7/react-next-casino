@@ -12,10 +12,55 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {urlGen} from "./url";
 import {GameHoverButtons} from "./GameHoverButtons";
 import {GameItemContainer} from "./GameItemContainer";
+import {useDispatch, useSelector} from "react-redux";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
+import {freeGame, playPayGame} from "../../../redux/actions/playGames";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
   const {height, width} = useWindowDimensions();
+  const dispatch = useDispatch();
+  const playGames = useSelector((state) => state.playGame);
+  const user = useSelector((state) => state.authInfo);
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (playGames.startGame?.game_link) {
+      router.push(playGames.startGame.game_link);
+      // window.location.replace(games.startGame.game_link)
+      console.log(playGames.startGame.game_link)
+    }
+    if (playGames.freeGame?.game_link) {
+      router.push(playGames.freeGame.game_link);
+      // window.open(games.freeGame.game_link);
+      console.log(playGames.freeGame.game_link)
+      // window.location.replace(games.freeGame.game_link)
+    }
+  }, [playGames]);
+  const playFunClickHandler = (gameData) => {
+    dispatch(freeGame(gameData.game_provider_id, gameData.game_provided_id));
+  }
+  const playGameClickHAndler = (gameData, user) => {
+    if (user.isAuthenticated && (user.balance.balances.length > 0)) {
+      console.log(gameData, 'GAME DATA!!!')
+      console.log(user.user.user, "USER!!!S")
+      console.log(user, "USER!!!S bonus");
+      console.log(user.balance.balances, 'balances ID')
+      let is_bonus = false; // default val
+      let bonus_id = null; // default val
+      // game_provider_id, game_id, user_id, is_bonus, balance_id
+      dispatch(playPayGame(gameData.game_provider_id, gameData.game_provided_id, user.user.user.id, is_bonus, `${user.balance.balances[0].id}`));
+    } else {
+      console.log(gameData, 'GAME DATA!!!')
+      console.log('ERROR no balance', user.balance);
+      console.log(user, "USER!!!S")
+      return
+    }
+  }
+
+
   let load = games.loading;
 
 
@@ -104,7 +149,14 @@ export const GamesSliderBlock = ({t, type, games}) => {
           {slides.map((el, ind) => {
             return (
                 <div className={styles.slideItemsWrapperDesc} key={ind}>
-                  <GameItemContainer ind={ind} t={t} gameData={el}/>
+                  <GameItemContainer
+                    playGameClickHAndler={playGameClickHAndler}
+                    playFunClickHandler={playFunClickHandler}
+                    ind={ind}
+                    t={t}
+                    gameData={el}
+                    user={user}
+                  />
                 </div>
             )
           })}

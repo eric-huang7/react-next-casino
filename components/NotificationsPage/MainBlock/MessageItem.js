@@ -2,9 +2,11 @@ import styles from '../../../styles/NotificationsPage/NotificationsPage.module.s
 import {urlGen} from "../../MainLayout/Header/UserBlock/url";
 import Link from "next/link";
 import {formatDistance} from "date-fns";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 
 export const MessageItem = ({messageType, icon, additionalText, text, link, time}) => {
+  const {height, width} = useWindowDimensions();
 
   let messageIcon = '/assets/icons/notifications/sound.svg'
 
@@ -34,8 +36,13 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
         {
           link ? <Link href={'/#'}><a>{link}</a></Link> : ""
         }
+        {
+        width > 570 ? '' : <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
+        }
       </div>
-      <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
+      {
+        width > 570 ? <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span> : ''
+      }
     </div>
   )
 }

@@ -4,13 +4,19 @@ import Image from "next/image";
 import {urlGen} from "./url";
 
 
-export const GameItemContainer = ({ind, gameData, t}) => {
+export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGameClickHAndler, user}) => {
 
 
   return (
 
       <div className={styles.gameItemWrapper}>
-        <GameHoverButtons t={t} gameData={gameData}/>
+        <GameHoverButtons
+          playGameClickHAndler={playGameClickHAndler}
+          playFunClickHandler={playFunClickHandler}
+          t={t}
+          gameData={gameData}
+          user={user}
+        />
         <Image
           // placeholder={"blur"}
           // blurDataURL={'/assets/img/empty.webp'}
