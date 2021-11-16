@@ -37,13 +37,14 @@ export const Notification = () => {
       };
 
       socket.onmessage = function (e) {
-        console.log('=>', JSON.parse(e.data));
-        let data = JSON.parse(e.data);
-        let message = JSON.parse(data.msg);
-        console.log('message ===>>>', message);
-        if (Object.keys(message).length > 0) {
-          setSocketMessages([...socketMessages, message])
-        }
+        console.log('=>', e.data);
+
+        // let data = JSON.parse(e.data);
+        // let message = JSON.parse(data.msg);
+        // console.log('message ===>>>', message);
+        // if (Object.keys(message).length > 0) {
+        //   setSocketMessages([...socketMessages, message])
+        // }
       };
       socket.onerror = function (error) {
         console.log('some error ===> ', error)
@@ -51,7 +52,7 @@ export const Notification = () => {
     }
 
     return () => {
-        if (socketInstance && socketInstance?.readyState !== 3) {
+        if (socketInstance?.readyState !== 3) {
           socketInstance.close(1000);
         }
     }

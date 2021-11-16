@@ -3,13 +3,35 @@ import {useTranslation} from "next-i18next";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {MainBlockContainer} from "../../components/NotificationsPage/MainBlock/MainBlockContainer";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
+import {SideGamesContainer} from "../../components/NotificationsPage/SideBlock/SideGamesContainer";
+import {useEffect} from "react";
+import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/actions/games";
+import {getJackpots} from "../../redux/actions/latestJackpots";
+import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const NotificationsPage = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(setLang(locale));
+    dispatch(getGames());
+    // dispatch(getNewGames()); //new games
+    // dispatch(getJackpotGames()); // Jackpot Games
+    // dispatch(getTableGames()); // Table Games
+    //
+    // dispatch(getJackpots());
+    // dispatch(getWinners());
+    // dispatch(getLatestWinners());
+    // dispatch(getCurrency());
+    // dispatch(getActiveBonuses());
+
+  }, []);
 
   // const userAuth = useSelector(state => state.authInfo.isAuthenticated);
   // if (!userAuth) {
@@ -19,11 +41,16 @@ const NotificationsPage = () => {
   //TODO: uncomment upper redirection
 
 
+
+
   return (
     <>
       <MainLayout t={t}>
         <div className={styles.mainWrapper}>
-          <MainBlockContainer t={t}/>
+          <div className={styles.innerWrapper}>
+            <MainBlockContainer t={t}/>
+            <SideGamesContainer t={t}/>
+          </div>
         </div>
       </MainLayout>
     </>

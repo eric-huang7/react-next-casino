@@ -1,5 +1,5 @@
 import {
-  GET_GAMES, GET_JACKPOT_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES
+  GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES
 } from "../actions/types";
 
 
@@ -13,6 +13,8 @@ const initialState = {
   loadingJackpotGames: true,
   tableGames: null,
   loadingTableGames: true,
+  latestGames: null,
+  loadingLatestGames: true,
 
 }
 
@@ -43,6 +45,12 @@ function gameReducer(state = initialState, action) {
         ...state,
         tableGames: {...payload},
         loadingTableGames: false,
+      }
+    case GET_LATEST_GAMES:
+      return {
+        ...state,
+        latestGames: {...payload},
+        loadingLatestGames: false,
       }
     default:
       return state

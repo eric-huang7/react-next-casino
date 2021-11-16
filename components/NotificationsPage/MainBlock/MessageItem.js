@@ -34,8 +34,8 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
         {
           link ? <Link href={'/#'}><a>{link}</a></Link> : ""
         }
-        <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
       </div>
+      <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
     </div>
   )
 }

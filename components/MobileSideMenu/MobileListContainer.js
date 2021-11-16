@@ -22,7 +22,7 @@ let listArr = [
     name: "mobileSideMenu.listMenu.notifications",
     icon: '/assets/img/mobileSideMenu/bell.svg',
     type: "link",
-    path: "/#notifications"
+    path: "/notifications"
   },
   {id: 4,
     name: "mobileSideMenu.listMenu.promotions",

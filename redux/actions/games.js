@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {GET_GAMES, GET_JACKPOT_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES} from "./types";
+import {GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES} from "./types";
 
 import {games_url, jackpotGames_url, newGames_url, tableGames_url} from '../url/url';
 
@@ -76,5 +76,24 @@ export const getTableGames = () => async dispatch => {
     })
   } catch (err) {
     console.log('error in GET_TABLE_GAMES endpoint', err)
+  }
+}
+
+export const getLatestGames = (userId) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  try {
+    const res = await axios.get(`http://t-gpb.slotsidol.com:7000/recent_games?user_id=${userId}`, config)
+    console.log('response data from latest games endpoint=====', res)
+    dispatch({
+      type: GET_LATEST_GAMES,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log('error in get latest games endpoint', err)
   }
 }
