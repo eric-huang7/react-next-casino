@@ -6,11 +6,13 @@ import {MainBlockContainer} from "../../components/NotificationsPage/MainBlock/M
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {SideGamesContainer} from "../../components/NotificationsPage/SideBlock/SideGamesContainer";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
 import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/actions/games";
 import {getJackpots} from "../../redux/actions/latestJackpots";
 import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
 import {getCurrency} from "../../redux/actions/currency";
+import {NotifyContext} from "../NotifyContext";
+
 
 
 const NotificationsPage = () => {
@@ -30,32 +32,36 @@ const NotificationsPage = () => {
     // dispatch(getLatestWinners());
     dispatch(getCurrency());
     // dispatch(getActiveBonuses());
-
   }, []);
 
   // const userAuth = useSelector(state => state.authInfo.isAuthenticated);
   // if (!userAuth) {
   //   router.replace('/', '/' ,{locale: router.locale})
   // }
-
   //TODO: uncomment upper redirection
+
+
+
+  const notifySocket = useContext(NotifyContext);
+  console.log(notifySocket, '<==== index');
+  const notifyData = useSelector((store) => store.notifications);
 
 
   const userInfo = useSelector((store) => store.authInfo)
   // console.log(userInfo, '!!!!!!')
   return (
     <>
-      <MainLayout t={t}>
-        <div className={styles.mainWrapper}>
-          <div className={styles.innerWrapper}>
-            {
-              userInfo.isAuthenticated ? <MainBlockContainer userInfo={userInfo.user} t={t}/> : ''
-            }
-            {/*<MainBlockContainer userInfo={userInfo} t={t}/>*/}
-            <SideGamesContainer t={t}/>
+        <MainLayout t={t}>
+          <div className={styles.mainWrapper}>
+            <div className={styles.innerWrapper}>
+              {
+                userInfo.isAuthenticated ? <MainBlockContainer notifyData={notifyData} userInfo={userInfo.user} t={t}/> : ''
+              }
+              {/*<MainBlockContainer userInfo={userInfo} t={t}/>*/}
+              <SideGamesContainer t={t}/>
+            </div>
           </div>
-        </div>
-      </MainLayout>
+        </MainLayout>
     </>
 
   )

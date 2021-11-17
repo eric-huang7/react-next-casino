@@ -17,6 +17,7 @@ import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
 import getBonuses from "./reducers/getBonuses";
 import setUserBonusReducer from "./reducers/userBonuseReduser";
 import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
+import notifyReducer from "./reducers/notifyReducer";
 
 
 export const rootReducer = combineReducers({
@@ -37,4 +38,5 @@ export const rootReducer = combineReducers({
   bonuses: getBonuses,
   userBonus: setUserBonusReducer,
   userSubscriptionsData: userSubscriptionsDataReducer,
+  notifications: notifyReducer,
 })

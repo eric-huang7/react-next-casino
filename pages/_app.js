@@ -7,6 +7,7 @@ import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import useWebsocketNotification from "../hooks/useWebsocketNotification";
+import {NotifyProvider} from "./NotifyContext";
 
 
 const MyApp = ({Component, pageProps}) => {
@@ -38,16 +39,12 @@ const MyApp = ({Component, pageProps}) => {
   // TODO: need to change
   //cookies.language, router.route
 
-  let userData = store.getState()
-  console.log('_app ====> ', userData.authInfo);
-
-  if (userData.authInfo.isAuthenticated) {
-    // const {messages, socketInstance} = useWebsocketNotification(userData.authInfo.user, locale);
-  }
 
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <NotifyProvider store={store}>
+        <Component {...pageProps} />
+      </NotifyProvider>
     </Provider>
   )
 }

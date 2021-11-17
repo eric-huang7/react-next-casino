@@ -5,7 +5,7 @@ import {formatDistance} from "date-fns";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 
-export const MessageItem = ({messageType, icon, additionalText, text, link, time}) => {
+export const MessageItem = ({messageType, icon, additionalText, text, link, time, read}) => {
   const {height, width} = useWindowDimensions();
 
   let messageIcon = '/assets/icons/notifications/sound.svg'
@@ -30,11 +30,12 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
       </div>
       <div className={styles.messageData}>
         <p className={styles.messageDescription}>{text}</p>
+        <span>{read}</span>
         {
           additionalText ? <p className={styles.messageAdditionalDescription}>{additionalText}</p> : ''
         }
         {
-          link ? <Link href={'/#'}><a>{link}</a></Link> : ""
+          link ? <Link href={link}><a>{link}</a></Link> : ""
         }
         {
         width > 570 ? '' : <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
