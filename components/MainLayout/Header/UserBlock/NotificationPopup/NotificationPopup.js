@@ -8,7 +8,7 @@ import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../..
 import {NotifyIcon} from "./NotifyIcon";
 
 
-export const NotificationPopup = ({isShowNotifications, notifyData, checkReadMessages, subscriptInfo}) => {
+export const NotificationPopup = ({isShowNotifications, notifyData, checkReadMessages, subscriptInfo, t}) => {
   const dispatch = useDispatch();
   useEffect(() => {
 
@@ -49,13 +49,13 @@ export const NotificationPopup = ({isShowNotifications, notifyData, checkReadMes
     return (
       <div className={`${styles.notificationPopupWrapper}`}>
         <div className={styles.notificationHeading}>
-          <span>Notification</span>
+          <span>{t("notificationPopup.header.heading")}</span>
           <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
         </div>
         <div className={styles.messagesBlock}>
-          <MessagesContainer notifyData={notifyData}/>
+          <MessagesContainer t={t} notifyData={notifyData}/>
         </div>
-        <MoreButton />
+        <MoreButton t={t}/>
       </div>
     )
 }

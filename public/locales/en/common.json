@@ -356,5 +356,12 @@
       "heading": "Notifications",
       "markAsRead": "Mark all as read"
     }
+  },
+  "notificationPopup": {
+    "header": {
+      "heading": "Notifications"
+    },
+    "moreLink": "more...",
+    "noMessages": "no notifications"
   }
 }

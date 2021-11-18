@@ -356,5 +356,12 @@
       "heading": "Уведомления",
       "markAsRead": "Отметить все"
     }
+  },
+  "notificationPopup": {
+    "header": {
+      "heading": "Уведомления"
+    },
+    "moreLink": "еще...",
+    "noMessages": "уведомлений нет"
   }
 }

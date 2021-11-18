@@ -25,7 +25,7 @@ function notifyReducer(state = initialState, action) {
 
         return {
           ...state,
-          messagesData: [messageObj, ...state.messagesData],
+          messagesData: [...messageObj, ...state.messagesData],
           loading: false,
         }
       } else {
@@ -33,7 +33,7 @@ function notifyReducer(state = initialState, action) {
 
         return {
           ...state,
-          messagesData: [messageObj, ...state.messagesData],
+          messagesData: [...messageObj, ...state.messagesData],
           loading: false,
         }
       }
@@ -43,7 +43,7 @@ function notifyReducer(state = initialState, action) {
 
         return {
           ...state,
-          messagesData: [messageObj, ...state.messagesData],
+          messagesData: [...messageObj, ...state.messagesData],
           loading: false,
         }
       } else {
@@ -51,7 +51,7 @@ function notifyReducer(state = initialState, action) {
 
         return {
           ...state,
-          messagesData: [messageObj, ...state.messagesData],
+          messagesData: [...messageObj, ...state.messagesData],
           loading: false,
         }
       }

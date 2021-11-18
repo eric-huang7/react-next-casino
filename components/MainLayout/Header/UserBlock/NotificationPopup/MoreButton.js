@@ -1,11 +1,11 @@
 import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss';
 import Link from "next/link";
 
-export const MoreButton = () => {
+export const MoreButton = ({t}) => {
 
   return (
     <div className={styles.moreButtonBlock}>
-      <Link href={'/notifications'}><a>more...</a></Link>
+      <Link href={'/notifications'}><a>{t("notificationPopup.moreLink")}</a></Link>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {setNotifyTypeFour, setNotifyTypeThree, setNotifyTypeTwo} from "../redux/actions/setNotify";
+import {notificator} from "./notificator";
 
 
 export default function useWebsocketNotification(userInfo, locale) {
@@ -42,28 +43,11 @@ export default function useWebsocketNotification(userInfo, locale) {
           dispatch(setNotifyTypeTwo(data));
         } else if (data.type === 3) {
           dispatch(setNotifyTypeThree(data));
-          if (Notification.permission === "granted") {
-            let pushData = JSON.parse(data.msg);
-            let img = '/assets/icons/notifications/sound.svg';
-            if (pushData.type === 'bonus') {
-              img = '/assets/icons/notifications/diam.svg';
-            } else if (pushData.type === 'redeem' || pushData.type === 'deposit' || pushData.type === 'withdraw') {
-              img = '/assets/icons/notifications/wallet.svg';
-            } else if (pushData.type === 'freespins') {
-              img = '/assets/icons/notifications/arr.svg';
-            } else if (pushData.type === 'tournaments') {
-              img = '/assets/icons/notifications/cup.svg';
-            } else {
-              img = '/assets/icons/notifications/sound.svg';
-            }
-            let text = pushData.i18n.ru;
-            let notify = new Notification('New notify', {body: text, icon: img});
-            console.log(JSON.parse(data.msg), 'notify!!!!')
-
-          }
+          notificator(data);
 
         } else if (data.type === 4) {
           dispatch(setNotifyTypeFour(data))
+          notificator(data);
         } else {
           console.log('SOME WRONG DATA TYPE MESSAGE');
         }

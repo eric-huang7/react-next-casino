@@ -61,7 +61,7 @@ export const Notification = ({messagesData, t}) => {
   return (
     <>
       <BellNotification clickBellHandler={clickBellHandler} messageCount={unreadMessages.length}/>
-      {isShowNotifications ? <NotificationPopup subscriptInfo={subscriptInfo} checkReadMessages={checkReadMessages} notifyData={showUnreadMessages} isShowNotifications={isShowNotifications}/> : <></>}
+      {isShowNotifications ? <NotificationPopup t={t} subscriptInfo={subscriptInfo} checkReadMessages={checkReadMessages} notifyData={showUnreadMessages} isShowNotifications={isShowNotifications}/> : <></>}
     </>
 
   )
