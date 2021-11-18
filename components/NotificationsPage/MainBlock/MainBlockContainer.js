@@ -11,12 +11,15 @@ export const MainBlockContainer = ({t, userInfo, notifyData}) => {
   const router = useRouter();
   let locale = router.locale;
 
+  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe);
+
 
   return (
     <div className={styles.notifyContainer}>
-      <NotifyHeader notifyData={notifyData} t={t}/>
-      <MessagesContainer notifyData={notifyData} t={t}/>
-
+      <NotifyHeader subscriptInfo={subscriptInfo} notifyData={notifyData} t={t}/>
+      <div className={styles.mainMessagesWrapper}>
+        <MessagesContainer notifyData={notifyData} t={t}/>
+      </div>
     </div>
   )
 }

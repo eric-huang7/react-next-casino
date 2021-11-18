@@ -13,6 +13,7 @@ import {NotifyContext} from "../../../../pages/NotifyContext";
 export const Notification = ({messagesData, t}) => {
   const dispatch = useDispatch();
   const notifySocket = useContext(NotifyContext);
+  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe);
 
   let allMessages = messagesData.messagesData.slice();
   let unreadMessages = messagesData.messagesData.slice().filter((el) => {
@@ -60,7 +61,7 @@ export const Notification = ({messagesData, t}) => {
   return (
     <>
       <BellNotification clickBellHandler={clickBellHandler} messageCount={unreadMessages.length}/>
-      {isShowNotifications ? <NotificationPopup checkReadMessages={checkReadMessages} notifyData={showUnreadMessages} isShowNotifications={isShowNotifications}/> : <></>}
+      {isShowNotifications ? <NotificationPopup subscriptInfo={subscriptInfo} checkReadMessages={checkReadMessages} notifyData={showUnreadMessages} isShowNotifications={isShowNotifications}/> : <></>}
     </>
 
   )

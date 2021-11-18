@@ -22,6 +22,8 @@ export default function useWebsocketNotification(userInfo, locale) {
           ...socketData,
           socketInstance: socket,
         })
+
+
       };
 
       socket.onclose = function (e) {
@@ -39,7 +41,27 @@ export default function useWebsocketNotification(userInfo, locale) {
         if (data.type === 2) {
           dispatch(setNotifyTypeTwo(data));
         } else if (data.type === 3) {
-          dispatch(setNotifyTypeThree(data))
+          dispatch(setNotifyTypeThree(data));
+          if (Notification.permission === "granted") {
+            let pushData = JSON.parse(data.msg);
+            let img = '/assets/icons/notifications/sound.svg';
+            if (pushData.type === 'bonus') {
+              img = '/assets/icons/notifications/diam.svg';
+            } else if (pushData.type === 'redeem' || pushData.type === 'deposit' || pushData.type === 'withdraw') {
+              img = '/assets/icons/notifications/wallet.svg';
+            } else if (pushData.type === 'freespins') {
+              img = '/assets/icons/notifications/arr.svg';
+            } else if (pushData.type === 'tournaments') {
+              img = '/assets/icons/notifications/cup.svg';
+            } else {
+              img = '/assets/icons/notifications/sound.svg';
+            }
+            let text = pushData.i18n.ru;
+            let notify = new Notification('New notify', {body: text, icon: img});
+            console.log(JSON.parse(data.msg), 'notify!!!!')
+
+          }
+
         } else if (data.type === 4) {
           dispatch(setNotifyTypeFour(data))
         } else {

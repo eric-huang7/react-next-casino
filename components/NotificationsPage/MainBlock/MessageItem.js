@@ -10,16 +10,23 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
 
   let messageIcon = '/assets/icons/notifications/sound.svg'
 
+  let colorOfLink = '#ef9b92'
+
   if (messageType === 'bonus') {
     messageIcon = '/assets/icons/notifications/diam.svg';
+    colorOfLink = '#47b14c'
   } else if (messageType === 'redeem' || messageType === 'deposit' || messageType === 'withdraw') {
     messageIcon = '/assets/icons/notifications/wallet.svg';
+    colorOfLink = '#ef9b92'
   } else if (messageType === 'freespins') {
     messageIcon = '/assets/icons/notifications/arr.svg';
+    colorOfLink = '#ef9b92'
   } else if (messageType === 'tournaments') {
     messageIcon = '/assets/icons/notifications/cup.svg';
+    colorOfLink = '#ef9b92'
   } else {
     messageIcon = '/assets/icons/notifications/sound.svg';
+    colorOfLink = '#ef9b92'
   }
 
 
@@ -30,12 +37,8 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
       </div>
       <div className={styles.messageData}>
         <p className={styles.messageDescription}>{text}</p>
-        <span>{read}</span>
         {
-          additionalText ? <p className={styles.messageAdditionalDescription}>{additionalText}</p> : ''
-        }
-        {
-          link ? <Link href={link}><a>{link}</a></Link> : ""
+          additionalText ? <Link href={link}><a style={{color: colorOfLink}}>{additionalText}</a></Link> : ''
         }
         {
         width > 570 ? '' : <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
