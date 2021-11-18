@@ -37,7 +37,7 @@ export default function useWebsocketNotification(userInfo, locale) {
         let data = JSON.parse(e.data);
         console.log('===>> data', data);
         if (data.type === 2) {
-          dispatch(setNotifyTypeTwo(data))
+          dispatch(setNotifyTypeTwo(data));
         } else if (data.type === 3) {
           dispatch(setNotifyTypeThree(data))
         } else if (data.type === 4) {

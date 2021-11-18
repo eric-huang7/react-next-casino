@@ -12,6 +12,7 @@ export const SideGamesContainer = ({t}) => {
   const router = useRouter();
   let userData = useSelector((store) => store.authInfo);
   let gamesStoredData = useSelector((store) => store.games);
+  console.log(gamesStoredData)
   const playGames = useSelector((state) => state.playGame);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ let gamesArr = [];
       )
     }).slice(0, 3);
   } else {
-    gamesArr = gamesStoredData.latestGames?.results.map((el) => {
+    gamesArr = gamesStoredData.games?.results.map((el) => {
       return (
         <GameItem
           t={t}

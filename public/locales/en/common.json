@@ -350,5 +350,11 @@
     "allProviders": "All Providers",
     "providerItem": "games",
     "providerItemIconDescription": "provider icon"
+  },
+  "notificationsPage": {
+    "header": {
+      "heading": "Notifications",
+      "markAsRead": "Mark all as read"
+    }
   }
 }

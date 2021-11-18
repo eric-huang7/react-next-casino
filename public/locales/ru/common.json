@@ -350,5 +350,11 @@
     "allProviders": "Все провайдеры",
     "providerItem": "игр",
     "providerItemIconDescription": "иконка провайдера"
+  },
+  "notificationsPage": {
+    "header": {
+      "heading": "Уведомления",
+      "markAsRead": "Отметить все"
+    }
   }
 }

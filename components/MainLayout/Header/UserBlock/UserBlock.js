@@ -15,6 +15,7 @@ export const UserBlockNavigation = ({t, userInfo}) => {
   const dispatch = useDispatch();
 
   const currency = useSelector((state) => state.getCurrency);
+  const messagesData = useSelector((store) => store.notifications);
 
   let userLogined = userInfo.isAuthenticated;
   let userBalanceState = userInfo.balance;
@@ -63,7 +64,7 @@ useEffect(() => {
   return (
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
-        { userLogined ? <Notification /> : "" }
+        { userLogined ? <Notification messagesData={messagesData} t={t}/> : "" }
         { userLogined ? <UserInformationBlock userName={userName} userCurrency={userCurrency} userBalanceInfo={userBalanceInfo}/> : "" }
       </div>
       {

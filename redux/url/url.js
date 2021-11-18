@@ -5,7 +5,7 @@ export const jackpotGames_url = 'http://t-gpb.slotsidol.com:7000/games?type=4';
 export const tableGames_url = 'http://t-gpb.slotsidol.com:7000/games?type=2';
 export const freeGame_url = 'http://t-gpb.slotsidol.com:7000/free_game';
 export const payGame_url = 'http://t-gpb.slotsidol.com:7000/start_game';
-export const latest_games = ''
+export const latest_games = (userId) => `http://t-gpb.slotsidol.com:7000/recent_games?user_id=${userId}`
 
 
 // ########## Winners && Jackpots url

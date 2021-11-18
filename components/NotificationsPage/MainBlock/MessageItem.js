@@ -17,7 +17,7 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
   } else if (messageType === 'freespins') {
     messageIcon = '/assets/icons/notifications/arr.svg';
   } else if (messageType === 'tournaments') {
-    messageIcon = '/assets/icons/notifications/sound.svg';
+    messageIcon = '/assets/icons/notifications/cup.svg';
   } else {
     messageIcon = '/assets/icons/notifications/sound.svg';
   }

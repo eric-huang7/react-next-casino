@@ -11,6 +11,7 @@ export const MainBlockContainer = ({t, userInfo, notifyData}) => {
   const router = useRouter();
   let locale = router.locale;
 
+
   return (
     <div className={styles.notifyContainer}>
       <NotifyHeader notifyData={notifyData} t={t}/>

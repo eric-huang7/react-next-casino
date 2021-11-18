@@ -6,12 +6,11 @@ import {MainBlockContainer} from "../../components/NotificationsPage/MainBlock/M
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {SideGamesContainer} from "../../components/NotificationsPage/SideBlock/SideGamesContainer";
-import {useContext, useEffect} from "react";
+import {useEffect} from "react";
 import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/actions/games";
-import {getJackpots} from "../../redux/actions/latestJackpots";
-import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
+
 import {getCurrency} from "../../redux/actions/currency";
-import {NotifyContext} from "../NotifyContext";
+
 
 
 
@@ -34,32 +33,32 @@ const NotificationsPage = () => {
     // dispatch(getActiveBonuses());
   }, []);
 
-  // const userAuth = useSelector(state => state.authInfo.isAuthenticated);
-  // if (!userAuth) {
-  //   router.replace('/', '/' ,{locale: router.locale})
-  // }
-  //TODO: uncomment upper redirection
-
-
-
-  const notifySocket = useContext(NotifyContext);
-  console.log(notifySocket, '<==== index');
   const notifyData = useSelector((store) => store.notifications);
-
-
   const userInfo = useSelector((store) => store.authInfo)
-  // console.log(userInfo, '!!!!!!')
+
+  const userAuth = userInfo.isAuthenticated;
+  // if (typeof window !== 'undefined') {
+  //   if (!userAuth) {
+  //     router.replace('/', '/' ,{locale: router.locale}).then((data) => console.log('Not logined ', data))
+  //   }
+  // }
+
+
+
+
   return (
     <>
         <MainLayout t={t}>
           <div className={styles.mainWrapper}>
-            <div className={styles.innerWrapper}>
+
               {
-                userInfo.isAuthenticated ? <MainBlockContainer notifyData={notifyData} userInfo={userInfo.user} t={t}/> : ''
+                userInfo.isAuthenticated ?
+                  <div className={styles.innerWrapper}>
+                  <MainBlockContainer notifyData={notifyData} userInfo={userInfo.user} t={t}/>
+                  <SideGamesContainer t={t}/>
+                  </div>
+                  : ''
               }
-              {/*<MainBlockContainer userInfo={userInfo} t={t}/>*/}
-              <SideGamesContainer t={t}/>
-            </div>
           </div>
         </MainLayout>
     </>

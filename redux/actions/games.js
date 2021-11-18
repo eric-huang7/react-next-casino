@@ -2,7 +2,7 @@ import axios from "axios";
 
 import {GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES} from "./types";
 
-import {games_url, jackpotGames_url, newGames_url, tableGames_url} from '../url/url';
+import {games_url, jackpotGames_url, latest_games, newGames_url, tableGames_url} from '../url/url';
 
 export const getGames = () => async dispatch => {
   const config = {
@@ -87,7 +87,7 @@ export const getLatestGames = (userId) => async dispatch => {
   }
 
   try {
-    const res = await axios.get(`http://t-gpb.slotsidol.com:7000/recent_games?user_id=${userId}`, config)
+    const res = await axios.get(latest_games(userId), config);
     console.log('response data from latest games endpoint=====', res)
     dispatch({
       type: GET_LATEST_GAMES,

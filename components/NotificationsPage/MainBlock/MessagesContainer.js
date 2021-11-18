@@ -3,7 +3,7 @@ import {MessageItem} from "./MessageItem";
 
 export const MessagesContainer = ({t, notifyData}) => {
 
-  console.log(notifyData, '>>>>> notify container');
+
 
   if (notifyData.loading) {
     return (
@@ -17,7 +17,7 @@ export const MessagesContainer = ({t, notifyData}) => {
         return false;
       }
     });
-    console.log(arrOfMessages, 'date');
+
 
     return (
       <>
