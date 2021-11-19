@@ -360,7 +360,8 @@
       "jackpotGames": "Jackpot games",
       "tableGames": "Table games"
     },
-    "moreButton": "more..."
+    "moreButton": "more...",
+    "notFound" : "Whoops! There's no search results!"
   },
   "notificationsPage": {
     "header": {

@@ -1,5 +1,6 @@
 
 export const games_url = () => `http://t-gpb.slotsidol.com:7000/games`;
+export const searchGames_url = (search) => `http://t-gpb.slotsidol.com:7000/games?search_term=${search}`;
 export const newGames_url = (quantity = 100, startIndex = 0) => `http://t-gpb.slotsidol.com:7000/games?ordering=release_date-DESC&start_index=${startIndex}&quantity=${quantity}`;
 export const topGames_url = (quantity = 100, startIndex = 0) => `http://t-gpb.slotsidol.com:7000/games?ordering=times_played-DESC&start_index=${startIndex}&quantity=${quantity}`;
 export const jackpotGames_url = (quantity = 100, startIndex = 0) => `http://t-gpb.slotsidol.com:7000/games?type=4&start_index=${startIndex}&quantity=${quantity}`;

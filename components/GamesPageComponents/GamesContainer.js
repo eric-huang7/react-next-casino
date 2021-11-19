@@ -99,7 +99,7 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
       <div className={styles.gamesMainContainer}>
         <GamesPageHeading heading={heading} t={t} />
         <div className={styles.gamesItemsContainer}>
-          {games}
+          {games.length === 0 ? <h2 style={{color: 'white'}}>Whoops! There's no search results!</h2> : games}
         </div>
       </div>
       <MoreButton pageCounter={pageCounter} setPageCounter={setPageCounter} t={t} />

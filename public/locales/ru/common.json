@@ -360,7 +360,8 @@
       "jackpotGames": "Jackpot игры",
       "tableGames": "Настольные игры"
     },
-    "moreButton": "еще..."
+    "moreButton": "еще...",
+    "notFound" : "Упс! Мы ничего не нашли!"
   },
   "notificationsPage": {
     "header": {

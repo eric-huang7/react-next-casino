@@ -77,8 +77,14 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
         return <h1>Loading...</h1>
       } else {
-        let newGamesSlicedArr = games.newGames.results.slice();
-        slides = newGamesSlicedArr;
+        if (games.isSearchEmpty) {
+          let newGamesSlicedArr = games.newGames.results.slice();
+          slides = newGamesSlicedArr;
+        } else {
+          let newGamesSlicedArr = games.searchGames.slice();
+          slides = newGamesSlicedArr;
+        }
+
 
       }
     } else if (type === 'JACKPOT_GAMES') {

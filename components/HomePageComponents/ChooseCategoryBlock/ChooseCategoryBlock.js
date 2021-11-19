@@ -3,6 +3,7 @@ import styles from '../../../styles/HomePage/ChooseCategoryBlock.module.scss'
 import Link from "next/link";
 import {useState} from "react";
 import {useRouter} from "next/router";
+import {SearchBar} from "./SearchBar";
 
 
 export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
@@ -39,9 +40,7 @@ export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
             <a>{t('homePage.providers')}</a>
           </Link>
         </div>
-        <label className={styles.searchInputLabel}>
-          <input placeholder={t("homePage.searchBar")} className={styles.searchInput}/>
-        </label>
+        <SearchBar t={t}/>
       </div>
       <div className={styles.divider}></div>
     </div>

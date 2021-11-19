@@ -52,7 +52,20 @@ const GamesPage = (props) => {
     dispatch(setGames(props.gamesData.results));
     setRequestGamesData(props.gamesData.results);
     setPageCounter(1);
-  }, [props.gamesData])
+  }, [props.gamesData]);
+
+  let searchGames = useSelector((store) => store.games);
+
+  //.searchGames
+
+  useEffect(() => {
+    if (searchGames.isSearchEmpty) {
+      setRequestGamesData([]);
+    } else {
+      setRequestGamesData(searchGames.searchGames);
+    }
+
+  }, [searchGames.searchGames])
 
 
   const allGames = useSelector((store) => store.games);
