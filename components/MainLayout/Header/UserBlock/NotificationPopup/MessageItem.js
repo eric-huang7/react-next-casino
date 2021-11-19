@@ -2,9 +2,14 @@ import styles from '../../../../../styles/NotificationPopup/NotificationPopup.mo
 import Link from "next/link";
 import {urlGen} from "../url";
 import {formatDistance} from "date-fns";
+import { ru } from 'date-fns/locale'
+import {dateTranslator} from "../../../../../helpers/dateTranslator";
+import {useRouter} from "next/router";
 
 
 export const MessageItem = ({messageType, icon, additionalText, text, link, time}) => {
+  const router = useRouter()
+  let locale = router.locale
 
   let messageIcon = '/assets/icons/notifications/sound.svg'
   let colorOfLink = '#ef9b92'
@@ -36,7 +41,7 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
         {
           additionalText ? <Link href={link}><a style={{color: colorOfLink}}>{additionalText}</a></Link> : ''
         }
-        <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
+        <span className={styles.time}>{dateTranslator(time, locale)}</span>
       </div>
     </div>
   )

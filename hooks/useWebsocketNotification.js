@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {setNotifyTypeFour, setNotifyTypeThree, setNotifyTypeTwo} from "../redux/actions/setNotify";
-import {notificator} from "./notificator";
+import {notificator} from "../helpers/notificator";
 
 
 export default function useWebsocketNotification(userInfo, locale) {

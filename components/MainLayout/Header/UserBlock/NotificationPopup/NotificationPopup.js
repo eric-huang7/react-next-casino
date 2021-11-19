@@ -3,7 +3,7 @@ import {MessagesContainer} from "./MessagesContainer";
 import {MoreButton} from "./MoreButton";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {useBrowserNotifications} from "../../../../../hooks/useBrowserNotifications";
+import {useBrowserNotifications} from "../../../../../helpers/useBrowserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
 

@@ -3,10 +3,14 @@ import {urlGen} from "../../MainLayout/Header/UserBlock/url";
 import Link from "next/link";
 import {formatDistance} from "date-fns";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import {useRouter} from "next/router";
+import {dateTranslator} from "../../../helpers/dateTranslator";
 
 
 export const MessageItem = ({messageType, icon, additionalText, text, link, time, read}) => {
   const {height, width} = useWindowDimensions();
+  const router = useRouter()
+  let locale = router.locale
 
   let messageIcon = '/assets/icons/notifications/sound.svg'
 
@@ -41,11 +45,11 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
           additionalText ? <Link href={link}><a style={{color: colorOfLink}}>{additionalText}</a></Link> : ''
         }
         {
-        width > 570 ? '' : <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span>
+        width > 570 ? '' : <span className={styles.time}>{dateTranslator(time, locale)}</span>
         }
       </div>
       {
-        width > 570 ? <span className={styles.time}>{formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false})}</span> : ''
+        width > 570 ? <span className={styles.time}>{dateTranslator(time, locale)}</span> : ''
       }
     </div>
   )

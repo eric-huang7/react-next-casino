@@ -3,7 +3,7 @@ import {useContext, useState} from "react";
 import {NotifyContext} from "../../../pages/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
 import {useDispatch, useSelector} from "react-redux";
-import {useBrowserNotifications} from "../../../hooks/useBrowserNotifications";
+import {useBrowserNotifications} from "../../../helpers/useBrowserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
 
