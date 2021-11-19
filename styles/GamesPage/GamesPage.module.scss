@@ -1,0 +1,201 @@
+.gamesMainContainer {
+  max-width: 1360px;
+  //height: 1289px;
+  margin: 70px auto;
+
+  padding: 0 30px;
+}
+
+.gamesMainHeading {
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-family: "Franklin Gothic", sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  margin: 0 0 45px 40px;
+}
+
+.gamesItemsContainer {
+  width: 100%;
+
+  background-color: rgba(255,255,255, 0.1);
+
+  padding: 12px 6px 6px 6px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.gameItemWrapper {
+  max-width: 235px;
+  width: 100%;
+
+  height: 160px;
+
+  margin: 10px;
+
+  position: relative;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.hoverWrapper {
+  display: none;
+
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #00e3ff;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  //width: 100%;
+  //height: 100%;
+}
+.playButton, .playForFunButton {
+  width: 55%;
+  height: 20%;
+
+  margin: 0 auto 5px auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  & > span {
+    font-size: 17px;
+    letter-spacing: 0px;
+    //line-height: 48px;
+    color: #1e2127;
+    text-transform: uppercase;
+  }
+}
+.playButton {
+  background-color: #00e3ff;
+}
+.playButtonInactive {
+  & > span {
+    color: #7e7e7e;
+  }
+  background-color: #452222;
+
+  cursor: not-allowed;
+}
+.playForFunButton {
+  background-color: #15171b;
+  border: 1px solid #909091;
+  & > span {
+    color: #ffffff;
+  }
+}
+
+.gameItemWrapper:hover {
+  & .hoverWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+
+.moreWrapper {
+  background-color: rgba(0,0,0, 0.3);
+
+  width: 100%;
+  height: 90px;
+
+  margin-bottom: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .moreButton {
+    width: 205px;
+    height: 50px;
+
+    background-color: transparent;
+
+    border: 1px solid #6a6d71;
+
+    color: #cccccc;
+
+    cursor: pointer;
+  }
+  & .moreButton:hover {
+    background-color: rgba(0,0,0, 0.31);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gameItemWrapper {
+    max-width: 200px;
+    width: 100%;
+
+    height: 145px;
+
+    margin: 5px;
+  }
+
+  .playButton, .playForFunButton {
+    & > span {
+      font-size: 14px;
+    }
+  }
+
+  .moreWrapper {
+    height: 55px;
+
+    margin-bottom: 50px;
+
+
+    & .moreButton {
+      width: 120px;
+      height: 35px;
+
+      background-color: transparent;
+
+      border: 1px solid #6a6d71;
+
+      color: #cccccc;
+
+      cursor: pointer;
+    }
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .gameItemWrapper {
+    max-width: 160px;
+    width: 100%;
+    height: 125px;
+
+    margin: 5px;
+
+    position: relative;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .playButton, .playForFunButton {
+    & > span {
+      font-size: 12px;
+    }
+  }
+}
+
+
+

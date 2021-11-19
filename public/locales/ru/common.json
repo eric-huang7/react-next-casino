@@ -351,6 +351,17 @@
     "providerItem": "игр",
     "providerItemIconDescription": "иконка провайдера"
   },
+  "gamesPage": {
+    "headings": {
+      "allGames": "Все игры",
+      "newGames": "Новые игры",
+      "btcGames": "BTC игры",
+      "topGames": "TOP игры",
+      "jackpotGames": "Jackpot игры",
+      "tableGames": "Настольные игры"
+    },
+    "moreButton": "еще..."
+  },
   "notificationsPage": {
     "header": {
       "heading": "Уведомления",

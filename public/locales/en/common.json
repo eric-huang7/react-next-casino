@@ -351,6 +351,17 @@
     "providerItem": "games",
     "providerItemIconDescription": "provider icon"
   },
+  "gamesPage": {
+    "headings": {
+      "allGames": "All games",
+      "newGames": "New games",
+      "btcGames": "BTC Games",
+      "topGames": "TOP Games",
+      "jackpotGames": "Jackpot games",
+      "tableGames": "Table games"
+    },
+    "moreButton": "more..."
+  },
   "notificationsPage": {
     "header": {
       "heading": "Notifications",

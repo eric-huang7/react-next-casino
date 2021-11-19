@@ -6,7 +6,16 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import {ChooseCategoryBlock} from "../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
 import {useEffect} from "react";
 import {getCurrency} from "../../redux/actions/currency";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {GamesContainer} from "../../components/GamesPageComponents/GamesContainer";
+import {
+  allProvidersURL,
+  chosenProviderURL,
+  jackpotGames_url,
+  newGames_url,
+  tableGames_url, topGames_url
+} from "../../helpers/gamesURL";
+import {setGames} from "../../redux/actions/games";
 
 
 
@@ -35,6 +44,18 @@ const GamesPage = (props) => {
 
   }, []);
 
+  useEffect(() => {
+    dispatch(setGames(props.gamesData.results));
+
+  }, [props.gamesData])
+
+
+  const allGames = useSelector((store) => store.games);
+  console.log(allGames, '!@@@@@@@@@@@@')
+
+  // let gameData = props.gamesData.results;
+
+
   return (
     <>
       <MainLayout t={t}>
@@ -42,14 +63,18 @@ const GamesPage = (props) => {
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
         <ChooseCategoryBlock isProvidersPage={false} t={t}/>
-        <div>
-          <h2 style={{color: "white"}}>
-            {`${id}     provider`}
-          </h2>
-
-
-          <p style={{color: "white"}}>provider inner Linck</p>
-        </div>
+        {allGames.allGamesLoading
+          ?
+          <>
+          </>
+          :
+          <GamesContainer
+          heading={props.heading}
+          gameData={allGames.allGames}
+          totalRows={props.gamesData.total_rows}
+          t={t}/>
+        }
+        {/*<GamesContainer heading={heading} gameData={allGames.allGames} t={t}/>*/}
       </MainLayout>
     </>
   )
@@ -59,17 +84,51 @@ const GamesPage = (props) => {
 export const getServerSideProps = async (context) => {
   console.log(context, 'server pid');
   let res;
+  let heading;
+
   if (context.query.id === 'all-games') {
-    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?start_index=0&quantity=100`);
+
+    heading = context.query.id;
+    res = await fetch(allProvidersURL(100));
+
+  } else if (context.query.id === 'new-games') {
+
+    heading = context.query.id;
+    res = await fetch(newGames_url(100));
+
+  } else if (context.query.id === 'btc-games') {
+
+    heading = context.query.id;
+    res = await fetch(topGames_url(100));
+
+  } else if (context.query.id === 'top-games') {
+
+    heading = context.query.id;
+    res = await fetch(topGames_url(100));
+
+  } else if (context.query.id === 'jackpot-games') {
+
+    heading = context.query.id;
+    res = await fetch(jackpotGames_url(100));
+
+
+  } else if (context.query.id === 'table-games') {
+
+    heading = context.query.id;
+    res = await fetch(tableGames_url(100));
+
   } else {
-    res = await fetch(`http://t-gpb.slotsidol.com:7000/games?producers=${context.query.id}`);
+
+    heading = context.query.id;
+    res = await fetch(chosenProviderURL(context.query.id));
+
   }
-  //
-  const gamesData = await res.json();
+  let gamesData = await res.json();
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['common']),
       gamesData: {...gamesData},
+      heading: heading,
     },
   })
 }

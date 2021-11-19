@@ -31,6 +31,16 @@
 
   margin-left: 70px;
 }
+.linkIcon {
+  position: absolute;
+
+  width: 43px;
+  height: 43px;
+
+  top: 5px;
+  left: -50px;
+}
+
 .categoryListItem:nth-child(1) {
   margin-left: 60px;
 }
@@ -48,34 +58,34 @@
   width: 165px;
 }
 
-.categoryListItem a:before {
-  content: '';
-  width: 43px;
-  height: 43px;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  position: absolute;
-  top: 5px;
-  left: -50px;
-}
-.categoryListItem:nth-child(1) a:before {
-  background-image: url("/assets/icons/home/btc_games_icon.svg");
-}
-.categoryListItem:nth-child(2) a:before {
-  background-image: url("/assets/icons/home/new_games_icon.svg");
-}
-.categoryListItem:nth-child(3) a:before {
-  background-image: url("/assets/icons/home/top_games_icon.svg");
-}
-.categoryListItem:nth-child(4) a:before {
-  background-image: url("/assets/icons/home/jackpot_games_icon.svg");
-}
-.categoryListItem:nth-child(5) a:before {
-  background-image: url("/assets/icons/home/table_games_icon.svg");
-}
+//.categoryListItem a:before {
+//  content: '';
+//  width: 43px;
+//  height: 43px;
+//
+//  background-repeat: no-repeat;
+//  background-position: center;
+//  background-size: contain;
+//
+//  position: absolute;
+//  top: 5px;
+//  left: -50px;
+//}
+//.categoryListItem:nth-child(1) a:before {
+//  background-image: url("/assets/icons/home/btc_games_icon.svg");
+//}
+//.categoryListItem:nth-child(2) a:before {
+//  background-image: url("/assets/icons/home/new_games_icon.svg");
+//}
+//.categoryListItem:nth-child(3) a:before {
+//  background-image: url("/assets/icons/home/top_games_icon.svg");
+//}
+//.categoryListItem:nth-child(4) a:before {
+//  background-image: url("/assets/icons/home/jackpot_games_icon.svg");
+//}
+//.categoryListItem:nth-child(5) a:before {
+//  background-image: url("/assets/icons/home/table_games_icon.svg");
+//}
 
 .divider {
   display: none;
@@ -188,19 +198,22 @@
     margin-left: 97px;
     margin-bottom: 18px;
   }
-  .categoryListItem a {
-    font-size: 15px;
-  }
-  .categoryListItem:nth-child(1) {
-    margin-left: 42px;
-  }
-  .categoryListItem a:before {
+  .linkIcon {
+    position: absolute;
+
     width: 40px;
     height: 40px;
 
     top: 9px;
     left: -40px;
   }
+  .categoryListItem a {
+    font-size: 15px;
+  }
+  .categoryListItem:nth-child(1) {
+    margin-left: 42px;
+  }
+
 
   .providersButton {
     width: 154px;

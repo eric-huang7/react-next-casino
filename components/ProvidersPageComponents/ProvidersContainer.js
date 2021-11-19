@@ -15,14 +15,14 @@ export const ProvidersContainer = ({t, providersData}) => {
   const allGamesClickHandler = () => {
     router.push({
       pathname: '/games-page/[id]',
-      query: {id: "all-games"}
+      query: {id: "all-games"},
     })
   }
 
   const providerClickHandler = (provider) => {
       router.push({
         pathname: `/games-page/[id]/`,
-        query: {id: provider.game_producer},
+        query: {id: provider.game_producer}
       })
   }
 

@@ -24,7 +24,7 @@ const MyApp = ({Component, pageProps}) => {
             query: {...router.query}
           },
           router.route,
-          {locale: cookies.language})
+          {locale: cookies.language, scroll: false})
       } else {
         router.push(
           {
@@ -32,7 +32,7 @@ const MyApp = ({Component, pageProps}) => {
           query: {...router.query}
         },
           `/${cookies.language}${router.route}`,
-          {locale: cookies.language})
+          {locale: cookies.language, scroll: false})
       }
     }
   }, [])

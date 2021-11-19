@@ -1,8 +1,15 @@
 import axios from "axios";
 
-import {GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES} from "./types";
+import {GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES, SET_GAMES} from "./types";
 
 import {games_url, jackpotGames_url, latest_games, newGames_url, tableGames_url} from '../url/url';
+
+export const setGames = (gamesData) => {
+  return {
+    type: SET_GAMES,
+    payload: gamesData,
+  }
+}
 
 export const getGames = () => async dispatch => {
   const config = {

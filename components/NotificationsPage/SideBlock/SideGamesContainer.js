@@ -12,7 +12,6 @@ export const SideGamesContainer = ({t}) => {
   const router = useRouter();
   let userData = useSelector((store) => store.authInfo);
   let gamesStoredData = useSelector((store) => store.games);
-  console.log(gamesStoredData)
   const playGames = useSelector((state) => state.playGame);
 
   useEffect(() => {
