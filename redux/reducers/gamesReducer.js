@@ -57,7 +57,7 @@ function gameReducer(state = initialState, action) {
     case SET_GAMES:
       return {
         ...state,
-        allGames: [...state.allGames, ...payload],
+        allGames: [...payload],
         allGamesLoading: false,
       }
     default:

@@ -17,9 +17,10 @@ import {
 import {setGames} from "../../redux/actions/games";
 
 
-export const GamesContainer = ({t, gameData, heading, totalRows}) => {
+export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter}) => {
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
+
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -52,12 +53,18 @@ export const GamesContainer = ({t, gameData, heading, totalRows}) => {
   }
   console.log(userInfo, playGames, '!!!')
 
-  const [pageCounter, setPageCounter] = useState(1);
-  const [requestGamesData, setRequestGamesData] = useState([]);
+
+
+
+
+  console.log(gamesData, '#########################')
+  let games = gamesData.map((el, ind) => {
+    return <GamesItem playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`} userInfo={userInfo} t={t} gameData={el}/>
+  })
 
   useEffect(async () => {
     console.log(pageCounter, '$$$$');
-    if (pageCounter > 1) {
+    if (pageCounter !== 1 ) {
       let res;
       if (heading === 'all-games') {
         res = await fetch(allProvidersURL(100, pageCounter * 100));
@@ -76,16 +83,17 @@ export const GamesContainer = ({t, gameData, heading, totalRows}) => {
       }
       let newGamesData = await res.json();
       // dispatch(setGames(newGamesData.results));
-      setRequestGamesData(newGamesData);
+      console.log(games);
+      setRequestGamesData([...gamesData, ...newGamesData.results]);
 
       console.log("$$$$$$$")
     }
+
   }, [pageCounter])
 
-  console.log(requestGamesData, totalRows, 'new games $$$$');
-  let games = gameData.map((el, ind) => {
-    return <GamesItem playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} game page`} userInfo={userInfo} t={t} gameData={el}/>
-  })
+
+  // console.log(requestGamesData, 'new games $$$$');
+
   return (
     <>
       <div className={styles.gamesMainContainer}>

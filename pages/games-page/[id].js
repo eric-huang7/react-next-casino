@@ -4,7 +4,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {MainBlock} from "../../components/HomePageComponents/MainBlock";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import {ChooseCategoryBlock} from "../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch, useSelector} from "react-redux";
 import {GamesContainer} from "../../components/GamesPageComponents/GamesContainer";
@@ -44,9 +44,14 @@ const GamesPage = (props) => {
 
   }, []);
 
+
+
+  const [requestGamesData, setRequestGamesData] = useState([]);
+  const [pageCounter, setPageCounter] = useState(1);
   useEffect(() => {
     dispatch(setGames(props.gamesData.results));
-
+    setRequestGamesData(props.gamesData.results);
+    setPageCounter(1);
   }, [props.gamesData])
 
 
@@ -70,8 +75,10 @@ const GamesPage = (props) => {
           :
           <GamesContainer
           heading={props.heading}
-          gameData={allGames.allGames}
-          totalRows={props.gamesData.total_rows}
+          gamesData={requestGamesData}
+          setRequestGamesData={setRequestGamesData}
+          pageCounter={pageCounter}
+          setPageCounter={setPageCounter}
           t={t}/>
         }
         {/*<GamesContainer heading={heading} gameData={allGames.allGames} t={t}/>*/}
