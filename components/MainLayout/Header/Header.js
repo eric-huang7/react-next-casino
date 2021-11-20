@@ -9,6 +9,7 @@ import {useEffect} from "react";
 import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
 import {getActiveBonuses} from "../../../redux/actions/getBonuses";
+import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 
 
 export const Header = ({t}) => {
@@ -19,19 +20,30 @@ export const Header = ({t}) => {
 
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
+  const userLogin222 = useSelector((userInfo) => userInfo);
+
   let userLogined = userLogin.isAuthenticated;
-  let userInfo = userLogin;
+  // let userInfo = userLogin;
 
 
   useEffect(() => {
     if (userLogined) {
       dispatch(userBalance());
       dispatch(getActiveBonuses());
-      // console.log(userLogin, 'From userlogined effect')
+
+      let userData = {
+        id: userLogin.user.user.id,
+        transactional_email_opt_in: userLogin.user.user.transactional_email_opt_in,
+        transactional_sms_opt_in: userLogin.user.user.transactional_sms_opt_in,
+        browser_opt_in: userLogin.user.user.browser_opt_in
+      }
+      dispatch(changeLocalUserSubscriptions(userData));
+
+      console.log(userLogin222, 'From userlogined effect')
     } else {
       dispatch(auth());
     }
-  }, [userLogined])
+  }, [userLogin.isAuthenticated])
 
   useEffect(() => {
     if (!userLogin.balance) {
@@ -57,7 +69,7 @@ export const Header = ({t}) => {
       <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       <Navigation t={t}/>
       <LangSwitcher href={router.route} locale={locale}/>
-      <UserBlockNavigation t={t} userInfo={userInfo}/>
+      <UserBlockNavigation t={t} userInfo={userLogin}/>
     </header>
   )
 }

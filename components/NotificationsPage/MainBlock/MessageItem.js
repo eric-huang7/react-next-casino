@@ -41,6 +41,7 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
       </div>
       <div className={styles.messageData}>
         <p className={styles.messageDescription}>{text}</p>
+        <span style={{color: "red"}}>{read}</span>
         {
           additionalText ? <Link href={link}><a style={{color: colorOfLink}}>{additionalText}</a></Link> : ''
         }

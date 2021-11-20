@@ -44,25 +44,27 @@ const GamesPage = (props) => {
 
   }, []);
 
+  let searchGames = useSelector((store) => store.games);
 
-
+  const [isShowMoreButton, setIsShowMoreButton] = useState(true)
   const [requestGamesData, setRequestGamesData] = useState([]);
-  const [pageCounter, setPageCounter] = useState(1);
+  const [pageCounter, setPageCounter] = useState(0);
   useEffect(() => {
     dispatch(setGames(props.gamesData.results));
     setRequestGamesData(props.gamesData.results);
-    setPageCounter(1);
+    setPageCounter(0);
+
   }, [props.gamesData]);
 
-  let searchGames = useSelector((store) => store.games);
+
 
   //.searchGames
 
   useEffect(() => {
     if (searchGames.isSearchEmpty) {
-      setRequestGamesData([]);
+      // setRequestGamesData([]);
     } else {
-      setRequestGamesData(searchGames.searchGames);
+      // setRequestGamesData(searchGames.searchGames);
     }
 
   }, [searchGames.searchGames])
@@ -92,6 +94,9 @@ const GamesPage = (props) => {
           setRequestGamesData={setRequestGamesData}
           pageCounter={pageCounter}
           setPageCounter={setPageCounter}
+          isShowMoreButton={isShowMoreButton}
+          setIsShowMoreButton={setIsShowMoreButton}
+          totalRows={props.gamesData.total_rows}
           t={t}/>
         }
         {/*<GamesContainer heading={heading} gameData={allGames.allGames} t={t}/>*/}

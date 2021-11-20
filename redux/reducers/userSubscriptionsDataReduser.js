@@ -28,7 +28,8 @@ function userDataReducer (state = initialState, action) {
         ...state,
         emailSubscribe: payload.transactional_email_opt_in,
         smsSubscribe: payload.transactional_sms_opt_in,
-        notifySubscribe: payload.browser_opt_in
+        notifySubscribe: payload.browser_opt_in,
+        loading: false
       }
     case FAIL_CHANGE_USER_SUBSCRIPTIONS:
       return {

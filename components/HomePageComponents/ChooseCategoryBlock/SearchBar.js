@@ -17,6 +17,10 @@ export const SearchBar = ({t}) => {
     console.log(e.target.value);
     console.log(res.data.results, '<+++++++++++ search!!');
     dispatch(setSearchGames(res.data.results));
+    if (searchBar.current.value === '') {
+      dispatch(setSearchGames([]));
+
+    }
   }
   console.log( store, '<===== search store!!');
   return (

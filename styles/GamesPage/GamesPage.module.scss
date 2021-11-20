@@ -4,6 +4,11 @@
   margin: 70px auto;
 
   padding: 0 30px;
+
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  //justify-content: center;
 }
 
 .gamesMainHeading {
@@ -15,6 +20,11 @@
   text-transform: uppercase;
 
   margin: 0 0 45px 40px;
+}
+
+.gamesHeadingImg {
+  width: 237px;
+  height: 77px;
 }
 
 .gamesItemsContainer {
@@ -145,6 +155,17 @@
     height: 145px;
 
     margin: 5px;
+  }
+  .gamesMainContainer{
+    align-items: center;
+    justify-content: center;
+  }
+  .gamesHeadingImg {
+    width: 270px;
+    height: 65px;
+
+    margin: 0 auto;
+
   }
 
   .playButton, .playForFunButton {

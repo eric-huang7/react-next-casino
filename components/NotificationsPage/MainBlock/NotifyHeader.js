@@ -1,5 +1,5 @@
 import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {NotifyContext} from "../../../pages/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
 import {useDispatch, useSelector} from "react-redux";
@@ -31,6 +31,10 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
     let sendObj = {type: 1, ids: arrNotRead}
     notifySocket.socket.socketInstance.send(JSON.stringify(sendObj));
   }
+
+  // useEffect(() => {
+  //
+  // }, [])
 
   const soundClickHandler = () => {
     useBrowserNotifications();

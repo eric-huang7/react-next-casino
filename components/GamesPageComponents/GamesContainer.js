@@ -17,7 +17,7 @@ import {
 import {setGames} from "../../redux/actions/games";
 
 
-export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter}) => {
+export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows}) => {
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
 
@@ -51,20 +51,20 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
       return
     }
   }
-  console.log(userInfo, playGames, '!!!')
 
 
 
 
 
-  console.log(gamesData, '#########################')
+
+
   let games = gamesData.map((el, ind) => {
     return <GamesItem playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`} userInfo={userInfo} t={t} gameData={el}/>
   })
 
   useEffect(async () => {
-    console.log(pageCounter, '$$$$');
-    if (pageCounter !== 1 ) {
+
+    if (pageCounter > 0) {
       let res;
       if (heading === 'all-games') {
         res = await fetch(allProvidersURL(100, pageCounter * 100));
@@ -83,26 +83,27 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
       }
       let newGamesData = await res.json();
       // dispatch(setGames(newGamesData.results));
-      console.log(games);
+
       setRequestGamesData([...gamesData, ...newGamesData.results]);
 
-      console.log("$$$$$$$")
     }
 
   }, [pageCounter])
 
-
-  // console.log(requestGamesData, 'new games $$$$');
+  if (gamesData.length === totalRows) {
+    console.log(gamesData.length, totalRows, pageCounter, "<===== games data total rows")
+    setIsShowMoreButton(false);
+  }
 
   return (
     <>
       <div className={styles.gamesMainContainer}>
         <GamesPageHeading heading={heading} t={t} />
         <div className={styles.gamesItemsContainer}>
-          {games.length === 0 ? <h2 style={{color: 'white'}}>Whoops! There's no search results!</h2> : games}
+          {games.length === 0 ? <h2 style={{color: 'white'}}>{t('gamesPage.notFound')}</h2> : games}
         </div>
       </div>
-      <MoreButton pageCounter={pageCounter} setPageCounter={setPageCounter} t={t} />
+      <MoreButton isShowMoreButton={isShowMoreButton} pageCounter={pageCounter} setPageCounter={setPageCounter} t={t} />
     </>
   )
 }
