@@ -15,11 +15,6 @@ export const MainBlockContainer = ({t, userInfo, notifyData}) => {
 
   const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe);
 
-  const socket = useContext(NotifyContext)
-
-  console.log(socket.socket, '<======socket notifi page');
-
-  console.log('socket.socket.messages____socket.socket.messages__', socket.socket.messages)
 
 
   return (

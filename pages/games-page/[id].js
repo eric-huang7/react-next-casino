@@ -25,9 +25,9 @@ const GamesPage = (props) => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const {id} = router.query;
-  console.log(router, 'zxczxc');
+  // console.log(router, 'zxczxc');
 
-  console.log(props, 'PROPS GAMES')
+  // console.log(props, 'PROPS GAMES')
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -44,7 +44,6 @@ const GamesPage = (props) => {
 
   }, []);
 
-  let searchGames = useSelector((store) => store.games);
 
   const [isShowMoreButton, setIsShowMoreButton] = useState(true)
   const [requestGamesData, setRequestGamesData] = useState([]);
@@ -60,18 +59,17 @@ const GamesPage = (props) => {
 
   //.searchGames
 
-  useEffect(() => {
-    if (searchGames.isSearchEmpty) {
-      // setRequestGamesData([]);
-    } else {
-      // setRequestGamesData(searchGames.searchGames);
-    }
-
-  }, [searchGames.searchGames])
+  // useEffect(() => {
+  //   if (searchGames.isSearchEmpty) {
+  //     // setRequestGamesData([]);
+  //   } else {
+  //     // setRequestGamesData(searchGames.searchGames);
+  //   }
+  //
+  // }, [searchGames.searchGames])
 
 
   const allGames = useSelector((store) => store.games);
-  console.log(allGames, '!@@@@@@@@@@@@')
 
   // let gameData = props.gamesData.results;
 
@@ -99,7 +97,6 @@ const GamesPage = (props) => {
           totalRows={props.gamesData.total_rows}
           t={t}/>
         }
-        {/*<GamesContainer heading={heading} gameData={allGames.allGames} t={t}/>*/}
       </MainLayout>
     </>
   )

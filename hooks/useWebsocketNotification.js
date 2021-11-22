@@ -46,9 +46,9 @@ export default function useWebsocketNotification(userInfo, locale) {
         console.log('eeeeeeeeeeee', e);
         console.log('===>> data', data);
         if (data.type === 2) {
-          // dispatch(setNotifyTypeTwo(data));
+          dispatch(setNotifyTypeTwo(data));
         } else if (data.type === 3) {
-          // dispatch(setNotifyTypeThree(data));
+          dispatch(setNotifyTypeThree(data));
           if (maySound) {
             let audio = new Audio('/sounds/message.mp3')
             audio.play().then(e => console.log('message play ===>', e));
@@ -57,7 +57,7 @@ export default function useWebsocketNotification(userInfo, locale) {
 
 
         } else if (data.type === 4) {
-          // dispatch(setNotifyTypeFour(data))
+          dispatch(setNotifyTypeFour(data))
           if (maySound) {
             let audio = new Audio('/sounds/message.mp3')
             audio.play().then(e => console.log('message play ===>', e));
@@ -66,15 +66,11 @@ export default function useWebsocketNotification(userInfo, locale) {
         } else {
           console.log('SOME WRONG DATA TYPE MESSAGE');
         }
-        setSocketData({
-          ...socketData,
-          messages: data.msg,
-          socketInstance: socket,
-        })
-         // if (userInfo.)
-
-
-
+        // setSocketData({
+        //   ...socketData,
+        //   messages: data.msg,
+        //   socketInstance: socket,
+        // })
 
       };
 

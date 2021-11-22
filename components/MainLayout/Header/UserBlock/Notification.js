@@ -23,7 +23,7 @@ export const Notification = ({messagesData, t}) => {
       return false;
     }
   });
-  let showUnreadMessages = unreadMessages.slice(0, 4);
+  let showUnreadMessages = allMessages.slice(0, 4);
 
   const checkReadMessages = () => {
     let newListMessages = allMessages.map((el) => {

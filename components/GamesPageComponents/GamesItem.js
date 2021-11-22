@@ -3,11 +3,11 @@ import {urlGen} from "../HomePageComponents/GamesSliderBlock/url";
 import {GameHoverButtons} from "../HomePageComponents/GamesSliderBlock/GameHoverButtons";
 import {GamesHoverButtons} from "./GamesHoverButtons";
 
-export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameClickHandler}) => {
+export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameClickHandler, showFrame}) => {
 
 
   return (
-    <div className={styles.gameItemWrapper}>
+    <div className={`${styles.gameItemWrapper} ${showFrame ? styles.frame : ''}`}>
         <img
           src={urlGen(gameData.id)}
           // layout={"fill"}

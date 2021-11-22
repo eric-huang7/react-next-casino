@@ -375,5 +375,9 @@
     },
     "moreLink": "еще...",
     "noMessages": "уведомлений нет"
+  },
+  "searchGames": {
+    "nothingFound": "Упс! Мы ничего не нашли!",
+    "enterGameName": "Введите название игры."
   }
 }

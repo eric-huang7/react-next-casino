@@ -1,0 +1,125 @@
+.searchPopupWrapper {
+  background-color: rgb(107, 107, 107);
+
+  z-index: 20;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow-y: scroll;
+
+}
+
+
+.searchHeading {
+  width: 100%;
+
+  padding: 0 60px;
+
+  height: 70px;
+
+  background-color: rgba(0,0,0,1);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchPopupInputLabel {
+  max-width: 1300px;
+  width: 100%;
+
+  position: relative;
+
+  &:after {
+    content: '';
+
+    width: 24px;
+    height: 25px;
+
+    position: absolute;
+    top: 10px;
+    left: 15px;
+
+    background-image: url("/assets/icons/home/searchIcon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.searchPopupInput {
+  width: 100%;
+
+  height: 45px;
+
+  padding: 0 45px 0 45px;
+
+  outline: none;
+
+  border: none;
+
+  border-radius: 5px;
+
+  font-size: 20px;
+}
+.searchPopupInput:focus {
+  border: 1px solid #525252;
+}
+
+.closeButton {
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+
+  right: 25px;
+
+  background-color: #ffffff;
+
+  border: none;
+  border-radius: 5px;
+
+  & .closeOne, .closeTwo {
+    height: 3px;
+    background-color: #676767;
+    width: 20px;
+
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 5px;
+  }
+  & .closeOne {
+    transform: rotateZ(45deg);
+  }
+  & .closeTwo {
+    transform: rotateZ(-45deg);
+  }
+}
+
+.gamesWrapper {
+
+  padding: 20px 30px;
+
+
+  & .gamesList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
+}
+
+.textForEmpty {
+  width: 100%;
+  text-align: center;
+}

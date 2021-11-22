@@ -375,5 +375,9 @@
     },
     "moreLink": "more...",
     "noMessages": "no notifications"
+  },
+  "searchGames": {
+    "nothingFound": "Whoops! There's no search results!",
+    "enterGameName": "Enter the name of the game."
   }
 }

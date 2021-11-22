@@ -70,7 +70,7 @@ useEffect(() => {
       {
         userLogined ? <HeaderButtonsDeposit isUserLogined={userLogined} t={t}/> : <HeaderButtonsRegistration isUserLogined={userLogined} t={t}/>
       }
-      <BurgerButton />
+      <BurgerButton userLogined={userLogined}/>
     </div>
 
   )

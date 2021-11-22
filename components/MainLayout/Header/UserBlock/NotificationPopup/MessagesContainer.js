@@ -5,7 +5,7 @@ import styles from "../../../../../styles/NotificationPopup/NotificationPopup.mo
 export const MessagesContainer = ({notifyData, t}) => {
   let noMessage = [{type: "no_messages", text: "No messages"}];
   let messages = [];
-  if (notifyData.length > 0) {
+  // if (notifyData.length > 0) {
     messages = notifyData.map((el, ind) => {
       return (
         <MessageItem
@@ -21,15 +21,15 @@ export const MessagesContainer = ({notifyData, t}) => {
       )
     })
 
-  } else {
-    messages = noMessage.map((el) => {
-      return (
-        <div key={'no message'} className={styles.messageItemWrapper}>
-          <p className={styles.noNotifications}>{t("notificationPopup.noMessages")}</p>
-        </div>
-      )
-    })
-  }
+  // } else {
+  //   messages = noMessage.map((el) => {
+  //     return (
+  //       <div key={'no message'} className={styles.messageItemWrapper}>
+  //         <p className={styles.noNotifications}>{t("notificationPopup.noMessages")}</p>
+  //       </div>
+  //     )
+  //   })
+  // }
 
 
   return (

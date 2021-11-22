@@ -59,7 +59,7 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
 
 
   let games = gamesData.map((el, ind) => {
-    return <GamesItem playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`} userInfo={userInfo} t={t} gameData={el}/>
+    return <GamesItem showFrame={false} playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`} userInfo={userInfo} t={t} gameData={el}/>
   })
 
   useEffect(async () => {
@@ -100,7 +100,7 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
       <div className={styles.gamesMainContainer}>
         <GamesPageHeading heading={heading} t={t} />
         <div className={styles.gamesItemsContainer}>
-          {games.length === 0 ? <h2 style={{color: 'white'}}>{t('gamesPage.notFound')}</h2> : games}
+          {games}
         </div>
       </div>
       <MoreButton isShowMoreButton={isShowMoreButton} pageCounter={pageCounter} setPageCounter={setPageCounter} t={t} />

@@ -1,4 +1,18 @@
-import {BACK_BUTTON_SHOULD_DO, SHOW_CURRENCY_SWITCHER, SHOW_DEPOSIT_MODAL, SHOW_MANAGE_SUBSCRIPTIONS, SHOW_NOTIFICATIONS_POPUP} from "./types";
+import {
+  BACK_BUTTON_SHOULD_DO,
+  SHOW_CURRENCY_SWITCHER,
+  SHOW_DEPOSIT_MODAL,
+  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_NOTIFICATIONS_POPUP,
+  SHOW_SEARCH_MODAL
+} from "./types";
+
+export const showSearchModal = (isShow) => {
+  return {
+    type: SHOW_SEARCH_MODAL,
+    payload: isShow
+  }
+}
 
 export const showCurrencySwitcher = (isShow) => {
   return {
