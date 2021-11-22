@@ -3,6 +3,8 @@ import {MobileSideListLinks} from "./MobileSideList";
 import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import {useState} from "react";
 import {DropMenu} from "./DropMenu";
+import {NotificationCounter} from "../MainLayout/Header/BurgerButton/NotificationCounter";
+import {useSelector} from "react-redux";
 
 
 let listArr = [
@@ -95,6 +97,16 @@ let listArr = [
 export const MobileListContainer = ({t, isAuth}) => {
 
 
+  const messages = useSelector((store) => store.notifications.messagesData);
+
+  let unreadMessages = messages.slice().filter((el) => {
+    if (el.read === '0' || el.read === undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   return (
     <ul className={styles.mobileSideList}>
       <li className={styles.mobileSideListItem}>
@@ -104,7 +116,7 @@ export const MobileListContainer = ({t, isAuth}) => {
                   <MobileSideListLinks t={t} dataList={listArr[1]}/>
                 </li> : ""}
       {isAuth ? <li className={styles.mobileSideListItem}>
-                  <MobileSideListLinks t={t} dataList={listArr[2]}/>
+                  <MobileSideListLinks messages={unreadMessages} t={t} dataList={listArr[2]}/>
                 </li> : ""}
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[3]}/>

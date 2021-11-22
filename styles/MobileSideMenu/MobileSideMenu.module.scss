@@ -180,6 +180,20 @@
       margin: 19px 0 18px 0;
     }
   }
+  & .mobileSideListItemMessagesCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px!important;
+    height: 20px;
+
+    background-color: #4fa053;
+
+    border-radius: 50%;
+
+    font-size: 14px!important;
+  }
 }
 
 .dropMenu {

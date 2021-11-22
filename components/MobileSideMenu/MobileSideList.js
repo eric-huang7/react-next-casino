@@ -2,8 +2,9 @@ import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import Link from "next/link";
 import {useDispatch} from "react-redux";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
+import {NotificationCounter} from "../MainLayout/Header/BurgerButton/NotificationCounter";
 
-export const MobileSideListLinks = ({t, dataList}) => {
+export const MobileSideListLinks = ({t, dataList, messages}) => {
   const dispatch = useDispatch();
 
   function clickLincksCloseMenu() {
@@ -17,6 +18,7 @@ export const MobileSideListLinks = ({t, dataList}) => {
         <Link href={dataList.path}>
           <a onClick={() => clickLincksCloseMenu()}>{t(dataList.name)}</a>
         </Link>
+        {(messages && messages.length > 0) ? <p className={styles.mobileSideListItemMessagesCounter}>{messages.length}</p> : ''}
       </>
     )
   } else {

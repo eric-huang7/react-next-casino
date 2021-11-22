@@ -39,7 +39,7 @@ export const BurgerButton = ({userLogined}) => {
         width={'32px'}
         height={'24px'}
       />
-      {unreadMessages.length > 0 ? <NotificationCounter unreadMessages={unreadMessages} /> : <></>}
+      {(unreadMessages.length > 0 && userLogined) ? <NotificationCounter unreadMessages={unreadMessages} /> : <></>}
     </div>
   )
 }
