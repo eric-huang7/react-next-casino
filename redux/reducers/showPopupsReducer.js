@@ -3,7 +3,7 @@ import {
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
-  SHOW_NOTIFICATIONS_POPUP, SHOW_SEARCH_MODAL
+  SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL
 } from "../actions/types";
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   isShowManageSubscriptions: false,
   isShowNotifications: false,
   isShowSearchModal: false,
+  isShowPlaySafe: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -49,6 +50,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowSearchModal: payload
+      }
+    case SHOW_PLAY_SAFE:
+      return {
+        ...state,
+        isShowPlaySafe: payload
       }
 
     default:

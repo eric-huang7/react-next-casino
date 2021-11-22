@@ -18,6 +18,7 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
   const [notifySubscript, setNotifySubscript] = useState(userInfo.browser_opt_in);
 
   const markReadClickHandler = () => {
+
     let arrNotRead = [];
     notifyData.messagesData.map((el) => {
       if (el.read === "0" || el.read === undefined) {
@@ -32,16 +33,16 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
     notifySocket.socket.socketInstance.send(JSON.stringify(sendObj));
   }
 
-  useEffect(() => {
-    if (notifySocket.socket.socketInstance) {
-      notifySocket.socket.socketInstance.addEventListener('message', (e) => {
-        console.log(e, 'SEND!!!!!!')
-      })
-      return () => {
-        notifySocket.socket.socketInstance.removeEventListener('message');
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (notifySocket.socket.socketInstance) {
+  //     notifySocket.socket.socketInstance.addEventListener('message', (e) => {
+  //       console.log(e, 'SEND!!!!!!')
+  //     })
+  //     return () => {
+  //       notifySocket.socket.socketInstance.removeEventListener('message');
+  //     }
+  //   }
+  // }, [])
 
   const soundClickHandler = () => {
     useBrowserNotifications();

@@ -53,7 +53,7 @@ let listArr = [
         type: "block",
         // path: '',
         blockData: [
-          {id: "6.1.1", name: "support@slotsIdol.com", path: "mailto:"},
+          {id: "6.1.1", name: "support@slotsIdol.com", path: "mailto:support@slotsIdol.com"},
           {id: "6.1.2", name: "mobileSideMenu.innerLists.help.liveChat", path: "/#liveChat"}
         ]
       },
@@ -61,7 +61,7 @@ let listArr = [
       {id: "6.3", name: "mobileSideMenu.innerLists.help.aboutBitcoin", type: "link", path: "/#AboutBitcoin"},
       {id: "6.4", name: "mobileSideMenu.innerLists.help.instantExchanger", type: "link", path: "/#InstantBTCtoEURexchanger"},
       {id: "6.5", name: "mobileSideMenu.innerLists.help.provabilityExplained", type: "link", path: "/#ProvabilityExplained"},
-      {id: "6.6", name: "mobileSideMenu.innerLists.help.playSafe", type: "link", path: "/#PlaySafe"},
+      {id: "6.6", name: "mobileSideMenu.innerLists.help.playSafe", type: "button", path: "/#PlaySafe"},
       {id: "6.7", name: "mobileSideMenu.innerLists.help.complains", type: "link", path: "/#Complains"},
       {id: "6.8", name: "mobileSideMenu.innerLists.help.howToBuyCrypto", type: "link", path: "/#HowToBuyCrypto"},
       {id: "6.9", name: "mobileSideMenu.innerLists.help.manageSubscriptions", type: "button", path: "/#manageSubscriptions"}

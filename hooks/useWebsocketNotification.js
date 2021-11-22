@@ -82,7 +82,7 @@ export default function useWebsocketNotification(userInfo, locale) {
         console.log('socket close unmount')
       }
     }
-  }, [userInfo.isAuthenticated]);
+  }, [userInfo.isAuthenticated, browserNotify]);
 
   return socketData;
 }

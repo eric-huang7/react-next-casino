@@ -3,9 +3,16 @@ import {
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
-  SHOW_NOTIFICATIONS_POPUP,
+  SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE,
   SHOW_SEARCH_MODAL
 } from "./types";
+
+export const showPlaySafe = (isShow) => {
+  return {
+    type: SHOW_PLAY_SAFE,
+    payload: isShow
+  }
+}
 
 export const showSearchModal = (isShow) => {
   return {

@@ -120,3 +120,7 @@ export const MAY_BROWSER_NOTIFY = 'MAY_BROWSER_NOTIFY';
 // ############## SHOW SEARCH MODAL
 
 export const SHOW_SEARCH_MODAL = 'SHOW_SEARCH_MODAL';
+
+// ############## SHOW PLAY SAFE
+
+export const SHOW_PLAY_SAFE = 'SHOW_PLAY_SAFE';

@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {MobileSideButtons} from "./MobileSideButtons";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
-import {showManageSubscriptions} from "../../redux/actions/showPopups";
+import {showManageSubscriptions, showPlaySafe} from "../../redux/actions/showPopups";
 
 export const DropMenu = ({t,el, isAuth}) => {
   const dispatch = useDispatch();
@@ -24,6 +24,11 @@ export const DropMenu = ({t,el, isAuth}) => {
     e.preventDefault();
     dispatch(showMobileMenu(false));
     dispatch(showManageSubscriptions(true));
+  }
+  const playSafeHandler = (e) => {
+    e.preventDefault();
+    dispatch(showMobileMenu(false));
+    dispatch(showPlaySafe(true));
   }
 
   useEffect(() => {
@@ -90,17 +95,26 @@ export const DropMenu = ({t,el, isAuth}) => {
                   </div>
                 )
               } else if (innerEl.type === "button") {
-                if (isAuth) {
+                if (innerEl.path === "/#manageSubscriptions") {
+                  if (isAuth) {
+                    return (
+                      <div className={styles.dropMenuListItem} key={innerEl.id}>
+                        <MobileSideButtons t={t} buttonData={innerEl} shouldDo={manageSubscriptionHandler}/>
+                      </div>
+                    )
+                  } else {
+                    return (
+                      ""
+                    )
+                  }
+                } else if (innerEl.path === "/#PlaySafe") {
                   return (
                     <div className={styles.dropMenuListItem} key={innerEl.id}>
-                      <MobileSideButtons t={t} buttonData={innerEl} shouldDo={manageSubscriptionHandler}/>
+                      <MobileSideButtons t={t} buttonData={innerEl} shouldDo={playSafeHandler}/>
                     </div>
                   )
-                } else {
-                 return (
-                   ""
-                 )
                 }
+
               }
             })
           }

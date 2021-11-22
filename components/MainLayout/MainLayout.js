@@ -13,6 +13,7 @@ import {DepositPage} from "./DepositPage/DepositPage";
 import {ManageSubscriptions} from "./ManageSubscriptions/ManageSubscriptions";
 import {SearchModalWindowWrapper} from "../SearchGamesModalWindow/SearchModalWindowWrapper";
 import {useEffect} from "react";
+import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
 
 
 const MainLayout = ({children, t}) => {
@@ -20,7 +21,7 @@ const MainLayout = ({children, t}) => {
   const locale = router.locale;
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
-  const isShowSearchModal = useSelector((store) => store.showPopupsReducer.isShowSearchModal);
+  const isShowModal = useSelector((store) => store.showPopupsReducer);
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
@@ -30,8 +31,9 @@ const MainLayout = ({children, t}) => {
   return (
           <div  className={styles.mainLayoutWrapper}>
             <Header t={t}/>
-            {isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowSearchModal} t={t}/> : <></>}
+            {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>
+            {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
             {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
             <LogIn isShow={logInShow} t={t}/>
             <SelectCurrency t={t}/>

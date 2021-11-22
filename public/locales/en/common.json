@@ -379,5 +379,19 @@
   "searchGames": {
     "nothingFound": "Whoops! There's no search results!",
     "enterGameName": "Enter the name of the game."
+  },
+  "playSafe": {
+    "heading": "Play Safe",
+    "firstBlock": "Playing with us should always be a fun and positive experience. Unfortunately though, sometimes it can be hard to find the right balance between how much we can spend and how much we want to play.",
+    "secondBlockHeading": "WHAT TO DO:",
+    "secondBlock": "If you fear you may be showing signs of problem gambling and want to take measures to ensure the issue does not escalate, then you can opt to self-exclude yourself from our casino. In order to activate this, or to find out more information on self-exclusion, please contact our support team at ",
+    "thirdBlock": {
+      "partOne": "If you are concerned for someone close to you, such as a friend or family member, then please get in touch with us right away. Our support team is available via the LiveChat or by email at ",
+      "partTwo": "They will do everything they can to assist you."
+    },
+    "fourthBlock": "Although we are 100% dedicated to helping you and those you care about, it is always a good idea to speak to independent professional services for assistance with problem gambling.",
+    "linksBlock": {
+      "heading": "FOR FURTHER SUPPORT:"
+    }
   }
 }
