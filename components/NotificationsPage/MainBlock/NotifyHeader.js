@@ -32,9 +32,16 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
     notifySocket.socket.socketInstance.send(JSON.stringify(sendObj));
   }
 
-  // useEffect(() => {
-  //
-  // }, [])
+  useEffect(() => {
+    if (notifySocket.socket.socketInstance) {
+      notifySocket.socket.socketInstance.addEventListener('message', (e) => {
+        console.log(e, 'SEND!!!!!!')
+      })
+      return () => {
+        notifySocket.socket.socketInstance.removeEventListener('message');
+      }
+    }
+  }, [])
 
   const soundClickHandler = () => {
     useBrowserNotifications();

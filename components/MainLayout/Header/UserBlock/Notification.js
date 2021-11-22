@@ -23,19 +23,24 @@ export const Notification = ({messagesData, t}) => {
       return false;
     }
   });
-  let showUnreadMessages = allMessages.slice(0, 4);
+  let showMessages = allMessages.slice(0, 4);
 
   const checkReadMessages = () => {
+    let arrNotRead = [];
     let newListMessages = allMessages.map((el) => {
-      if (showUnreadMessages.find((unreadEl) => unreadEl.id === el.id)) {
+      let check = showMessages.find((showEl) => {
+        if ((showEl.id === el.id) && (el.read === "0" || el.read === undefined)) {
+          arrNotRead.push(showEl.id);
+          return true;
+        } else {
+          return false;
+        }
+      })
+      if (check) {
         return Object.defineProperty(el, 'read', {value: '1'});
       } else {
         return el;
       }
-    })
-    let arrNotRead = [];
-    showUnreadMessages.map((el) => {
-        arrNotRead.push(el.id);
     })
     if (arrNotRead.length > 0) {
       dispatch(setNotifyTypeTwo({type: 2, msg: newListMessages}));
@@ -48,20 +53,25 @@ export const Notification = ({messagesData, t}) => {
 
   const [isShowNotifications, setisShowNotifications] = useState(false)
 
-  const clickBellHandler = () => {
-    if (isShowNotifications) {
-      // dispatch(showNotifications(false));
-      setisShowNotifications(false)
-    } else {
-      // dispatch(showNotifications(true));
-      setisShowNotifications(true)
-    }
+  const showBellHandler = () => {
+    setisShowNotifications(true);
+  }
+  const hideBellHandler = () => {
+    setisShowNotifications(false);
   }
 
   return (
     <>
-      <BellNotification clickBellHandler={clickBellHandler} messageCount={unreadMessages.length}/>
-      {isShowNotifications ? <NotificationPopup t={t} subscriptInfo={subscriptInfo} checkReadMessages={checkReadMessages} notifyData={showUnreadMessages} isShowNotifications={isShowNotifications}/> : <></>}
+      <BellNotification
+        showBellHandler={showBellHandler}
+        messageCount={unreadMessages.length}
+        t={t}
+        hideBellHandler={hideBellHandler}
+        checkReadMessages={checkReadMessages}
+        isShowNotifications={isShowNotifications}
+        showMessages={showMessages}
+        subscriptInfo={subscriptInfo}
+      />
     </>
 
   )

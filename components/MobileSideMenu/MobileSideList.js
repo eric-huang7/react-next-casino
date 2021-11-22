@@ -2,7 +2,7 @@ import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import Link from "next/link";
 import {useDispatch} from "react-redux";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
-import {NotificationCounter} from "../MainLayout/Header/BurgerButton/NotificationCounter";
+
 
 export const MobileSideListLinks = ({t, dataList, messages}) => {
   const dispatch = useDispatch();

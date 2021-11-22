@@ -43,7 +43,6 @@ export default function useWebsocketNotification(userInfo, locale) {
       socket.onmessage = function (e) {
         // console.log('message ===>>>', e);
         let data = JSON.parse(e.data);
-        console.log('eeeeeeeeeeee', e);
         console.log('===>> data', data);
         if (data.type === 2) {
           dispatch(setNotifyTypeTwo(data));
@@ -83,7 +82,7 @@ export default function useWebsocketNotification(userInfo, locale) {
         console.log('socket close unmount')
       }
     }
-  }, [userInfo.isAuthenticated, browserNotify]);
+  }, [userInfo.isAuthenticated]);
 
   return socketData;
 }

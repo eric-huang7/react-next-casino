@@ -10,7 +10,6 @@ import {useSelector} from "react-redux";
 
 export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
   const router = useRouter();
-  console.log(router.asPath, '@@@@@@@@@@@@@@@@')
 
   const linksData = [
     {href: '/games-page/btc-games', name: "btcGames", icon: '/assets/icons/home/btc_games_icon.svg', activeIcon: '/assets/icons/home/btc_games_icon_active.svg'},

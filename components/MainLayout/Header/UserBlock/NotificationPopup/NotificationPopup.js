@@ -8,7 +8,7 @@ import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../..
 import {NotifyIcon} from "./NotifyIcon";
 
 
-export const NotificationPopup = ({isShowNotifications, notifyData, checkReadMessages, subscriptInfo, t}) => {
+export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo, t, hideBellHandler}) => {
   const dispatch = useDispatch();
   useEffect(() => {
 
