@@ -1,9 +1,38 @@
 import styles from "../../styles/GamesPage/GamesPage.module.scss";
+import {
+  allProvidersURL,
+  chosenProviderURL,
+  jackpotGames_url,
+  newGames_url,
+  tableGames_url,
+  topGames_url
+} from "../../helpers/gamesURL";
 
-export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton}) => {
+export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, gamesData, setRequestGamesData, heading}) => {
 
-  const moreButtonClickHAndler = () => {
+  const moreButtonClickHAndler = async () => {
+    let res;
+    if (heading === 'all-games') {
+      res = await fetch(allProvidersURL(100, pageCounter * 100));
+    } else if (heading === 'new-games') {
+      res = await fetch(newGames_url(100, pageCounter * 100));
+    } else if (heading === 'btc-games') {
+      res = await fetch(topGames_url(100, pageCounter * 100));
+    } else if (heading === 'top-games') {
+      res = await fetch(topGames_url(100, pageCounter * 100));
+    } else if (heading === 'jackpot-games') {
+      res = await fetch(jackpotGames_url(100, pageCounter * 100));
+    } else if (heading === 'table-games') {
+      res = await fetch(tableGames_url(100, pageCounter * 100));
+    } else {
+      res = await fetch(chosenProviderURL(heading, 100, pageCounter * 100));
+    }
+    let newGamesData = await res.json();
+    // dispatch(setGames(newGamesData.results));
 
+    setRequestGamesData([...gamesData, ...newGamesData.results]);
+
+    console.log(newGamesData, 'new games data')
     setPageCounter(pageCounter + 1)
   }
 

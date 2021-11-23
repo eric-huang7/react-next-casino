@@ -24,6 +24,14 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
 
   const dispatch = useDispatch();
   const router = useRouter();
+  console.log(pageCounter, totalRows, "###################")
+  useEffect(() => {
+    return () => {
+      console.log(heading)
+      setPageCounter(0);
+      setIsShowMoreButton(true);
+    }
+  },[])
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
@@ -54,46 +62,29 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
 
 
 
-
-
-
-
   let games = gamesData.map((el, ind) => {
-    return <GamesItem showFrame={false} playFunClickHandler={playFunClickHandler} playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`} userInfo={userInfo} t={t} gameData={el}/>
+    return <GamesItem
+      showFrame={false}
+      playFunClickHandler={playFunClickHandler}
+      playGameClickHandler={playGameClickHandler}
+      key={`${el.id} ${el.name} game page`}
+      userInfo={userInfo}
+      t={t}
+      gameData={el}
+    />
   })
 
-  useEffect(async () => {
+  // useEffect(async () => {
+  //
+  //   if (pageCounter > 0) {
+  //
+  //   }
+  //
+  // }, [pageCounter])
 
-    if (pageCounter > 0) {
-      let res;
-      if (heading === 'all-games') {
-        res = await fetch(allProvidersURL(100, pageCounter * 100));
-      } else if (heading === 'new-games') {
-        res = await fetch(newGames_url(100, pageCounter * 100));
-      } else if (heading === 'btc-games') {
-        res = await fetch(topGames_url(100, pageCounter * 100));
-      } else if (heading === 'top-games') {
-        res = await fetch(topGames_url(100, pageCounter * 100));
-      } else if (heading === 'jackpot-games') {
-        res = await fetch(jackpotGames_url(100, pageCounter * 100));
-      } else if (heading === 'table-games') {
-        res = await fetch(tableGames_url(100, pageCounter * 100));
-      } else {
-        res = await fetch(chosenProviderURL(heading, 100, pageCounter * 100));
-      }
-      let newGamesData = await res.json();
-      // dispatch(setGames(newGamesData.results));
 
-      setRequestGamesData([...gamesData, ...newGamesData.results]);
 
-    }
 
-  }, [pageCounter])
-
-  if (gamesData.length === totalRows) {
-    console.log(gamesData.length, totalRows, pageCounter, "<===== games data total rows")
-    setIsShowMoreButton(false);
-  }
 
   return (
     <>
@@ -103,7 +94,15 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
           {games}
         </div>
       </div>
-      <MoreButton isShowMoreButton={isShowMoreButton} pageCounter={pageCounter} setPageCounter={setPageCounter} t={t} />
+      <MoreButton
+        heading={heading}
+        setRequestGamesData={setRequestGamesData}
+        gamesData={gamesData}
+        isShowMoreButton={isShowMoreButton}
+        pageCounter={pageCounter}
+        setPageCounter={setPageCounter}
+        t={t}
+      />
     </>
   )
 }

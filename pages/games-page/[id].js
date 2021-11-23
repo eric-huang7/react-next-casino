@@ -51,29 +51,26 @@ const GamesPage = (props) => {
   useEffect(() => {
     dispatch(setGames(props.gamesData.results));
     setRequestGamesData(props.gamesData.results);
-    setPageCounter(0);
+    setPageCounter(1);
 
   }, [props.gamesData]);
 
 
-
-  //.searchGames
-
-  // useEffect(() => {
-  //   if (searchGames.isSearchEmpty) {
-  //     // setRequestGamesData([]);
-  //   } else {
-  //     // setRequestGamesData(searchGames.searchGames);
-  //   }
-  //
-  // }, [searchGames.searchGames])
-
-
   const allGames = useSelector((store) => store.games);
 
-  // let gameData = props.gamesData.results;
+  useEffect(() => {
+    if (requestGamesData.length === props.gamesData.total_rows) {
+      console.log(requestGamesData.length, props.gamesData.total_rows, pageCounter, "<===== games data total rows")
+      setIsShowMoreButton(false);
+    } else {
+      console.log(requestGamesData, 'games data')
+    }
+    return () => {
+      setIsShowMoreButton(true);
+    }
+  }, [requestGamesData])
 
-
+  console.log(pageCounter, props.gamesData.total_rows, "$$$$$$$$$$$$")
   return (
     <>
       <MainLayout t={t}>
