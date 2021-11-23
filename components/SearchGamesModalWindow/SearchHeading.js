@@ -13,17 +13,17 @@ export const SearchHeading = ({t, searchBar}) => {
   let store = useSelector((store) => store.games.searchGames);
 
   const searchBarInputHandler = async (e) => {
-    if (e.keyCode === 13) {
-      searchBar.current.blur();
-
-      let res = await axios.get(searchGames_url(searchBar.current.value));
-      console.log(e.target.value);
-      console.log(res.data.results, '<+++++++++++ search!!');
-      dispatch(setSearchGames(res.data.results));
-      if (searchBar.current.value === '') {
-        dispatch(setSearchGames([]));
-      }
-    }
+    // if (e.keyCode === 13) {
+    //   searchBar.current.blur();
+    //
+    //   let res = await axios.get(searchGames_url(searchBar.current.value));
+    //   console.log(e.target.value);
+    //   console.log(res.data.results, '<+++++++++++ search!!');
+    //   dispatch(setSearchGames(res.data.results));
+    //   if (searchBar.current.value === '') {
+    //     dispatch(setSearchGames([]));
+    //   }
+    // }
   }
   const closeButtonClickHandler = () => {
     dispatch(showSearchModal(false));

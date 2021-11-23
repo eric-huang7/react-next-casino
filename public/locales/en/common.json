@@ -378,7 +378,8 @@
   },
   "searchGames": {
     "nothingFound": "Whoops! There's no search results!",
-    "enterGameName": "Enter the name of the game."
+    "enterGameName": "Enter the name of the game.",
+    "gamesMatching": "Games Matching:"
   },
   "playSafe": {
     "heading": "Play Safe",

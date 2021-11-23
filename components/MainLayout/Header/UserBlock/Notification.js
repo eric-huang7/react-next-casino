@@ -7,10 +7,11 @@ import {useRouter} from "next/router";
 import useWebsocketNotification from "../../../../hooks/useWebsocketNotification";
 import {setNotifyTypeTwo} from "../../../../redux/actions/setNotify";
 import {NotifyContext} from "../../../../pages/NotifyContext";
+import {notificator} from "../../../../helpers/notificator";
 
 
 
-export const Notification = ({messagesData, t}) => {
+export const NotificationContainer = ({messagesData, t}) => {
   const dispatch = useDispatch();
   const notifySocket = useContext(NotifyContext);
   const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe);
@@ -26,6 +27,7 @@ export const Notification = ({messagesData, t}) => {
   let showMessages = allMessages.slice(0, 4);
 
   const checkReadMessages = () => {
+
     let arrNotRead = [];
     let newListMessages = allMessages.map((el) => {
       let check = showMessages.find((showEl) => {
@@ -43,12 +45,12 @@ export const Notification = ({messagesData, t}) => {
       }
     })
     if (arrNotRead.length > 0) {
+
       dispatch(setNotifyTypeTwo({type: 2, msg: newListMessages}));
       let sendObj = {type: 1, ids: arrNotRead}
-      notifySocket.socket.socketInstance.send(JSON.stringify(sendObj));
+      notifySocket.socket.current.send(JSON.stringify(sendObj));
     }
   }
-
 
 
   const [isShowNotifications, setisShowNotifications] = useState(false)

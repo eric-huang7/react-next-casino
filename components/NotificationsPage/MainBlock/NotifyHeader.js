@@ -30,7 +30,7 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
     });
     dispatch(setNotifyTypeTwo({type: 2, msg: newNotifyData}));
     let sendObj = {type: 1, ids: arrNotRead}
-    notifySocket.socket.socketInstance.send(JSON.stringify(sendObj));
+    notifySocket.socket.current.send(JSON.stringify(sendObj));
   }
 
   // useEffect(() => {

@@ -10,8 +10,10 @@ const NotifyProvider = (props) => {
   const router = useRouter()
   let locale = router.locale;
   const userInfo = useSelector((store) => store.authInfo);
+  let browserNotify = useSelector((state) => state.userSubscriptionsData.notifySubscribe);
 
-  const socket = useWebsocketNotification(userInfo, locale);
+  console.log(browserNotify);
+  const socket = useWebsocketNotification(userInfo, locale, browserNotify);
 
   return (
     <NotifyContext.Provider value={{socket: socket}}>

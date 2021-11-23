@@ -10,10 +10,20 @@ import {NotifyIcon} from "./NotifyIcon";
 
 export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo, t, hideBellHandler}) => {
   const dispatch = useDispatch();
-  useEffect(() => {
 
+  let timerCount = 0;
+  useEffect(() => {
+    let timerShow = setInterval(() => {
+      timerCount = timerCount + 1;
+      console.log(timerCount);
+    }, 1000)
     return () => {
-      checkReadMessages();
+      if (timerCount >= 5) {
+        checkReadMessages();
+      } else {
+        console.log(timerCount, 'not time')
+      }
+      clearInterval(timerShow);
     }
   },[])
 

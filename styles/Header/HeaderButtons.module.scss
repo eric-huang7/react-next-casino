@@ -55,3 +55,18 @@
         margin-left: 10px;
     }
 }
+
+@media screen and (max-width: 430px) {
+    .userMainBlockButtons {
+        margin-right: 11px;
+    }
+    .userMainBlockButtons button {
+        width: 65px;
+        height: 29px;
+
+        border-radius: 8px;
+
+        font-size: 9px;
+        text-transform: none;
+    }
+}

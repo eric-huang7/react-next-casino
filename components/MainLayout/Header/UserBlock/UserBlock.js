@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userBalance} from "../../../../redux/actions/login";
 import {useEffect, useState} from "react";
 import {getCurrency} from "../../../../redux/actions/currency";
-import {Notification} from "./Notification";
+import {NotificationContainer} from "./Notification";
 import {UserInformationBlock} from "./UserInformationBlock";
 
 export const UserBlockNavigation = ({t, userInfo}) => {
@@ -64,7 +64,7 @@ useEffect(() => {
   return (
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userLogined ? "" : styles.hide}`}>
-        { userLogined ? <Notification messagesData={messagesData} t={t}/> : "" }
+        { userLogined ? <NotificationContainer messagesData={messagesData} t={t}/> : "" }
         { userLogined ? <UserInformationBlock userName={userName} userCurrency={userCurrency} userBalanceInfo={userBalanceInfo}/> : "" }
       </div>
       {

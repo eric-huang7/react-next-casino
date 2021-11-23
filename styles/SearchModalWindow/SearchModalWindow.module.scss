@@ -108,13 +108,34 @@
 .gamesWrapper {
 
   padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+
+  & .gamesMatchingHeading {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+
+    margin-left: 70px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
 
   & .gamesList {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
+
+    width: 1300px;
+    //width: 100%;
+
+    margin: 0 auto;
+
+    background-color: rgba(255, 255, 255, 0.1);
 
   }
 }
@@ -122,4 +143,5 @@
 .textForEmpty {
   width: 100%;
   text-align: center;
+  color: #ffffff;
 }

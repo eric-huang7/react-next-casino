@@ -8,7 +8,7 @@ import {SearchModalWindowWrapper} from "../../SearchGamesModalWindow/SearchModal
 import {useSelector} from "react-redux";
 
 
-export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
+export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
   const router = useRouter();
 
   const linksData = [
@@ -41,7 +41,7 @@ export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
             <a>{t('homePage.providers')}</a>
           </Link>
         </div>
-        <SearchBar t={t}/>
+        <SearchBar searchRef={searchRef} t={t}/>
       </div>
       <div className={styles.divider}></div>
     </div>

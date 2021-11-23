@@ -4,7 +4,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {MainBlock} from "../../components/HomePageComponents/MainBlock";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import {ChooseCategoryBlock} from "../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch, useSelector} from "react-redux";
 import {GamesContainer} from "../../components/GamesPageComponents/GamesContainer";
@@ -16,6 +16,7 @@ import {
   tableGames_url, topGames_url
 } from "../../helpers/gamesURL";
 import {setGames} from "../../redux/actions/games";
+import {SearchGamesContainer} from "../../components/SearchGamesModalWindow/SearchGamesContainer";
 
 
 
@@ -25,6 +26,8 @@ const GamesPage = (props) => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const {id} = router.query;
+
+  const searchRef = useRef('');
   // console.log(router, 'zxczxc');
 
   // console.log(props, 'PROPS GAMES')
@@ -48,41 +51,44 @@ const GamesPage = (props) => {
   const [isShowMoreButton, setIsShowMoreButton] = useState(true)
   const [requestGamesData, setRequestGamesData] = useState([]);
   const [pageCounter, setPageCounter] = useState(0);
+  const [total_rows, setTotal_rows] = useState(0);
   useEffect(() => {
     dispatch(setGames(props.gamesData.results));
     setRequestGamesData(props.gamesData.results);
     setPageCounter(1);
-
+    setTotal_rows(props.gamesData.total_rows);
+    searchRef.current.value = '';
   }, [props.gamesData]);
 
 
   const allGames = useSelector((store) => store.games);
+  let searchGames = useSelector((store) => store.games.searchGames);
 
   useEffect(() => {
-    if (requestGamesData.length === props.gamesData.total_rows) {
+    if (requestGamesData.length === total_rows) {
       console.log(requestGamesData.length, props.gamesData.total_rows, pageCounter, "<===== games data total rows")
       setIsShowMoreButton(false);
     } else {
-      console.log(requestGamesData, 'games data')
+      // console.log(requestGamesData, 'games data')
     }
     return () => {
       setIsShowMoreButton(true);
     }
   }, [requestGamesData])
 
-  console.log(pageCounter, props.gamesData.total_rows, "$$$$$$$$$$$$")
+  // console.log(searchGames, "$$$$$$$$$$$$")
+  console.log(pageCounter, total_rows, requestGamesData.length, props.gamesData,  "###################")
   return (
     <>
       <MainLayout t={t}>
         <MainBlock />
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
-        <ChooseCategoryBlock isProvidersPage={false} t={t}/>
-        {allGames.allGamesLoading
-          ?
-          <>
-          </>
-          :
+        <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
+        {
+          searchGames.length >= 0 && searchRef.current.value ?
+            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={props.heading}/>
+            :
           <GamesContainer
           heading={props.heading}
           gamesData={requestGamesData}
@@ -91,7 +97,8 @@ const GamesPage = (props) => {
           setPageCounter={setPageCounter}
           isShowMoreButton={isShowMoreButton}
           setIsShowMoreButton={setIsShowMoreButton}
-          totalRows={props.gamesData.total_rows}
+          totalRows={total_rows}
+          setTotal_rows={setTotal_rows}
           t={t}/>
         }
       </MainLayout>

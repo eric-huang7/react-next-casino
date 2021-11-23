@@ -17,14 +17,14 @@ import {
 import {setGames} from "../../redux/actions/games";
 
 
-export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows}) => {
+export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows, setTotal_rows}) => {
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
 
 
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log(pageCounter, totalRows, "###################")
+
   useEffect(() => {
     return () => {
       console.log(heading)
@@ -74,17 +74,6 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
     />
   })
 
-  // useEffect(async () => {
-  //
-  //   if (pageCounter > 0) {
-  //
-  //   }
-  //
-  // }, [pageCounter])
-
-
-
-
 
   return (
     <>
@@ -102,6 +91,7 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
         pageCounter={pageCounter}
         setPageCounter={setPageCounter}
         t={t}
+        setTotal_rows={setTotal_rows}
       />
     </>
   )

@@ -266,3 +266,27 @@
     left: 0px;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .categoryInputsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .searchInputLabel {
+    width: 124px;
+    margin-left: 10px;
+    & input {
+      width: 124px;
+    }
+  }
+  .providersButton {
+    width: 124px;
+    height: 35px;
+    margin-left: 0px;
+    & a {
+      font-size: 12px;
+    }
+  }
+}

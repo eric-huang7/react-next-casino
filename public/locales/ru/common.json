@@ -378,7 +378,8 @@
   },
   "searchGames": {
     "nothingFound": "Упс! Мы ничего не нашли!",
-    "enterGameName": "Введите название игры."
+    "enterGameName": "Введите название игры.",
+    "gamesMatching": "Игры по запросу:"
   },
   "playSafe": {
     "heading": "Безопасная игра",

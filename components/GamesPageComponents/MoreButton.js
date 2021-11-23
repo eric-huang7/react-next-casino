@@ -8,7 +8,7 @@ import {
   topGames_url
 } from "../../helpers/gamesURL";
 
-export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, gamesData, setRequestGamesData, heading}) => {
+export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, gamesData, setRequestGamesData, heading, setTotal_rows}) => {
 
   const moreButtonClickHAndler = async () => {
     let res;
@@ -29,11 +29,13 @@ export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, ga
     }
     let newGamesData = await res.json();
     // dispatch(setGames(newGamesData.results));
-
+    setTotal_rows(newGamesData.total_rows);
+    setPageCounter(pageCounter + 1);
     setRequestGamesData([...gamesData, ...newGamesData.results]);
 
-    console.log(newGamesData, 'new games data')
-    setPageCounter(pageCounter + 1)
+    // console.log(newGamesData, 'new games data')
+
+    ;
   }
 
   if (isShowMoreButton) {
