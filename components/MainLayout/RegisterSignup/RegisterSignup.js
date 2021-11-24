@@ -107,7 +107,7 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   useEffect(() => {
-    console.log(currencyRef.current.value);
+    // console.log(currencyRef.current.value);
   }, [activeCurrency])
 
   function showPass(){
@@ -138,7 +138,7 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   const onSubmitHandler = (data) => {
-    console.log(data, 'formDATA');
+    // console.log(data, 'formDATA');
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
       reset();

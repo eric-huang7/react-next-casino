@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import useWebsocketNotification from "../hooks/useWebsocketNotification";
-import {NotifyProvider} from "./NotifyContext";
+import {NotifyProvider} from "../components/NotifyContext/NotifyContext";
 
 
 const MyApp = ({Component, pageProps}) => {

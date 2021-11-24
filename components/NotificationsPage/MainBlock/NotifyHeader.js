@@ -1,6 +1,6 @@
 import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
 import {useContext, useEffect, useState} from "react";
-import {NotifyContext} from "../../../pages/NotifyContext";
+import {NotifyContext} from "../../NotifyContext/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
 import {useDispatch, useSelector} from "react-redux";
 import {useBrowserNotifications} from "../../../helpers/useBrowserNotifications";

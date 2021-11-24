@@ -26,11 +26,11 @@ export const SearchBar = ({t, searchRef}) => {
   const router = useRouter();
 
   const searchButtonClickHandler = async (e) => {
-    console.log(router.query.id, "chose category")
+    // console.log(router.query.id, "chose category")
     // dispatch(showSearchModal(true));
-    console.log(e.target.value)
-    console.log(searchRef.current.value)
-    console.log(e.keyCode)
+    // console.log(e.target.value)
+    // console.log(searchRef.current.value)
+    // console.log(e.keyCode)
     if (e.keyCode === 13 && searchRef.current.value) {
       searchRef.current.blur();
 
@@ -53,7 +53,7 @@ export const SearchBar = ({t, searchRef}) => {
       dispatch(setSearchGames(res.data.results));
     }
     if (!searchRef.current.value || searchRef.current.value.trim() === '') {
-      console.log('empty')
+      // console.log('empty')
       dispatch(setSearchGames([]));
     }
   }

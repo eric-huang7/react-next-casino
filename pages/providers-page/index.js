@@ -39,11 +39,12 @@ const ProvidersPage = (props) => {
       <MainLayout t={t}>
         <MainBlock />
         {/*<JackpotBlock />*/}
-        {/*API for jackpots will add in future */}
+        {/*API for jackpots will add in futu
+        re */}
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={true} t={t}/>
         {
           searchGames.length >= 0 && searchRef.current.value ?
-            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all_games'}/>
+            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
             :
             <ProvidersContainer t={t} providersData={props.providersData.results}/>
         }

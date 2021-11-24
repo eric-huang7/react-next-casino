@@ -1,0 +1,92 @@
+.footerAreaMainContainer {
+  width: 100%;
+  height: 54px;
+
+
+  background-color: #1e1f20;
+
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+
+
+}
+
+.imgContainer {
+  height: inherit;
+
+  display: flex;
+  align-items: center;
+
+  & .slotsImg {
+    width: 54px;
+    height: 36px;
+
+    margin-right: 25px;
+    margin-left: 40px;
+    cursor: pointer;
+  }
+  & .timeImg {
+    width: 35px;
+    height: 34px;
+
+    cursor: pointer;
+  }
+}
+
+.gamesWrapper {
+  transform: translateY(254px);
+
+  opacity: 0;
+
+  width: 100%;
+  height: 200px;
+
+  position: absolute;
+
+  background-color: #393939;
+
+  display: flex;
+  align-items: center;
+  //justify-content: ;
+
+  transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+
+  & .navigationContainer {
+    width: 200px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    & .typeOfGames {
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: #ff0000;
+      font-family: "Swiss721 BT";
+
+      text-transform: uppercase;
+    }
+    & .backButton {
+      width: 38px;
+      height: 38px;
+    }
+  }
+  & .gamesListContainer {
+    max-width: 1400px;
+
+  }
+}
+
+.game {
+
+  background-color: #00fff6;
+}
+
+.active {
+  opacity: 1;
+  transform: translateY(-254px);
+}

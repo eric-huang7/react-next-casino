@@ -55,7 +55,6 @@ export default function Home(props) {
   // const activeBonuses = useSelector((state) => state.bonuses);
   // const state = useSelector((state) => state);
 
-  console.log( "@@@@@@@ MAin page");
 
   return (
 

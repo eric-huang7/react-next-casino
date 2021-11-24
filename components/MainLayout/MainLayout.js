@@ -14,6 +14,7 @@ import {ManageSubscriptions} from "./ManageSubscriptions/ManageSubscriptions";
 import {SearchModalWindowWrapper} from "../SearchGamesModalWindow/SearchModalWindowWrapper";
 import {useEffect} from "react";
 import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
+import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
 
 
 const MainLayout = ({children, t}) => {
@@ -40,6 +41,7 @@ const MainLayout = ({children, t}) => {
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
             {children}
+            {userInfo.isAuthenticated ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
             <Footer t={t}/>
             {/*<LangSwitcher href={router.route} locale={locale}/>*/}
           </div>

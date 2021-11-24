@@ -112,6 +112,13 @@
   align-items: center;
   justify-content: center;
 
+  width: 100%;
+
+  & .searchContainer {
+    max-width: 1300px;
+    width: 100%;
+  }
+
 
   & .gamesMatchingHeading {
     color: #ffffff;
@@ -130,8 +137,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
 
-    width: 1300px;
-    //width: 100%;
+    max-width: 1300px;
+    width: 100%;
 
     margin: 0 auto;
 

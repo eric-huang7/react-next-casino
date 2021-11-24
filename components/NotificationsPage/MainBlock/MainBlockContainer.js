@@ -4,7 +4,7 @@ import {MessagesContainer} from "./MessagesContainer";
 import {useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useContext} from "react";
-import {NotifyContext} from "../../../pages/NotifyContext";
+import {NotifyContext} from "../../NotifyContext/NotifyContext";
 
 
 

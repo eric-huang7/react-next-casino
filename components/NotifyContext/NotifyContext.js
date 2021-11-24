@@ -1,6 +1,6 @@
 import {createContext, useState} from "react";
 import {useRouter} from "next/router";
-import useWebsocketNotification from "../hooks/useWebsocketNotification";
+import useWebsocketNotification from "../../hooks/useWebsocketNotification";
 import {useSelector} from "react-redux";
 
 
@@ -12,7 +12,7 @@ const NotifyProvider = (props) => {
   const userInfo = useSelector((store) => store.authInfo);
   let browserNotify = useSelector((state) => state.userSubscriptionsData.notifySubscribe);
 
-  console.log(browserNotify);
+  // console.log(browserNotify);
   const socket = useWebsocketNotification(userInfo, locale, browserNotify);
 
   return (

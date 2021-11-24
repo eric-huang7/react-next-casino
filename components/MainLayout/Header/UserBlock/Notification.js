@@ -6,7 +6,7 @@ import {BellNotification} from "./BellNotification";
 import {useRouter} from "next/router";
 import useWebsocketNotification from "../../../../hooks/useWebsocketNotification";
 import {setNotifyTypeTwo} from "../../../../redux/actions/setNotify";
-import {NotifyContext} from "../../../../pages/NotifyContext";
+import {NotifyContext} from "../../../NotifyContext/NotifyContext";
 import {notificator} from "../../../../helpers/notificator";
 
 

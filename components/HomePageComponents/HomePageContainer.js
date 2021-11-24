@@ -51,7 +51,7 @@ export const HomePageContainer = ({t}) => {
       <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
       {
         searchGames.length >= 0 && searchRef.current.value ?
-          <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all_games'}/>
+          <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
           :
           <>
             <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>

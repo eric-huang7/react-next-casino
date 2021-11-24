@@ -66,7 +66,7 @@ const GamesPage = (props) => {
 
   useEffect(() => {
     if (requestGamesData.length === total_rows) {
-      console.log(requestGamesData.length, props.gamesData.total_rows, pageCounter, "<===== games data total rows")
+      // console.log(requestGamesData.length, props.gamesData.total_rows, pageCounter, "<===== games data total rows")
       setIsShowMoreButton(false);
     } else {
       // console.log(requestGamesData, 'games data')
@@ -77,7 +77,7 @@ const GamesPage = (props) => {
   }, [requestGamesData])
 
   // console.log(searchGames, "$$$$$$$$$$$$")
-  console.log(pageCounter, total_rows, requestGamesData.length, props.gamesData,  "###################")
+  // console.log(pageCounter, total_rows, requestGamesData.length, props.gamesData,  "###################")
   return (
     <>
       <MainLayout t={t}>
@@ -108,7 +108,7 @@ const GamesPage = (props) => {
 
 
 export const getServerSideProps = async (context) => {
-  console.log(context, 'server pid');
+  // console.log(context, 'server pid');
   let res;
   let heading;
 

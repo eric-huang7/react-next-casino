@@ -2,7 +2,7 @@ import styles from "../../../../styles/Header/UserBlock.module.scss";
 import {NotificationCounter} from "./NotificationCounter";
 import {NotificationPopup} from "./NotificationPopup/NotificationPopup";
 import {useContext, useEffect} from "react";
-import {NotifyContext} from "../../../../pages/NotifyContext";
+import {NotifyContext} from "../../../NotifyContext/NotifyContext";
 import {notificator} from "../../../../helpers/notificator";
 
 
