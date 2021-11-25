@@ -1,0 +1,1 @@
+export const imagesUrl = (img) => `https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/images/${img}`

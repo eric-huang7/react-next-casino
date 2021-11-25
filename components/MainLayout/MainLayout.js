@@ -16,6 +16,7 @@ import {useEffect} from "react";
 import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
 import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContainer";
 
 
 const MainLayout = ({children, t}) => {
@@ -42,6 +43,7 @@ const MainLayout = ({children, t}) => {
             <SelectCurrency t={t}/>
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
+            <TournamentMainContainer userInfo={userInfo} t={t} />
             {children}
             {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
             <Footer t={t}/>

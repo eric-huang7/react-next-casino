@@ -19,7 +19,7 @@ import setUserBonusReducer from "./reducers/userBonuseReduser";
 import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
 import notifyReducer from "./reducers/notifyReducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
-
+import tournamentsReducer from "./reducers/tournaments";
 
 
 
@@ -43,4 +43,5 @@ export const rootReducer = combineReducers({
   userSubscriptionsData: userSubscriptionsDataReducer,
   notifications: notifyReducer,
   mayBrowserNotify: mayBrowserNotifyReducer,
+  tournaments: tournamentsReducer,
 })

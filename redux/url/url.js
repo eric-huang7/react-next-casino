@@ -44,3 +44,7 @@ export const currency_url = 'http://t-gpb.slotsidol.com:7000/currencies';
 
 // ######## get bonuses
 export const activeBonuses_url = 'http://t-gpb.slotsidol.com:7000/bonus_offer?active=1';
+
+// ######## get tournaments
+
+export const get_tournaments_url = 'http://t-gpb.slotsidol.com:7000/tournament';

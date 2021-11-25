@@ -128,3 +128,5 @@ export const SHOW_SEARCH_MODAL = 'SHOW_SEARCH_MODAL';
 export const SHOW_PLAY_SAFE = 'SHOW_PLAY_SAFE';
 
 // ##############
+
+export const GET_TOURNAMENTS = 'GET_TOURNAMENTS';
