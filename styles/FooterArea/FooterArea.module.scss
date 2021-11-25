@@ -66,9 +66,16 @@
       font-size: 24px;
       letter-spacing: 1px;
       color: #ff0000;
-      font-family: "Swiss721 BT";
+      font-family: "Swiss721 BT", sans-serif;
+      white-space: break-spaces;
+      text-align: center;
 
       text-transform: uppercase;
+
+      margin: 0 25px 10px;
+    }
+    & .ru {
+      font-size: 20px;
     }
     & .backButton {
       width: 38px;

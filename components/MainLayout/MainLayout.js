@@ -15,11 +15,13 @@ import {SearchModalWindowWrapper} from "../SearchGamesModalWindow/SearchModalWin
 import {useEffect} from "react";
 import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
 import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 
 const MainLayout = ({children, t}) => {
   const router = useRouter();
   const locale = router.locale;
+  const {width, height} = useWindowDimensions();
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const isShowModal = useSelector((store) => store.showPopupsReducer);
@@ -41,7 +43,7 @@ const MainLayout = ({children, t}) => {
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
             {children}
-            {userInfo.isAuthenticated ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
+            {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
             <Footer t={t}/>
             {/*<LangSwitcher href={router.route} locale={locale}/>*/}
           </div>

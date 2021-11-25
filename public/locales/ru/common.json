@@ -394,5 +394,11 @@
     "linksBlock": {
       "heading": "ДЛЯ ДАЛЬНЕЙШЕЙ ПОДДЕРЖКИ:"
     }
+  },
+  "footerArea": {
+    "headings": {
+      "topGames": "ТОП-игры",
+      "lastGames": "Последние игры"
+    }
   }
 }

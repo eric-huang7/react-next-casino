@@ -394,5 +394,11 @@
     "linksBlock": {
       "heading": "FOR FURTHER SUPPORT:"
     }
+  },
+  "footerArea": {
+    "headings": {
+      "topGames": "Top Games",
+      "lastGames": "last Games"
+    }
   }
 }

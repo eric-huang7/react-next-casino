@@ -53,6 +53,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
         setActiveTime={setActiveTime}
         activeSlots={activeSlots}
         activeTime={activeTime}
+        router={router}
       />
       <div className={styles.gamesListContainer}>
         <GamesSlider
