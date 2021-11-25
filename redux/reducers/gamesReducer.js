@@ -1,5 +1,12 @@
 import {
-  GET_GAMES, GET_JACKPOT_GAMES, GET_LATEST_GAMES, GET_NEW_GAMES, GET_TABLE_GAMES, SET_GAMES, SET_SEARCH_GAMES
+  GET_GAMES,
+  GET_JACKPOT_GAMES,
+  GET_LATEST_GAMES,
+  GET_NEW_GAMES,
+  GET_TABLE_GAMES,
+  GET_TOP_GAMES,
+  SET_GAMES,
+  SET_SEARCH_GAMES
 } from "../actions/types";
 
 
@@ -18,8 +25,10 @@ const initialState = {
   loadingJackpotGames: true,
   tableGames: null,
   loadingTableGames: true,
-  latestGames: null,
+  latestGames: [],
   loadingLatestGames: true,
+  topGames: [],
+  loadingTopGames: true,
 
 }
 
@@ -62,6 +71,12 @@ function gameReducer(state = initialState, action) {
         ...state,
         allGames: [...payload],
         allGamesLoading: false,
+      }
+    case GET_TOP_GAMES:
+      return {
+        ...state,
+        topGames: {...payload},
+        loadingTopGames: false,
       }
     case SET_SEARCH_GAMES:
       return {

@@ -1,45 +1,103 @@
 import Slider from "react-slick";
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
+import {GamesItem} from "../GamesPageComponents/GamesItem";
+import {SliderComponent} from "../SearchGamesModalWindow/SliderComponent";
 
 
-export const GamesSlider = ({t}) => {
+export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, playFunClickHandler, playGameClickHandler}) => {
 
+  let gamesLast = [];
+  let gamesTop = [];
+  if (activeTime) {
+    if (!gamesData.loadingLatestGames) {
+      gamesLast = gamesData.latestGames.results.map((el) => {
+        return <GamesItem showFrame={false}
+                          playFunClickHandler={playFunClickHandler}
+                          playGameClickHandler={playGameClickHandler}
+                          key={`${el.id} ${el.name} game page`}
+                          userInfo={userInfo}
+                          t={t}
+                          gameData={el}
+        />
+      })
+    }
+  } else {
+    if (!gamesData.loadingTopGames) {
+      gamesTop = gamesData.topGames.results.map((el) => {
+        return <GamesItem showFrame={false}
+                          playFunClickHandler={playFunClickHandler}
+                          playGameClickHandler={playGameClickHandler}
+                          key={`${el.id} ${el.name} game page`}
+                          userInfo={userInfo}
+                          t={t}
+                          gameData={el}
+        />
+      })
+    }
+  }
+
+
+  function SampleNextArrow(props) {
+    const { className, onClick } = props;
+    return (
+      <div
+        className={styles.nextArr}
+        onClick={onClick}
+      >&gt;</div>
+    );
+  };
+  function SamplePrevArrow(props) {
+    const { className, onClick } = props;
+    return (
+      <div
+        className={styles.prevArr}
+        onClick={onClick}
+      >&lt;</div>
+    );
+  };
   const sliderSettings = {
     dots: false,
     infinite: false,
-    speed: 500,
-    slidesToShow: 5,
+    speed: 200,
+    slidesToShow: 6,
     rows: 1,
     slidesToScroll: 1,
-    centerPadding: '60px'
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1725,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 1445,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   }
 
-  return (
-    <Slider {...sliderSettings}>
-      <div className={styles.game}>
-        1
-      </div>
-      <div className={styles.game}>
-        8
-      </div>
-      <div className={styles.game}>
-        7
-      </div>
-      <div className={styles.game}>
-        6
-      </div>
-      <div className={styles.game}>
-        5
-      </div>
-      <div className={styles.game}>
-        4
-      </div>
-      <div className={styles.game}>
-        3
-      </div>
-      <div className={styles.game}>
-        2
-      </div>
-    </Slider>
-  )
+  if (activeTime) {
+    return (
+      <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={gamesLast}/>
+    )
+  } else if (activeSlots) {
+    return (
+      <Slider {...sliderSettings}>
+        {gamesTop}
+      </Slider>
+    )
+  } else {
+    return (
+      <Slider {...sliderSettings}>
+        <div></div>
+      </Slider>
+    )
+  }
+
 }

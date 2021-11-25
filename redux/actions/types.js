@@ -6,6 +6,7 @@ export const GET_TABLE_GAMES = 'GET_TABLE_GAMES';
 export const GET_NEW_GAMES = 'GET_NEW_GAMES';
 export const GET_JACKPOT_GAMES = 'GET_JACKPOT_GAMES';
 export const GET_LATEST_GAMES = 'GET_LATEST_GAMES';
+export const GET_TOP_GAMES = 'GET_TOP_GAMES';
 
 export const SET_GAMES = 'SET_GAMES';
 export const SET_SEARCH_GAMES = 'SET_SEARCH_GAMES';

@@ -4,11 +4,12 @@ import {ImgContainer} from "./ImgContainer";
 import {useState} from "react";
 import {GamesContainer} from "./GamesContainer";
 import {useDispatch, useSelector} from "react-redux";
-import {getLatestGames} from "../../redux/actions/games";
+import {getLatestGames, getTopGames} from "../../redux/actions/games";
 
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();
   dispatch(getLatestGames(userData.user.user.id));
+  dispatch(getTopGames());
   const [activeSlots, setActiveSlots] = useState(false);
   const [activeTime, setActiveTime] = useState(false);
 

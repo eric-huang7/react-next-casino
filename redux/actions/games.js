@@ -5,12 +5,12 @@ import {
   GET_JACKPOT_GAMES,
   GET_LATEST_GAMES,
   GET_NEW_GAMES,
-  GET_TABLE_GAMES,
+  GET_TABLE_GAMES, GET_TOP_GAMES,
   SET_GAMES,
   SET_SEARCH_GAMES
 } from "./types";
 
-import {games_url, jackpotGames_url, latest_games, newGames_url, tableGames_url} from '../url/url';
+import {games_url, jackpotGames_url, latest_games, newGames_url, tableGames_url, topGames_url} from '../url/url';
 
 export const setGames = (gamesData) => {
   return {
@@ -116,5 +116,24 @@ export const getLatestGames = (userId) => async dispatch => {
     })
   } catch (err) {
     console.log('error in get latest games endpoint', err)
+  }
+}
+
+export const getTopGames = () => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  try {
+    const res = await axios.get(topGames_url, config)
+    console.log('response data from top games endpoint=====', res)
+    dispatch({
+      type: GET_TOP_GAMES,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log('error in GET_TOP_GAMES endpoint', err)
   }
 }
