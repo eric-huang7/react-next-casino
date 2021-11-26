@@ -44,7 +44,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
     }
   }
 
-  console.log(games)
+  // console.log(games)
   return (
     <div className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
       <GamesContainerNavigation

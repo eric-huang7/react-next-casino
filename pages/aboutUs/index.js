@@ -37,6 +37,7 @@ const AboutUS = (props) => {
     // dispatch(getWinners());
     // dispatch(getLatestWinners());
     dispatch(getCurrency());
+
     // dispatch(getActiveBonuses());
 
   }, []);

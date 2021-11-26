@@ -4,7 +4,6 @@ import Image from "next/image";
 
 export const ImgContainer = ({activeSlots, setActiveSlots, activeTime, setActiveTime}) => {
   const slotsClickHandler = () => {
-    console.log(activeSlots)
     setActiveSlots(!activeSlots)
     setActiveTime(false);
   }

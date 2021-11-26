@@ -10,8 +10,6 @@ export const TournamentInfoContainer = ({t, router, userInfo, showDetails}) => {
 
   const [sliderPosition, setSliderPosition] = useState(0);
 
-  console.log(tournaments)
-
   return (
     <>
       <TournamentSliderContainer

@@ -19,12 +19,16 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContainer";
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
+import {getTournaments} from "../../redux/actions/getTournaments";
 
 
 const MainLayout = ({children, t}) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
   const {width, height} = useWindowDimensions();
+
+
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const isShowModal = useSelector((store) => store.showPopupsReducer);

@@ -12,18 +12,16 @@ const [timeEnd, setTime] = useState('')
 
     return () => {
       if (timer) {
+
         clearInterval(timer);
       }
     }
   }, [timeEnd]);
 
-// let res = '';
-// console.log('6 years 3 months 24 days 6 hours 8 minutes 54 seconds');
-
 
   return (
     <div  className={styles.timeBlock}>
-      <p className={styles.timeText}>{timeEnd} left</p>
+      <p className={styles.timeText}>{router.locale === 'ru' ? `${t("tournaments.timeLeft")} ${timeEnd}` : `${timeEnd} ${t("tournaments.timeLeft")}`}</p>
     </div>
   )
 }

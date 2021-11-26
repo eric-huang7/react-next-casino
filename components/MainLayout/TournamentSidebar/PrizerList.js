@@ -3,8 +3,6 @@ import {PrizerItem} from "./PrizerItem";
 
 export const PrizerList = ({t, sliderPosition, tournaments}) => {
 
-
-  console.log(tournaments.tournaments)
   if (tournaments.loadingTournaments) {
     return <></>
   } else {

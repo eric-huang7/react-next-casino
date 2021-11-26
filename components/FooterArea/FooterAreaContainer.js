@@ -1,15 +1,18 @@
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
 import Image from "next/image";
 import {ImgContainer} from "./ImgContainer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/actions/games";
 
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();
-  dispatch(getLatestGames(userData.user.user.id));
-  dispatch(getTopGames());
+  useEffect(() => {
+    dispatch(getLatestGames(userData.user.user.id));
+    dispatch(getTopGames());
+  }, [])
+
   const [activeSlots, setActiveSlots] = useState(false);
   const [activeTime, setActiveTime] = useState(false);
 

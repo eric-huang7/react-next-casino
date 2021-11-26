@@ -6,11 +6,14 @@ import {getTournaments} from "../../../redux/actions/getTournaments";
 import {TournamentInfoContainer} from "./TournamentInfoContainer";
 import {useRouter} from "next/router";
 import {showTournaments, showTournamentsDetails} from "../../../redux/actions/showPopups";
+import {useEffect} from "react";
 
 
 export const TournamentMainContainer = ({t, userInfo, isShowModal}) => {
   const dispatch = useDispatch();
-  dispatch(getTournaments());
+  useEffect(() =>{
+    dispatch(getTournaments());
+  }, [])
   const router = useRouter();
 
 

@@ -4,7 +4,7 @@ import {showRegister} from "../../../redux/actions/registerShow";
 import {showDepositModal, showTournaments} from "../../../redux/actions/showPopups";
 
 
-export const DepositRegistrationButton = ({t, userInfo}) => {
+export const DepositRegistrationButton = ({t, userInfo, router}) => {
   const dispatch = useDispatch()
 
   const showDepositsHandler = () => {
@@ -18,11 +18,11 @@ export const DepositRegistrationButton = ({t, userInfo}) => {
 
   if (userInfo.isAuthenticated) {
     return (
-      <button onClick={() => showDepositsHandler()} className={styles.buttonRegisterDeposit}>Deposit</button>
+      <button onClick={() => showDepositsHandler()} className={styles.buttonRegisterDeposit}>{t("tournaments.buttons.deposit")}</button>
     )
   } else {
     return (
-      <button onClick={() => showRegistrationHandler()} className={styles.buttonRegisterDeposit}>Sign Up</button>
+      <button onClick={() => showRegistrationHandler()} className={`${styles.buttonRegisterDeposit} ${styles[router.locale]}`}>{t("tournaments.buttons.signUp")}</button>
     )
   }
 

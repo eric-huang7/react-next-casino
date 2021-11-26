@@ -5,7 +5,7 @@ export const TournamentHeading = ({t, hideTournaments}) => {
 
   return (
     <div className={styles.head}>
-      <p>Tournament</p>
+      <p>{t("tournaments.heading")}</p>
       <button onClick={() => hideTournaments()} className={styles.closeButton}>
         <span className={styles.closeOne}></span>
         <span className={styles.closeTwo}></span>

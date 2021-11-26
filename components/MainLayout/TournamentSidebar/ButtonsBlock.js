@@ -16,10 +16,10 @@ export const ButtonsBlock = ({t, tournaments, sliderPosition, router, userInfo, 
       <div className={styles.buttonsWrapper}>
         <div className={styles.timeDetails}>
           <Timer t={t} time={Number(tournaments.tournaments.results[sliderPosition].time_finished)} router={router}/>
-          <button onClick={() => showDetails()} className={styles.detailsButton}>Details</button>
+          <button onClick={() => showDetails()} className={styles.detailsButton}>{t("tournaments.buttons.details")}</button>
         </div>
         <div className={styles.depositSignupContainer}>
-          <DepositRegistrationButton t={t} userInfo={userInfo}/>
+          <DepositRegistrationButton t={t} userInfo={userInfo} router={router}/>
         </div>
       </div>
     )
