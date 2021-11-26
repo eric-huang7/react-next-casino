@@ -6,7 +6,7 @@ import {Timer} from "./Timer";
 import {DepositRegistrationButton} from "./DepositRegistrationButton";
 
 
-export const ButtonsBlock = ({t, tournaments, sliderPosition, router, userInfo}) => {
+export const ButtonsBlock = ({t, tournaments, sliderPosition, router, userInfo, showDetails}) => {
 
 // Number(tournaments.tournaments.results[sliderPosition].time_finished)
   if (tournaments.loadingTournaments) {
@@ -16,7 +16,7 @@ export const ButtonsBlock = ({t, tournaments, sliderPosition, router, userInfo})
       <div className={styles.buttonsWrapper}>
         <div className={styles.timeDetails}>
           <Timer t={t} time={Number(tournaments.tournaments.results[sliderPosition].time_finished)} router={router}/>
-          <button className={styles.detailsButton}>Details</button>
+          <button onClick={() => showDetails()} className={styles.detailsButton}>Details</button>
         </div>
         <div className={styles.depositSignupContainer}>
           <DepositRegistrationButton t={t} userInfo={userInfo}/>

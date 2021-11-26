@@ -18,6 +18,7 @@ import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContainer";
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
+import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
 
 
 const MainLayout = ({children, t}) => {
@@ -47,6 +48,7 @@ const MainLayout = ({children, t}) => {
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
             <TournamentIcon />
             <TournamentMainContainer isShowModal={isShowModal} userInfo={userInfo} t={t} />
+            {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
             {children}
             {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
             <Footer t={t}/>

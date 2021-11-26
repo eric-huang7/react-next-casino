@@ -3,7 +3,7 @@ import {
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
-  SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS
+  SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
 } from "../actions/types";
 
 const initialState = {
@@ -14,7 +14,8 @@ const initialState = {
   isShowNotifications: false,
   isShowSearchModal: false,
   isShowPlaySafe: false,
-  isShowTournaments: false
+  isShowTournaments: false,
+  isShowTournamentsDetails: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -30,6 +31,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowTournaments: payload
+      }
+    case SHOW_TOURNAMENTS_DETAILS:
+      return {
+        ...state,
+        isShowTournamentsDetails: payload
       }
     case SHOW_DEPOSIT_MODAL :
       return {

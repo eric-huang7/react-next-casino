@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getTournaments} from "../../../redux/actions/getTournaments";
 import {TournamentInfoContainer} from "./TournamentInfoContainer";
 import {useRouter} from "next/router";
-import {showTournaments} from "../../../redux/actions/showPopups";
+import {showTournaments, showTournamentsDetails} from "../../../redux/actions/showPopups";
 
 
 export const TournamentMainContainer = ({t, userInfo, isShowModal}) => {
@@ -17,12 +17,16 @@ export const TournamentMainContainer = ({t, userInfo, isShowModal}) => {
   function hideTournaments(e) {
     dispatch(showTournaments(false));
   }
+  function showDetails() {
+    dispatch(showTournamentsDetails(true));
+    dispatch(showTournaments(false));
+  }
 
 
   return (
     <div className={`${styles.tournamentSideContainer} ${isShowModal.isShowTournaments ? styles.showTournament : ''}`}>
       <TournamentHeading hideTournaments={hideTournaments} t={t}/>
-      <TournamentInfoContainer userInfo={userInfo} router={router} t={t}/>
+      <TournamentInfoContainer showDetails={showDetails} userInfo={userInfo} router={router} t={t}/>
 
     </div>
   )
