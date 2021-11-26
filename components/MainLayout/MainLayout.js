@@ -17,6 +17,7 @@ import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
 import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContainer";
+import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 
 
 const MainLayout = ({children, t}) => {
@@ -26,6 +27,7 @@ const MainLayout = ({children, t}) => {
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const isShowModal = useSelector((store) => store.showPopupsReducer);
+  // const showTournaments = useSelector((store) => store.showPopupsReducer.isShowTournaments);
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
@@ -43,7 +45,8 @@ const MainLayout = ({children, t}) => {
             <SelectCurrency t={t}/>
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
-            <TournamentMainContainer userInfo={userInfo} t={t} />
+            <TournamentIcon />
+            <TournamentMainContainer isShowModal={isShowModal} userInfo={userInfo} t={t} />
             {children}
             {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
             <Footer t={t}/>

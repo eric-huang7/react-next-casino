@@ -61,7 +61,9 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     speed: 200,
     slidesToShow: 6,
     rows: 1,
+    swipe: false,
     slidesToScroll: 1,
+    className: `${styles.customSlider}`,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [

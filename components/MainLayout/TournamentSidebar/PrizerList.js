@@ -18,7 +18,9 @@ export const PrizerList = ({t, sliderPosition, tournaments}) => {
               let moneyAward = el.freespins_count === 0 ? Number(el.money_award) : el.freespins_count;
               let currency = el.freespins_count === 0 ? tournaments.tournaments.results[sliderPosition].currency : "fs"
               return (
-                <PrizerItem t={t} currency={currency} moneyAward={moneyAward} nickName={nickName} points={points}/>
+                <>
+                  <PrizerItem t={t} currency={currency} moneyAward={moneyAward} nickName={nickName} points={points}/>
+                </>
               )
             })
           }

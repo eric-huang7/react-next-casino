@@ -4,8 +4,15 @@ import {
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE,
-  SHOW_SEARCH_MODAL
+  SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS
 } from "./types";
+
+export const showTournaments = (isShow) => {
+  return {
+    type: SHOW_TOURNAMENTS,
+    payload: isShow
+  }
+}
 
 export const showPlaySafe = (isShow) => {
   return {
