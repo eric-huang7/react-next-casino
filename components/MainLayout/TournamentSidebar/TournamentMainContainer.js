@@ -6,15 +6,38 @@ import {getTournaments} from "../../../redux/actions/getTournaments";
 import {TournamentInfoContainer} from "./TournamentInfoContainer";
 import {useRouter} from "next/router";
 import {showTournaments, showTournamentsDetails} from "../../../redux/actions/showPopups";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 
 
-export const TournamentMainContainer = ({t, userInfo, isShowModal}) => {
+export const TournamentMainContainer = ({t, userInfo, isShowModal, router, toursref}) => {
   const dispatch = useDispatch();
+
   useEffect(() =>{
     dispatch(getTournaments());
   }, [])
-  const router = useRouter();
+
+  // useEffect(() => {
+  //   dispatch(showTournaments(false));
+  // }, [router])
+  const burgerMenuRef = useRef();
+
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(burgerMenuRef.current)) {
+      dispatch(showTournaments(false));
+    }
+    if (path.includes((toursref.current))) {
+      dispatch(showTournaments(true));
+    }
+  };
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+    return () => {
+      dispatch(showTournaments(true));
+      document.body.removeEventListener('click', handleOutsideClick);
+    }
+  }, []);
 
 
   function hideTournaments(e) {
@@ -27,7 +50,7 @@ export const TournamentMainContainer = ({t, userInfo, isShowModal}) => {
 
 
   return (
-    <div className={`${styles.tournamentSideContainer} ${isShowModal.isShowTournaments ? styles.showTournament : ''}`}>
+    <div ref={burgerMenuRef} className={`${styles.tournamentSideContainer} ${isShowModal.isShowTournaments ? styles.showTournament : ''}`}>
       <TournamentHeading hideTournaments={hideTournaments} t={t}/>
       <TournamentInfoContainer showDetails={showDetails} userInfo={userInfo} router={router} t={t}/>
 

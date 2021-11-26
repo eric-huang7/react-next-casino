@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import {useRef, useState} from "react";
 import {SlideItem} from "./SlideItem";
 import {useSelector} from "react-redux";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const TournamentSliderContainer = ({t, tournaments, router, setSliderPosition, sliderPosition}) => {
 

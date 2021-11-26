@@ -12,7 +12,7 @@ import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import {DepositPage} from "./DepositPage/DepositPage";
 import {ManageSubscriptions} from "./ManageSubscriptions/ManageSubscriptions";
 import {SearchModalWindowWrapper} from "../SearchGamesModalWindow/SearchModalWindowWrapper";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
 import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
@@ -37,10 +37,10 @@ const MainLayout = ({children, t}) => {
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
-
+  let toursref = useRef()
 
   return (
-          <div  className={styles.mainLayoutWrapper}>
+          <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>
@@ -50,8 +50,8 @@ const MainLayout = ({children, t}) => {
             <SelectCurrency t={t}/>
             {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
             {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
-            <TournamentIcon />
-            <TournamentMainContainer isShowModal={isShowModal} userInfo={userInfo} t={t} />
+            <TournamentIcon toursref={toursref}/>
+            <TournamentMainContainer toursref={toursref} router={router} isShowModal={isShowModal} userInfo={userInfo} t={t} />
             {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
             {children}
             {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}

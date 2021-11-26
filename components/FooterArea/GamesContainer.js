@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import {freeGame, playPayGame} from "../../redux/actions/playGames";
 
-export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime}) => {
+export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime, footerArea}) => {
   const games = useSelector((store) => store.games);
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
@@ -46,7 +46,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
 
   // console.log(games)
   return (
-    <div className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
+    <div footerArea={footerArea} className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
       <GamesContainerNavigation
         t={t}
         setActiveSlots={setActiveSlots}

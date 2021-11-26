@@ -1,10 +1,11 @@
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
 import Image from "next/image";
 import {ImgContainer} from "./ImgContainer";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/actions/games";
+import {showTournaments} from "../../redux/actions/showPopups";
 
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();
@@ -16,6 +17,30 @@ export const FooterAreaContainer = ({t, userData}) => {
   const [activeSlots, setActiveSlots] = useState(false);
   const [activeTime, setActiveTime] = useState(false);
 
+  const footerArea = useRef();
+  const slotRef = useRef();
+  const timeref = useRef();
+
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(footerArea.current)) {
+      setActiveSlots(false);
+      setActiveTime(false);
+    }
+    if (path.includes((slotRef.current))) {
+      setActiveSlots(true);
+    }
+    if (path.includes((timeref.current))) {
+      setActiveTime(true);
+    }
+  };
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    }
+  }, []);
 
 
 
@@ -26,8 +51,11 @@ export const FooterAreaContainer = ({t, userData}) => {
         setActiveSlots={setActiveSlots}
         activeTime={activeTime}
         setActiveTime={setActiveTime}
+        slotRef={slotRef}
+        timeref={timeref}
       />
       <GamesContainer
+        footerArea={footerArea}
         activeSlots={activeSlots}
         setActiveSlots={setActiveSlots}
         activeTime={activeTime}
