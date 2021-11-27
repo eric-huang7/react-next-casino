@@ -27,7 +27,7 @@ const initialState = {
   loadingTableGames: true,
   latestGames: [],
   loadingLatestGames: true,
-  topGames: [],
+  topGames: null,
   loadingTopGames: true,
 
 }

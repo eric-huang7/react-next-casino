@@ -34,7 +34,7 @@ export const TournamentMainContainer = ({t, userInfo, isShowModal, router, tours
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
     return () => {
-      dispatch(showTournaments(true));
+      // dispatch(showTournaments(true));
       document.body.removeEventListener('click', handleOutsideClick);
     }
   }, []);

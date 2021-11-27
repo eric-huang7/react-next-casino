@@ -46,7 +46,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
 
   // console.log(games)
   return (
-    <div footerArea={footerArea} className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
+    <div ref={footerArea} className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
       <GamesContainerNavigation
         t={t}
         setActiveSlots={setActiveSlots}

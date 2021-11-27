@@ -1,6 +1,7 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentModaldetails.module.scss';
 import {useDispatch} from "react-redux";
 import {showTournamentsDetails} from "../../../../redux/actions/showPopups";
+import {useEffect, useRef} from "react";
 
 export const TournamentModalDetails = ({t}) => {
   const dispatch = useDispatch()
@@ -8,10 +9,26 @@ export const TournamentModalDetails = ({t}) => {
     dispatch(showTournamentsDetails(false));
   }
 
+  const tournamentDetails = useRef();
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(tournamentDetails.current)) {
+      dispatch(showTournamentsDetails(false));
+    }
+  };
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    }
+  }, []);
+
+
   return (
     <div className={styles.tournamentsWrapper}>
       <div className={styles.tournamentsTextBlock}>
-        <div className={styles.textContainer}>
+        <div ref={tournamentDetails} className={styles.textContainer}>
           <button onClick={() => hideDetails()} className={styles.closeButton}>
             <span className={styles.closeOne}></span>
             <span className={styles.closeTwo}></span>

@@ -93,9 +93,10 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     )
   } else if (activeSlots) {
     return (
-      <Slider {...sliderSettings}>
-        {gamesTop}
-      </Slider>
+      <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={gamesTop}/>
+      // <Slider {...sliderSettings}>
+      //   {gamesTop}
+      // </Slider>
     )
   } else {
     return (
