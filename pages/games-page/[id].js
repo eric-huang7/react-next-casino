@@ -30,7 +30,7 @@ const GamesPage = (props) => {
   const searchRef = useRef('');
   // console.log(router, 'zxczxc');
 
-  console.log(props, 'PROPS GAMES')
+  // console.log(props, 'PROPS GAMES')
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -150,11 +150,14 @@ export const getServerSideProps = async (context) => {
     whatSearch = JSON.parse(context.query.tournamentData);
     heading = context.query.id;
     if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-      res = await fetch(game_provider_category_ids(whatSearch.game_provider_ids, whatSearch.game_category_ids));
+      let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+      res = await fetch(game_provider_category_ids(provider, whatSearch.game_category_ids));
     } else if (whatSearch.game_category_ids) {
       res = await fetch(game_category_ids(whatSearch.game_category_ids));
     } else if (whatSearch.game_provider_ids) {
-      res = await fetch(game_provider_ids(whatSearch.game_provider_ids));
+      let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+
+      res = await fetch(game_provider_ids(provider));
     } else {
       res = await fetch(game_ids(whatSearch.game_ids))
     }

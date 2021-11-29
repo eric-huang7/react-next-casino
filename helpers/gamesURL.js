@@ -14,8 +14,8 @@ export const game_ids = (gamesId) => `http://t-gpb.slotsidol.com:7000/games?ids=
 export const game_provider_category_ids = (producerID, category) => `http://t-gpb.slotsidol.com:7000/games?producers=${producerID}&type=${category}`;
 
 export const game_category_ids_search = (category, search) => `http://t-gpb.slotsidol.com:7000/games?type=${category}&search_term=${search}`;
-export const game_provider_ids_search = (category, search) => `http://t-gpb.slotsidol.com:7000/games?producers=${producerID}&search_term=${search}`;
-export const game_ids_search = (category, search) => `http://t-gpb.slotsidol.com:7000/games?ids=${category}&search_term=${search}`;
+export const game_provider_ids_search = (producerID, search) => `http://t-gpb.slotsidol.com:7000/games?producers=${producerID}&search_term=${search}`;
+export const game_ids_search = (gamesId, search) => `http://t-gpb.slotsidol.com:7000/games?ids=${gamesId}&search_term=${search}`;
 export const game_provider_category_ids_search = (producerID, category, search) => `http://t-gpb.slotsidol.com:7000/games?producers=${producerID}&type=${category}&search_term=${search}`;
 
 

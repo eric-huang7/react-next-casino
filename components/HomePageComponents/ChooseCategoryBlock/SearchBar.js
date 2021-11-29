@@ -57,13 +57,15 @@ export const SearchBar = ({t, searchRef}) => {
 
         let whatSearch = JSON.parse(router.query.tournamentData);
         if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-          res = await axios.get(game_provider_category_ids_search(whatSearch.game_provider_ids, whatSearch.game_category_ids, searchRef.current.value));
+          let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+          res = await axios.get(game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value));
 
         } else if (whatSearch.game_category_ids) {
           res = await axios.get(game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value));
 
         } else if (whatSearch.game_provider_ids) {
-          res = await axios.get(game_provider_ids_search(whatSearch.game_provider_ids, searchRef.current.value));
+          let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+          res = await axios.get(game_provider_ids_search(providers, searchRef.current.value));
 
         } else {
           res = await axios.get(game_ids_search(whatSearch.game_ids, searchRef.current.value))
