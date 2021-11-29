@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {GamesContainer} from "../../components/GamesPageComponents/GamesContainer";
 import {
   allProvidersURL,
-  chosenProviderURL,
+  chosenProviderURL, game_category_ids, game_ids, game_provider_category_ids, game_provider_ids,
   jackpotGames_url,
   newGames_url,
   tableGames_url, topGames_url
@@ -30,7 +30,7 @@ const GamesPage = (props) => {
   const searchRef = useRef('');
   // console.log(router, 'zxczxc');
 
-  // console.log(props, 'PROPS GAMES')
+  console.log(props, 'PROPS GAMES')
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -111,7 +111,9 @@ export const getServerSideProps = async (context) => {
   // console.log(context, 'server pid');
   let res;
   let heading;
+  let whatSearch;
 
+  console.log(context.query, ':::::::::::::::::')
   if (context.query.id === 'all-games') {
 
     heading = context.query.id;
@@ -142,6 +144,20 @@ export const getServerSideProps = async (context) => {
 
     heading = context.query.id;
     res = await fetch(tableGames_url(100));
+
+  } else if (context.query.id === 'tournaments') {
+
+    whatSearch = JSON.parse(context.query.tournamentData);
+    heading = context.query.id;
+    if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+      res = await fetch(game_provider_category_ids(whatSearch.game_provider_ids, whatSearch.game_category_ids));
+    } else if (whatSearch.game_category_ids) {
+      res = await fetch(game_category_ids(whatSearch.game_category_ids));
+    } else if (whatSearch.game_provider_ids) {
+      res = await fetch(game_provider_ids(whatSearch.game_provider_ids));
+    } else {
+      res = await fetch(game_ids(whatSearch.game_ids))
+    }
 
   } else {
 

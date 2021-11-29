@@ -1,5 +1,5 @@
 import {
-  BACK_BUTTON_SHOULD_DO,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
@@ -26,6 +26,19 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowCurrencySwitcher: payload,
+      }
+    case CLOSE_All :
+      return {
+        ...state,
+        isShowCurrencySwitcher: false,
+        isShowDepositModal: false,
+        actionForBackButton: false,
+        isShowManageSubscriptions: false,
+        isShowNotifications: false,
+        isShowSearchModal: false,
+        isShowPlaySafe: false,
+        isShowTournaments: false,
+        isShowTournamentsDetails: false,
       }
     case SHOW_TOURNAMENTS:
       return {

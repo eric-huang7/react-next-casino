@@ -72,10 +72,13 @@ export const TournamentSliderContainer = ({t, tournaments, router, setSliderPosi
           {tournaments.tournaments.results.map((el, index) => {
             return (
               <SlideItem
+                key={`${index} ${el.id} tournament`}
                 setSliderPosition={setSliderPosition}
+                sliderPosition={sliderPosition}
                 count={index}
                 tournamentData={el}
                 router={router}
+                t={t}
               />
             )
           })}

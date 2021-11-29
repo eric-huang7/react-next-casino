@@ -93,7 +93,47 @@
 
 .slideItemWrapper {
   padding: 5px;
+
+  position: relative;
 }
+
+.tournamentSliderHover {
+  display: none;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+
+
+  cursor: pointer;
+}
+
+.showHover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  background-color: rgba(0,0,0, 0.7);
+
+  transition: opacity 0.5s ease-in-out;
+
+  & p {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: Verdana, sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+.showHover:hover {
+  opacity: 1;
+}
+
 .slideItem {
   background-color: #444444;
 
@@ -182,7 +222,7 @@
 
 .prizerList {
 padding: 0;
-  list-style-position: inside;
+  list-style-type: none;
 
   & .prizerItem {
     font-size: 13px;
@@ -196,19 +236,27 @@ padding: 0;
     margin-left: 10px;
 
     padding: 10px 0;
+
+    display: flex;
   }
   & .prizerItem span {
-    //display: block;
+    display: block;
     margin-right: 20px;
+
+  }
+  & span.number {
+    margin-right: 2px;
   }
   & span.winAward {
     margin-right: 5px;
   }
   & span.name {
     margin-right: 45px;
+    min-width: 63px;
   }
   & span.points {
     margin-right: 35px;
+    min-width: 68px;
   }
   & .prizerItem:first-child {
     color: #ffcf29;

@@ -3,6 +3,12 @@ import axios from "axios";
 import {
   allProvidersURL,
   chosenProviderURL,
+  game_category_ids,
+  game_category_ids_search,
+  game_ids,
+  game_ids_search, game_provider_category_ids, game_provider_category_ids_search,
+  game_provider_ids,
+  game_provider_ids_search,
   jackpotGames_url,
   newGames_url,
   search_chosenProviderGames_url,
@@ -47,6 +53,23 @@ export const SearchBar = ({t, searchRef}) => {
         res = await axios.get(search_jackpotGames_url(searchRef.current.value));
       } else if (router.query.id === 'table-games') {
         res = await axios.get(search_tableGames_url(searchRef.current.value));
+      } else if (router.query.id === 'tournaments') {
+
+        let whatSearch = JSON.parse(router.query.tournamentData);
+        if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+          res = await axios.get(game_provider_category_ids_search(whatSearch.game_provider_ids, whatSearch.game_category_ids, searchRef.current.value));
+
+        } else if (whatSearch.game_category_ids) {
+          res = await axios.get(game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value));
+
+        } else if (whatSearch.game_provider_ids) {
+          res = await axios.get(game_provider_ids_search(whatSearch.game_provider_ids, searchRef.current.value));
+
+        } else {
+          res = await axios.get(game_ids_search(whatSearch.game_ids, searchRef.current.value))
+
+        }
+
       } else {
         res = await axios.get(search_chosenProviderGames_url(router.query.id, searchRef.current.value));
       }

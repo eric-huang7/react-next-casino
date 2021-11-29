@@ -19,7 +19,8 @@ export const GamesPageHeading = ({t, heading}) => {
     case 'table-games':
       // <h2 className={styles.gamesMainHeading}>{t('gamesPage.headings.tableGames')}</h2>;
       return <img className={styles.gamesHeadingImg} src={'/assets/img/gamesSlider/table_head.svg'} alt="table games heading img"/>;
-
+    case 'tournaments':
+      return <h2 className={styles.gamesMainHeading}>{t('gamesPage.headings.tournaments')}</h2>;
     default:
       return <h2 className={styles.gamesMainHeading}>{heading}</h2>
   }

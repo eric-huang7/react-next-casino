@@ -1,11 +1,19 @@
 import {
-  BACK_BUTTON_SHOULD_DO,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE,
   SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
 } from "./types";
+
+
+export const closeAll = (isShow) => {
+  return {
+    type: CLOSE_All,
+    payload: isShow
+  }
+}
 
 export const showTournaments = (isShow) => {
   return {

@@ -358,7 +358,8 @@
       "btcGames": "BTC Games",
       "topGames": "TOP Games",
       "jackpotGames": "Jackpot games",
-      "tableGames": "Table games"
+      "tableGames": "Table games",
+      "tournaments": "Tournaments"
     },
     "moreButton": "more...",
     "notFound" : "Whoops! There's no search results!"
@@ -404,6 +405,7 @@
   "tournaments": {
     "heading": "Tournament",
     "timeLeft": "left",
+    "learnMore": "Learn more",
     "buttons": {
       "details": "Details",
       "signUp": "Sign Up",

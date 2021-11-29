@@ -1,0 +1,209 @@
+.depositWidgetMainContainer {
+
+  position: fixed;
+
+  bottom: 33px;
+
+  z-index: 12;
+
+  display: flex;
+  align-items: flex-end;
+
+  width: 653px;
+  height: 70px;
+  border-radius: 8px;
+  background-color: #f7f8f9;
+
+  left: 50%;
+  margin-left: -327px;
+
+  padding: 19px 7px 8px;
+}
+
+.widgetCurrencyButton {
+  width: 138px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: #f7f8f9;
+  border: 1px solid #8b8b8b;
+
+  margin-right: 7px;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #1e1f21;
+  font-family: "Verdana";
+}
+.currencyButtonLabel {
+  position: absolute;
+  top: 0;
+  left: 45px;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: rgba(0,0,0, 0.5);
+  font-family: "Verdana";
+}
+
+.amountInputWrapper{
+  position: relative;
+}
+
+.widgetAmountInput {
+  width: 138px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: #f7f8f9;
+  border: 1px solid #8b8b8b;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #1e1f21;
+  font-family: "Verdana";
+
+  padding: 0 5px 0 20px;
+
+  margin-right: 7px;
+}
+.widgetAmountInput::-webkit-outer-spin-button,
+.widgetAmountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.widgetAmountInput {
+  -moz-appearance: textfield;
+}
+.widgetAmountInput::-webkit-inner-spin-button,
+.widgetAmountInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.widgetAmountInput:focus {
+  outline: none;
+  border: 0.95px solid #ff0e0e;
+}
+.currencyLabel {
+  position: absolute;
+
+  top: 12px;
+  left: 9px;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #1e1f21;
+  font-family: "Verdana";
+}
+.amountInputLabel {
+  position: absolute;
+
+  top: -19px;
+  left: 45px;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: rgba(0,0,0, 0.5);
+  font-family: "Verdana";
+}
+
+.paymentMethodContainer {
+  position: relative;
+
+  margin-right: 7px;
+}
+
+.paymentMethodButton {
+  width: 164px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: #f7f8f9;
+  border: 1px solid #8b8b8b;
+
+  text-align: left;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #1e1f21;
+  font-family: "Verdana";
+}
+
+.paymentMethodLabel {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  transform: rotateZ(135deg);
+
+  transition: transform 0.2s ease-in-out;
+
+  & > div {
+    width: 8px;
+    height: 8px;
+
+    border-top: 2px solid #a7a7a7;
+    border-right: 2px solid #a7a7a7;
+  }
+}
+
+.paymentMethodsList {
+  position: absolute;
+  top: -300px;
+  z-index: 2;
+}
+
+
+.active {
+  transform: rotateZ(315deg);
+  top: 20px;
+}
+
+
+.playWithButton {
+  width: 138px;
+  height: 42px;
+  border-radius: 8px;
+  background-color: #e64b3b;
+
+  border: none;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: "Verdana";
+
+  margin-right: 14px;
+}
+
+.closeButton {
+  width: 17px;
+  height: 17px;
+
+  align-self: center;
+
+  position: relative;
+
+  border: none;
+  background-color: transparent;
+
+  & span {
+    display: block;
+
+    height: 1px;
+
+    width: 14px;
+
+    background-color: #a7a7a7;
+
+    position: absolute;
+    top: 6px;
+    left: 0;
+  }
+
+  & .closeOne {
+    transform: rotateZ(45deg);
+  }
+  & .closeTwo {
+    transform: rotateZ(-45deg);
+  }
+}

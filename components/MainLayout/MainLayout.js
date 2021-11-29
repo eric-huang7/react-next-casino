@@ -20,6 +20,8 @@ import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContain
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
 import {getTournaments} from "../../redux/actions/getTournaments";
+import {closeAll} from "../../redux/actions/showPopups";
+import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
 
 
 const MainLayout = ({children, t}) => {
@@ -28,6 +30,10 @@ const MainLayout = ({children, t}) => {
   const locale = router.locale;
   const {width, height} = useWindowDimensions();
 
+
+  useEffect(() => {
+    dispatch(closeAll(false));
+  }, [router])
 
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
@@ -42,6 +48,7 @@ const MainLayout = ({children, t}) => {
   return (
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
+            <DepositWidgetMainContainer t={t}/>
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>
             {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}

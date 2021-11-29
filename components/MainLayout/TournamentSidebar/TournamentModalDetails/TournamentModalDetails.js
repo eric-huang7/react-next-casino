@@ -2,12 +2,19 @@ import styles from '../../../../styles/TournamentSidebar/TournamentModaldetails.
 import {useDispatch} from "react-redux";
 import {showTournamentsDetails} from "../../../../redux/actions/showPopups";
 import {useEffect, useRef} from "react";
+import {useRouter} from "next/router";
 
 export const TournamentModalDetails = ({t}) => {
   const dispatch = useDispatch()
   const hideDetails = () => {
     dispatch(showTournamentsDetails(false));
   }
+  const router = useRouter()
+
+  // useEffect(() => {
+  //   dispatch(showTournamentsDetails(false));
+  // }, [router])
+
 
   const tournamentDetails = useRef();
 

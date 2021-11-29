@@ -358,7 +358,8 @@
       "btcGames": "BTC игры",
       "topGames": "TOP игры",
       "jackpotGames": "Jackpot игры",
-      "tableGames": "Настольные игры"
+      "tableGames": "Настольные игры",
+      "tournaments": "Турниры"
     },
     "moreButton": "еще...",
     "notFound" : "Упс! Мы ничего не нашли!"
@@ -404,6 +405,7 @@
   "tournaments": {
     "heading": "Турнир",
     "timeLeft": "осталось",
+    "learnMore": "Подробнее",
     "buttons": {
       "details": "Детали",
       "signUp": "Регистрация",
