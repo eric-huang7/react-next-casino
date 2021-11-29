@@ -2,11 +2,11 @@ import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.m
 
 import Image from "next/image";
 
-export const PaymentMethodsList = ({t}) => {
+export const PaymentMethodsList = ({t, isActivePayments}) => {
 
 
   return (
-    <ul className={styles.paymentMethodsList}>
+    <ul className={`${styles.paymentMethodsList} ${isActivePayments ? styles.activePaymentsList : ""}`}>
       <li className={styles.paymentMethodItem}>
       <p className={styles.paymentMethodName}>Card</p>
         <div className={styles.paymentCardIconBlock}>

@@ -16,7 +16,6 @@ export const PrizerList = ({t, sliderPosition, tournaments}) => {
               let moneyAward = el.freespins_count === 0 ? Number(el.money_award) : el.freespins_count;
               let currency = el.freespins_count === 0 ? tournaments.tournaments.results[sliderPosition].currency : "fs";
               return (
-                <>
                   <PrizerItem
                     key={`${el.id} prizes list`}
                     t={t}
@@ -26,7 +25,6 @@ export const PrizerList = ({t, sliderPosition, tournaments}) => {
                     points={points}
                     index={index}
                   />
-                </>
               )
             })
           }
