@@ -1,13 +1,13 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
-export const AmountInputContainer = ({t}) => {
+export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueInputHandler}) => {
 
 
   return (
     <div className={styles.amountInputWrapper}>
-      <input className={styles.widgetAmountInput} type="number" id={'widgetAmountInput'} />
-      <label className={styles.currencyLabel} htmlFor="widgetAmountInput">$</label>
-      <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">Amount</label>
+      <input onChange={(e) => valueInputHandler(e)} className={styles.widgetAmountInput} type="number" id={'widgetAmountInput'} placeholder={`${userCurrency.currencySymbol} ${userDepositValue}`}/>
+      {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency.currencySymbol}</label>*/}
+      <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{t("depositWidget.amount")}</label>
     </div>
   )
 }

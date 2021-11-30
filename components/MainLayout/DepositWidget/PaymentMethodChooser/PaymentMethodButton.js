@@ -9,7 +9,7 @@ export const PaymentMethodButton = ({t, isActivePayments, setIsActivePayments}) 
         onClick={() => setIsActivePayments(!isActivePayments)}
         id={'widgetPaymentMethod'}
         className={styles.paymentMethodButton}
-      >Payment Method</button>
+      >{t("depositWidget.paymentMethod")}</button>
       <label
         htmlFor="widgetPaymentMethod"
         className={`${styles.paymentMethodLabel} ${isActivePayments ? styles.active : ""}`}>

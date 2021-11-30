@@ -1,10 +1,10 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
-export const PlayWithButton = ({t}) => {
+export const PlayWithButton = ({t, userDepositValue, userCurrency}) => {
 
   return (
     <button className={styles.playWithButton}>
-      Play with $50
+      {`${t("depositWidget.playWith")} ${userCurrency.currencySymbol ? userCurrency.currencySymbol : ''}${userDepositValue}${userCurrency.currencySymbol ? "" : userCurrency.currencyAbbreviation}`}
     </button>
   )
 }

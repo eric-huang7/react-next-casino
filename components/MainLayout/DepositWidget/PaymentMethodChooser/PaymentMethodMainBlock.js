@@ -1,15 +1,22 @@
 import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 import {PaymentMethodButton} from "./PaymentMethodButton";
 import {PaymentMethodsList} from "./PaymentMethodsList";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-export const PaymentMethodMainBlock = ({t}) => {
+export const PaymentMethodMainBlock = ({t, scrollHeight}) => {
 
-  const [isActivePayments, setIsActivePayments] = useState(false)
+  const [isActivePayments, setIsActivePayments] = useState(false);
+
+  useEffect(() => {
+    if (scrollHeight < 900) {
+      setIsActivePayments(false);
+    }
+  }, [scrollHeight])
+
 
   return (
     <div className={styles.paymentMethodMainBlock}>
-      <PaymentMethodsList isActivePayments={isActivePayments} t={t}/>
+      <PaymentMethodsList scrollHeight={scrollHeight} isActivePayments={isActivePayments} t={t}/>
       <PaymentMethodButton setIsActivePayments={setIsActivePayments} isActivePayments={isActivePayments} t={t}/>
     </div>
   )

@@ -2,13 +2,13 @@ import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.m
 
 import Image from "next/image";
 
-export const PaymentMethodsList = ({t, isActivePayments}) => {
+export const PaymentMethodsList = ({t, isActivePayments, scrollHeight}) => {
 
 
   return (
     <ul className={`${styles.paymentMethodsList} ${isActivePayments ? styles.activePaymentsList : ""}`}>
       <li className={styles.paymentMethodItem}>
-      <p className={styles.paymentMethodName}>Card</p>
+      <p className={styles.paymentMethodName}>{t("depositWidget.card")}</p>
         <div className={styles.paymentCardIconBlock}>
           <Image layout={'fixed'} width={55} height={25} alt={'visa payment'} src={'/assets/img/depositPage/payments/Visa.png'}/>
           <Image layout={'fixed'} width={55} height={25} alt={'mastercard payment'} src={'/assets/img/depositPage/payments/MasterCard.png'}/>

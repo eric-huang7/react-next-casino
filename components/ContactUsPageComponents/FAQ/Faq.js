@@ -6,8 +6,6 @@ import {FaqDropdownItem} from "./FaqDropdownItem/FaqDropdownItem";
 export const Faq = ({t}) => {
 
 
-  console.log(data , 'data');
-
   return (
     <section   className={styles.faqSection}>
       <div className={styles.faqInnerWrapper}>
