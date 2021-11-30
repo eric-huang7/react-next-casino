@@ -5,7 +5,13 @@ export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueIn
 
   return (
     <div className={styles.amountInputWrapper}>
-      <input onChange={(e) => valueInputHandler(e)} className={styles.widgetAmountInput} type="number" id={'widgetAmountInput'} placeholder={`${userCurrency.currencySymbol} ${userDepositValue}`}/>
+      <input
+        onChange={(e) => valueInputHandler(e)}
+        className={styles.widgetAmountInput}
+        type="number"
+        id={'widgetAmountInput'}
+        placeholder={`${userCurrency.currencySymbol} ${userDepositValue}`}
+      />
       {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency.currencySymbol}</label>*/}
       <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{t("depositWidget.amount")}</label>
     </div>

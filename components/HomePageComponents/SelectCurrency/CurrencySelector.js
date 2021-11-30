@@ -2,15 +2,19 @@ import styles from '../../../styles/HomePage/SelectCurrency.module.scss';
 import {useDispatch} from "react-redux";
 import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
 import {showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {CurrencyItem} from "./CurrencyItem";
 
 export const CurrencySelector = ({t, heading, currenciesList}) => {
   const dispatch = useDispatch();
 
   const currencySelectorHandler = (e) => {
     dispatch(setUserCurrencySwitcher({
-      currencyId: e.target.dataset.currency_id,
-      currencyAbbreviation: e.target.dataset.currency_abbr,
-      currencySymbol: e.target.dataset.currency_symbol,
+      currencyId: e.id,
+      currencyAbbreviation: e.abbreviation,
+      currencySymbol: e.symbol,
+      currencyType: e.type,
+      isDepositEnabled: e.isDepositEnabled,
+      isWithdrawEnabled: e.isWithdrawEnabled,
     }))
     // dispatch(showCurrencySwitcher(false));
   }
@@ -24,16 +28,7 @@ export const CurrencySelector = ({t, heading, currenciesList}) => {
         {
           currenciesList.map((el) => {
             return (
-              <li
-                className={styles.selectorCurrenciesListItem}
-                data-currency_id={el.id}
-                data-currency_symbol={el.symbol}
-                data-currency_abbr={el.abbreviation}
-                key={el.id}
-                onClick={(e) => currencySelectorHandler(e)}
-              >
-                {el.abbreviation}
-              </li>
+              <CurrencyItem currencyData={el} currencySelectorHandler={currencySelectorHandler}/>
             )
           })
         }

@@ -12,7 +12,7 @@ export const PrizerList = ({t, sliderPosition, tournaments}) => {
           {
             tournaments.tournaments.results[sliderPosition].prizes.map((el, index) => {
               let nickName = tournaments.tournaments.results[sliderPosition].players[index] ? tournaments.tournaments.results[sliderPosition].players[index].nickname : '-';
-              let points = tournaments.tournaments.results[sliderPosition].players[index] ? tournaments.tournaments.results[sliderPosition].players[index].points : '-';
+              let points = tournaments.tournaments.results[sliderPosition].players[index] ? Number(tournaments.tournaments.results[sliderPosition].players[index].points).toFixed(2) : '-';
               let moneyAward = el.freespins_count === 0 ? Number(el.money_award) : el.freespins_count;
               let currency = el.freespins_count === 0 ? tournaments.tournaments.results[sliderPosition].currency : "fs";
               return (

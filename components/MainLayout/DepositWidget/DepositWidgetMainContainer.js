@@ -16,6 +16,9 @@ export const DepositWidgetMainContainer = ({t}) => {
 
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const currency = useSelector((store) => store);
+
+  console.log(currency, userCurrency, '------------')
 
   let scrollHeight = useWindowScroll();
   const [activeWidget, setActiveWidget] = useState(true);
@@ -25,7 +28,14 @@ export const DepositWidgetMainContainer = ({t}) => {
     dispatch(showCurrencySwitcher(true));
   }
   const valueInputHandler = (e) => {
-    dispatch(setUserDepositValue(e.target.value));
+    if (e.target.value > 9999999999) {
+      e.target.value = userDepositValue;
+      return false;
+    } else if (!e.target.value) {
+      dispatch(setUserDepositValue(0));
+    } else {
+      dispatch(setUserDepositValue(e.target.value));
+    }
   }
 
   return (
