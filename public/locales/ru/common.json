@@ -421,6 +421,10 @@
     "amount": "Сумма",
     "paymentMethod": "Платежный метод",
     "playWith": "Играть с",
-    "card": "Карта"
+    "card": "Карта",
+    "bitcoin": "Bitcoin",
+    "bitcoinCash": "Bitcoin Cash",
+    "litecoin": "Litecoin",
+    "ethereum": "Ethereum"
   }
 }

@@ -421,6 +421,10 @@
     "amount": "Amount",
     "paymentMethod": "Payment Method",
     "playWith": "Play with",
-    "card": "Card"
+    "card": "Card",
+    "bitcoin": "Bitcoin",
+    "bitcoinCash": "Bitcoin Cash",
+    "litecoin": "Litecoin",
+    "ethereum": "Ethereum"
   }
 }

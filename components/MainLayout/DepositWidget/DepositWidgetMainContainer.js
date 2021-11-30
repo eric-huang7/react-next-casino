@@ -23,7 +23,6 @@ export const DepositWidgetMainContainer = ({t}) => {
   let scrollHeight = useWindowScroll();
   const [activeWidget, setActiveWidget] = useState(true);
 
-
   const currencySwitcherShowHandler = () => {
     dispatch(showCurrencySwitcher(true));
   }
@@ -37,6 +36,16 @@ export const DepositWidgetMainContainer = ({t}) => {
       dispatch(setUserDepositValue(e.target.value));
     }
   }
+
+  const [isActivePayments, setIsActivePayments] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+
+  const paymentMethodChooser = (method) => {
+    setPaymentMethod(method);
+    setIsActivePayments(false);
+  }
+
+  console.log(paymentMethod, "+++++payment method")
 
   return (
     <div className={`${styles.depositWidgetMainContainer} ${userCurrency.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
@@ -53,6 +62,10 @@ export const DepositWidgetMainContainer = ({t}) => {
       />
       {userCurrency.type === 3 ? <PaymentMethodMainBlock
         scrollHeight={scrollHeight}
+        paymentMethod={paymentMethod}
+        paymentMethodChooser={paymentMethodChooser}
+        isActivePayments={isActivePayments}
+        setIsActivePayments={setIsActivePayments}
         t={t}
       /> : <></>}
 
