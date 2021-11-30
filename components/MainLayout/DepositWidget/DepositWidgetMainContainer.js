@@ -39,7 +39,7 @@ export const DepositWidgetMainContainer = ({t}) => {
   }
 
   return (
-    <div className={`${styles.depositWidgetMainContainer} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
+    <div className={`${styles.depositWidgetMainContainer} ${userCurrency.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <CurrencyChooser
         currencySwitcherShowHandler={currencySwitcherShowHandler}
         userCurrency={userCurrency}
@@ -51,10 +51,11 @@ export const DepositWidgetMainContainer = ({t}) => {
         valueInputHandler={valueInputHandler}
         t={t}
       />
-      <PaymentMethodMainBlock
+      {userCurrency.type === 3 ? <PaymentMethodMainBlock
         scrollHeight={scrollHeight}
         t={t}
-      />
+      /> : <></>}
+
       <PlayWithButton
         userCurrency={userCurrency}
         userDepositValue={userDepositValue}
