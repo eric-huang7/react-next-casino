@@ -74,7 +74,11 @@ export const DepositWidgetMainContainer = ({t}) => {
         userDepositValue={userDepositValue}
         t={t}
       />
-      <CloseButton setActiveWidget={setActiveWidget}/>
+      <CloseButton
+        userCurrency={userCurrency}
+        setActiveWidget={setActiveWidget}
+        setIsActivePayments={setIsActivePayments}
+      />
     </div>
   )
 }
