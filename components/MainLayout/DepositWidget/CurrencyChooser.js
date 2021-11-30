@@ -1,11 +1,11 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
 
-export const CurrencyChooser = () => {
+export const CurrencyChooser = ({t, currencySwitcherShowHandler}) => {
   
   return (
     <>
-      <button className={styles.widgetCurrencyButton} id={'widgetCurrencyButton'}>
+      <button onClick={() => currencySwitcherShowHandler()} className={styles.widgetCurrencyButton} id={'widgetCurrencyButton'}>
         EUR
       </button>
       <label className={styles.currencyButtonLabel} htmlFor="widgetCurrencyButton">Currency</label>

@@ -29,13 +29,13 @@ export const PaymentMethodsList = ({t, isActivePayments}) => {
       <li className={styles.paymentMethodItem}>
         <p className={styles.paymentMethodName}>Litecoin</p>
         <div className={styles.paymentIconBlock}>
-          <Image layout={'fixed'} width={20} height={20} alt={'Litecoin payment'} src={'/assets/img/depositWidget/bitcoin.png'}/>
+          <Image layout={'fixed'} width={20} height={20} alt={'Litecoin payment'} src={'/assets/img/depositWidget/litecoin.png'}/>
         </div>
       </li>
       <li className={styles.paymentMethodItem}>
         <p className={styles.paymentMethodName}>Ethereum</p>
         <div className={styles.paymentIconBlock}>
-          <Image layout={'fixed'} width={20} height={20} alt={'etherium payment'} src={'/assets/img/depositWidget/bitcoin.png'}/>
+          <Image layout={'fixed'} width={20} height={20} alt={'etherium payment'} src={'/assets/img/depositWidget/ethereum.png'}/>
         </div>
       </li>
     </ul>

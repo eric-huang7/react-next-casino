@@ -113,7 +113,6 @@ export const getServerSideProps = async (context) => {
   let heading;
   let whatSearch;
 
-  console.log(context.query, ':::::::::::::::::')
   if (context.query.id === 'all-games') {
 
     heading = context.query.id;

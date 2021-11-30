@@ -1,11 +1,11 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
 
-export const CloseButton = () => {
+export const CloseButton = ({setActiveWidget}) => {
 
 
   return (
-    <button className={styles.closeButton}>
+    <button onClick={() => setActiveWidget(false)} className={styles.closeButton}>
       <span className={styles.closeOne}></span>
       <span className={styles.closeTwo}></span>
     </button>

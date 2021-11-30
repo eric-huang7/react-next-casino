@@ -59,7 +59,7 @@ export const DepositPage = ({t}) => {
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
-    console.log(userSelectedBonus, 'selctedBonus')
+    // console.log(userSelectedBonus, 'selctedBonus')
     if (isChecked) {
       chooseBonusClickHandler(0);
       setIsChecked(false);

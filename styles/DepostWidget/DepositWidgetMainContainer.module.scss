@@ -18,6 +18,14 @@
   margin-left: -327px;
 
   padding: 19px 7px 8px;
+
+  transform: translateY(140px);
+
+  transition: transform 1s ease-in;
+}
+
+.showDepositWidget {
+  transform: translateY(0px);
 }
 
 .widgetCurrencyButton {
