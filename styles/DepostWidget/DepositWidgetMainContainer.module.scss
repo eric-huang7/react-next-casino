@@ -282,6 +282,12 @@
   cursor: pointer;
 }
 
+.disabledButton {
+  background-color: #757575;
+
+  cursor: not-allowed;
+}
+
 .closeButton {
   width: 17px;
   height: 17px;

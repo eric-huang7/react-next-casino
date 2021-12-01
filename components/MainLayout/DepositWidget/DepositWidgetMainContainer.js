@@ -60,7 +60,7 @@ export const DepositWidgetMainContainer = ({t}) => {
         valueInputHandler={valueInputHandler}
         t={t}
       />
-      {userCurrency.type === 3 ? <PaymentMethodMainBlock
+      {(userCurrency.type === 3) || (userCurrency.type === 0) ? <PaymentMethodMainBlock
         scrollHeight={scrollHeight}
         paymentMethod={paymentMethod}
         paymentMethodChooser={paymentMethodChooser}

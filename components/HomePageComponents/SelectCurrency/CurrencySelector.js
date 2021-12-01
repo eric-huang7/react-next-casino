@@ -28,7 +28,7 @@ export const CurrencySelector = ({t, heading, currenciesList}) => {
         {
           currenciesList.map((el) => {
             return (
-              <CurrencyItem currencyData={el} currencySelectorHandler={currencySelectorHandler}/>
+              <CurrencyItem key={`${el.id} currency`} currencyData={el} currencySelectorHandler={currencySelectorHandler}/>
             )
           })
         }
