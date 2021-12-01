@@ -1,6 +1,7 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
+import {ErrorMessage} from "./ErrorsMessages/ErrorMessage";
 
-export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueInputHandler}) => {
+export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueInputHandler, errorDepositValue}) => {
 
 
   return (
@@ -14,6 +15,7 @@ export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueIn
       />
       {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency.currencySymbol}</label>*/}
       <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{t("depositWidget.amount")}</label>
+      {errorDepositValue ? <ErrorMessage t={t} text={"depositWidget.valueError"} /> : <></> }
     </div>
   )
 }

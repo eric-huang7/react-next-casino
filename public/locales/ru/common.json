@@ -421,10 +421,13 @@
     "amount": "Сумма",
     "paymentMethod": "Платежный метод",
     "playWith": "Играть с",
+    "playWithTitle" : "Выберите дргугую валюту.",
     "card": "Карта",
     "bitcoin": "Bitcoin",
     "bitcoinCash": "Bitcoin Cash",
     "litecoin": "Litecoin",
-    "ethereum": "Ethereum"
+    "ethereum": "Ethereum",
+    "valueError": "Введите сумму депозита.",
+    "paymentError": "Выберите платежный метод."
   }
 }

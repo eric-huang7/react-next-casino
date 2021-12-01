@@ -48,7 +48,7 @@ const MainLayout = ({children, t}) => {
   return (
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
-            <DepositWidgetMainContainer t={t}/>
+            <DepositWidgetMainContainer userAuth={userInfo.isAuthenticated} t={t}/>
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>
             {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}

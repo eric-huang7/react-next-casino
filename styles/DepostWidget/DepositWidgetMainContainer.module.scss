@@ -2,7 +2,7 @@
 
   position: fixed;
 
-  bottom: 33px;
+  bottom: -200px;
 
   z-index: 12;
 
@@ -19,16 +19,16 @@
 
   padding: 19px 7px 8px;
 
-  transform: translateY(140px);
+  //transform: translateY(140px);
 
-  transition: transform 1s ease-in;
+  transition: transform 1s ease-in-out;
 }
 .moveRight {
   margin-left: -237px;
 }
 
 .showDepositWidget {
-  transform: translateY(0px);
+  transform: translateY(-223px);
 }
 
 .widgetCurrencyButton {
@@ -79,10 +79,10 @@
   margin-right: 7px;
 }
 .widgetAmountInput::placeholder {
-  //font-size: 14px;
-  //letter-spacing: 0px;
-  //color: #1e1f21;
-  //font-family: "Verdana";
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #1e1f21;
+  font-family: "Verdana";
 }
 
 .widgetAmountInput::-webkit-outer-spin-button,
@@ -321,4 +321,56 @@
   & .closeTwo {
     transform: rotateZ(-45deg);
   }
+}
+
+.errorMessageContainer {
+  position: absolute;
+
+  top: -115px;
+
+  width: 100%;
+
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2px;
+
+
+  z-index: 1;
+  & .errorMessageInnerWrapper {
+    background-color: #ff0000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px;
+
+    border-radius: 8px;
+  }
+
+  & .errorText {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-family: "Verdana", Arial, sans-serif;
+    word-break: break-word;
+  }
+
+  & .errorArrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
+    background-color: #ff0000;
+
+    transform: rotateZ(45deg);
+
+    bottom: -5px;
+    z-index: 0;
+  }
+
 }

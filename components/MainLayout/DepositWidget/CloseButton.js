@@ -1,11 +1,13 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
 
-export const CloseButton = ({setActiveWidget, setIsActivePayments}) => {
+export const CloseButton = ({setActiveWidget, setIsActivePayments, setErrorDepositValue, setErrorPaymentMethod}) => {
 
   const closeButtonClickHandler = () => {
     setActiveWidget(false);
     setIsActivePayments(false);
+    setErrorPaymentMethod(false);
+    setErrorDepositValue(false);
   }
 
   return (

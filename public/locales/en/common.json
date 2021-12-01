@@ -421,10 +421,13 @@
     "amount": "Amount",
     "paymentMethod": "Payment Method",
     "playWith": "Play with",
+    "playWithTitle" : "please select a different currency",
     "card": "Card",
     "bitcoin": "Bitcoin",
     "bitcoinCash": "Bitcoin Cash",
     "litecoin": "Litecoin",
-    "ethereum": "Ethereum"
+    "ethereum": "Ethereum",
+    "valueError": "Enter the deposit amount.",
+    "paymentError": "Select a payment method."
   }
 }

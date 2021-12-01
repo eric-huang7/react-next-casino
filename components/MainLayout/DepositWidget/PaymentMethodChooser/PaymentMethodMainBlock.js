@@ -3,6 +3,7 @@ import {PaymentMethodButton} from "./PaymentMethodButton";
 import {PaymentMethodsList} from "./PaymentMethodsList";
 import {useEffect, useState} from "react";
 import {ChosenPaymentMethodButton} from "./ChosenPaymentMethodButton";
+import {ErrorMessage} from "../ErrorsMessages/ErrorMessage";
 
 let paymentMethodsData = [
   {
@@ -47,15 +48,11 @@ let paymentMethodsData = [
   }
 ]
 
-export const PaymentMethodMainBlock = ({t, scrollHeight, paymentMethod, paymentMethodChooser, isActivePayments, setIsActivePayments}) => {
+export const PaymentMethodMainBlock = ({t, scrollHeight, paymentMethod, paymentMethodChooser, isActivePayments, setIsActivePayments, errorPaymentMethod}) => {
 
 
 
-  useEffect(() => {
-    if (scrollHeight < 900) {
-      setIsActivePayments(false);
-    }
-  }, [scrollHeight])
+
 
 
   return (
@@ -81,6 +78,7 @@ export const PaymentMethodMainBlock = ({t, scrollHeight, paymentMethod, paymentM
           t={t}
         />
       }
+      { errorPaymentMethod ? <ErrorMessage t={t} text={"depositWidget.paymentError"} /> : <></> }
     </div>
   )
 }
