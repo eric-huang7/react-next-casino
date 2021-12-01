@@ -12,8 +12,8 @@ export const ChosenPaymentMethodButton = ({t, paymentData, isActivePayments, set
         <div className={styles.paymentCardIconBlock}>
           {paymentData.type === 'card' ?
             <>
-              <Image layout={'fixed'} width={50} height={25} alt={'visa payment'} src={paymentData.icon_one}/>
-              <Image layout={'fixed'} width={55} height={25} alt={'mastercard payment'} src={paymentData.icon_two}/>
+              <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'} src={paymentData.icon_one}/>
+              {/*<Image layout={'fixed'} width={55} height={25} alt={'mastercard payment'} src={paymentData.icon_two}/>*/}
             </>
             :
             <Image layout={'fixed'} width={20} height={20} alt={"bitcoin payment"} src={paymentData.icon_one}/>

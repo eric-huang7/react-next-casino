@@ -1,6 +1,5 @@
 import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
-import Image from "next/image";
 import {PaymentMethodItem} from "./PaymentMethodItem";
 
 

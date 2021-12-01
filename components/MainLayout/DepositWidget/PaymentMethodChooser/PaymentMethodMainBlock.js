@@ -9,8 +9,8 @@ let paymentMethodsData = [
   {
     type: 'card',
     name: 'depositWidget.card',
-    icon_one: '/assets/img/depositPage/payments/Visa.png',
-    icon_two: '/assets/img/depositPage/payments/MasterCard.png',
+    icon_one: '/assets/img/depositWidget/cards.png',
+    icon_two: null,
     currency: 'card',
     currency_id: null
   },

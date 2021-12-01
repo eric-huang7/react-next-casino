@@ -55,7 +55,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const openWindow = (type) => {
     console.log('open', type);
     if (!userAuth) {
-      dispatch(showRegister(true));
+      console.log(paymentMethod)
+      // dispatch(showRegister(true));
     }
   }
 
@@ -69,7 +70,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       } else if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
-        openWindow('fiat');
+        if (paymentMethod.type === 'crypto') {
+          openWindow('crypto');
+        } else {
+          openWindow('fiat');
+        }
       }
     } else {
       if (Number(userDepositValue) === 0) {

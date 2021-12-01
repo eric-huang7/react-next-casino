@@ -421,7 +421,7 @@
     "amount": "Amount",
     "paymentMethod": "Payment Method",
     "playWith": "Play with",
-    "playWithTitle" : "please select a different currency",
+    "playWithTitle" : "Please select a different currency",
     "card": "Card",
     "bitcoin": "Bitcoin",
     "bitcoinCash": "Bitcoin Cash",
