@@ -1,0 +1,325 @@
+.paymentsMainWrapper {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 17;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0,0,0, 0.8);
+
+  overflow-y: scroll;
+}
+
+.paymentsInnerWrapper {
+  margin: 170px auto;
+
+  max-width: 430px;
+  width: 100%;
+}
+
+.paymentsMainContainer {
+  border-radius: 15px;
+  background-color: #ffffff;
+  border: 4px solid #ffffff;
+
+  margin-bottom: 30px;
+}
+
+.paymentsHead {
+  background-color: #ff0000;
+
+  width: 100%;
+  height: 50px;
+
+  border-radius: 15px 15px 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  padding: 4px 10px 0 18px;
+
+  & .backButton {
+    //position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: none;
+    border-right: none;
+
+    background-color: transparent;
+
+    transform: rotateZ(-45deg);
+
+    cursor: pointer;
+  }
+
+  & .closeButton {
+    outline: none;
+    border: none;
+    background-color: transparent;
+
+    width: 28px;
+    height: 28px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    & .closeOne, .closeTwo {
+      position: absolute;
+      top: 13px;
+      left: 0;
+
+      width: 25px;
+
+      border-top: 3px solid #ffffff;
+      border-radius: 2px;
+    }
+    & .closeOne {
+      transform: rotateZ(45deg);
+    }
+    & .closeTwo {
+      transform: rotateZ(-45deg);
+    }
+  }
+}
+
+.cryptoHeading {
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-family: "Myriad Pro", Arial, sans-serif;
+  font-weight: 400;
+}
+
+
+.confirmButton {
+  width: 100%;
+  height: 74px;
+
+  border-radius: 15px;
+  border: 4px solid #ffffff;
+
+  background-color: #ff0000;
+
+
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "Myriad Pro";
+  text-transform: uppercase;
+}
+
+.inputsWrapper {
+  padding: 20px 15px;
+
+}
+
+.cardNumberDate,
+.nameCardCvv {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.nameCardCvv {
+  margin-top: 24px;
+}
+
+
+.cardNumberWrapper,
+.cardNameWrapper {
+  position: relative;
+
+  margin-right: 10px;
+
+}
+
+.cardNumberInput, .cardNameInput {
+  width: 287px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #ededed;
+  border: 1px solid #8a8a8a;
+
+  padding: 0 45px 0 15px;
+
+  font-size: 14px;
+  color: #6c6c6c;
+  font-family: "Verdana";
+
+  outline: none;
+}
+.cardNumberInput::placeholder, .cardNameInput::placeholder {
+  font-size: 14px;
+  color: #6c6c6c;
+  font-family: "Verdana";
+}
+
+.cardNumberInput::-webkit-outer-spin-button,
+.cardNumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cardNumberInput {
+  -moz-appearance: textfield;
+}
+.cardNumberInput::-webkit-inner-spin-button,
+.cardNumberInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dateInput,
+.cardCvv {
+  max-width: 94px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #ededed;
+  border: 0.88px solid #8a8a8a;
+
+  font-size: 14px;
+  color: #6c6c6c;
+  font-family: "Verdana";
+
+  outline: none;
+
+  padding: 0 3px 0 5px;
+}
+.cardCvv::placeholder {
+  text-align: center;
+}
+
+.dateInput::placeholder, .cardCvv::placeholder {
+  font-size: 14px;
+  color: #6c6c6c;
+  font-family: "Verdana";
+}
+.dateInput::-webkit-outer-spin-button,
+.dateInput::-webkit-inner-spin-button,
+.cardCvv::-webkit-outer-spin-button,
+.cardCvv::-webkit-inner-spin-button,{
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dateInput,
+.cardCvv{
+  -moz-appearance: textfield;
+}
+.dateInput::-webkit-inner-spin-button,
+.dateInput::-webkit-outer-spin-button,
+.cardCvv::-webkit-inner-spin-button,
+.cardCvv::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cardNumberLabel,
+.cardNameLabel {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  width: 36px;
+  height: 31px;
+
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cardNumberLabel {
+  background-image: url("/assets/img/paymentsModals/card.png");
+}
+.cardNameLabel {
+  top: 6px;
+  background-image: url("/assets/img/paymentsModals/user.png");
+}
+
+.amountValue {
+  margin-top: 36px;
+  margin-bottom: 15px;
+
+  & p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #ff0000;
+    font-family: "Verdana";
+
+    margin: 0;
+  }
+}
+
+.amountValueInput {
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #ededed;
+  border: 0.88px solid #8a8a8a;
+
+  outline: none;
+
+  font-size: 16px;
+  color: #1e1e1e;
+  font-family: "Verdana";
+}
+
+.amountValueInput::-webkit-outer-spin-button,
+.amountValueInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.amountValueInput {
+  -moz-appearance: textfield;
+}
+.amountValueInput::-webkit-inner-spin-button,
+.amountValueInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.secureBlock {
+  display: flex;
+  align-items: flex-start;
+
+  & > div {
+    flex-shrink: 0;
+  }
+}
+.secureText {
+  font-size: 13px;
+  color: #6c6c6c;
+  font-family: "Verdana";
+  text-align: center;
+
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 430px) {
+  .paymentsInnerWrapper {
+    margin: 170px auto;
+
+    max-width: 360px;
+    width: 100%;
+  }
+
+  .cardNumberInput, .cardNameInput {
+    width: 227px;
+    height: 45px;
+  }
+
+  .secureText {
+    margin-left: 35px;
+  }
+
+}

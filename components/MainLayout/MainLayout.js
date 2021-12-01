@@ -22,7 +22,7 @@ import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails
 import {getTournaments} from "../../redux/actions/getTournaments";
 import {closeAll} from "../../redux/actions/showPopups";
 import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
-import {PaymentsWrapper} from "./PaymentsModals/PaymentsWrapper";
+import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 
 
 const MainLayout = ({children, t}) => {
@@ -50,7 +50,7 @@ const MainLayout = ({children, t}) => {
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             <DepositWidgetMainContainer userAuth={userInfo.isAuthenticated} t={t}/>
-            <PaymentsWrapper t={t} />
+            <PaymentsCardWrapper t={t} />
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>
             {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
