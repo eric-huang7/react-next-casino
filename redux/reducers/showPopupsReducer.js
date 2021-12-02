@@ -1,5 +1,5 @@
 import {
-  BACK_BUTTON_SHOULD_DO, CLOSE_All,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
@@ -16,6 +16,8 @@ const initialState = {
   isShowPlaySafe: false,
   isShowTournaments: false,
   isShowTournamentsDetails: false,
+  isShowCreditCardModal: false,
+  isShowCryptoModal: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -39,6 +41,18 @@ function showPopupsReducer(state = initialState, action) {
         isShowPlaySafe: false,
         isShowTournaments: false,
         isShowTournamentsDetails: false,
+        isShowCreditCardModal: false,
+        isShowCryptoModal: false,
+      }
+    case SHOW_CREDIT_CARD_MODAL:
+      return {
+        ...state,
+        isSowCreditCardModal: payload
+      }
+    case SHOW_CRYPTO_MODAL:
+      return {
+        ...state,
+        isShowCryptoModal: payload
       }
     case SHOW_TOURNAMENTS:
       return {

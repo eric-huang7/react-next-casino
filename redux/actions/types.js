@@ -139,3 +139,9 @@ export const SHOW_TOURNAMENTS_DETAILS = 'SHOW_TOURNAMENTS_DETAILS';
 export const CLOSE_All = 'CLOSE_All';
 
 
+// ############## PAYMENT POPUPS
+
+export const SHOW_CREDIT_CARD_MODAL = 'SHOW_CREDIT_CARD_MODAL';
+export const SHOW_CRYPTO_MODAL = 'SHOW_CRYPTO_MODAL';
+
+

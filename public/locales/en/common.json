@@ -429,5 +429,14 @@
     "ethereum": "Ethereum",
     "valueError": "Enter the deposit amount.",
     "paymentError": "Select a payment method."
+  },
+  "cryptoPayment": {
+    "heading": "Avaiting Payment",
+    "textBlock": {
+      "firstBlock": "Complate the payment by sending ",
+      "secondBlock": "(around 50.00 EUR) to your depositing address or\nscanning the QR code."
+    },
+    "depositAddress": "Deposit address",
+    "memo": "Memo"
   }
 }

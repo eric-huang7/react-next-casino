@@ -1,5 +1,5 @@
 import {
-  BACK_BUTTON_SHOULD_DO, CLOSE_All,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS,
@@ -11,6 +11,19 @@ import {
 export const closeAll = (isShow) => {
   return {
     type: CLOSE_All,
+    payload: isShow
+  }
+}
+
+export const showCreditCardModal = (isShow) => {
+  return {
+    type: SHOW_CREDIT_CARD_MODAL,
+    payload: isShow
+  }
+}
+export const showCryptoModal = (isShow) => {
+  return {
+    type: SHOW_CRYPTO_MODAL,
     payload: isShow
   }
 }

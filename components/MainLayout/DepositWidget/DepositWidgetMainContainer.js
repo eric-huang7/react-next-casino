@@ -7,7 +7,7 @@ import {CloseButton} from "./CloseButton";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {showCreditCardModal, showCryptoModal, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {showRegister} from "../../../redux/actions/registerShow";
 
@@ -54,9 +54,18 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   const openWindow = (type) => {
     console.log('open', type);
-    if (!userAuth) {
-      console.log(paymentMethod)
-      // dispatch(showRegister(true));
+    // if (!userAuth) {
+    //   console.log(paymentMethod)
+    //   dispatch(showRegister(true));
+    // } else
+    if (type === 'fiat') {
+      console.log('FIAT')
+      dispatch(showCreditCardModal(true));
+
+    } else if (type === 'crypto') {
+      console.log('CRYPTO')
+      dispatch(showCryptoModal(true));
+
     }
   }
 
