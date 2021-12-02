@@ -20,7 +20,7 @@ export const PaymentsCryptoWrapper = ({t}) => {
         <div className={styles.paymentsMainContainer}>
           <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'}/>
           <TextBlock t={t} value={0.203222455} currency={'BTC'}/>
-          <QRContainer qrData={'4MHwwec8rfklj5oXSguWUk3OPGTRjw'} />
+          <QRContainer qrData={'https://www.youtube.com/watch?v=MHOIZUZqhVE'} />
           <ValueContainer value={0.203222455} currency={'BTC'}/>
           <DepositAddressInput t={t} addressData={'4MHwwec8rfklj5oXSguWUk3OPGTRjw'} memoData={'teg-3348754'}/>
         </div>
