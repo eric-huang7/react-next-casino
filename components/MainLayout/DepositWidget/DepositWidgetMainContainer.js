@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {showCreditCardModal, showCryptoModal, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {showRegister} from "../../../redux/actions/registerShow";
+import {siteID} from "../../../envs/envsForFetching";
+import {postCryptoPayment} from "../../../redux/actions/depositPayments";
 
 
 export const DepositWidgetMainContainer = ({t, userAuth}) => {
@@ -17,9 +19,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
-  const currency = useSelector((store) => store);
 
-  // console.log(currency, userCurrency, '------------')
 
   let scrollHeight = useWindowScroll();
   const [activeWidget, setActiveWidget] = useState(true);
@@ -53,19 +53,36 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const [errorDepositValue, setErrorDepositValue] = useState(false);
 
   const openWindow = (type) => {
-    console.log('open', type);
-    // if (!userAuth) {
-    //   console.log(paymentMethod)
-    //   dispatch(showRegister(true));
-    // } else
-    if (type === 'fiat') {
-      console.log('FIAT')
+    if (!userAuth.isAuthenticated) {
+      dispatch(showRegister(true));
+    } else if (type === 'fiat') {
+      console.log('FIAT', type)
       dispatch(showCreditCardModal(true));
 
     } else if (type === 'crypto') {
-      console.log('CRYPTO')
+      let paymentData = {
+        senderCurrency_id: userCurrency.currencyId,
+        user_id: `${userAuth.user.user.id}`,
+        site_id: siteID,
+        award_amount: `${userDepositValue}`,
+        receiverCurrency_id: userCurrency.currencyId
+      }
+
+      dispatch(postCryptoPayment(paymentData, paymentMethod));
       dispatch(showCryptoModal(true));
 
+    } else if (type === 'crypto chosen type') {
+      let paymentData = {
+        senderCurrency_id: paymentMethod.currency_id,
+        user_id: `${userAuth.user.user.id}`,
+        site_id: siteID,
+        award_amount: `${userDepositValue}`,
+        receiverCurrency_id: userCurrency.currencyId
+      }
+      dispatch(postCryptoPayment(paymentData, paymentMethod));
+      dispatch(showCryptoModal(true));
+      console.log('CRYPTO', type)
+      console.log('CRYPTO', type, userAuth, userCurrency, userDepositValue, paymentMethod);
     }
   }
 
@@ -80,7 +97,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         setErrorDepositValue(true);
       } else {
         if (paymentMethod.type === 'crypto') {
-          openWindow('crypto');
+          openWindow('crypto chosen type');
         } else {
           openWindow('fiat');
         }

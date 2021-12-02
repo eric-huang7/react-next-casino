@@ -20,6 +20,7 @@ import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduse
 import notifyReducer from "./reducers/notifyReducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./reducers/tournaments";
+import depositReducer from "./reducers/depositPaymentsReducer";
 
 
 
@@ -44,4 +45,5 @@ export const rootReducer = combineReducers({
   notifications: notifyReducer,
   mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
+  depositData: depositReducer,
 })

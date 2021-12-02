@@ -9,14 +9,14 @@ import "slick-carousel/slick/slick-theme.css";
 export const TournamentSliderContainer = ({t, tournaments, router, setSliderPosition, sliderPosition}) => {
 
 
-
-
-
   let slideRef = useRef('')
-  if (typeof slideRef.current.slickGoTo === 'function') {
+  if (slideRef.current) {
+    if (typeof slideRef.current.slickGoTo === 'function') {
 
-    slideRef.current.slickGoTo(sliderPosition)
+      slideRef.current.slickGoTo(sliderPosition)
+    }
   }
+
 
   function SampleNextArrow(props) {
     const { className, onClick } = props;

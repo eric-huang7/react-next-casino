@@ -10,8 +10,8 @@ export const QRContainer = ({qrData}) => {
     QRCode.toDataURL(qrData).then((data) => {
       setSrc(data);
     })
-  },[])
-
+  },[qrData])
+  console.log('QQQQQQQQEEEEEEE')
   return (
     <div className={styles.qrImageContainer}>
       <img src={src} alt="qr code image" className={styles.qrCodeImage}/>

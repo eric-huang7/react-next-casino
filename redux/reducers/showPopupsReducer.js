@@ -47,7 +47,7 @@ function showPopupsReducer(state = initialState, action) {
     case SHOW_CREDIT_CARD_MODAL:
       return {
         ...state,
-        isSowCreditCardModal: payload
+        isShowCreditCardModal: payload
       }
     case SHOW_CRYPTO_MODAL:
       return {

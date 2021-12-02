@@ -40,19 +40,21 @@ const MainLayout = ({children, t}) => {
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const isShowModal = useSelector((store) => store.showPopupsReducer);
-  // const showTournaments = useSelector((store) => store.showPopupsReducer.isShowTournaments);
+  const paymentsData = useSelector((store) => store.depositData);
 
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
+
+  console.log(paymentsData,isShowModal, 'payment main layout')
   return (
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
-            <DepositWidgetMainContainer userAuth={userInfo.isAuthenticated} t={t}/>
-            {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper t={t} /> : <></>}
-            {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper t={t}/> : <></>}
+            <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
+            {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper t={t}/> : <></>}
+            {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
 
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
             <MobileSideMenu t={t} userInform={userInfo}/>

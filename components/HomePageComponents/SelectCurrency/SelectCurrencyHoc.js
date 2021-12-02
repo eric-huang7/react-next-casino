@@ -19,7 +19,7 @@ const otherCryptoCurrencies = [
   {id: 2, abbreviation: "LTC", symbol: "", type: 4, isDepositEnabled: 1, isWithdrawEnabled: 0},
   {id: 391, abbreviation: "BCH", symbol: "", type: 0, isDepositEnabled: 0, isWithdrawEnabled: 0},
   {id: 168, abbreviation: "ETH", symbol: "", type: 2, isDepositEnabled: 1, isWithdrawEnabled: 0},
-  {id: 29, abbreviation: "DOGE", symbol: "", type: 1, isDepositEnabled: 1, isWithdrawEnabled: 1},
+  {id: 29, abbreviation: "DOGE", symbol: "", type: 1, isDepositEnabled: 0, isWithdrawEnabled: 0},
 ]
 const headingsCurrencies = {
   suggestedCurrencies: 'selectCurrency.suggestedCurrencies',
