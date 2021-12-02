@@ -17,6 +17,8 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
     dispatch(showCryptoModal(false));
     dispatch(annulDeposit());
   }
+
+  console.log(paymentsData, 'crypto payments')
   return (
     <div className={styles.paymentsMainWrapper}>
       <div className={styles.paymentsInnerWrapper}>
@@ -26,6 +28,12 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
             paymentsData.isCryptoPaymentDataLoading ?
               <><h1>LOADING...</h1></>
               :
+              paymentsData.isCryptoPaymentError ?
+                <>
+                  <h2 style={{color: "#ff0000"}}>ERROR</h2>
+                  <p style={{color: "#ff0000"}}>{paymentsData.isCryptoPaymentError.data.extra_error_info.message}</p>
+                </>
+                :
               <>
                 <TextBlock
                   t={t}

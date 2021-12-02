@@ -1,5 +1,12 @@
 import axios from "axios";
-import {ANNUL_CRYPTO_PAYMENT, LOGIN_FAIL, LOGIN_SUCCESS, POST_CREDIT_CARD_PAYMENT, POST_CRYPTO_PAYMENT} from "./types";
+import {
+  ANNUL_CRYPTO_PAYMENT,
+  ERROR_CRYPTO_PAYMENT,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  POST_CREDIT_CARD_PAYMENT,
+  POST_CRYPTO_PAYMENT
+} from "./types";
 import {login_url, post_deposit_payment} from "../url/url";
 
 
@@ -30,6 +37,10 @@ export const postCryptoPayment = (paymentData, paymentMethod) => async dispatch 
       }
     })
   } catch (e) {
+    dispatch({
+      type: ERROR_CRYPTO_PAYMENT,
+      payload: e.response
+    })
     console.log('some error POST crypto deposit =>>', e.response)
   }
 }

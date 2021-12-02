@@ -68,7 +68,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         receiverCurrency_id: userCurrency.currencyId
       }
 
-      dispatch(postCryptoPayment(paymentData, paymentMethod));
+      dispatch(postCryptoPayment(paymentData, null));
       dispatch(showCryptoModal(true));
 
     } else if (type === 'crypto chosen type') {
