@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {showCryptoModal} from "../../../redux/actions/showPopups";
 import {annulDeposit} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
+import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 
 
 export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
@@ -27,7 +28,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
           <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'} />
           {
             paymentsData.isCryptoPaymentDataLoading ?
-              <><h1 style={{margin: "30px 0"}}>{t("cryptoPayment.loading")}</h1></>
+              <><LoadingComponent/></>
               :
               paymentsData.isCryptoPaymentError ?
                 <>

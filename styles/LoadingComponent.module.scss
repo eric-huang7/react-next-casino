@@ -1,0 +1,152 @@
+.loaderWrapper {
+  height: 300px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  & div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
+.itemOne {
+  background-color: #96d399;
+  //animation: changeColorOne 4s ease-in-out infinite;
+  animation-name: changeColorOne;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+.itemTwo {
+  background-color: #96d399;
+  //animation: changeColorTwo 1s ease-in-out infinite;
+  animation-name: changeColorTwo;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.itemThree {
+  background-color: #96d399;
+  //animation: changeColorThree 1s ease-in-out infinite;
+  animation-name: changeColorThree;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.itemFour {
+  background-color: #96d399;
+  //animation: changeColorFour 1s ease-in-out infinite;
+  animation-name: changeColorFour;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes changeColorOne {
+  0% {
+    background-color: #96d399;
+  }
+  16% {
+    background-color: #47b14c;
+  }
+  32% {
+    background-color: #47b14c;
+  }
+  48% {
+    background-color: #96d399;
+  }
+  64% {
+    background-color: #96d399;
+  }
+  80% {
+    background-color: #96d399;
+  }
+  100% {
+    background-color: #96d399;
+  }
+}
+
+@keyframes changeColorTwo {
+  0% {
+    background-color: #96d399;
+  }
+  16% {
+    background-color: #96d399;
+  }
+  32% {
+    background-color: #47b14c;
+  }
+  48% {
+    background-color: #47b14c;
+  }
+  64% {
+    background-color: #96d399;
+  }
+  80% {
+    background-color: #96d399;
+  }
+  100% {
+    background-color: #96d399;
+  }
+}
+@keyframes changeColorThree {
+  0% {
+    background-color: #96d399;
+  }
+  16% {
+    background-color: #96d399;
+  }
+  32% {
+    background-color: #96d399;
+  }
+  48% {
+    background-color: #47b14c;
+  }
+  64% {
+    background-color: #47b14c;
+  }
+  80% {
+    background-color: #96d399;
+  }
+  100% {
+    background-color: #96d399;
+  }
+}
+
+@keyframes changeColorFour {
+  0% {
+    background-color: #96d399;
+  }
+  16% {
+    background-color: #96d399;
+  }
+  32% {
+    background-color: #96d399;
+  }
+  48% {
+    background-color: #96d399;
+  }
+  64% {
+    background-color: #47b14c;
+  }
+  80% {
+    background-color: #47b14c;
+  }
+  100% {
+    background-color: #96d399;
+  }
+}
