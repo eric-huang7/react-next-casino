@@ -49,13 +49,12 @@ const MainLayout = ({children, t}) => {
   let toursref = useRef()
 
 
-  console.log(paymentsData,isShowModal, 'payment main layout')
   return (
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
             {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
-            {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper t={t}/> : <></>}
+            {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper userInfo={userInfo} t={t}/> : <></>}
             {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
 
             {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}

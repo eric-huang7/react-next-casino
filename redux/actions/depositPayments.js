@@ -45,6 +45,35 @@ export const postCryptoPayment = (paymentData, paymentMethod) => async dispatch 
   }
 }
 
+export const postCreditCardPayment = (paymentData, paymentMethod) => async dispatch => {
+
+  console.log(paymentData, 'ACTION credit card paymentDATA >>>>>>>>>>>>>>>')
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const body = JSON.stringify(paymentData);
+
+  try {
+    const res = await axios.post(post_deposit_payment, body, config);
+    console.log(res, 'deposit crypto RESPONSE');
+    dispatch({
+      type: POST_CRYPTO_PAYMENT,
+      payload: {
+        data: res.data,
+        paymentMethod: paymentMethod,
+      }
+    })
+  } catch (e) {
+    dispatch({
+      type: ERROR_CRYPTO_PAYMENT,
+      payload: e.response
+    })
+    console.log('some error POST crypto deposit =>>', e.response)
+  }
+}
+
 export const annulDeposit = () => {
   return {
     type: ANNUL_CRYPTO_PAYMENT,

@@ -16,7 +16,7 @@ export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBac
       <div className={styles.heading}>
         {type === 'crypto' ? <h3 className={styles.cryptoHeading}>{t("cryptoPayment.heading")}</h3> : <></>}
         {type === 'fiat' ? <Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.png'} width={96} height={38} layout={'fixed'} alt={'visa/mastercard icon'}/> : <></>}
-        {type === 'stepper' ? <h3 className={styles.cryptoHeadingStepper}>{pageStep === 1 ? 'ENTER DEPOSIT AMOUNT' : "CHOSE PAYMENT METHOD"}</h3> : <></>}
+        {type === 'stepper' ? <h3 className={styles.cryptoHeadingStepper}>{pageStep === 1 ? t("paymentsStepper.headingOne") : t("paymentsStepper.headingTwo")}</h3> : <></>}
       </div>
       <button onClick={() => closeHandler()} className={styles.closeButton}>
         <span className={styles.closeOne}></span>

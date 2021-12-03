@@ -123,6 +123,8 @@
   letter-spacing: 0px;
   color: rgba(0,0,0, 0.5);
   font-family: "Verdana";
+
+  white-space: nowrap;
 }
 
 .paymentMethodMainBlock {
@@ -406,7 +408,7 @@
 
     font-size: 24px;
     color: #4d4d4d;
-    font-family: "Segoe UI";
+    font-family: "Segoe UI", sans-serif;
     letter-spacing: 0px;
 
     padding: 0 5px 0 5px;
@@ -422,7 +424,7 @@
   .widgetAmountInput::placeholder {
     font-size: 24px;
     color: #4d4d4d;
-    font-family: "Segoe UI";
+    font-family: "Segoe UI", sans-serif;
     letter-spacing: 0px;
   }
   .amountInputLabel {
@@ -435,7 +437,7 @@
     font-size: 10px;
     color: #4d4d4d;
     font-weight: bold;
-    font-family: "Segoe UI";
+    font-family: "Segoe UI", sans-serif;
   }
 
 
@@ -450,7 +452,7 @@
 
     font-size: 16px;
     color: #ffffff;
-    font-family: "Segoe UI";
+    font-family: "Segoe UI", sans-serif;
     letter-spacing: 0px;
     text-transform: uppercase;
 

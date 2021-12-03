@@ -9,7 +9,7 @@ export const StepOneEnterAmount = ({t, userCurrency, userDepositValue, valueInpu
   return (
     <div className={styles.stepOneWrapper}>
       <div className={styles.stepperAmountContainer}>
-        <label className={styles.stepperAmountLabel} htmlFor="stepperAmount">ENTER DEPOSIT AMOUNT</label>
+        <label className={styles.stepperAmountLabel} htmlFor="stepperAmount">{t("paymentsStepper.headingOne")}</label>
         <input
           type="number"
           className={styles.stepperAmountInput}

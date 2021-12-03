@@ -440,6 +440,24 @@
       "around": "около "
     },
     "depositAddress": "Адрес депозита",
-    "memo": "Памятка"
+    "memo": "Памятка",
+    "error": "Ошибка"
+  },
+  "creditCardPayment": {
+    "errors": {
+      "moreValue": "Сумма должна быть более 20$.",
+      "lessValue": "Ссума не должна превышать 4000$.",
+      "wrongCard": "Неправильный формат."
+    },
+    "creditCard": "Номер кредитной карты",
+    "expiryDate": "Срок",
+    "creditHolder": "Имя владельца карты",
+    "amountValue": "Сумма ",
+    "secureText": "Безопасное время обработки платежа: мгновенная комиссия 2,5%",
+    "confirmButton": "Подтвердить"
+  },
+  "paymentsStepper": {
+    "headingOne": "ВВЕДИТЕ СУММУ ДЕПОЗИТА",
+    "headingTwo": "ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ"
   }
 }

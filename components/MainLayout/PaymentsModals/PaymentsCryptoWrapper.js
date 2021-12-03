@@ -31,7 +31,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
               :
               paymentsData.isCryptoPaymentError ?
                 <>
-                  <h2 style={{color: "#ff0000"}}>ERROR</h2>
+                  <h2 style={{color: "#ff0000", textTransform: "uppercase"}}>{t("cryptoPayment.error")}</h2>
                   <p style={{color: "#ff0000"}}>{paymentsData.isCryptoPaymentError.data.extra_error_info.message}</p>
                 </>
                 :

@@ -440,6 +440,26 @@
       "around": "around "
     },
     "depositAddress": "Deposit address",
-    "memo": "Memo"
+    "memo": "Memo",
+    "error": "Error"
+  },
+  "creditCardPayment": {
+    "errors": {
+      "moreValue": "The amount should be $20 or more.",
+      "lessValue": "The amount should be $4000 or less.",
+      "wrongCard": "Wrong format."
+    },
+    "creditCard": "Credit Card Number",
+    "expiryDate": "Expiry Date",
+    "creditHolder": "Credit Holder Name",
+    "amountValue": "Amount ",
+    "secureText": "Secure Payment Processing Time: Instant Fee 2.5%",
+    "confirmButton": "Confirm"
+
+
+  },
+  "paymentsStepper": {
+    "headingOne": "ENTER DEPOSIT AMOUNT",
+    "headingTwo": "CHOSE PAYMENT METHOD"
   }
 }

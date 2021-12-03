@@ -3,11 +3,13 @@ import {Header} from "../../MainLayout/Header/Header";
 import {SelectCurrencyHoc} from "./SelectCurrencyHoc";
 import {useDispatch, useSelector} from "react-redux";
 import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import useWindowScroll from "../../../hooks/useWindowScroll";
 
 
 
 
 export const SelectCurrency = ({t}) => {
+  let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
   const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton);
@@ -31,7 +33,7 @@ export const SelectCurrency = ({t}) => {
   return (
     <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
       {/*<Header t={t}/>*/}
-      <div className={styles.selectCurrencyMainContainer}>
+      <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
         <div className={styles.selectCurrencyHeadingBlock}>
           <div
             onClick={() => backButtonClickHandler()}

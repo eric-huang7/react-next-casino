@@ -3,17 +3,13 @@ import Image from "next/image";
 import {useState} from "react";
 
 
-export const InputsContainer = ({t, userCurrency, userDepositValue}) => {
-  const [amountError, setAmountError] = useState(null);
-  const [cardNumberError, setCardNumberError] = useState(null);
-  const [dateInput, setDateInput] = useState('');
-  const [cvvValue, setCvvValue] = useState('');
-  const [cardNumber, setCurdNumber] = useState('');
+export const InputsContainer = ({t, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCurdNumber, setCvvValue, setDateInput}) => {
+
 const amountValueInputHandler = (e) => {
   if (e.target.value < 20) {
-    setAmountError('The amount should be $20 or more.');
+    setAmountError(t("creditCardPayment.errors.moreValue"));
   } else if (e.target.value > 4000) {
-    setAmountError('The amount should be $4000 or less.');
+    setAmountError(t("creditCardPayment.errors.lessValue"));
   } else {
     setAmountError(null);
   }
@@ -29,33 +25,37 @@ const amountValueInputHandler = (e) => {
 
       return expiry.getTime() > current.getTime();
 
-    } else return false;
+    } else {
+      return false;
+    }
   }
 
 const cardDateValue = (e) => {
-  console.log(validateExpiry('12/21'))
-  //   let input = e.target.value;
-  //   if (/^0[1-9]|1[0-2]/[0-9]+$/.test(input)) {
-  //     return input;
-  //   }
-  //
-  //   let regexpExpiry = /^(?<month>0[1-9]|1[0-2])(?<year>[0-9]+)$/
-  //   let match = regexpExpiry.exec(input);
-  // console.log(`${match.groups.month}/${match.groups.year}`);
 
-    if (e.target.value.length > 5) {
+  let date = e.target.value.replace(/\//g, "").substring(0, 2) + (e.target.value.length > 2 ? '/' : '') + e.target.value.replace(/\//g, "").substring(2, 4);
+
+    if (date.length > 5) {
       console.log('date')
     } else {
-      if (e.target.value.length > 0) {
-        if (e.target.value[0].match(/[2-9]/)) {
-          setDateInput("0" + e.target.value);
+      if (date.length > 0) {
+        if (date[0].match(/[2-9]/)) {
+          setDateInput("0" + date);
         } else {
-          setDateInput(e.target.value);
+          setDateInput(date);
         }
       } else {
-        setDateInput(e.target.value);
+        setDateInput(date);
       }
     }
+    if (validateExpiry(date)) {
+      setCardDateError('')
+    } else {
+      setCardDateError('Дата неверна!')
+      if (date.length === 0) {
+        setCardDateError('');
+      }
+    }
+  console.log(validateExpiry(date))
 }
 
 const cvvInputHandler = (e) => {
@@ -75,7 +75,7 @@ const cardNumberInputHandler = (e) => {
     console.log('cvv');
   } else if (e.target.value.length < 16) {
     console.log('error');
-    setCardNumberError('Wrong format.');
+    setCardNumberError(t("creditCardPayment.errors.wrongCard"));
     setCurdNumber(e.target.value);
   } else {
     setCardNumberError(null);
@@ -83,33 +83,62 @@ const cardNumberInputHandler = (e) => {
   }
 }
 
+const cardNameInputHandler = (e) => {
+  setCardNameInput(e.target.value)
+}
+
   return (
     <div className={styles.inputsWrapper}>
       <div className={styles.cardNumberDate}>
         <div className={styles.cardNumberWrapper}>
-          <input onChange={(e) => cardNumberInputHandler(e)} id={'cardNumber'} type="number" value={cardNumber} className={styles.cardNumberInput} placeholder={'Credit Card Number'}/>
+          <input
+            onChange={(e) => cardNumberInputHandler(e)}
+            id={'cardNumber'}
+            type="number"
+            value={cardNumber}
+            className={styles.cardNumberInput}
+            placeholder={t("creditCardPayment.creditCard")}
+          />
           <span className={styles.errorText}>{cardNumberError}</span>
           <label htmlFor="cardNumber" className={styles.cardNumberLabel}>
           </label>
         </div>
-        <input onChange={(e) => cardDateValue(e)} value={dateInput} id={'dateInput'} type="text" className={styles.dateInput} placeholder={'Expiry Date'}/>
+        <div className={styles.cardDateWrapper}>
+          <input
+            onChange={(e) => cardDateValue(e)}
+            value={dateInput}
+            id={'dateInput'}
+            type="text"
+            className={styles.dateInput}
+            placeholder={t("creditCardPayment.expiryDate")}
+            autoComplete={"cc-exp"}
+          />
+          <span className={styles.errorText}>{cardDateError}</span>
+        </div>
       </div>
       <div className={styles.nameCardCvv}>
         <div className={styles.cardNameWrapper}>
-          <input id={'cardName'} type="text" className={styles.cardNameInput} placeholder={'Credit Holder Number'}/>
+          <input
+            id={'cardName'}
+            type="text"
+            value={cardNameInput}
+            className={styles.cardNameInput}
+            placeholder={t("creditCardPayment.creditHolder")}
+            onChange={(e) => cardNameInputHandler(e)}
+          />
           <label htmlFor="cardName" className={styles.cardNameLabel}></label>
         </div>
         <input onChange={(e) => cvvInputHandler(e)} type="number" value={cvvValue} className={styles.cardCvv} placeholder={'CVV'}/>
       </div>
       <div className={styles.amountValue}>
-        <p>Amount (Min 20.00, max 4000.00)</p>
+        <p>{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</p>
         <input id={"amountValueModal"} onChange={(e) => amountValueInputHandler(e)} defaultValue={`${userDepositValue}`} type="number" className={styles.amountValueInput}/>
         <label htmlFor="amountValueModal" className={styles.amountValueLabel}>{userCurrency.currencySymbol}</label>
         <span className={styles.errorText}>{amountError}</span>
       </div>
       <div className={styles.secureBlock}>
         <Image src={'/assets/img/paymentsModals/lock.png'} layout={'fixed'} width={20} height={28} alt={'lock icon'} />
-        <p className={styles.secureText}>Secure Payment Processing Time: Instant Fee 2.5%</p>
+        <p className={styles.secureText}>{t("creditCardPayment.secureText")}</p>
       </div>
     </div>
   )
