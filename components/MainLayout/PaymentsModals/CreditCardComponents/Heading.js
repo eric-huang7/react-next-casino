@@ -2,15 +2,21 @@ import styles from "../../../../styles/PaymentsModals/CreditCardPayment.module.s
 import Image from "next/image";
 
 
-export const PaymentHeading = ({t, type, closeHandler}) => {
+export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBackButton, actionBackButton}) => {
 
   return (
     <div className={styles.paymentsHead}>
-      <button className={styles.backButton}>
-      </button>
+      {
+        pageStep === 1 || !pageStep ? <div className={styles.empty}></div>
+          :
+          <button onClick={() => whatShouldDoBackButton()} className={styles.backButton}>
+          </button>
+      }
+
       <div className={styles.heading}>
         {type === 'crypto' ? <h3 className={styles.cryptoHeading}>{t("cryptoPayment.heading")}</h3> : <></>}
         {type === 'fiat' ? <Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.png'} width={96} height={38} layout={'fixed'} alt={'visa/mastercard icon'}/> : <></>}
+        {type === 'stepper' ? <h3 className={styles.cryptoHeadingStepper}>{pageStep === 1 ? 'ENTER DEPOSIT AMOUNT' : "CHOSE PAYMENT METHOD"}</h3> : <></>}
       </div>
       <button onClick={() => closeHandler()} className={styles.closeButton}>
         <span className={styles.closeOne}></span>

@@ -374,3 +374,121 @@
   }
 
 }
+
+@media screen and (max-width: 680px) {
+  .depositWidgetMainContainer {
+    border-radius: 10px;
+
+    bottom: -200px;
+
+    left: 50%;
+    margin-left: -190px;
+  }
+
+  .widgetCurrencyButton {
+    width: 77px;
+    height: 39px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #d1d1d1;
+
+    cursor: pointer;
+
+    order: 2;
+  }
+
+  .widgetAmountInput {
+    width: 138px;
+    height: 42px;
+    border-radius: 8px;
+    background-color: #f7f8f9;
+    border: none;
+
+    font-size: 24px;
+    color: #4d4d4d;
+    font-family: "Segoe UI";
+    letter-spacing: 0px;
+
+    padding: 0 5px 0 5px;
+
+    margin-right: 7px;
+
+    order: 1;
+  }
+  .widgetAmountInput:focus {
+    outline: none;
+    border: none;
+  }
+  .widgetAmountInput::placeholder {
+    font-size: 24px;
+    color: #4d4d4d;
+    font-family: "Segoe UI";
+    letter-spacing: 0px;
+  }
+  .amountInputLabel {
+    position: absolute;
+
+    top: -19px;
+    left: 10px;
+
+    letter-spacing: 0px;
+    font-size: 10px;
+    color: #4d4d4d;
+    font-weight: bold;
+    font-family: "Segoe UI";
+  }
+
+
+  .playWithButton {
+    width: 90px;
+    height: 39px;
+    border-radius: 10px;
+    background-color: #ff0000;
+
+
+    border: none;
+
+    font-size: 16px;
+    color: #ffffff;
+    font-family: "Segoe UI";
+    letter-spacing: 0px;
+    text-transform: uppercase;
+
+    margin-right: 6px;
+
+    cursor: pointer;
+
+    order: 3;
+  }
+
+  .closeButton {
+    width: 50px;
+    height: 39px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+
+    align-self: center;
+
+    position: relative;
+
+    background-color: transparent;
+
+    cursor: pointer;
+
+    order: 4;
+
+    & span {
+      display: block;
+
+      height: 2px;
+
+      width: 24px;
+
+      background-color: #a7a7a7;
+
+      position: absolute;
+      top: 17px;
+      left: 13px;
+    }
+  }
+}

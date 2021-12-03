@@ -14,11 +14,16 @@
   overflow-y: scroll;
 }
 
+
 .paymentsInnerWrapper {
   margin: 170px auto;
 
   max-width: 430px;
   width: 100%;
+}
+
+.marginNull {
+  margin: 80px auto;
 }
 
 .paymentsMainContainer {
@@ -114,4 +119,16 @@
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
+}
+
+@media screen and (max-width: 430px) {
+  .paymentsInnerWrapper {
+    margin: 170px auto;
+
+    max-width: 360px;
+    width: 100%;
+  }
+  .marginNull {
+    margin: 80px auto;
+  }
 }

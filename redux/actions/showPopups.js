@@ -2,9 +2,9 @@ import {
   BACK_BUTTON_SHOULD_DO, CLOSE_All, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
-  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE,
-  SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
+  SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS,
 } from "./types";
 
 
@@ -13,6 +13,14 @@ export const closeAll = (isShow) => {
     type: CLOSE_All,
     payload: isShow
   }
+}
+
+export const showMobilePaymentsStepper = (isShow) => {
+  return {
+    type: SHOW_MOBILE_PAYMENTS_STEPPER,
+    payload: isShow
+  }
+
 }
 
 export const showCreditCardModal = (isShow) => {

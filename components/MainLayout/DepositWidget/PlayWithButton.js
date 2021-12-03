@@ -1,6 +1,6 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 
-export const PlayWithButton = ({t, userDepositValue, userCurrency, whatShouldDoPlayWithButton}) => {
+export const PlayWithButton = ({t, userDepositValue, userCurrency, whatShouldDoPlayWithButton, width}) => {
 
   return (
     <button
@@ -9,7 +9,7 @@ export const PlayWithButton = ({t, userDepositValue, userCurrency, whatShouldDoP
       className={`${styles.playWithButton} ${userCurrency.isDepositEnabled === 0 ? styles.disabledButton : ''}`}
       title={userCurrency.isDepositEnabled === 0 ? t("depositWidget.playWithTitle") : ""}
     >
-      {`${t("depositWidget.playWith")} ${userCurrency.currencySymbol ? userCurrency.currencySymbol : ''}${userDepositValue}${userCurrency.currencySymbol ? "" : userCurrency.currencyAbbreviation}`}
+      {width <= 680 ? t("depositWidget.deposit") : `${t("depositWidget.playWith")} ${userCurrency.currencySymbol ? userCurrency.currencySymbol : ''}${userDepositValue}${userCurrency.currencySymbol ? "" : userCurrency.currencyAbbreviation}`}
     </button>
   )
 }

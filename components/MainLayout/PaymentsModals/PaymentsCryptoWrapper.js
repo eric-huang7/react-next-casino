@@ -7,9 +7,11 @@ import {DepositAddressInput} from "./CryptoComponents/DepositAddressInput";
 import {useDispatch, useSelector} from "react-redux";
 import {showCryptoModal} from "../../../redux/actions/showPopups";
 import {annulDeposit} from "../../../redux/actions/depositPayments";
+import useWindowScroll from "../../../hooks/useWindowScroll";
 
 
 export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
+  let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const dispatch = useDispatch()
@@ -18,12 +20,11 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
     dispatch(annulDeposit());
   }
 
-  console.log(paymentsData, 'crypto payments')
   return (
     <div className={styles.paymentsMainWrapper}>
-      <div className={styles.paymentsInnerWrapper}>
+      <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
         <div className={styles.paymentsMainContainer}>
-          <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'}/>
+          <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'} />
           {
             paymentsData.isCryptoPaymentDataLoading ?
               <><h1>LOADING...</h1></>

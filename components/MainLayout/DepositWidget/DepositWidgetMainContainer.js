@@ -7,15 +7,22 @@ import {CloseButton} from "./CloseButton";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {showCreditCardModal, showCryptoModal, showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {
+  showCreditCardModal,
+  showCryptoModal,
+  showCurrencySwitcher,
+  showMobilePaymentsStepper
+} from "../../../redux/actions/showPopups";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {siteID} from "../../../envs/envsForFetching";
 import {postCryptoPayment} from "../../../redux/actions/depositPayments";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 
 export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const dispatch = useDispatch();
+  const {width, height} = useWindowDimensions();
 
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
@@ -56,7 +63,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
     if (!userAuth.isAuthenticated) {
       dispatch(showRegister(true));
     } else if (type === 'fiat') {
-      console.log('FIAT', type)
+
       dispatch(showCreditCardModal(true));
 
     } else if (type === 'crypto') {
@@ -81,13 +88,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       }
       dispatch(postCryptoPayment(paymentData, paymentMethod));
       dispatch(showCryptoModal(true));
-      console.log('CRYPTO', type)
-      console.log('CRYPTO', type, userAuth, userCurrency, userDepositValue, paymentMethod);
     }
   }
 
   const whatShouldDoPlayWithButton = () => {
-    if ((userCurrency.type === 3)) {
+    if ((userCurrency.type === 3 && width > 680)) {
       if (!paymentMethod && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
         setErrorDepositValue(true);
@@ -102,15 +107,22 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
           openWindow('fiat');
         }
       }
-    } else {
+    } else if ((userCurrency.type === 3 && width <= 680)) {
       if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
-        openWindow('crypto');
+        dispatch(showMobilePaymentsStepper(true));
+      }
+
+    } else {
+        if (Number(userDepositValue) === 0) {
+          setErrorDepositValue(true);
+        } else {
+          openWindow('crypto');
+        }
       }
     }
 
-  }
 
   useEffect(() => {
     if (scrollHeight < 900) {
@@ -119,6 +131,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       setErrorDepositValue(false);
     }
   }, [scrollHeight])
+  useEffect(() => {
+    if (width <= 680) {
+      setIsActivePayments(false)
+    }
+  }, [width])
 
   // console.log(paymentMethod, "+++++payment method")
 
@@ -126,18 +143,21 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
     <div
       className={`${styles.depositWidgetMainContainer} ${userCurrency.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <CurrencyChooser
+        width={width}
         currencySwitcherShowHandler={currencySwitcherShowHandler}
         userCurrency={userCurrency}
         t={t}
       />
       <AmountInputContainer
+        width={width}
         userDepositValue={userDepositValue}
         userCurrency={userCurrency}
         valueInputHandler={valueInputHandler}
         errorDepositValue={errorDepositValue}
         t={t}
       />
-      {(userCurrency.type === 3) || (userCurrency.type === 0) ?
+      {((userCurrency.type === 3) || (userCurrency.type === 0)) && width > 680
+        ?
         <PaymentMethodMainBlock
           scrollHeight={scrollHeight}
           paymentMethod={paymentMethod}
@@ -149,6 +169,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         /> : <></>}
 
       <PlayWithButton
+        width={width}
         userCurrency={userCurrency}
         userDepositValue={userDepositValue}
         whatShouldDoPlayWithButton={whatShouldDoPlayWithButton}

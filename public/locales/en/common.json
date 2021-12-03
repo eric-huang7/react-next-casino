@@ -418,9 +418,11 @@
   },
   "depositWidget": {
     "currency": "Currency",
+    "enterDeposit": "Enter Deposit Amount",
     "amount": "Amount",
     "paymentMethod": "Payment Method",
     "playWith": "Play with",
+    "deposit" : "Deposit",
     "playWithTitle" : "Please select a different currency",
     "card": "Card",
     "bitcoin": "Bitcoin",

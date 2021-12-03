@@ -21,6 +21,10 @@
   width: 100%;
 }
 
+.marginNull {
+  margin: 80px auto;
+}
+
 .paymentsMainContainer {
   border-radius: 15px;
   background-color: #ffffff;
@@ -63,6 +67,11 @@
     cursor: pointer;
   }
 
+  & .empty {
+    width: 13px;
+    height: 13px;
+  }
+
   & .closeButton {
     outline: none;
     border: none;
@@ -100,6 +109,16 @@
   color: #ffffff;
   font-family: "Myriad Pro", Arial, sans-serif;
   font-weight: 400;
+
+}
+
+.cryptoHeadingStepper {
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-family: "Myriad Pro", Arial, sans-serif;
+  font-weight: 400;
+
 }
 
 
@@ -339,6 +358,9 @@
 
     max-width: 360px;
     width: 100%;
+  }
+  .marginNull {
+    margin: 80px auto;
   }
 
   .cardNumberInput, .cardNameInput {

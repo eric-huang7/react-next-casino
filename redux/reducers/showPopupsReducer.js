@@ -2,7 +2,7 @@ import {
   BACK_BUTTON_SHOULD_DO, CLOSE_All, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
-  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
 } from "../actions/types";
 
@@ -18,6 +18,8 @@ const initialState = {
   isShowTournamentsDetails: false,
   isShowCreditCardModal: false,
   isShowCryptoModal: false,
+  isShowMobilePaymentsStepper: false,
+  actionForBackButtonPayments: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -48,6 +50,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowCreditCardModal: payload
+      }
+    case SHOW_MOBILE_PAYMENTS_STEPPER:
+      return {
+        ...state,
+        isShowMobilePaymentsStepper: payload,
       }
     case SHOW_CRYPTO_MODAL:
       return {

@@ -1,7 +1,7 @@
 import styles from '../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss';
 import {ErrorMessage} from "./ErrorsMessages/ErrorMessage";
 
-export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueInputHandler, errorDepositValue}) => {
+export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueInputHandler, errorDepositValue, width}) => {
 
 
   return (
@@ -14,7 +14,7 @@ export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueIn
         placeholder={`${userCurrency.currencySymbol} ${userDepositValue}`}
       />
       {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency.currencySymbol}</label>*/}
-      <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{t("depositWidget.amount")}</label>
+      <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{width <= 680 ? t("depositWidget.enterDeposit") : t("depositWidget.amount")}</label>
       {errorDepositValue ? <ErrorMessage t={t} text={"depositWidget.valueError"} /> : <></> }
     </div>
   )

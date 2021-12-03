@@ -418,9 +418,11 @@
   },
   "depositWidget": {
     "currency": "Валюта",
+    "enterDeposit": "Введите сумму депозита",
     "amount": "Сумма",
     "paymentMethod": "Платежный метод",
     "playWith": "Играть с",
+    "deposit" : "Депозит",
     "playWithTitle" : "Выберите дргугую валюту.",
     "card": "Карта",
     "bitcoin": "Bitcoin",

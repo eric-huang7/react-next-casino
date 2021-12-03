@@ -24,6 +24,7 @@ import {closeAll} from "../../redux/actions/showPopups";
 import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
 import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
+import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
 
 
 const MainLayout = ({children, t}) => {
@@ -53,6 +54,7 @@ const MainLayout = ({children, t}) => {
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>
             <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
+            {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
             {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper t={t}/> : <></>}
             {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
 
