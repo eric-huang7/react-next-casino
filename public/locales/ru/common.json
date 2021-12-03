@@ -441,7 +441,8 @@
     },
     "depositAddress": "Адрес депозита",
     "memo": "Памятка",
-    "error": "Ошибка"
+    "error": "Ошибка",
+    "loading": "Загрузка..."
   },
   "creditCardPayment": {
     "errors": {
@@ -454,7 +455,9 @@
     "creditHolder": "Имя владельца карты",
     "amountValue": "Сумма ",
     "secureText": "Безопасное время обработки платежа: мгновенная комиссия 2,5%",
-    "confirmButton": "Подтвердить"
+    "confirmButton": "Подтвердить",
+    "confirmHeading": "Отправлен",
+    "confirmText" : "Ваш Запрос Отправлен"
   },
   "paymentsStepper": {
     "headingOne": "ВВЕДИТЕ СУММУ ДЕПОЗИТА",

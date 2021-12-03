@@ -441,7 +441,8 @@
     },
     "depositAddress": "Deposit address",
     "memo": "Memo",
-    "error": "Error"
+    "error": "Error",
+    "loading": "Loading..."
   },
   "creditCardPayment": {
     "errors": {
@@ -454,9 +455,9 @@
     "creditHolder": "Credit Holder Name",
     "amountValue": "Amount ",
     "secureText": "Secure Payment Processing Time: Instant Fee 2.5%",
-    "confirmButton": "Confirm"
-
-
+    "confirmButton": "Confirm",
+    "confirmHeading": "Confirm",
+    "confirmText" : "Your Request Submitted"
   },
   "paymentsStepper": {
     "headingOne": "ENTER DEPOSIT AMOUNT",

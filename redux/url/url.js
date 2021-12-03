@@ -51,3 +51,5 @@ export const get_tournaments_url = 'http://t-gpb.slotsidol.com:7000/tournament';
 
 // ####### POST DEPOSIT PAYMENT
 export const post_deposit_payment = 'http://t-gpb.slotsidol.com:7000/deposit';
+
+export const post_credit_card_deposit_payment = 'http://t-gpb.slotsidol.com:7000/deposit/cc';

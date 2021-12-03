@@ -154,6 +154,7 @@
 
 .nameCardCvv {
   margin-top: 24px;
+
 }
 
 
@@ -353,6 +354,27 @@
   position: absolute;
   bottom: -15px;
   left: 10px;
+}
+
+.confirmedPayment {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 50px;
+}
+
+.confirmedImageWrapper {
+  margin-bottom: 60px;
+}
+
+.confirmedText {
+  font-size: 14px;
+  color: #949494;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+
+  margin-bottom: 50px;
 }
 
 @media screen and (max-width: 430px) {

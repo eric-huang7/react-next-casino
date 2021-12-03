@@ -1,13 +1,11 @@
 import axios from "axios";
 import {
-  ANNUL_CRYPTO_PAYMENT,
+  ANNUL_CRYPTO_PAYMENT, ERROR_CREDIT_CARD_PAYMENT,
   ERROR_CRYPTO_PAYMENT,
-  LOGIN_FAIL,
-  LOGIN_SUCCESS,
   POST_CREDIT_CARD_PAYMENT,
   POST_CRYPTO_PAYMENT
 } from "./types";
-import {login_url, post_deposit_payment} from "../url/url";
+import {login_url, post_credit_card_deposit_payment, post_deposit_payment} from "../url/url";
 
 
 // POST_CRYPTO_PAYMENT
@@ -56,10 +54,10 @@ export const postCreditCardPayment = (paymentData, paymentMethod) => async dispa
   const body = JSON.stringify(paymentData);
 
   try {
-    const res = await axios.post(post_deposit_payment, body, config);
-    console.log(res, 'deposit crypto RESPONSE');
+    const res = await axios.post(post_credit_card_deposit_payment, body, config);
+    console.log(res, 'deposit credit card RESPONSE');
     dispatch({
-      type: POST_CRYPTO_PAYMENT,
+      type: POST_CREDIT_CARD_PAYMENT,
       payload: {
         data: res.data,
         paymentMethod: paymentMethod,
@@ -67,7 +65,7 @@ export const postCreditCardPayment = (paymentData, paymentMethod) => async dispa
     })
   } catch (e) {
     dispatch({
-      type: ERROR_CRYPTO_PAYMENT,
+      type: ERROR_CREDIT_CARD_PAYMENT,
       payload: e.response
     })
     console.log('some error POST crypto deposit =>>', e.response)
