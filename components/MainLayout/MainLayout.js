@@ -48,7 +48,6 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-  console.log(paymentsData, "<<<<<<<<<<<<<<<<<<<<<<<<")
   return (
           <div className={styles.mainLayoutWrapper}>
             <Header t={t}/>

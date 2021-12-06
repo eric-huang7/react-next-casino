@@ -153,7 +153,7 @@
 }
 
 .nameCardCvv {
-  margin-top: 24px;
+  margin-top: 32px;
 
 }
 
@@ -354,6 +354,10 @@
   position: absolute;
   bottom: -15px;
   left: 10px;
+}
+
+.errorTextLong {
+  bottom: -31px;
 }
 
 .confirmedPayment {

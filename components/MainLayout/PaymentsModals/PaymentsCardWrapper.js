@@ -48,14 +48,6 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
     }
   }
 
-  // if (paymentsData.isCreditPaymentError) {
-  //   if (paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard) {
-  //     setCardNumberError(paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard);
-  //     console.log('error>>>>', paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard)
-  //   }
-  //
-  // }
-
   if (paymentsData?.creditPaymentData?.data?.success) {
     return (
       <div className={styles.paymentsMainWrapper}>
@@ -72,25 +64,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
         </div>
       </div>
     )
-  }
-  // else if (paymentsData.isCreditPaymentError) {
-  //   return (
-  //     <div className={styles.paymentsMainWrapper}>
-  //       <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-  //         <div className={styles.paymentsMainContainer}>
-  //           <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
-  //       <h2 style={{color: "#ff0000", textTransform: "uppercase", textAlign: "center"}}>{t("cryptoPayment.error")}</h2>
-  //       {paymentsData.isCreditPaymentError.data.extra_error_info.errors.map((el, ind) => {
-  //         return (
-  //           <p key={`${ind} error response`} style={{color: "#ff0000", textAlign: "center"}}>{el.constraints.isCreditCard}</p>
-  //         )
-  //       })}
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )
-  // }
-  else {
+  } else {
     return (
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>

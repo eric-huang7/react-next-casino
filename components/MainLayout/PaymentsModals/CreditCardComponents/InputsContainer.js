@@ -1,6 +1,7 @@
 import styles from "../../../../styles/PaymentsModals/CreditCardPayment.module.scss";
 import Image from "next/image";
 import {useState} from "react";
+import {validateExpiry} from "../../../../helpers/validateExpiryCardDate";
 
 
 export const InputsContainer = ({t, serverCardNumberError, cardNameErrorInput, setCardNameErrorInput, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCurdNumber, setCvvValue, setDateInput}) => {
@@ -14,21 +15,7 @@ const amountValueInputHandler = (e) => {
     setAmountError(null);
   }
 }
-  function validateExpiry (input) {
-    // ensure basic format is correct
-    if (input.match(/^(0\d|1[0-2])\/\d{2}$/)) {
-      const {0: month, 1: year} = input.split("/");
 
-      // get midnight of first day of the next month
-      const expiry = new Date("20"+year, month);
-      const current = new Date();
-
-      return expiry.getTime() > current.getTime();
-
-    } else {
-      return false;
-    }
-  }
 
 const cardDateValue = (e) => {
 
@@ -50,9 +37,16 @@ const cardDateValue = (e) => {
     if (validateExpiry(date)) {
       setCardDateError('')
     } else {
-      setCardDateError('Дата неверна!')
-      if (date.length === 0) {
-        setCardDateError('');
+      if (serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'expiry')[0]?.constraints?.isNotEmpty) {
+        setCardDateError('')
+        if (date.length === 0) {
+          setCardDateError('');
+        }
+      } else {
+        setCardDateError(t("creditCardPayment.errors.wrongDate"))
+        if (date.length === 0) {
+          setCardDateError('');
+        }
       }
     }
 }
@@ -61,7 +55,7 @@ const cvvInputHandler = (e) => {
   if (e.target.value.length > 4) {
     console.log('cvv');
   } else if (e.target.value.length < 3) {
-
+    console.log('wrong cvv')
     setCvvValue(e.target.value);
   } else {
 
@@ -92,8 +86,14 @@ const cardNumberInputHandler = (e) => {
 
 const cardNameInputHandler = (e) => {
   if (e.target.value.trim().length === 0) {
-    setCardNameInput(e.target.value);
-    setCardNameErrorInput('Enter card handler name.');
+    if (serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'name')[0]?.constraints?.isNotEmpty) {
+      setCardNameInput(e.target.value);
+      setCardNameErrorInput('');
+    } else {
+      setCardNameInput(e.target.value);
+      setCardNameErrorInput(t("creditCardPayment.errors.wrongName"));
+    }
+
   } else {
     setCardNameErrorInput('');
     setCardNameInput(e.target.value)
@@ -114,6 +114,11 @@ const cardNameInputHandler = (e) => {
           />
           <span className={styles.errorText}>{cardNumberError}</span>
           <span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard}</span>
+          {/*<span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard*/}
+          {/*  ? t("creditCardPayment.errors.serverCardNumberError")*/}
+          {/*  :*/}
+          {/*  ''*/}
+          {/*}</span>*/}
           <label htmlFor="cardNumber" className={styles.cardNumberLabel}>
           </label>
         </div>
@@ -128,6 +133,7 @@ const cardNameInputHandler = (e) => {
             autoComplete={"cc-exp"}
           />
           <span className={styles.errorText}>{cardDateError}</span>
+          <span className={`${styles.errorText} ${styles.errorTextLong}`}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'expiry')[0]?.constraints?.isNotEmpty}</span>
         </div>
       </div>
       <div className={styles.nameCardCvv}>
@@ -141,6 +147,7 @@ const cardNameInputHandler = (e) => {
             onChange={(e) => cardNameInputHandler(e)}
           />
           <span className={styles.errorText}>{cardNameErrorInput}</span>
+          <span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'name')[0]?.constraints?.isNotEmpty}</span>
           <label htmlFor="cardName" className={styles.cardNameLabel}></label>
         </div>
         <input onChange={(e) => cvvInputHandler(e)} type="number" value={cvvValue} className={styles.cardCvv} placeholder={'CVV'}/>

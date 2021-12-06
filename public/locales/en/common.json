@@ -448,7 +448,10 @@
     "errors": {
       "moreValue": "The amount should be $20 or more.",
       "lessValue": "The amount should be $4000 or less.",
-      "wrongCard": "Wrong format."
+      "wrongCard": "Wrong format.",
+      "wrongName": "Enter card holder name.",
+      "wrongDate": "Date is wrong!",
+      "serverCardNumberError": "Number must be a credit card"
     },
     "creditCard": "Credit Card Number",
     "expiryDate": "Expiry Date",
