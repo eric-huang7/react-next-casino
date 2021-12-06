@@ -465,5 +465,8 @@
   "paymentsStepper": {
     "headingOne": "ВВЕДИТЕ СУММУ ДЕПОЗИТА",
     "headingTwo": "ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ"
+  },
+  "myAccount": {
+    "heading": "Мой Аккаунт"
   }
 }

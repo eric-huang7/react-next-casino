@@ -1,3 +1,4 @@
+
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
@@ -53,7 +54,6 @@ const AboutUS = (props) => {
         </div>
         <NewsBlock t={t} isBackShow={false}/>
       </MainLayout>
-
     </>
   )
 }

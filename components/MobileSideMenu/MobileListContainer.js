@@ -18,7 +18,7 @@ let listArr = [
     name: "mobileSideMenu.listMenu.user",
     icon: '/assets/img/mobileSideMenu/user.svg',
     type: "link",
-    path: "/#user"
+    path: "/accounts"
   },
   {id: 3,
     name: "mobileSideMenu.listMenu.notifications",

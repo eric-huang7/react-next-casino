@@ -465,5 +465,8 @@
   "paymentsStepper": {
     "headingOne": "ENTER DEPOSIT AMOUNT",
     "headingTwo": "CHOSE PAYMENT METHOD"
+  },
+  "myAccount": {
+    "heading": "My Account"
   }
 }

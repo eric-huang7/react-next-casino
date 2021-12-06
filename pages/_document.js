@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script type="text/javascript" src="/chatWidget/chatWidget.js"></script>
+          {/*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*/}
         </Head>
         <body>
         <Main />
@@ -22,3 +22,5 @@ class MyDocument extends Document {
 }
 
 export default MyDocument
+
+// TODO: add for all pages /*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*/
