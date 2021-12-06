@@ -3,7 +3,7 @@ import Image from "next/image";
 import {useState} from "react";
 
 
-export const InputsContainer = ({t, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCurdNumber, setCvvValue, setDateInput}) => {
+export const InputsContainer = ({t, serverCardNumberError, cardNameErrorInput, setCardNameErrorInput, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCurdNumber, setCvvValue, setDateInput}) => {
 
 const amountValueInputHandler = (e) => {
   if (e.target.value < 20) {
@@ -55,12 +55,14 @@ const cardDateValue = (e) => {
         setCardDateError('');
       }
     }
-  console.log(validateExpiry(date))
 }
 
 const cvvInputHandler = (e) => {
   if (e.target.value.length > 4) {
     console.log('cvv');
+  } else if (e.target.value.length < 3) {
+
+    setCvvValue(e.target.value);
   } else {
 
     setCvvValue(e.target.value);
@@ -75,8 +77,13 @@ const cardNumberInputHandler = (e) => {
     console.log('cvv');
   } else if (e.target.value.length < 16) {
     console.log('error');
-    setCardNumberError(t("creditCardPayment.errors.wrongCard"));
-    setCurdNumber(e.target.value);
+    if (serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard) {
+      setCardNumberError('');
+      setCurdNumber(e.target.value);
+    } else {
+      setCardNumberError(t("creditCardPayment.errors.wrongCard"));
+      setCurdNumber(e.target.value);
+    }
   } else {
     setCardNumberError(null);
     setCurdNumber(e.target.value);
@@ -84,7 +91,13 @@ const cardNumberInputHandler = (e) => {
 }
 
 const cardNameInputHandler = (e) => {
-  setCardNameInput(e.target.value)
+  if (e.target.value.trim().length === 0) {
+    setCardNameInput(e.target.value);
+    setCardNameErrorInput('Enter card handler name.');
+  } else {
+    setCardNameErrorInput('');
+    setCardNameInput(e.target.value)
+  }
 }
 
   return (
@@ -100,6 +113,7 @@ const cardNameInputHandler = (e) => {
             placeholder={t("creditCardPayment.creditCard")}
           />
           <span className={styles.errorText}>{cardNumberError}</span>
+          <span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard}</span>
           <label htmlFor="cardNumber" className={styles.cardNumberLabel}>
           </label>
         </div>
@@ -126,6 +140,7 @@ const cardNameInputHandler = (e) => {
             placeholder={t("creditCardPayment.creditHolder")}
             onChange={(e) => cardNameInputHandler(e)}
           />
+          <span className={styles.errorText}>{cardNameErrorInput}</span>
           <label htmlFor="cardName" className={styles.cardNameLabel}></label>
         </div>
         <input onChange={(e) => cvvInputHandler(e)} type="number" value={cvvValue} className={styles.cardCvv} placeholder={'CVV'}/>

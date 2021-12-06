@@ -27,9 +27,10 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
   const [cardNumber, setCurdNumber] = useState('');
   const [cardDateError, setCardDateError] = useState('')
   const [cardNameInput, setCardNameInput] = useState('')
+  const [cardNameErrorInput, setCardNameErrorInput] = useState('')
 
   const confirmButtonClickHandler = () => {
-    if (!amountError && !cardNumberError && !cardDateError) {
+    if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
       let date = dateInput.split('/').join('')
       console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.currencyId, siteID, userInfo.user.user.id);
       let paymentData = {
@@ -47,6 +48,14 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
     }
   }
 
+  // if (paymentsData.isCreditPaymentError) {
+  //   if (paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard) {
+  //     setCardNumberError(paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard);
+  //     console.log('error>>>>', paymentsData.isCreditPaymentError.data.extra_error_info.errors[0]?.constraints.isCreditCard)
+  //   }
+  //
+  // }
+
   if (paymentsData?.creditPaymentData?.data?.success) {
     return (
       <div className={styles.paymentsMainWrapper}>
@@ -63,29 +72,32 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
         </div>
       </div>
     )
-  } else if (paymentsData.isCreditPaymentError) {
-    return (
-      <div className={styles.paymentsMainWrapper}>
-        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.paymentsMainContainer}>
-            <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
-        <h2 style={{color: "#ff0000", textTransform: "uppercase", textAlign: "center"}}>{t("cryptoPayment.error")}</h2>
-        {paymentsData.isCreditPaymentError.data.extra_error_info.errors.map((el, ind) => {
-          return (
-            <p key={`${ind} error response`} style={{color: "#ff0000", textAlign: "center"}}>{el.constraints.isCreditCard}</p>
-          )
-        })}
-          </div>
-        </div>
-      </div>
-    )
-  } else {
+  }
+  // else if (paymentsData.isCreditPaymentError) {
+  //   return (
+  //     <div className={styles.paymentsMainWrapper}>
+  //       <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+  //         <div className={styles.paymentsMainContainer}>
+  //           <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
+  //       <h2 style={{color: "#ff0000", textTransform: "uppercase", textAlign: "center"}}>{t("cryptoPayment.error")}</h2>
+  //       {paymentsData.isCreditPaymentError.data.extra_error_info.errors.map((el, ind) => {
+  //         return (
+  //           <p key={`${ind} error response`} style={{color: "#ff0000", textAlign: "center"}}>{el.constraints.isCreditCard}</p>
+  //         )
+  //       })}
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // }
+  else {
     return (
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.paymentsMainContainer}>
             <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
             <InputsContainer
+              serverCardNumberError={paymentsData.isCreditPaymentError}
               userDepositValue={userDepositValue}
               userCurrency={userCurrency}
               t={t}
@@ -103,6 +115,8 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
               setCardDateError={setCardDateError}
               cardNameInput={cardNameInput}
               setCardNameInput={setCardNameInput}
+              setCardNameErrorInput={setCardNameErrorInput}
+              cardNameErrorInput={cardNameErrorInput}
             />
           </div>
           <ConfirmButton

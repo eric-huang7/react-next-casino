@@ -28,7 +28,9 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
           <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'} />
           {
             paymentsData.isCryptoPaymentDataLoading ?
-              <><LoadingComponent/></>
+              <>
+                <LoadingComponent/>
+              </>
               :
               paymentsData.isCryptoPaymentError ?
                 <>
