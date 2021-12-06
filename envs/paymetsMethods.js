@@ -18,7 +18,7 @@ export let paymentMethodsData = [
   {
     type: 'crypto',
     name: 'depositWidget.bitcoinCash',
-    icon_one: '/assets/img/depositWidget/bitcoin.png',
+    icon_one: '/assets/img/depositWidget/bitcoinCash.png',
     icon_two: '/assets/img/paymentsModals/bitcoinCash.png',
     currency: 'BCH',
     currency_id: 391
