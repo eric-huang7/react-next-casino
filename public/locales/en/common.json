@@ -468,7 +468,15 @@
   },
   "loadingComponent": "In process...",
   "myAccount": {
-    "heading": "My Account"
+    "heading": "My Account",
+    "pageHeadings": {
+      "balance": "Balance",
+      "history": "History",
+      "bonuses": "Bonuses",
+      "profileInfo": "Profile Info",
+      "gamblingLimits": "Gambling Limits",
+      "documents": "Documents"
+    }
   }
 
 }

@@ -468,6 +468,14 @@
   },
   "loadingComponent": "В процессе...",
   "myAccount": {
-    "heading": "Мой Аккаунт"
+    "heading": "Мой Аккаунт",
+    "pageHeadings": {
+      "balance": "Баланс",
+      "history": "История",
+      "bonuses": "Бонусы",
+      "profileInfo": "Данные профиля",
+      "gamblingLimits": "Ответственная игра",
+      "documents": "Документы"
+    }
   }
 }
