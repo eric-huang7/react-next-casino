@@ -26,6 +26,7 @@ export const SideGamesContainer = ({t}) => {
       console.log(playGames.freeGame.game_link)
       // window.location.replace(games.freeGame.game_link)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playGames]);
   const playFunClickHandler = (gameData) => {
     dispatch(freeGame(gameData.game_provider_id, gameData.game_provided_id));
@@ -58,8 +59,8 @@ export const SideGamesContainer = ({t}) => {
 
 
 let gamesArr = [];
-  if (gamesStoredData.latestGames?.results.length === 0) {
-    gamesArr = gamesStoredData.games.results.map((el) => {
+  if (gamesStoredData?.latestGames?.results?.length === 0) {
+    gamesArr = gamesStoredData?.games?.results.map((el) => {
       return (
         <GameItem
           t={t}
@@ -73,7 +74,7 @@ let gamesArr = [];
       )
     }).slice(0, 3);
   } else {
-    gamesArr = gamesStoredData.games?.results.map((el) => {
+    gamesArr = gamesStoredData?.games?.results.map((el) => {
       return (
         <GameItem
           t={t}
