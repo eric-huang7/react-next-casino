@@ -19,13 +19,6 @@ const Accounts = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // const activeLang = useSelector(({lang}) => lang.activeLang);
-  //
-  // useEffect(() => {
-  //   dispatch(setLang(router.locale));
-  //   console.log( router, "$$$$$$$$$$$$$$$$$$")
-  // },[])
-
   useEffect(() => {
     // dispatch(setLang(locale));
     // dispatch(getGames());

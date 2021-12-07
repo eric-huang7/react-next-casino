@@ -6,7 +6,7 @@ import {BalancePage} from "../../../components/MyAccountMainLayout/BalanceCompon
 
 const PageType = (props) => {
   const router = useRouter();
-  console.log(router,  'router');
+
   const { t } = useTranslation('common');
 
   switch (router.query.pageType) {

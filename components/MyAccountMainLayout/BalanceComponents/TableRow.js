@@ -8,7 +8,7 @@ export const TableRow = ({t}) => {
     <tr className={styles.tableRow}>
       <td className={`${styles.tableDataActive} ${styles.active}`}>
         <p>
-          Активный
+          {t("myAccount.balance.table.items.active")}
         </p>
       </td>
       <td className={styles.tableCurrency}>
@@ -23,7 +23,7 @@ export const TableRow = ({t}) => {
       <td className={styles.tableActions}>
         <div>
           <DepositButton t={t} />
-          <button className={styles.cashoutLink}>Cashout</button>
+          <button className={styles.cashoutLink}>{t("myAccount.balance.buttons.cashout")}</button>
         </div>
       </td>
     </tr>

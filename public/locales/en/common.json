@@ -476,6 +476,25 @@
       "profileInfo": "Profile Info",
       "gamblingLimits": "Gambling Limits",
       "documents": "Documents"
+    },
+    "balance": {
+      "table": {
+        "headings": {
+          "currency": "Currency",
+          "amount": "Amount",
+          "cashout": "Available to cash out",
+          "actions": "Actions"
+        },
+        "items": {
+          "active": "Active",
+          "select": "Select"
+        }
+      },
+      "buttons": {
+        "deposit": "Deposit",
+        "cashout": "Cashout",
+        "addCurrency": "+ Add currency"
+      }
     }
   }
 

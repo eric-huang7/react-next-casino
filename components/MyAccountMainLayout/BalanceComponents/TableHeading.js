@@ -9,24 +9,24 @@ export const TableHeading = ({t}) => {
       <th className={styles.headingActive}>
 
       </th>
-      <th>
+      <th className={styles.headingCurrency}>
         <p>
-          Currency
+          {t("myAccount.balance.table.headings.currency")}
         </p>
       </th>
       <th>
         <p>
-          Amount
+          {t("myAccount.balance.table.headings.amount")}
         </p>
       </th>
       <th>
         <p>
-          Available to cash out
+          {t("myAccount.balance.table.headings.cashout")}
         </p>
       </th>
       <th className={styles.headingActions}>
         <p>
-          Actions
+          {t("myAccount.balance.table.headings.actions")}
         </p>
       </th>
     </tr>

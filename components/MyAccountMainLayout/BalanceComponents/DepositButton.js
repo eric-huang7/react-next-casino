@@ -6,6 +6,6 @@ export const DepositButton = ({t}) => {
 
 
   return (
-    <button className={styles.depositButton}>Deposit</button>
+    <button className={styles.depositButton}>{t("myAccount.balance.buttons.deposit")}</button>
   )
 }

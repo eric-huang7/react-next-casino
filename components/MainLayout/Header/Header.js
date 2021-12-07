@@ -20,7 +20,6 @@ export const Header = ({t}) => {
 
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
-  const userLogin222 = useSelector((userInfo) => userInfo);
 
   let userLogined = userLogin.isAuthenticated;
   // let userInfo = userLogin;
@@ -39,7 +38,6 @@ export const Header = ({t}) => {
       }
       dispatch(changeLocalUserSubscriptions(userData));
 
-      console.log(userLogin222, 'From userlogined effect')
     } else {
       dispatch(auth());
     }

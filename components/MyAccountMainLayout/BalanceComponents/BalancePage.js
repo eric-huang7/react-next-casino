@@ -1,16 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss';
 import {Heading} from "../ComponentsForPages/Heading";
 import {TableContainer} from "./TableContainer";
-
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {userBalance} from "../../../redux/actions/login";
+import {BalanceInfoContainer} from "./BalanceInfoContainer";
 
 
 export const BalancePage = ({t}) => {
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(userBalance());
+  }, []);
+
+  console.log('balance page')
+
+  const balanceInfo = useSelector((store) => store.authInfo);
 
   return (
     <div className={styles.mainContainer}>
       <Heading t={t} heading={"myAccount.pageHeadings.balance"}/>
-      <TableContainer t={t} />
-
+      <BalanceInfoContainer balanceInfo={balanceInfo} t={t}/>
     </div>
 
   )

@@ -4,7 +4,6 @@ import {TableRow} from "./TableRow";
 
 export const TableContainer = ({t}) => {
 
-
   return (
     <table className={styles.balanceTable} cellSpacing={0}>
       <thead>

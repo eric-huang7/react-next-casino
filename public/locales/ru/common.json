@@ -476,6 +476,25 @@
       "profileInfo": "Данные профиля",
       "gamblingLimits": "Ответственная игра",
       "documents": "Документы"
+    },
+    "balance": {
+      "table": {
+        "headings": {
+          "currency": "Валюта",
+          "amount": "Сумма",
+          "cashout": "Доступно для вывода",
+          "actions": "Действия"
+        },
+        "items": {
+          "active": "Активный",
+          "select": "Выбрать"
+        }
+      },
+      "buttons": {
+        "deposit": "Депозит",
+        "cashout": "Выплата",
+        "addCurrency": "+ Добавить валюту"
+      }
     }
   }
 }
