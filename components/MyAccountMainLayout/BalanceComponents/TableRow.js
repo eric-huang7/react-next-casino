@@ -2,23 +2,37 @@ import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scs
 import {DepositButton} from "./DepositButton";
 
 
-export const TableRow = ({t}) => {
+export const TableRow = ({t, balanceData}) => {
+  console.log(balanceData)
+
+  let currency = balanceData.currency_id;
+  let amount = balanceData.current_balance;
+  let cashOut = balanceData.cash_amount;
 
   return (
     <tr className={styles.tableRow}>
-      <td className={`${styles.tableDataActive} ${styles.active}`}>
-        <p>
-          {t("myAccount.balance.table.items.active")}
-        </p>
-      </td>
+      {
+        Number(balanceData.is_default) === 0 ?
+          <td className={`${styles.tableDataActive}`}>
+            <p>
+              {t("myAccount.balance.table.items.select")}
+            </p>
+          </td>
+          :
+          <td className={`${styles.tableDataActive} ${styles.active}`}>
+            <p>
+              {t("myAccount.balance.table.items.active")}
+            </p>
+          </td>
+      }
       <td className={styles.tableCurrency}>
-        eur
+        {currency}
       </td>
       <td className={styles.tableAmount}>
-        00000000000000000000000000000 EUR
+        {`${amount} ${currency}`}
       </td>
       <td className={styles.tableCashOut}>
-        00000000000000000000000000000 EUR
+        {`${cashOut} ${currency}`}
       </td>
       <td className={styles.tableActions}>
         <div>

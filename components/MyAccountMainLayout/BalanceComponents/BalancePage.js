@@ -16,9 +16,9 @@ export const BalancePage = ({t}) => {
     dispatch(userBalance());
   }, []);
 
-  console.log('balance page')
-
   const balanceInfo = useSelector((store) => store.authInfo);
+
+  console.log('balance page')
 
   return (
     <div className={styles.mainContainer}>

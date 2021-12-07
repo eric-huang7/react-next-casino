@@ -7,13 +7,11 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 export const BalanceInfoContainer = ({t, balanceInfo}) => {
 
 
-  console.log(balanceInfo);
-
   if (balanceInfo?.balance?.success) {
     return (
       <>
         <div className={styles.tableContainerWrapper}>
-          <TableContainer t={t}/>
+          <TableContainer balanceInfo={balanceInfo} t={t}/>
         </div>
         <button className={styles.addCurrencyButton}>
           {t("myAccount.balance.buttons.addCurrency")}
