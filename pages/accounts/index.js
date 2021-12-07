@@ -9,6 +9,7 @@ import {getActiveBonuses} from "../../redux/actions/getBonuses";
 
 import styles from '../../styles/MyAccount/MyAccount.module.scss'
 import {AccountMainLayout} from "../../components/MyAccountMainLayout/AccountMainLayout";
+import {LoadingComponent} from "../../components/LoadingComponent/LoadingComponent";
 
 
 
@@ -45,11 +46,15 @@ const Accounts = (props) => {
   return (
     <>
       <AccountMainLayout t={t}>
-        <h1>My account!!</h1>
+        <div className={styles.myAccountContainer}>
+          <LoadingComponent t={t} />
+        </div>
       </AccountMainLayout>
     </>
   )
 }
+
+
 
 export const getServerSideProps = async ({ locale }) => {
   return ({

@@ -466,6 +466,7 @@
     "headingOne": "ВВЕДИТЕ СУММУ ДЕПОЗИТА",
     "headingTwo": "ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ"
   },
+  "loadingComponent": "В процессе...",
   "myAccount": {
     "heading": "Мой Аккаунт"
   }

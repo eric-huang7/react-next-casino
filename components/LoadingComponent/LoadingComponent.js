@@ -1,7 +1,7 @@
 import styles from '../../styles/LoadingComponent.module.scss';
 
 
-export const LoadingComponent = ({t}) => {
+export const LoadingComponent = ({t, text}) => {
 
   return (
     <>
@@ -20,7 +20,7 @@ export const LoadingComponent = ({t}) => {
         </div>
       </div>
       <p className={styles.loadingText}>
-        In process...
+        {t(text)}
       </p>
     </>
 

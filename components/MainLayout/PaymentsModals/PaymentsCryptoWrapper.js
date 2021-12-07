@@ -29,7 +29,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
           {
             paymentsData.isCryptoPaymentDataLoading ?
               <>
-                <LoadingComponent/>
+                <LoadingComponent t={t} text={"loadingComponent"}/>
               </>
               :
               paymentsData.isCryptoPaymentError ?

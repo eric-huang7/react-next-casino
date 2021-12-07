@@ -466,7 +466,9 @@
     "headingOne": "ENTER DEPOSIT AMOUNT",
     "headingTwo": "CHOSE PAYMENT METHOD"
   },
+  "loadingComponent": "In process...",
   "myAccount": {
     "heading": "My Account"
   }
+
 }
