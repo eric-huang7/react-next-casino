@@ -3,9 +3,6 @@ import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderBut
 
 
 export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
-  console.log(userInform, userCurrency, '<<<<<<, side menu')
-
-
 
   if (userCurrency.currency && userInform.balance) {
     let userName = userInform.user.user.username;

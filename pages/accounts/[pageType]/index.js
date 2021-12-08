@@ -3,6 +3,7 @@ import {useTranslation} from "next-i18next";
 import {AccountMainLayout} from "../../../components/MyAccountMainLayout/AccountMainLayout";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {BalancePage} from "../../../components/MyAccountMainLayout/BalanceComponents/BalancePage";
+import {TrxHistory} from "../../../components/MyAccountMainLayout/TrxHistory/TrxHistory";
 
 const PageType = (props) => {
   const router = useRouter();
@@ -19,7 +20,19 @@ const PageType = (props) => {
     case "history" :
       return (
         <AccountMainLayout t={t}>
-          <h2>History</h2>
+          <TrxHistory t={t}/>
+        </AccountMainLayout>
+      )
+    case "bets-history" :
+      return (
+        <AccountMainLayout t={t}>
+          <h1>bets-history</h1>
+        </AccountMainLayout>
+      )
+    case "bonus-history" :
+      return (
+        <AccountMainLayout t={t}>
+          <h1>bonus-history</h1>
         </AccountMainLayout>
       )
     case "bonuses" :

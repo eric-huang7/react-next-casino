@@ -472,6 +472,9 @@
     "pageHeadings": {
       "balance": "Balance",
       "history": "History",
+      "trxHistory": "Payments",
+      "betHistory": "Games",
+      "bonusHistory": "Bonuses",
       "bonuses": "Bonuses",
       "profileInfo": "Profile Info",
       "gamblingLimits": "Gambling Limits",

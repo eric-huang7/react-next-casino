@@ -32,7 +32,7 @@ export const AccountMainLayout = ({t, children}) => {
       <SelectCurrency t={t}/>
       <div className={styles.myAccountContainer}>
         <div className={styles.accountInnerContainer}>
-          <SideMenu t={t} />
+          <SideMenu t={t}/>
           <section className={styles.accountMainContainer}>
             {children}
           </section>

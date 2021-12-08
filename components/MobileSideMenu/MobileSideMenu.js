@@ -23,53 +23,10 @@ const socilaLinks = [
 export const MobileSideMenu = ({t, userInform}) => {
  const dispatch = useDispatch();
 
-
  const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow);
  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
  const currency = useSelector((state) => state.getCurrency);
-
- const [username, setUsername] = useState('');
- const [userBalance, setUserBalance] = useState('');
- const [userRealMoney, setUserRealMoney] = useState('');
- const [userBonuses, setUserBonuses] = useState('');
- const [userCurrency, setUserCurrency] = useState('');
-
-
- // useEffect(() => {
- //  if (userInform.isAuthenticated && userInform.balance) {
- //   setUsername(userInform.user.user.username);
- //
- //   if (userInform.balance.balances.length > 0) {
- //    setUserBalance(Number(userInform.balance.balances[0].current_balance).toFixed(2));
- //    setUserRealMoney(Number(userInform.balance.balances[0].current_balance).toFixed(2));
- //   } else {
- //    setUserBalance("00,00");
- //    setUserRealMoney("00,00");
- //   }
- //  } else {
- //   setUserBalance('');
- //   setUserRealMoney("");
- //   setUsername("");
- //  }
- //  // userObj.bonuses = userInform.bonuses // no data now
- // }, [userInform.isAuthenticated, userInform.balance]);
-
- // useEffect(() => {
- //  if (!currency.loading && userInform.isAuthenticated && userInform.balance) {
- //   setUserCurrency(currency.currency?.results.find((el) => {
- //    if (userInform.user.user?.currency) {
- //     return Number(el.id) === Number(userInform.user.user.currency_id);
- //    } else if (!userInform.user.user.base_currency_id) {
- //     return Number(el.id) === 1;
- //    } else {
- //     return Number(el.id) === Number(userInform.user.user.base_currency_id);
- //    }
- //   }).abbreviation);
- //  } else {
- //   setUserCurrency('')
- //  }
- // },[currency.currency, userInform.isAuthenticated, userInform.balance])
 
 
  const closeClickHandler = () => {
