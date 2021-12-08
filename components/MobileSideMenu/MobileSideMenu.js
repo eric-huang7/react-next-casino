@@ -11,6 +11,7 @@ import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 import {MobileListContainer} from "./MobileListContainer";
 import {MobileSideLangSwitcher} from "./MobileSideLangswitcher";
 import {LogoutButtonMobileMenu} from "./LogoutButtonMobileMenu";
+import {UserInfoBlock} from "./UserInfoBlock";
 
 const socilaLinks = [
  {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
@@ -35,40 +36,40 @@ export const MobileSideMenu = ({t, userInform}) => {
  const [userCurrency, setUserCurrency] = useState('');
 
 
- useEffect(() => {
-  if (userInform.isAuthenticated && userInform.balance) {
-   setUsername(userInform.user.user.username);
+ // useEffect(() => {
+ //  if (userInform.isAuthenticated && userInform.balance) {
+ //   setUsername(userInform.user.user.username);
+ //
+ //   if (userInform.balance.balances.length > 0) {
+ //    setUserBalance(Number(userInform.balance.balances[0].current_balance).toFixed(2));
+ //    setUserRealMoney(Number(userInform.balance.balances[0].current_balance).toFixed(2));
+ //   } else {
+ //    setUserBalance("00,00");
+ //    setUserRealMoney("00,00");
+ //   }
+ //  } else {
+ //   setUserBalance('');
+ //   setUserRealMoney("");
+ //   setUsername("");
+ //  }
+ //  // userObj.bonuses = userInform.bonuses // no data now
+ // }, [userInform.isAuthenticated, userInform.balance]);
 
-   if (userInform.balance.balances.length > 0) {
-    setUserBalance(Number(userInform.balance.balances[0].current_balance).toFixed(2));
-    setUserRealMoney(Number(userInform.balance.balances[0].current_balance).toFixed(2));
-   } else {
-    setUserBalance("00,00");
-    setUserRealMoney("00,00");
-   }
-  } else {
-   setUserBalance('');
-   setUserRealMoney("");
-   setUsername("");
-  }
-  // userObj.bonuses = userInform.bonuses // no data now
- }, [userInform.isAuthenticated, userInform.balance]);
-
- useEffect(() => {
-  if (!currency.loading && userInform.isAuthenticated && userInform.balance) {
-   setUserCurrency(currency.currency?.results.find((el) => {
-    if (userInform.user.user?.currency) {
-     return Number(el.id) === Number(userInform.user.user.currency_id);
-    } else if (!userInform.user.user.base_currency_id) {
-     return Number(el.id) === 1;
-    } else {
-     return Number(el.id) === Number(userInform.user.user.base_currency_id);
-    }
-   }).abbreviation);
-  } else {
-   setUserCurrency('')
-  }
- },[currency.currency, userInform.isAuthenticated, userInform.balance])
+ // useEffect(() => {
+ //  if (!currency.loading && userInform.isAuthenticated && userInform.balance) {
+ //   setUserCurrency(currency.currency?.results.find((el) => {
+ //    if (userInform.user.user?.currency) {
+ //     return Number(el.id) === Number(userInform.user.user.currency_id);
+ //    } else if (!userInform.user.user.base_currency_id) {
+ //     return Number(el.id) === 1;
+ //    } else {
+ //     return Number(el.id) === Number(userInform.user.user.base_currency_id);
+ //    }
+ //   }).abbreviation);
+ //  } else {
+ //   setUserCurrency('')
+ //  }
+ // },[currency.currency, userInform.isAuthenticated, userInform.balance])
 
 
  const closeClickHandler = () => {
@@ -81,7 +82,6 @@ export const MobileSideMenu = ({t, userInform}) => {
  const [isOpenLanguages, setIsOpenLanguages] = useState(false);
 
  function openLanguagesClickHandler() {
-  console.log('asdas')
   if (isOpenLanguages) {
    setIsOpenLanguages(false);
   } else {
@@ -105,27 +105,7 @@ export const MobileSideMenu = ({t, userInform}) => {
       <div className={styles.sideMenuLogo}>
        <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
       </div>
-      <div className={styles.userInfoBlock}>
-       <p className={styles.username}>{username}</p>
-       <p className={styles.userMoney}>{`${userBalance} ${userCurrency}`}</p>
-       <div className={styles.userInfoDivider}></div>
-       {
-        userInform.isAuthenticated ? <div className={styles.userBonusesInfo}>
-         <div className={styles.realMoneyBlock}>
-          <span className={styles.realMoneyCount}>{`${userRealMoney} ${userCurrency}`}</span>
-          <span className={styles.realMoneyText}>Real money</span>
-         </div>
-         <div className={styles.bonusMoneyBlock}>
-          <span className={styles.bonusMoneyCount}>0 BTC</span>
-          <span className={styles.bonusMoneyText}>Locked by bonus</span>
-         </div>
-        </div> : ""
-       }
-
-       <div className={styles.sideMenuButtonsBlock}>
-        {userInform.isAuthenticated ? <HeaderButtonsDeposit t={t} isUserLogined={userInform}/> : <HeaderButtonsRegistration isUserLogined={userInform.isAuthenticated} t={t}/>}
-       </div>
-      </div>
+      <UserInfoBlock t={t} userInform={userInform} currency={currency}/>
       <div className={styles.mobileSideListWrapper}>
        <MobileListContainer isAuth={userInform.isAuthenticated} t={t}/>
        <div className={`${styles.mobileSideLangSwitcherButton} ${isOpenLanguages ? styles.activeLangMenu : ""}`}>
@@ -141,7 +121,7 @@ export const MobileSideMenu = ({t, userInform}) => {
        <div className={styles.sideMenuFooterIconsBlock}>
         {socilaLinks.map((el) => {
          return (
-           <a className={styles.socialLink} target="_blank" key={`${el.key} footer`} href={el.href}>
+           <a className={styles.socialLink} target="_blank" rel={'noreferrer'} key={`${el.key} footer`} href={el.href}>
             <Image className={styles.socialImage} height={35} width={35} src={el.img} alt={el.key}/>
            </a>
          )

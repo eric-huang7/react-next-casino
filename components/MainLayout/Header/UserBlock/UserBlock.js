@@ -17,47 +17,6 @@ export const UserBlockNavigation = ({t, userInfo}) => {
   const currency = useSelector((state) => state.getCurrency);
   const messagesData = useSelector((store) => store.notifications);
 
-  // const [userName, setUserName] = useState('')
-  // const [userBalanceInfo, setUserBalanceInfo] = useState('');
-  // const [userCurrency, setUserCurrency] = useState('');
-
-  // useEffect(() => {
-  //   console.log('header change', userInfo.balance)
-  //   if (userInfo.isAuthenticated) {
-  //     setUserName(userInfo.user.user.username);
-  //
-  //     if (userInfo.balance) {
-  //
-  //       if (userInfo.balance.balances.length > 0) {
-  //
-  //         setUserBalanceInfo(`${Number(userInfo.balance.balances[0].current_balance).toFixed(2)}`)
-  //       } else {
-  //         // console.log(userInfo.balance, 'USER info BALANCE');
-  //         setUserBalanceInfo('0.00')
-  //       }
-  //     } else {
-  //       setUserBalanceInfo('00.00')
-  //     }
-  //     // console.log(userBalanceInfo, 'USER BALANCE');
-  //   }
-  // }, [userInfo.isAuthenticated, userInfo.balance]);
-
-// useEffect(() => {
-//   if (!currency.loading && userInfo.isAuthenticated) {
-//     setUserCurrency(currency.currency?.results.find((el) => {
-//       if (userInfo.user.user?.currency) {
-//         return Number(el.id) === Number(userInfo.user.user.currency_id);
-//       } else if (!userInfo.user.user.base_currency_id) {
-//         return Number(el.id) === 1;
-//       } else {
-//         return Number(el.id) === Number(userInfo.user.user.base_currency_id);
-//       }
-//     }).abbreviation);
-//   } else {
-//     setUserCurrency('')
-//   }
-// },[currency.loading, userInfo.isAuthenticated])
-
 
   return (
     <div className={styles.userMainBlockWrapper}>
