@@ -11,7 +11,7 @@ import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
-import {auth, signUp, userBalance} from "../../../redux/actions/login";
+import {auth, signUp, userBalance} from "../../../redux/actions/userData";
 
 let currensyVariants = [
   {id: 1, currensy: "BTC", active: false},

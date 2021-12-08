@@ -1,19 +1,25 @@
 import styles from "../../../styles/MyAccount/BalancePage/BalancePage.module.scss";
 import {TableContainer} from "./TableContainer";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import {showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
 
 
-export const BalanceInfoContainer = ({t, balanceInfo}) => {
+export const BalanceInfoContainer = ({t, balanceInfo, currency}) => {
+  const dispatch = useDispatch()
+  const addCurrencyClickHandler = () => {
+    dispatch(showCurrencySwitcher(true));
+    dispatch(setCurrencySelectorType(false));
+  }
 
-
-  if (balanceInfo?.balance?.success) {
+  if (balanceInfo?.balance?.success && !currency.loading) {
     return (
       <>
         <div className={styles.tableContainerWrapper}>
-          <TableContainer balanceInfo={balanceInfo} t={t}/>
+          <TableContainer currency={currency} balanceInfo={balanceInfo} t={t}/>
         </div>
-        <button className={styles.addCurrencyButton}>
+        <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
           {t("myAccount.balance.buttons.addCurrency")}
         </button>
       </>

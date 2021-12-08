@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {Header} from "../Header/Header";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
-import {login} from "../../../redux/actions/login";
+import {userData} from "../../../redux/actions/userData";
 import {schemaLogin} from '../../../schemasForms/loginForm'
 
 
@@ -89,7 +89,7 @@ export const LogIn = ({t, isShow}) => {
   function loginUser() {
     console.log('send req', loginData, passwordData)
 
-    dispatch(login(site_id, auth_type_id, loginData, passwordData, isAdmin));
+    dispatch(userData(site_id, auth_type_id, loginData, passwordData, isAdmin));
 
   }
 

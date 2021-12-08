@@ -4,7 +4,7 @@ import {UserBlockNavigation} from "./UserBlock/UserBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {showRegister} from "../../../redux/actions/registerShow";
-import {auth, userBalance} from "../../../redux/actions/login";
+import {auth, userBalance} from "../../../redux/actions/userData";
 import {useEffect} from "react";
 import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";

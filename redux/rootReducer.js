@@ -6,7 +6,7 @@ import winnersReducer from "./reducers/winnersReducer";
 import jackpotsReducer from "./reducers/jackpotsReducer";
 import showRegisterReducer from "./reducers/showRegisterReducer";
 import showLoginReducer from "./reducers/showLoginReducer";
-import authReducer from "./reducers/authReducer";
+import userDataReducer from "./reducers/userDataReducer";
 import playGameReducer from "./reducers/playGameReducer";
 import getCurrency from "./reducers/currencyReducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
@@ -21,6 +21,7 @@ import notifyReducer from "./reducers/notifyReducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./reducers/tournaments";
 import depositReducer from "./reducers/depositPaymentsReducer";
+import currencySelectorTypeReducer from "./reducers/currencySelectorTypeReducer";
 
 
 
@@ -32,7 +33,7 @@ export const rootReducer = combineReducers({
   jackpots: jackpotsReducer,
   showRegister: showRegisterReducer,
   showLogin: showLoginReducer,
-  authInfo: authReducer,
+  authInfo: userDataReducer,
   playGame: playGameReducer,
   getCurrency : getCurrency,
   showMobileMenu: showMobileMenuReducer,
@@ -46,4 +47,5 @@ export const rootReducer = combineReducers({
   mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
   depositData: depositReducer,
+  currencySelectorType: currencySelectorTypeReducer,
 })

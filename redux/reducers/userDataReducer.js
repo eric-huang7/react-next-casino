@@ -6,7 +6,8 @@ import {
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
   SIGNUP_FAIL,
-  SIGNUP_SUCCESS
+  SIGNUP_SUCCESS,
+  PATCH_CHANGE_CURRENCY, ADD_CURRENCY_TO_USER
 } from "../actions/types";
 
 const initialState = {
@@ -18,9 +19,11 @@ const initialState = {
   error: null,
   registerError: null,
   logoutError: null,
+  loadingResultChangingCurrency: true,
+  resultChangingCurrency: null
 }
 
-function authReducer(state = initialState, action) {
+function userDataReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
@@ -43,6 +46,12 @@ function authReducer(state = initialState, action) {
         error: {...payload},
         registerError: null,
       }
+    case PATCH_CHANGE_CURRENCY:
+      return {
+        ...state,
+        loadingResultChangingCurrency: false,
+        resultChangingCurrency: {...payload},
+      }
     case AUTH :
       return {
         ...state,
@@ -53,6 +62,11 @@ function authReducer(state = initialState, action) {
         registerError: null,
       }
     case BALANCE:
+      return {
+        ...state,
+        balance: { ...payload }
+      }
+    case ADD_CURRENCY_TO_USER:
       return {
         ...state,
         balance: { ...payload }
@@ -98,4 +112,4 @@ function authReducer(state = initialState, action) {
   }
 }
 
-export default authReducer
+export default userDataReducer

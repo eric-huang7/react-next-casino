@@ -27,13 +27,13 @@ const headingsCurrencies = {
   otherCryptoCurrencies: 'selectCurrency.otherCryptoCurrencies'
 }
 
-export const SelectCurrencyHoc = ({t}) => {
+export const SelectCurrencyHoc = ({t, actionCurrencySelector}) => {
 
   return (
     <>
-      <CurrencySelector t={t} heading={headingsCurrencies.suggestedCurrencies} currenciesList={suggestedCurrencies}/>
-      <CurrencySelector t={t} heading={headingsCurrencies.otherRealMoney} currenciesList={otherRealMoney}/>
-      <CurrencySelector t={t} heading={headingsCurrencies.otherCryptoCurrencies} currenciesList={otherCryptoCurrencies}/>
+      <CurrencySelector actionCurrencySelector={actionCurrencySelector} t={t} heading={headingsCurrencies.suggestedCurrencies} currenciesList={suggestedCurrencies}/>
+      <CurrencySelector actionCurrencySelector={actionCurrencySelector} t={t} heading={headingsCurrencies.otherRealMoney} currenciesList={otherRealMoney}/>
+      <CurrencySelector actionCurrencySelector={actionCurrencySelector} t={t} heading={headingsCurrencies.otherCryptoCurrencies} currenciesList={otherCryptoCurrencies}/>
     </>
   )
 }

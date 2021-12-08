@@ -20,6 +20,7 @@ const initialState = {
   isShowCryptoModal: false,
   isShowMobilePaymentsStepper: false,
   actionForBackButtonPayments: false,
+
 }
 
 function showPopupsReducer(state = initialState, action) {

@@ -2,7 +2,7 @@ import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scs
 import {TableHeading} from "./TableHeading";
 import {TableRow} from "./TableRow";
 
-export const TableContainer = ({t, balanceInfo}) => {
+export const TableContainer = ({t, balanceInfo, currency}) => {
 
   return (
     <table className={styles.balanceTable} cellSpacing={0}>
@@ -13,19 +13,10 @@ export const TableContainer = ({t, balanceInfo}) => {
       {
         balanceInfo.balance.balances.map((el) => {
           return (
-            <TableRow key={`${el.id} balance table item`} t={t} balanceData={el}/>
+            <TableRow key={`${el.id} balance table item`} currencyData={currency} t={t} balanceData={el}/>
           )
         })
       }
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
-        {/*<TableRow t={t}/>*/}
       </tbody>
     </table>
   )

@@ -16,7 +16,7 @@ export const winners_latest_url = `http://t-gpb.slotsidol.com:7000/winners?begin
 export const jackpots_url = 'http://t-gpb.slotsidol.com:7000/jackpots?amount=10000';
 
 
-// ########## login & auth & register url
+// ########## userData & auth & register url
 
 export const login_url = 'http://t-gpb.slotsidol.com:7000/login';
 
@@ -50,6 +50,8 @@ export const activeBonuses_url = 'http://t-gpb.slotsidol.com:7000/bonus_offer?ac
 export const get_tournaments_url = 'http://t-gpb.slotsidol.com:7000/tournament';
 
 // ####### POST DEPOSIT PAYMENT
+export const post_add_user_currency = 'http://t-gpb.slotsidol.com:7000/deposit/add';
+
 export const post_deposit_payment = 'http://t-gpb.slotsidol.com:7000/deposit';
 
 export const post_credit_card_deposit_payment = 'http://t-gpb.slotsidol.com:7000/deposit/cc';

@@ -121,7 +121,7 @@ export const allDataTermsAndConditions = {
     '\n' +
     '6.8. You must inform us as soon as you become aware of any errors with respect to your Account.\n' +
     '\n' +
-    '6.9. Please remember that betting is purely for entertainment and pleasure and you should stop as soon as it stops being fun. Absolutely do not bet anything you can’t afford to lose. If you feel that you may have lost control of your gambling, we offer a self-exclusion option. Just send a message to our Customer Support Department using your Registered Email Address that you wish to SELF-EXCLUDE and this request will take effect within 24 hours from the moment of its receipt. In this case your account will be disabled until your further notice, and you won’t be able to login to it.\n' +
+    '6.9. Please remember that betting is purely for entertainment and pleasure and you should stop as soon as it stops being fun. Absolutely do not bet anything you can’t afford to lose. If you feel that you may have lost control of your gambling, we offer a self-exclusion option. Just send a message to our Customer Support Department using your Registered Email Address that you wish to SELF-EXCLUDE and this request will take effect within 24 hours from the moment of its receipt. In this case your account will be disabled until your further notice, and you won’t be able to userData to it.\n' +
     '\n' +
     '6.10. You cannot transfer, sell, or pledge Your Account to another person. This prohibition includes the transfer of any assets of value of any kind, including but not limited to ownership of accounts, winnings, deposits, bets, rights and/or claims in connection with these assets, legal, commercial or otherwise. The prohibition on said transfers also includes however is not limited to the encumbrance, pledging, assigning, usufruct, trading, brokering, hypothecation and/or gifting in cooperation with a fiduciary or any other third party, company, natural or legal individual, foundation and/or association in any way shape or form\n' +
     '\n' +
@@ -408,7 +408,7 @@ export const allDataTermsAndConditions = {
     '\n' +
     'Minor Protection\n' +
     '\n' +
-    'To use our Service, You have to be 18 years or older. To avoid abuse, keep Your login data save from any minors near You.\n' +
+    'To use our Service, You have to be 18 years or older. To avoid abuse, keep Your userData data save from any minors near You.\n' +
     '\n' +
     'Principally we recommend a filter program to avoid minors, especially children, to access any context on the internet, which is not healthy for them.\n' +
     '\n' +

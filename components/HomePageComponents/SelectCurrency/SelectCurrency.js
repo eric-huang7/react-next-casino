@@ -4,6 +4,7 @@ import {SelectCurrencyHoc} from "./SelectCurrencyHoc";
 import {useDispatch, useSelector} from "react-redux";
 import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import useWindowScroll from "../../../hooks/useWindowScroll";
+import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
 
 
 
@@ -13,9 +14,11 @@ export const SelectCurrency = ({t}) => {
   const dispatch = useDispatch();
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
   const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton);
+  const actionCurrencySelector = useSelector((store) => store.currencySelectorType);
 
   const closeCurrenciesClickHandler = () => {
     dispatch(showCurrencySwitcher(false));
+    dispatch(setCurrencySelectorType(true));
     if (backButtonShouldDoState !== null) {
       dispatch(backButtonShouldDo(false));
     }
@@ -27,6 +30,7 @@ export const SelectCurrency = ({t}) => {
     } else {
       dispatch(showCurrencySwitcher(false));
     }
+    dispatch(setCurrencySelectorType(true));
   }
 
 
@@ -49,7 +53,7 @@ export const SelectCurrency = ({t}) => {
             <span className={styles.closeTwo}></span>
           </div>
         </div>
-        <SelectCurrencyHoc t={t}/>
+        <SelectCurrencyHoc actionCurrencySelector={actionCurrencySelector} t={t}/>
       </div>
     </div>
   )

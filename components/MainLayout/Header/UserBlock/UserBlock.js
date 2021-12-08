@@ -5,7 +5,7 @@ import {HeaderButtonsDeposit} from "../HeaderButtons/HeaderButtonsDeposit";
 import {BurgerButton} from "../BurgerButton/BurgerButton";
 import {HeaderButtonsRegistration} from "../HeaderButtons/HeaderButtonsRegistration";
 import {useDispatch, useSelector} from "react-redux";
-import {userBalance} from "../../../../redux/actions/login";
+import {userBalance} from "../../../../redux/actions/userData";
 import {useEffect, useState} from "react";
 import {getCurrency} from "../../../../redux/actions/currency";
 import {NotificationContainer} from "./Notification";

@@ -1,15 +1,24 @@
 import axios from "axios";
 import {
+  ADD_CURRENCY_TO_USER,
   AUTH,
   BALANCE,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
-  LOGOUT_SUCCESS,
+  LOGOUT_SUCCESS, PATCH_CHANGE_CURRENCY,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS
 } from "./types";
-import {auth_url, login_url, user_balance_url, signUp_url, logout_url} from "../url/url";
+import {
+  auth_url,
+  login_url,
+  user_balance_url,
+  signUp_url,
+  logout_url,
+  user_url,
+  post_add_user_currency
+} from "../url/url";
 
 axios.defaults.withCredentials = true;
 
@@ -33,7 +42,7 @@ export const auth = () => async dispatch => {
 }
 
 
-export const login = (site_id, auth_type_id, username, auth_info, is_admin) => async dispatch => {
+export const userData = (site_id, auth_type_id, username, auth_info, is_admin) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -73,6 +82,51 @@ export const userBalance = () => async dispatch => {
   } catch (e) {
     console.log(e.response)
   }
+}
+
+export const addCurrencyToUserList = (currency_id) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(currency_id);
+  try {
+
+    const res = await axios.post(post_add_user_currency, body, config)
+    console.log(res, "<< POST user add currency");
+    dispatch({
+      type: ADD_CURRENCY_TO_USER,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, '<<<< SOME ERROR when post add user currency')
+  }
+
+}
+
+export const patchUserActiveCurrency = (userData) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(userData)
+
+  try {
+    const res = await axios.patch(user_url, body, config);
+    console.log(res, "<< PATCH user active currency");
+    dispatch({
+      type: PATCH_CHANGE_CURRENCY,
+      payload: res.data
+    })
+    dispatch(userBalance());
+  } catch (e) {
+    console.log(e.response, "SOME ERROR WHEN change active currency");
+  }
+
 }
 
 export const signUp = (currency_id, user_id, site_id, auth_type_id, username, email, password, current_bonus_code) => async dispatch => {

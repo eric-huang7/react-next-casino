@@ -6,7 +6,8 @@ const initialState = {
   currencySymbol: '',
   type: 4,
   isDepositEnabled: 1,
-  isWithdrawEnabled: 0
+  isWithdrawEnabled: 0,
+
 }
 
 function setUserCurrencyReducer(state = initialState, action) {
