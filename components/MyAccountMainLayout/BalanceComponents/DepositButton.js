@@ -7,7 +7,7 @@ import {showDepositModal} from "../../../redux/actions/showPopups";
 
 export const DepositButton = ({t, currency}) => {
   const dispatch = useDispatch()
-  console.log(currency, '<<<<<<<< deposit button')
+  // console.log(currency, '<<<<<<<< deposit button')
 
   const currencyButtonHandler = () => {
     dispatch(setUserCurrencySwitcher({

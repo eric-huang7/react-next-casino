@@ -6,22 +6,18 @@ import {patchUserActiveCurrency, userBalance} from "../../../redux/actions/userD
 
 export const TableRow = ({t, balanceData, currencyData}) => {
   const dispatch = useDispatch();
-  // console.log(balanceData, currencyData)
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id)) ;
   let amount = Number(balanceData.current_balance);
   let cashOut = Number(balanceData.cash_amount);
 
   const chooseClickHandler = () => {
-    console.log(balanceData, currencyData, "++++choose click", balanceData.currency_id)
     let userData = {
       id: balanceData.user_id,
       base_currency_id: balanceData.currency_id
     }
     dispatch(patchUserActiveCurrency(userData));
 
-
-    console.log(balanceData, currencyData, "++++after dispatch click", balanceData.currency_id)
   }
 
   return (
