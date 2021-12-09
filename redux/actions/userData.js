@@ -96,7 +96,7 @@ export const getUserPayments = (params) => async dispatch => {
   try {
 
     const res = await axios.get(get_user_payments_url, config)
-    // console.log(res)
+    console.log(res, "<<< res from GET_USER_PAYMENTS")
     dispatch({
       type: GET_USER_PAYMENTS,
       payload: res.data

@@ -8,19 +8,21 @@ export const TrxHistoryTableContainer = ({t, userInfo, currencyData}) => {
 
 
   return (
-    <table cellSpacing={4} className={styles.trxTableContainer}>
-      <thead>
-      <TrxTableHeading t={t}/>
-      </thead>
-      <tbody>
-      {
-        userInfo.userPayments.payments.map((paymentData) => {
-          return (
-            <TrxTableRow key={`payment table key ${paymentData.id}`} currencyData={currencyData} paymentData={paymentData} t={t}/>
-          )
-        })
-      }
-      </tbody>
-    </table>
+    <div className={styles.tableContainerWrapper}>
+      <table cellSpacing={4} className={styles.trxTableContainer}>
+        <thead>
+        <TrxTableHeading t={t}/>
+        </thead>
+        <tbody>
+        {
+          userInfo.userPayments.payments.map((paymentData) => {
+            return (
+              <TrxTableRow key={`payment table key ${paymentData.id}`} currencyData={currencyData} paymentData={paymentData} t={t}/>
+            )
+          })
+        }
+        </tbody>
+      </table>
+    </div>
   )
 }

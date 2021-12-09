@@ -2,13 +2,13 @@ import styles from "../../../../styles/MyAccount/TrxHistory/TrxHistory.module.sc
 import {currencyInfo} from "../../../../helpers/currencyInfo";
 
 
-export const CurrencySelector = ({t, currencyData, userInfo}) => {
+export const CurrencySelector = ({t, currencyData, userInfo, setCurrencyFilter}) => {
 
 
   return (
     <div className={styles.selectorWrapper}>
       <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>Currency</label>
-      <select type="select" className={styles.currencySelect} id={'currencySelectHistory'}>
+      <select onChange={(e) => setCurrencyFilter(e.target.value)} className={styles.currencySelect} id={'currencySelectHistory'}>
         <option key={`option currency select`} value={null}>{null}</option>
         {
           userInfo.balance.balances.map((el) => {
