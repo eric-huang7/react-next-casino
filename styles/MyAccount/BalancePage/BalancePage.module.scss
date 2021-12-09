@@ -175,6 +175,9 @@
       & th:first-child {
         background-color: transparent;
       }
+      & th.headingCashout {
+        width: 110px;
+      }
       & th.headingActions {
         width: 140px;
       }
@@ -215,6 +218,25 @@
     margin-bottom: 5px;
   }
 }
+@media screen and (max-width: 950px) {
+  .balanceTable {
+    & .headingRow {
+      & th.headingCashout {
+        width: auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .balanceTable {
+    & .headingRow {
+      & th.headingCashout {
+        width: 110px;
+      }
+
+    }
+  }
+}
 
 
 @media screen and (max-width: 600px) {
@@ -233,6 +255,9 @@
       }
       & th.headingCurrency {
         width: 75px;
+      }
+      & th.headingCashout {
+        width: auto;
       }
       & th.headingActions {
         width: 97px;
@@ -331,7 +356,17 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
+  .balanceTable {
+    & .headingRow {
+      & th.headingCashout {
+        width: 100px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 410px) {
   .tableContainerWrapper {
     overflow-x: auto;
   }

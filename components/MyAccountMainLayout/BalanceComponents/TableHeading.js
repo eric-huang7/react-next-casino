@@ -14,12 +14,12 @@ export const TableHeading = ({t}) => {
           {t("myAccount.balance.table.headings.currency")}
         </p>
       </th>
-      <th>
+      <th className={styles.headingAmount}>
         <p>
           {t("myAccount.balance.table.headings.amount")}
         </p>
       </th>
-      <th>
+      <th className={styles.headingCashout}>
         <p>
           {t("myAccount.balance.table.headings.cashout")}
         </p>
