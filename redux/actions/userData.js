@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   ADD_CURRENCY_TO_USER,
   AUTH,
-  BALANCE,
+  BALANCE, GET_USER_PAYMENTS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
@@ -17,7 +17,7 @@ import {
   signUp_url,
   logout_url,
   user_url,
-  post_add_user_currency
+  post_add_user_currency, get_user_payments_url
 } from "../url/url";
 
 axios.defaults.withCredentials = true;
@@ -77,6 +77,28 @@ export const userBalance = () => async dispatch => {
     // console.log(res)
     dispatch({
       type: BALANCE,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response)
+  }
+}
+
+export const getUserPayments = (params) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: {...params}
+  }
+  console.log(params, 'get payments')
+  try {
+
+    const res = await axios.get(get_user_payments_url, config)
+    // console.log(res)
+    dispatch({
+      type: GET_USER_PAYMENTS,
       payload: res.data
     })
   } catch (e) {

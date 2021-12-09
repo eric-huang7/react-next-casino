@@ -5,13 +5,14 @@ import {ActionSelector} from "./Selectors/ActionSelector";
 import {StatusSelector} from "./Selectors/StatusSelector";
 
 
-export const TrxHistoryInputsContainer = ({t, balanceInfo, currencyData}) => {
-  console.log(balanceInfo, currencyData, '<<<<< TrxHistory')
+export const TrxHistoryInputsContainer = ({t, userInfo, currencyData}) => {
+  console.log(userInfo, currencyData, '<<<<< TrxHistory')
+
 
 
   return (
     <div className={styles.inputsContainer}>
-      <CurrencySelector t={t} currencyData={currencyData} balanceInfo={balanceInfo}/>
+      <CurrencySelector t={t} currencyData={currencyData} userInfo={userInfo}/>
       <ActionSelector t={t} />
       <div className={styles.lastSelectorButtonWrapper}>
         <StatusSelector t={t} />

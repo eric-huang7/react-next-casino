@@ -7,7 +7,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS,
-  PATCH_CHANGE_CURRENCY, ADD_CURRENCY_TO_USER
+  PATCH_CHANGE_CURRENCY, ADD_CURRENCY_TO_USER, GET_USER_PAYMENTS
 } from "../actions/types";
 
 const initialState = {
@@ -20,7 +20,9 @@ const initialState = {
   registerError: null,
   logoutError: null,
   loadingResultChangingCurrency: true,
-  resultChangingCurrency: null
+  resultChangingCurrency: null,
+  loadingUserPayments: true,
+  userPayments: null,
 }
 
 function userDataReducer(state = initialState, action) {
@@ -65,6 +67,12 @@ function userDataReducer(state = initialState, action) {
       return {
         ...state,
         balance: { ...payload }
+      }
+    case GET_USER_PAYMENTS:
+      return {
+        ...state,
+        loadingUserPayments: false,
+        userPayments: { ...payload },
       }
     case ADD_CURRENCY_TO_USER:
       return {

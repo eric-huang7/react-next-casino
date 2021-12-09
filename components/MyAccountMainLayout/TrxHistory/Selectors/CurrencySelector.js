@@ -2,7 +2,7 @@ import styles from "../../../../styles/MyAccount/TrxHistory/TrxHistory.module.sc
 import {currencyInfo} from "../../../../helpers/currencyInfo";
 
 
-export const CurrencySelector = ({t, currencyData, balanceInfo}) => {
+export const CurrencySelector = ({t, currencyData, userInfo}) => {
 
 
   return (
@@ -11,8 +11,7 @@ export const CurrencySelector = ({t, currencyData, balanceInfo}) => {
       <select type="select" className={styles.currencySelect} id={'currencySelectHistory'}>
         <option key={`option currency select`} value={null}>{null}</option>
         {
-          balanceInfo.balance.balances.map((el) => {
-            console.log(currencyInfo(currencyData.currency.results, el.currency_id)[0].abbreviation);
+          userInfo.balance.balances.map((el) => {
             return (
               <option key={`${el.id} option currency select`} value={el.currency_id}>{currencyInfo(currencyData.currency.results, el.currency_id)[0].abbreviation}</option>
             )

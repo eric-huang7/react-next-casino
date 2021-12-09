@@ -1,4 +1,4 @@
-import {formatDistance} from "date-fns";
+import {format, formatDistance} from "date-fns";
 import {ru, it, enUS, zhCN, ja, pt, es, de, fr, sv} from "date-fns/locale";
 
 const locales = {
@@ -17,4 +17,14 @@ const locales = {
 export const dateTranslator = (time, locale) => {
 
   return formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false, locale: locales[locale]});
+}
+
+export const dateFormatter = (time, locale) => {
+  let firstPart = time.split('.')[0];
+  let secondPart = time.split('.')[1].slice(0,3);
+
+  let res = format(new Date(Number(firstPart + secondPart)), 'LLLL dd, yyyy HH:mm:ss', {locale: locales[locale]});
+  let firstSymbol = res[0].toUpperCase();
+
+  return firstSymbol + res.slice(1, res.length);
 }
