@@ -4,7 +4,7 @@ import {Header} from "../MainLayout/Header/Header";
 import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getUserPayments, userBalance} from "../../redux/actions/userData";
+import {getUserBets, getUserPayments, userBalance} from "../../redux/actions/userData";
 import {getCurrency} from "../../redux/actions/currency";
 import {DepositPage} from "../MainLayout/DepositPage/DepositPage";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
@@ -19,6 +19,7 @@ export const AccountMainLayout = ({t, children}) => {
   useEffect(() => {
     dispatch(userBalance());
     dispatch(getCurrency());
+    dispatch(getUserBets());
 
     if (userInfo.isAuthenticated) {
       dispatch(getUserPayments({user_id: Number(userInfo?.user?.user?.id)}));

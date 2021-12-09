@@ -16,9 +16,8 @@ export const TrxHistoryInputsContainer = ({t, userInfo, currencyData}) => {
   const [actionFilter, setActionFilter] = useState(null);
   const [statusFilter, setStatusFilter] = useState(null);
 
-
   const filterButtonClickHandler = () => {
-    console.log(typeof statusFilter, statusFilter, typeof actionFilter, actionFilter, typeof currencyFilter, currencyFilter);
+
     let params = {user_id: Number(userInfo?.user?.user?.id)};
     let arrRequest = [
       {status: statusFilter, type: "status"},

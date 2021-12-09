@@ -498,6 +498,14 @@
         "cashout": "Cashout",
         "addCurrency": "+ Add currency"
       }
+    },
+    "history": {
+      "transactions": {
+
+      },
+      "bets": {
+        "textBlock": "Note that this page shows bets you placed in the last six months (limited to 50 bets). To get the history of your bets for a later period, please contact our support team"
+      }
     }
   }
 

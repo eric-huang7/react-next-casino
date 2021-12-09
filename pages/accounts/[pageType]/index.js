@@ -10,6 +10,8 @@ const PageType = (props) => {
 
   const { t } = useTranslation('common');
 
+  console.log(router)
+
   switch (router.query.pageType) {
     case "balance":
       return (
@@ -21,18 +23,6 @@ const PageType = (props) => {
       return (
         <AccountMainLayout t={t}>
           <TrxHistory t={t}/>
-        </AccountMainLayout>
-      )
-    case "bets-history" :
-      return (
-        <AccountMainLayout t={t}>
-          <h1>bets-history</h1>
-        </AccountMainLayout>
-      )
-    case "bonus-history" :
-      return (
-        <AccountMainLayout t={t}>
-          <h1>bonus-history</h1>
         </AccountMainLayout>
       )
     case "bonuses" :

@@ -59,3 +59,7 @@ export const post_credit_card_deposit_payment = 'http://t-gpb.slotsidol.com:7000
 // ######## PAYMENTS
 
 export const get_user_payments_url = "http://t-gpb.slotsidol.com:7000/payments";
+
+// ######### BETS
+
+export const get_user_bets = 'http://t-gpb.slotsidol.com:7000/bets';
