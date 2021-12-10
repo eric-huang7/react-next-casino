@@ -6,6 +6,7 @@ import {TrxHistoryInputsContainer} from "../TrxHistory/TrxHistoryInputsContainer
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {TrxHistoryTableContainer} from "../TrxHistory/TrxHistoryTableContainer";
 import {SelectorsContainer} from "./SelectorsContainer";
+import {BonusTableContainer} from "./BonusTable/BonusTableContainer";
 
 
 export const BonusHistory = ({t, router}) => {
@@ -19,7 +20,7 @@ export const BonusHistory = ({t, router}) => {
         <Heading t={t} heading={"myAccount.pageHeadings.bonusHistory"}/>
         <TrxHistoryLinksContainer router={router} t={t}/>
         <SelectorsContainer t={t} currencyData={currency} userInfo={userInfo}/>
-        {userInfo?.loadingUserPayments ? <LoadingComponent t={t}/> : <p>table</p>}
+        {userInfo?.loadingUserPayments ? <LoadingComponent t={t}/> : <BonusTableContainer t={t}/>}
       </div>
     )
   } else {
