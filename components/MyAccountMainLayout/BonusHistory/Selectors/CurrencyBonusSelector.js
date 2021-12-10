@@ -7,7 +7,7 @@ export const CurrencyBonusSelector = ({t, currencyData, userInfo, setCurrencyFil
 
   return (
     <div className={styles.selectorWrapper}>
-      <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>Currency</label>
+      <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>{t("myAccount.history.bonus.inputsLabels.currency")}</label>
       <select
         onChange={(e) => setCurrencyFilter(e.target.value)}
         className={styles.currencySelect}

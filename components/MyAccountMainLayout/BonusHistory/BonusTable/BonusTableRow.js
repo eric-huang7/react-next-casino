@@ -22,7 +22,7 @@ const router = useRouter();
         {title}
       </td>
       <td>
-        {status}
+        {t(status)}
       </td>
       <td>
         {amount}
@@ -52,17 +52,17 @@ function wagerValue(rollover_achieved, award_amount, wager_requirements) {
 function statusValue (status) {
   switch (status) {
     case "1":
-      return "Active"
+      return "myAccount.history.bonus.statusItems.active"
     case "2":
-      return "Lost"
+      return "myAccount.history.bonus.statusItems.lost"
     case "3":
-      return "Redeemed"
+      return "myAccount.history.bonus.statusItems.redeemed"
     case "4":
-      return "Canceled"
+      return "myAccount.history.bonus.statusItems.canceled"
     case "5":
-      return "Pending"
+      return "myAccount.history.bonus.statusItems.pending"
     case "6":
-      return "Expired"
+      return "myAccount.history.bonus.statusItems.expired"
     default:
       return "-"
   }

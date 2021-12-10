@@ -13,13 +13,13 @@ export const TrxTableRow = ({t, paymentData, currencyData, action, date, amount,
         {date}
       </td>
       <td style={status === "Error" ? {color: "red"} : status === "Success" ? {color: "green"} : {color: "#595656"}}>
-        {status}
+        {t(status)}
       </td>
       <td>
         {action}
       </td>
       <td>
-        {paymentSystem}
+        {t(paymentSystem)}
       </td>
       <td>
         {`${amount} ${currency}`}

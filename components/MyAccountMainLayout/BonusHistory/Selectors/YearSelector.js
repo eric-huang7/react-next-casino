@@ -5,7 +5,7 @@ export const YearSelector = ({t, setYearFilter, yearFilter}) => {
 
   return (
     <div className={styles.yearSelectorWrapper}>
-        <label htmlFor="yearSelector">From</label>
+        <label htmlFor="yearSelector">{t("myAccount.history.bonus.inputsLabels.from")}</label>
         <select onChange={(e) => setYearFilter(e.target.value)} value={yearFilter} className={styles.yearSelector} name="yearSelector" id="yearSelector">
             <option value={undefined}>{null}</option>
             <option value={2016}>{2016}</option>

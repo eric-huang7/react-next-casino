@@ -8,22 +8,22 @@ export const BetsHistoryHeading = ({t}) => {
     <tr className={styles.headingRow}>
       <th>
         <p>
-          Game
+          {t("myAccount.history.bets.table.headings.game")}
         </p>
       </th>
       <th>
         <p>
-          Bet
+          {t("myAccount.history.bets.table.headings.bet")}
         </p>
       </th>
       <th>
         <p>
-          Win
+          {t("myAccount.history.bets.table.headings.win")}
         </p>
       </th>
       <th>
         <p>
-          Date
+          {t("myAccount.history.bets.table.headings.date")}
         </p>
       </th>
     </tr>

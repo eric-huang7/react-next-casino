@@ -52,11 +52,11 @@ export const TrxHistoryTableContainer = ({t, userInfo, currencyData}) => {
 function statusValue(status) {
   switch (status) {
     case 1:
-      return 'Pending';
+      return 'myAccount.history.transactions.inputsItems.status.pending';
     case 2:
-      return 'Success';
+      return 'myAccount.history.transactions.inputsItems.status.success';
     case 3:
-      return 'Error';
+      return 'myAccount.history.transactions.inputsItems.status.error';
     default:
       return 'Undefined';
   }
@@ -64,11 +64,11 @@ function statusValue(status) {
 function paymentSystemValue(provider) {
   switch (provider) {
     case 1:
-      return 'Exchange';
+      return 'myAccount.history.transactions.table.paymentSystem.exchange';
     case 2:
-      return 'CoinsPaid';
+      return 'myAccount.history.transactions.table.paymentSystem.coinsPaid';
     case 3:
-      return 'Credit Card';
+      return 'myAccount.history.transactions.table.paymentSystem.creditCard';
     default:
       return 'Unknown';
   }

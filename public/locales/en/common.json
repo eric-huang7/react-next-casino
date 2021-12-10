@@ -501,10 +501,93 @@
     },
     "history": {
       "transactions": {
-
+        "links": {
+          "transactions": "Transactions History",
+          "bets": "Bets History",
+          "bonus": "Bonus History"
+        },
+        "inputsLabels": {
+          "currency": "Currency",
+          "action": "Action",
+          "status": "Status"
+        },
+        "inputsItems": {
+          "action": {
+            "deposit": "Deposit",
+            "withdrawal" : "Withdrawal"
+          },
+          "status": {
+            "pending": "Pending",
+            "success": "Success",
+            "error": "Error"
+          },
+          "filterButton": "Filter"
+        },
+        "table": {
+          "headings": {
+            "date": "Date",
+            "status": "Status",
+            "action": "Action",
+            "paymentSystem": "Payment System",
+            "amount": "Amount"
+          },
+          "paymentSystem": {
+            "exchange": "Exchange",
+            "coinsPaid": "CoinsPaid",
+            "creditCard": "Credit Card"
+          }
+        }
       },
       "bets": {
-        "textBlock": "Note that this page shows bets you placed in the last six months (limited to 50 bets). To get the history of your bets for a later period, please contact our support team"
+        "textBlock": "Note that this page shows bets you placed in the last six months (limited to 50 bets). To get the history of your bets for a later period, please contact our support team",
+        "table": {
+          "headings": {
+            "game": "Game",
+            "bet": "Bet",
+            "win": "Win",
+            "date": "Date"
+          }
+        }
+      },
+      "bonus": {
+        "inputsLabels": {
+          "currency": "Currency",
+          "status": "Status",
+          "from": "From"
+        },
+        "filterButton": "Фильтр",
+        "statusItems": {
+          "active": "Active",
+          "lost": "Lost",
+          "redeemed": "Redeemed",
+          "canceled": "Canceled",
+          "expired": "Expired",
+          "pending": "Pending"
+        },
+        "table": {
+          "headings": {
+            "title": "Title",
+            "stage": "Stage",
+            "amount": "Amount",
+            "wager": "Wager",
+            "validUtil": "Valid Until",
+            "date": "Date"
+          }
+        },
+        "month": {
+          "january": "January",
+          "february": "February",
+          "march": "March",
+          "april": "April",
+          "may": "May",
+          "june": "June",
+          "july": "July",
+          "august": "August",
+          "september": "September",
+          "october": "October",
+          "november": "November",
+          "december": "December"
+        }
       }
     }
   }

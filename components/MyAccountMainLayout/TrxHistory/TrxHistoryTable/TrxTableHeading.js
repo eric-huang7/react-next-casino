@@ -6,27 +6,27 @@ export const TrxTableHeading = ({t}) => {
     <tr className={styles.headingRow}>
       <th className={styles.dateHead}>
         <p>
-          Date
+          {t("myAccount.history.transactions.table.headings.date")}
         </p>
       </th>
       <th className={styles.statusHead}>
         <p>
-          Status
+          {t("myAccount.history.transactions.table.headings.status")}
         </p>
       </th>
       <th className={styles.actionHead}>
         <p>
-          Action
+          {t("myAccount.history.transactions.table.headings.action")}
         </p>
       </th >
       <th className={styles.paymentHead}>
         <p>
-          Payment System
+          {t("myAccount.history.transactions.table.headings.paymentSystem")}
         </p>
       </th>
       <th className={styles.amountHead}>
         <p>
-          Amount
+          {t("myAccount.history.transactions.table.headings.amount")}
         </p>
       </th>
     </tr>

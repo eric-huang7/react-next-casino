@@ -7,32 +7,32 @@ export const BonusTableHeading = ({t}) => {
     <tr className={styles.headingRow}>
       <th>
         <p>
-          Title
+          {t("myAccount.history.bonus.table.headings.title")}
         </p>
       </th>
       <th>
         <p>
-          Stage
+          {t("myAccount.history.bonus.table.headings.stage")}
         </p>
       </th>
       <th>
         <p>
-          Amount
+          {t("myAccount.history.bonus.table.headings.amount")}
         </p>
       </th>
       <th>
         <p>
-          Wager
+          {t("myAccount.history.bonus.table.headings.wager")}
+        </p>
+      </th>
+      <th>
+        <p className={styles.validUntil}>
+          {t("myAccount.history.bonus.table.headings.validUtil")}
         </p>
       </th>
       <th>
         <p>
-          Valid Util
-        </p>
-      </th>
-      <th>
-        <p>
-          Date
+          {t("myAccount.history.bonus.table.headings.date")}
         </p>
       </th>
     </tr>

@@ -7,7 +7,7 @@ export const CurrencySelector = ({t, currencyData, userInfo, setCurrencyFilter})
 
   return (
     <div className={styles.selectorWrapper}>
-      <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>Currency</label>
+      <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>{t("myAccount.history.transactions.inputsLabels.currency")}</label>
       <select onChange={(e) => setCurrencyFilter(e.target.value)} className={styles.currencySelect} id={'currencySelectHistory'}>
         <option key={`option currency select`} value={null}>{null}</option>
         {

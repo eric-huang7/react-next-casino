@@ -3,18 +3,18 @@ import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.modul
 
 
 let months = [
-  {name: 'January', value: 0},
-  {name: 'February', value: 1},
-  {name: 'March', value: 2},
-  {name: 'April', value: 3},
-  {name: 'May', value: 4},
-  {name: 'June', value: 5},
-  {name: 'July', value: 6},
-  {name: 'August', value: 7},
-  {name: 'September', value: 8},
-  {name: 'October', value: 9},
-  {name: 'November', value: 10},
-  {name: 'December', value: 11},
+  {name: 'myAccount.history.bonus.month.january', value: 0},
+  {name: 'myAccount.history.bonus.month.february', value: 1},
+  {name: 'myAccount.history.bonus.month.march', value: 2},
+  {name: 'myAccount.history.bonus.month.april', value: 3},
+  {name: 'myAccount.history.bonus.month.may', value: 4},
+  {name: 'myAccount.history.bonus.month.june', value: 5},
+  {name: 'myAccount.history.bonus.month.july', value: 6},
+  {name: 'myAccount.history.bonus.month.august', value: 7},
+  {name: 'myAccount.history.bonus.month.september', value: 8},
+  {name: 'myAccount.history.bonus.month.october', value: 9},
+  {name: 'myAccount.history.bonus.month.november', value: 10},
+  {name: 'myAccount.history.bonus.month.december', value: 11},
 ];
 
 export const MonthSelector = ({t, monthFilter, setMonthFilter}) => {
@@ -31,7 +31,7 @@ export const MonthSelector = ({t, monthFilter, setMonthFilter}) => {
       >
         <option value={undefined}>{null}</option>
         {
-          months.map((el) => <option key={`${el.value} month selector`} value={el.value}>{el.name}</option>)
+          months.map((el) => <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>)
         }
       </select>
     </div>

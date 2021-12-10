@@ -6,7 +6,7 @@ export const FilterButton = ({t, filterButtonClickHandler}) => {
   return (
     <div>
       <button onClick={() => filterButtonClickHandler()} className={styles.filterButton}>
-        Filter
+        {t("myAccount.history.bonus.filterButton")}
       </button>
     </div>
   )

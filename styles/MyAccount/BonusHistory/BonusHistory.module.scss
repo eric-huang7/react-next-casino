@@ -143,6 +143,10 @@
   }
 }
 
+.validUntil {
+  word-break: break-word;
+}
+
 @media screen and (max-width: 990px) {
   .bonusTableContainer {
     width: 100%;
