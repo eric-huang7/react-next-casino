@@ -45,7 +45,7 @@ function wagerValue(rollover_achieved, award_amount, wager_requirements) {
   let wager_rollover_achieved = Number(rollover_achieved);
   let wager_award_amount = Number(award_amount);
   let wager_wager_requirements = Number(wager_requirements);
-  let res = `${wager_rollover_achieved}/(${wager_award_amount}*${wager_wager_requirements}) (${wagerNumber}%)`
+  let res = `${wager_rollover_achieved} / (${wager_award_amount} * ${wager_wager_requirements}) (${wagerNumber}%)`
   return res
 }
 

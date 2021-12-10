@@ -9,27 +9,29 @@ export const BonusTableContainer = ({t, userInfo, currencyData}) => {
 
   if (userInfo.bonusesHistory?.success) {
     return (
-      <table className={styles.bonusTableContainer}>
-        <thead>
-        <BonusTableHeading t={t}/>
-        </thead>
-        <tbody>
-        {userInfo.bonusesHistory.bonuses.map((bonusData) => {
-          return (
-            <BonusTableRow
-              key={`${bonusData.id} bonus table key`}
-              t={t}
-              bonusData={bonusData}
-              currencyData={currencyData}
-            />
+      <div className={styles.tableContainerWrapper}>
+        <table className={styles.bonusTableContainer}>
+          <thead>
+          <BonusTableHeading t={t}/>
+          </thead>
+          <tbody>
+          {userInfo.bonusesHistory.bonuses.map((bonusData) => {
+            return (
+              <BonusTableRow
+                key={`${bonusData.id} bonus table key`}
+                t={t}
+                bonusData={bonusData}
+                currencyData={currencyData}
+              />
             )
-        })}
-        </tbody>
-      </table>
+          })}
+          </tbody>
+        </table>
+      </div>
     )
   } else {
     return (
-      <LoadingComponent />
+      <LoadingComponent/>
     )
   }
 
