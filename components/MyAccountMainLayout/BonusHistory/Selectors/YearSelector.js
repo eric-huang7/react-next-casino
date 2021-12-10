@@ -1,13 +1,13 @@
 import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.module.scss';
 
 
-export const YearSelector = ({t}) => {
+export const YearSelector = ({t, setYearFilter, yearFilter}) => {
 
   return (
     <div className={styles.yearSelectorWrapper}>
         <label htmlFor="yearSelector">From</label>
-        <select className={styles.yearSelector} name="yearSelector" id="yearSelector">
-            <option value={null}>{null}</option>
+        <select onChange={(e) => setYearFilter(e.target.value)} value={yearFilter} className={styles.yearSelector} name="yearSelector" id="yearSelector">
+            <option value={undefined}>{null}</option>
             <option value={2016}>{2016}</option>
             <option value={2017}>{2017}</option>
             <option value={2018}>{2018}</option>

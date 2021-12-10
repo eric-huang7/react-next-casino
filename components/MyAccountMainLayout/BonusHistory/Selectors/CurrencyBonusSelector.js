@@ -2,14 +2,19 @@ import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.modul
 import {currencyInfo} from "../../../../helpers/currencyInfo";
 
 
-export const CurrencyBonusSelector = ({t, currencyData, userInfo, setCurrencyFilter}) => {
+export const CurrencyBonusSelector = ({t, currencyData, userInfo, setCurrencyFilter, currencyFilter}) => {
 
 
   return (
     <div className={styles.selectorWrapper}>
       <label htmlFor="currencySelectHistory" className={styles.currencySelectLabel}>Currency</label>
-      <select onChange={(e) => setCurrencyFilter(e.target.value)} className={styles.currencySelect} id={'currencySelectHistory'}>
-        <option key={`option currency select`} value={null}>{null}</option>
+      <select
+        onChange={(e) => setCurrencyFilter(e.target.value)}
+        className={styles.currencySelect}
+        id={'currencySelectHistory'}
+        value={currencyFilter}
+      >
+        <option key={`option currency select`} value={undefined}>{null}</option>
         {
           userInfo.balance.balances.map((el) => {
             return (

@@ -16,8 +16,6 @@ const router = useRouter();
   let validUtil = dateFormatter(bonusData.time_expires, router.locale);
   let date = dateFormatter(bonusData.time_redeemed, router.locale);
 
-
-  console.log(Number(bonusData.rollover_achieved), Number(bonusData.award_amount), Number(bonusData.wager_requirements))
   return (
     <tr className={styles.dataRow}>
       <td>
@@ -29,7 +27,7 @@ const router = useRouter();
       <td>
         {amount}
       </td>
-      <td>
+      <td className={styles.wagerData}>
         {wagerNumber}
       </td>
       <td>
