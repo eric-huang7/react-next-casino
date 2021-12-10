@@ -23,8 +23,16 @@ export const dateFormatter = (time, locale) => {
   let firstPart = time.split('.')[0];
   let secondPart = time.split('.')[1].slice(0,3);
 
-  let res = format(new Date(Number(firstPart + secondPart)), 'LLLL dd, yyyy HH:mm:ss', {locale: locales[locale]});
-  let firstSymbol = res[0].toUpperCase();
+  if (locale === 'ru') {
+    let res = format(new Date(Number(firstPart + secondPart)), 'dd MMMM yyyy, HH:mm:ss', {locale: locales[locale]});
 
-  return firstSymbol + res.slice(1, res.length);
+    return res;
+
+  } else {
+
+    let res = format(new Date(Number(firstPart + secondPart)), 'LLLL dd, yyyy HH:mm:ss', {locale: locales[locale]});
+
+    return res;
+  }
+
 }

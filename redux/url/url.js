@@ -63,3 +63,7 @@ export const get_user_payments_url = "http://t-gpb.slotsidol.com:7000/payments?o
 // ######### BETS
 
 export const get_user_bets = 'http://t-gpb.slotsidol.com:7000/bets';
+
+// BONUSES DATA
+
+export const get_bonuses_data_url = 'http://t-gpb.slotsidol.com:7000/bonus_redemption'

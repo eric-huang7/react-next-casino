@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   ADD_CURRENCY_TO_USER,
   AUTH,
-  BALANCE, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
+  BALANCE, GET_BONUS_HISTORY_DATA, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
@@ -17,7 +17,7 @@ import {
   signUp_url,
   logout_url,
   user_url,
-  post_add_user_currency, get_user_payments_url, get_user_bets
+  post_add_user_currency, get_user_payments_url, get_user_bets, get_bonuses_data_url
 } from "../url/url";
 
 axios.defaults.withCredentials = true;
@@ -105,6 +105,29 @@ export const getUserPayments = (params) => async dispatch => {
     console.log(e.response)
   }
 }
+
+export const getUserBonuses = (params) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: {...params}
+  }
+
+  try {
+
+    const res = await axios.get(get_bonuses_data_url, config)
+    console.log(res, "<<< res from GET_BONUS_HISTORY_DATA")
+    dispatch({
+      type: GET_BONUS_HISTORY_DATA,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response)
+  }
+}
+
 export const getUserBets = () => async dispatch => {
   const config = {
     // withCredentials: true,

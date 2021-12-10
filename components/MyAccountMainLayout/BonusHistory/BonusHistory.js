@@ -20,7 +20,7 @@ export const BonusHistory = ({t, router}) => {
         <Heading t={t} heading={"myAccount.pageHeadings.bonusHistory"}/>
         <TrxHistoryLinksContainer router={router} t={t}/>
         <SelectorsContainer t={t} currencyData={currency} userInfo={userInfo}/>
-        {userInfo?.loadingUserPayments ? <LoadingComponent t={t}/> : <BonusTableContainer t={t}/>}
+        {userInfo?.loadingBonusesHistory ? <LoadingComponent t={t}/> : <BonusTableContainer currencyData={currency} userInfo={userInfo} t={t}/>}
       </div>
     )
   } else {

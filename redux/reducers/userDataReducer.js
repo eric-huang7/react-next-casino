@@ -7,7 +7,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS,
-  PATCH_CHANGE_CURRENCY, ADD_CURRENCY_TO_USER, GET_USER_PAYMENTS, GET_USER_BETS_DATA
+  PATCH_CHANGE_CURRENCY, ADD_CURRENCY_TO_USER, GET_USER_PAYMENTS, GET_USER_BETS_DATA, GET_BONUS_HISTORY_DATA
 } from "../actions/types";
 
 const initialState = {
@@ -24,7 +24,9 @@ const initialState = {
   loadingUserPayments: true,
   userPayments: null,
   loadingUserBetsData: true,
-  userBetsData: null
+  userBetsData: null,
+  loadingBonusesHistory: true,
+  bonusesHistory: null,
 }
 
 function userDataReducer(state = initialState, action) {
@@ -75,6 +77,12 @@ function userDataReducer(state = initialState, action) {
         ...state,
         loadingUserPayments: false,
         userPayments: { ...payload },
+      }
+    case GET_BONUS_HISTORY_DATA:
+      return {
+        ...state,
+        loadingBonusesHistory: false,
+        bonusesHistory: { ...payload },
       }
     case GET_USER_BETS_DATA:
       return {
