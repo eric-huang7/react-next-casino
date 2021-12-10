@@ -7,7 +7,7 @@ import {TrxHistoryLinksContainer} from "./TrxHistoryLinksContainer";
 import {TrxHistoryTableContainer} from "./TrxHistoryTableContainer";
 
 
-export const TrxHistory = ({t, router}) => {
+export const TrxHistory = ({t}) => {
   const userInfo = useSelector((store) => store.authInfo);
   const currency = useSelector((store) => store.getCurrency);
 
@@ -15,9 +15,9 @@ export const TrxHistory = ({t, router}) => {
     return (
       <div className={styles.mainContainer}>
         <Heading t={t} heading={"myAccount.pageHeadings.trxHistory"}/>
-        <TrxHistoryLinksContainer router={router} t={t}/>
+        <TrxHistoryLinksContainer  t={t}/>
         <TrxHistoryInputsContainer userInfo={userInfo} currencyData={currency} t={t} />
-        {userInfo?.loadingUserPayments ? <LoadingComponent t={t}/> : <TrxHistoryTableContainer userInfo={userInfo} currencyData={currency} t={t}/>}
+        {userInfo.loadingUserPayments ? <LoadingComponent t={t}/> : <TrxHistoryTableContainer userInfo={userInfo} currencyData={currency} t={t}/>}
       </div>
     )
   } else {

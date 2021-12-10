@@ -4,6 +4,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {AccountMainLayout} from "../../../../components/MyAccountMainLayout/AccountMainLayout";
 import {TrxHistory} from "../../../../components/MyAccountMainLayout/TrxHistory/TrxHistory";
 import {BetsHistory} from "../../../../components/MyAccountMainLayout/BetsHistory/BetsHistory";
+import {BonusHistory} from "../../../../components/MyAccountMainLayout/BonusHistory/BonusHistory";
 
 
 const TypeOfHistory = (props) => {
@@ -29,13 +30,7 @@ const TypeOfHistory = (props) => {
     case "bonus" :
       return (
         <AccountMainLayout t={t}>
-          <h1>bonus-history</h1>
-        </AccountMainLayout>
-      )
-    case "bonus" :
-      return (
-        <AccountMainLayout t={t}>
-          <h1>bonus-history</h1>
+          <BonusHistory t={t}/>
         </AccountMainLayout>
       )
     default:

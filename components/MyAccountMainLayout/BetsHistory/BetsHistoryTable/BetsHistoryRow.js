@@ -15,7 +15,7 @@ export const BetsHistoryRow = ({t, betData}) => {
   return (
     <tr className={styles.betTableRow}>
       <td>
-        {game}
+        {betData.game}
       </td>
       <td>
         {bet}

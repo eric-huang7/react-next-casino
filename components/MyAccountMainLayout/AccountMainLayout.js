@@ -22,6 +22,7 @@ export const AccountMainLayout = ({t, children}) => {
     dispatch(getUserBets());
 
     if (userInfo.isAuthenticated) {
+      // 14 for test more data
       dispatch(getUserPayments({user_id: Number(userInfo?.user?.user?.id)}));
     }
     console.log('effect fetcher', userInfo)

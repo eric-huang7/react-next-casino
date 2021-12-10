@@ -10,14 +10,14 @@ import {getUserPayments} from "../../../redux/actions/userData";
 
 
 export const TrxHistoryInputsContainer = ({t, userInfo, currencyData}) => {
-  console.log(userInfo, currencyData, '<<<<< TrxHistory')
+
   const dispatch = useDispatch()
   const [currencyFilter, setCurrencyFilter] = useState(null);
   const [actionFilter, setActionFilter] = useState(null);
   const [statusFilter, setStatusFilter] = useState(null);
 
   const filterButtonClickHandler = () => {
-
+    // 14 for test more data
     let params = {user_id: Number(userInfo?.user?.user?.id)};
     let arrRequest = [
       {status: statusFilter, type: "status"},
