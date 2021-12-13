@@ -17,6 +17,7 @@ import {LoadingComponent} from "../../components/LoadingComponent/LoadingCompone
 const Accounts = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
+  const currency = useSelector((store) => store.getCurrency);
 
 
   useEffect(() => {
@@ -29,7 +30,11 @@ const Accounts = (props) => {
     // dispatch(getJackpots());
     // dispatch(getWinners());
     // dispatch(getLatestWinners());
-    dispatch(getCurrency());
+
+    if (!currency.currency) {
+      dispatch(getCurrency());
+    }
+
 
     dispatch(getActiveBonuses());
 
@@ -45,6 +50,8 @@ const Accounts = (props) => {
       </AccountMainLayout>
     </>
   )
+
+
 }
 
 

@@ -4,12 +4,22 @@ import {Header} from "../MainLayout/Header/Header";
 import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getUserBets, getUserBonuses, getUserPayments, userBalance} from "../../redux/actions/userData";
+import {
+  auth,
+  getUserActivePendingBonuses,
+  getUserBets,
+  getUserBonuses,
+  getUserPayments,
+  userBalance
+} from "../../redux/actions/userData";
 import {getCurrency} from "../../redux/actions/currency";
 import {DepositPage} from "../MainLayout/DepositPage/DepositPage";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
 import {useRouter} from "next/router";
+import MainLayout from "../MainLayout/MainLayout";
+import {showRegister} from "../../redux/actions/registerShow";
+
 
 
 export const AccountMainLayout = ({t, children}) => {
@@ -18,6 +28,19 @@ export const AccountMainLayout = ({t, children}) => {
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const currency = useSelector((store) => store.getCurrency);
   const router = useRouter();
+
+
+  useEffect(() => {
+
+    if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
+      console.log('redirect', userInfo.userAuthLoading, userInfo.isAuthenticated);
+      dispatch(showRegister(true));
+      router.replace('/').then((data) => {
+      });
+    }
+  }, [userInfo.userAuthLoading, userInfo.isAuthenticated]);
+
+
 
   useEffect(() => {
 
@@ -28,6 +51,9 @@ export const AccountMainLayout = ({t, children}) => {
       }
       if (!userInfo.bonusesHistory) {
         dispatch(getUserBonuses({status: "1,2,3,4,6"}));
+      }
+      if (!userInfo.activePendingBonuses) {
+        dispatch(getUserActivePendingBonuses({status: "1,5"}))
       }
       // if (!userInfo.balance) {
       //   console.log('balance fetch', userInfo.balance)
@@ -41,20 +67,13 @@ export const AccountMainLayout = ({t, children}) => {
       }
     }
 
-    console.log('effect fetcher', userInfo)
+    // console.log('effect fetcher', userInfo)
   }, [userInfo.isAuthenticated]);
 
-  useEffect(() => {
-
-    if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
-
-      router.replace('/').then((data) => {
-
-      });
-    }
-  }, [userInfo.userAuthLoading, userInfo.isAuthenticated])
 
 
+
+if (userInfo.isAuthenticated) {
   return (
     <div  className={styles.accountMainLayoutWrapper}>
       <Header t={t}/>
@@ -71,4 +90,14 @@ export const AccountMainLayout = ({t, children}) => {
       </div>
     </div>
   )
+} else {
+return (
+  <div  className={styles.accountMainLayoutWrapper}>
+    <Header t={t}/>
+  </div>
+  )
+
+
+}
+
 }

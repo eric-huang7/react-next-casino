@@ -7,6 +7,9 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
   if (userCurrency.currency && userInform.balance) {
     let userName = userInform.user.user.username;
 
+
+
+
     let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default))
     let balance = balanceData.length === 0
       ?
@@ -17,11 +20,22 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
         "0.0"
         :
         Number(balanceData[0].current_balance);
+
     let currency = balanceData.length === 0
       ?
-      userCurrency?.currency?.results.find((el) => Number(el.id) === Number(userInform.user.user.base_currency_id)).abbreviation
+      userCurrency?.currency?.results.find((el) => userInform.user.user.base_currency_id
+        ?
+        Number(el.id) === Number(userInform.user.user.base_currency_id)
+        :
+        Number(el.id) === 1).abbreviation
       :
       userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
+
+    // let currency = balanceData.length === 0
+    //   ?
+    //   userCurrency?.currency?.results.find((el) => Number(el.id) === Number(userInform.user.user.base_currency_id)).abbreviation
+    //   :
+    //   userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
 
     return (
       <div className={styles.userInfoBlock}>

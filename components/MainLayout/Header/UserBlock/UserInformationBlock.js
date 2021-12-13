@@ -6,7 +6,15 @@ export const UserInformationBlock = ({userInfo, userCurrency}) => {
   if (userCurrency.currency && userInfo.balance) {
     let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default))
     let balance = balanceData.length === 0 ? "0.0" : Number(balanceData[0].current_balance) === 0 ? "0.0" : Number(balanceData[0].current_balance);
-    let currency = balanceData.length === 0 ? userCurrency?.currency?.results.find((el) => Number(el.id) === Number(userInfo.user.user.base_currency_id)).abbreviation : userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
+    let currency = balanceData.length === 0
+      ?
+      userCurrency?.currency?.results.find((el) => userInfo.user.user.base_currency_id
+        ?
+        Number(el.id) === Number(userInfo.user.user.base_currency_id)
+        :
+        Number(el.id) === 1).abbreviation
+      :
+      userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
 
     return (
       <div className={styles.userMainBlockUserInfoBlock}>

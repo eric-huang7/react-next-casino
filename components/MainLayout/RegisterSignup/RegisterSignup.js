@@ -12,6 +12,7 @@ import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
 import {auth, signUp, userBalance} from "../../../redux/actions/userData";
+import {auth_type_id, siteID} from "../../../envs/envsForFetching";
 
 let currensyVariants = [
   {id: 1, currensy: "BTC", active: false},
@@ -128,13 +129,22 @@ export const RegisterSignup = ({t, isShow}) => {
     }
   }
 
-  let site_id = 1;
-  let auth_type_id = 1;
+  // let site_id = 1;
+  // let auth_type_id = 1;
   let isAdmin = false;
   let userId = 100000;
 //currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
-    dispatch(signUp(currencyChoose, userId, site_id, auth_type_id, userNameInfo, userEmailInfo, userPasswordInfo, bonusCodeData));
+    let body = {
+      base_currency_id: currencyChoose,
+      site_id : siteID,
+      auth_type_id: auth_type_id,
+      username: userNameInfo,
+      email: userEmailInfo,
+      password: userPasswordInfo,
+      current_bonus_code: bonusCodeData,
+    }
+    dispatch(signUp(body));
   }
 
   const onSubmitHandler = (data) => {

@@ -4,6 +4,7 @@ import {AccountMainLayout} from "../../../components/MyAccountMainLayout/Account
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {BalancePage} from "../../../components/MyAccountMainLayout/BalanceComponents/BalancePage";
 import {TrxHistory} from "../../../components/MyAccountMainLayout/TrxHistory/TrxHistory";
+import {BonusesPageContainer} from "../../../components/MyAccountMainLayout/BonusesPage/BonusesPageContainer";
 
 const PageType = (props) => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const PageType = (props) => {
     case "bonuses" :
       return (
         <AccountMainLayout t={t}>
-          <h2>bonuses</h2>
+          <BonusesPageContainer t={t}/>
         </AccountMainLayout>
       )
     case "profile-info" :
