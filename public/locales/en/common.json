@@ -555,7 +555,7 @@
           "status": "Status",
           "from": "From"
         },
-        "filterButton": "Фильтр",
+        "filterButton": "Filter",
         "statusItems": {
           "active": "Active",
           "lost": "Lost",
