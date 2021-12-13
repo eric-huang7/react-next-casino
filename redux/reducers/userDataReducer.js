@@ -74,7 +74,7 @@ function userDataReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: null,
-        userAuthLoading: true,
+        userAuthLoading: false,
       }
     }
     case BALANCE:

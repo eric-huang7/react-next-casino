@@ -40,14 +40,19 @@ export const AccountMainLayout = ({t, children}) => {
         dispatch(getCurrency());
       }
     }
-    else if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
-      router.replace('/').then((data) => {
-        console.log(data, 'redirect')
-      });
-    }
 
     console.log('effect fetcher', userInfo)
   }, [userInfo.isAuthenticated]);
+
+  useEffect(() => {
+
+    if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
+
+      router.replace('/').then((data) => {
+
+      });
+    }
+  }, [userInfo.userAuthLoading, userInfo.isAuthenticated])
 
 
   return (
