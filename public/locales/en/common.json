@@ -501,6 +501,7 @@
     },
     "history": {
       "transactions": {
+        "noItems": "There are no items according to the filtering parameters.",
         "links": {
           "transactions": "Transactions History",
           "bets": "Bets History",
@@ -535,6 +536,10 @@
             "exchange": "Exchange",
             "coinsPaid": "CoinsPaid",
             "creditCard": "Credit Card"
+          },
+          "actions": {
+            "Deposit": "Deposit",
+            "Withdrawal" : "Withdrawal"
           }
         }
       },

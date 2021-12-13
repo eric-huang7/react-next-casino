@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 import {getUserPayments} from "../../../redux/actions/userData";
 
 
-export const TrxHistoryInputsContainer = ({t, userInfo, currencyData}) => {
+export const TrxHistoryInputsContainer = ({t, userInfo, currencyData, setWasFiltering}) => {
 
   const dispatch = useDispatch()
   const [currencyFilter, setCurrencyFilter] = useState(null);
@@ -30,7 +30,7 @@ export const TrxHistoryInputsContainer = ({t, userInfo, currencyData}) => {
       }
       return el
     });
-
+    setWasFiltering(true);
     dispatch(getUserPayments(params));
   }
 

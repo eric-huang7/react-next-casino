@@ -16,7 +16,7 @@ export const TrxTableRow = ({t, paymentData, currencyData, action, date, amount,
         {t(status)}
       </td>
       <td>
-        {action}
+        {t(action)}
       </td>
       <td>
         {t(paymentSystem)}

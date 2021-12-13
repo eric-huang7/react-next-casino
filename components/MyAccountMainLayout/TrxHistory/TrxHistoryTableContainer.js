@@ -7,46 +7,65 @@ import {currencyInfo} from "../../../helpers/currencyInfo";
 import {useRouter} from "next/router";
 
 
-export const TrxHistoryTableContainer = ({t, userInfo, currencyData}) => {
+export const TrxHistoryTableContainer = ({t, userInfo, currencyData, wasFiltering}) => {
   const router = useRouter()
 
-  return (
-    <div className={styles.tableContainerWrapper}>
-      <table cellSpacing={4} className={styles.trxTableContainer}>
-        <thead>
-        <TrxTableHeading t={t}/>
-        </thead>
-        <tbody>
-        {
-          userInfo.userPayments.payments.map((paymentData) => {
-            let date = dateFormatter(paymentData.timestamp, router.locale);
+  if (wasFiltering && userInfo?.userPayments?.payments?.length === 0) {
 
-            let status = statusValue(paymentData.status);
-            let action = paymentData.type;
-            let paymentSystem = paymentSystemValue(paymentData.provider);
-            let amount = Number(paymentData.amount);
-            let currency = currencyInfo(currencyData.currency.results, paymentData.currency_id)[0].abbreviation
+    return (
+      <div className={styles.tableContainerWrapper}>
+        <table cellSpacing={4} className={styles.trxTableContainer}>
+          <thead>
+          <TrxTableHeading t={t}/>
+          </thead>
+        </table>
+        <p className={styles.noDataFiltering}>
+          {t("myAccount.history.transactions.noItems")}
+        </p>
+      </div>
+    )
 
-            return (
-              <TrxTableRow
-            key = {`payment table key ${paymentData.id}`}
-            date={date}
-            status={status}
-            action={action}
-            amount={amount}
-            currency={currency}
-            paymentSystem={paymentSystem}
-            currencyData = {currencyData}
-            paymentData = {paymentData}
-            t = {t}
-            />
-          )
-          })
-        }
-        </tbody>
-      </table>
-    </div>
-  )
+  } else {
+
+    return (
+      <div className={styles.tableContainerWrapper}>
+        <table cellSpacing={4} className={styles.trxTableContainer}>
+          <thead>
+          <TrxTableHeading t={t}/>
+          </thead>
+          <tbody>
+          {
+            userInfo.userPayments.payments.map((paymentData) => {
+              let date = dateFormatter(paymentData.timestamp, router.locale);
+
+              let status = statusValue(paymentData.status);
+              let action = `myAccount.history.transactions.table.actions.${paymentData.type}`;
+              let paymentSystem = paymentSystemValue(paymentData.provider);
+              let amount = Number(paymentData.amount);
+              let currency = currencyInfo(currencyData.currency.results, paymentData.currency_id)[0].abbreviation
+
+              return (
+                <TrxTableRow
+                  key = {`payment table key ${paymentData.id}`}
+                  date={date}
+                  status={status}
+                  action={action}
+                  amount={amount}
+                  currency={currency}
+                  paymentSystem={paymentSystem}
+                  currencyData = {currencyData}
+                  paymentData = {paymentData}
+                  t = {t}
+                />
+              )
+            })
+          }
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
 }
 
 function statusValue(status) {

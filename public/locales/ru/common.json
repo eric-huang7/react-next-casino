@@ -501,6 +501,7 @@
     },
     "history": {
       "transactions": {
+        "noItems": "По параметрам фильтрации ничего не обнаружено.",
         "links": {
           "transactions": "Tранзакций",
           "bets": "Ставки",
@@ -535,6 +536,10 @@
             "exchange": "Обмен",
             "coinsPaid": "CoinsPaid",
             "creditCard": "Кредитная карта"
+          },
+          "actions": {
+            "Deposit": "Депозит",
+            "Withdrawal" : "Выплата"
           }
         }
       },
