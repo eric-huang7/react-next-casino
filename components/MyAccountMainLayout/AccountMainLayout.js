@@ -9,17 +9,16 @@ import {getCurrency} from "../../redux/actions/currency";
 import {DepositPage} from "../MainLayout/DepositPage/DepositPage";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
+import {useRouter} from "next/router";
 
 
 export const AccountMainLayout = ({t, children}) => {
   const dispatch = useDispatch()
   const isShowModal = useSelector((store) => store.showPopupsReducer);
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
+  const router = useRouter();
 
   useEffect(() => {
-
-    dispatch(getCurrency());
-
 
     if (userInfo.isAuthenticated) {
       // 14 for test more data
@@ -27,10 +26,18 @@ export const AccountMainLayout = ({t, children}) => {
 
       dispatch(getUserBonuses({status: "1,2,3,4,6"}));
 
-      dispatch(userBalance());
+      // dispatch(userBalance());
 
       dispatch(getUserBets());
+
+      dispatch(getCurrency());
     }
+    // else {
+    //   router.replace('/').then((data) => {
+    //     console.log(data, 'redirect')
+    //   });
+    // }
+
     console.log('effect fetcher', userInfo)
   }, [userInfo.isAuthenticated]);
 

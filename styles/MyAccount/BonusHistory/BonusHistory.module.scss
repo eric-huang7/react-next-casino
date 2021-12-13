@@ -1,4 +1,6 @@
-
+.tableContainerWrapper {
+  overflow-x: auto;
+}
 .inputsContainer {
   width: 100%;
 
@@ -98,6 +100,7 @@
 
 .bonusTableContainer {
   width: 100%;
+
 }
 
 
@@ -144,7 +147,7 @@
 }
 
 .validUntil {
-  word-break: break-word;
+  //word-break: break-word;
 }
 
 @media screen and (max-width: 990px) {

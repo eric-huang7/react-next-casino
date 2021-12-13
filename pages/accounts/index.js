@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useTranslation} from "next-i18next";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {getCurrency} from "../../redux/actions/currency";
@@ -17,7 +17,7 @@ import {LoadingComponent} from "../../components/LoadingComponent/LoadingCompone
 const Accounts = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
-  const router = useRouter();
+
 
   useEffect(() => {
     // dispatch(setLang(locale));

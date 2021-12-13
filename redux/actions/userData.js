@@ -74,7 +74,7 @@ export const userBalance = () => async dispatch => {
   try {
 
     const res = await axios.get(user_balance_url, config)
-    // console.log(res)
+    console.log(res, 'from GET_USER_BALANCE')
     dispatch({
       type: BALANCE,
       payload: res.data
