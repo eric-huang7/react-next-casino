@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
   ADD_CURRENCY_TO_USER,
-  AUTH,
+  AUTH, AUTH_FAIL,
   BALANCE, GET_BONUS_HISTORY_DATA, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
@@ -36,6 +36,11 @@ export const auth = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
+    console.log('auth FAIL!!!!!!!!!')
+    dispatch({
+      type: AUTH_FAIL,
+      payload: e.response
+    })
     console.log('SOME ERROR IN AUTH', e.response);
   }
 

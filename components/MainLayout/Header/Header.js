@@ -27,7 +27,9 @@ export const Header = ({t}) => {
 
   useEffect(() => {
     if (userLogined) {
-      dispatch(userBalance());
+      if (!userLogin.balance) {
+        dispatch(userBalance());
+      }
       dispatch(getActiveBonuses());
 
       let userData = {

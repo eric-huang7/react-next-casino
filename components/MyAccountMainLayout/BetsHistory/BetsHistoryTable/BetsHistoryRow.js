@@ -31,7 +31,7 @@ export const BetsHistoryRow = ({t, betData}) => {
 }
 
 function gameItem (game){
-  console.log(game.indexOf('&amp;amp;'))
+
   if (game.indexOf('&amp;amp;') === -1) {
     return game;
   } else {

@@ -5,7 +5,6 @@ import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
 
 
 export const BonusTableContainer = ({t, userInfo, currencyData}) => {
-  console.log(userInfo.bonusesHistory.bonuses, 'bonuses history>>>>>.')
 
   if (userInfo.bonusesHistory?.success) {
     return (

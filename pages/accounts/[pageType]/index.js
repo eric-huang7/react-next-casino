@@ -10,7 +10,6 @@ const PageType = (props) => {
 
   const { t } = useTranslation('common');
 
-  console.log(router)
 
   switch (router.query.pageType) {
     case "balance":

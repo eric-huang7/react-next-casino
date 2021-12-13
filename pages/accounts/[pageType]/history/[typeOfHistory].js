@@ -10,8 +10,6 @@ import {BonusHistory} from "../../../../components/MyAccountMainLayout/BonusHist
 const TypeOfHistory = (props) => {
   const router = useRouter();
 
-  console.log(router);
-
   const { t } = useTranslation('common');
 
   switch (router.query.typeOfHistory) {

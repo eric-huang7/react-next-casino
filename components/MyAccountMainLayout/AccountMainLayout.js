@@ -16,27 +16,35 @@ export const AccountMainLayout = ({t, children}) => {
   const dispatch = useDispatch()
   const isShowModal = useSelector((store) => store.showPopupsReducer);
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
+  const currency = useSelector((store) => store.getCurrency);
   const router = useRouter();
 
   useEffect(() => {
 
     if (userInfo.isAuthenticated) {
-      // 14 for test more data
-      dispatch(getUserPayments({user_id: Number(userInfo?.user?.user?.id)}));
-
-      dispatch(getUserBonuses({status: "1,2,3,4,6"}));
-
-      // dispatch(userBalance());
-
-      dispatch(getUserBets());
-
-      dispatch(getCurrency());
+      if (!userInfo.userPayments) {
+        // 14 for test more data
+        dispatch(getUserPayments({user_id: Number(userInfo?.user?.user?.id)}));
+      }
+      if (!userInfo.bonusesHistory) {
+        dispatch(getUserBonuses({status: "1,2,3,4,6"}));
+      }
+      // if (!userInfo.balance) {
+      //   console.log('balance fetch', userInfo.balance)
+      //   dispatch(userBalance());
+      // }
+      if (!userInfo.userBetsData) {
+        dispatch(getUserBets());
+      }
+      if (!currency.currency) {
+        dispatch(getCurrency());
+      }
     }
-    // else {
-    //   router.replace('/').then((data) => {
-    //     console.log(data, 'redirect')
-    //   });
-    // }
+    else if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
+      router.replace('/').then((data) => {
+        console.log(data, 'redirect')
+      });
+    }
 
     console.log('effect fetcher', userInfo)
   }, [userInfo.isAuthenticated]);
