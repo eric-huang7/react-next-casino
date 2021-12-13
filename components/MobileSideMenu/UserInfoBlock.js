@@ -6,8 +6,9 @@ import {UserInfoInnerContainer} from "./UserInfoInnerContainer";
 
 export const UserInfoBlock = ({t, userInform, currency}) => {
 
+  console.log(currency,userInform, "side menu");
 
-  if (userInform.isAuthenticated) {
+  if (userInform.isAuthenticated && !currency.loading) {
     return (
       <UserInfoInnerContainer t={t} userInform={userInform} userCurrency={currency}/>
     )

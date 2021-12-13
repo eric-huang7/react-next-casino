@@ -51,6 +51,8 @@ export const MobileSideMenu = ({t, userInform}) => {
   dispatch(showMobileMenu(false));
  }, [isShowLogin, isShowRegister])
 
+
+
  return (
    <div className={`${styles.sideMenuWrapper} ${isShowMobileMenu ? styles.showMobileMenu : ''}`}>
     <div className={`${styles.sideMenuMainWrapper}`}>
