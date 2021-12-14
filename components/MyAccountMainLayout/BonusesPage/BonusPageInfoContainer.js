@@ -4,12 +4,33 @@ import styles from '../../../styles/MyAccount/BonusPage/BonusPage.module.scss';
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {BonusItemContainer} from "./BonusPageComponents/BonusItemContainer";
 import {AddPromoCodeContainer} from "./BonusPageComponents/AddPromoCodeContainer";
+import {useDispatch} from "react-redux";
+import {activateBonus, cancelBonus} from "../../../redux/actions/userData";
 
 export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
+  const dispatch = useDispatch();
 
+  const activateBonusClickHandler = (bonusData) => {
+    //bonusData.user_id || bonusInfo.user.user.id
+    let params = {
+      user_id: bonusInfo.user.user.id,
+      bonus_redemption_id: bonusData.id,
+      status: "ACTIVE"
+    }
+    dispatch(activateBonus(params));
+
+  }
+  const cancelBonusClickHandler = (bonusData) => {
+    let params = {
+      user_id: bonusInfo.user.user.id,
+      bonus_redemption_id: bonusData.id
+    }
+    dispatch(cancelBonus(params));
+
+  }
 
   if (bonusInfo?.activePendingBonuses?.success && !currency.loading) {
-    // bonusInfo.activePendingBonuses.bonuses.length = 3;
+
     if (bonusInfo.activePendingBonuses.bonuses.length === 0) {
       return (
         <>
@@ -30,7 +51,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
             {
               bonusInfo.activePendingBonuses.bonuses.map((bonus) => {
                 return (
-                  <BonusItemContainer key={`${bonus.id} bonus key`} currencyData={currency} bonusData={bonus} t={t}/>
+                  <BonusItemContainer activateBonusClickHandler={activateBonusClickHandler} cancelBonusClickHandler={cancelBonusClickHandler} key={`${bonus.id} bonus key`} currencyData={currency} bonusData={bonus} t={t}/>
                 )
               })
             }

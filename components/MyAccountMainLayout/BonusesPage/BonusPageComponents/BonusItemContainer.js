@@ -2,10 +2,12 @@ import styles from '../../../../styles/MyAccount/BonusPage/BonusPage.module.scss
 import {currencyInfo} from "../../../../helpers/currencyInfo";
 import {dateFormatter} from "../../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
+import {ActiveBonus} from "./ActiveBonus";
+import {PendingBonus} from "./PendingBonus";
 
-export const BonusItemContainer = ({t, bonusData, currencyData}) => {
+export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusClickHandler, cancelBonusClickHandler}) => {
   const router = useRouter();
-  console.log(bonusData, 'Bonus data')
+  // console.log(bonusData, 'Bonus data')
 
   let title = bonusData.title ? bonusData.title : "-";
   let stage = statusValue(bonusData.status);
@@ -22,70 +24,39 @@ export const BonusItemContainer = ({t, bonusData, currencyData}) => {
     let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`;
 
     return (
-      <div className={styles.bonusItemContainer}>
-        <div className={styles.bonusItemHeading}>
-          <p className={styles.headingText}>{title}</p>
-          <p className={`${styles.bonusItemStatus}`}>{t(stage)}</p>
-        </div>
-        <ul className={styles.bonusInfoList}>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.amountName}>{amountName}</div>
-            <div className={styles.amountValue}>{amount}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.amountWagerReq}>{wagerOrFreeSpins}</div>
-            <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.wagerPercent}>Wager Percent</div>
-            <div className={styles.wagerPercentValue}>{wagerPercent}%</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.dateReceived}>Date received</div>
-            <div className={styles.dateReceivedValue}>{dateReceived}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.expiryDate}>Expiry date</div>
-            <div className={styles.expiryDate}>{expiryDate}</div>
-          </li>
-        </ul>
-        <button className={styles.cancelBonus}>Cancel Bonus</button>
-      </div>
+      <ActiveBonus
+        t={t}
+        title={title}
+        amount={amount}
+        amountName={amountName}
+        expiryDate={expiryDate}
+        dateReceived={dateReceived}
+        stage={stage}
+        wagerOrFreeSpins={wagerOrFreeSpins}
+        wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
+        wagerPercent={wagerPercent}
+        cancelBonusClickHandler={cancelBonusClickHandler}
+        bonusData={bonusData}
+      />
     )
   } else {
     let wagerOrFreeSpins = 'Free Spins awarded';
     let wagerOrFreeSpinsAmount = Number(bonusData.free_spins_awarded);
 
     return (
-      <div className={styles.bonusItemContainer}>
-        <div className={styles.bonusItemHeading}>
-          <p className={styles.headingText}>{title}</p>
-          <p className={`${styles.bonusItemStatus} ${styles.pendingStatus}`}>{t(stage)}</p>
-        </div>
-        <ul className={styles.bonusInfoList}>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.amountName}>{amountName}</div>
-            <div className={styles.amountValue}>{amount}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.amountWagerReq}>{wagerOrFreeSpins}</div>
-            <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.wagerPercent}>{" "}</div>
-            <div className={styles.wagerPercentValue}>{""}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.dateReceived}>Date received</div>
-            <div className={styles.dateReceivedValue}>{dateReceived}</div>
-          </li>
-          <li className={styles.bonusInfoListItem}>
-            <div className={styles.expiryDate}>Activate until</div>
-            <div className={styles.expiryDate}>{expiryDate}</div>
-          </li>
-        </ul>
-        <button className={styles.activateBonus}>Activate</button>
-      </div>
+      <PendingBonus
+        t={t}
+        title={title}
+        amount={amount}
+        amountName={amountName}
+        expiryDate={expiryDate}
+        dateReceived={dateReceived}
+        stage={stage}
+        wagerOrFreeSpins={wagerOrFreeSpins}
+        wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
+        activateBonusClickHandler={activateBonusClickHandler}
+        bonusData={bonusData}
+      />
     )
   }
 

@@ -1,8 +1,9 @@
 import axios from "axios";
 import {
+  ACTIVATE_BONUS,
   ADD_CURRENCY_TO_USER,
   AUTH, AUTH_FAIL,
-  BALANCE, GET_ACTIVE_PENDING_BONUSES, GET_BONUS_HISTORY_DATA, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
+  BALANCE, CANCEL_BONUS, GET_ACTIVE_PENDING_BONUSES, GET_BONUS_HISTORY_DATA, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
@@ -17,7 +18,12 @@ import {
   signUp_url,
   logout_url,
   user_url,
-  post_add_user_currency, get_user_payments_url, get_user_bets, get_bonuses_data_url
+  post_add_user_currency,
+  get_user_payments_url,
+  get_user_bets,
+  get_bonuses_data_url,
+  post_put_bonus_redemption_url,
+  put_bonus_redemption_url, post_cancel_bonus_redemption_url
 } from "../url/url";
 
 axios.defaults.withCredentials = true;
@@ -196,6 +202,50 @@ export const addCurrencyToUserList = (currency_id) => async dispatch => {
   }
 
 }
+
+export const activateBonus = (bonusData) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(bonusData);
+  try {
+    const res = await axios.put(put_bonus_redemption_url, body, config);
+    console.log(res, "<< Put user activate bonus");
+    dispatch({
+      type: ACTIVATE_BONUS,
+      payload: res.data
+    })
+    dispatch(getUserActivePendingBonuses({status: "1,5"}));
+    dispatch(getUserBonuses({status: "1,2,3,4,6"}));
+  } catch (e) {
+    console.log(e.response, "SOME ERROR WHEN activate bonus");
+  }
+}
+export const cancelBonus = (bonusData) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(bonusData);
+  try {
+    const res = await axios.post(post_cancel_bonus_redemption_url, body, config);
+    console.log(res, "<< Post user cancel bonus");
+    dispatch({
+      type: CANCEL_BONUS,
+      payload: res.data
+    })
+    dispatch(getUserActivePendingBonuses({status: "1,5"}));
+    dispatch(getUserBonuses({status: "1,2,3,4,6"}));
+  } catch (e) {
+    console.log(e.response, "SOME ERROR WHEN cancel bonus");
+  }
+}
+
 
 export const patchUserActiveCurrency = (userData) => async dispatch => {
   const config = {
