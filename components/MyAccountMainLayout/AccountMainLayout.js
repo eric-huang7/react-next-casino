@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable */
 import styles from '../../styles/MyAccount/MainLayout/MainLayout.module.scss';
 import {Header} from "../MainLayout/Header/Header";
 import {SideMenu} from "./AccountLayoutConponents/SideMenu";
@@ -19,6 +20,8 @@ import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrenc
 import {useRouter} from "next/router";
 import MainLayout from "../MainLayout/MainLayout";
 import {showRegister} from "../../redux/actions/registerShow";
+import {showLogin} from "../../redux/actions/loginShow";
+import Head from "next/head";
 
 
 
@@ -33,10 +36,11 @@ export const AccountMainLayout = ({t, children}) => {
   useEffect(() => {
 
     if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
-      console.log('redirect', userInfo.userAuthLoading, userInfo.isAuthenticated);
-      dispatch(showRegister(true));
+
       router.replace('/').then((data) => {
       });
+
+      dispatch(showLogin(true));
     }
   }, [userInfo.userAuthLoading, userInfo.isAuthenticated]);
 
@@ -75,20 +79,26 @@ export const AccountMainLayout = ({t, children}) => {
 
 if (userInfo.isAuthenticated) {
   return (
-    <div  className={styles.accountMainLayoutWrapper}>
-      <Header t={t}/>
-      {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
-      <MobileSideMenu t={t} userInform={userInfo}/>
-      <SelectCurrency t={t}/>
-      <div className={styles.myAccountContainer}>
-        <div className={styles.accountInnerContainer}>
-          <SideMenu t={t}/>
-          <section className={styles.accountMainContainer}>
-            {children}
-          </section>
+    <>
+      <Head>
+        <title>Slots Idol</title>
+        <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
+      </Head>
+      <div  className={styles.accountMainLayoutWrapper}>
+        <Header t={t}/>
+        {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
+        <MobileSideMenu t={t} userInform={userInfo}/>
+        <SelectCurrency t={t}/>
+        <div className={styles.myAccountContainer}>
+          <div className={styles.accountInnerContainer}>
+            <SideMenu t={t}/>
+            <section className={styles.accountMainContainer}>
+              {children}
+            </section>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 } else {
 return (

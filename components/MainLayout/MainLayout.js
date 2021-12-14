@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Header} from "./Header/Header";
 
 import styles from '../../styles/MainLayout.module.scss'
@@ -25,6 +26,7 @@ import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainConta
 import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
 import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
+import Head from "next/head";
 
 
 const MainLayout = ({children, t}) => {
@@ -49,29 +51,35 @@ const MainLayout = ({children, t}) => {
   let toursref = useRef()
 
   return (
-          <div className={styles.mainLayoutWrapper}>
-            <Header t={t}/>
-            <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
-            {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
-            {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
-            {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
+    <>
+      <Head>
+        <title>Slots Idol</title>
+        <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
+      </Head>
+      <div className={styles.mainLayoutWrapper}>
+        <Header t={t}/>
+        <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
+        {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
+        {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
+        {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
 
-            {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
-            <MobileSideMenu t={t} userInform={userInfo}/>
-            {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
-            {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
-            <LogIn isShow={logInShow} t={t}/>
-            <SelectCurrency t={t}/>
-            {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
-            {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
-            <TournamentIcon toursref={toursref}/>
-            <TournamentMainContainer toursref={toursref} router={router} isShowModal={isShowModal} userInfo={userInfo} t={t} />
-            {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
-            {children}
-            {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
-            <Footer t={t}/>
-            {/*<LangSwitcher href={router.route} locale={locale}/>*/}
-          </div>
+        {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
+        <MobileSideMenu t={t} userInform={userInfo}/>
+        {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
+        {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
+        <LogIn isShow={logInShow} t={t}/>
+        <SelectCurrency t={t}/>
+        {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
+        {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
+        <TournamentIcon toursref={toursref}/>
+        <TournamentMainContainer toursref={toursref} router={router} isShowModal={isShowModal} userInfo={userInfo} t={t} />
+        {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
+        {children}
+        {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
+        <Footer t={t}/>
+        {/*<LangSwitcher href={router.route} locale={locale}/>*/}
+      </div>
+    </>
   )
 }
 
