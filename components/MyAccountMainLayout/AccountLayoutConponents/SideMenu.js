@@ -11,7 +11,7 @@ const sideMenuListData = [
   {id: 6, name: 'myAccount.pageHeadings.documents', icon_active: "/assets/img/myAccount/documents_active.png", icon_disabled: "/assets/img/myAccount/documents.png", path: '/accounts/documents', pageType: "documents"},
 ]
 
-export const SideMenu = ({t}) => {
+export const SideMenu = ({t, userInform}) => {
   const router = useRouter();
 
   return (
@@ -21,7 +21,7 @@ export const SideMenu = ({t}) => {
         {
           sideMenuListData.map((el) => {
             return (
-              <SideMenuItem key={`${el.id} account link item`} t={t} data={el} router={router}/>
+              <SideMenuItem userInform={userInform} key={`${el.id} account link item`} t={t} data={el} router={router}/>
             )
           })
         }

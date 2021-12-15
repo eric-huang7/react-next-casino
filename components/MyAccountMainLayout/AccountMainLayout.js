@@ -91,7 +91,7 @@ if (userInfo.isAuthenticated) {
         <SelectCurrency t={t}/>
         <div className={styles.myAccountContainer}>
           <div className={styles.accountInnerContainer}>
-            <SideMenu t={t}/>
+            <SideMenu userInform={userInfo} t={t}/>
             <section className={styles.accountMainContainer}>
               {children}
             </section>

@@ -107,8 +107,30 @@
     font-size: 16px;
     letter-spacing: 0px;
     color: #595656;
-    font-family: "Verdana";
+    font-family: "Verdana", Arial, sans-serif;
   }
+  & a .linkText {
+  }
+}
+
+.bonusCounter {
+  margin-left: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  background-color: #ffffff;
+
+  font-size: 16px;
+  letter-spacing: 0px;
+  color: #000000;
+  font-family: "Verdana", Arial, sans-serif;
+
+  border-radius: 50%;
 }
 
 .accountLinkItem:after {
