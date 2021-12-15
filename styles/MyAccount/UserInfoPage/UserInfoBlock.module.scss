@@ -1,0 +1,77 @@
+
+
+
+.userInfoBlock {
+  padding: 0 20px 20px 15px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.personalInfoTable {
+  border: none;
+
+  margin-bottom: 50px;
+
+  & th {
+    padding-bottom: 25px;
+
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4f4f4f;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+  & td {
+    border: none;
+
+    padding-bottom: 25px;
+
+
+    font-size: 16px;
+    color: #595656;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+  & td.firstCeil {
+    padding-right: 80px;
+  }
+}
+
+
+
+.editProfileButton {
+  min-width: 207px;
+  height: 34px;
+
+  border-radius: 17px;
+  border: none;
+
+  background-color: #ff0000;
+
+  padding-left: 42px;
+
+
+  font-size: 15px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "Verdana", Arial, sans-serif;
+
+  position: relative;
+}
+
+.editProfileButton:before {
+  position: absolute;
+  top: 2px;
+  left: 15px;
+
+  width: 27px;
+  height: 27px;
+
+  content: '';
+
+  display: block;
+
+  background-image: url("/assets/img/myAccount/profileInfo/editProfileIcon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

@@ -25,13 +25,14 @@ import {
   post_put_bonus_redemption_url,
   put_bonus_redemption_url, post_cancel_bonus_redemption_url
 } from "../url/url";
+import {siteID} from "../../envs/envsForFetching";
 
 axios.defaults.withCredentials = true;
 
 export const auth = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 
@@ -67,6 +68,7 @@ export const userData = (site_id, auth_type_id, username, auth_info, is_admin) =
       type: LOGIN_SUCCESS,
       payload: res.data
     })
+    dispatch(auth());
   } catch (e) {
     dispatch({
       type: LOGIN_FAIL,
@@ -246,6 +248,21 @@ export const cancelBonus = (bonusData) => async dispatch => {
   }
 }
 
+export const patchUserBonusCode = (userData) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(userData)
+  try {
+    let res = await axios.patch(user_url, body, config);
+    console.log(res, '<< patch user bonus code')
+  } catch (e) {
+    console.log(e.response, 'SOME ERROR when patch user bonus code')
+  }
+}
 
 export const patchUserActiveCurrency = (userData) => async dispatch => {
   const config = {
