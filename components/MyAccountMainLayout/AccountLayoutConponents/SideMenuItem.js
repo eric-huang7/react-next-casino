@@ -8,7 +8,7 @@ export const SideMenuItem = ({t, data, router, userInform}) => {
 
 
   if (data.pageType === 'bonuses') {
-    console.log(userInform, 'side menu')
+
     let countOfBonuses = '';
     if (userInform.loadingActivePendingBonuses) {
       countOfBonuses = ''

@@ -12,7 +12,7 @@ export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusCli
   let title = bonusData.title ? bonusData.title : "-";
   let stage = statusValue(bonusData.status);
   let currency = currencyInfo(currencyData.currency.results, bonusData.currency_id)[0].abbreviation;
-  let amountName = bonusData.status === '1' ? 'Amount' : 'Games';
+  let amountName = bonusData.status === '1' ? 'myAccount.bonusPage.bonusItems.amount' : 'myAccount.bonusPage.bonusItems.games';
   let amount = bonusData.status === '1' ? `${Number(bonusData.max_cashout_amount)} ${currency}` : bonusData.game_names;
   let wagerPercent = wagerPercentCalculator(bonusData.rollover_achieved, bonusData.wager_requirements, bonusData.award_amount);
 
@@ -20,7 +20,7 @@ export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusCli
   let expiryDate = dateFormatter(bonusData.time_expires, router.locale);
 
   if (bonusData.status === '1') {
-    let wagerOrFreeSpins = 'Amount wager requirement';
+    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager';
     let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`;
 
     return (
@@ -40,7 +40,7 @@ export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusCli
       />
     )
   } else {
-    let wagerOrFreeSpins = 'Free Spins awarded';
+    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpins';
     let wagerOrFreeSpinsAmount = Number(bonusData.free_spins_awarded);
 
     return (

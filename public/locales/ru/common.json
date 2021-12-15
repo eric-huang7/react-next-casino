@@ -594,6 +594,27 @@
           "december": "Декабрь"
         }
       }
+    },
+    "bonusPage": {
+      "noBonuses": "В настоящее время у вас нет бонуса.",
+      "bonusHistoryLink": "История Бонусов",
+      "addPromoCode": {
+        "heading": "Добавить промокод",
+        "addText": "и получить бонус",
+        "saveButton": "Сохранить"
+      },
+      "bonusItems": {
+        "amount": "Сумма",
+        "games": "Игры",
+        "wager": "Требуемая сумма ставки",
+        "wagerPercent": "Процент ставки",
+        "freeSpins": "Бесплатные спины",
+        "activateUntil" : "Активировать до",
+        "dateReceived" : "Дата получения",
+        "expiryDate" : "Срок действия",
+        "cancelBonus": "Отменить бонус",
+        "activateBonus": "Активировать"
+      }
     }
   }
 }

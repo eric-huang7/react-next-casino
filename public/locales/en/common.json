@@ -594,6 +594,27 @@
           "december": "December"
         }
       }
+    },
+    "bonusPage": {
+      "noBonuses": "You currently do not have any bonus.",
+      "bonusHistoryLink": "Bonus History",
+      "addPromoCode": {
+        "heading": "Add Promo Code",
+        "addText": "and receive a bonus",
+        "saveButton": "Save"
+      },
+      "bonusItems": {
+        "amount": "Amount",
+        "games": "Games",
+        "wager": "Amount wager requirement",
+        "wagerPercent": "Wager Percent",
+        "freeSpins": "Free Spins awarded",
+        "activateUntil" : "Activate until",
+        "dateReceived" : "Date received",
+        "expiryDate" : "Expiry date",
+        "cancelBonus": "Cancel Bonus",
+        "activateBonus": "Activate"
+      }
     }
   }
 

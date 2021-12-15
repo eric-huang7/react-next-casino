@@ -12,11 +12,11 @@ export const PendingBonus = ({t, title, stage, amountName, amount, wagerOrFreeSp
       </div>
       <ul className={styles.bonusInfoList}>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountName}>{amountName}</div>
+          <div className={styles.amountName}>{t(amountName)}</div>
           <div className={styles.amountValue}>{amount}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountWagerReq}>{wagerOrFreeSpins}</div>
+          <div className={styles.amountWagerReq}>{t(wagerOrFreeSpins)}</div>
           <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
@@ -24,15 +24,15 @@ export const PendingBonus = ({t, title, stage, amountName, amount, wagerOrFreeSp
           <div className={styles.wagerPercentValue}>{""}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.dateReceived}>Date received</div>
+          <div className={styles.dateReceived}>{t("myAccount.bonusPage.bonusItems.dateReceived")}</div>
           <div className={styles.dateReceivedValue}>{dateReceived}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.expiryDate}>Activate until</div>
+          <div className={styles.expiryDate}>{t("myAccount.bonusPage.bonusItems.activateUntil")}</div>
           <div className={styles.expiryDate}>{expiryDate}</div>
         </li>
       </ul>
-      <button onClick={() => activateBonusClickHandler(bonusData)} className={styles.activateBonus}>Activate</button>
+      <button onClick={() => activateBonusClickHandler(bonusData)} className={styles.activateBonus}>{t("myAccount.bonusPage.bonusItems.activateBonus")}</button>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {BalancePage} from "../../../components/MyAccountMainLayout/BalanceComponents/BalancePage";
 import {TrxHistory} from "../../../components/MyAccountMainLayout/TrxHistory/TrxHistory";
 import {BonusesPageContainer} from "../../../components/MyAccountMainLayout/BonusesPage/BonusesPageContainer";
+import {ProfileInfoPage} from "../../../components/MyAccountMainLayout/ProfileInfoPage/ProfileInfoPage";
 
 const PageType = (props) => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const PageType = (props) => {
     case "profile-info" :
       return (
         <AccountMainLayout t={t}>
-          <h2>profile-info</h2>
+          <ProfileInfoPage t={t} />
         </AccountMainLayout>
       )
     case "gambling-limits" :

@@ -35,9 +35,9 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
       return (
         <>
           <div className={styles.noBonusesContainer}>
-            <p className={styles.noBonusesText}>You currently do not have any bonus.</p>
+            <p className={styles.noBonusesText}>{t("myAccount.bonusPage.noBonuses")}</p>
             <div className={styles.bonusesLinkWrapper}>
-              <Link href={'/accounts/history/history/bonus'}><a>Bonus history &gt;&gt;</a></Link>
+              <Link href={'/accounts/history/history/bonus'}><a>{t("myAccount.bonusPage.bonusHistoryLink")} &gt;&gt;</a></Link>
             </div>
           </div>
           <AddPromoCodeContainer isCenter={false} t={t} />
@@ -62,7 +62,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
           }
 
           <div className={styles.bonusesLinkWrapper}>
-            <Link href={'/accounts/history/history/bonus'}><a>Bonus history &gt;&gt;</a></Link>
+            <Link href={'/accounts/history/history/bonus'}><a>{t("myAccount.bonusPage.bonusHistoryLink")} &gt;&gt;</a></Link>
           </div>
         </div>
       )
