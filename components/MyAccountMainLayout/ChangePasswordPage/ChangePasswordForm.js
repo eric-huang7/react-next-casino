@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaChangePassword} from "../../../schemasForms/changePasswordForm";
+import {patchUserData} from "../../../redux/actions/userData";
 
 
 export const ChangePasswordForm = ({t, userInfo}) => {
@@ -48,6 +49,12 @@ export const ChangePasswordForm = ({t, userInfo}) => {
   }
   const submitHelper = (data) => {
     if (data.password === passwordConfirmValue) {
+      let userData = {
+        id: userInfo.user.user.id,
+        password: data.password,
+        current_password: currenPasswordValue,
+      }
+      dispatch(patchUserData(userData));
       console.log('submit', data);
       setPasswordConfirmError("");
       // Пароль успешно изменен!
@@ -87,12 +94,12 @@ export const ChangePasswordForm = ({t, userInfo}) => {
           passwordConfirmValue={passwordConfirmValue}
           t={t}
         />
-        {/*<CurrentPasswordBlock*/}
-        {/*  currenPasswordError={currenPasswordError}*/}
-        {/*  currentPasswordInputHandler={currentPasswordInputHandler}*/}
-        {/*  currenPasswordValue={currenPasswordValue}*/}
-        {/*  t={t}*/}
-        {/*/>*/}
+        <CurrentPasswordBlock
+          currenPasswordError={currenPasswordError}
+          currentPasswordInputHandler={currentPasswordInputHandler}
+          currenPasswordValue={currenPasswordValue}
+          t={t}
+        />
       </form>
       <p className={styles.successMessage}>{successMessage}</p>
       <ButtonsBlock t={t}/>
