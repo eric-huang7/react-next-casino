@@ -1,16 +1,12 @@
 import styles from '../../../styles/MyAccount/UserInfoPage/ChangePasswordPage.module.scss';
 
+import Link from "next/link";
+import {ChangePasswordForm} from "./ChangePasswordForm";
 
-export const ChangePasswordContainer = ({t}) => {
+export const ChangePasswordContainer = ({t, userInfo}) => {
 
 
   return (
-    <div className={styles.changePasswordMainWrapper}>
-      <form id={'changePasswordForm'}>
-        <div className={styles.emailWrapper}>
-          <label htmlFor="changePasswordEmail">Email<abbr title="required">*</abbr></label>
-        </div>
-      </form>
-    </div>
+    <ChangePasswordForm userInfo={userInfo} t={t}/>
   )
 }

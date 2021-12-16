@@ -3,13 +3,13 @@ import {VerifyPhoneUserInfoTable} from "./VerifyPhoneUserInfoTable";
 
 
 export const PhoneAlreadyVerified = ({t, userInfo, status, removePhoneNumberHandler}) => {
-  let phoneNumber = userInfo.phone_number.replaceAll('-', '').split('').map((el, ind) => {
+  let phoneNumber = userInfo.phone_number ? userInfo.phone_number.replaceAll('-', '').split('').map((el, ind) => {
     if (ind === 5 || ind === 6 || ind === 7) {
       return "*";
     } else {
       return el;
     }
-  });
+  }) : "";
 
   return (
     <div className={styles.verifyCodeContainer}>
