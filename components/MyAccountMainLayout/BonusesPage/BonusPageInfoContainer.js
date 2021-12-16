@@ -5,7 +5,7 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {BonusItemContainer} from "./BonusPageComponents/BonusItemContainer";
 import {AddPromoCodeContainer} from "./BonusPageComponents/AddPromoCodeContainer";
 import {useDispatch} from "react-redux";
-import {activateBonus, cancelBonus, patchUserBonusCode} from "../../../redux/actions/userData";
+import {activateBonus, cancelBonus} from "../../../redux/actions/userData";
 import {useState} from "react";
 import axios from "axios";
 import {user_url} from "../../../redux/url/url";

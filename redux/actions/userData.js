@@ -23,7 +23,7 @@ import {
   get_user_bets,
   get_bonuses_data_url,
   post_put_bonus_redemption_url,
-  put_bonus_redemption_url, post_cancel_bonus_redemption_url
+  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url
 } from "../url/url";
 import {siteID} from "../../envs/envsForFetching";
 
@@ -248,7 +248,7 @@ export const cancelBonus = (bonusData) => async dispatch => {
   }
 }
 
-export const patchUserBonusCode = (userData) => async dispatch => {
+export const patchUserData = (userData) => async dispatch => {
   const config = {
     // withCredentials: true,
     headers: {
@@ -258,9 +258,31 @@ export const patchUserBonusCode = (userData) => async dispatch => {
   const body = JSON.stringify(userData)
   try {
     let res = await axios.patch(user_url, body, config);
-    console.log(res, '<< patch user bonus code')
+    console.log(res, '<< patch user data')
+    dispatch(auth());
   } catch (e) {
-    console.log(e.response, 'SOME ERROR when patch user bonus code')
+    console.log(e.response, 'SOME ERROR when patch user data')
+  }
+}
+
+export const getTokenUserPhone = (params) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: {...params}
+  }
+
+  try {
+
+    const res = await axios.get(phone_number_url, config)
+    dispatch({
+      type: GET_ACTIVE_PENDING_BONUSES,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, 'error from GET_ACTIVE_PENDING_BONUSES')
   }
 }
 
