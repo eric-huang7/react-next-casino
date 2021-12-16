@@ -22,7 +22,7 @@ export const SideMenuItem = ({t, data, router, userInform}) => {
           <a>
             <img src={router.query.pageType === data.pageType ? data.icon_active : data.icon_disabled} className={styles.linkItemIcon} alt={'link ' + data.name + ' icon'}/>
             <span className={styles.linkText}>{t(data.name)}</span>
-            {userInform.loadingActivePendingBonuses ? <></> : <span className={styles.bonusCounter}>{countOfBonuses.length}</span> }
+            {userInform.loadingActivePendingBonuses ? <></> : countOfBonuses.length === 0 ? <></> : <span className={styles.bonusCounter}>{countOfBonuses.length}</span> }
           </a>
         </Link>
       </li>

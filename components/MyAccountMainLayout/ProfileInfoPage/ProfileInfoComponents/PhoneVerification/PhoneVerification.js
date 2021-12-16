@@ -24,6 +24,7 @@ export const PhoneVerification = ({t, userInfo}) => {
 
   const sendVerifyCodeHandler = () => {
     console.log(verifyCode);
+    setPhoneError('Error')
   }
 
   const sendPhoneNumberHandler = () => {
