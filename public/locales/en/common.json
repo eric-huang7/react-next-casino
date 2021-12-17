@@ -478,7 +478,8 @@
       "bonuses": "Bonuses",
       "profileInfo": "Profile Info",
       "gamblingLimits": "Gambling Limits",
-      "documents": "Documents"
+      "documents": "Documents",
+      "changePassword": "Change Password"
     },
     "balance": {
       "table": {

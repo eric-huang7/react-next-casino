@@ -478,7 +478,8 @@
       "bonuses": "Бонусы",
       "profileInfo": "Данные профиля",
       "gamblingLimits": "Ответственная игра",
-      "documents": "Документы"
+      "documents": "Документы",
+      "changePassword": "Изменить Пароль"
     },
     "balance": {
       "table": {

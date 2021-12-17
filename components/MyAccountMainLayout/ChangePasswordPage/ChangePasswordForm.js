@@ -10,7 +10,9 @@ import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaChangePassword} from "../../../schemasForms/changePasswordForm";
-import {patchUserData} from "../../../redux/actions/userData";
+import {auth, patchUserData} from "../../../redux/actions/userData";
+import axios from "axios";
+import {user_url} from "../../../redux/url/url";
 
 
 export const ChangePasswordForm = ({t, userInfo}) => {
@@ -19,12 +21,10 @@ export const ChangePasswordForm = ({t, userInfo}) => {
   });
   const dispatch = useDispatch();
 
-  console.log(userInfo)
-
   useEffect(() => {
     setPasswordValue("");
     setPasswordConfirmValue("");
-  },[errors])
+  }, [errors])
 
   const [passwordValue, setPasswordValue] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -54,18 +54,39 @@ export const ChangePasswordForm = ({t, userInfo}) => {
         password: data.password,
         current_password: currenPasswordValue,
       }
-      dispatch(patchUserData(userData));
-      console.log('submit', data);
-      setPasswordConfirmError("");
-      // Пароль успешно изменен!
-      setSuccessMessage('Password changed successfully!');
-      setPasswordConfirmValue("");
-      setPasswordValue("");
+      // dispatch(patchUserData(userData));
+      const config = {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+      const body = JSON.stringify(userData)
+
+      axios.patch(user_url, body, config)
+        .then((data) => {
+          setPasswordConfirmError("");
+          // Пароль успешно изменен!
+          setSuccessMessage('Password changed successfully!');
+          setPasswordConfirmValue("");
+          setPasswordValue("");
+          setCurrenPasswordValue("");
+          dispatch(auth());
+        })
+        .catch((error) => {
+          setSuccessMessage('');
+          setPasswordValue("");
+          setPasswordConfirmValue("");
+          setCurrenPasswordValue("");
+          //Текущий пароль не правильный.
+          setCurrenPasswordError("The current password is not correct.");
+        })
     } else {
       //Пароль не совпадает!
       setSuccessMessage('');
       setPasswordValue("");
       setPasswordConfirmValue("");
+      setCurrenPasswordValue("");
       setPasswordConfirmError("Password does not match!");
     }
   }
