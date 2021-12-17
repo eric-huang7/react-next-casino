@@ -14,6 +14,8 @@ import {user_url} from "../../../redux/url/url";
 export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
   const dispatch = useDispatch();
 
+  console.log(bonusInfo)
+
   const activateBonusClickHandler = (bonusData) => {
     //bonusData.user_id || bonusInfo.user.user.id
     let params = {
