@@ -1,0 +1,40 @@
+.activeSessionsMainBlock {
+  padding: 35px 0px 35px 0px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.activeSessionsHeading {
+  font-size: 18px;
+  letter-spacing: 0px;
+  color: #747272;
+  font-family: "Verdana", Arial, sans-serif;
+
+  margin-bottom: 45px;
+  margin-left: 10px;
+}
+
+.sessionsTable {
+  font-size: 15px;
+  letter-spacing: 0px;
+  color: #747272;
+  font-family: "Verdana", Arial, sans-serif;
+
+
+  & thead th {
+    background-color: #eeeeee;
+
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+
+    height: 53px;
+  }
+
+  & tbody td {
+    height: 53px;
+
+    text-align: center;
+
+    font-size: 14px;
+  }
+}

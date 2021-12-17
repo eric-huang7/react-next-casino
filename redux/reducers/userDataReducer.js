@@ -13,7 +13,8 @@ import {
   GET_USER_BETS_DATA,
   GET_BONUS_HISTORY_DATA,
   AUTH_FAIL,
-  GET_ACTIVE_PENDING_BONUSES
+  GET_ACTIVE_PENDING_BONUSES, QR_AUTH,
+
 } from "../actions/types";
 
 const initialState = {
@@ -36,12 +37,20 @@ const initialState = {
   bonusesHistory: null,
   loadingActivePendingBonuses: true,
   activePendingBonuses: null,
+  qrAuthLoading: true,
+  qrAuth: null,
 }
 
 function userDataReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case QR_AUTH :
+      return {
+        ...state,
+        qrAuthLoading: false,
+        qrAuth: {...payload},
+      }
     case LOGIN_SUCCESS :
       return {
         ...state,

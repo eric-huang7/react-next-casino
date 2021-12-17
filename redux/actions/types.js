@@ -46,6 +46,8 @@ export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
 export const AUTH = 'AUTH';
 
+export const QR_AUTH = 'QR_AUTH';
+
 // ############### LOGOUT REQ
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';

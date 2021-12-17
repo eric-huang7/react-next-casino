@@ -1,9 +1,9 @@
-import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss';
-
-import QRCode from 'qrcode'
+import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss';
+import QRCode from 'qrcode';
 import {useEffect, useState} from "react";
 
-export const QRContainer = ({qrData}) => {
+
+export const QrGenerator = ({qrData}) => {
   const [src, setSrc] = useState('')
 
   useEffect(() => {
@@ -18,3 +18,5 @@ export const QRContainer = ({qrData}) => {
     </div>
   )
 }
+
+

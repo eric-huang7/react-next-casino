@@ -7,7 +7,7 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
-  LOGOUT_SUCCESS, PATCH_CHANGE_CURRENCY,
+  LOGOUT_SUCCESS, PATCH_CHANGE_CURRENCY, QR_AUTH,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS
 } from "./types";
@@ -23,7 +23,7 @@ import {
   get_user_bets,
   get_bonuses_data_url,
   post_put_bonus_redemption_url,
-  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url
+  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url, qr_auth_url
 } from "../url/url";
 import {siteID} from "../../envs/envsForFetching";
 
@@ -262,6 +262,26 @@ export const patchUserData = (userData) => async dispatch => {
     dispatch(auth());
   } catch (e) {
     console.log(e.response, 'SOME ERROR when patch user data')
+  }
+}
+
+export const getQrAuth = () => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  try {
+
+    const res = await axios.get(qr_auth_url, config)
+    dispatch({
+      type: QR_AUTH,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, 'error from GET QR_AUTH')
   }
 }
 

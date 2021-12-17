@@ -6,7 +6,7 @@ import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {
-  auth,
+  auth, getQrAuth,
   getUserActivePendingBonuses,
   getUserBets,
   getUserBonuses,
@@ -68,6 +68,9 @@ export const AccountMainLayout = ({t, children}) => {
       }
       if (!currency.currency) {
         dispatch(getCurrency());
+      }
+      if (!userInfo.qrAuth) {
+        dispatch(getQrAuth());
       }
     }
 

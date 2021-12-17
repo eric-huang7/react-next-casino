@@ -1,40 +1,19 @@
-.changePasswordContainer {
-  padding: 35px 0px 35px 10px;
-
-  border-bottom: 1px solid #eeeeee;
+.googleAuthMainBlock {
+  padding: 25px 20px 35px 10px;
 }
 
-.changePasswordHeading {
-  font-size: 17px;
+.googleAuthHeading {
+  font-size: 18px;
   letter-spacing: 0px;
-  color: #464646;
+  color: #747272;
   font-family: "Verdana", Arial, sans-serif;
 
-  margin: 0 0 10px;
+  margin-bottom: 45px;
+  margin-left: 10px;
 }
 
-.emailInfo {
-  font-size: 16px;
-  letter-spacing: 0px;
-  color: #595656;
-  font-family: "Verdana", Arial, sans-serif;
 
-  display: flex;
-
-  margin: 35px 0 25px;
-
-  & span:first-child {
-
-    display: block;
-
-    margin-right: 30px;
-  }
-  & span:nth-child(2){
-    display: block;
-  }
-}
-
-.changePasswordLink {
+.googleAuthLink {
   display: flex;
   align-items: center;
 
@@ -49,7 +28,6 @@
 
   padding-left: 52px;
   padding-right: 10px;
-  padding-right: 10px;
 
 
   font-size: 15px;
@@ -60,7 +38,7 @@
   position: relative;
 }
 
-.changePasswordLink:before {
+.googleAuthLink:before {
   position: absolute;
   top: 2px;
   left: 15px;

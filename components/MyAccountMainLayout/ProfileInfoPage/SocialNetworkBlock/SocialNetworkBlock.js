@@ -2,7 +2,7 @@ import styles from '../../../../styles/MyAccount/UserInfoPage/SocialNetworkBlock
 
 
 export const SocialNetworkBlock = ({t, userInfo}) => {
-  console.log(userInfo);
+
 
   return (
     <div className={styles.socialNetworkBlock}>
