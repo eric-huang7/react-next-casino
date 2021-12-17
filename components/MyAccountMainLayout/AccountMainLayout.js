@@ -69,9 +69,6 @@ export const AccountMainLayout = ({t, children}) => {
       if (!currency.currency) {
         dispatch(getCurrency());
       }
-      if (!userInfo.qrAuth) {
-        dispatch(getQrAuth());
-      }
     }
 
     // console.log('effect fetcher', userInfo)

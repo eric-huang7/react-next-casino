@@ -479,7 +479,8 @@
       "profileInfo": "Profile Info",
       "gamblingLimits": "Gambling Limits",
       "documents": "Documents",
-      "changePassword": "Change Password"
+      "changePassword": "Change Password",
+      "googleAuth" : "Google Authenticator"
     },
     "balance": {
       "table": {

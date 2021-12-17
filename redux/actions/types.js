@@ -48,6 +48,10 @@ export const AUTH = 'AUTH';
 
 export const QR_AUTH = 'QR_AUTH';
 
+export const GET_SAVED_KEYS = 'GET_SAVED_KEYS';
+
+export const MAY_TWO_FACTOR_AUTH = 'MAY_TWO_FACTOR_AUTH';
+
 // ############### LOGOUT REQ
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';

@@ -2,12 +2,21 @@ import axios from "axios";
 import {
   ACTIVATE_BONUS,
   ADD_CURRENCY_TO_USER,
-  AUTH, AUTH_FAIL,
-  BALANCE, CANCEL_BONUS, GET_ACTIVE_PENDING_BONUSES, GET_BONUS_HISTORY_DATA, GET_USER_BETS_DATA, GET_USER_PAYMENTS,
+  AUTH,
+  AUTH_FAIL,
+  BALANCE,
+  CANCEL_BONUS,
+  GET_ACTIVE_PENDING_BONUSES,
+  GET_BONUS_HISTORY_DATA,
+  GET_SAVED_KEYS,
+  GET_USER_BETS_DATA,
+  GET_USER_PAYMENTS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
-  LOGOUT_SUCCESS, PATCH_CHANGE_CURRENCY, QR_AUTH,
+  LOGOUT_SUCCESS, MAY_TWO_FACTOR_AUTH,
+  PATCH_CHANGE_CURRENCY,
+  QR_AUTH, SHOW_CREDIT_CARD_MODAL,
   SIGNUP_FAIL,
   SIGNUP_SUCCESS
 } from "./types";
@@ -282,6 +291,35 @@ export const getQrAuth = () => async dispatch => {
     })
   } catch (e) {
     console.log(e.response, 'error from GET QR_AUTH')
+  }
+}
+
+export const mayYwoFactorAuth = (isMay) => {
+  return {
+    type: MAY_TWO_FACTOR_AUTH,
+    payload: isMay
+}
+
+
+}
+
+export const postSavedKeys = (googleTokenData) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(googleTokenData);
+  try {
+    const res = await axios.post(qr_auth_url, body, config);
+    console.log(res, "<< Post user saved keys");
+    dispatch({
+      type: GET_SAVED_KEYS,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, "SOME ERROR WHEN Post user saved keys");
   }
 }
 

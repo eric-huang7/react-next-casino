@@ -479,7 +479,8 @@
       "profileInfo": "Данные профиля",
       "gamblingLimits": "Ответственная игра",
       "documents": "Документы",
-      "changePassword": "Изменить Пароль"
+      "changePassword": "Изменить Пароль",
+      "googleAuth" : "Двухфакторная аутентификация Google"
     },
     "balance": {
       "table": {

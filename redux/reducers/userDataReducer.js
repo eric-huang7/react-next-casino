@@ -13,7 +13,7 @@ import {
   GET_USER_BETS_DATA,
   GET_BONUS_HISTORY_DATA,
   AUTH_FAIL,
-  GET_ACTIVE_PENDING_BONUSES, QR_AUTH,
+  GET_ACTIVE_PENDING_BONUSES, QR_AUTH, MAY_TWO_FACTOR_AUTH,
 
 } from "../actions/types";
 
@@ -39,12 +39,20 @@ const initialState = {
   activePendingBonuses: null,
   qrAuthLoading: true,
   qrAuth: null,
+  savedKeys: null,
+  loadingSavedKeys: true,
+  isMayTwoFactorAuth: false,
 }
 
 function userDataReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case MAY_TWO_FACTOR_AUTH:
+      return {
+        ...state,
+        isMayTwoFactorAuth: payload,
+      }
     case QR_AUTH :
       return {
         ...state,
