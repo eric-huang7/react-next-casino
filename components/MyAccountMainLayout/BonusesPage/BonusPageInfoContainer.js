@@ -16,7 +16,8 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
 
   console.log(bonusInfo);
 
-  let errorText = "myAccount.bonusPage.addPromoCode.invalidPromo"
+  let errorText = "myAccount.bonusPage.addPromoCode.invalidPromo";
+  let bonusNeedDepositText = "myAccount.bonusPage.addPromoCode.bonusNeedDeposit";
 
   const activateBonusClickHandler = (bonusData) => {
     //bonusData.user_id || bonusInfo.user.user.id
@@ -61,7 +62,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
           dispatch(getUserActivePendingBonuses({status: "1,5"}));
           setPromoDepositText('');
         } else {
-          setPromoDepositText("The code entered has triggered a bonus issuing for your next deposit")
+          setPromoDepositText(t(bonusNeedDepositText));
         }
         setPromoCodeValue('');
         setPromoErrorValue('')

@@ -604,7 +604,8 @@
         "heading": "Add Promo Code",
         "addText": "and receive a bonus",
         "saveButton": "Save",
-        "invalidPromo" : "Invalid Promo Code:"
+        "invalidPromo" : "Invalid Promo Code:",
+        "bonusNeedDeposit": "The code entered has triggered a bonus issuing for your next deposit"
       },
       "bonusItems": {
         "amount": "Amount",
