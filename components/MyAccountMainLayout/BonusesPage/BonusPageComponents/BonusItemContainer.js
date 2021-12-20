@@ -63,10 +63,14 @@ export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusCli
 }
 
 
-function wagerPercentCalculator(rollover_achieved, wager_requirements, award_amount) {
-  let wagerNumber = (Number(award_amount) * Number(wager_requirements)) === 0 ? 0 : (Number(rollover_achieved) / (Number(award_amount) * Number(wager_requirements))) * 100;
-
-  return wagerNumber;
+function wagerPercentCalculator(rollover_achieved, wager_requirements) {
+  if (Number(wager_requirements) === 0) {
+    return 0;
+  } else if (Number(rollover_achieved) === 0) {
+    return 0;
+  } else {
+    return (Number(rollover_achieved) / Number(wager_requirements)) * 100
+  }
 }
 
 function statusValue(status) {

@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 export const BonusTableRow = ({t, bonusData, currencyData}) => {
 const router = useRouter();
 
-  let title = bonusData.title ? bonusData.title : "No deposit Free Spins Special";
+  let title = bonusData.title ? bonusData.title : "-";
   let status = statusValue (bonusData.status);
   let currency = currencyInfo(currencyData.currency.results, bonusData.currency_id)[0].abbreviation;
   let amount = `${Number(bonusData.max_cashout_amount)} ${currency}`;

@@ -1,7 +1,7 @@
 import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
 
 
-export const AddPromoCodeContainer = ({t, isCenter, promoCodeValue, promoCodeInputHandler, savePromoCodeClickHandler, promoErrorValue}) => {
+export const AddPromoCodeContainer = ({t, isCenter, promoCodeValue, promoCodeInputHandler, savePromoCodeClickHandler, promoErrorValue, promoDepositText}) => {
 
 
   return (
@@ -12,6 +12,7 @@ export const AddPromoCodeContainer = ({t, isCenter, promoCodeValue, promoCodeInp
         <input onChange={(e) => promoCodeInputHandler(e.target.value)} type="text" className={styles.promoCodeInput} value={promoCodeValue}/>
         <button onClick={() => savePromoCodeClickHandler()} className={styles.savePromoButton}>{t("myAccount.bonusPage.addPromoCode.saveButton")}</button>
       </div>
+      <span className={styles.promoDepositText}>{promoDepositText}</span>
       <span className={styles.errorMessage}>{promoErrorValue}</span>
     </div>
   )

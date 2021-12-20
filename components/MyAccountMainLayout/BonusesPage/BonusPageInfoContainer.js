@@ -5,7 +5,7 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {BonusItemContainer} from "./BonusPageComponents/BonusItemContainer";
 import {AddPromoCodeContainer} from "./BonusPageComponents/AddPromoCodeContainer";
 import {useDispatch} from "react-redux";
-import {activateBonus, cancelBonus} from "../../../redux/actions/userData";
+import {activateBonus, cancelBonus, getUserActivePendingBonuses} from "../../../redux/actions/userData";
 import {useState} from "react";
 import axios from "axios";
 import {user_url} from "../../../redux/url/url";
@@ -14,14 +14,16 @@ import {user_url} from "../../../redux/url/url";
 export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
   const dispatch = useDispatch();
 
-  console.log(bonusInfo)
+  console.log(bonusInfo);
+
+  let errorText = "myAccount.bonusPage.addPromoCode.invalidPromo"
 
   const activateBonusClickHandler = (bonusData) => {
     //bonusData.user_id || bonusInfo.user.user.id
     let params = {
       user_id: bonusInfo.user.user.id,
       bonus_redemption_id: bonusData.id,
-      status: "ACTIVE"
+      status: 1
     }
     dispatch(activateBonus(params));
 
@@ -36,6 +38,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
 
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoErrorValue, setPromoErrorValue] = useState("");
+  const [promoDepositText, setPromoDepositText] = useState("")
   const promoCodeInputHandler = (value) => {
     setPromoCodeValue(value);
   }
@@ -53,10 +56,21 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
     }
     const body = JSON.stringify(userData)
       axios.patch(user_url, body, config).then((data) => {
+        // bonus_offer.deposit_cnt_requirements
+        if (!data.data.bonus_spec) {
+          dispatch(getUserActivePendingBonuses({status: "1,5"}));
+          setPromoDepositText('');
+        } else {
+          setPromoDepositText("The code entered has triggered a bonus issuing for your next deposit")
+        }
+        setPromoCodeValue('');
+        setPromoErrorValue('')
         console.log(data, 'bonus data!!');
       }).catch((errorData) => {
         console.log(errorData.response, 'error data!!');
-        setPromoErrorValue(errorData.response.data.extra_error_info.message);
+        setPromoCodeValue('');
+        setPromoDepositText('');
+        setPromoErrorValue(t(errorText) + " " + promoCodeValue);
       })
 
 
@@ -82,6 +96,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
             isCenter={false}
             t={t}
             promoErrorValue={promoErrorValue}
+            promoDepositText={promoDepositText}
           />
         </>
 
@@ -104,6 +119,7 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
               isCenter={true}
               t={t}
               promoErrorValue={promoErrorValue}
+              promoDepositText={promoDepositText}
             />
           </div>
           {
