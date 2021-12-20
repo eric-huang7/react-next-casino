@@ -6,7 +6,7 @@ import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {
-  auth, getQrAuth,
+  auth, getActiveUserSessions, getClosedUserSessions, getQrAuth,
   getUserActivePendingBonuses,
   getUserBets,
   getUserBonuses,
@@ -58,6 +58,12 @@ export const AccountMainLayout = ({t, children}) => {
       }
       if (!userInfo.activePendingBonuses) {
         dispatch(getUserActivePendingBonuses({status: "1,5"}))
+      }
+      if (!userInfo.userActiveSessions) {
+        dispatch(getActiveUserSessions());
+      }
+      if (!userInfo.userClosedSessions) {
+        dispatch(getClosedUserSessions());
       }
       // if (!userInfo.balance) {
       //   console.log('balance fetch', userInfo.balance)

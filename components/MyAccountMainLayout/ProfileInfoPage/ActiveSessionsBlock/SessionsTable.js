@@ -3,10 +3,7 @@ import {TableHead} from "./TableHead";
 import {TableRow} from "./TableRow";
 
 
-
-export const SessionsTable = ({t, sessionsInfo}) => {
-
-
+export const SessionsTable = ({t, sessionsInfo, closeSessionHandler}) => {
 
   return (
     <div className={styles.sessionsTableWrapper}>
@@ -18,14 +15,18 @@ export const SessionsTable = ({t, sessionsInfo}) => {
         {
           sessionsInfo.sessions.map((session) => {
             return (
-              <TableRow key={`session ${session.id}`} t={t} sessionData={session}/>
+              <TableRow
+                closeSessionHandler={closeSessionHandler}
+                key={`session ${session.id}`}
+                t={t}
+                sessionData={session}
+                currentSession={sessionsInfo.current}
+              />
             )
           })
         }
-
         </tbody>
       </table>
     </div>
-
   )
 }

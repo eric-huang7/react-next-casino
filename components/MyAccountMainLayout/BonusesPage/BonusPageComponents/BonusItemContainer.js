@@ -69,7 +69,7 @@ function wagerPercentCalculator(rollover_achieved, wager_requirements) {
   } else if (Number(rollover_achieved) === 0) {
     return 0;
   } else {
-    return (Number(rollover_achieved) / Number(wager_requirements)) * 100
+    return Math.trunc((Number(rollover_achieved) / Number(wager_requirements)) * 100)
   }
 }
 

@@ -13,7 +13,7 @@ import {
   GET_USER_BETS_DATA,
   GET_BONUS_HISTORY_DATA,
   AUTH_FAIL,
-  GET_ACTIVE_PENDING_BONUSES, QR_AUTH, MAY_TWO_FACTOR_AUTH,
+  GET_ACTIVE_PENDING_BONUSES, QR_AUTH, MAY_TWO_FACTOR_AUTH, GET_ACTIVE_SESSIONS, GET_CLOSED_SESSIONS,
 
 } from "../actions/types";
 
@@ -42,6 +42,10 @@ const initialState = {
   savedKeys: null,
   loadingSavedKeys: true,
   isMayTwoFactorAuth: false,
+  loadingActiveSessions: true,
+  userActiveSessions: null,
+  loadingClosedSessions: true,
+  userClosedSessions: null,
 }
 
 function userDataReducer(state = initialState, action) {
@@ -52,6 +56,18 @@ function userDataReducer(state = initialState, action) {
       return {
         ...state,
         isMayTwoFactorAuth: payload,
+      }
+    case GET_ACTIVE_SESSIONS:
+      return {
+        ...state,
+        loadingActiveSessions: false,
+        userActiveSessions: {...payload},
+      }
+    case GET_CLOSED_SESSIONS:
+      return {
+        ...state,
+        loadingClosedSessions: false,
+        userClosedSessions: {...payload},
       }
     case QR_AUTH :
       return {

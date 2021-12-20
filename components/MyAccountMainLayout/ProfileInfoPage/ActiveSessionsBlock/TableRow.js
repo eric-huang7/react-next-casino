@@ -1,9 +1,9 @@
 import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss';
-import {useRouter} from "next/router";
 import {dateFormatter} from "../../../../helpers/dateTranslator";
+import {useRouter} from "next/router";
 
 
-export const TableRow = ({t, sessionData}) => {
+export const TableRow = ({t, sessionData, currentSession, closeSessionHandler}) => {
   const router = useRouter();
 
 
@@ -11,7 +11,7 @@ export const TableRow = ({t, sessionData}) => {
   let ip = sessionData.ip_address.replace("::ffff:", "");
   let country = sessionData.ip_country;
   let device = sessionData.device;
-
+  let isCurrent = currentSession === sessionData.id;
 
   return (
     <tr>
@@ -19,6 +19,11 @@ export const TableRow = ({t, sessionData}) => {
       <td>{ip}</td>
       <td>{country}</td>
       <td>{device}</td>
+      <td>
+        {
+          isCurrent ? "Current" : <button className={styles.sessionCloseButton} onClick={() => closeSessionHandler(sessionData)}>Close</button>
+        }
+      </td>
     </tr>
   )
 }

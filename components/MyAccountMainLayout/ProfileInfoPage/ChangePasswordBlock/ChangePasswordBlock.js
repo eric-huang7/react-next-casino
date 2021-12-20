@@ -4,8 +4,6 @@ import Link from "next/link";
 
 export const ChangePasswordBlock = ({t, userInfo}) => {
 
-  console.log(userInfo.user.user.email, '<<<<<<<')
-
   return (
     <div className={styles.changePasswordContainer}>
       <h3 className={styles.changePasswordHeading}>Change password</h3>

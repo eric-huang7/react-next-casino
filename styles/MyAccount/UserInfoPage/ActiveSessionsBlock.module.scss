@@ -1,3 +1,24 @@
+.sessionsTableWrapper {
+  max-height: 600px;
+
+  overflow-y: auto;
+
+}
+.sessionCloseButton {
+  background-color: #ff0000;
+
+  border: none;
+  border-radius: 5px;
+
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "Verdana", Arial, sans-serif;
+
+  cursor: pointer;
+}
+
 .activeSessionsMainBlock {
   padding: 35px 0px 35px 0px;
 
@@ -15,6 +36,8 @@
 }
 
 .sessionsTable {
+  width: 100%;
+
   font-size: 15px;
   letter-spacing: 0px;
   color: #747272;
@@ -28,13 +51,28 @@
     border-bottom: 1px solid #e1e1e1;
 
     height: 53px;
-  }
 
+    padding: 0 10px;
+  }
+  & tbody tr:nth-child(even) td {
+    background-color: #eeeeee;
+  }
   & tbody td {
     height: 53px;
 
     text-align: center;
 
     font-size: 14px;
+  }
+}
+
+
+
+@media screen and (max-width: 500px){
+  .sessionsTableWrapper {
+    overflow-x: auto;
+  }
+  .sessionsTable {
+    width: 500px;
   }
 }

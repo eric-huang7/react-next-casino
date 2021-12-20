@@ -52,6 +52,15 @@ export const GET_SAVED_KEYS = 'GET_SAVED_KEYS';
 
 export const MAY_TWO_FACTOR_AUTH = 'MAY_TWO_FACTOR_AUTH';
 
+
+// ################# SESSIONS
+
+export const GET_ACTIVE_SESSIONS = 'GET_ACTIVE_SESSIONS';
+export const GET_CLOSED_SESSIONS = 'GET_CLOSED_SESSIONS';
+
+export const DELETE_SESSION = 'DELETE_SESSION';
+
+
 // ############### LOGOUT REQ
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';

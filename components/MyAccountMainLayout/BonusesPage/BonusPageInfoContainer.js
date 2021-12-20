@@ -14,8 +14,6 @@ import {user_url} from "../../../redux/url/url";
 export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
   const dispatch = useDispatch();
 
-  console.log(bonusInfo);
-
   let errorText = "myAccount.bonusPage.addPromoCode.invalidPromo";
   let bonusNeedDepositText = "myAccount.bonusPage.addPromoCode.bonusNeedDeposit";
 

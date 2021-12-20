@@ -5,9 +5,9 @@ import {
   AUTH,
   AUTH_FAIL,
   BALANCE,
-  CANCEL_BONUS,
-  GET_ACTIVE_PENDING_BONUSES,
-  GET_BONUS_HISTORY_DATA,
+  CANCEL_BONUS, DELETE_SESSION,
+  GET_ACTIVE_PENDING_BONUSES, GET_ACTIVE_SESSIONS,
+  GET_BONUS_HISTORY_DATA, GET_CLOSED_SESSIONS,
   GET_SAVED_KEYS,
   GET_USER_BETS_DATA,
   GET_USER_PAYMENTS,
@@ -32,7 +32,7 @@ import {
   get_user_bets,
   get_bonuses_data_url,
   post_put_bonus_redemption_url,
-  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url, qr_auth_url
+  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url, qr_auth_url, user_sessions_url
 } from "../url/url";
 import {siteID} from "../../envs/envsForFetching";
 
@@ -170,6 +170,77 @@ export const getUserActivePendingBonuses = (params) => async dispatch => {
     console.log(e.response, 'error from GET_ACTIVE_PENDING_BONUSES')
   }
 }
+
+export const getActiveUserSessions = () => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: {
+      isCurrent: true,
+      ordering: "id-DESC"
+    }
+  }
+
+  try {
+
+    const res = await axios.get(user_sessions_url, config)
+    dispatch({
+      type: GET_ACTIVE_SESSIONS,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, 'error from GET_ACTIVE_SESSIONS')
+  }
+}
+export const getClosedUserSessions = () => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: {
+      isCurrent: false,
+      ordering: "id-DESC"
+    }
+  }
+
+  try {
+
+    const res = await axios.get(user_sessions_url, config)
+    dispatch({
+      type: GET_CLOSED_SESSIONS,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log(e.response, 'error from GET_ACTIVE_SESSIONS')
+  }
+}
+
+export const deleteUserSession = (params) => async dispatch => {
+  const config = {
+    // withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {...params}
+  }
+
+  try {
+
+    const res = await axios.get(user_sessions_url, config)
+    dispatch({
+      type: DELETE_SESSION,
+      payload: res.data
+    })
+    console.log(res.data, "data from DELETE_SESSION")
+  } catch (e) {
+    console.log(e.response, 'error from DELETE_SESSION')
+  }
+}
+
+
 
 
 export const getUserBets = () => async dispatch => {

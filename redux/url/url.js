@@ -24,6 +24,11 @@ export const auth_url = 'http://t-gpb.slotsidol.com:7000/auth';
 
 export const qr_auth_url = 'http://t-gpb.slotsidol.com:7000/authenticator';
 
+// ########## sessions
+// ?isCurrent=true&ordering=id-DESC
+export const user_sessions_url = 'http://t-gpb.slotsidol.com:7000/sessions'
+export const delete_user_session_url = (id) => `http://t-gpb.slotsidol.com:7000/sessions/${id}`
+
 // ########## user info
 
 export const user_url = 'http://t-gpb.slotsidol.com:7000/user';
