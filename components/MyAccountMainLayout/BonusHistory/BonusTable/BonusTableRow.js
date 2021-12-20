@@ -41,12 +41,19 @@ const router = useRouter();
 }
 
 function wagerValue(rollover_achieved, award_amount, wager_requirements) {
-  let wagerNumber = Number(award_amount) * Number(wager_requirements) === 0 ? 0 : (Number(rollover_achieved) / (Number(award_amount) * Number(wager_requirements))) * 100;
+  let wagerNumber;
+  if (Number(wager_requirements) === 0) {
+    wagerNumber = 0;
+  } else if (Number(rollover_achieved) === 0) {
+    wagerNumber = 0;
+  } else {
+    wagerNumber = Math.trunc((Number(rollover_achieved) / Number(wager_requirements)) * 100);
+  }
   let wager_rollover_achieved = Number(rollover_achieved);
   let wager_award_amount = Number(award_amount);
   let wager_wager_requirements = Number(wager_requirements);
-  let res = `${wager_rollover_achieved} / (${wager_award_amount} * ${wager_wager_requirements}) (${wagerNumber}%)`
-  return res
+  let res = `${wager_rollover_achieved} / ${wager_wager_requirements} (${wagerNumber}%)`;
+  return res;
 }
 
 function statusValue (status) {

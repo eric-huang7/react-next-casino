@@ -13,7 +13,7 @@ export const SideMenuItem = ({t, data, router, userInform}) => {
     if (userInform.loadingActivePendingBonuses) {
       countOfBonuses = ''
     } else {
-      countOfBonuses = userInform.activePendingBonuses.bonuses.length > 0 ? userInform.activePendingBonuses.bonuses.filter((el) => el.status === '1') : [];
+      countOfBonuses = userInform.activePendingBonuses.bonuses.length > 0 ? userInform.activePendingBonuses.bonuses : [];
     }
 
     return (
