@@ -42,7 +42,9 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
     setPromoCodeValue(value);
   }
 
-  const savePromoCodeClickHandler = () => {
+  const savePromoCodeClickHandler = (e) => {
+      e.preventDefault();
+
     const userData = {
       id : bonusInfo.user.user.id,
       current_bonus_code: promoCodeValue,
