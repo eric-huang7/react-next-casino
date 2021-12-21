@@ -13,6 +13,7 @@ import {
   SHOW_TOURNAMENTS,
   SHOW_TOURNAMENTS_DETAILS,
 } from "./types";
+import {log} from "qrcode/lib/core/galois-field";
 
 
 export const closeAll = (isShow) => {

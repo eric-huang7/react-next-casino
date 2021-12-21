@@ -4,17 +4,19 @@ export const bonusesFinder = (offers, userCurrency) => {
   if (offers) {
     let needetBonuses = offers.filter((el) => {
       if (el.spec) {
-        console.log(el, "><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+        console.log(el, "><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<as<<<<<")
         // console.log(JSON.parse(el.spec))
-
-        // let specArr = JSON.parse(JSON.stringify(eval("(" + el.spec + ")")));
-        //
-        //
-        // let arrOfBonuses = specArr.filter((elSpec) => {
-        //   return elSpec.currency_id === Number(userCurrency.currencyId)
-        // })
-
         let arrOfBonuses = [];
+        try {
+          let specArr = JSON.parse(JSON.stringify(eval("(" + el.spec + ")")));
+
+
+          arrOfBonuses = specArr.filter((elSpec) => {
+            return elSpec.currency_id === Number(userCurrency.currencyId)
+          })
+        } catch (e) {
+          arrOfBonuses = [];
+        }
 
         if (arrOfBonuses.length > 0) {
           return true
