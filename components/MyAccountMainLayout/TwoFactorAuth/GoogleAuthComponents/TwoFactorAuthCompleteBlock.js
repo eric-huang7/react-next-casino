@@ -40,7 +40,8 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
       })
       .catch((error) => {
         console.log(error.response, "SOME ERROR WHEN Post user saved keys");
-        setDeactivateError("Error")
+        // Ошибка при удалении номера. Пожалуйста свяжитесь со службой поддержки.
+        setDeactivateError("An error occurred while deleting the number. Please contact support.")
       })
   }
 

@@ -37,7 +37,7 @@ export const PhoneVerification = ({t, userInfo}) => {
     }
     const body = JSON.stringify(userData)
     axios.patch(phone_number_url, body, config).then((data) => {
-      if (data.data) {
+      if (data.data.extra_error_info) {
         //Введен неверный код. Пожалуйста попробуйте еще раз.
         setPhoneError('Invalid code entered. Please try again.');
       } else {

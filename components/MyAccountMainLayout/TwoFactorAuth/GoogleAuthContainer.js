@@ -44,7 +44,8 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
        })
          .catch((error) => {
          console.log(error.response, "SOME ERROR WHEN Post user saved keys");
-           setGoogleAuthError("Error")
+           // Введен неверный код. Пожалуйста попробуйте еще раз или свяжитесь со службой поддержки.
+           setGoogleAuthError("Invalid code entered. Please try again.")
        })
 
     // console.log(googleKeyValue, authData.qrAuth.key);

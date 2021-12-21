@@ -79,7 +79,7 @@ export const ChangePasswordForm = ({t, userInfo}) => {
           setPasswordConfirmValue("");
           setCurrenPasswordValue("");
           //Текущий пароль не правильный.
-          setCurrenPasswordError("The current password is not correct.");
+          setCurrenPasswordError("The current password is not correct. Please try again.");
         })
     } else {
       //Пароль не совпадает!
