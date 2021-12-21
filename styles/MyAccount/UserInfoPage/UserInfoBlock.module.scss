@@ -39,7 +39,10 @@
 
 
 .editProfileButton {
-  min-width: 207px;
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
   height: 34px;
 
   border-radius: 17px;
@@ -47,7 +50,8 @@
 
   background-color: #ff0000;
 
-  padding-left: 42px;
+  padding-left: 52px;
+  padding-right: 10px;
 
 
   font-size: 15px;

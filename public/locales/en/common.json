@@ -484,7 +484,8 @@
       "gamblingLimits": "Gambling Limits",
       "documents": "Documents",
       "changePassword": "Change Password",
-      "googleAuth" : "Google Authenticator"
+      "googleAuth" : "Google Authenticator",
+      "editProfile" : "Edit profile"
     },
     "balance": {
       "table": {

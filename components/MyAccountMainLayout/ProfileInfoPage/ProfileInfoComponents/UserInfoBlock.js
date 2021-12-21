@@ -1,5 +1,5 @@
 import styles from '../../../../styles/MyAccount/UserInfoPage/UserInfoBlock.module.scss';
-
+import Link from "next/link";
 
 export const UserInfoBlock = ({t, userInfo}) => {
   let fullName = userInfo.user.user.full_name;
@@ -51,7 +51,7 @@ export const UserInfoBlock = ({t, userInfo}) => {
           </tr>
         </tbody>
       </table>
-      <button className={styles.editProfileButton}>Edit your profile</button>
+      <Link href={'/accounts/edit-profile'}><a className={styles.editProfileButton}>Edit your profile</a></Link>
     </div>
   )
 }

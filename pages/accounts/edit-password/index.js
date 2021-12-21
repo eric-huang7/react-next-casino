@@ -1,6 +1,4 @@
 import {AccountMainLayout} from "../../../components/MyAccountMainLayout/AccountMainLayout";
-import styles from "../../../styles/MyAccount/MyAccount.module.scss";
-import {LoadingComponent} from "../../../components/LoadingComponent/LoadingComponent";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {ChangePasswordPage} from "../../../components/MyAccountMainLayout/ChangePasswordPage/ChangePasswordPage";

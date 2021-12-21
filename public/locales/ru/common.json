@@ -484,7 +484,8 @@
       "gamblingLimits": "Ответственная игра",
       "documents": "Документы",
       "changePassword": "Изменить Пароль",
-      "googleAuth" : "Двухфакторная аутентификация Google"
+      "googleAuth" : "Двухфакторная аутентификация Google",
+      "editProfile" : "Изменить профиль"
     },
     "balance": {
       "table": {
