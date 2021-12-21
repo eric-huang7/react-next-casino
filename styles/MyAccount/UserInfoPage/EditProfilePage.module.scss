@@ -29,6 +29,7 @@
 
   & input {
     height: 30px;
+    width: 239px;
 
     outline: none;
     border-top: none;
@@ -147,5 +148,115 @@
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
+  }
+}
+
+.buttonsBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-bottom: 45px;
+
+  & button {
+    margin-left: 20px;
+
+    width: 121px;
+    height: 34px;
+
+    border-radius: 17px;
+
+    background-color: #ff0000;
+
+    font-size: 15px;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-family: "Verdana", Arial, sans-serif;
+
+    border: none;
+
+    cursor: pointer;
+  }
+
+  & button.cancelButton {
+    border-radius: 13px;
+    background-color: transparent;
+    border: 1px solid #515151;
+
+    color: #515151;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mainContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textInfo {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .inputWrapper {
+    & label {
+      width: 110px;
+      margin-right: 10px;
+    }
+    & input {
+      height: 30px;
+    }
+  }
+  .selectorWrapper {
+
+    & .labelWrapper {
+      width: 110px;
+      margin-right: 10px;
+    }
+
+    & label {
+      width: 110px;
+    }
+  }
+
+  .checkboxWrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 170px;
+
+  }
+
+  .checkboxContainer {
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .inputWrapper {
+    & label {
+      width: 110px;
+      margin-right: 10px;
+    }
+    & input {
+      width: 190px;
+    }
+  }
+  .selectorsContainer {
+    & select {
+      width: 190px;
+    }
+  }
+
+  .phoneNumberWrapper {
+
+    & .phonePrompt {
+      font-size: 14px;
+    }
   }
 }
