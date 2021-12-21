@@ -10,8 +10,6 @@ export const ErrorMessageContainer = ({t, errorData}) => {
 
   }
 
-  console.log(errorData);
-
   return (
     <div className={styles.errorMessageContainer}>
       <p>{t(errorData.errorPopupData)}</p>

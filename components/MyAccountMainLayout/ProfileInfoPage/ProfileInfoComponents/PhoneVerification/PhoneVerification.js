@@ -37,10 +37,17 @@ export const PhoneVerification = ({t, userInfo}) => {
     }
     const body = JSON.stringify(userData)
     axios.patch(phone_number_url, body, config).then((data) => {
+      if (data.data) {
+        //Введен неверный код. Пожалуйста попробуйте еще раз.
+        setPhoneError('Invalid code entered. Please try again.');
+      } else {
+        setPhoneError('')
+      }
       console.log(data, '<<<<data from sending verify code');
       dispatch(auth());
     }).catch((e) => {
-      setPhoneError('Error')
+      //Введен неверный код. Пожалуйста попробуйте еще раз.
+      setPhoneError('Invalid code entered. Please try again.');
       console.log(e.response, '<<<< error from verify code error')
     })
   }
@@ -67,7 +74,8 @@ export const PhoneVerification = ({t, userInfo}) => {
       // dispatch(patchUserData(userData));
     }).catch((e) => {
       console.log(e.response, 'error from phone token')
-      setPhoneError(e.response.data.extra_error_info.message);
+      // Ошибка в валидации номера телефона. Пожалуйста свяжитесь с службой поддержки.
+      setPhoneError("Phone number validation error. Please contact support.");
     })
   }
   const sendAgainVerifyCode = () => {
@@ -88,7 +96,8 @@ export const PhoneVerification = ({t, userInfo}) => {
         // dispatch(patchUserData(userData));
       }).catch((e) => {
         console.log(e.response, 'error from phone token')
-        setPhoneError(e.response.data.extra_error_info.message);
+        // Ошибка при отправке кода. Пожалуйста свяжитесь с службой поддержки.
+        setPhoneError("Error sending code. Please contact support.");
       })
     }
   }
