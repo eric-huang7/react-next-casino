@@ -46,6 +46,7 @@ const initialState = {
   userActiveSessions: null,
   loadingClosedSessions: true,
   userClosedSessions: null,
+
 }
 
 function userDataReducer(state = initialState, action) {

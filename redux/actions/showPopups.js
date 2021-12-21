@@ -1,5 +1,6 @@
 import {
-  BACK_BUTTON_SHOULD_DO, CLOSE_All,
+  ACTIVATE_ERROR_POPUP,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -27,6 +28,23 @@ export const showMobilePaymentsStepper = (isShow) => {
     payload: isShow
   }
 
+}
+
+export const errorPopupActivate = (errorData) => async dispatch => {
+  setTimeout(() => {
+    dispatch(errorPopupDeactivate());
+  }, 5000);
+
+  dispatch ({
+    type: ACTIVATE_ERROR_POPUP,
+    payload: errorData
+  })
+}
+export const errorPopupDeactivate = () => {
+  return {
+    type: DEACTIVATE_ERROR_POPUP,
+    payload: null
+  }
 }
 
 export const showCreditCardModal = (isShow) => {
@@ -92,14 +110,14 @@ export const backButtonShouldDo = (backButtonAction) => {
 
 export const showManageSubscriptions = (isShow) => {
   return {
-    type : SHOW_MANAGE_SUBSCRIPTIONS,
+    type: SHOW_MANAGE_SUBSCRIPTIONS,
     payload: isShow,
   }
 }
 
 export const showNotifications = (isShow) => {
   return {
-    type : SHOW_NOTIFICATIONS_POPUP,
+    type: SHOW_NOTIFICATIONS_POPUP,
     payload: isShow,
   }
 }

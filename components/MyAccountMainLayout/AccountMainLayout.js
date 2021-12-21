@@ -22,6 +22,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import {showRegister} from "../../redux/actions/registerShow";
 import {showLogin} from "../../redux/actions/loginShow";
 import Head from "next/head";
+import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
 
 
 
@@ -32,6 +33,7 @@ export const AccountMainLayout = ({t, children}) => {
   const currency = useSelector((store) => store.getCurrency);
   const router = useRouter();
 
+  console.log(userInfo)
 
   useEffect(() => {
 
@@ -92,6 +94,7 @@ if (userInfo.isAuthenticated) {
       </Head>
       <div  className={styles.accountMainLayoutWrapper}>
         <Header t={t}/>
+        {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t} /> : <></>}
         {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
         <MobileSideMenu t={t} userInform={userInfo}/>
         <SelectCurrency t={t}/>

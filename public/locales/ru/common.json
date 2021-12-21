@@ -468,6 +468,10 @@
   },
   "loadingComponent": "В процессе...",
   "myAccount": {
+    "popupErrors": {
+      "bonusNotActivate": "Бонус не удалось активировать!",
+      "bonusNotCancel": "Бонус не удалось отменить!"
+    },
     "heading": "Мой Аккаунт",
     "pageHeadings": {
       "balance": "Баланс",

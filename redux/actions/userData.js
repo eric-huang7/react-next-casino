@@ -16,9 +16,9 @@ import {
   LOGOUT_FAIL,
   LOGOUT_SUCCESS, MAY_TWO_FACTOR_AUTH,
   PATCH_CHANGE_CURRENCY,
-  QR_AUTH, SHOW_CREDIT_CARD_MODAL,
+  QR_AUTH,
   SIGNUP_FAIL,
-  SIGNUP_SUCCESS
+  SIGNUP_SUCCESS,
 } from "./types";
 import {
   auth_url,
@@ -31,10 +31,11 @@ import {
   get_user_payments_url,
   get_user_bets,
   get_bonuses_data_url,
-  post_put_bonus_redemption_url,
   put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url, qr_auth_url, user_sessions_url
 } from "../url/url";
+
 import {siteID} from "../../envs/envsForFetching";
+import {errorPopupActivate, errorPopupDeactivate} from "./showPopups";
 
 axios.defaults.withCredentials = true;
 
@@ -303,9 +304,13 @@ export const activateBonus = (bonusData) => async dispatch => {
     dispatch(getUserActivePendingBonuses({status: "1,5"}));
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
   } catch (e) {
+    dispatch(errorPopupActivate("myAccount.popupErrors.bonusNotActivate"));
+
     console.log(e.response, "SOME ERROR WHEN activate bonus");
   }
 }
+
+
 export const cancelBonus = (bonusData) => async dispatch => {
   const config = {
     // withCredentials: true,
@@ -324,6 +329,9 @@ export const cancelBonus = (bonusData) => async dispatch => {
     dispatch(getUserActivePendingBonuses({status: "1,5"}));
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
   } catch (e) {
+    dispatch(errorPopupActivate("myAccount.popupErrors.bonusNotCancel"));
+
+
     console.log(e.response, "SOME ERROR WHEN cancel bonus");
   }
 }

@@ -21,7 +21,7 @@ const dispatch = useDispatch();
     };
 
     let body = JSON.stringify(body1);
-    axios.delete(delete_user_session_url(session.id), {data: body})
+    axios.delete(delete_user_session_url(session.id))
       .then((data) => {
       console.log(data, 'from delete session');
       dispatch(getActiveUserSessions());
@@ -35,7 +35,7 @@ const dispatch = useDispatch();
   return (
     <div className={styles.activeSessionsMainBlock}>
       <h3 className={styles.activeSessionsHeading}>Active sessions</h3>
-      <SessionsTable closeSessionHandler={closeSessionHandler} t={t} sessionsInfo={userInfo.userActiveSessions}/>
+      <SessionsTable closeSessionHandler={closeSessionHandler} t={t} sessionsInfo={userInfo}/>
     </div>
   )
 }

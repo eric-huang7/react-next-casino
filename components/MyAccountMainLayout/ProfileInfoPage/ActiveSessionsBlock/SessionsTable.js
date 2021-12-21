@@ -13,14 +13,14 @@ export const SessionsTable = ({t, sessionsInfo, closeSessionHandler}) => {
         </thead>
         <tbody>
         {
-          sessionsInfo.sessions.map((session) => {
+          sessionsInfo.userActiveSessions.sessions.map((session) => {
             return (
               <TableRow
                 closeSessionHandler={closeSessionHandler}
                 key={`session ${session.id}`}
                 t={t}
                 sessionData={session}
-                currentSession={sessionsInfo.current}
+                currentSession={sessionsInfo.user.user.last_login_time}
               />
             )
           })

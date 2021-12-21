@@ -1,5 +1,6 @@
 import {
-  BACK_BUTTON_SHOULD_DO, CLOSE_All, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
+  ACTIVATE_ERROR_POPUP,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_PAYMENTS_STEPPER,
@@ -20,13 +21,26 @@ const initialState = {
   isShowCryptoModal: false,
   isShowMobilePaymentsStepper: false,
   actionForBackButtonPayments: false,
-
+  showErrorPopup: false,
+  errorPopupData: null,
 }
 
 function showPopupsReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case ACTIVATE_ERROR_POPUP :
+      return {
+        ...state,
+        showErrorPopup: true,
+        errorPopupData: payload,
+      }
+    case DEACTIVATE_ERROR_POPUP :
+      return {
+        ...state,
+        showErrorPopup: false,
+        errorPopupData: payload,
+      }
     case SHOW_CURRENCY_SWITCHER :
       return {
         ...state,

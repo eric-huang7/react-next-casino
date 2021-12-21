@@ -1,6 +1,7 @@
 import {Heading} from "../ComponentsForPages/Heading";
 import {useSelector} from "react-redux";
 import {BonusPageInfoContainer} from "./BonusPageInfoContainer";
+import {ErrorMessageContainer} from "../ErrorMessage/ErrorMessageContainer";
 
 
 export const BonusesPageContainer = ({t}) => {

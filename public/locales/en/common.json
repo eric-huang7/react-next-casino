@@ -468,6 +468,10 @@
   },
   "loadingComponent": "In process...",
   "myAccount": {
+    "popupErrors": {
+      "bonusNotActivate": "Bonus could not Activate!",
+      "bonusNotCancel": "Bonus could not Cancel!"
+    },
     "heading": "My Account",
     "pageHeadings": {
       "balance": "Balance",
