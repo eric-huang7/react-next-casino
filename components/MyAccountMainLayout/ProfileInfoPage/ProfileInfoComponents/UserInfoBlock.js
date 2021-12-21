@@ -51,7 +51,7 @@ export const UserInfoBlock = ({t, userInfo}) => {
           </tr>
         </tbody>
       </table>
-      <Link href={'/accounts/edit-profile'}><a className={styles.editProfileButton}>Edit your profile</a></Link>
+      <Link href={'/accounts/profile-info/edit'}><a className={styles.editProfileButton}>Edit your profile</a></Link>
     </div>
   )
 }

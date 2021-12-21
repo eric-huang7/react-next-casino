@@ -245,7 +245,7 @@
     left: -40px;
   }
   & input.agreeTermsCheckbox:checked + .iReadAndAgreeLabel:before {
-    background-color: #ff0e0e;
+    background-color: #ff0000;
 
     background-image: url("/assets/img/registerSignup/checked.svg");
     background-size: auto;
@@ -358,7 +358,7 @@
 
 .errorMessage, .errorMessageYouAgree, .errorMessageRegister {
   font-size: 12px;
-  color: #ff0e0e;
+  color: #ff0000;
 
   position: relative;
   top: -10px;

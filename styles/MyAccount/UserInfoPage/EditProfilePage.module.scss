@@ -1,0 +1,151 @@
+.textInfo {
+  font-size: 16px;
+  line-height: 20px;
+  color: #515151;
+  font-family: "Verdana", Arial, sans-serif;
+
+  margin-bottom: 45px;
+}
+
+.inputWrapper {
+  display: flex;
+  //align-items: center;
+  margin-bottom: 45px;
+
+
+  & label {
+    align-self: flex-end;
+
+    font-size: 16px;
+    color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+
+    width: 180px;
+  }
+  & label.phoneLabel {
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+
+  & input {
+    height: 30px;
+
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #b2b2b2;
+
+    font-size: 16px;
+    color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+}
+
+.selectorWrapper {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 45px;
+
+  & .labelWrapper {
+    width: 180px;
+  }
+  & .labelWrapper.birthdayLabel {
+    align-self: flex-start;
+  }
+
+  & label {
+    flex-shrink: 0;
+
+
+
+    font-size: 16px;
+    color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+
+    width: 180px;
+  }
+}
+
+.selectorsContainer {
+  & select {
+    width: 239px;
+    height: 43px;
+    border-radius: 5px;
+    background-color: #efefef;
+    border: 1px solid #707070;
+
+    font-size: 16px;
+    color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+}
+
+.selectorsContainer.birthdaySelectorsWrapper {
+   & div {
+     margin-bottom: 14px;
+   }
+}
+
+.phoneNumberWrapper {
+  display: flex;
+  flex-direction: column;
+
+  & .phonePrompt {
+    margin-top: 10px;
+
+    font-size: 16px;
+    color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+}
+
+
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 230px;
+
+}
+
+.checkboxContainer {
+  margin-bottom: 50px;
+
+  & input {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  & label {
+    position: relative;
+  }
+
+  & label:before {
+    content: '';
+
+    width: 38px;
+    //38px;
+    height: 34px;
+    //34px;
+
+
+    border: 1px solid #babbbc;
+    border-radius: 5px;
+
+    position: absolute;
+    top: -7px;
+    left: -50px;
+  }
+
+  & input:checked + label:before {
+    background-color: #ff0000;
+
+    background-image: url("/assets/img/registerSignup/checked.svg");
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

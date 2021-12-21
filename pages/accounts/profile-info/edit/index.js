@@ -1,8 +1,8 @@
 import {useTranslation} from "next-i18next";
-import {AccountMainLayout} from "../../../components/MyAccountMainLayout/AccountMainLayout";
+import {AccountMainLayout} from "../../../../components/MyAccountMainLayout/AccountMainLayout";
 
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import {EditProfilePage} from "../../../components/MyAccountMainLayout/EditProfilePage/EditProfilePage";
+import {EditProfilePage} from "../../../../components/MyAccountMainLayout/EditProfilePage/EditProfilePage";
 
 const EditProfile = () => {
   const { t } = useTranslation('common');

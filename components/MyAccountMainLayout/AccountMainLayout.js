@@ -95,7 +95,7 @@ if (userInfo.isAuthenticated) {
       <div  className={styles.accountMainLayoutWrapper}>
         <Header t={t}/>
         {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t} /> : <></>}
-        {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
+        {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
         <MobileSideMenu t={t} userInform={userInfo}/>
         <SelectCurrency t={t}/>
         <div className={styles.myAccountContainer}>
