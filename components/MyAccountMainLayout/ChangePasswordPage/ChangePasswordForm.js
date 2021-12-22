@@ -24,6 +24,11 @@ export const ChangePasswordForm = ({t, userInfo}) => {
   useEffect(() => {
     setPasswordValue("");
     setPasswordConfirmValue("");
+    setCurrenPasswordValue("");
+    setPasswordConfirmError("");
+    setPasswordError("");
+    setCurrenPasswordError("");
+    setSuccessMessage('');
   }, [errors])
 
   const [passwordValue, setPasswordValue] = useState('');
@@ -44,11 +49,21 @@ export const ChangePasswordForm = ({t, userInfo}) => {
   }
 
   const onSubmitHandler = (data) => {
-    submitHelper(data);
+    setSuccessMessage('');
+    setPasswordValue("");
+    setPasswordError("");
+    setPasswordConfirmValue("");
+    setCurrenPasswordValue("");
+    setPasswordConfirmError("");
+    setCurrenPasswordError('');
 
+    submitHelper(data);
   }
   const submitHelper = (data) => {
+
+
     if (data.password === passwordConfirmValue) {
+
       let userData = {
         id: userInfo.user.user.id,
         password: data.password,
@@ -66,11 +81,13 @@ export const ChangePasswordForm = ({t, userInfo}) => {
       axios.patch(user_url, body, config)
         .then((data) => {
           setPasswordConfirmError("");
-          // Пароль успешно изменен!
-          setSuccessMessage('Password changed successfully!');
+          setPasswordError("");
           setPasswordConfirmValue("");
           setPasswordValue("");
           setCurrenPasswordValue("");
+          setCurrenPasswordError('');
+          // Пароль успешно изменен!
+          setSuccessMessage('Password changed successfully!');
           dispatch(auth());
         })
         .catch((error) => {
@@ -78,17 +95,20 @@ export const ChangePasswordForm = ({t, userInfo}) => {
           setPasswordValue("");
           setPasswordConfirmValue("");
           setCurrenPasswordValue("");
-          //Текущий пароль не правильный.
-          setCurrenPasswordError("The current password is not correct. Please try again.");
+          console.log(error.response)
+          if (error.response.data.error_code === 'PASSWORD_COMPLEXITY_ERROR') {
+            setPasswordError(error.response.data.extra_error_info.message);
+          } else {
+            //
+            setCurrenPasswordError('Wrong current password, please try again.');
+          }
         })
+
     } else {
       //Пароль не совпадает!
-      setSuccessMessage('');
-      setPasswordValue("");
-      setPasswordConfirmValue("");
-      setCurrenPasswordValue("");
       setPasswordConfirmError("Password does not match!");
     }
+
   }
   return (
     <div className={styles.changePasswordMainWrapper}>

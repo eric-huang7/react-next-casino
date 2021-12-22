@@ -15,6 +15,7 @@ export const PasswordBlock = ({t, errors, passwordValue, passwordInputHandler, p
           value={passwordValue}
         />
         <p className={styles.errorMessage}>{t(errors.password?.message)}</p>
+        <p className={styles.errorMessage}>{passwordError}</p>
         <p className={styles.passwordChangeText}>{"(leave blank if you don't want to change it)"}</p>
       </div>
     </div>
