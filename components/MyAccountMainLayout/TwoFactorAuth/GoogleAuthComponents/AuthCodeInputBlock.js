@@ -10,10 +10,12 @@ export const AuthCodeInputBlock = ({t, confirmButtonClickHandler, googleKEyInput
       <p className={styles.keyInputHeading}>Enable Google Authenticator</p>
       <p className={styles.enterKeyText}>Enter current authentication code to complete configuration.</p>
       <p className={styles.errorMessage}>{googleAuthError}</p>
-      <div className={styles.inputsBlock}>
-        <input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text" className={styles.inputCode}/>
-        <button onClick={() => confirmButtonClickHandler()} className={styles.confirmButton}>Confirm</button>
-      </div>
+      <form onSubmit={(e) => confirmButtonClickHandler(e)}>
+        <div className={styles.inputsBlock}>
+          <input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text" className={styles.inputCode}/>
+          <button type={'submit'} onClick={(e) => confirmButtonClickHandler(e)} className={styles.confirmButton}>Confirm</button>
+        </div>
+      </form>
     </div>
   )
 }

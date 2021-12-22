@@ -10,6 +10,9 @@ export const QrGenerator = ({qrData}) => {
     QRCode.toDataURL(qrData).then((data) => {
       setSrc(data);
     })
+    return () => {
+
+    }
   },[qrData])
 
   return (

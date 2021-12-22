@@ -19,8 +19,9 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
     setGoogleKeyValue(value);
   }
 
-  const confirmButtonClickHandler = () => {
-    setIsShowSavedKeys(true);
+  const confirmButtonClickHandler = (e) => {
+    e.preventDefault();
+
     let googleAuthData = {
       key: authData.qrAuth.key,
       token: googleKeyValue,
@@ -34,15 +35,15 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
     }
     const body = JSON.stringify(googleAuthData);
 
-       axios.post(qr_auth_url, body, config)
-         .then((data) => {
+       axios.post(qr_auth_url, body, config).then((data) => {
          console.log(data, "<< Post user saved keys");
            setSavedKeys(data.data.backup_codes);
            setIsShowSavedKeys(true);
            dispatch(mayYwoFactorAuth(true));
-           setGoogleAuthError("")
-       })
-         .catch((error) => {
+           setGoogleAuthError("");
+           dispatch(auth());
+       }).catch((error) => {
+         dispatch(auth());
          console.log(error.response, "SOME ERROR WHEN Post user saved keys");
            // Введен неверный код. Пожалуйста попробуйте еще раз или свяжитесь со службой поддержки.
            setGoogleAuthError("Invalid code entered. Please try again.")

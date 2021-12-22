@@ -17,7 +17,9 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
   }
   console.log(authData)
   // eaf2-d069-4294
-  const deactivateButtonClickHandler = () => {
+  const deactivateButtonClickHandler = (e) => {
+    e.preventDefault();
+
     console.log(deactivateCodeValue);
     let googleAuthData = {
       // key: authData.qrAuth.key,
@@ -40,8 +42,8 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
       })
       .catch((error) => {
         console.log(error.response, "SOME ERROR WHEN Post user saved keys");
-        // Ошибка при удалении номера. Пожалуйста свяжитесь со службой поддержки.
-        setDeactivateError("An error occurred while deleting the number. Please contact support.")
+        // Не удалось отключить двухфакторную аутентификацию. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.
+        setDeactivateError("Failed to disable two-factor authentication. Please try again or contact support.")
       })
   }
 
