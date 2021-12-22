@@ -5,9 +5,12 @@ export const VerifyCodeInputs = ({t, verifyCodeInputHandler, verifyCode, sendVer
 
 
   return (
-    <div className={styles.codeInputWrapper}>
-      <input type="text" onChange={(e) => verifyCodeInputHandler(e.target.value)} className={styles.verifyCodeInput} value={verifyCode}/>
-      <button onClick={() => sendVerifyCodeHandler()} className={styles.verifyCodeButton}>Confirm</button>
-    </div>
+    <form onSubmit={(e) => sendVerifyCodeHandler(e)}>
+      <div className={styles.codeInputWrapper}>
+        <input type="text" onChange={(e) => verifyCodeInputHandler(e.target.value)} className={styles.verifyCodeInput} value={verifyCode}/>
+        <button onClick={(e) => sendVerifyCodeHandler(e)} className={styles.verifyCodeButton}>Confirm</button>
+      </div>
+    </form>
+
   )
 }

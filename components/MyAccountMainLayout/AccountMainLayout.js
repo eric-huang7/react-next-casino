@@ -33,8 +33,6 @@ export const AccountMainLayout = ({t, children}) => {
   const currency = useSelector((store) => store.getCurrency);
   const router = useRouter();
 
-  console.log(userInfo)
-
   useEffect(() => {
 
     if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {

@@ -17,11 +17,13 @@ export const PhoneInputContainer = ({t, phoneInputValue, phoneNumber, sendPhoneN
         <p className={styles.textFirst}>Add Verified Phone</p>
         <p className={styles.textSecond}>Verification code will be send to your phone.</p>
       </div>
-      <div className={styles.phoneInputWrapper}>
-        <input onChange={(e) => phoneInputValue(e.target.value)} value={phoneNumber} type="tel"
-               className={styles.phoneVerifyInput}/>
-        <button onClick={() => sendPhoneNumberHandler()} className={styles.phoneVerifyButton}>Add</button>
-      </div>
+      <form onSubmit={(e) => sendPhoneNumberHandler(e)}>
+        <div className={styles.phoneInputWrapper}>
+          <input onChange={(e) => phoneInputValue(e.target.value)} value={phoneNumber} type="tel"
+                 className={styles.phoneVerifyInput}/>
+          <button type={'submit'} onClick={(e) => sendPhoneNumberHandler(e)} className={styles.phoneVerifyButton}>Add</button>
+        </div>
+      </form>
       <span className={styles.errorMessage}>{phoneError}</span>
     </div>
   )

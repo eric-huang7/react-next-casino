@@ -22,37 +22,42 @@ export const PhoneVerification = ({t, userInfo}) => {
     setVerifyCode(value);
   }
 
-  const sendVerifyCodeHandler = () => {
-    console.log(verifyCode);
-
-    let userData = {
-      type: 5,
-      token: verifyCode,
-    }
-    const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    const body = JSON.stringify(userData)
-    axios.patch(phone_number_url, body, config).then((data) => {
-      if (data.data.extra_error_info) {
+  const sendVerifyCodeHandler = (e) => {
+    e.preventDefault();
+    if (verifyCode === '') {
+      setPhoneError('Invalid code entered. Please try again.');
+    } else {
+      let userData = {
+        type: 5,
+        token: verifyCode,
+      }
+      const config = {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+      const body = JSON.stringify(userData)
+      axios.patch(phone_number_url, body, config).then((data) => {
+        if (data.data.extra_error_info) {
+          //Введен неверный код. Пожалуйста попробуйте еще раз.
+          setPhoneError('Invalid code entered. Please try again.');
+        } else {
+          setPhoneError('');
+        }
+        console.log(data, '<<<<data from sending verify code');
+        dispatch(auth());
+      }).catch((e) => {
         //Введен неверный код. Пожалуйста попробуйте еще раз.
         setPhoneError('Invalid code entered. Please try again.');
-      } else {
-        setPhoneError('')
-      }
-      console.log(data, '<<<<data from sending verify code');
-      dispatch(auth());
-    }).catch((e) => {
-      //Введен неверный код. Пожалуйста попробуйте еще раз.
-      setPhoneError('Invalid code entered. Please try again.');
-      console.log(e.response, '<<<< error from verify code error')
-    })
+        console.log(e.response, '<<<< error from verify code error')
+      })
+    }
   }
 
-  const sendPhoneNumberHandler = () => {
+  const sendPhoneNumberHandler = (e) => {
+    e.preventDefault();
+
     let userData = {
       id: userInfo.user.user.id,
       phone_number: phoneNumber,
@@ -108,6 +113,7 @@ export const PhoneVerification = ({t, userInfo}) => {
       phone_number: '',
       unconfirmed_phone: ''
     }
+    setPhoneError("");
     dispatch(patchUserData(userData));
   }
 

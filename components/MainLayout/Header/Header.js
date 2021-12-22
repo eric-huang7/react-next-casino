@@ -23,6 +23,7 @@ export const Header = ({t}) => {
 
   let userLogined = userLogin.isAuthenticated;
   // let userInfo = userLogin;
+  let state = useSelector((store) => store);
 
 
   useEffect(() => {
@@ -30,7 +31,9 @@ export const Header = ({t}) => {
       if (!userLogin.balance) {
         dispatch(userBalance());
       }
-      dispatch(getActiveBonuses());
+      if (!state.bonuses.bonuses) {
+        dispatch(getActiveBonuses());
+      }
 
       let userData = {
         id: userLogin.user.user.id,

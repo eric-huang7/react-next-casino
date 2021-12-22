@@ -21,8 +21,13 @@ export const AddPromoCodeContainer = ({
 
           <input onChange={(e) => promoCodeInputHandler(e.target.value)} type="text" className={styles.promoCodeInput}
                  value={promoCodeValue}/>
-          <button type={"submit"} onClick={(e) => savePromoCodeClickHandler(e)}
-                  className={styles.savePromoButton}>{t("myAccount.bonusPage.addPromoCode.saveButton")}</button>
+          <button
+            type={"submit"}
+            onClick={(e) => savePromoCodeClickHandler(e)}
+            className={styles.savePromoButton}
+          >
+            {t("myAccount.bonusPage.addPromoCode.saveButton")}
+          </button>
         </div>
       </form>
       <span className={styles.promoDepositText}>{promoDepositText}</span>
