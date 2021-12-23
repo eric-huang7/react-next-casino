@@ -10,7 +10,7 @@ export const DaySelector = ({t, daySelectorHandler, day, disableEdit}) => {
       <select
         id={"daySelector"}
         value={day}
-        onChange={(e) => daySelectorHandler(e)}
+        onChange={(e) => daySelectorHandler(e.target.value)}
         disabled={disableEdit}
       >
         <option value={undefined}>{null}</option>

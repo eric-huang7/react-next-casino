@@ -11,14 +11,18 @@ import {birthdayFormatter} from "../../../../helpers/dateTranslator";
 
 
 export const EditProfileMainContainer = ({t, userInfo}) => {
-  console.log(userInfo);
+  console.log(userInfo, '<<<<<<<<<<<<<< edit');
   let address_1 = userInfo.address_1 ? userInfo.address_1 : '';
   let address_2 = userInfo.address_2 ? userInfo.address_2 : '';
-  let birthday = userInfo.birthday ? birthdayFormatter(userInfo.birthday) : {day: undefined, month: undefined, year: undefined};
+  let birthday = userInfo.birthday ? birthdayFormatter(userInfo.birthday) : {
+    day: undefined,
+    month: undefined,
+    year: undefined
+  };
 
   const [fullName, setFullName] = useState(userInfo.full_name ? userInfo.full_name : '');
   const [nickname, setNickname] = useState(userInfo.username);
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState(userInfo.gender);
   const [city, setCity] = useState(userInfo.city ? userInfo.city : '');
   const [address, setAddress] = useState(address_1 + " " + address_2);
   const [postalCode, setPostalCode] = useState(userInfo.postal_code ? userInfo.postal_code : '');
@@ -27,6 +31,12 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? 'Field already specified' : '');
   const [emailPromo, setEmailPromo] = useState(userInfo.transactional_email_opt_in);
   const [smsPromo, setSmsPromo] = useState(userInfo.transactional_sms_opt_in);
+  const [bDay, setBDay] = useState('');
+  const [bMonth, setBMonth] = useState('');
+  const [bYear, setBYear] = useState('');
+  const [country, setCountry] = useState(userInfo.country_code ? userInfo.country_code : "");
+  const [timeZone, setTimeZone] = useState(userInfo.time_zone ? userInfo.time_zone : "");
+
 
   const fullNameInputHandler = (value) => {
     setFullName(value);
@@ -58,12 +68,60 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const smsPromoPromoInputHandler = (value) => {
     setSmsPromo(Number(value));
   }
+  const genderSelectorHandler = (value) => {
+    console.log(value);
+    setGender(value);
+  }
+  const countrySelectorHandler = (value) => {
+    console.log(value);
+    setCountry(value);
+  }
+  const timeZoneSelectorHandler = (value) => {
+    console.log(value)
+    setTimeZone(value);
+  }
 
+  // console.log(new Date(Number(bYear), Number(bMonth), Number(bDay)).getTime());
+  const saveButtonClickHandler = () => {
+   let sendData = {
+      id: userInfo.id,
+      full_name: fullName.trim() ? fullName : null,
+      username: nickname.trim() ? nickname : null,
+      birthday: "",
+      gender: gender ? gender : 0,
+      country_code: country ? country : "",
+      city: city ? city : null,
+      address_1: address.trim() ? address : null,
+      postal_code: postalCode.trim() ? postalCode : null,
+      phone_number: mobile.trim() ? mobile : null,
+      unconfirmed_phone: mobile.trim() ? mobile : null,
+      security_question: security_question.trim() ? security_question : null,
+      security_answer: security_answer.trim() ? security_answer : null,
+      transactional_email_opt_in: emailPromo ? emailPromo : 0,
+      transactional_sms_opt_in: smsPromo ? smsPromo : 0,
+      time_zone: timeZone ? timeZone : ""
+    }
+
+    if (userInfo.security_question && userInfo.security_answer) {
+
+      delete sendData.security_answer
+      delete sendData.security_question
+    } else if (userInfo.security_question) {
+
+      delete sendData.security_question
+    } else if (userInfo.security_answer) {
+
+      delete sendData.security_answer
+    }
+
+    console.log(sendData)
+
+  }
 
 
   return (
     <div className={styles.mainContainer}>
-      <p  className={styles.textInfo}>
+      <p className={styles.textInfo}>
         Please enter valid contact details in the form below. Make sure it is accurate before saving.
       </p>
       <InputContainer
@@ -86,11 +144,20 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         t={t}
         value={birthday}
         disableEdit={userInfo.birthday ? true : false}
+        setBDay={setBDay}
+        setBMonth={setBMonth}
+        setBYear={setBYear}
       />
       <GenderSelector
         t={t}
+        value={gender}
+        genderSelectorHandler={genderSelectorHandler}
+        disableEdit={userInfo.gender ? true : false}
       />
       <CountrySelector
+        value={country}
+        countrySelectorHandler={countrySelectorHandler}
+        disableEdit={userInfo.country_code ? true : false}
         t={t}
       />
       <InputContainer
@@ -125,33 +192,35 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         valueHandler={mobileInputHandler}
         disableEdit={userInfo.phone_number ? true : false}
       />
-        <InputContainer
-          t={t}
-          inputName={'Security Question'}
-          inputId={'questionInput'}
-          value={security_question}
-          valueHandler={securityQuestionInputHandler}
-          disableEdit={userInfo.security_question ? true : false}
-        />
-        <InputContainer
-          t={t}
-          inputName={'Security Answer'}
-          inputId={'answerInput'}
-          value={security_answer}
-          valueHandler={securityAnswerInputHandler}
-          disableEdit={userInfo.security_answer ? true : false}
-        />
-        <EmailSmsChecksContainer
-          t={t}
-          emailPromo={emailPromo}
-          smsPromo={smsPromo}
-          emailPromoInputHandler={emailPromoInputHandler}
-          smsPromoPromoInputHandler={smsPromoPromoInputHandler}
-        />
+      <InputContainer
+        t={t}
+        inputName={'Security Question'}
+        inputId={'questionInput'}
+        value={security_question}
+        valueHandler={securityQuestionInputHandler}
+        disableEdit={userInfo.security_question ? true : false}
+      />
+      <InputContainer
+        t={t}
+        inputName={'Security Answer'}
+        inputId={'answerInput'}
+        value={security_answer}
+        valueHandler={securityAnswerInputHandler}
+        disableEdit={userInfo.security_answer ? true : false}
+      />
+      <EmailSmsChecksContainer
+        t={t}
+        emailPromo={emailPromo}
+        smsPromo={smsPromo}
+        emailPromoInputHandler={emailPromoInputHandler}
+        smsPromoPromoInputHandler={smsPromoPromoInputHandler}
+      />
       <TimeZoneSelector
         t={t}
+        timeZoneSelectorHandler={timeZoneSelectorHandler}
+        timeZone={timeZone}
       />
-      <ButtonsBlock t={t}/>
+      <ButtonsBlock saveButtonClickHandler={saveButtonClickHandler} t={t}/>
     </div>
   )
 }

@@ -2,17 +2,22 @@ import styles from '../../../../styles/MyAccount/UserInfoPage/EditProfilePage.mo
 import {DaySelector} from "./Selectors/DaySelector";
 import {MonthSelector} from "./Selectors/MonthSelector";
 import {YearSelector} from "./Selectors/YearSelector";
+import {useState} from "react";
 
 
-export const BirthDaySelectorContainer = ({t, value, disableEdit}) => {
+export const BirthDaySelectorContainer = ({t, value, disableEdit, setBDay, setBMonth, setBYear}) => {
+  // const [bDay, setBDay] = useState('');
+  // const [bMonth, setBMonth] = useState('');
+  // const [bYear, setBYear] = useState('');
+
   const yearSelectorHandler = (e) => {
-    console.log(e);
+    setBYear(e);
   }
   const monthSelectorHandler = (e) => {
-
+    setBMonth(e);
   }
   const daySelectorHandler = (e) => {
-
+    setBDay(e);
   }
 
 

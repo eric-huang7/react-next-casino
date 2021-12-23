@@ -11,7 +11,7 @@ export const YearSelector = ({t, year, yearSelectorHandler, disableEdit}) => {
     <div className={styles.yearSelect}>
       <select
       value={year}
-      onChange={(e) => yearSelectorHandler(e)}
+      onChange={(e) => yearSelectorHandler(e.target.value)}
       disabled={disableEdit}
       >
         <option value={undefined}>{null}</option>

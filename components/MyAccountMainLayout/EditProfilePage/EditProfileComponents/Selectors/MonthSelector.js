@@ -22,7 +22,7 @@ export const MonthSelector = ({t, month, monthSelectorHandler, disableEdit}) => 
     <div className={styles.monthSelect}>
       <select
         value={month}
-        onChange={(e) => monthSelectorHandler(e)}
+        onChange={(e) => monthSelectorHandler(e.target.value)}
         disabled={disableEdit}
       >
         <option value={undefined}>{null}</option>
