@@ -79,8 +79,8 @@ export const PhoneVerification = ({t, userInfo}) => {
       // dispatch(patchUserData(userData));
     }).catch((e) => {
       console.log(e.response, 'error from phone token')
-      // Ошибка в валидации номера телефона. Пожалуйста свяжитесь с службой поддержки.
-      setPhoneError("Phone number validation error. Please contact support.");
+      // Не удалось добавить телефон. Номер телефона недействителен.
+      setPhoneError("Failed to add phone. Phone number is invalid.");
     })
   }
   const sendAgainVerifyCode = () => {

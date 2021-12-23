@@ -23,7 +23,7 @@ export const Header = ({t}) => {
 
   let userLogined = userLogin.isAuthenticated;
   // let userInfo = userLogin;
-  let state = useSelector((store) => store);
+  let bonusesData = useSelector((store) => store.bonuses);
 
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const Header = ({t}) => {
       if (!userLogin.balance) {
         dispatch(userBalance());
       }
-      if (!state.bonuses.bonuses) {
+      if (!bonusesData.activeBonuses) {
         dispatch(getActiveBonuses());
       }
 

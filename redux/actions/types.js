@@ -114,6 +114,8 @@ export const BACK_BUTTON_SHOULD_DO = 'BACK_BUTTON_SHOULD_DO';
 // ############## GET BONUSES
 export const GET_ACTIVE_BONUSES = 'GET_ACTIVE_BONUSES';
 
+export const ANNUL_ACTIVE_BONUSES = 'ANNUL_ACTIVE_BONUSES';
+
 // ############## SET USER BONUS
 
 export const SET_USER_BONUS = 'SET_USER_BONUS';

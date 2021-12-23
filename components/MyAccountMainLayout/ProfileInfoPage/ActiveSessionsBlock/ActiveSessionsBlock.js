@@ -9,10 +9,10 @@ import {getActiveUserSessions, getClosedUserSessions} from "../../../../redux/ac
 
 export const ActiveSessionsBlock = ({t, userInfo}) => {
 const dispatch = useDispatch();
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const closeSessionHandler = (session) => {
-    console.log(session, 'session');
+    // console.log(session, 'session');
     let body1 = {
       site_id : siteID,
       auth_type_id: auth_type_id,

@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {NotifyContext} from "../../NotifyContext/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
 import {useDispatch, useSelector} from "react-redux";
-import {useBrowserNotifications} from "../../../helpers/useBrowserNotifications";
+import {browserNotifications} from "../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
 
@@ -45,7 +45,7 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
   // }, [])
 
   const soundClickHandler = () => {
-    useBrowserNotifications();
+    browserNotifications();
     let userData;
     if (notifySubscript === 1) {
       userData = {

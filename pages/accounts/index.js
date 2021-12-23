@@ -18,7 +18,7 @@ const Accounts = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
   const currency = useSelector((store) => store.getCurrency);
-
+  let bonusesData = useSelector((store) => store.bonuses);
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -35,9 +35,9 @@ const Accounts = (props) => {
       dispatch(getCurrency());
     }
 
-
-    dispatch(getActiveBonuses());
-
+    if (!bonusesData.activeBonuses) {
+      dispatch(getActiveBonuses());
+    }
   }, []);
 
 

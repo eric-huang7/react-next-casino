@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "startDev": "next -p 3005"
+    "startDev": "next -p 3005",
+    "startProd": "next start -p 3005"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.2",

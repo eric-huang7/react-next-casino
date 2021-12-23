@@ -12,7 +12,7 @@ export const GamesContainerNavigation = ({t, activeSlots, activeTime, setActiveS
     <div  className={styles.navigationContainer}>
       <p className={`${styles.typeOfGames} ${styles[router.locale]}`}>{(activeSlots && t("footerArea.headings.topGames")) || (activeTime && t("footerArea.headings.lastGames"))}</p>
       <div onClick={() => closeGamesHandler()} className={styles.backButton}>
-        <Image layout={'fixed'} src={'/assets/img/footerArea/backButton.png'} height={38} width={38}/>
+        <Image layout={'fixed'} src={'/assets/img/footerArea/backButton.png'} height={38} width={38} alt={"back button icon"}/>
       </div>
     </div>
   )

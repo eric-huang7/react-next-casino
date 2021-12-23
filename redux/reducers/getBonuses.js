@@ -1,4 +1,4 @@
-import {GET_ACTIVE_BONUSES} from "../actions/types";
+import {ANNUL_ACTIVE_BONUSES, GET_ACTIVE_BONUSES} from "../actions/types";
 
 const initialState = {
   bonuses: null,
@@ -16,6 +16,12 @@ function getBonuses(state = initialState, action) {
         ...state,
         activeBonuses: {...payload},
         loadingActiveBonuses: false
+      }
+    case ANNUL_ACTIVE_BONUSES:
+      return {
+        ...state,
+        activeBonuses: null,
+        loadingActiveBonuses: true,
       }
     default:
       return state

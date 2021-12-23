@@ -4,7 +4,7 @@ import {TwoFactorCompleteInputsBlock} from "./TwoFactorCompleteInputsBlock";
 import {useState} from "react";
 import axios from "axios";
 import {qr_auth_url} from "../../../../redux/url/url";
-import {auth} from "../../../../redux/actions/userData";
+import {auth, mayYwoFactorAuth} from "../../../../redux/actions/userData";
 import {useDispatch} from "react-redux";
 
 
@@ -37,7 +37,8 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
     axios.post(qr_auth_url, body, config)
       .then((data) => {
         console.log(data, "<< Post user saved keys");
-        dispatch(auth());
+        dispatch(mayYwoFactorAuth(false));
+        // dispatch(auth());
         setDeactivateError("")
       })
       .catch((error) => {

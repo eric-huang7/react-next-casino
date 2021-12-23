@@ -100,7 +100,7 @@ export const Footer = ({t}) => {
           <div className={styles.socialBlock}>
             {socilaLinks.map((el) => {
               return (
-                <a className={styles.socialLink} target="_blank" key={el.key} href={el.href}>
+                <a className={styles.socialLink} target="_blank" rel={"noreferrer"} key={el.key} href={el.href}>
                   <img className={styles.socialImage} src={el.img} alt={el.key}/>
                 </a>
               )
@@ -112,7 +112,6 @@ export const Footer = ({t}) => {
               <div
                 className={styles.chooseLanguageButton}
                 onClick={() => switchActiveLangBlock()}>
-              >
                 <ChooseLangDropdown t={t} isVis={activeChooseLangBlock}/>
                 <span>{language}</span>
               </div>

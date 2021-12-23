@@ -36,6 +36,7 @@ import {
 
 import {siteID} from "../../envs/envsForFetching";
 import {errorPopupActivate, errorPopupDeactivate} from "./showPopups";
+import {annulActiveBonuses} from "./getBonuses";
 
 axios.defaults.withCredentials = true;
 
@@ -305,7 +306,8 @@ export const activateBonus = (bonusData) => async dispatch => {
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
   } catch (e) {
     dispatch(errorPopupActivate("myAccount.popupErrors.bonusNotActivate"));
-
+    dispatch(getUserActivePendingBonuses({status: "1,5"}));
+    dispatch(getUserBonuses({status: "1,2,3,4,6"}));
     console.log(e.response, "SOME ERROR WHEN activate bonus");
   }
 }
@@ -330,7 +332,8 @@ export const cancelBonus = (bonusData) => async dispatch => {
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
   } catch (e) {
     dispatch(errorPopupActivate("myAccount.popupErrors.bonusNotCancel"));
-
+    dispatch(getUserActivePendingBonuses({status: "1,5"}));
+    dispatch(getUserBonuses({status: "1,2,3,4,6"}));
 
     console.log(e.response, "SOME ERROR WHEN cancel bonus");
   }
@@ -485,6 +488,7 @@ export const logout = () => async dispatch => {
       type: LOGOUT_SUCCESS,
       payload: res.data,
     })
+    dispatch(annulActiveBonuses());
   } catch (e) {
     console.log(e, "SOME ERROR WHEN LOGOUT USER");
     dispatch({

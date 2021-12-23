@@ -9,7 +9,7 @@ function checkNotificationPromise() {
   return true;
 }
 
-export function useBrowserNotifications() {
+export function browserNotifications() {
   let res = null;
 
   function handlePermission(permission) {

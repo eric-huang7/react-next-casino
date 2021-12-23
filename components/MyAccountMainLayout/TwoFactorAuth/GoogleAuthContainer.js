@@ -41,9 +41,7 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
            setIsShowSavedKeys(true);
            dispatch(mayYwoFactorAuth(true));
            setGoogleAuthError("");
-           dispatch(auth());
        }).catch((error) => {
-         dispatch(auth());
          console.log(error.response, "SOME ERROR WHEN Post user saved keys");
            // Введен неверный код. Пожалуйста попробуйте еще раз или свяжитесь со службой поддержки.
            setGoogleAuthError("Invalid code entered. Please try again.")

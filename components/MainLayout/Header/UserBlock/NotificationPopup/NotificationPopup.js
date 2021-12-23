@@ -3,7 +3,7 @@ import {MessagesContainer} from "./MessagesContainer";
 import {MoreButton} from "./MoreButton";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {useBrowserNotifications} from "../../../../../helpers/useBrowserNotifications";
+import {browserNotifications} from "../../../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
 
@@ -34,7 +34,7 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
   const [notifySubscript, setNotifySubscript] = useState(userInfo.browser_opt_in);
 
   const soundClickHandler = () => {
-    useBrowserNotifications();
+    browserNotifications();
     let userData;
     if (notifySubscript === 1) {
       userData = {
