@@ -8,9 +8,12 @@ import {ButtonsBlock} from "./ButtonsBlock";
 import {EmailSmsChecksContainer} from "./EmailSmsChecksContainer";
 import {useState} from "react";
 import {birthdayFormatter} from "../../../../helpers/dateTranslator";
+import {auth, patchUserData} from "../../../../redux/actions/userData";
+import {useDispatch} from "react-redux";
 
 
 export const EditProfileMainContainer = ({t, userInfo}) => {
+  const dispatch = useDispatch();
   console.log(userInfo, '<<<<<<<<<<<<<< edit');
   let address_1 = userInfo.address_1 ? userInfo.address_1 : '';
   let address_2 = userInfo.address_2 ? userInfo.address_2 : '';
@@ -83,10 +86,10 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
 
   // console.log(new Date(Number(bYear), Number(bMonth), Number(bDay)).getTime());
   const saveButtonClickHandler = () => {
+    // username: nickname.trim() ? nickname : null,
    let sendData = {
       id: userInfo.id,
       full_name: fullName.trim() ? fullName : null,
-      username: nickname.trim() ? nickname : null,
       birthday: "",
       gender: gender ? gender : 0,
       country_code: country ? country : "",
@@ -113,8 +116,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
 
       delete sendData.security_answer
     }
-
-    console.log(sendData)
+    dispatch(patchUserData(sendData));
 
   }
 
@@ -138,7 +140,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         inputId={'nicknameInput'}
         value={nickname}
         valueHandler={nicknameInputHandler}
-        disableEdit={false}
+        disableEdit={true}
       />
       <BirthDaySelectorContainer
         t={t}
