@@ -82,6 +82,12 @@ export const AccountMainLayout = ({t, children}) => {
 
 
 
+  useEffect(() => {
+    if (router.pathname === "/accounts/two_factor") {
+      dispatch(auth());
+    }
+  }, [router.pathname])
+
 
 if (userInfo.isAuthenticated) {
   return (

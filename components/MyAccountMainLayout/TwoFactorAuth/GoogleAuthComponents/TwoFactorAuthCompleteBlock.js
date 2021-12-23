@@ -6,17 +6,18 @@ import axios from "axios";
 import {qr_auth_url} from "../../../../redux/url/url";
 import {auth, mayYwoFactorAuth} from "../../../../redux/actions/userData";
 import {useDispatch} from "react-redux";
+import {useRouter} from "next/router";
 
 
 export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [deactivateCodeValue, setDeactivateCodeValue] = useState('');
   const [deactivateError, setDeactivateError] = useState('')
   const deactivateInputHandler = (value) => {
     setDeactivateCodeValue(value);
   }
-  console.log(authData)
-  // eaf2-d069-4294
+
   const deactivateButtonClickHandler = (e) => {
     e.preventDefault();
 
@@ -39,7 +40,8 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
         console.log(data, "<< Post user saved keys");
         dispatch(mayYwoFactorAuth(false));
         // dispatch(auth());
-        setDeactivateError("")
+        setDeactivateError("");
+        router.push('/accounts/profile-info');
       })
       .catch((error) => {
         console.log(error.response, "SOME ERROR WHEN Post user saved keys");

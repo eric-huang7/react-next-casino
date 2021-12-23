@@ -19,6 +19,24 @@ export const dateTranslator = (time, locale) => {
   return formatDistance(new Date(Math.trunc(Number(time) * 1000)), new Date(), {addSuffix: false, locale: locales[locale]});
 }
 
+export const birthdayFormatter = (time) => {
+  let firstPart = time.split('.')[0];
+  let secondPart = time.split('.')[1].slice(0,3);
+
+  let birthdayDate = new Date(Number(firstPart + secondPart));
+
+  let day = birthdayDate.getDate();
+  let month = birthdayDate.getMonth();
+  let year = birthdayDate.getFullYear();
+
+  return {
+    day: day,
+    month: month,
+    year: year
+  }
+}
+
+
 export const dateFormatter = (time, locale) => {
   let firstPart = time.split('.')[0];
   let secondPart = time.split('.')[1].slice(0,3);
