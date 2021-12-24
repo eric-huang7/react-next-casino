@@ -7,8 +7,8 @@ export const ButtonsContainer = ({t, saveButtonHandler}) => {
 
   return (
     <div className={styles.buttonsBlock}>
-      <button onClick={() => saveButtonHandler()} className={styles.saveButton}>Save</button>
-      <Link href={'/accounts/balance'}><a className={styles.cancelButton}>Cancel</a></Link>
+      <button onClick={() => saveButtonHandler()} className={styles.saveButton}>{t("myAccount.selfExclusionPage.saveButton")}</button>
+      <Link href={'/accounts/balance'}><a className={styles.cancelButton}>{t("myAccount.selfExclusionPage.cancelButton")}</a></Link>
     </div>
   )
 }

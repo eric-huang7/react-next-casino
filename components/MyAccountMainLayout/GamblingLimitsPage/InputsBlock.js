@@ -22,7 +22,11 @@ export const InputsBlock = ({t, userInfo}) => {
       id: userInfo.id,
       self_exclusion_expiry: (nowDate + selfExclusionExpiry) / 1000
     }
-    dispatch(patchUserData(sendData));
+    const confirmation = confirm(t("myAccount.selfExclusionPage.confirmationText"));
+    console.log(confirmation);
+    if (confirmation) {
+      dispatch(patchUserData(sendData));
+    }
   }
 
   return (
