@@ -7,13 +7,15 @@ export const AuthCodeInputBlock = ({t, confirmButtonClickHandler, googleKEyInput
 
   return (
     <div className={styles.authKeyInputBlock}>
-      <p className={styles.keyInputHeading}>Enable Google Authenticator</p>
-      <p className={styles.enterKeyText}>Enter current authentication code to complete configuration.</p>
+      <p className={styles.keyInputHeading}>{t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textOne")}</p>
+      <p className={styles.enterKeyText}>{t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textTwo")}</p>
       <p className={styles.errorMessage}>{googleAuthError}</p>
       <form onSubmit={(e) => confirmButtonClickHandler(e)}>
         <div className={styles.inputsBlock}>
           <input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text" className={styles.inputCode}/>
-          <button type={'submit'} onClick={(e) => confirmButtonClickHandler(e)} className={styles.confirmButton}>Confirm</button>
+          <button type={'submit'} onClick={(e) => confirmButtonClickHandler(e)} className={styles.confirmButton}>
+            {t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.confirmButton")}
+          </button>
         </div>
       </form>
     </div>

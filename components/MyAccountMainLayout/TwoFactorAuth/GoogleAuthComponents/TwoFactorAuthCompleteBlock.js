@@ -46,7 +46,7 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
       .catch((error) => {
         console.log(error.response, "SOME ERROR WHEN Post user saved keys");
         // Не удалось отключить двухфакторную аутентификацию. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.
-        setDeactivateError("Failed to disable two-factor authentication. Please try again or contact support.")
+        setDeactivateError(t("myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable"))
       })
   }
 

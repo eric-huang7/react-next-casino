@@ -2,13 +2,12 @@ import styles from '../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.mod
 import {TextBlock} from "./GoogleAuthComponents/TextBlock";
 import {QrcodeContainer} from "./GoogleAuthComponents/QrcodeContainer";
 import {AuthCodeInputBlock} from "./GoogleAuthComponents/AuthCodeInputBlock";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {useState} from "react";
 import axios from "axios";
 import {qr_auth_url} from "../../../redux/url/url";
-import {GET_SAVED_KEYS} from "../../../redux/actions/types";
-import {auth, mayYwoFactorAuth} from "../../../redux/actions/userData";
+import { mayYwoFactorAuth} from "../../../redux/actions/userData";
 
 
 export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKeys}) => {
@@ -44,7 +43,7 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
        }).catch((error) => {
          console.log(error.response, "SOME ERROR WHEN Post user saved keys");
            // Введен неверный код. Пожалуйста попробуйте еще раз или свяжитесь со службой поддержки.
-           setGoogleAuthError("Invalid code entered. Please try again.")
+           setGoogleAuthError(t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.errors.invalidCode"))
        })
 
     // console.log(googleKeyValue, authData.qrAuth.key);
@@ -67,7 +66,7 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
           googleKEyInputHandler={googleKEyInputHandler}
           t={t}
         />
-        <p className={styles.lastText}>Use Google Authenticator on your mobile device. Scan the QR code to start generating two-factor auth codes.</p>
+        <p className={styles.lastText}>{t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText")}</p>
       </div>
     )
   }
