@@ -45,12 +45,12 @@ export const PhoneVerification = ({t, userInfo}) => {
         } else {
           setPhoneError('');
         }
-        console.log(data, '<<<<data from sending verify code');
+
         dispatch(auth());
       }).catch((e) => {
         //Введен неверный код. Пожалуйста попробуйте еще раз.
         setPhoneError('Invalid code entered. Please try again.');
-        console.log(e.response, '<<<< error from verify code error')
+
       })
     }
   }
@@ -73,12 +73,12 @@ export const PhoneVerification = ({t, userInfo}) => {
       }
     }
     axios.get(phone_number_url, config).then((data) => {
-      console.log(data, "from phone token")
+
       setPhoneError("");
       dispatch(auth());
       // dispatch(patchUserData(userData));
     }).catch((e) => {
-      console.log(e.response, 'error from phone token')
+
       // Не удалось добавить телефон. Номер телефона недействителен.
       setPhoneError("Failed to add phone. Phone number is invalid.");
     })
@@ -96,11 +96,11 @@ export const PhoneVerification = ({t, userInfo}) => {
         }
       }
       axios.get(phone_number_url, config).then((data) => {
-        console.log(data, "from phone token")
+
         setPhoneError("");
         // dispatch(patchUserData(userData));
       }).catch((e) => {
-        console.log(e.response, 'error from phone token')
+
         // Ошибка при отправке кода. Пожалуйста свяжитесь с службой поддержки.
         setPhoneError("Error sending code. Please contact support.");
       })

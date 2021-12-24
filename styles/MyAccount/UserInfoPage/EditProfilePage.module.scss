@@ -22,6 +22,7 @@
 
     width: 180px;
   }
+
   & label.phoneLabel {
     margin-top: 10px;
     align-self: flex-start;
@@ -52,13 +53,13 @@
   & .labelWrapper {
     width: 180px;
   }
+
   & .labelWrapper.birthdayLabel {
     align-self: flex-start;
   }
 
   & label {
     flex-shrink: 0;
-
 
 
     font-size: 16px;
@@ -84,9 +85,9 @@
 }
 
 .selectorsContainer.birthdaySelectorsWrapper {
-   & div {
-     margin-bottom: 14px;
-   }
+  & div {
+    margin-bottom: 14px;
+  }
 }
 
 .phoneNumberWrapper {
@@ -98,6 +99,12 @@
 
     font-size: 16px;
     color: #515151;
+    font-family: "Verdana", Arial, sans-serif;
+  }
+
+  & .errorMessage {
+    font-size: 14px;
+    color: #ff0000;
     font-family: "Verdana", Arial, sans-serif;
   }
 }
@@ -159,7 +166,6 @@
   margin-bottom: 45px;
 
   & button {
-    margin-left: 20px;
 
     width: 121px;
     height: 34px;
@@ -178,11 +184,24 @@
     cursor: pointer;
   }
 
-  & button.cancelButton {
+  & a.cancelButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 121px;
+    height: 34px;
+
+    margin-left: 20px;
+
     border-radius: 13px;
     background-color: transparent;
     border: 1px solid #515151;
 
+
+    font-size: 15px;
+    letter-spacing: 0px;
+    font-family: "Verdana", Arial, sans-serif;
     color: #515151;
 
   }
@@ -208,6 +227,7 @@
       width: 110px;
       margin-right: 10px;
     }
+
     & input {
       height: 30px;
     }
@@ -243,6 +263,7 @@
       width: 110px;
       margin-right: 10px;
     }
+
     & input {
       width: 190px;
     }

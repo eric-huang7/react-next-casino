@@ -1,7 +1,7 @@
 import styles from "../../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss";
 
 
-export const InputContainer = ({t, inputId, inputName, value, valueHandler, disableEdit}) => {
+export const InputContainer = ({t, inputId, inputName, value, valueHandler, disableEdit, phoneError}) => {
 
 
 if (inputId === 'mobileInput') {
@@ -16,6 +16,7 @@ if (inputId === 'mobileInput') {
           disabled={disableEdit}
           onChange={(e) => valueHandler(e.target.value)}
         />
+        <span className={styles.errorMessage}>{phoneError}</span>
         <span className={styles.phonePrompt}>{"+ (country code) (number)"}</span>
       </div>
     </div>

@@ -11,12 +11,14 @@ import {birthdayFormatter} from "../../../../helpers/dateTranslator";
 import {auth, patchUserData} from "../../../../redux/actions/userData";
 import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
+import axios from "axios";
+import {phone_number_url} from "../../../../redux/url/url";
 
 
 export const EditProfileMainContainer = ({t, userInfo}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-
+  console.log(userInfo);
   let address_1 = userInfo.address_1 ? userInfo.address_1 : '';
   let address_2 = userInfo.address_2 ? userInfo.address_2 : '';
   let birthday = userInfo.birthday ? birthdayFormatter(userInfo.birthday) : {
@@ -31,7 +33,8 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [city, setCity] = useState(userInfo.city ? userInfo.city : '');
   const [address, setAddress] = useState(address_1 + " " + address_2);
   const [postalCode, setPostalCode] = useState(userInfo.postal_code ? userInfo.postal_code : '');
-  const [mobile, setMobile] = useState(userInfo.phone_number ? userInfo.phone_number : '');
+  const [mobile, setMobile] = useState(userInfo.unconfirmed_phone ? userInfo.unconfirmed_phone : '');
+  const [enteredMobile, setEnteredMobile] = useState('');
   const [security_question, setSecurity_question] = useState(userInfo.security_question ? 'Field already specified' : '');
   const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? 'Field already specified' : '');
   const [emailPromo, setEmailPromo] = useState(userInfo.transactional_email_opt_in);
@@ -41,6 +44,9 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [bYear, setBYear] = useState(birthday.year);
   const [country, setCountry] = useState(userInfo.country_code ? userInfo.country_code : "");
   const [timeZone, setTimeZone] = useState(userInfo.time_zone ? userInfo.time_zone : "");
+  const [phoneError, setPhoneError] = useState('');
+
+  console.log(enteredMobile, '<<<<<<<<<<<<<<<<<<<<<')
 
 
   const fullNameInputHandler = (value) => {
@@ -60,6 +66,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   }
   const mobileInputHandler = (value) => {
     setMobile(value);
+    setEnteredMobile(value);
   }
   const securityQuestionInputHandler = (value) => {
     setSecurity_question(value);
@@ -96,8 +103,6 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       city: city ? city : null,
       address_1: address.trim() ? address : null,
       postal_code: postalCode.trim() ? postalCode : null,
-      phone_number: mobile.trim() ? mobile : null,
-      unconfirmed_phone: mobile.trim() ? mobile : null,
       security_question: security_question.trim() ? security_question : null,
       security_answer: security_answer.trim() ? security_answer : null,
       transactional_email_opt_in: emailPromo ? emailPromo : 0,
@@ -121,8 +126,46 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
 
       delete sendData.security_answer
     }
-    dispatch(patchUserData(sendData));
-    router.push('/accounts/profile-info');
+
+    if (userInfo.phone_number) {
+      dispatch(patchUserData(sendData));
+      router.push('/accounts/profile-info');
+      setPhoneError("");
+    } else if (enteredMobile) {
+      phoneNumberVerification(sendData);
+    } else {
+      dispatch(patchUserData(sendData));
+      router.push('/accounts/profile-info');
+      setPhoneError("");
+    }
+
+  }
+
+  const phoneNumberVerification = (sendData) => {
+    // let userData = {
+    //   id: userInfo.user.user.id,
+    //   phone_number: mobile,
+    // }
+    const config = {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {
+        type: 5,
+        phone: mobile
+      }
+    }
+    axios.get(phone_number_url, config)
+      .then((data) => {
+      setPhoneError("");
+      dispatch(patchUserData(sendData));
+      router.push('/accounts/profile-info');
+    })
+      .catch((e) => {
+      // Не удалось добавить телефон. Номер телефона недействителен.
+      setPhoneError("Failed to add phone. Phone number is invalid.");
+    })
   }
 
 
@@ -201,7 +244,8 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         inputId={'mobileInput'}
         value={mobile}
         valueHandler={mobileInputHandler}
-        disableEdit={userInfo.phone_number ? true : false}
+        disableEdit={userInfo.unconfirmed_phone ? true : false}
+        phoneError={phoneError}
       />
       <InputContainer
         t={t}
