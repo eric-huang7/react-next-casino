@@ -6,8 +6,8 @@ export const ButtonsBlock = ({t, saveButtonClickHandler}) => {
 
   return (
     <div className={styles.buttonsBlock}>
-      <button onClick={() => saveButtonClickHandler()} className={styles.saveButton}>Save</button>
-      <Link href={'/accounts/profile-info'}><a className={styles.cancelButton}>Cancel</a></Link>
+      <button onClick={() => saveButtonClickHandler()} className={styles.saveButton}>{t("myAccount.editProfilePage.saveButton")}</button>
+      <Link href={'/accounts/profile-info'}><a className={styles.cancelButton}>{t("myAccount.editProfilePage.cancelButton")}</a></Link>
     </div>
   )
 }

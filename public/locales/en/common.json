@@ -724,6 +724,28 @@
         },
         "lowerText": "Use Google Authenticator on your mobile device. Scan the QR code to start generating two-factor auth codes."
       }
+    },
+    "editProfilePage": {
+      "fieldAlreadySpec": "Field already specified",
+      "failedToAddPhone": "Failed to add phone. Phone number is invalid.",
+      "fullName": "Full name",
+      "nickname": "Nickname",
+      "birthDay": "Date of Birth",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "country": "Country",
+      "city": "City",
+      "address": "Address",
+      "postalCode": "Postal code",
+      "mobile": "Mobile",
+      "secQuestion": "Security Question",
+      "secAnswer": "Security Answer",
+      "emailPromos": "Receive Email Promos",
+      "SMSPromos": "Receive SMS Promos",
+      "timeZone": "Time Zone*",
+      "saveButton": "Save",
+      "cancelButton": "Cancel"
     }
   }
 

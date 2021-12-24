@@ -12,7 +12,7 @@ export const CountrySelector = ({t, countrySelectorHandler, value, disableEdit})
   return (
     <div className={styles.selectorWrapper}>
       <div className={styles.labelWrapper}>
-        <label htmlFor="countrySelector">Country</label>
+        <label htmlFor="countrySelector">{t("myAccount.editProfilePage.country")}</label>
       </div>
       <div className={styles.selectorsContainer}>
         <select

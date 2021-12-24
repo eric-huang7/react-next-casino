@@ -9,7 +9,7 @@ export const TimeZoneSelector = ({t, timeZoneSelectorHandler, timeZone}) => {
   return (
     <div className={styles.selectorWrapper}>
       <div className={styles.labelWrapper}>
-        <label htmlFor="timeZoneSelector">Time Zone*</label>
+        <label htmlFor="timeZoneSelector">{t("myAccount.editProfilePage.timeZone")}</label>
       </div>
       <div className={styles.selectorsContainer}>
         <select
@@ -165,7 +165,7 @@ export const TimeZoneSelector = ({t, timeZoneSelectorHandler, timeZone}) => {
           <option value="Pacific/Majuro">(GMT+12:00) Marshall Is.</option>
           <option value="Pacific/Auckland">(GMT+12:00) Wellington</option>
           <option value="Pacific/Chatham">(GMT+12:45) Chatham Is.</option>
-          <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
+          <option value="Pacific/Tongatapu">{"(GMT + 13:00) Nuku'alofa"}</option>
           <option value="Pacific/Apia">(GMT+13:00) Samoa</option>
           <option value="Pacific/Fakaofo">(GMT+13:00) Tokelau Is.</option>
         </select>

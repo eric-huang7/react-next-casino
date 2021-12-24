@@ -35,8 +35,8 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [postalCode, setPostalCode] = useState(userInfo.postal_code ? userInfo.postal_code : '');
   const [mobile, setMobile] = useState(userInfo.unconfirmed_phone ? userInfo.unconfirmed_phone : '');
   const [enteredMobile, setEnteredMobile] = useState('');
-  const [security_question, setSecurity_question] = useState(userInfo.security_question ? 'Field already specified' : '');
-  const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? 'Field already specified' : '');
+  const [security_question, setSecurity_question] = useState(userInfo.security_question ? t("myAccount.editProfilePage.fieldAlreadySpec") : '');
+  const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? t("myAccount.editProfilePage.fieldAlreadySpec") : '');
   const [emailPromo, setEmailPromo] = useState(userInfo.transactional_email_opt_in);
   const [smsPromo, setSmsPromo] = useState(userInfo.transactional_sms_opt_in);
   const [bDay, setBDay] = useState(birthday.day);
@@ -162,7 +162,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
     })
       .catch((e) => {
       // Не удалось добавить телефон. Номер телефона недействителен.
-      setPhoneError("Failed to add phone. Phone number is invalid.");
+      setPhoneError(t("myAccount.editProfilePage.fieldAlreadySpec"));
     })
   }
 
@@ -174,7 +174,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       </p>
       <InputContainer
         t={t}
-        inputName={'Full Name'}
+        inputName={t("myAccount.editProfilePage.fullName")}
         inputId={'nameInput'}
         value={fullName}
         valueHandler={fullNameInputHandler}
@@ -182,7 +182,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Nickname'}
+        inputName={t("myAccount.editProfilePage.nickname")}
         inputId={'nicknameInput'}
         value={nickname}
         valueHandler={nicknameInputHandler}
@@ -214,7 +214,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'City'}
+        inputName={t("myAccount.editProfilePage.city")}
         inputId={'cityInput'}
         value={city}
         valueHandler={cityInputHandler}
@@ -222,7 +222,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Address'}
+        inputName={t("myAccount.editProfilePage.address")}
         inputId={'addressInput'}
         value={address}
         valueHandler={addressInputHandler}
@@ -230,7 +230,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Postal code'}
+        inputName={t("myAccount.editProfilePage.postalCode")}
         inputId={'postalCodeInput'}
         value={postalCode}
         valueHandler={postalCodeInputHandler}
@@ -238,7 +238,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Mobile'}
+        inputName={t("myAccount.editProfilePage.mobile")}
         inputId={'mobileInput'}
         value={mobile}
         valueHandler={mobileInputHandler}
@@ -247,7 +247,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Security Question'}
+        inputName={t("myAccount.editProfilePage.secQuestion")}
         inputId={'questionInput'}
         value={security_question}
         valueHandler={securityQuestionInputHandler}
@@ -255,7 +255,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       />
       <InputContainer
         t={t}
-        inputName={'Security Answer'}
+        inputName={t("myAccount.editProfilePage.secAnswer")}
         inputId={'answerInput'}
         value={security_answer}
         valueHandler={securityAnswerInputHandler}

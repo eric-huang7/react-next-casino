@@ -24,7 +24,7 @@ export const BirthDaySelectorContainer = ({t, value, disableEdit, setBDay, setBM
   return (
     <div className={styles.selectorWrapper}>
       <div className={`${styles.labelWrapper} ${styles.birthdayLabel}`}>
-        <label htmlFor="daySelector">Date of Birth</label>
+        <label htmlFor="daySelector">{t("myAccount.editProfilePage.birthDay")}</label>
       </div>
       <div className={`${styles.selectorsContainer} ${styles.birthdaySelectorsWrapper}`}>
         <YearSelector

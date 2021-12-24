@@ -14,7 +14,7 @@ export const EmailSmsChecksContainer = ({t, emailPromo, emailPromoInputHandler, 
           checked={emailPromo}
           onChange={(e) => emailPromoInputHandler(e.target.checked)}
         />
-        <label htmlFor="editEmailCheck">Receive Email Promos</label>
+        <label htmlFor="editEmailCheck">{t("myAccount.editProfilePage.emailPromos")}</label>
       </div>
       <div className={`${styles.checkboxSmsWrapper} ${styles.checkboxContainer}`}>
         <input
@@ -23,7 +23,7 @@ export const EmailSmsChecksContainer = ({t, emailPromo, emailPromoInputHandler, 
           checked={smsPromo}
           onChange={(e) => smsPromoPromoInputHandler(e.target.checked)}
         />
-        <label htmlFor="editSmsCheck">Receive SMS Promos</label>
+        <label htmlFor="editSmsCheck">{t("myAccount.editProfilePage.SMSPromos")}</label>
       </div>
     </div>
   )
