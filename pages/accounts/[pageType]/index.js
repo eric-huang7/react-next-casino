@@ -6,6 +6,7 @@ import {BalancePage} from "../../../components/MyAccountMainLayout/BalanceCompon
 import {TrxHistory} from "../../../components/MyAccountMainLayout/TrxHistory/TrxHistory";
 import {BonusesPageContainer} from "../../../components/MyAccountMainLayout/BonusesPage/BonusesPageContainer";
 import {ProfileInfoPage} from "../../../components/MyAccountMainLayout/ProfileInfoPage/ProfileInfoPage";
+import {GamblingLimitsPage} from "../../../components/MyAccountMainLayout/GamblingLimitsPage/GamblingLimitsPage";
 
 const PageType = (props) => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const PageType = (props) => {
     case "gambling-limits" :
       return (
         <AccountMainLayout t={t}>
-          <h2>gambling-limits</h2>
+          <GamblingLimitsPage t={t} />
         </AccountMainLayout>
       )
     case "documents" :

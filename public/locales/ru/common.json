@@ -485,7 +485,8 @@
       "documents": "Документы",
       "changePassword": "Изменить Пароль",
       "googleAuth" : "Двухфакторная аутентификация Google",
-      "editProfile" : "Изменить профиль"
+      "editProfile" : "Изменить профиль",
+      "gamblingLimits" : "Настроить самоисключение"
     },
     "balance": {
       "table": {

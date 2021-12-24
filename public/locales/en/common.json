@@ -485,7 +485,8 @@
       "documents": "Documents",
       "changePassword": "Change Password",
       "googleAuth" : "Google Authenticator",
-      "editProfile" : "Edit profile"
+      "editProfile" : "Edit profile",
+      "gamblingLimits" : "Set Self-Exclusion Period"
     },
     "balance": {
       "table": {
