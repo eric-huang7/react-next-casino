@@ -726,6 +726,7 @@
       }
     },
     "editProfilePage": {
+      "textBlock": "Please enter valid contact details in the form below. Make sure it is accurate before saving.",
       "fieldAlreadySpec": "Field already specified",
       "failedToAddPhone": "Failed to add phone. Phone number is invalid.",
       "fullName": "Full name",
@@ -739,6 +740,7 @@
       "address": "Address",
       "postalCode": "Postal code",
       "mobile": "Mobile",
+      "mobileAdd": "+ (country code) (number)",
       "secQuestion": "Security Question",
       "secAnswer": "Security Answer",
       "emailPromos": "Receive Email Promos",
@@ -753,7 +755,7 @@
       "period": "Period",
       "24Hours": "24 Hours",
       "7Days": "7 Days",
-      "14Days": "14Days",
+      "14Days": "14 Days",
       "1Month": "1 Month",
       "3Months": "3 Months",
       "6Months": "6 Months",
@@ -765,6 +767,7 @@
       "cancelButton": "Cancel",
       "confirmationText": "Are you sure you want to lock your account? Your account will be locked for selected period. You will not be able to log in to your account and perform any other actions."
     }
+
   }
 
 }

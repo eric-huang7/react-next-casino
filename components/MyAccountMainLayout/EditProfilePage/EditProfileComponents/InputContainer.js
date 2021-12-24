@@ -17,7 +17,7 @@ if (inputId === 'mobileInput') {
           onChange={(e) => valueHandler(e.target.value)}
         />
         <span className={styles.errorMessage}>{phoneError}</span>
-        <span className={styles.phonePrompt}>{"+ (country code) (number)"}</span>
+        <span className={styles.phonePrompt}>{t("myAccount.editProfilePage.mobileAdd")}</span>
       </div>
     </div>
   )

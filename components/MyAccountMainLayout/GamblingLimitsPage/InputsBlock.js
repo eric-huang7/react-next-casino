@@ -23,7 +23,6 @@ export const InputsBlock = ({t, userInfo}) => {
       self_exclusion_expiry: (nowDate + selfExclusionExpiry) / 1000
     }
     const confirmation = confirm(t("myAccount.selfExclusionPage.confirmationText"));
-    console.log(confirmation);
     if (confirmation) {
       dispatch(patchUserData(sendData));
     }

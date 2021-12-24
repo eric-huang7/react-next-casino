@@ -170,7 +170,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   return (
     <div className={styles.mainContainer}>
       <p className={styles.textInfo}>
-        Please enter valid contact details in the form below. Make sure it is accurate before saving.
+        {t("myAccount.editProfilePage.textBlock")}
       </p>
       <InputContainer
         t={t}
