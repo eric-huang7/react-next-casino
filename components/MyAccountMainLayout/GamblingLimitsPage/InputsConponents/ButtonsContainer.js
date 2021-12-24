@@ -2,12 +2,12 @@ import styles from "../../../../styles/MyAccount/GamblingLimitsPage/GamblingLimi
 import Link from "next/link";
 
 
-export const ButtonsContainer = ({t}) => {
+export const ButtonsContainer = ({t, saveButtonHandler}) => {
 
 
   return (
     <div className={styles.buttonsBlock}>
-      <button className={styles.saveButton}>Save</button>
+      <button onClick={() => saveButtonHandler()} className={styles.saveButton}>Save</button>
       <Link href={'/accounts/balance'}><a className={styles.cancelButton}>Cancel</a></Link>
     </div>
   )

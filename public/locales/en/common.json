@@ -190,7 +190,8 @@
     "passwordMaximum": "Password must be no more than 32 characters.",
     "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
     "email": "Email must be a valid email",
-    "wrongPasswordOrEmail": "Incorrect password or email!"
+    "wrongPasswordOrEmail": "Incorrect password or email!",
+    "selfExcluded": "Account has been self excluded till:"
   },
   "selectCurrency": {
     "heading": "Select Currency",

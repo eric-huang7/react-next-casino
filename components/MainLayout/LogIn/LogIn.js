@@ -10,6 +10,9 @@ import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {userData} from "../../../redux/actions/userData";
 import {schemaLogin} from '../../../schemasForms/loginForm'
+import {dateFormatter} from "../../../helpers/dateTranslator";
+import {useRouter} from "next/router";
+import {auth_type_id, is_admin, siteID} from "../../../envs/envsForFetching";
 
 
 
@@ -17,6 +20,7 @@ export const LogIn = ({t, isShow}) => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
     resolver: yupResolver(schemaLogin),
   });
+  const router = useRouter();
 
 
   const dispatch = useDispatch();
@@ -62,11 +66,23 @@ export const LogIn = ({t, isShow}) => {
   const [loginData, setLoginData] = useState('');
   const [passwordData, setPasswordData] = useState('');
   const [wrongPassOrLog, setWrongPassOrLog] = useState(false);
+  const [selfExcludedError, setSelfExcludedError] = useState(false);
+  const [selfExcludedTime, setSelfExcludedTime] = useState("")
 
   useEffect(() => {
     if (userInfo.error) {
-      setPasswordData('');
-      setWrongPassOrLog(true);
+      console.log(userInfo.error, '<<<<<<<<<<<<<');
+      if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
+        let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
+        let timeExclude = dateFormatter(timeAll, router.locale);
+        setSelfExcludedTime(timeExclude);
+        console.log(timeExclude, '<<<<<<<<<<<<< time');
+        setPasswordData('');
+        setSelfExcludedError(true);
+      } else {
+        setPasswordData('');
+        setWrongPassOrLog(true);
+      }
     }
     if (userInfo.isAuthenticated) {
       dispatch(showLogin(false));
@@ -77,19 +93,28 @@ export const LogIn = ({t, isShow}) => {
     setLoginData('');
     setPasswordData('');
     // reset();
+    setSelfExcludedTime("");
+    setSelfExcludedError(false);
     setWrongPassOrLog(false);
   },[isShowLogin])
 
 
-  let site_id = 1;
-  let auth_type_id = 1;
-  let isAdmin = false;
+  // let site_id = siteID;
+  // let auth_type_id = auth_type_id;
+  // let isAdmin = false;
 
 
   function loginUser() {
-    console.log('send req', loginData, passwordData)
+    // console.log('send req', loginData, passwordData)
+    let sendData = {
+      site_id : siteID,
+      auth_type_id: auth_type_id,
+      username: loginData,
+      auth_info: passwordData,
+      is_admin : is_admin,
+    }
 
-    dispatch(userData(site_id, auth_type_id, loginData, passwordData, isAdmin));
+    dispatch(userData(sendData));
 
   }
 
@@ -142,7 +167,7 @@ export const LogIn = ({t, isShow}) => {
               </label>
               <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
               <span className={styles.errorMessage}>{
-                wrongPassOrLog ? t('errors.wrongPasswordOrEmail') : ''
+                wrongPassOrLog ? t('errors.wrongPasswordOrEmail') : selfExcludedError ? `${t('errors.selfExcluded')} ${selfExcludedTime}` : ''
               }</span>
 
 

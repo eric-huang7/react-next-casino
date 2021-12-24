@@ -4,13 +4,13 @@ import {InputsBlock} from "./InputsBlock";
 
 
 
-export const MainBlock = ({t}) => {
+export const MainBlock = ({t, userInfo}) => {
 
 
   return (
     <div  className={styles.mainBlock}>
       <TextBlock t={t} />
-      <InputsBlock t={t} />
+      <InputsBlock t={t} userInfo={userInfo} />
     </div>
   )
 }

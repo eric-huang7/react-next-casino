@@ -65,13 +65,13 @@ export const auth = () => async dispatch => {
 }
 
 
-export const userData = (site_id, auth_type_id, username, auth_info, is_admin) => async dispatch => {
+export const userData = (sendData) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   }
-  const body = JSON.stringify({site_id, auth_type_id, username, auth_info, is_admin});
+  const body = JSON.stringify(sendData);
   try {
     const res = await axios.post(login_url, body, config);
     console.log(res, 'LOGIN RESPONSE');

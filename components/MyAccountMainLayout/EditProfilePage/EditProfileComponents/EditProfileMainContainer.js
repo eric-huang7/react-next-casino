@@ -18,7 +18,7 @@ import {phone_number_url} from "../../../../redux/url/url";
 export const EditProfileMainContainer = ({t, userInfo}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log(userInfo);
+
   let address_1 = userInfo.address_1 ? userInfo.address_1 : '';
   let address_2 = userInfo.address_2 ? userInfo.address_2 : '';
   let birthday = userInfo.birthday ? birthdayFormatter(userInfo.birthday) : {
@@ -45,8 +45,6 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [country, setCountry] = useState(userInfo.country_code ? userInfo.country_code : "");
   const [timeZone, setTimeZone] = useState(userInfo.time_zone ? userInfo.time_zone : "");
   const [phoneError, setPhoneError] = useState('');
-
-  console.log(enteredMobile, '<<<<<<<<<<<<<<<<<<<<<')
 
 
   const fullNameInputHandler = (value) => {
