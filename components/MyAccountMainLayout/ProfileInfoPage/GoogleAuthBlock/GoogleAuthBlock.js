@@ -13,9 +13,16 @@ export const GoogleAuthBlock = ({t}) => {
 
   return (
     <div  className={styles.googleAuthMainBlock}>
-      <h3 className={styles.googleAuthHeading}>Google Authenticator</h3>
+      <h3 className={styles.googleAuthHeading}>{t("myAccount.profilePage.googleAuth.heading")}</h3>
 
-      <Link href={'/accounts/two_factor'}><a onClick={() => googleAuthClickHandler()} className={styles.googleAuthLink}>Configure Google Authenticator</a></Link>
+      <Link href={'/accounts/two_factor'}>
+        <a
+          onClick={() => googleAuthClickHandler()}
+          className={styles.googleAuthLink}
+        >
+          {t("myAccount.profilePage.googleAuth.link")}
+        </a>
+      </Link>
     </div>
   )
 }

@@ -6,10 +6,10 @@ export const SocialNetworkBlock = ({t, userInfo}) => {
 
   return (
     <div className={styles.socialNetworkBlock}>
-      <h3 className={styles.socialNetworkHeading}>Social Network Accounts</h3>
+      <h3 className={styles.socialNetworkHeading}>{t("myAccount.profilePage.changePasswordBlock.heading")}</h3>
 
-      <p>Use social network accounts to login into our casino.</p>
-      <p>You currently do not have any social network accounts.</p>
+      <p>{t("myAccount.profilePage.changePasswordBlock.textOne")}</p>
+      <p>{t("myAccount.profilePage.changePasswordBlock.textTwo")}</p>
     </div>
   )
 }

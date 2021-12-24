@@ -626,6 +626,69 @@
         "cancelBonus": "Cancel Bonus",
         "activateBonus": "Activate"
       }
+    },
+    "profilePage": {
+      "userInfoBlock": {
+        "heading": "Personal",
+        "fullName": "Full name",
+        "nickname": "Nickname",
+        "gender": "Gender",
+        "country": "Country",
+        "city": "City",
+        "address": "Address",
+        "postalCode": "Postal code",
+        "emailPromos": "Receive Email Promos",
+        "SMSPromos": "Receive SMS Promos",
+        "editProfile": "Edit your profile"
+      },
+      "phoneVerification": {
+        "errors": {
+          "invalidCode": "Invalid code entered. Please try again.",
+          "invalidPhone": "Failed to add phone. Phone number is invalid.",
+          "errorSendingCode": "Error sending code. Please contact support."
+        },
+        "status": {
+          "verified": "Verified",
+          "notVerified": "Not verified"
+        },
+        "buttons": {
+          "remove" : "Remove",
+          "sendAgain": "Send Again",
+          "confirm": "Confirm",
+          "add": "Add"
+        },
+        "inputsLabels": {
+          "verifiedPhone": "Verified Phone",
+          "phoneNumber": "Phone Number",
+          "status": "Status",
+          "addVerifiedPhone": "Add Verified Phone",
+          "verifyCodeWillSend": "Verification code will be send to your phone."
+        }
+      },
+      "changePasswordBlock": {
+        "heading": "Change password",
+        "email": "Email"
+      },
+      "socialNetworkBlock": {
+        "heading": "Social Network Accounts",
+        "textOne": "Use social network accounts to login into our casino.",
+        "textTwo": "You currently do not have any social network accounts."
+      },
+      "sessionsBlocks": {
+        "activeSessions": "Active sessions",
+        "closedSessions": "Last closed sessions",
+        "current": "Current",
+        "close": "Close",
+        "tableHead": {
+          "createdAt": "Created At",
+          "country": "Country",
+          "device": "Device"
+        }
+      },
+      "googleAuth": {
+        "heading": "Google Authenticator",
+        "link": "Configure Google Authenticator"
+      }
     }
   }
 

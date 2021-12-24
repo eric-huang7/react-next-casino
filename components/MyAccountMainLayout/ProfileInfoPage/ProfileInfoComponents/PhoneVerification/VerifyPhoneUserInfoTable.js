@@ -6,15 +6,15 @@ export const VerifyPhoneUserInfoTable = ({t, phoneNumber, status}) => {
 
   return (
     <>
-      <h3 className={styles.verifyHeading}>Verified Phone</h3>
+      <h3 className={styles.verifyHeading}>{t("myAccount.profilePage.phoneVerification.inputsLabels.verifiedPhone")}</h3>
       <table className={styles.verifyPhoneTable}>
         <tbody>
         <tr>
-          <td>Phone Number</td>
+          <td>{t("myAccount.profilePage.phoneVerification.inputsLabels.phoneNumber")}</td>
           <td>{phoneNumber}</td>
         </tr>
         <tr>
-          <td>Status</td>
+          <td>{t("myAccount.profilePage.phoneVerification.inputsLabels.status")}</td>
           <td>{status}</td>
         </tr>
         </tbody>

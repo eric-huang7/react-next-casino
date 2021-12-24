@@ -15,7 +15,9 @@ export const PhoneAlreadyVerified = ({t, userInfo, status, removePhoneNumberHand
     <div className={styles.verifyCodeContainer}>
       <VerifyPhoneUserInfoTable phoneNumber={phoneNumber} t={t} status={status}/>
       <div className={styles.buttonsContainer}>
-        <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>Remove</button>
+        <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>
+          {t("myAccount.profilePage.phoneVerification.buttons.remove")}
+        </button>
       </div>
     </div>
   )

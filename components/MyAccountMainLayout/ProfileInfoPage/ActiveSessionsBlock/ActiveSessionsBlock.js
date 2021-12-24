@@ -34,7 +34,7 @@ const dispatch = useDispatch();
 
   return (
     <div className={styles.activeSessionsMainBlock}>
-      <h3 className={styles.activeSessionsHeading}>Active sessions</h3>
+      <h3 className={styles.activeSessionsHeading}>{t("myAccount.profilePage.sessionsBlocks.activeSessions")}</h3>
       <SessionsTable closeSessionHandler={closeSessionHandler} t={t} sessionsInfo={userInfo}/>
     </div>
   )

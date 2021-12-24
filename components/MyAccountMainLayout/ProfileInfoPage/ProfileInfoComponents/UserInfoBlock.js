@@ -18,40 +18,40 @@ export const UserInfoBlock = ({t, userInfo}) => {
       <table cellSpacing={0} className={styles.personalInfoTable}>
         <thead>
         <tr>
-          <th colSpan={2}>Personal</th>
+          <th colSpan={2}>{t("myAccount.profilePage.userInfoBlock.heading")}</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-            <td className={styles.firstCeil}>Full name</td><td className={styles.secondCeil}>{fullName}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.fullName")}</td><td className={styles.secondCeil}>{fullName}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Nickname</td><td className={styles.secondCeil}>{nickname}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.nickname")}</td><td className={styles.secondCeil}>{nickname}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Gender</td><td className={styles.secondCeil}>{gender}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.gender")}</td><td className={styles.secondCeil}>{gender}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Country</td><td className={styles.secondCeil}>{country}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.country")}</td><td className={styles.secondCeil}>{country}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>City</td><td className={styles.secondCeil}>{city}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.city")}</td><td className={styles.secondCeil}>{city}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Address</td><td className={styles.secondCeil}>{address}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.address")}</td><td className={styles.secondCeil}>{address}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Postal code</td><td className={styles.secondCeil}>{postalCode}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.postalCode")}</td><td className={styles.secondCeil}>{postalCode}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Receive Email Promos</td><td className={styles.secondCeil}>{receiveEmails}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.emailPromos")}</td><td className={styles.secondCeil}>{receiveEmails}</td>
           </tr>
           <tr>
-            <td className={styles.firstCeil}>Receive SMS Promos</td><td className={styles.secondCeil}>{receiveSms}</td>
+            <td className={styles.firstCeil}>{t("myAccount.profilePage.userInfoBlock.SMSPromos")}</td><td className={styles.secondCeil}>{receiveSms}</td>
           </tr>
         </tbody>
       </table>
-      <Link href={'/accounts/profile-info/edit'}><a className={styles.editProfileButton}>Edit your profile</a></Link>
+      <Link href={'/accounts/profile-info/edit'}><a className={styles.editProfileButton}>{t("myAccount.profilePage.userInfoBlock.editProfile")}</a></Link>
     </div>
   )
 }

@@ -626,6 +626,9 @@
         "cancelBonus": "Отменить бонус",
         "activateBonus": "Активировать"
       }
+    },
+    "profilePage": {
+
     }
   }
 }

@@ -7,7 +7,7 @@ export const LastClosedSessionsBlock = ({t, userInfo}) => {
 
   return (
     <div className={styles.activeSessionsMainBlock}>
-      <h3 className={styles.activeSessionsHeading}>Last closed sessions</h3>
+      <h3 className={styles.activeSessionsHeading}>{t("myAccount.profilePage.sessionsBlocks.closedSessions")}</h3>
       <SessionsTable t={t} sessionsInfo={userInfo.userClosedSessions}/>
     </div>
   )

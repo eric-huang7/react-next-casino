@@ -7,10 +7,10 @@ export const TableHead = ({t}) => {
 
   return (
     <tr>
-      <th>Created At</th>
+      <th>{t("myAccount.profilePage.sessionsBlocks.tableHead.createdAt")}</th>
       <th>IP</th>
-      <th>Country</th>
-      <th>Device</th>
+      <th>{t("myAccount.profilePage.sessionsBlocks.tableHead.country")}</th>
+      <th>{t("myAccount.profilePage.sessionsBlocks.tableHead.device")}</th>
     </tr>
   )
 }

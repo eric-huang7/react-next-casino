@@ -22,7 +22,16 @@ export const TableRow = ({t, sessionData, currentSession, closeSessionHandler}) 
       <td>{device}</td>
       <td>
         {
-          isCurrent ? "Current" : <button className={styles.sessionCloseButton} onClick={() => closeSessionHandler(sessionData)}>Close</button>
+          isCurrent
+            ?
+            t("myAccount.profilePage.sessionsBlocks.current")
+            :
+            <button
+              className={styles.sessionCloseButton}
+              onClick={() => closeSessionHandler(sessionData)}
+            >
+              {t("myAccount.profilePage.sessionsBlocks.close")}
+            </button>
         }
       </td>
     </tr>

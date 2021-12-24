@@ -24,8 +24,8 @@ export const VerifyCodeInputContainer = ({t, userInfo, phoneError, sendAgainVeri
         status={status}
       />
       <div className={styles.buttonsContainer}>
-        <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>Remove</button>
-        <button onClick={() => sendAgainVerifyCode()} className={styles.verifyButton}>Send Again</button>
+        <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>{t("myAccount.profilePage.phoneVerification.buttons.remove")}</button>
+        <button onClick={() => sendAgainVerifyCode()} className={styles.verifyButton}>{t("myAccount.profilePage.phoneVerification.buttons.sendAgain")}</button>
       </div>
       <VerifyCodeInputs
         verifyCodeInputHandler={verifyCodeInputHandler}

@@ -6,9 +6,9 @@ export const ChangePasswordBlock = ({t, userInfo}) => {
 
   return (
     <div className={styles.changePasswordContainer}>
-      <h3 className={styles.changePasswordHeading}>Change password</h3>
-      <p className={styles.emailInfo}><span>Email</span><span>{userInfo.user.user.email}</span></p>
-      <Link href={'/accounts/edit-password'} ><a className={styles.changePasswordLink}>Change Password</a></Link>
+      <h3 className={styles.changePasswordHeading}>{t("myAccount.profilePage.changePasswordBlock.heading")}</h3>
+      <p className={styles.emailInfo}><span>{t("myAccount.profilePage.changePasswordBlock.email")}</span><span>{userInfo.user.user.email}</span></p>
+      <Link href={'/accounts/edit-password'} ><a className={styles.changePasswordLink}>{t("myAccount.profilePage.changePasswordBlock.heading")}</a></Link>
     </div>
   )
 }

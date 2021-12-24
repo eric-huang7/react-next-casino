@@ -25,7 +25,7 @@ export const PhoneVerification = ({t, userInfo}) => {
   const sendVerifyCodeHandler = (e) => {
     e.preventDefault();
     if (verifyCode === '') {
-      setPhoneError('Invalid code entered. Please try again.');
+      setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
     } else {
       let userData = {
         type: 5,
@@ -41,7 +41,7 @@ export const PhoneVerification = ({t, userInfo}) => {
       axios.patch(phone_number_url, body, config).then((data) => {
         if (data.data.extra_error_info) {
           //Введен неверный код. Пожалуйста попробуйте еще раз.
-          setPhoneError('Invalid code entered. Please try again.');
+          setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
         } else {
           setPhoneError('');
         }
@@ -49,7 +49,7 @@ export const PhoneVerification = ({t, userInfo}) => {
         dispatch(auth());
       }).catch((e) => {
         //Введен неверный код. Пожалуйста попробуйте еще раз.
-        setPhoneError('Invalid code entered. Please try again.');
+        setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
 
       })
     }
@@ -80,7 +80,7 @@ export const PhoneVerification = ({t, userInfo}) => {
     }).catch((e) => {
 
       // Не удалось добавить телефон. Номер телефона недействителен.
-      setPhoneError("Failed to add phone. Phone number is invalid.");
+      setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidPhone"));
     })
   }
   const sendAgainVerifyCode = () => {
@@ -102,7 +102,7 @@ export const PhoneVerification = ({t, userInfo}) => {
       }).catch((e) => {
 
         // Ошибка при отправке кода. Пожалуйста свяжитесь с службой поддержки.
-        setPhoneError("Error sending code. Please contact support.");
+        setPhoneError(t("myAccount.profilePage.phoneVerification.errors.errorSendingCode"));
       })
     }
   }
@@ -117,7 +117,7 @@ export const PhoneVerification = ({t, userInfo}) => {
     dispatch(patchUserData(userData));
   }
 
-  let status = userInfo.user.user.phone_number ? 'Verified' : 'Not verified';
+  let status = userInfo.user.user.phone_number ? t("myAccount.profilePage.phoneVerification.status.verified") : t("myAccount.profilePage.phoneVerification.status.notVerified");
 
   if (userInfo.user.user.unconfirmed_phone && !userInfo.user.user.phone_number) {
     return (
