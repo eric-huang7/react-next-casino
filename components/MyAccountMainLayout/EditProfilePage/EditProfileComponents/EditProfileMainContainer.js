@@ -10,11 +10,13 @@ import {useState} from "react";
 import {birthdayFormatter} from "../../../../helpers/dateTranslator";
 import {auth, patchUserData} from "../../../../redux/actions/userData";
 import {useDispatch} from "react-redux";
+import {useRouter} from "next/router";
 
 
 export const EditProfileMainContainer = ({t, userInfo}) => {
   const dispatch = useDispatch();
-  console.log(userInfo, '<<<<<<<<<<<<<< edit');
+  const router = useRouter();
+
   let address_1 = userInfo.address_1 ? userInfo.address_1 : '';
   let address_2 = userInfo.address_2 ? userInfo.address_2 : '';
   let birthday = userInfo.birthday ? birthdayFormatter(userInfo.birthday) : {
@@ -34,9 +36,9 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? 'Field already specified' : '');
   const [emailPromo, setEmailPromo] = useState(userInfo.transactional_email_opt_in);
   const [smsPromo, setSmsPromo] = useState(userInfo.transactional_sms_opt_in);
-  const [bDay, setBDay] = useState('');
-  const [bMonth, setBMonth] = useState('');
-  const [bYear, setBYear] = useState('');
+  const [bDay, setBDay] = useState(birthday.day);
+  const [bMonth, setBMonth] = useState(birthday.month);
+  const [bYear, setBYear] = useState(birthday.year);
   const [country, setCountry] = useState(userInfo.country_code ? userInfo.country_code : "");
   const [timeZone, setTimeZone] = useState(userInfo.time_zone ? userInfo.time_zone : "");
 
@@ -72,25 +74,23 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
     setSmsPromo(Number(value));
   }
   const genderSelectorHandler = (value) => {
-    console.log(value);
     setGender(value);
   }
   const countrySelectorHandler = (value) => {
-    console.log(value);
     setCountry(value);
   }
   const timeZoneSelectorHandler = (value) => {
-    console.log(value)
     setTimeZone(value);
   }
 
-  // console.log(new Date(Number(bYear), Number(bMonth), Number(bDay)).getTime());
+
   const saveButtonClickHandler = () => {
-    // username: nickname.trim() ? nickname : null,
+
+
    let sendData = {
       id: userInfo.id,
       full_name: fullName.trim() ? fullName : null,
-      birthday: "",
+      birthday: null,
       gender: gender ? gender : 0,
       country_code: country ? country : "",
       city: city ? city : null,
@@ -103,6 +103,11 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       transactional_email_opt_in: emailPromo ? emailPromo : 0,
       transactional_sms_opt_in: smsPromo ? smsPromo : 0,
       time_zone: timeZone ? timeZone : ""
+    }
+    if (Number(bYear) && Number(bMonth) !== NaN && Number(bDay)) {
+      sendData.birthday = new Date(Number(bYear), Number(bMonth), Number(bDay)).getTime() / 1000;
+    } else {
+      delete sendData.birthday
     }
 
     if (userInfo.security_question && userInfo.security_answer) {
@@ -117,7 +122,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       delete sendData.security_answer
     }
     dispatch(patchUserData(sendData));
-
+    router.push('/accounts/profile-info');
   }
 
 
@@ -145,10 +150,14 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       <BirthDaySelectorContainer
         t={t}
         value={birthday}
+
         disableEdit={userInfo.birthday ? true : false}
         setBDay={setBDay}
+        bDay={bDay}
         setBMonth={setBMonth}
+        bMonth={bMonth}
         setBYear={setBYear}
+        bYear={bYear}
       />
       <GenderSelector
         t={t}
@@ -176,7 +185,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         inputId={'addressInput'}
         value={address}
         valueHandler={addressInputHandler}
-        disableEdit={address.trim() ? true : false}
+        disableEdit={(address_1 + " " + address_2).trim() ? true : false}
       />
       <InputContainer
         t={t}
