@@ -9,12 +9,11 @@ import {patchUserData} from "../../../redux/actions/userData";
 
 export const InputsBlock = ({t, userInfo}) => {
   const dispatch = useDispatch();
-  console.log(userInfo)
+
   const [selfExclusionExpiry, setSelfExclusionExpiry] = useState(userInfo.self_exclusion_expiry ? userInfo.self_exclusion_expiry : '');
 
   const selfExclusionExpiryHandler = (value) => {
     setSelfExclusionExpiry(Number(value));
-    console.log(Number(value));
   }
 
   const saveButtonHandler = () => {
@@ -35,7 +34,7 @@ export const InputsBlock = ({t, userInfo}) => {
       />
       <ButtonsContainer saveButtonHandler={saveButtonHandler} t={t} />
       <p  className={styles.innerText}>
-        If you feel the need in any additional information, please contact support.
+        {t("myAccount.selfExclusionPage.textTwo")}
       </p>
     </div>
   )

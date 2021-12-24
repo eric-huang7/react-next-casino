@@ -746,6 +746,21 @@
       "timeZone": "Time Zone*",
       "saveButton": "Save",
       "cancelButton": "Cancel"
+    },
+    "selfExclusionPage": {
+      "text": "Felt the need to be apart from the casino for quite a time? Here you can set the Self-exclusion period for your player account from 24 hours up to 3 years. The setting is applied immediately. During a Self-exclusion period there will be no way for you to get to your account. You neither can edit the Self-exclusion period. Please note! Make sure to request the cashout before Self-exclusion period setting. Once your account is locked you will not be able to request for withdrawal. Upon expiring, your account will be automatically re-activated and you will receive the email notification.",
+      "textTwo": "If you feel the need in any additional information, please contact support.",
+      "period": "Period",
+      "24Hours": "24 Hours",
+      "7Days": "7 Days",
+      "14Days": "14Days",
+      "1Month": "1 Month",
+      "3Months": "3 Months",
+      "6Months": "6 Months",
+      "9Months": "9 Months",
+      "1Year": "1 Year",
+      "3Years": "3 Years",
+      "Forever": "Forever"
     }
   }
 
