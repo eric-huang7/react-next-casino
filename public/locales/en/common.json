@@ -753,6 +753,7 @@
       "successMessage": "Password changed successfully!",
       "wrongCurrentPassword": "Wrong current password, please try again.",
       "passwordNotMatch": "Password does not match!",
+      "complexityError" : "Provided password did not meet the password complexity requirements: uppercase",
       "newPassword": "New Password",
       "leaveBlank": "(leave blank if you don't want to change it)",
       "passwordConfirmation": "Password confirmation",

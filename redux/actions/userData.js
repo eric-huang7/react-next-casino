@@ -7,7 +7,7 @@ import {
   BALANCE,
   CANCEL_BONUS, DELETE_SESSION,
   GET_ACTIVE_PENDING_BONUSES, GET_ACTIVE_SESSIONS,
-  GET_BONUS_HISTORY_DATA, GET_CLOSED_SESSIONS,
+  GET_BONUS_HISTORY_DATA, GET_CLOSED_SESSIONS, GET_DOCUMENT,
   GET_SAVED_KEYS,
   GET_USER_BETS_DATA,
   GET_USER_PAYMENTS,
@@ -31,7 +31,12 @@ import {
   get_user_payments_url,
   get_user_bets,
   get_bonuses_data_url,
-  put_bonus_redemption_url, post_cancel_bonus_redemption_url, phone_number_url, qr_auth_url, user_sessions_url
+  put_bonus_redemption_url,
+  post_cancel_bonus_redemption_url,
+  phone_number_url,
+  qr_auth_url,
+  user_sessions_url,
+  document_url
 } from "../url/url";
 
 import {siteID} from "../../envs/envsForFetching";
@@ -54,12 +59,30 @@ export const auth = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('auth FAIL!!!!!!!!!')
     dispatch({
       type: AUTH_FAIL,
       payload: e.response
     })
     console.log('SOME ERROR IN AUTH', e.response);
+  }
+
+}
+
+export const getDocuments = () => async dispatch => {
+  const config = {
+    params: {
+      site_id: siteID
+    }
+  }
+
+  try {
+    const res = await axios.get(document_url, config);
+    dispatch({
+      type: GET_DOCUMENT,
+      payload: res.data
+    })
+  } catch (e) {
+    console.log('SOME ERROR IN GET DOCUMENT', e.response);
   }
 
 }

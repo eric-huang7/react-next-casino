@@ -7,7 +7,6 @@ export const ChooseFileContainer = ({t}) => {
 
   const chooseFilesHandler = (e) => {
     setFileData(e.target.files[0]);
-    console.log(e.target.files[0]);
   }
 
   return (

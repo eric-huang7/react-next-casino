@@ -16,6 +16,10 @@ export const winners_latest_url = `http://t-gpb.slotsidol.com:7000/winners?begin
 export const jackpots_url = 'http://t-gpb.slotsidol.com:7000/jackpots?amount=10000';
 
 
+// ########## document url
+
+export const document_url = 'http://t-gpb.slotsidol.com:7000/document';
+
 // ########## userData & auth & register url
 
 export const login_url = 'http://t-gpb.slotsidol.com:7000/login';

@@ -13,7 +13,12 @@ import {
   GET_USER_BETS_DATA,
   GET_BONUS_HISTORY_DATA,
   AUTH_FAIL,
-  GET_ACTIVE_PENDING_BONUSES, QR_AUTH, MAY_TWO_FACTOR_AUTH, GET_ACTIVE_SESSIONS, GET_CLOSED_SESSIONS,
+  GET_ACTIVE_PENDING_BONUSES,
+  QR_AUTH,
+  MAY_TWO_FACTOR_AUTH,
+  GET_ACTIVE_SESSIONS,
+  GET_CLOSED_SESSIONS,
+  GET_DOCUMENT,
 
 } from "../actions/types";
 
@@ -46,13 +51,20 @@ const initialState = {
   userActiveSessions: null,
   loadingClosedSessions: true,
   userClosedSessions: null,
-
+  loadingDocuments: true,
+  userDocuments: null,
 }
 
 function userDataReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case GET_DOCUMENT:
+      return {
+        ...state,
+        loadingDocuments: false,
+        userDocuments: {...payload},
+      }
     case MAY_TWO_FACTOR_AUTH:
       return {
         ...state,

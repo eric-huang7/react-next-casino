@@ -14,6 +14,10 @@ export const SET_SEARCH_GAMES = 'SET_SEARCH_GAMES';
 
 export const GET_IMAGES = 'GET_IMAGES';
 
+// ################# DOCUMENTS
+
+export const GET_DOCUMENT = 'GET_DOCUMENT';
+
 // ################# GET WINNERS && JACKPOTS
 export const GET_WINNERS = "GET_WINNERS";
 export const GET_LATEST_WINNERS = 'GET_LATEST_WINNERS';

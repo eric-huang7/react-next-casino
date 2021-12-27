@@ -97,7 +97,7 @@ export const ChangePasswordForm = ({t, userInfo}) => {
           setCurrenPasswordValue("");
           // console.log(error.response)
           if (error.response.data.error_code === 'PASSWORD_COMPLEXITY_ERROR') {
-            setPasswordError(error.response.data.extra_error_info.message);
+            setPasswordError(t("myAccount.changePasswordPage.complexityError"));
           } else {
             //
             setCurrenPasswordError(t("myAccount.changePasswordPage.wrongCurrentPassword"));
