@@ -5,7 +5,7 @@ export const PasswordBlock = ({t, errors, passwordValue, passwordInputHandler, p
 
   return (
     <div className={styles.passwordWrapper}>
-      <label htmlFor="changePassword">New Password<abbr title="required">*</abbr></label>
+      <label htmlFor="changePassword">{t("myAccount.changePasswordPage.newPassword")}<abbr title="required">*</abbr></label>
       <div className={styles.passwordInnerWrpapper}>
         <input
           {...register("password")}
@@ -16,7 +16,7 @@ export const PasswordBlock = ({t, errors, passwordValue, passwordInputHandler, p
         />
         <p className={styles.errorMessage}>{t(errors.password?.message)}</p>
         <p className={styles.errorMessage}>{passwordError}</p>
-        <p className={styles.passwordChangeText}>{"(leave blank if you don't want to change it)"}</p>
+        <p className={styles.passwordChangeText}>{t("myAccount.changePasswordPage.leaveBlank")}</p>
       </div>
     </div>
   )

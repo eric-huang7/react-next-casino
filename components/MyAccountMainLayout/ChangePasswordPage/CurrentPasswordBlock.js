@@ -5,11 +5,11 @@ export const CurrentPasswordBlock = ({t, currentPasswordInputHandler, currenPass
 
   return (
     <div className={styles.passwordCurrentWrapper}>
-      <label htmlFor="passwordCurrent">Current password<abbr title="required">*</abbr></label>
+      <label htmlFor="passwordCurrent">{t("myAccount.changePasswordPage.currentPassword")}<abbr title="required">*</abbr></label>
       <div className={styles.passwordInnerWrpapper}>
         <input onChange={(e) => currentPasswordInputHandler(e.target.value)} type="password" id={"passwordCurrent"} value={currenPasswordValue}/>
         <p className={styles.errorMessage}>{currenPasswordError}</p>
-        <p className={styles.passwordCurrentText}>{"(we need your current password to confirm your changes)"}</p>
+        <p className={styles.passwordCurrentText}>{t("myAccount.changePasswordPage.needCurrentPassword")}</p>
       </div>
     </div>
   )

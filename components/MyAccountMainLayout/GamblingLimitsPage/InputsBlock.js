@@ -10,7 +10,9 @@ import {patchUserData} from "../../../redux/actions/userData";
 export const InputsBlock = ({t, userInfo}) => {
   const dispatch = useDispatch();
 
-  const [selfExclusionExpiry, setSelfExclusionExpiry] = useState(userInfo.self_exclusion_expiry ? userInfo.self_exclusion_expiry : '');
+  console.log(userInfo, '<<<<<<<<<<<<<<<<');
+
+  const [selfExclusionExpiry, setSelfExclusionExpiry] = useState(86400000);
 
   const selfExclusionExpiryHandler = (value) => {
     setSelfExclusionExpiry(Number(value));

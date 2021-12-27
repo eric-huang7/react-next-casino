@@ -87,7 +87,7 @@ export const ChangePasswordForm = ({t, userInfo}) => {
           setCurrenPasswordValue("");
           setCurrenPasswordError('');
           // Пароль успешно изменен!
-          setSuccessMessage('Password changed successfully!');
+          setSuccessMessage(t("myAccount.changePasswordPage.successMessage"));
           dispatch(auth());
         })
         .catch((error) => {
@@ -100,13 +100,13 @@ export const ChangePasswordForm = ({t, userInfo}) => {
             setPasswordError(error.response.data.extra_error_info.message);
           } else {
             //
-            setCurrenPasswordError('Wrong current password, please try again.');
+            setCurrenPasswordError(t("myAccount.changePasswordPage.wrongCurrentPassword"));
           }
         })
 
     } else {
       //Пароль не совпадает!
-      setPasswordConfirmError("Password does not match!");
+      setPasswordConfirmError(t("myAccount.changePasswordPage.passwordNotMatch"));
     }
 
   }

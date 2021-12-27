@@ -9,10 +9,11 @@ export const ButtonsBlock = ({t}) => {
       <button
         type={"submit"}
         form={'changePasswordForm'}
-        className={styles.submitButton}>
-        {'Update'}
+        className={styles.submitButton}
+      >
+        {t("myAccount.changePasswordPage.updateButton")}
       </button>
-      <Link href={'/accounts/profile-info'}><a>Cancel</a></Link>
+      <Link href={'/accounts/profile-info'}><a>{t("myAccount.changePasswordPage.cancelButton")}</a></Link>
     </div>
   )
 }

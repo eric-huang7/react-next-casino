@@ -5,7 +5,7 @@ export const ConfirmPasswordBlock = ({t, confirmPasswordInputHandler, passwordCo
 
   return (
     <div className={styles.passwordConfirmWrapper}>
-      <label htmlFor="passwordConfirm">Password confirmation<abbr title="required">*</abbr></label>
+      <label htmlFor="passwordConfirm">{t("myAccount.changePasswordPage.passwordConfirmation")}<abbr title="required">*</abbr></label>
       <div className={styles.passwordInnerWrpapper}>
         <input onChange={(e) => confirmPasswordInputHandler(e.target.value)} type="password" id={"passwordConfirm"} value={passwordConfirmValue}/>
         <p className={`${styles.passwordConfirmText} ${styles.errorMessage}`}>{passwordConfirmError}</p>
