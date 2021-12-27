@@ -17,6 +17,10 @@
   padding: 0 10px 0 0;
 }
 
+.secondTextBlock {
+  padding-bottom: 46px;
+}
+
 .textList {
   list-style-type: none;
   margin: 0;
@@ -35,6 +39,8 @@
     content: '';
     display: block;
 
+    flex-shrink: 0;
+
     margin-right: 5px;
 
     width: 5px;
@@ -47,7 +53,6 @@
 
 
 .uploadDocumentsContainer {
-  margin-top: 46px;
   margin-bottom: 24px;
 }
 
@@ -120,6 +125,10 @@
 
   margin-bottom: 30px;
 
+  position: relative;
+
+  z-index: 2;
+
   & label {
     display: block;
 
@@ -131,12 +140,27 @@
   }
 
   & textarea {
-    width: 402px;
+    max-width: 402px;
+    width: 100%;
     height: 144px;
     border-radius: 5px;
     background-color: #eeeeee;
     border: 1px solid #686565;
+
+    z-index: 2;
   }
+}
+
+.divider {
+  position: absolute;
+  top: 80px;
+
+  width: 100%;
+  height: 1px;
+
+  z-index: 1;
+
+  background-color: #e1e1e1;
 }
 
 .submitButton {
@@ -160,4 +184,19 @@
 
   margin-left: 140px;
   margin-bottom: 60px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .mainContainer {
+    padding: 0 20px;
+  }
+
+  .secondTextBlock {
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .divider {
+    display: none;
+  }
 }

@@ -9,7 +9,7 @@ import {UploadDocumentsBlock} from "./DocumentsComponents/UploadDocumentsBlock";
 export const DocumentsPage = ({t}) => {
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <Heading t={t} heading={"myAccount.pageHeadings.documents"}/>
       <FirstTextBlock t={t} />
       <SecondTextBlock t={t} />

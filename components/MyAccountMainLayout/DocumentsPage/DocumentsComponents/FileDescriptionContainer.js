@@ -8,6 +8,7 @@ export const FileDescriptionContainer = ({t}) => {
     <div className={styles.descriptionContainer}>
       <label htmlFor="fileDescriptionField">Description</label>
       <textarea id={"fileDescriptionField"} />
+      <div className={styles.divider}></div>
     </div>
   )
 }
