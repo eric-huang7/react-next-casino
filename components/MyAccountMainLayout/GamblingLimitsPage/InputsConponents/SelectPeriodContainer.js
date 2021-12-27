@@ -13,7 +13,6 @@ export const SelectPeriodContainer = ({t, selfExclusionExpiry, selfExclusionExpi
         value={selfExclusionExpiry}
         onChange={(e) => selfExclusionExpiryHandler(e.target.value)}
       >
-        <option value={undefined}>{null}</option>
         <option value={86400000}>{t("myAccount.selfExclusionPage.24Hours")}</option>
         <option value={604800000}>{t("myAccount.selfExclusionPage.7Days")}</option>
         <option value={1209600000}>{t("myAccount.selfExclusionPage.14Days")}</option>

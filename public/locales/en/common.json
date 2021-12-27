@@ -778,6 +778,9 @@
       "saveButton": "Save",
       "cancelButton": "Cancel",
       "confirmationText": "Are you sure you want to lock your account? Your account will be locked for selected period. You will not be able to log in to your account and perform any other actions."
+    },
+    "documentsPage": {
+
     }
 
   }

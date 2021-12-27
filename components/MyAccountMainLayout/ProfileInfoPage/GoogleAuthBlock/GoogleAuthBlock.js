@@ -2,12 +2,20 @@ import styles from '../../../../styles/MyAccount/UserInfoPage/GoogleAuth.module.
 import Link from "next/link";
 import {useDispatch} from "react-redux";
 import {auth} from "../../../../redux/actions/userData";
+import {useRouter} from "next/router";
 
 export const GoogleAuthBlock = ({t}) => {
+  const router = useRouter();
   const dispatch = useDispatch();
 
-  const googleAuthClickHandler = () => {
-    dispatch(auth());
+  const googleAuthClickHandler = (e) => {
+    e.preventDefault();
+    dispatch(auth()).then((data) => {
+      router.push('/accounts/two_factor');
+    }).catch((e) => {
+      console.log(e, 'error')
+    })
+
   }
 
 
@@ -17,7 +25,7 @@ export const GoogleAuthBlock = ({t}) => {
 
       <Link href={'/accounts/two_factor'}>
         <a
-          onClick={() => googleAuthClickHandler()}
+          onClick={(e) => googleAuthClickHandler(e)}
           className={styles.googleAuthLink}
         >
           {t("myAccount.profilePage.googleAuth.link")}

@@ -178,7 +178,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         inputId={'nameInput'}
         value={fullName}
         valueHandler={fullNameInputHandler}
-        disableEdit={userInfo.full_name ? true : false}
+        disableEdit={false}
       />
       <InputContainer
         t={t}
