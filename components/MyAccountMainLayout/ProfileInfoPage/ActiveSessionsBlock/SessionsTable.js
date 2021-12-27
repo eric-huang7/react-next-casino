@@ -5,6 +5,8 @@ import {TableRow} from "./TableRow";
 
 export const SessionsTable = ({t, sessionsInfo, closeSessionHandler}) => {
 
+  console.log(sessionsInfo, '<<<<<<<<<<<<<<<<<<<<<<<<,')
+
   return (
     <div className={styles.sessionsTableWrapper}>
       <table className={styles.sessionsTable}>
@@ -20,7 +22,7 @@ export const SessionsTable = ({t, sessionsInfo, closeSessionHandler}) => {
                 key={`session ${session.id}`}
                 t={t}
                 sessionData={session}
-                currentSession={sessionsInfo.user.user.last_login_time}
+                currentSession={sessionsInfo.userActiveSessions.current ? sessionsInfo.userActiveSessions.current : sessionsInfo.user.user.last_successful_login_id}
               />
             )
           })

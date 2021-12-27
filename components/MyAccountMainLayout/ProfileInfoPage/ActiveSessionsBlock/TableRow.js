@@ -6,13 +6,12 @@ import {useRouter} from "next/router";
 export const TableRow = ({t, sessionData, currentSession, closeSessionHandler}) => {
   const router = useRouter();
 
-  // console.log(sessionData, currentSession, 'sseesssssiiisssoonn')
 
   let date = dateFormatter(sessionData.time_created, router.locale);
   let ip = sessionData.ip_address.replace("::ffff:", "");
   let country = sessionData.ip_country;
   let device = sessionData.device;
-  let isCurrent = currentSession === sessionData.time_created;
+  let isCurrent = currentSession === sessionData.id;
 
   return (
     <tr>
