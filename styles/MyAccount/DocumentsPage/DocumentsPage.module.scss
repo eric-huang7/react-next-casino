@@ -1,0 +1,45 @@
+
+.textListHeading{
+  margin-left: 15px;
+
+  font-size: 15px;
+  color: #595656;
+  font-family: "Verdana", Arial, sans-serif;
+
+  padding: 0 10px 0 0;
+}
+
+.secondListTextBlock {
+  font-size: 15px;
+  color: #595656;
+  font-family: "Verdana", Arial, sans-serif;
+
+  padding: 0 10px 0 0;
+}
+
+.textList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 10px 0 5px;
+
+  font-size: 15px;
+  color: #595656;
+  font-family: "Verdana", Arial, sans-serif;
+
+  & li {
+    display: flex;
+    align-items: center;
+  }
+  & li:before {
+    content: '';
+    display: block;
+
+    margin-right: 5px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+    border: 2px solid #ff0000;
+  }
+}

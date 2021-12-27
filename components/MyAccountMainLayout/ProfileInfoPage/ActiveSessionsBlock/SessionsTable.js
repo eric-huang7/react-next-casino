@@ -5,8 +5,6 @@ import {TableRow} from "./TableRow";
 
 export const SessionsTable = ({t, sessionsInfo, closeSessionHandler}) => {
 
-  console.log(sessionsInfo, '<<<<<<<<<<<<<<<<<<<<<<<<,')
-
   return (
     <div className={styles.sessionsTableWrapper}>
       <table className={styles.sessionsTable}>
