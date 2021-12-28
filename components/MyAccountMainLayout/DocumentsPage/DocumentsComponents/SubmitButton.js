@@ -1,7 +1,7 @@
 import styles from "../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss";
 
 
-export const SubmitButton = ({t}) => {
+export const SubmitButton = ({t, submitHandler}) => {
 
 
   return (

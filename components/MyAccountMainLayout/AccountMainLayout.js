@@ -6,7 +6,7 @@ import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {
-  auth, getActiveUserSessions, getClosedUserSessions, getQrAuth,
+  auth, getActiveUserSessions, getClosedUserSessions, getDocuments, getQrAuth,
   getUserActivePendingBonuses,
   getUserBets,
   getUserBonuses,
@@ -45,7 +45,6 @@ export const AccountMainLayout = ({t, children}) => {
   }, [userInfo.userAuthLoading, userInfo.isAuthenticated]);
 
 
-
   useEffect(() => {
 
     if (userInfo.isAuthenticated) {
@@ -75,6 +74,10 @@ export const AccountMainLayout = ({t, children}) => {
       if (!currency.currency) {
         dispatch(getCurrency());
       }
+      if (!userInfo.userDocuments) {
+        dispatch(getDocuments());
+      }
+
     }
 
     // console.log('effect fetcher', userInfo)
