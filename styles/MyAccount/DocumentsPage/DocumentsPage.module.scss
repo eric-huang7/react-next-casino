@@ -91,6 +91,8 @@
     align-items: center;
     justify-content: center;
 
+    cursor: pointer;
+
     & .labelText {
       font-size: 15px;
       letter-spacing: 0px;
@@ -184,6 +186,8 @@
 
   margin-left: 140px;
   margin-bottom: 60px;
+
+  cursor: pointer;
 }
 
 
@@ -225,104 +229,157 @@
     }
   }
 
-  & .documentDescriptionContainer {
+  & .documentChangingContainer {
 
-    & .descriptionTime {
-      margin: 0;
+    & .documentDescriptionContainer {
 
-      font-size: 13px;
-      color: #595656;
-      font-family: "Verdana", Arial, sans-serif;
-    }
+      & .descriptionTime {
+        margin: 0;
 
-    & .descriptionText {
-      margin-top: 30px;
-      margin-bottom: 0px;
+        font-size: 13px;
+        color: #595656;
+        font-family: "Verdana", Arial, sans-serif;
+      }
 
-      font-size: 15px;
-      color: #313131;
-      font-family: "Verdana", Arial, sans-serif;
-    }
-    & .editDescriptionButton {
-      width: fit-content;
-      height: 34px;
+      & .descriptionText {
+        margin-top: 30px;
+        margin-bottom: 0px;
 
-      border-radius: 17px;
-      border: none;
+        font-size: 15px;
+        color: #313131;
+        font-family: "Verdana", Arial, sans-serif;
+      }
+      & .editDescriptionButton {
+        width: fit-content;
+        height: 34px;
 
-      background-color: transparent;
+        border-radius: 17px;
+        border: none;
 
-
-      margin-left: 15px;
-      margin-right: 10px;
+        background-color: transparent;
 
 
-      font-size: 15px;
-      letter-spacing: 0px;
-      color: #ff9900;
-      font-family: "Verdana", Arial, sans-serif;
+        margin-left: 15px;
+        margin-right: 10px;
 
-      cursor: pointer;
 
-      position: relative;
-    }
+        font-size: 15px;
+        letter-spacing: 0px;
+        color: #ff9900;
+        font-family: "Verdana", Arial, sans-serif;
 
-    & .editDescriptionButton:before {
-      position: absolute;
-      top: 8px;
-      left: -14px;
+        cursor: pointer;
 
-      width: 15px;
-      height: 15px;
+        position: relative;
+      }
 
-      content: '';
-
-      display: block;
-
-      background-image: url("/assets/img/myAccount/edit.svg");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-
-    & .removeFileButton {
-      width: fit-content;
-      height: 34px;
-
-      margin-left: 12px;
-
-      border-radius: 17px;
-      border: none;
-
-      background-color: transparent;
-
-      font-size: 15px;
-      letter-spacing: 0px;
-      color: #ff0000;
-      font-family: "Verdana", Arial, sans-serif;
-
-      cursor: pointer;
-
-      position: relative;
-
-      & .croseOne, .croseTwo {
+      & .editDescriptionButton:before {
         position: absolute;
-
-        top: 15px;
-        left: -12px;
+        top: 8px;
+        left: -14px;
 
         width: 15px;
-        height: 3px;
+        height: 15px;
+
+        content: '';
+
+        display: block;
+
+        background-image: url("/assets/img/myAccount/edit.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      & .removeFileButton {
+        width: fit-content;
+        height: 34px;
+
+        margin-left: 12px;
+
+        border-radius: 17px;
+        border: none;
+
+        background-color: transparent;
+
+        font-size: 15px;
+        letter-spacing: 0px;
+        color: #ff0000;
+        font-family: "Verdana", Arial, sans-serif;
+
+        cursor: pointer;
+
+        position: relative;
+
+        & .croseOne, .croseTwo {
+          position: absolute;
+
+          top: 15px;
+          left: -12px;
+
+          width: 15px;
+          height: 3px;
+
+          background-color: #ff0000;
+
+          transform: rotateZ(45deg);
+        }
+        & .croseTwo {
+          transform: rotateZ(-45deg);
+        }
+      }
+    }
+
+    & .documentChangeContainer {
+
+      & .changeDocumentDescription {
+        width: 100%;
+
+        min-height: 60px;
+
+        margin-bottom: 30px;
+      }
+
+      & .updateButton {
+        width: fit-content;
+
+
+        padding: 10px 10px;
+
+        margin-right: 20px;
 
         background-color: #ff0000;
 
-        transform: rotateZ(45deg);
+        border: none;
+        border-radius: 10px;
+        outline: none;
+
+        font-size: 15px;
+        letter-spacing: 0px;
+        color: #ffffff;
+        font-family: "Verdana", Arial, sans-serif;
+
+        cursor: pointer;
       }
-      & .croseTwo {
-        transform: rotateZ(-45deg);
+
+      & .cancelButton {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #ff0000;
+        font-family: "Verdana", Arial, sans-serif;
+
+        background-color: transparent;
+
+        border: none;
+        outline: none;
+
+        cursor: pointer;
       }
     }
+
   }
+
   & .statusContainer {
     display: flex;
     align-items: flex-start;
@@ -336,16 +393,27 @@
 
      font-size: 12px;
      letter-spacing: 0px;
-     color: #ff0000;
+     color: #ffffff;
      font-family: "Verdana", Arial, sans-serif;
 
-     border: 1px solid #cc9342;
+     background-color: #ff0000;
+
+     border: 1px solid #7c0606;
      border-radius: 5px;
    }
     & p.pending {
       color: #845c24;
 
       background-color: #f2bd59;
+
+      border: 1px solid #cc9342;
+    }
+    & p.success {
+      color: #ffffff;
+
+      background-color: #2e7907;
+
+      border: 1px solid #184905;
     }
   }
 }

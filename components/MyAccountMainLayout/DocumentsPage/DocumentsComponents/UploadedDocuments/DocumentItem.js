@@ -1,29 +1,34 @@
 import styles from "../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss";
+import {ChangeDescriptionContainer} from "./ChangeDescriptionContainer";
+import {StatusContainer} from "./StatusContainer";
+import {DocumentDescriptionContainer} from "./DocumentDescriptionContainer";
+import {DocumentNameContainer} from "./DocumentNameContainer";
 
 
-export const DocumentItem = ({t}) => {
+export const DocumentItem = ({t, document}) => {
 
 
   return (
     <div className={styles.documentItemWrapper}>
-      <div  className={styles.documentNameContainer}>
-        <p>
-          pic.jpg
-        </p>
+      <DocumentNameContainer
+        t={t}
+        name={document.name}
+      />
+      <div className={styles.documentChangingContainer}>
+        <DocumentDescriptionContainer
+          t={t}
+          description={document.description}
+          time={document.time_created}
+        />
+        <ChangeDescriptionContainer
+          t={t}
+          document={document}
+        />
       </div>
-      <div className={styles.documentDescriptionContainer}>
-        <p className={styles.descriptionTime}>Added at: December 27, 2021 13:44</p>
-        <p className={styles.descriptionText}>Some description</p>
-        <button className={styles.editDescriptionButton}>Edit Description</button>
-        <button className={styles.removeFileButton}>
-          <span className={styles.croseOne}></span>
-          <span className={styles.croseTwo}></span>
-          Remove
-        </button>
-      </div>
-      <div  className={styles.statusContainer}>
-        <p className={`${styles.pending}`}>Status</p>
-      </div>
+      <StatusContainer
+        t={t}
+        status={document.status}
+      />
     </div>
   )
 }
