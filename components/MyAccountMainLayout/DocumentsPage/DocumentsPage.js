@@ -11,7 +11,7 @@ import {UploadedDocumentsContainer} from "./DocumentsComponents/UploadedDocument
 export const DocumentsPage = ({t}) => {
   const documentsData = useSelector((store) => store.authInfo);
 
-  console.log(documentsData, '<<<<<<,')
+  // console.log(documentsData,  '<<<<<<,');
 
   if (documentsData.loadingDocuments) {
     return (
@@ -30,10 +30,10 @@ export const DocumentsPage = ({t}) => {
         <FirstTextBlock t={t}/>
         <SecondTextBlock t={t}/>
         {
-          documentsData.userDocuments.results.length > 0
+          documentsData.userDocuments.results.filter((el) => !el.time_removed).length > 0
             ?
             <UploadedDocumentsContainer
-              documentsData={documentsData.userDocuments.results}
+              documentsData={documentsData.userDocuments.results.filter((el) => !el.time_removed)}
               t={t}
             />
             :

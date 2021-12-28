@@ -84,7 +84,42 @@ export const getDocuments = () => async dispatch => {
   } catch (e) {
     console.log('SOME ERROR IN GET DOCUMENT', e.response);
   }
+}
 
+export const deleteDocuments = (docId) => async dispatch => {
+  const config = {
+    params: {
+      site_id: siteID
+    }
+  }
+
+  try {
+    const res = await axios.delete(document_url + `/${docId}`);
+
+    console.log(res, 'delete success')
+    dispatch(getDocuments())
+  } catch (e) {
+    console.log('SOME ERROR IN GET DOCUMENT', e.response);
+  }
+}
+
+export const changeDocuments = (documentData) => async dispatch => {
+  const config = {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  const body = JSON.stringify(documentData);
+
+  try {
+    const res = await axios.patch(document_url, body, config);
+
+    console.log(res, 'change document success');
+    dispatch(getDocuments());
+  } catch (e) {
+    console.log('SOME ERROR IN change DOCUMENT', e.response);
+  }
 }
 
 

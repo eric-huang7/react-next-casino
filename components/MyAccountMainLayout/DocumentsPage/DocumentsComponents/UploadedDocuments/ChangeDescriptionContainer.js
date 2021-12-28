@@ -1,7 +1,7 @@
 import styles from "../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss";
 
 
-export const ChangeDescriptionContainer = ({t, document, setShowChangeForm, showChangeForm}) => {
+export const ChangeDescriptionContainer = ({t, showChangeFormHandler, document, showChangeForm, newDescription, newDescriptionInputHandler, updateDocumentHandler}) => {
 
 
 
@@ -11,12 +11,20 @@ export const ChangeDescriptionContainer = ({t, document, setShowChangeForm, show
             <textarea
               name={`${'changeDocumentDescription'}${document.id}`}
               className={styles.changeDocumentDescription}
+              value={newDescription}
+              onChange={(e) => newDescriptionInputHandler(e.target.value)}
             />
       </form>
-      <button type={"submit"} className={styles.updateButton}>Update Document</button>
+      <button
+        type={"submit"}
+        className={styles.updateButton}
+        onClick={() => updateDocumentHandler(document)}
+      >
+        Update Document
+      </button>
       <button
         className={styles.cancelButton}
-        onClick={() => setShowChangeForm(false)}
+        onClick={() => showChangeFormHandler(false)}
       >Cancel</button>
     </div>
   )
