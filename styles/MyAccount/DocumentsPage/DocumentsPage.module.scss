@@ -231,7 +231,21 @@
 
   & .documentChangingContainer {
 
+    background-color: inherit;
+
     & .documentDescriptionContainer {
+
+      max-height: 300px;
+
+      -webkit-transition:max-height 0.4s ease-in-out;
+      -moz-transition:max-height 0.4s ease-in-out;
+      transition:max-height 0.4s ease-in-out;
+
+      overflow: hidden;
+
+      z-index: 1;
+
+      position: relative;
 
       & .descriptionTime {
         margin: 0;
@@ -242,6 +256,8 @@
       }
 
       & .descriptionText {
+        transition: visibility 0.2s ease-in-out;
+
         margin-top: 30px;
         margin-bottom: 0px;
 
@@ -250,13 +266,16 @@
         font-family: "Verdana", Arial, sans-serif;
       }
       & .editDescriptionButton {
-        width: fit-content;
-        height: 34px;
+        transition: visibility 0.2s ease-in-out;
 
-        border-radius: 17px;
+        width: fit-content;
+        //height: 34px;
+
         border: none;
 
         background-color: transparent;
+
+        border-bottom: 1px solid transparent;
 
 
         margin-left: 15px;
@@ -273,9 +292,15 @@
         position: relative;
       }
 
+      & .editDescriptionButton:hover {
+        border-bottom: 1px solid #ff9900;
+      }
+
       & .editDescriptionButton:before {
+        transition: visibility 0.2s ease-in-out;
+
         position: absolute;
-        top: 8px;
+        top: 2px;
         left: -14px;
 
         width: 15px;
@@ -292,13 +317,15 @@
       }
 
       & .removeFileButton {
+        transition: visibility 0.2s ease-in-out;
+
         width: fit-content;
-        height: 34px;
 
         margin-left: 12px;
 
-        border-radius: 17px;
         border: none;
+
+        border-bottom: 1px solid transparent;
 
         background-color: transparent;
 
@@ -312,9 +339,11 @@
         position: relative;
 
         & .croseOne, .croseTwo {
+          transition: visibility 0.2s ease-in-out;
+
           position: absolute;
 
-          top: 15px;
+          top: 10px;
           left: -12px;
 
           width: 15px;
@@ -328,9 +357,52 @@
           transform: rotateZ(-45deg);
         }
       }
+      & .removeFileButton:hover {
+        border-bottom: 1px solid #ff0000;
+      }
+    }
+
+    & .documentDescriptionContainer.hideDescription {
+      //display: none;
+      overflow: hidden;
+      max-height: 40px;
+
+      & .descriptionText {
+        visibility: hidden;
+      }
+      & .editDescriptionButton {
+        visibility: hidden;
+      }
+
+      & .editDescriptionButton:before {
+        visibility: hidden;
+      }
+
+      & .removeFileButton {
+        visibility: hidden;
+
+        & .croseOne, .croseTwo {
+          visibility: hidden;
+        }
+      }
     }
 
     & .documentChangeContainer {
+
+      background-color: inherit;
+
+      max-height: 300px;
+
+      //display: block;
+      overflow: hidden;
+
+      -webkit-transition:max-height 0.4s ease-in-out;
+      -moz-transition:max-height 0.4s ease-in-out;
+      transition:max-height 0.4s ease-in-out;
+
+      z-index: 2;
+
+      position: relative;
 
       & .changeDocumentDescription {
         width: 100%;
@@ -362,6 +434,10 @@
         cursor: pointer;
       }
 
+      & .updateButton:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+
       & .cancelButton {
         font-size: 15px;
         font-weight: 600;
@@ -376,6 +452,12 @@
 
         cursor: pointer;
       }
+    }
+
+    & .documentChangeContainer.hideForm {
+      //display: none;
+      overflow: hidden;
+      max-height: 0;
     }
 
   }
@@ -418,7 +500,18 @@
   }
 }
 
+.errorMessage {
+  display: block;
 
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #ff0000;
+  font-family: "Verdana", Arial, sans-serif;
+
+  margin-left: 140px;
+
+  margin-bottom: 20px;
+}
 
 @media screen and (max-width: 600px) {
 
@@ -444,7 +537,7 @@
 
       margin-bottom: 15px;
     }
-    & .documentDescriptionContainer {
+    & .documentChangingContainer {
       order: 3;
     }
     & .statusContainer {

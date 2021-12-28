@@ -12,6 +12,7 @@ export const FileDescriptionContainer = ({t, descriptionInputHandler, descriptio
         value={description}
         onChange={(e) => descriptionInputHandler(e.target.value)}
       />
+
       <div className={styles.divider}></div>
     </div>
   )

@@ -12,6 +12,7 @@ import {useDispatch} from "react-redux";
 export const UploadDocumentsBlock = ({t}) => {
   const dispatch = useDispatch();
   const [description, setDescription] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const descriptionInputHandler = (value) => {
     setDescription(value);
@@ -22,19 +23,31 @@ export const UploadDocumentsBlock = ({t}) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("description", description);
-    formData.append("type", "1");
+    if (selectedFile) {
+      if (description) {
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        formData.append("description", description);
+        formData.append("type", "1");
 
-    axios.post(document_url, formData)
-      .then((res) => {
-        console.log(res, 'file Upload');
-        dispatch(getDocuments());
-      })
-      .catch((e) => {
-        console.log(e.response, 'Some error when upload file!');
-      })
+        axios.post(document_url, formData)
+          .then((res) => {
+            console.log(res, 'file Upload');
+            setDescriptionError("")
+            setDescription('');
+            setSelectedFile("");
+            dispatch(getDocuments());
+          })
+          .catch((e) => {
+            setDescriptionError("File upload error. Please try again.");
+            console.log(e.response, 'Some error when upload file!');
+          })
+      } else {
+        setDescriptionError("Describe the file you are sending.");
+      }
+    } else {
+      setDescriptionError("Please select and describe the file you are sending.");
+    }
   }
 
   return (
@@ -53,8 +66,11 @@ export const UploadDocumentsBlock = ({t}) => {
           t={t}
           descriptionInputHandler={descriptionInputHandler}
           description={description}
+          descriptionError={descriptionError}
         />
+        <span className={styles.errorMessage}>{descriptionError}</span>
       </form>
+
       <SubmitButton
         submitHandler={submitHandler}
         t={t}
