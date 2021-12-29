@@ -1,8 +1,9 @@
 import styles from '../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss';
 import Link from "next/link";
+import {LinkItem} from "./LinkItem";
 
 
-export const LinksBlock = ({t}) => {
+export const LinksBlock = ({t, balanceData, currencyData, activeLink}) => {
 
 
   return (
@@ -12,15 +13,18 @@ export const LinksBlock = ({t}) => {
       </div>
       <div className={styles.linksContainer}>
         <ul className={styles.linksList}>
-          <li className={`${styles.linkItem} ${styles.activeLink}`}>
-            <Link href={"#"}><a>BTC</a></Link>
-          </li>
-          <li className={`${styles.linkItem}`}>
-            <Link href={"#"}><a>LTC</a></Link>
-          </li>
-          <li className={`${styles.linkItem}`}>
-            <Link href={"#"}><a>USD</a></Link>
-          </li>
+          {
+            balanceData.map((el) => {
+              return (
+                <LinkItem
+                  key={`${el.id} balance id`}
+                  balanceData={el}
+                  currencyData={currencyData}
+                  activeLink={activeLink}
+                />
+            )
+          })
+          }
         </ul>
       </div>
     </div>

@@ -3,13 +3,16 @@ import {DepositButton} from "./DepositButton";
 import {useDispatch} from "react-redux";
 import {patchUserActiveCurrency, userBalance} from "../../../redux/actions/userData";
 
+import Link from "next/link";
+
 
 export const TableRow = ({t, balanceData, currencyData}) => {
   const dispatch = useDispatch();
 
-  let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id)) ;
+  let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id));
   let amount = Number(balanceData.current_balance);
   let cashOut = Number(balanceData.cash_amount);
+
 
   const chooseClickHandler = () => {
     let userData = {
@@ -48,7 +51,12 @@ export const TableRow = ({t, balanceData, currencyData}) => {
       <td className={styles.tableActions}>
         <div>
           <DepositButton currency={currency} t={t}/>
-          <button className={styles.cashoutLink}>{t("myAccount.balance.buttons.cashout")}</button>
+          <Link href={`/accounts/cashout/${currency.abbreviation}`}
+          >
+            <a className={styles.cashoutLink}>
+              {t("myAccount.balance.buttons.cashout")}
+            </a>
+          </Link>
         </div>
       </td>
     </tr>

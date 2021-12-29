@@ -8,18 +8,16 @@ import {CashoutPage} from "../../../components/MyAccountMainLayout/CashoutPage/C
 const Cashout = (props) => {
   const { t } = useTranslation('common');
 
-  console.log(props, '<<<<< cashout');
 
   return (
     <AccountMainLayout t={t}>
-      <CashoutPage t={t} />
+      <CashoutPage t={t} activeLink={props.pageInfo.query.currency}/>
     </AccountMainLayout>
   )
 }
 
 
 export const getServerSideProps = async (context) => {
-  console.log(context);
 
   return ({
     props: {
