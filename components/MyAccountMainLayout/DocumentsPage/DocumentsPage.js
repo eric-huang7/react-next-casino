@@ -11,7 +11,6 @@ import {UploadedDocumentsContainer} from "./DocumentsComponents/UploadedDocument
 export const DocumentsPage = ({t}) => {
   const documentsData = useSelector((store) => store.authInfo);
 
-  // console.log(documentsData,  '<<<<<<,');
 
   if (documentsData.loadingDocuments) {
     return (

@@ -487,7 +487,8 @@
       "changePassword": "Change Password",
       "googleAuth" : "Google Authenticator",
       "editProfile" : "Edit profile",
-      "gamblingLimits" : "Set Self-Exclusion Period"
+      "gamblingLimits" : "Set Self-Exclusion Period",
+      "cashoutPage": "Cashout"
     },
     "balance": {
       "table": {
@@ -781,7 +782,18 @@
       "confirmationText": "Are you sure you want to lock your account? Your account will be locked for selected period. You will not be able to log in to your account and perform any other actions."
     },
     "documentsPage": {
-
+      "firstTextBlock": {
+        "textListHeading": "Documents necessary to speed up your withdrawal:",
+        "proofIdentity": "Proof of Identity: Passport, Driving License or official Government issued ID card. More",
+        "proofAddress": "Proof of Address: Utility bill, phone bill or bank statement displaying your name and address in full. More",
+        "proofDeposit": "Proof of Deposit: Screenshot or photo from online bank, bank statement, Skrill page, etc. showing the deposit. More"
+      },
+      "secondTextBlock": {
+        "textHeading": "You will also have to submit documents to verify your Deposit and/or Withdrawal methods depending on the chosen method. Please check below information on the methods you have used to find out what you need to send:",
+        "netellerOrSkrill": "If using Neteller or Skrill: Screenshot of profile page on Neteller or Skrill showing profile with postal address visible.",
+        "creditCard": "If using Credit Card: Front and Back of card used to deposit, with digits 8-12 and CVC/CVV covered. More",
+        "bankWithdrawal": "If using Bank withdrawal: Bank statement dated within the last 90 days showing full name and address. More"
+      }
     }
 
   }
