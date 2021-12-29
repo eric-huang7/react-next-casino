@@ -5,7 +5,7 @@ import {IndicatorContainer} from "../IndicatorContainer";
 import {FormContainer} from "./FormContainer";
 
 
-export const BitcoinPaymentItem = ({t, isActive}) => {
+export const LitecoinPaymentItem = ({t, isActive}) => {
 
 
   return (

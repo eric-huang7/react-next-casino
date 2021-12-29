@@ -38,7 +38,12 @@ export const CashoutPage = ({t, activeLink}) => {
           balanceData={balanceInfo.balance.balances}
           t={t}
         />
-        <SelectPaymentContainer t={t} />
+        <SelectPaymentContainer
+          t={t}
+          typeOfCurrency={typeOfCurrency}
+          currencyData={currency.currency.results}
+          balanceData={balanceInfo.balance.balances}
+        />
         {
           typeOfCurrency.type === 3 ? <TryBitcoinContainer t={t}/> : <></>
         }
