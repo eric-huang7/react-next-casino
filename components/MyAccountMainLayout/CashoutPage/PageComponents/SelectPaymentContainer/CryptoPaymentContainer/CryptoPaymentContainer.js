@@ -3,12 +3,18 @@ import {ImageContainer} from "./ImageContainer";
 import {PaymentInfoContainer} from "../PaymentInfoContainer";
 import {IndicatorContainer} from "../IndicatorContainer";
 import {FormContainer} from "./FormContainer";
+import {useEffect} from "react";
+import {useRouter} from "next/router";
 
 
-export const CryptoPaymentItem = ({t, isActive, balanceData, typeOfCurrency, activateItemClickHandler}) => {
+
+export const CryptoPaymentItem = ({t, isActive, balanceData, chosenPayment, typeOfCurrency, activateItemClickHandler, userInfo}) => {
+  // console.log(balanceData, "balance data");
+
+
 
   return (
-    <li onClick={(e) => activateItemClickHandler(e)} className={`${styles.methodItem} ${isActive ? styles.activeMethodItem : ""}`}>
+    <li onClick={() => activateItemClickHandler(isActive)} className={`${styles.methodItem} ${isActive.isActive ? styles.activeMethodItem : ""}`}>
       <div className={styles.paymentItemMainContainer}>
         <ImageContainer
           typeOfCurrency={typeOfCurrency.abbreviation}
@@ -17,11 +23,21 @@ export const CryptoPaymentItem = ({t, isActive, balanceData, typeOfCurrency, act
         <PaymentInfoContainer
           t={t}
           typeOfCurrency={typeOfCurrency}
+          chosenPayment={chosenPayment}
         />
         <IndicatorContainer />
       </div>
       {
-        isActive ? <FormContainer t={t} typeOfCurrency={typeOfCurrency} /> : <></>
+        isActive.isActive
+          ?
+          <FormContainer
+          t={t}
+          typeOfCurrency={typeOfCurrency}
+          chosenPayment={chosenPayment}
+          userInfo={userInfo}
+          />
+          :
+          <></>
       }
     </li>
   )

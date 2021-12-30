@@ -176,7 +176,7 @@
             justify-content: right;
 
             //padding-right: 60px;
-
+            min-width: 100px;
             width: 100%;
 
             & p {
@@ -293,6 +293,20 @@
             font-family: "Verdana", Arial, sans-serif;
           }
 
+          & .errorMessage, .successMessage {
+            font-size: 15px;
+            letter-spacing: 0px;
+            color: #ff0000;
+            font-family: "Verdana", Arial, sans-serif;
+
+            display: block;
+
+            margin-bottom: 10px;
+          }
+          & .successMessage {
+            color: #43ab00;
+          }
+
         }
 
       }
@@ -377,3 +391,4 @@
     }
   }
 }
+

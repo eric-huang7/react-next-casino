@@ -5,18 +5,18 @@ import {IndicatorContainer} from "../IndicatorContainer";
 import {FormContainer} from "./FormContainer";
 
 
-export const CreditCardPayment = ({t, isActive, typeOfCurrency, activateItemClickHandler}) => {
+export const CreditCardPayment = ({t, isActive, typeOfCurrency, activateItemClickHandler, userInfo}) => {
 
 
   return (
-    <li onClick={(e) => activateItemClickHandler(e)} className={`${styles.methodItem} ${isActive ? styles.activeMethodItem : ""}`}>
+    <li onClick={() => activateItemClickHandler(isActive)} className={`${styles.methodItem} ${isActive.isActive ? styles.activeMethodItem : ""}`}>
       <div className={styles.paymentItemMainContainer}>
         <ImageContainer t={t} />
-        <PaymentInfoContainer t={t} typeOfCurrency={typeOfCurrency.abbreviation}/>
+        <PaymentInfoContainer t={t} typeOfCurrency={typeOfCurrency}/>
         <IndicatorContainer />
       </div>
       {
-        isActive ? <FormContainer t={t} typeOfCurrency={typeOfCurrency} /> : <></>
+        isActive.isActive ? <FormContainer t={t} userInfo={userInfo} typeOfCurrency={typeOfCurrency} /> : <></>
       }
     </li>
   )

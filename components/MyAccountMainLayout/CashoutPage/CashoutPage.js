@@ -12,14 +12,15 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 export const CashoutPage = ({t, activeLink}) => {
   const balanceInfo = useSelector((store) => store.authInfo);
   const currency = useSelector((store) => store.getCurrency);
+  const data = useSelector((store) => store);
 
-
+  // console.log(data, "data")
 
   if (balanceInfo.balance && currency.currency) {
 
     let typeOfCurrency = currency.currency.results.find((el) => el.abbreviation === activeLink);
 
-    console.log(typeOfCurrency, '<<<currency type');
+    // console.log(typeOfCurrency, '<<<currency type');
     return (
       <div className={styles.mainContainer}>
         <Heading
@@ -43,6 +44,7 @@ export const CashoutPage = ({t, activeLink}) => {
           typeOfCurrency={typeOfCurrency}
           currencyData={currency.currency.results}
           balanceData={balanceInfo.balance.balances}
+          userInfo={balanceInfo.user.user}
         />
         {
           typeOfCurrency.type === 3 ? <TryBitcoinContainer t={t}/> : <></>

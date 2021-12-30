@@ -8,5 +8,9 @@ export const numberTransformer = (strNumber) => {
       break
     }
   }
-  return strNumber.slice(0, index);
+  let res = strNumber.slice(0, index);
+  if (res[res.length - 1] === '.') {
+    res = res + "00";
+  }
+  return res;
 }

@@ -2,9 +2,9 @@ import styles from "../../../../../styles/MyAccount/CashoutPage/CashoutPage.modu
 import {numberTransformer} from "../../../../../helpers/numberTransformer";
 
 
-export const PaymentInfoContainer = ({t, typeOfCurrency}) => {
+export const PaymentInfoContainer = ({t, typeOfCurrency, chosenPayment}) => {
 
-let min = numberTransformer(typeOfCurrency.withdrawMin);
+let min = numberTransformer(chosenPayment ? chosenPayment.withdrawMin : typeOfCurrency.withdrawMin);
 
   return (
     <div className={styles.paymentInfoContainer}>

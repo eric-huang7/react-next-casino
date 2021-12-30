@@ -73,6 +73,8 @@ export const post_credit_card_deposit_payment = 'http://t-gpb.slotsidol.com:7000
 
 export const get_user_payments_url = "http://t-gpb.slotsidol.com:7000/payments?ordering=timestamp-desc";
 
+export const post_withdraw_url = "http://t-gpb.slotsidol.com:7000/withdraw";
+
 // ######### BETS
 
 export const get_user_bets = 'http://t-gpb.slotsidol.com:7000/bets?quantity=50&ordering=time_created-DESC';
