@@ -782,17 +782,53 @@
       "confirmationText": "Are you sure you want to lock your account? Your account will be locked for selected period. You will not be able to log in to your account and perform any other actions."
     },
     "documentsPage": {
+      "more": "More",
       "firstTextBlock": {
         "textListHeading": "Documents necessary to speed up your withdrawal:",
-        "proofIdentity": "Proof of Identity: Passport, Driving License or official Government issued ID card. More",
-        "proofAddress": "Proof of Address: Utility bill, phone bill or bank statement displaying your name and address in full. More",
-        "proofDeposit": "Proof of Deposit: Screenshot or photo from online bank, bank statement, Skrill page, etc. showing the deposit. More"
+        "proofIdentity": "Proof of Identity: Passport, Driving License or official Government issued ID card.",
+        "proofIdentityInnerTextBlock": {
+          "text1": "Must be a Passport, Driving License or other official Government issued ID card",
+          "text2": "Both Front and Back of ID card must be received",
+          "text3": "Document must be in date and not expired",
+          "text4": "Document must be showing expiry date",
+          "text5": "Document must show your unaltered photo",
+          "text6": "Document must show your date of birth",
+          "text7": "Water marks on documents must be visible"
+        },
+        "proofAddress": "Proof of Address: Utility bill, phone bill or bank statement displaying your name and address in full.",
+        "proofAddressInnerTextBlock": {
+          "text1": "Must be either a utility bill, mobile phone bill or bank statement (copy of paper statement)",
+          "text2": "Must show your FULL address including any post/ zip codes",
+          "text3": "Must show your FULL name",
+          "text4": "Must display official logo of issuing company",
+          "text5": "Must be dated within the last 90 days",
+          "text6": "Must be able to see full document"
+        },
+        "proofDeposit": "Proof of Deposit: Screenshot or photo from online bank, bank statement, Skrill page, etc. showing the deposit.",
+        "proofDepositInnerTextBlock": {
+          "text1": "Must display the company name",
+          "text2": "Must display the amount paid"
+        }
       },
       "secondTextBlock": {
         "textHeading": "You will also have to submit documents to verify your Deposit and/or Withdrawal methods depending on the chosen method. Please check below information on the methods you have used to find out what you need to send:",
         "netellerOrSkrill": "If using Neteller or Skrill: Screenshot of profile page on Neteller or Skrill showing profile with postal address visible.",
-        "creditCard": "If using Credit Card: Front and Back of card used to deposit, with digits 8-12 and CVC/CVV covered. More",
-        "bankWithdrawal": "If using Bank withdrawal: Bank statement dated within the last 90 days showing full name and address. More",
+        "creditCard": "If using Credit Card: Front and Back of card used to deposit, with digits 8-12 and CVC/CVV covered.",
+        "creditCardInnerTextBlock": {
+          "text1": "Both Front and Back of card must be received",
+          "text2": "Cover the middle 6 digits of your credit card. The first 6 and last 4 digits must be visible",
+          "text3": "CVC/CVV number must be covered",
+          "text4": "Must correspond with credit card number used on casino",
+          "text5": "Picture must show whole card"
+        },
+        "bankWithdrawal": "If using Bank withdrawal: Bank statement dated within the last 90 days showing full name and address.",
+        "bankWithdrawalInnerTextBlock": {
+          "text1": "Must be dated within the last 90 days",
+          "text2": "Must show your full name and address (screenshots of online banking does not require the address to show)",
+          "text3": "Must show the full bank account number, and correspond with the bank account used on casino",
+          "text4": "Must show Bank Logo",
+          "text5": "Screenshots must show full page"
+        },
         "pleaseNote": "Please note that we do our best to verify your documents as soon as possible. With that being said, documents are normally verified upon you requesting a withdrawal."
       },
       "uploadedDocumentsBlock": {
