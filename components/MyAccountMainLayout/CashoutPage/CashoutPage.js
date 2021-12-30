@@ -20,7 +20,6 @@ export const CashoutPage = ({t, activeLink}) => {
 
     let typeOfCurrency = currency.currency.results.find((el) => el.abbreviation === activeLink);
 
-    // console.log(typeOfCurrency, '<<<currency type');
     return (
       <div className={styles.mainContainer}>
         <Heading
@@ -47,7 +46,7 @@ export const CashoutPage = ({t, activeLink}) => {
           userInfo={balanceInfo.user.user}
         />
         {
-          typeOfCurrency.type === 3 ? <TryBitcoinContainer t={t}/> : <></>
+          typeOfCurrency.type === 3 ? <TryBitcoinContainer currency={currency.currency.results.find((el) => el.abbreviation === "BTC")} t={t}/> : <></>
         }
 
       </div>

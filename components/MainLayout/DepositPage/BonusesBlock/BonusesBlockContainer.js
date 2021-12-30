@@ -2,8 +2,8 @@ import {BonusesBlock} from "./BonusesBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getActiveBonuses} from "../../../../redux/actions/getBonuses";
-import {bonusesFinder} from "../bonusesFinder";
-import {bonusesCalculator} from "../bonusesCalculator";
+import {bonusesFinder} from "../../../../helpers/bonusesFinder";
+import {bonusesCalculator} from "../../../../helpers/bonusesCalculator";
 import {BonusesDropdown} from "./BonusesDropdown";
 import {setUserBonus} from "../../../../redux/actions/setUserBonus";
 

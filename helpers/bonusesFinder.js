@@ -4,7 +4,6 @@ export const bonusesFinder = (offers, userCurrency) => {
   if (offers) {
     let needetBonuses = offers.filter((el) => {
       if (el.spec) {
-        console.log(el, "><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<as<<<<<")
         // console.log(JSON.parse(el.spec))
         let arrOfBonuses = [];
         try {

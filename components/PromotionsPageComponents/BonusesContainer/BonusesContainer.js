@@ -1,7 +1,7 @@
 import styles from '../../../styles/PromotionsPage/BonusesContainer.module.scss';
 import {TypeOneBonusContainer} from "./TypeOneBonusContainer/TypeOneBonusContainer";
 import {TypeTwoBonusContainer} from "./TypeTwoBonusContainer/TypeTwoBonusContainer";
-import {bonusesFinder} from "../../MainLayout/DepositPage/bonusesFinder";
+import {bonusesFinder} from "../../../helpers/bonusesFinder";
 import {useRouter} from "next/router";
 import {bonusesCalculator} from "./bonusesCalculator";
 

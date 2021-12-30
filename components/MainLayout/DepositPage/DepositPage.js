@@ -7,7 +7,7 @@ import {DepositPageStepper} from "./DepositPageStepper";
 import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {setUserBonus} from "../../../redux/actions/setUserBonus";
-import {bonusesFinder} from "./bonusesFinder";
+import {bonusesFinder} from "../../../helpers/bonusesFinder";
 
 
 
