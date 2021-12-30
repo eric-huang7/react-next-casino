@@ -6,7 +6,7 @@ export const FileDescriptionContainer = ({t, descriptionInputHandler, descriptio
 
   return (
     <div className={styles.descriptionContainer}>
-      <label htmlFor="fileDescriptionField">Description</label>
+      <label htmlFor="fileDescriptionField">{t("myAccount.documentsPage.uploadDocumentBlock.description")}</label>
       <textarea
         id={"fileDescriptionField"}
         value={description}

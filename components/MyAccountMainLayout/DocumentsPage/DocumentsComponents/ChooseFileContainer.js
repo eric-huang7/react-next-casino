@@ -7,17 +7,17 @@ export const ChooseFileContainer = ({t, fileInputHandler, selectedFile}) => {
 
   return (
     <div className={styles.chooseFileBlock}>
-      <label htmlFor="chooseFileInput">Attachment*</label>
+      <label htmlFor="chooseFileInput">{t("myAccount.documentsPage.uploadDocumentBlock.attachment")}</label>
       <label htmlFor="chooseFileInput" className={styles.chooseFileFakeInput}>
         {
           selectedFile
             ?
             <span className={styles.chosenFileName}>
-              Chosen file: {selectedFile.name}
+              {t("myAccount.documentsPage.uploadDocumentBlock.chosenFile")} {selectedFile.name}
             </span>
             :
             <span className={styles.labelText}>
-               Choose file
+               {t("myAccount.documentsPage.uploadDocumentBlock.chooseFile")}
             </span>
         }
       </label>

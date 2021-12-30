@@ -10,18 +10,18 @@ export const DocumentDescriptionContainer = ({t, document, showChangeFormHandler
 
   return (
     <div className={`${styles.documentDescriptionContainer} ${showChangeForm ? styles.hideDescription : ""}`}>
-      <p className={styles.descriptionTime}>{"Added at:"} {timeStr}</p>
+      <p className={styles.descriptionTime}>{t("myAccount.documentsPage.uploadedDocumentsBlock.addedAt")} {timeStr}</p>
       <p className={styles.descriptionText}>
         {document.description}
       </p>
-      <button className={styles.editDescriptionButton} onClick={() => showChangeFormHandler(true)}>{"Edit Description"}</button>
+      <button className={styles.editDescriptionButton} onClick={() => showChangeFormHandler(true)}>{t("myAccount.documentsPage.uploadedDocumentsBlock.editDescription")}</button>
       <button
         className={styles.removeFileButton}
         onClick={() => removeDocumentHandler(document)}
       >
         <span className={styles.croseOne}></span>
         <span className={styles.croseTwo}></span>
-        {"Remove"}
+        {t("myAccount.documentsPage.uploadedDocumentsBlock.remove")}
       </button>
     </div>
   )

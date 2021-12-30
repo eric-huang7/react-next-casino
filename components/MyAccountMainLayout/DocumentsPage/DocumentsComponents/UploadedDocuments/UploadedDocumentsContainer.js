@@ -4,8 +4,6 @@ import {DocumentItem} from "./DocumentItem";
 
 export const UploadedDocumentsContainer = ({t, documentsData}) => {
 
-  console.log(documentsData);
-
   return (
     <div className={styles.uploadedDocumentsContainerWrapper}>
       <div  className={styles.uploadedDocumentsContainer}>

@@ -39,20 +39,20 @@ export const UploadDocumentsBlock = ({t}) => {
             dispatch(getDocuments());
           })
           .catch((e) => {
-            setDescriptionError("File upload error. Please try again.");
+            setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload"));
             console.log(e.response, 'Some error when upload file!');
           })
       } else {
-        setDescriptionError("Describe the file you are sending.");
+        setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.describeFile"));
       }
     } else {
-      setDescriptionError("Please select and describe the file you are sending.");
+      setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.selectFile"));
     }
   }
 
   return (
     <div className={styles.uploadDocumentsContainer}>
-      <p className={styles.uploadDocumentHeading}>Upload a Document</p>
+      <p className={styles.uploadDocumentHeading}>{t("myAccount.documentsPage.uploadDocumentBlock.uploadDocument")}</p>
       <form
         id={'downloadDocumentForm'}
         onSubmit={(e) => submitHandler(e)}

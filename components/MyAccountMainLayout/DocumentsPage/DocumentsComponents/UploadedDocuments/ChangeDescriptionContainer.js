@@ -20,12 +20,14 @@ export const ChangeDescriptionContainer = ({t, showChangeFormHandler, document, 
         className={styles.updateButton}
         onClick={() => updateDocumentHandler(document)}
       >
-        Update Document
+        {t("myAccount.documentsPage.uploadedDocumentsBlock.updateDocument")}
       </button>
       <button
         className={styles.cancelButton}
         onClick={() => showChangeFormHandler(false)}
-      >Cancel</button>
+      >
+        {t("myAccount.documentsPage.uploadedDocumentsBlock.cancel")}
+      </button>
     </div>
   )
 }

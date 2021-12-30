@@ -17,7 +17,6 @@ export const DocumentItem = ({t, document}) => {
 
   const showChangeFormHandler = (isShow) => {
     setShowChangeForm(isShow);
-    // setNewDescription("");
   }
 
   const newDescriptionInputHandler = (value) => {
@@ -36,10 +35,6 @@ export const DocumentItem = ({t, document}) => {
   }
 
   const removeDocumentHandler = (document) => {
-    // const deleteDocData = {
-    //   id: document.id,
-    //   description: document.description
-    // }
       dispatch(deleteDocuments(document.id));
   }
 

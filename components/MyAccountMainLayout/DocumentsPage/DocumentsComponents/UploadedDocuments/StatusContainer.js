@@ -20,7 +20,7 @@ export const StatusContainer = ({t, status}) => {
               ''
         }`}
       >
-        {statusStr}
+        {t(statusStr)}
       </p>
     </div>
   )
@@ -29,11 +29,11 @@ export const StatusContainer = ({t, status}) => {
 function statusValue(status) {
   switch (status) {
     case "1":
-      return "Pending"
+      return "myAccount.documentsPage.uploadedDocumentsBlock.status.pending"
     case "2":
-      return "Checked"
+      return "myAccount.documentsPage.uploadedDocumentsBlock.status.checked"
     case "3":
-      return "Error"
+      return "myAccount.documentsPage.uploadedDocumentsBlock.status.error"
     default:
       return "-"
   }

@@ -792,7 +792,33 @@
         "textHeading": "You will also have to submit documents to verify your Deposit and/or Withdrawal methods depending on the chosen method. Please check below information on the methods you have used to find out what you need to send:",
         "netellerOrSkrill": "If using Neteller or Skrill: Screenshot of profile page on Neteller or Skrill showing profile with postal address visible.",
         "creditCard": "If using Credit Card: Front and Back of card used to deposit, with digits 8-12 and CVC/CVV covered. More",
-        "bankWithdrawal": "If using Bank withdrawal: Bank statement dated within the last 90 days showing full name and address. More"
+        "bankWithdrawal": "If using Bank withdrawal: Bank statement dated within the last 90 days showing full name and address. More",
+        "pleaseNote": "Please note that we do our best to verify your documents as soon as possible. With that being said, documents are normally verified upon you requesting a withdrawal."
+      },
+      "uploadedDocumentsBlock": {
+        "addedAt": "Added at:",
+        "editDescription": "Edit Description",
+        "remove": "Remove",
+        "updateDocument": "Update Document",
+        "cancel": "Cancel",
+        "status": {
+          "pending": "Pending",
+          "checked": "Checked",
+          "error": "Error"
+        }
+      },
+      "uploadDocumentBlock": {
+        "errors": {
+          "fileNotUpload": "File upload error. Please try again.",
+          "describeFile": "Describe the file you are sending.",
+          "selectFile": "Please select and describe the file you are sending."
+        },
+        "uploadDocument": "Upload a Document",
+        "attachment": "Attachment*",
+        "chosenFile": "Chosen file:",
+        "chooseFile": "Choose file",
+        "description": "Description",
+        "submit": "Submit Document"
       }
     }
 

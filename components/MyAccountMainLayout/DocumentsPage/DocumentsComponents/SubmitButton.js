@@ -10,7 +10,7 @@ export const SubmitButton = ({t, submitHandler}) => {
       form={'downloadDocumentForm'}
       className={styles.submitButton}
     >
-      Submit Document
+      {t("myAccount.documentsPage.uploadDocumentBlock.submit")}
     </button>
   )
 }

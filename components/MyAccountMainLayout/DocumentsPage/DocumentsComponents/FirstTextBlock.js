@@ -6,17 +6,17 @@ export const FirstTextBlock = ({t}) => {
   return (
     <>
       <p className={styles.textListHeading}>
-        Documents necessary to speed up your withdrawal:
+        {t("myAccount.documentsPage.firstTextBlock.textListHeading")}
       </p>
       <ul className={styles.textList}>
         <li>
-          Proof of Identity: Passport, Driving License or official Government issued ID card. More
+          {t("myAccount.documentsPage.firstTextBlock.proofIdentity")}
         </li>
         <li>
-          Proof of Address: Utility bill, phone bill or bank statement displaying your name and address in full. More
+          {t("myAccount.documentsPage.firstTextBlock.proofAddress")}
         </li>
         <li>
-          Proof of Deposit: Screenshot or photo from online bank, bank statement, Skrill page, etc. showing the deposit. More
+          {t("myAccount.documentsPage.firstTextBlock.proofDeposit")}
         </li>
       </ul>
     </>
