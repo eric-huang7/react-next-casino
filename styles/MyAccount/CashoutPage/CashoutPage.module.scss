@@ -468,6 +468,35 @@
 
           }
         }
+        & .methodItem .indicatorContainer {
+          flex-shrink: 0;
+          width: 14px;
+          height: 14px;
+
+          margin-right: 10px;
+          margin-left: 10px;
+
+          border-top: 2px solid #5f5f5f;
+          border-left: 2px solid #5f5f5f;
+
+          //position: absolute;
+          right: 20px;
+          top: 50%;
+
+          z-index: 2;
+
+          transform: rotateZ(-135deg);
+
+          transition: transform 0.5s ease-in-out;
+        }
+
+        & .methodItem.activeMethodItem .indicatorContainer {
+
+          border-top: 2px solid #ff0000;
+          border-left: 2px solid #ff0000;
+
+          transform: rotateZ(45deg);
+        }
 
       }
     }

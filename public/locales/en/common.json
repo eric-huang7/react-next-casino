@@ -842,7 +842,8 @@
         "tryBitcoinBlock": {
           "heading": "Haven't found your Payment Method? Maybe it's time to try Bitcoin.",
           "button": {
-            "playWith": "Play with"
+            "playWith": "Play with",
+            "bitcoin": "Bitcoin"
           }
         }
       }

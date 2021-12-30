@@ -30,7 +30,7 @@ export const TryBitcoinContainer = ({t, currency}) => {
       >
         <span>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.button.playWith")}</span>
         <img src="/assets/img/myAccount/cashoutPage/bitcoinIcon.png" alt="bincoin icon"/>
-        <span>{"Bitcoin"}</span>
+        <span>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.button.bitcoin")}</span>
       </button>
     </div>
   )
