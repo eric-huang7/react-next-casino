@@ -23,12 +23,12 @@ export const TryBitcoinContainer = ({t, currency}) => {
 
   return (
     <div  className={styles.tryBitcoinContainer}>
-      <p>{"Haven't found your Payment Method? Maybe it's time to try Bitcoin."}</p>
+      <p>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.heading")}</p>
       <button
         className={styles.playWithBitcoinButton}
         onClick={() => tryBitcoinButtonHandler()}
       >
-        <span>{"Play with"}</span>
+        <span>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.button.playWith")}</span>
         <img src="/assets/img/myAccount/cashoutPage/bitcoinIcon.png" alt="bincoin icon"/>
         <span>{"Bitcoin"}</span>
       </button>

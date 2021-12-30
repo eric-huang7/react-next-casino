@@ -9,7 +9,7 @@ export const LinksBlock = ({t, balanceData, currencyData, activeLink}) => {
   return (
     <div  className={styles.linksBlock}>
       <div className={styles.textContainer}>
-        <p>I would like to cash out</p>
+        <p>{t("myAccount.cashoutPage.iWouldCashout")}</p>
       </div>
       <div className={styles.linksContainer}>
         <ul className={styles.linksList}>

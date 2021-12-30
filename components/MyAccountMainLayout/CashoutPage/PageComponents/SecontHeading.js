@@ -7,7 +7,7 @@ export const SecontHeading = ({t}) => {
 
   return (
     <div className={styles.secondHeadingContainer}>
-      <h3>Select Balance Currency</h3>
+      <h3>{t("myAccount.cashoutPage.secondHeading")}</h3>
     </div>
   )
 }

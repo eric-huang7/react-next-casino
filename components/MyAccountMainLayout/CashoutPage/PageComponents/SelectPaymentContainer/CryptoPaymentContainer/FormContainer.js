@@ -48,13 +48,13 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
     axios.post(post_withdraw_url, body, config)
       .then((data) => {
         console.log('withdraw Success', data);
-        setSuccessMessage('The withdrawal request has been accepted, await the receipt of funds to your wallet.');
+        setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
         setErrorMessage('');
       })
       .catch((e) => {
         console.log(e.response, 'withdraw Error');
         setSuccessMessage('');
-        setErrorMessage('Payment error, please try again or contact support.')
+        setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"))
       })
   }
 

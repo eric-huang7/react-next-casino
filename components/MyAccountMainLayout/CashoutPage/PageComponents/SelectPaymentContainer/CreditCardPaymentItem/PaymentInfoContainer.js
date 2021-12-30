@@ -8,7 +8,7 @@ export const PaymentInfoContainer = ({t, typeOfCurrency}) => {
 
   return (
     <div className={styles.paymentInfoContainer}>
-      <p>{`1-3 banking days, min ${min}, max 50000.00, Payment ${typeOfCurrency.abbreviation}`}</p>
+      <p>{t("myAccount.cashoutPage.selectPaymentContainer.creditCardPaymentDetails", {min_value: min , currency: typeOfCurrency.abbreviation})}</p>
     </div>
   )
 }

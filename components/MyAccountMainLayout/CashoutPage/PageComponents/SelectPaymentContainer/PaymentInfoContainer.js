@@ -8,7 +8,7 @@ let min = numberTransformer(chosenPayment ? chosenPayment.withdrawMin : typeOfCu
 
   return (
     <div className={styles.paymentInfoContainer}>
-      <p>{`min ${min}, max 20.00, Payment ${typeOfCurrency.abbreviation}`}</p>
+      <p>{t("myAccount.cashoutPage.selectPaymentContainer.cryptoPaymentDetails", {min_value: min , currency: typeOfCurrency.abbreviation})}</p>
     </div>
   )
 }

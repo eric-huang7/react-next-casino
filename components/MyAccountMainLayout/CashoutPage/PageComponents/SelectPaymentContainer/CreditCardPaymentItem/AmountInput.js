@@ -6,7 +6,7 @@ export const AmountInput = ({t, typeOfCurrency, amountValue, amountInputHandler}
 
   return (
     <div  className={styles.valueInputContainer}>
-      <label htmlFor="withdrawValueInput" className={styles.amountLabel}>Amount</label>
+      <label htmlFor="withdrawValueInput" className={styles.amountLabel}>{t("myAccount.cashoutPage.selectPaymentContainer.amount")}</label>
       <div className={styles.valueInnerWrapper}>
         <input
           onChange={(e) => amountInputHandler(e.target.value)}

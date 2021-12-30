@@ -6,7 +6,7 @@ export const AddressInput = ({t, addressInputHandler, addressValue}) => {
 
   return (
     <div  className={styles.addressInputContainer}>
-      <label htmlFor="addressInputContainer" className={styles.addressLabel}>Account number/IBAN</label>
+      <label htmlFor="addressInputContainer" className={styles.addressLabel}>{t("myAccount.cashoutPage.selectPaymentContainer.accountNumberIban")}</label>
       <input
         onChange={(e) => addressInputHandler(e.target.value)}
         value={addressValue}

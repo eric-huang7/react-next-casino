@@ -6,7 +6,7 @@ export const AvailableToCashoutBlock = ({t, balanceData, typeOfCurrency}) => {
 
   return (
     <div  className={styles.availableCashoutBlock}>
-      <p>{`Available to cash out: ${Number(balance)} ${typeOfCurrency.abbreviation}. Please refer to`} <Link href={"/accounts/balance"}><a>Balance</a></Link> page for detailed break down.</p>
+      <p>{t("myAccount.cashoutPage.availableTo", {value: `${Number(balance)} ${typeOfCurrency.abbreviation}`})} <Link href={"/accounts/balance"}><a>{t("myAccount.cashoutPage.balance")}</a></Link> {t("myAccount.cashoutPage.pageDetailed")}</p>
     </div>
   )
 }

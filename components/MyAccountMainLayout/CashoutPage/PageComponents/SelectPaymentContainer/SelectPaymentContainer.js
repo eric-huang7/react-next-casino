@@ -86,7 +86,7 @@ export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currency
 
     return (
       <div className={styles.selectMethodContainer}>
-        <p className={styles.containerHeading}>{"Select Payment Method"}</p>
+        <p className={styles.containerHeading}>{t("myAccount.cashoutPage.selectPaymentContainer.heading")}</p>
         <div className={styles.paymentMethodWrapper}>
           <ul className={styles.methodsList}>
             <CreditCardPayment
@@ -144,7 +144,7 @@ export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currency
 
     return (
       <div className={styles.selectMethodContainer}>
-        <p className={styles.containerHeading}>{"Select Payment Method"}</p>
+        <p className={styles.containerHeading}>{t("myAccount.cashoutPage.selectPaymentContainer.heading")}</p>
         <div className={styles.paymentMethodWrapper}>
           <ul className={styles.methodsList}>
             <CryptoPaymentItem
