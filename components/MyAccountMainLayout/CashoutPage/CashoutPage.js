@@ -12,9 +12,6 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 export const CashoutPage = ({t, activeLink}) => {
   const balanceInfo = useSelector((store) => store.authInfo);
   const currency = useSelector((store) => store.getCurrency);
-  const data = useSelector((store) => store);
-
-  // console.log(data, "data")
 
   if (balanceInfo.balance && currency.currency) {
 

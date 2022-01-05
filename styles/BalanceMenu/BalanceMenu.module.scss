@@ -1,0 +1,87 @@
+.balanceMenuContainer {
+  background-color: transparent;
+
+  position: absolute;
+
+  right: 0;
+
+  top: 47px;
+}
+
+.balanceList {
+  list-style-type: none;
+
+  padding: 0;
+  margin: 20px 0 0 0;
+
+  & li.balanceItem {
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 10px;
+
+    min-width: 124px;
+
+    border-bottom: 2px solid #484848;
+
+    cursor: pointer;
+
+    & span {
+      margin: 0;
+
+      font-size: 15px;
+      letter-spacing: 0px;
+      color: #ffffff;
+      font-family: "Franklin Gothic";
+    }
+    & span:last-child {
+      margin-left: 20px;
+    }
+  }
+  & li.balanceItem:hover {
+    & span {
+      color: #fda3a2;
+    }
+  }
+  & li:nth-child(even) {
+    background-color: #2d2b2b;
+  }
+  & li:nth-child(odd) {
+    background-color: #393939;
+  }
+}
+
+@media screen and (max-width: 1325px) {
+  .balanceMenuContainer {
+
+    top: 41px;
+  }
+
+
+  .balanceList {
+    list-style-type: none;
+
+    padding: 0;
+    margin: 20px 0 0 0;
+
+    & li.balanceItem {
+      min-width: 100px;
+
+      & span {
+        font-size: 13px;
+      }
+      & span:last-child {
+        margin-left: 20px;
+      }
+    }
+    & li:nth-child(even) {
+      background-color: #2d2b2b;
+    }
+    & li:nth-child(odd) {
+      background-color: #393939;
+    }
+  }
+}

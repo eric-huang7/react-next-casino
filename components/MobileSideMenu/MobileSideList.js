@@ -7,7 +7,7 @@ import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 export const MobileSideListLinks = ({t, dataList, messages}) => {
   const dispatch = useDispatch();
 
-  function clickLincksCloseMenu() {
+  function clickLinksCloseMenu() {
     dispatch(showMobileMenu(false));
   }
 
@@ -16,7 +16,7 @@ export const MobileSideListLinks = ({t, dataList, messages}) => {
       <>
         {dataList.icon ? <img src={dataList.icon} alt='side menu icon'/> : ""}
         <Link href={dataList.path}>
-          <a onClick={() => clickLincksCloseMenu()}>{t(dataList.name)}</a>
+          <a onClick={() => clickLinksCloseMenu()}>{t(dataList.name)}</a>
         </Link>
         {(messages && messages.length > 0) ? <p className={styles.mobileSideListItemMessagesCounter}>{messages.length}</p> : ''}
       </>

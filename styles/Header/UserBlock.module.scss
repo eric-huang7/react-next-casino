@@ -44,6 +44,12 @@
     height: 16px;
 }
 
+.userMainBlockUserInfoBlock {
+    position: relative;
+
+    display: flex;
+}
+
 .userMainBlockUserInfoBlock span {
     white-space: nowrap;
 
@@ -53,8 +59,14 @@
     color: #fda3a2;
     font-family: "Verdana";
 
+    cursor: pointer;
+
     /*margin-right: 25px;*/
 }
+.userMainBlockUserInfoBlock span .userName {
+    white-space: break-spaces;
+}
+
 .userMainBlockUserInfoBlock span:nth-child(1) {
     margin-right: 32px;
 }

@@ -4,14 +4,16 @@ import {useDispatch} from "react-redux";
 import {patchUserActiveCurrency, userBalance} from "../../../redux/actions/userData";
 
 import Link from "next/link";
+import {numberTransformer} from "../../../helpers/numberTransformer";
 
 
 export const TableRow = ({t, balanceData, currencyData}) => {
   const dispatch = useDispatch();
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id));
-  let amount = Number(balanceData.current_balance);
-  let cashOut = Number(balanceData.cash_amount);
+  // let amount = Number(balanceData.current_balance);
+  let amount = numberTransformer(balanceData.current_balance);
+  let cashOut = numberTransformer(balanceData.cash_amount);
 
 
   const chooseClickHandler = () => {

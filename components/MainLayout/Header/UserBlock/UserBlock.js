@@ -22,7 +22,7 @@ export const UserBlockNavigation = ({t, userInfo}) => {
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userInfo.isAuthenticated ? "" : styles.hide}`}>
         { userInfo.isAuthenticated ? <NotificationContainer messagesData={messagesData} t={t}/> : "" }
-        { userInfo.isAuthenticated && !currency.loading ? <UserInformationBlock userInfo={userInfo} userCurrency={currency}/> : "" }
+        { userInfo.isAuthenticated && !currency.loading ? <UserInformationBlock t={t} userInfo={userInfo} userCurrency={currency}/> : "" }
       </div>
       {
         userInfo.isAuthenticated ? <HeaderButtonsDeposit isUserLogined={userInfo.isAuthenticated} t={t}/> : <HeaderButtonsRegistration isUserLogined={userInfo.isAuthenticated} t={t}/>
