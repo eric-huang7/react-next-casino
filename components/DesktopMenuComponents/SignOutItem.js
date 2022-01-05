@@ -16,7 +16,7 @@ const logoutButtonHandler = () => {
       <div className={styles.iconContainer}>
         <img src={'/assets/icons/desktopMenu/signOut.png'} alt={`sign out link icon`}/>
       </div>
-      <button onClick={() => logoutButtonHandler()} className={styles.signoutButton}>Sign Out</button>
+      <button onClick={() => logoutButtonHandler()} className={styles.signoutButton}>{t('header.userDesktopMenu.signOut')}</button>
     </li>
   )
 }

@@ -18,6 +18,13 @@
       "responsibleGaming": "Ответственная игра",
       "kycPolicy": "Политика KYC",
       "amlPolicy" : "Политика AML"
+    },
+    "userDesktopMenu": {
+      "myAccount": "Мой кабинет",
+      "bonuses" : "Бонусы",
+      "myBets": "Мои ставки",
+      "transactions" : "Транзакции",
+      "signOut": "Выйти"
     }
   },
   "registrationForm": {

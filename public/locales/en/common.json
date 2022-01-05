@@ -18,6 +18,13 @@
       "responsibleGaming": "Responsible gambling",
       "kycPolicy": "KYC Policy",
       "amlPolicy" : "AML Policy"
+    },
+    "userDesktopMenu": {
+      "myAccount": "My Account",
+      "bonuses" : "Bonuses",
+      "myBets": "My Bets",
+      "transactions" : "Transactions",
+      "signOut": "Sign Out"
     }
   },
   "registrationForm": {

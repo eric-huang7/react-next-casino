@@ -210,6 +210,8 @@ function userDataReducer(state = initialState, action) {
         loadingUserBetsData: true,
         userBetsData: null,
         isMayTwoFactorAuth: false,
+        loadingDocuments: true,
+        userDocuments: null,
 
         // isAuthenticated: null,
         // loading: true,

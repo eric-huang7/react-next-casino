@@ -5,10 +5,10 @@ import {SignOutItem} from "./SignOutItem";
 
 export const DesktopMenuContainer = ({t}) => {
   const linksData = [
-    {id: 1, name: 'My Account', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/myAccount.png'},
-    {id: 1, name: 'Bonuses', path: '/accounts/bonuses', icon: '/assets/icons/desktopMenu/bonuses.png'},
-    {id: 1, name: 'My Bets', path: '/accounts/history/history/bets', icon: '/assets/icons/desktopMenu/myBets.png'},
-    {id: 1, name: 'Transactions', path: '/accounts/history', icon: '/assets/icons/desktopMenu/transactions.png'},
+    {id: 1, name: 'header.userDesktopMenu.myAccount', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/myAccount.png'},
+    {id: 1, name: 'header.userDesktopMenu.bonuses', path: '/accounts/bonuses', icon: '/assets/icons/desktopMenu/bonuses.png'},
+    {id: 1, name: 'header.userDesktopMenu.myBets', path: '/accounts/history/history/bets', icon: '/assets/icons/desktopMenu/myBets.png'},
+    {id: 1, name: 'header.userDesktopMenu.transactions', path: '/accounts/history', icon: '/assets/icons/desktopMenu/transactions.png'},
   ]
 
   return (
