@@ -6,10 +6,6 @@ import {patchUserActiveCurrency} from "../../redux/actions/userData";
 
 export const BalanceMenuContainer = ({t, balanceData, currencyData, activeBalance}) => {
 
-  console.log(balanceData.balance.balances, activeBalance, '<<< balance');
-
-
-
   return (
     <div className={styles.balanceMenuContainer}>
       <ul className={styles.balanceList}>

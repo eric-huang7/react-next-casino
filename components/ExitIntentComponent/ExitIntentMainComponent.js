@@ -1,0 +1,24 @@
+import styles from "../../styles/ExitIntentComponent/ExitInentPopup.module.scss";
+import {Heading} from "./Heading";
+import {InnerHeading} from "./InnerHeading";
+import {SeeAllButton} from "./SeeAllButton";
+
+
+export const ExitIntentMainComponent = ({t, showPopup, exit, type}) => {
+
+  let path = type === "bonus" ? "/promotions" : "/games-page/top-games";
+  let innerHeadingText = type === "bonus" ? "Welcome bonus and other deposit bonuses" : "Other players love playing these games,\n and we think you will, too Take a quick look.";
+  let linkText = type === "bonus" ? "See All Promotions" : "See All Games";
+
+  return (
+    <div className={`${styles.exit_intent_popup} ${showPopup ? styles.visible : ""}`}>
+      <div className={styles.exitMainContainer}>
+        <div className={styles.innerWrapper}>
+          <Heading closeHandler={exit} t={t} />
+          <InnerHeading t={t} text={innerHeadingText} />
+        </div>
+        <SeeAllButton t={t} path={path} text={linkText}/>
+      </div>
+    </div>
+  )
+}

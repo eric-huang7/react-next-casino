@@ -27,6 +27,7 @@ import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
 import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
 import Head from "next/head";
+import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
 
 
 const MainLayout = ({children, t}) => {
@@ -58,6 +59,7 @@ const MainLayout = ({children, t}) => {
       </Head>
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
+        <ExitIntentPopup t={t} userInfo={userInfo} />
         <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
         {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
         {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}

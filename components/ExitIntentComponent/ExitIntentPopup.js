@@ -1,11 +1,14 @@
 import styles from '../../styles/ExitIntentComponent/ExitInentPopup.module.scss';
-
-
+import Link from "next/link";
 import {useEffect, useState} from "react";
+import {Heading} from "./Heading";
+import {SeeAllButton} from "./SeeAllButton";
+import {InnerHeading} from "./InnerHeading";
+import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
 
 
 
-export const ExitIntentPopup = ({t}) => {
+export const ExitIntentPopup = ({t, userInfo}) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const exit = (e) => {
@@ -31,21 +34,26 @@ export const ExitIntentPopup = ({t}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       document.addEventListener('mouseout', mouseEvent);
-      document.addEventListener('keydown', exit);
       // document.querySelector('.exit-intent-popup').addEventListener('click', exit);
     }, 0);
 
     return () => {
+      document.removeEventListener('mouseout', mouseEvent);
       clearTimeout(timer);
     }
   }, [])
 
+  // console.log(userInfo, '<<<<<<<<<<,')
 
-  return (
-    <div className={`${styles.exit_intent_popup} ${showPopup ? styles.visible : ''}`}>
-      <div className={styles.exitMainContainer}>
-        <span className={styles.close} onClick={(e) => exit(e)}>x</span>
-      </div>
-    </div>
-  )
+  if (!userInfo.isAuthenticated) {
+    return (
+      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+    )
+  } else {
+    return (
+      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"games"}/>
+    )
+  }
+
+
 }
