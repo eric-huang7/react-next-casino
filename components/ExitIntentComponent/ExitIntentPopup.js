@@ -5,6 +5,7 @@ import {Heading} from "./Heading";
 import {SeeAllButton} from "./SeeAllButton";
 import {InnerHeading} from "./InnerHeading";
 import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
+import {numberTransformer} from "../../helpers/numberTransformer";
 
 
 
@@ -12,6 +13,7 @@ export const ExitIntentPopup = ({t, userInfo}) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const exit = (e) => {
+
     setShowPopup(false);
   };
 
@@ -43,17 +45,33 @@ export const ExitIntentPopup = ({t, userInfo}) => {
     }
   }, [])
 
-  // console.log(userInfo, '<<<<<<<<<<,')
-
   if (!userInfo.isAuthenticated) {
     return (
       <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
     )
+  } else if (userInfo.balance && userInfo.balance?.success) {
+
+    let notEmptyBalance = userInfo.balance?.balances.filter((el) => {
+      let amount = numberTransformer(el.current_balance);
+      if (amount !== '0.00') {
+        return true
+      } else {
+        return false
+      }
+    });
+
+    if (notEmptyBalance.length !== 0) {
+      return (
+        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"games"}/>
+      )
+    } else {
+      return (
+        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+      )
+    }
   } else {
     return (
-      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"games"}/>
+      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
     )
   }
-
-
 }
