@@ -11,7 +11,7 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
   if (userCurrency.currency && userInfo.balance) {
     let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default));
 
-    let balance = balanceData.length === 0 ? "0.0" : Number(balanceData[0].current_balance) === 0 ? "0.0" : Number(balanceData[0].current_balance);
+    let balance = balanceData.length === 0 ? "0.00" : Number(balanceData[0].current_balance) === 0 ? "0.00" : Number(balanceData[0].current_balance);
     let currency = balanceData.length === 0
       ?
       userCurrency?.currency?.results.find((el) => userInfo.user.user.base_currency_id
@@ -21,7 +21,6 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
         Number(el.id) === 1).abbreviation
       :
       userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
-
 
     const showLinksMenuHandler = () => {
       setIsShowLinksMenu(true);
@@ -40,6 +39,7 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
     return (
       <div className={styles.userMainBlockUserInfoBlock}>
         <div
+          className={`${styles.userTextContainer} ${isShowLinksMenu ? styles.active : ""}`}
           onMouseEnter={() => showLinksMenuHandler()}
           onMouseLeave={() => hideLinksMenuHandler()}
         >
@@ -51,6 +51,7 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
           }
         </div>
         <div
+          className={`${styles.userTextContainer} ${isShowBalanceList ? styles.active : ""} ${userInfo?.balance?.balances.length === 1 ? styles.indicatorOff : ""}`}
           onMouseEnter={() => showBalanceListHandler()}
           onMouseLeave={() => hideBalanceListHandler()}
         >
