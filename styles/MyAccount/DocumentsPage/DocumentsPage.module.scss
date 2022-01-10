@@ -140,6 +140,9 @@
       font-family: "Verdana", Arial, sans-serif;
       text-transform: uppercase;
       text-align: center;
+
+      overflow-x: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -248,6 +251,7 @@
   padding: 20px 15px;
 
   min-width: 420px;
+  //max-width: 420px;
 
   & .documentNameContainer {
 
@@ -255,6 +259,11 @@
       font-size: 15px;
       color: #595656;
       font-family: "Verdana", Arial, sans-serif;
+
+      width: 150px;
+
+      overflow-x: hidden;
+      text-overflow: ellipsis;
 
       margin: 0;
     }
