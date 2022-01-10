@@ -2,6 +2,8 @@ import styles from "../../styles/ExitIntentComponent/ExitInentPopup.module.scss"
 import {Heading} from "./Heading";
 import {InnerHeading} from "./InnerHeading";
 import {SeeAllButton} from "./SeeAllButton";
+import {GamesContainer} from "./GamesContainer/GamesContainer";
+import {BonusesContainer} from "./BonusesContainer/BonusesContainer";
 
 
 export const ExitIntentMainComponent = ({t, showPopup, exit, type}) => {
@@ -16,6 +18,9 @@ export const ExitIntentMainComponent = ({t, showPopup, exit, type}) => {
         <div className={styles.innerWrapper}>
           <Heading closeHandler={exit} t={t} />
           <InnerHeading t={t} text={innerHeadingText} />
+          {
+            type === "bonus" ? <BonusesContainer t={t} /> : <GamesContainer t={t} />
+          }
         </div>
         <SeeAllButton t={t} path={path} exit={exit} text={linkText}/>
       </div>

@@ -2,31 +2,14 @@ import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from '../components/MainLayout/MainLayout'
 import {useRouter} from "next/router";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import Head from "next/head";
 
-import {MainBlock} from "../components/HomePageComponents/MainBlock";
-
-import {ChooseCategoryBlock} from "../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
-import {GamesSliderBlock} from "../components/HomePageComponents/GamesSliderBlock/GamesSliderBlock";
-import {getGames, getJackpotGames, getNewGames, getTableGames} from "../redux/actions/games";
-import {PromotionsBlock} from "../components/HomePageComponents/PromotionsBlock/PromotionsBlock";
-import {getLatestWinners, getWinners} from "../redux/actions/latestWinners";
-import {TotalJackpotsAmount} from "../components/HomePageComponents/TotalJackpotsAmount/TotalJackpotsAmount";
-import {WhySlotsIdol} from "../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
-
-import {NewsBlock} from "../components/HomePageComponents/NewsBlock/NewsBlock";
-import {getCurrency} from "../redux/actions/currency";
-import {getJackpots} from "../redux/actions/latestJackpots";
-import {getActiveBonuses} from "../redux/actions/getBonuses";
 import {HomePageContainer} from "../components/HomePageComponents/HomePageContainer";
 
 
 
 export default function Home(props) {
   const {t} = useTranslation('common');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
   // console.log(router, "home LOCALE")

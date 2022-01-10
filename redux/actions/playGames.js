@@ -4,14 +4,14 @@ import {PLAY_FREE_GAME, PLAY_GAME} from "./types";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-export const freeGame = (game_provider_id, game_id) => async dispatch => {
+export const freeGame = (gameData) => async dispatch => {
   const config = {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
   }
-  const body = JSON.stringify({ game_provider_id, game_id });
+  const body = JSON.stringify(gameData);
 
   try {
     const res = await axios.post(freeGame_url, body, config);
@@ -25,7 +25,7 @@ export const freeGame = (game_provider_id, game_id) => async dispatch => {
   }
 }
 
-export const playPayGame = (game_provider_id, game_id, user_id, is_bonus, balance_id) => async dispatch => {
+export const playPayGame = (gameData) => async dispatch => {
   const config = {
     withCredentials: true,
     headers: {
@@ -33,7 +33,7 @@ export const playPayGame = (game_provider_id, game_id, user_id, is_bonus, balanc
     },
   }
 
-  const body = JSON.stringify({ game_provider_id, game_id, user_id, is_bonus, balance_id });
+  const body = JSON.stringify(gameData);
 
   try {
     const res = await axios.post(payGame_url, body, config);

@@ -21,9 +21,11 @@ export const ExitIntentPopup = ({t, userInfo}) => {
     const shouldShowExitIntent =
       !e.toElement &&
       !e.relatedTarget &&
-      e.clientY < 10;
+      e.clientY < 10 &&
+      e.clientY > -5;
 
     if (shouldShowExitIntent) {
+
       document.removeEventListener('mouseout', mouseEvent);
       setShowPopup(true);
       // document.querySelector('.exit-intent-popup').classList.add('visible');

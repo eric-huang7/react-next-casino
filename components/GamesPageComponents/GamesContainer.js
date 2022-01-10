@@ -44,14 +44,26 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
     }
   }, [playGames]);
   const playFunClickHandler = (gameData) => {
-    dispatch(freeGame(gameData.game_provider_id, gameData.game_provided_id));
+    let sendData = {
+      game_provider_id: gameData.game_provider_id,
+      game_id: gameData.game_provided_id
+    }
+    dispatch(freeGame(sendData));
   }
   const playGameClickHandler = (gameData, user) => {
     if ((user.balance.balances.length > 0)) {
       let is_bonus = false; // default val
       let bonus_id = null; // default val
       // game_provider_id, game_id, user_id, is_bonus, balance_id
-      dispatch(playPayGame(gameData.game_provider_id, gameData.game_provided_id, user.user.user.id, is_bonus, `${user.balance.balances[0].id}`));
+      let userBalance = user.balance.balances.filter((el) => el.is_default !== "0");
+      let sendData = {
+        game_provider_id: gameData.game_provider_id,
+        game_id: gameData.game_provided_id,
+        user_id: user.user.user.id,
+        is_bonus: is_bonus,
+        balance_id: `${userBalance[0].id}`
+      }
+      dispatch(playPayGame(sendData));
     } else {
       console.log(gameData, 'GAME DATA!!!')
       console.log('ERROR no balance', user.balance);

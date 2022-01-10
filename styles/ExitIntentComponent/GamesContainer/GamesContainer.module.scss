@@ -1,0 +1,84 @@
+.gamesMainContainer {
+  padding: 15px 10px 15px 20px;
+}
+
+
+.gameItemContainer {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 9px;
+}
+
+.gameImageContainer {
+
+  position: relative;
+
+  width: 110px;
+  min-height: 65px;
+
+  margin-right: 15px;
+
+  flex-shrink: 0;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.gameInfoContainer {
+  width: 100%;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #9e9e9e;
+
+  & h3 {
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #595959;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    text-transform: uppercase;
+
+    margin: 0 0 9px 0;
+  }
+
+  & .gameButtonsContainer {
+    background-color: #f2f6f9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 70px;
+
+    border: 1px solid #babbbd;
+
+    & button {
+      width: fit-content;
+
+      padding: 10px;
+
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      font-family: "Myriad Pro", Arial, sans-serif;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      border: none;
+      outline: none;
+
+      border-radius: 10px;
+    }
+    & .playNowButton {
+      margin-right: 10px;
+
+      background-color: #e74b3c;
+    }
+    & .playFunButton {
+      background-color: #838383;
+    }
+  }
+}
