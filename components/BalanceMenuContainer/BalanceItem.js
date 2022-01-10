@@ -24,7 +24,7 @@ export const BalanceItem = ({balanceData, currencyData}) => {
 
   return (
     <li onClick={() => chooseClickHandler()} className={styles.balanceItem}>
-      <span>{amount}</span>
+      <span >{amount}</span>
       <span>{currency.abbreviation}</span>
     </li>
   )
