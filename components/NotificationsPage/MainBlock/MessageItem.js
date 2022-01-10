@@ -1,5 +1,5 @@
 import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
-import {urlGen} from "../../../helpers/ImageUrl";
+import {urlGen} from "../../../helpers/imageUrl";
 import Link from "next/link";
 import {formatDistance} from "date-fns";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";

@@ -63,8 +63,10 @@ export const ExitIntentPopup = ({t, userInfo}) => {
     });
 
     if (notEmptyBalance.length !== 0) {
+      // TODO: change for "games";
+
       return (
-        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"games"}/>
+        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
       )
     } else {
       return (

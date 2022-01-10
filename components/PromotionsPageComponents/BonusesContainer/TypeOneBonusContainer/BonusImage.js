@@ -1,10 +1,11 @@
 import styles from '../../../../styles/PromotionsPage/TypeOneBonusContainer.module.scss';
+import {urlGen} from "../../../../helpers/imageUrl";
 
 export const BonusImage = ({bonusInfo}) => {
 
   return (
     <div className={styles.imageBackground}>
-      <img draggable={false} src={`https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/images/${bonusInfo?.image}`} alt="bonus image"/>
+      <img draggable={false} src={urlGen(bonusInfo?.image)} alt="bonus image"/>
     </div>
   )
 }

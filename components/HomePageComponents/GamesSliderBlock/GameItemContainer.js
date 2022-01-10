@@ -1,7 +1,7 @@
 import styles from '../../../styles/HomePage/GamesSliderBlock.module.scss';
 import {GameHoverButtons} from "./GameHoverButtons";
 import Image from "next/image";
-import {gameUrl} from "../../../helpers/ImageUrl";
+import {gameUrl} from "../../../helpers/imageUrl";
 
 
 export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGameClickHAndler, user}) => {

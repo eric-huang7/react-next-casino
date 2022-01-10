@@ -1,6 +1,6 @@
 import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss';
 import Link from "next/link";
-import {urlGen} from "../../../../../helpers/ImageUrl";
+import {urlGen} from "../../../../../helpers/imageUrl";
 import {formatDistance} from "date-fns";
 import { ru } from 'date-fns/locale'
 import {dateTranslator} from "../../../../../helpers/dateTranslator";

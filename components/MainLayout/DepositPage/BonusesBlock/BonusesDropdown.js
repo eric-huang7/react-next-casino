@@ -1,6 +1,7 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {BonusesBlock} from "./BonusesBlock";
 import {useSelector} from "react-redux";
+import {iconsUrl} from "../../../../helpers/imageUrl";
 
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
@@ -26,7 +27,7 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
                 key={`${el.id} bonus`}
                 t={t}
                 bonusId={el.id}
-                bonusImage={`https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/icons/${el.icon}`}
+                bonusImage={iconsUrl(el.icon)}
                 bonusHeading={`bonuses.${el.id}.deposit_bonus.heading`}
                 bonusDescription={`bonuses.${el.id}.deposit_bonus.description`}
                 isUseBonus={isUseBonus}

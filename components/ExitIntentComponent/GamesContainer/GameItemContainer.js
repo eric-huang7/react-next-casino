@@ -1,11 +1,12 @@
 import styles from '../../../styles/ExitIntentComponent/GamesContainer/GamesContainer.module.scss';
 import Image from "next/image";
-import {gameUrl} from "../../../helpers/ImageUrl";
+import {gameUrl} from "../../../helpers/imageUrl";
+import {GameImage} from "./GameImage";
 
 
 export const GameItemContainer = ({t, gameData, playFunClickHandler, playGameClickHandler}) => {
 
-  let ImgSrc = gameUrl(gameData.id);
+  let imgSrc = gameUrl(gameData.id);
 
   const playFunHandler = () => {
     playFunClickHandler(gameData);
@@ -16,15 +17,7 @@ export const GameItemContainer = ({t, gameData, playFunClickHandler, playGameCli
 
   return (
     <div className={styles.gameItemContainer}>
-      <div className={styles.gameImageContainer}>
-        <img
-          alt={'game image'}
-          // layout={'fill'}
-          // height={30}
-          // width={30}
-          src={ImgSrc}
-        />
-      </div>
+      <GameImage imgSrc={imgSrc} />
 
       <div className={styles.gameInfoContainer}>
         <h3>{gameData.name}</h3>
