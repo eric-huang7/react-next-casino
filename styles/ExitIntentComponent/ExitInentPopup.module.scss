@@ -2,12 +2,18 @@
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  //bottom: 0;
+  //right: 0;
+
+  width: 100vw;
+  height: 100vh;
+
   z-index: 20;
   background: rgba(0, 0, 0, 0.8);
   transform: translateY(60%) scale(0);
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  overflow-y: auto;
 }
 
 .exit_intent_popup.visible {
@@ -15,10 +21,13 @@
 }
 
 .exitMainContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
+
+  //position: absolute;
+  //top: 100%;
+  //left: 50%;
+  transform: translateY(20%);
+
 }
 
 .exitMainContainer {

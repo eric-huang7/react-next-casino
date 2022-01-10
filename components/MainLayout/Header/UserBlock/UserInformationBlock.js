@@ -2,6 +2,7 @@ import styles from "../../../../styles/Header/UserBlock.module.scss";
 import {DesktopMenuContainer} from "../../../DesktopMenuComponents/DesktopMenuContainer";
 import {useState} from "react";
 import {BalanceMenuContainer} from "../../../BalanceMenuContainer/BalanceMenuContainer";
+import {numberTransformer} from "../../../../helpers/numberTransformer";
 
 
 export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
@@ -11,7 +12,10 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
   if (userCurrency.currency && userInfo.balance) {
     let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default));
 
-    let balance = balanceData.length === 0 ? "0.00" : Number(balanceData[0].current_balance) === 0 ? "0.00" : Number(balanceData[0].current_balance);
+
+    let amount = numberTransformer(balanceData[0].current_balance);
+
+    let balance = balanceData.length === 0 ? "0.00" : amount;
     let currency = balanceData.length === 0
       ?
       userCurrency?.currency?.results.find((el) => userInfo.user.user.base_currency_id

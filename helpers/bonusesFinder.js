@@ -2,7 +2,7 @@ import {log} from "qrcode/lib/core/galois-field";
 
 export const bonusesFinder = (offers, userCurrency) => {
   if (offers) {
-    let needetBonuses = offers.filter((el) => {
+    let neededBonuses = offers.filter((el) => {
       if (el.spec) {
         // console.log(JSON.parse(el.spec))
         let arrOfBonuses = [];
@@ -26,7 +26,7 @@ export const bonusesFinder = (offers, userCurrency) => {
         return false
       }
     })
-    return needetBonuses
+    return neededBonuses
 
   } else {
     return []

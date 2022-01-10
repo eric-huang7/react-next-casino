@@ -1,5 +1,6 @@
 import styles from "../../styles/MobileSideMenu/MobileSideMenu.module.scss";
 import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit";
+import {numberTransformer} from "../../helpers/numberTransformer";
 
 
 export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
@@ -10,16 +11,14 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
 
 
 
-    let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default))
+    let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default));
+    let amount = numberTransformer(balanceData[0].current_balance);
+
     let balance = balanceData.length === 0
       ?
-      "0.0"
+      "0.00"
       :
-      Number(balanceData[0].current_balance) === 0
-        ?
-        "0.0"
-        :
-        Number(balanceData[0].current_balance);
+      amount;
 
     let currency = balanceData.length === 0
       ?

@@ -18,7 +18,6 @@ export const BalanceItem = ({balanceData, currencyData}) => {
 
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id));
-  // let amount = Number(balanceData.current_balance);
   let amount = numberTransformer(balanceData.current_balance);
 
 
