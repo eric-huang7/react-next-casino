@@ -59,7 +59,7 @@ const MainLayout = ({children, t}) => {
       </Head>
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
-        <ExitIntentPopup t={t} userInfo={userInfo} />
+        <ExitIntentPopup isShowExitIntent={isShowModal.isShowExitIntentPopup} t={t} userInfo={userInfo} />
         <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
         {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
         {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}

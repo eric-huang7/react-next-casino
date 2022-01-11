@@ -4,7 +4,7 @@ import {
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
-  SHOW_DEPOSIT_MODAL,
+  SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
   SHOW_MANAGE_SUBSCRIPTIONS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP,
@@ -23,12 +23,18 @@ export const closeAll = (isShow) => {
   }
 }
 
+export const showExitIntentPopup = (isShow) => {
+  return {
+    type: SHOW_EXIT_INTENT_POPUP,
+    payload: isShow
+  }
+}
+
 export const showMobilePaymentsStepper = (isShow) => {
   return {
     type: SHOW_MOBILE_PAYMENTS_STEPPER,
     payload: isShow
   }
-
 }
 
 export const errorPopupActivate = (errorData) => async dispatch => {

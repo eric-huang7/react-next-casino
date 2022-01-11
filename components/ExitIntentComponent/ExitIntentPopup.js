@@ -6,14 +6,18 @@ import {SeeAllButton} from "./SeeAllButton";
 import {InnerHeading} from "./InnerHeading";
 import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
 import {numberTransformer} from "../../helpers/numberTransformer";
+import {useDispatch} from "react-redux";
+import {showExitIntentPopup} from "../../redux/actions/showPopups";
 
 
 
-export const ExitIntentPopup = ({t, userInfo}) => {
+export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
+  const dispatch = useDispatch();
+
   const [showPopup, setShowPopup] = useState(false);
 
   const exit = (e) => {
-
+    dispatch(showExitIntentPopup(false));
     setShowPopup(false);
   };
 
@@ -49,7 +53,7 @@ export const ExitIntentPopup = ({t, userInfo}) => {
 
   if (!userInfo.isAuthenticated) {
     return (
-      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
     )
   } else if (userInfo.balance && userInfo.balance?.success) {
 
@@ -63,19 +67,18 @@ export const ExitIntentPopup = ({t, userInfo}) => {
     });
 
     if (notEmptyBalance.length !== 0) {
-      // TODO: change for "games";
 
       return (
-        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
       )
     } else {
       return (
-        <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
       )
     }
   } else {
     return (
-      <ExitIntentMainComponent exit={exit} t={t} showPopup={showPopup} type={"bonus"}/>
+      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
     )
   }
 }

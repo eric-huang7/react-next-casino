@@ -2,7 +2,7 @@ import {
   ACTIVATE_ERROR_POPUP,
   BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
-  SHOW_DEPOSIT_MODAL,
+  SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
   SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
 } from "../actions/types";
@@ -23,6 +23,7 @@ const initialState = {
   actionForBackButtonPayments: false,
   showErrorPopup: false,
   errorPopupData: null,
+  isShowExitIntentPopup: true,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -40,6 +41,11 @@ function showPopupsReducer(state = initialState, action) {
         ...state,
         showErrorPopup: false,
         errorPopupData: payload,
+      }
+    case SHOW_EXIT_INTENT_POPUP :
+      return {
+        ...state,
+        isShowExitIntentPopup: payload,
       }
     case SHOW_CURRENCY_SWITCHER :
       return {
