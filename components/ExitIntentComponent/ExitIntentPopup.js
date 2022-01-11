@@ -21,20 +21,22 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     setShowPopup(false);
   };
 
+
   const mouseEvent = (e) => {
-    const shouldShowExitIntent =
-      !e.toElement &&
-      !e.relatedTarget &&
-      e.clientY < 10 &&
-      e.clientY > -5;
+    if (typeof window !== 'undefined') {
+      const shouldShowExitIntent =
+        !e.toElement &&
+        !e.relatedTarget &&
+        e.clientY < 10 &&
+        e.clientY > -5 &&
+        window.innerWidth > 1065;
 
-    if (shouldShowExitIntent) {
-
-      document.removeEventListener('mouseout', mouseEvent);
-      setShowPopup(true);
-      // document.querySelector('.exit-intent-popup').classList.add('visible');
-
+      if (shouldShowExitIntent) {
+        document.removeEventListener('mouseout', mouseEvent);
+        setShowPopup(true);
+      }
     }
+
   };
 
 
@@ -43,7 +45,7 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     const timer = setTimeout(() => {
       document.addEventListener('mouseout', mouseEvent);
       // document.querySelector('.exit-intent-popup').addEventListener('click', exit);
-    }, 10000);
+    }, 0);
 
     return () => {
       document.removeEventListener('mouseout', mouseEvent);

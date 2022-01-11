@@ -61,8 +61,6 @@ export const GamesContainer = ({t, exit}) => {
   if (gamesList?.topGames?.success) {
     let gamesData = gamesList.topGames.results.slice(0, 3);
 
-    console.log(gamesData, '<<<<<<<<<<<<<')
-
     return (
       <div className={styles.gamesMainContainer}>
         {gamesData.map((game) => {
