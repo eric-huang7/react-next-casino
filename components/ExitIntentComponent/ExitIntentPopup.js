@@ -1,18 +1,18 @@
-import styles from '../../styles/ExitIntentComponent/ExitInentPopup.module.scss';
-import Link from "next/link";
 import {useEffect, useState} from "react";
-import {Heading} from "./Heading";
-import {SeeAllButton} from "./SeeAllButton";
-import {InnerHeading} from "./InnerHeading";
 import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
 import {numberTransformer} from "../../helpers/numberTransformer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {showExitIntentPopup} from "../../redux/actions/showPopups";
+import {getActiveBonuses} from "../../redux/actions/getBonuses";
+import {getTopGames} from "../../redux/actions/games";
+import {bonusesFinder} from "../../helpers/bonusesFinder";
 
 
 
-export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
+export const ExitIntentPopup = ({t, userInfo}) => {
   const dispatch = useDispatch();
+
+  const isShowExitIntent = true;
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -50,34 +50,68 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     }
   }, [])
 
-  if (!userInfo.isAuthenticated) {
-    return (
-      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
-    )
-  } else if (userInfo.balance && userInfo.balance?.success) {
 
-    let notEmptyBalance = userInfo.balance?.balances.filter((el) => {
-      let amount = numberTransformer(el.current_balance);
-      if (amount !== '0.00') {
-        return true
+  useEffect(() => {
+    dispatch(getActiveBonuses());
+    dispatch(getTopGames());
+  }, [showPopup])
+
+  const activeBonuses = useSelector((state) => state.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const gamesList = useSelector((store) => store.games);
+
+
+  if (activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {
+    if (!userInfo.isAuthenticated) {
+      let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
+      if (bonusesList.length === 0) {
+        return (
+          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
+        )
       } else {
-        return false
+        return (
+          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
+        )
       }
-    });
+    } else if (userInfo.balance && userInfo.balance?.success) {
 
-    if (notEmptyBalance.length !== 0) {
-      return (
-        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
-      )
+      let notEmptyBalance = userInfo.balance?.balances.filter((el) => {
+        let amount = numberTransformer(el.current_balance);
+        if (amount !== '0.00') {
+          return true
+        } else {
+          return false
+        }
+      });
+
+      if (notEmptyBalance.length !== 0) {
+
+        // TODO: GAMES
+        return (
+          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
+        )
+      } else {
+        let bonusesList = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency).slice(0, 3);
+        if (bonusesList.length === 0) {
+          return (
+            <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
+          )
+        } else {
+          return (
+            <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
+          )
+        }
+      }
     } else {
-
       return (
-        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
+        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
       )
     }
   } else {
     return (
-      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
+      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
     )
   }
+
+
 }

@@ -39,9 +39,7 @@ export const ExitIntentMainComponent = ({t, showPopup, exit, type, isShowExitInt
           <div className={styles.innerWrapper}>
             <Heading closeHandler={exit} t={t}/>
             <InnerHeading t={t} text={innerHeadingText}/>
-            {
-              type === "bonus" ? <BonusesContainer exit={exit} t={t}/> : <GamesContainer exit={exit} t={t}/>
-            }
+            <GamesContainer exit={exit} t={t}/>
           </div>
           <SeeAllButton t={t} path={path} exit={exit} text={linkText}/>
         </div>

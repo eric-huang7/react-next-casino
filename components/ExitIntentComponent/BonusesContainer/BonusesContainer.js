@@ -10,9 +10,9 @@ import {bonusesFinder} from "../../../helpers/bonusesFinder";
 
 export const BonusesContainer = ({t, exit}) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getActiveBonuses());
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getActiveBonuses());
+  // }, [])
 
 
   const activeBonuses = useSelector((state) => state.bonuses);

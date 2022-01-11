@@ -131,8 +131,8 @@ export const RegisterSignup = ({t, isShow}) => {
 
   // let site_id = 1;
   // let auth_type_id = 1;
-  let isAdmin = false;
-  let userId = 100000;
+  // let isAdmin = false;
+  // let userId = 100000;
 //currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
     let body = {

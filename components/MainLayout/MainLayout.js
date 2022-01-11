@@ -65,12 +65,13 @@ const MainLayout = ({children, t}) => {
         {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
         {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
         {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
-
         {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
         <MobileSideMenu t={t} userInform={userInfo}/>
         {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
         {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
         <LogIn isShow={logInShow} t={t}/>
+
+
         {/*<SelectCurrency t={t}/>*/}
         {isShowModal.isShowCurrencySwitcher ? <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher} /> : <></>}
 

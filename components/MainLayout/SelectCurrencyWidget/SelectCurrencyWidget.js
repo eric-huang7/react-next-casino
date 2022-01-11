@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
 import {SelectorHeading} from "./SelectorHeading";
+import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
 
 
 
@@ -40,8 +41,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
           backButtonClickHandler={backButtonClickHandler}
           closeCurrenciesClickHandler={closeCurrenciesClickHandler}
         />
-
-
+        <CurrencySelector t={t} />
 
       </div>
     </div>

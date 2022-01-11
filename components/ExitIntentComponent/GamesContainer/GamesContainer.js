@@ -17,11 +17,6 @@ export const GamesContainer = ({t, exit}) => {
 
 
   useEffect(() => {
-    dispatch(getTopGames());
-  }, [])
-
-
-  useEffect(() => {
     if (playGames.startGame?.game_link) {
       router.push(playGames.startGame.game_link);
     }
