@@ -1,10 +1,10 @@
 import styles from "../../../styles/ExitIntentComponent/BonusesContainer/BonusesContainer.module.scss";
 
 
-export const BonusSubmitButton = () => {
+export const BonusSubmitButton = ({submitBonusHandler, userData}) => {
 
 
   return (
-    <button className={styles.submitBonusButton}>{"Claim Now"}</button>
+    <button onClick={() => submitBonusHandler()} className={styles.submitBonusButton}>{userData ? "Claim Now" : "Sign Up"}</button>
   )
 }

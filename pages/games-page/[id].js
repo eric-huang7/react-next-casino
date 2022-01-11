@@ -161,6 +161,9 @@ export const getServerSideProps = async (context) => {
       res = await fetch(game_ids(whatSearch.game_ids))
     }
 
+  } else if (context.query.id === 'bonus-games') {
+    heading = context.query.active_bonus;
+    res = await fetch(topGames_url(100));
   } else {
 
     heading = context.query.id;
@@ -170,7 +173,7 @@ export const getServerSideProps = async (context) => {
   let gamesData = await res.json();
   return ({
     props: {
-      ...await serverSideTranslations(context.locale, ['common']),
+      ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),
       gamesData: {...gamesData},
       heading: heading,
     },

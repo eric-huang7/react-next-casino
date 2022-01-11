@@ -19,7 +19,7 @@ export const ExitIntentMainComponent = ({t, showPopup, exit, type}) => {
           <Heading closeHandler={exit} t={t} />
           <InnerHeading t={t} text={innerHeadingText} />
           {
-            type === "bonus" ? <BonusesContainer t={t} /> : <GamesContainer t={t} />
+            type === "bonus" ? <BonusesContainer exit={exit} t={t} /> : <GamesContainer exit={exit} t={t} />
           }
         </div>
         <SeeAllButton t={t} path={path} exit={exit} text={linkText}/>

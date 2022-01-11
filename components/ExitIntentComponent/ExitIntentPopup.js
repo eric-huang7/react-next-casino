@@ -39,7 +39,7 @@ export const ExitIntentPopup = ({t, userInfo}) => {
     const timer = setTimeout(() => {
       document.addEventListener('mouseout', mouseEvent);
       // document.querySelector('.exit-intent-popup').addEventListener('click', exit);
-    }, 0);
+    }, 10000);
 
     return () => {
       document.removeEventListener('mouseout', mouseEvent);

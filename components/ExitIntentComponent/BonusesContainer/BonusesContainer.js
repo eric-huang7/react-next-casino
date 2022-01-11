@@ -7,7 +7,7 @@ import {getActiveBonuses} from "../../../redux/actions/getBonuses";
 import {bonusesFinder} from "../../../helpers/bonusesFinder";
 
 
-export const BonusesContainer = ({t}) => {
+export const BonusesContainer = ({t, exit}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getActiveBonuses());
@@ -39,7 +39,13 @@ export const BonusesContainer = ({t}) => {
           bonusesList.map((bonus) => {
 
             return (
-              <BonusItemContainer key={`${bonus.id} bonus item key`} t={t} bonusData={bonus} />
+              <BonusItemContainer
+                key={`${bonus.id} bonus item key`}
+                t={t}
+                userData={userData}
+                bonusData={bonus}
+                exit={exit}
+              />
             )
           })
         }
