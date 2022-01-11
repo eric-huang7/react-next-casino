@@ -27,6 +27,21 @@
       "signOut": "Sign Out"
     }
   },
+  "exitIntentPopup": {
+    "heading": "Wait, Before You Go",
+    "innerHeadingGames": "Other players love playing these games,\n and we think you will, too Take a quick look.",
+    "innerHeadingBonus": "Welcome bonus and other deposit bonuses",
+    "seeAllPromo": "See All Promotions",
+    "seeAllGames": "See All Games",
+    "bonusesContainer": {
+      "claimButton": "Claim Now",
+      "signUpButton": "Sign Up"
+    },
+    "gamesContainer": {
+      "playNow": "Play Now",
+      "playFun": "Play For Fun"
+    }
+  },
   "registrationForm": {
     "mainHeading": "DEPOSIT $ 100 AND GET $ 200",
     "innerHeading": "Welcome To SlotsIdol",

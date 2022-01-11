@@ -9,7 +9,7 @@ export const Heading = ({t, closeHandler}) => {
   return (
     <div className={styles.headingBlock}>
       <p>
-        Wait, Before You Go
+        {t("exitIntentPopup.heading")}
       </p>
       <CloseButton t={t} closeHandler={closeHandler}></CloseButton>
     </div>

@@ -27,6 +27,21 @@
       "signOut": "Выйти"
     }
   },
+  "exitIntentPopup": {
+    "heading": "Подожди, прежде чем уйти",
+    "innerHeadingGames": "Другие игроки любят играть в эти игры,\n и мы думаем, что вы тоже. Взгляните.",
+    "innerHeadingBonus": "Приветственный бонус и другие бонусы на депозит",
+    "seeAllPromo": "Просмотреть все акции",
+    "seeAllGames": "Посмотреть все игры",
+    "bonusesContainer": {
+      "claimButton": "Получить",
+      "signUpButton": "Регистация"
+    },
+    "gamesContainer": {
+      "playNow": "Играть",
+      "playFun": "Тренировка"
+    }
+  },
   "registrationForm": {
     "mainHeading": "ВНЕСИТЕ $ 100 И ПОЛУЧИТЕ $ 200",
     "innerHeading": "Добро пожаловать в SlotsIdol",

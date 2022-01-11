@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import {freeGame, playPayGame} from "../../../redux/actions/playGames";
 
 
-export const GamesContainer = ({t}) => {
+export const GamesContainer = ({t, exit}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const gamesList = useSelector((store) => store.games);

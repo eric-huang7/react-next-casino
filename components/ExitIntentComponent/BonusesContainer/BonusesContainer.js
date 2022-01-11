@@ -18,11 +18,6 @@ export const BonusesContainer = ({t, exit}) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userData = useSelector((store) => store.authInfo);
 
-  console.log(userData, '<<<<<<<')
-  console.log(activeBonuses, '<<<<< bonuses exit');
-  console.log(userCurrency, '<<<<<<<<<<userCurrency')
-
-
   if (activeBonuses.activeBonuses?.success) {
     let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
 

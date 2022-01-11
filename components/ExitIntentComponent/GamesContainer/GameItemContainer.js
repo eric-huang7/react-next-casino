@@ -22,8 +22,8 @@ export const GameItemContainer = ({t, gameData, playFunClickHandler, playGameCli
       <div className={styles.gameInfoContainer}>
         <h3>{gameData.name}</h3>
         <div className={styles.gameButtonsContainer}>
-          <button onClick={() => playPaidHandler()} className={styles.playNowButton}>{"Play Now"}</button>
-          <button onClick={() => playFunHandler()} className={styles.playFunButton}>{"Play For Fun"}</button>
+          <button onClick={() => playPaidHandler()} className={styles.playNowButton}>{t("exitIntentPopup.gamesContainer.playNow")}</button>
+          <button onClick={() => playFunHandler()} className={styles.playFunButton}>{t("exitIntentPopup.gamesContainer.playFun")}</button>
         </div>
       </div>
     </div>

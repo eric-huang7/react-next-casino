@@ -43,7 +43,7 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
           exit();
 
         } else {
-          // exit();
+          exit();
           router.push({
             pathname: '/games-page/bonus-games',
             query: {

@@ -9,8 +9,8 @@ import {BonusesContainer} from "./BonusesContainer/BonusesContainer";
 export const ExitIntentMainComponent = ({t, showPopup, exit, type, isShowExitIntent}) => {
 
   let path = type === "bonus" ? "/promotions" : "/games-page/top-games";
-  let innerHeadingText = type === "bonus" ? "Welcome bonus and other deposit bonuses" : "Other players love playing these games,\n and we think you will, too Take a quick look.";
-  let linkText = type === "bonus" ? "See All Promotions" : "See All Games";
+  let innerHeadingText = type === "bonus" ? t("exitIntentPopup.innerHeadingBonus") : t("exitIntentPopup.innerHeadingGames");
+  let linkText = type === "bonus" ? t("exitIntentPopup.seeAllPromo") : t("exitIntentPopup.seeAllGames");
 
   return (
     <div className={`${styles.exit_intent_popup} ${showPopup && isShowExitIntent ? styles.visible : ""}`}>
