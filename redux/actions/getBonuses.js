@@ -8,7 +8,8 @@ export const getActiveBonuses = () => async dispatch => {
   const config = {
     withCredentials: true,
     params: {
-      site_id: 1
+      site_id: 1,
+      user_id: 1,
     }
   }
 
@@ -18,8 +19,9 @@ export const getActiveBonuses = () => async dispatch => {
       type: GET_ACTIVE_BONUSES,
       payload: res.data
     })
+    console.log(res, 'bonuses fetch result')
   } catch (e) {
-    console.log('SOME ERROR IN GET ACTIVE BONUSES', e);
+    console.log('SOME ERROR IN GET ACTIVE BONUSES', e.response);
   }
 }
 

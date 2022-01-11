@@ -21,7 +21,6 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     setShowPopup(false);
   };
 
-
   const mouseEvent = (e) => {
     if (typeof window !== 'undefined') {
       const shouldShowExitIntent =
@@ -38,8 +37,6 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     }
 
   };
-
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -69,11 +66,11 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     });
 
     if (notEmptyBalance.length !== 0) {
-
       return (
         <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
       )
     } else {
+
       return (
         <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
       )

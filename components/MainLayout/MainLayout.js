@@ -28,6 +28,7 @@ import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
 import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
 import Head from "next/head";
 import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
+import {SelectCurrencyWidget} from "./SelectCurrencyWidget/SelectCurrencyWidget";
 
 
 const MainLayout = ({children, t}) => {
@@ -70,7 +71,9 @@ const MainLayout = ({children, t}) => {
         {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
         {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
         <LogIn isShow={logInShow} t={t}/>
-        <SelectCurrency t={t}/>
+        {/*<SelectCurrency t={t}/>*/}
+        {isShowModal.isShowCurrencySwitcher ? <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher} /> : <></>}
+
         {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
         {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
         <TournamentIcon toursref={toursref}/>

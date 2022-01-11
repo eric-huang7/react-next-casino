@@ -14,6 +14,7 @@ import {setUserBonus} from "../../../redux/actions/setUserBonus";
 import {showDepositModal} from "../../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 import {showRegister} from "../../../redux/actions/registerShow";
+import {log} from "qrcode/lib/core/galois-field";
 
 
 export const BonusItemContainer = ({bonusData, userData, exit}) => {
@@ -33,7 +34,7 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
           'Content-Type': 'application/json',
         },
       }
-
+      console.log(bonusData, '<<<<<<<<<<<<<<<<<<<<<')
       const body = JSON.stringify(sendData);
       axios.patch(user_url, body, config).then((data) => {
         console.log(data, 'success');

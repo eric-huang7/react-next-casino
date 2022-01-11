@@ -7,6 +7,7 @@ import {getActiveBonuses} from "../../../redux/actions/getBonuses";
 import {bonusesFinder} from "../../../helpers/bonusesFinder";
 
 
+
 export const BonusesContainer = ({t, exit}) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,6 +18,8 @@ export const BonusesContainer = ({t, exit}) => {
   const activeBonuses = useSelector((state) => state.bonuses);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userData = useSelector((store) => store.authInfo);
+
+
 
   if (activeBonuses.activeBonuses?.success) {
     let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
