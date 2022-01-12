@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import axios from "axios";
 
 
-export const CurrencyItem = ({t, currencyData}) => {
+export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
 
   const abbr = currencyData.abbreviation;
   const name = currencyData.name;
@@ -19,12 +19,14 @@ export const CurrencyItem = ({t, currencyData}) => {
 
 
   return (
-    <li className={styles.currencyItem}>
+    <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
       <div  className={styles.iconContainer}>
         {/*<img src={currencyIconsUrl()} alt="currency icon"/>*/}
-        <svg viewBox='0 0 16 16'>
-          <use href={"https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/currency/coins.svg#ach"} />
-        </svg>
+        {/*<svg href={"https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/currency/coins.svg"} id={"iconsSvg"}>*/}
+        {/*</svg>*/}
+        {/*<svg >*/}
+        {/*  <use xlinkHref={"#ach"}></use>*/}
+        {/*</svg>*/}
 
       </div>
       <div  className={styles.currencyInfoContainer}>

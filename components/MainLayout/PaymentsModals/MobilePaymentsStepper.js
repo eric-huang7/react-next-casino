@@ -55,11 +55,11 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
       dispatch(showRegister(true));
     } else if (type === 'crypto') {
       let paymentData = {
-        senderCurrency_id: userCurrency.currencyId,
+        senderCurrency_id: userCurrency.userCurrencyData.id,
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.currencyId
+        receiverCurrency_id: userCurrency.userCurrencyData.id
       }
       dispatch(postCryptoPayment(paymentData, null));
       dispatch(showCryptoModal(true));
@@ -70,7 +70,7 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.currencyId
+        receiverCurrency_id: userCurrency.userCurrencyData.id
       }
       dispatch(postCryptoPayment(paymentData, method));
       dispatch(showCryptoModal(true));
@@ -82,7 +82,7 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
   }
 
   const whatShouldDoPlayWith = () => {
-    if (userCurrency.type === 3) {
+    if (userCurrency.userCurrencyData.type === 3) {
       if (errorInputValue) {
         return
       } else {

@@ -51,7 +51,7 @@ export const SumInputs = () => {
           className={styles.currencyButton}
           onClick={() => currencyButtonClickHAndler()}
         >
-            <span className={styles.currencyButtonValue}>{userSelectedCurrency.currencyAbbreviation}</span>
+            <span className={styles.currencyButtonValue}>{userSelectedCurrency.userCurrencyData.abbreviation}</span>
         </div>
       </div>
       <div className={styles.dividerUp}/>

@@ -38,7 +38,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
       dispatch(get_fiat_currency());
     }
   }, [])
-  console.log(currencies, "<<<<<<<, currency")
+  // console.log(currencies, "<<<<<<<, currency")
 
   const closeCurrenciesClickHandler = () => {
     dispatch(showCurrencySwitcher(false));

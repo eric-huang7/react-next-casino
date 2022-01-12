@@ -17,7 +17,7 @@ export const CurrencySelector = ({t, heading, currenciesList, actionCurrencySele
         currencyType: e.type,
         isDepositEnabled: e.isDepositEnabled,
         isWithdrawEnabled: e.isWithdrawEnabled,
-      }))
+      }));
     } else {
       let currency = {
         currency_id: e.id

@@ -32,9 +32,9 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
   const confirmButtonClickHandler = () => {
     if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
       let date = dateInput.split('/').join('')
-      console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.currencyId, siteID, userInfo.user.user.id);
+      console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.userCurrencyData.id, siteID, userInfo.user.user.id);
       let paymentData = {
-        senderCurrency_id: userCurrency.currencyId,
+        senderCurrency_id: userCurrency.userCurrencyData.id,
         user_id: `${userInfo.user.user.id}`,
         site_id: siteID,
         number: `${cardNumber}`,

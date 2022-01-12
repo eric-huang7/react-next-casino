@@ -11,7 +11,7 @@ export const bonusesFinder = (offers, userCurrency) => {
 
 
           arrOfBonuses = specArr.filter((elSpec) => {
-            return elSpec.currency_id === Number(userCurrency.currencyId)
+            return elSpec.currency_id === Number(userCurrency.userCurrencyData.id)
           })
         } catch (e) {
           arrOfBonuses = [];

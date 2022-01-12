@@ -39,10 +39,10 @@ export const HomePageContainer = ({t}) => {
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
-  const currencies = useSelector((state) => state.getCurrency);
+  const userCurrencies = useSelector((state) => state);
   const activeBonuses = useSelector((state) => state.bonuses);
 
-
+  console.log(userCurrencies, '<<<<<?????????????????')
   return (
     <>
       <MainBlock/>

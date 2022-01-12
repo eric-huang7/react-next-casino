@@ -18,7 +18,7 @@ export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler, 
         </div>
         <div className={styles.amountPaymentContainer}>
           <label className={styles.amountPaymentInfo} htmlFor="">{t("depositPage.depositLastPage.amountPayment")}</label>
-          <label className={styles.currencyIcon} htmlFor="paymentAmount">{userCurrency.currencySymbol}</label>
+          <label className={styles.currencyIcon} htmlFor="paymentAmount">{userCurrency.userCurrencyData.symbol}</label>
           <input id='paymentAmount' type="number" defaultValue={userDepositValue} onChange={(e) => depositValueInputHandler(e)}/>
           <span className={styles.errorMessage}>{t(userDepositValueError)}</span>
         </div>

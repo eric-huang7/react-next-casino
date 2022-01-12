@@ -6,7 +6,7 @@ export const CurrencyChooser = ({t, currencySwitcherShowHandler, userCurrency, w
   return (
     <>
       <button onClick={() => currencySwitcherShowHandler()} className={styles.widgetCurrencyButton} id={'widgetCurrencyButton'}>
-        {userCurrency.currencyAbbreviation}
+        {userCurrency.userCurrencyData.abbreviation}
       </button>
       <label className={styles.currencyButtonLabel} htmlFor="widgetCurrencyButton">{width <= 680 ? "" : t("depositWidget.currency")}</label>
     </>

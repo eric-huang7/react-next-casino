@@ -67,7 +67,7 @@ export const BonusesBlockContainer = (props) => {
       )
     } else {
       // chooseBonusClickHandler(0)
-      setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
+      setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`);
       return (
         <BonusesBlock
           t={t}
@@ -81,7 +81,7 @@ export const BonusesBlockContainer = (props) => {
       )
     }
   } else {
-    setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.currencySymbol.length > 0) ? userCurrency.currencySymbol : userCurrency.currencyAbbreviation}`);
+    setDepositButtonText(`${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`);
     return (
       <BonusesBlock
         t={t}

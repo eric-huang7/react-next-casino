@@ -68,11 +68,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
     } else if (type === 'crypto') {
       let paymentData = {
-        senderCurrency_id: userCurrency.currencyId,
+        senderCurrency_id: userCurrency.userCurrencyData.id,
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.currencyId
+        receiverCurrency_id: userCurrency.userCurrencyData.id
       }
 
       dispatch(postCryptoPayment(paymentData, null));
@@ -84,7 +84,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.currencyId
+        receiverCurrency_id: userCurrency.userCurrencyData.id
       }
       dispatch(postCryptoPayment(paymentData, paymentMethod));
       dispatch(showCryptoModal(true));
@@ -92,7 +92,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }
 
   const whatShouldDoPlayWithButton = () => {
-    if ((userCurrency.type === 3 && width > 680)) {
+    if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
       if (!paymentMethod && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
         setErrorDepositValue(true);
@@ -107,7 +107,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
           openWindow('fiat');
         }
       }
-    } else if ((userCurrency.type === 3 && width <= 680)) {
+    } else if ((userCurrency.userCurrencyData.type === 3 && width <= 680)) {
       if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
@@ -141,7 +141,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   return (
     <div
-      className={`${styles.depositWidgetMainContainer} ${userCurrency.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
+      className={`${styles.depositWidgetMainContainer} ${userCurrency.userCurrencyData.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <CurrencyChooser
         width={width}
         currencySwitcherShowHandler={currencySwitcherShowHandler}
@@ -156,7 +156,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         errorDepositValue={errorDepositValue}
         t={t}
       />
-      {((userCurrency.type === 3) || (userCurrency.type === 0)) && width > 680
+      {((userCurrency.userCurrencyData.type === 3) || (userCurrency.userCurrencyData.type === 0)) && width > 680
         ?
         <PaymentMethodMainBlock
           scrollHeight={scrollHeight}
