@@ -9,6 +9,8 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
 
   const [cryptoFindArr, setCryptoFindArr] = useState(cryptoCurrency);
   const [popularFindArr, setPopularFindArr] = useState(popularCurrency);
+  const [stableFindArr, setStableFindArr] = useState(stableCurrency);
+  const [fiatFindArr, setFiatFindArr] = useState(fiatCurrency);
 
 
   const searchInputHandler = (value) => {
@@ -38,6 +40,22 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
       }
     })
     setPopularFindArr(popularFindArr);
+    const stableFindArr = stableCurrency.filter((currency) => {
+      if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    setStableFindArr(stableFindArr);
+    const fiatFindArr = fiatCurrency.filter((currency) => {
+      if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    setFiatFindArr(fiatFindArr);
 
   }
 
@@ -47,9 +65,16 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
         <InputContainer searchValue={searchValue} searchInputHandler={searchInputHandler} t={t} />
         <div  className={styles.currenciesListsContainer}>
           {popularFindArr.length === 0 ? <></> : <CurrencyList t={t} type={"Popular Crypto"} currenciesData={popularFindArr}/>}
-          <CurrencyList t={t} type={"Stable Coins"} currenciesData={stableCurrency}/>
-          <CurrencyList t={t} type={"Fiat"} currenciesData={fiatCurrency}/>
+          {stableFindArr.length === 0 ? <></> : <CurrencyList t={t} type={"Stable Coins"} currenciesData={stableFindArr}/>}
+          {fiatFindArr.length === 0 ? <></> : <CurrencyList t={t} type={"Fiat"} currenciesData={fiatFindArr}/>}
           {cryptoFindArr.length === 0 ? <></> : <CurrencyList t={t} type={"Crypto Currencies"} currenciesData={cryptoFindArr}/>}
+          {
+            popularFindArr.length || stableFindArr.length || fiatFindArr.length || cryptoFindArr.length
+              ?
+              <></>
+              :
+              <p className={styles.nothingFoundText}>{"No matches were found for your query"}</p>
+          }
         </div>
       </div>
     </div>
