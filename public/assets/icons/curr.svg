@@ -1,0 +1,25 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 30" width="35" height="30">
+	<title>iPhone 12 Pro Max – 1</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-82-394h428v926h-428z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.s0 { fill: #50af95 } 
+	</style>
+	<g id="iPhone 12 Pro Max – 1" clip-path="url(#cp1)">
+		<g id="Scroll Group 8">
+			<g id="Group 27">
+				<g id="Group 23">
+					<g id="USDT">
+						<g id="tether-usdt-logo">
+							<path id="Path 86" class="s0" d="m7.06 0.61v0c0.04-0.09 0.13-0.14 0.23-0.14h20.72c0.1 0 0.18 0.06 0.22 0.14l6.09 12.79c0.05 0.1 0.03 0.21-0.05 0.29l-16.45 15.76c-0.1 0.09-0.25 0.09-0.35 0l-16.45-15.76c-0.08-0.07-0.1-0.19-0.05-0.29l6.09-12.79v0z" />
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

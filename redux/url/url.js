@@ -55,6 +55,12 @@ export const user_balance_url = 'http://t-gpb.slotsidol.com:7000/balance';
 
 export const currency_url = 'http://t-gpb.slotsidol.com:7000/currencies';
 
+export const popular_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?types=4&isDepositEnabled=1&ordering=rank-ASC';
+export const crypto_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?types=1&isDepositEnabled=1&ordering=rank-ASC';
+export const stable_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?types=2&isDepositEnabled=1&ordering=rank-ASC';
+export const fiat_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?types=3&isDepositEnabled=1&ordering=rank-ASC';
+
+
 // ######## get bonuses
 export const activeBonuses_url = 'http://t-gpb.slotsidol.com:7000/bonus_offer?active=1';
 

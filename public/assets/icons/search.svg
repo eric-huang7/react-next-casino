@@ -1,0 +1,19 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 30" width="29" height="30">
+	<title>iPhone 12 Pro Max – 1</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-88-243h428v926h-428z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.s0 { fill: #cbcaca } 
+	</style>
+	<g id="iPhone 12 Pro Max – 1" clip-path="url(#cp1)">
+		<g id="loupe">
+			<g id="Group 24">
+				<path id="Path 83" fill-rule="evenodd" class="s0" d="m28.15 29.15c-0.23 0.23-0.54 0.35-0.84 0.35c-0.3 0-0.61-0.12-0.84-0.35l-8.1-8.1c-1.94 1.57-4.4 2.52-7.09 2.52c-6.22 0-11.28-5.06-11.28-11.28c0-6.22 5.06-11.28 11.28-11.28c6.22 0 11.28 5.06 11.28 11.28c0 2.68-0.95 5.15-2.52 7.09l8.1 8.1c0.46 0.46 0.46 1.21 0 1.68zm-7.96-16.87c0-4.91-3.99-8.91-8.91-8.91c-4.91 0-8.91 3.99-8.91 8.91c0 4.91 3.99 8.91 8.91 8.91c4.91 0 8.91-3.99 8.91-8.91z" />
+			</g>
+		</g>
+	</g>
+</svg>
