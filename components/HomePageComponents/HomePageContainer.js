@@ -42,7 +42,6 @@ export const HomePageContainer = ({t}) => {
   const userCurrencies = useSelector((state) => state);
   const activeBonuses = useSelector((state) => state.bonuses);
 
-  console.log(userCurrencies, '<<<<<?????????????????')
   return (
     <>
       <MainBlock/>

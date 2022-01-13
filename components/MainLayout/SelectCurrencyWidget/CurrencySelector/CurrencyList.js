@@ -5,16 +5,19 @@ import {setUserCurrencySwitcher} from "../../../../redux/actions/setSelectedCurr
 import {addCurrencyToUserList} from "../../../../redux/actions/userData";
 
 
-export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler}) => {
+export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, userAuth}) => {
   const dispatch = useDispatch();
 
   const currencySelectorHandler = (currencyData) => {
       dispatch(setUserCurrencySwitcher(currencyData));
-      //
-      let currency = {
-        currency_id: currencyData.id
+
+      if (userAuth) {
+        let currency = {
+          currency_id: currencyData.id
+        }
+        dispatch(addCurrencyToUserList(currency));
       }
-      dispatch(addCurrencyToUserList(currency));
+
     backButtonClickHandler();
       // console.log(currencyData.id, currencyData.abbreviation, currencyData.symbol, currencyData.type, '<<<< data for post')
   }

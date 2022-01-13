@@ -2,6 +2,7 @@ import {HIDE_REGISTER, SHOW_REGISTER} from "../actions/types";
 
 const initialState = {
   isShow: false,
+  hideForCurrency: false,
 }
 
 function showRegisterReducer(state = initialState, action) {
@@ -16,7 +17,7 @@ function showRegisterReducer(state = initialState, action) {
     case HIDE_REGISTER:
       return {
         ...state,
-        isShow: payload,
+        hideForCurrency: payload,
       }
     default:
       return state

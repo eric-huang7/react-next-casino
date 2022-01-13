@@ -23,6 +23,8 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
   const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton);
   const actionCurrencySelector = useSelector((store) => store.currencySelectorType);
   const currencies = useSelector((store) => store.getCurrency);
+  const userAuth = useSelector((store) => store.authInfo.isAuthenticated);
+
 
   useEffect(() => {
     if (currencies.loading_popular_currency && !currencies.popular_currency?.success) {
@@ -75,6 +77,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
             stableCurrency={currencies.stable_currency.results}
             fiatCurrency={currencies.fiat_currency.results}
             backButtonClickHandler={backButtonClickHandler}
+            userAuth={userAuth}
           />
         </div>
       </div>

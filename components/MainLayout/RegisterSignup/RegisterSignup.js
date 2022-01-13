@@ -8,11 +8,12 @@ import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import {Header} from "../Header/Header";
-import {showRegister} from "../../../redux/actions/registerShow";
+import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
 import {auth, signUp, userBalance} from "../../../redux/actions/userData";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
+import {backButtonShouldDo, showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
 
 let currensyVariants = [
   {id: 1, currensy: "BTC", active: false},
@@ -40,22 +41,24 @@ export const RegisterSignup = ({t, isShow}) => {
   });
 
   const dispatch = useDispatch();
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
   const userData = useSelector((userData) => userData.authInfo);
+  const userCurrency = useSelector((store) => store.userSelectedCurrency.userCurrencyData);
+
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
 
-  const [isShowCurrency, setIsShowCurrency] = useState(false);
+  // const [isShowCurrency, setIsShowCurrency] = useState(false);
 
-  const [activeCurrency, setActiveCurrency] = useState('USD'); // default need change
+  // const [activeCurrency, setActiveCurrency] = useState(userCurrency.abbreviation); // default need change
 
   const [usernameData, setUsernameData] = useState('');
   const [passwordData, setPasswordData] = useState('');
   const [userEmailData, setUserEmailData] = useState('');
   const [bonusCodeData, setBonusCodedata] = useState('');
-  const [currencyChoose, setCurrencyChoose] = useState(5693); // default need change
+  // const [currencyChoose, setCurrencyChoose] = useState(userCurrency.id); // default need change
   const [youAgree, setYouAgree] = useState(false);
   const [youAgreeError, setYouAgreeError] = useState('');
   const [registerError, setRegisterError] =useState('');
@@ -66,8 +69,8 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   function registerCloseButtonHandler() {
-    if (isShowRegister) {
-      dispatch(showRegister(false))
+    if (isShowRegister.isShow) {
+      dispatch(showRegister(false));
     } else {
       dispatch(showRegister(true))
     }
@@ -90,26 +93,35 @@ export const RegisterSignup = ({t, isShow}) => {
     setYouAgree(e.target.checked);
   }
 
-  let currencyRef = useRef('')
+  // let currencyRef = useRef('')
 
-  const setCurrency = (e) => {
-    // console.log(e.target.dataset.currency, '!!!!!!');
-    setCurrencyChoose(Number(e.target.dataset.currency));
-    setActiveCurrency(e.target.innerText);
-    setIsShowCurrency(false);
+  // const setCurrency = (e) => {
+  //   // console.log(e.target.dataset.currency, '!!!!!!');
+  //   setCurrencyChoose(Number(e.target.dataset.currency));
+  //   setActiveCurrency(e.target.innerText);
+  //   setIsShowCurrency(false);
+  // }
+
+  const hideCurrencyShowRegisterModal = () => {
+    dispatch(showCurrencySwitcher(false));
+    dispatch(hideRegister(false));
   }
 
   function showCurrencyBlock() {
-    if (isShowCurrency) {
-      setIsShowCurrency(false);
-    } else {
-      setIsShowCurrency(true);
-    }
+    dispatch(showCurrencySwitcher(true));
+    dispatch(hideRegister(true));
+    dispatch(backButtonShouldDo(hideCurrencyShowRegisterModal));
+
+    // if (isShowCurrency) {
+    //   setIsShowCurrency(false);
+    // } else {
+    //   setIsShowCurrency(true);
+    // }
   }
 
-  useEffect(() => {
-    // console.log(currencyRef.current.value);
-  }, [activeCurrency])
+  // useEffect(() => {
+  //   // console.log(currencyRef.current.value);
+  // }, [activeCurrency])
 
   function showPass(){
     if (isPassShow) {
@@ -136,7 +148,7 @@ export const RegisterSignup = ({t, isShow}) => {
 //currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
     let body = {
-      base_currency_id: currencyChoose,
+      base_currency_id: userCurrency.id,
       site_id : siteID,
       auth_type_id: auth_type_id,
       username: userNameInfo,
@@ -144,6 +156,7 @@ export const RegisterSignup = ({t, isShow}) => {
       password: userPasswordInfo,
       current_bonus_code: bonusCodeData,
     }
+
     dispatch(signUp(body));
   }
 
@@ -163,7 +176,7 @@ export const RegisterSignup = ({t, isShow}) => {
     reset();
     setYouAgreeError('');
     setRegisterError('');
-  },[isShowRegister]);
+  },[isShowRegister.isShow]);
 
   useEffect(() => {
     if (userInfo.registerError) {
@@ -173,7 +186,7 @@ export const RegisterSignup = ({t, isShow}) => {
 
 
   return (
-    <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister}`}>
+    <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
       {/*<Header t={t}/>*/}
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
@@ -233,29 +246,28 @@ export const RegisterSignup = ({t, isShow}) => {
               </label>
                 <input
                   readOnly={true}
-                  ref={currencyRef}
+                  // ref={currencyRef}
                   className={styles.currencyInput}
-                  onChange={(e) => console.log(e.target.value)}
                   onClick={() => showCurrencyBlock()}
-                  value={activeCurrency || "USD"}
+                  value={userCurrency.abbreviation}
                   id={'currencyIn'}
                   type="text"/>
-                <div className={`${styles.currencyVariants} ${isShowCurrency ? styles.activeCurrency : ''}`}>
-                  {
-                    currensyVariants.map((el) => {
-                      return (
-                        <div
-                          key={el.id}
-                          data-currency={el.id}
-                          onClick={(e) => setCurrency(e)}
-                          className={styles.currencyItem}
-                        >
-                          <p data-currency={el.id}>{el.currensy}</p>
-                        </div>
-                      )
-                    })
-                  }
-                </div>
+                {/*<div className={`${styles.currencyVariants} ${isShowCurrency ? styles.activeCurrency : ''}`}>*/}
+                {/*  {*/}
+                {/*    currensyVariants.map((el) => {*/}
+                {/*      return (*/}
+                {/*        <div*/}
+                {/*          key={el.id}*/}
+                {/*          data-currency={el.id}*/}
+                {/*          onClick={(e) => setCurrency(e)}*/}
+                {/*          className={styles.currencyItem}*/}
+                {/*        >*/}
+                {/*          <p data-currency={el.id}>{el.currensy}</p>*/}
+                {/*        </div>*/}
+                {/*      )*/}
+                {/*    })*/}
+                {/*  }*/}
+                {/*</div>*/}
 
                 <div className={`${styles.iHaveBonus} ${activeBonus ? styles.showBonusInput : ''}`}>
                   <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
