@@ -109,7 +109,12 @@
     "Security": "Безопасность",
     "Privacy": "Конфиденциальность",
     "TermsAndConditions": "Условия и Положения",
-    "SelectLanguage": "Выбрать язык:"
+    "SelectLanguage": "Выбрать язык:",
+
+    "whyUseCrypto": "Почему Криптовалюта",
+    "playSafe": "Играй безопасно",
+    "manageSubscriptions": "Управление подписками",
+    "promotions": "Промо Акции"
   },
   "aboutUsPage": {
     "mainBlock": {

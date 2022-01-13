@@ -3,11 +3,14 @@ import styles from '../../../styles/Footer/Footer.module.scss'
 import Link from "next/link";
 import Image from "next/image";
 import {ChooseLangDropdown} from "./ChooseLangDropdown";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
+import {showManageSubscriptions, showPlaySafe} from "../../../redux/actions/showPopups";
 
 
 export const Footer = ({t}) => {
+  const dispatch = useDispatch();
+
   const linkKeyFirs = [
     {key: 'liveChat', route: '/#livechat', name: `LiveChat`},
     {key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487`},
@@ -15,9 +18,8 @@ export const Footer = ({t}) => {
     {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
   ]
   const linkKeySecond = [
-    {key: 'news', route: '/#news', name: `News`},
-    {key: 'security', route: '/#security', name: `Security`},
-    {key: 'privacy', route: '/#privacy', name: `Privacy`},
+    {key: 'whyUseCrypto', route: '/whyUseCrypto', name: `whyUseCrypto`},
+    {key: 'promotions', route: '/promotions', name: `promotions`},
     {key: 'termsAndConditions', route: '/termsAndConditions', name: `TermsAndConditions`},
   ]
   const coinsImg = [
@@ -54,6 +56,13 @@ export const Footer = ({t}) => {
     }
   }
 
+  const liveChatClick = (e) => {
+
+    e.preventDefault();
+    const liveChatButton = document.getElementById('lhc_status_widget_v2').contentWindow.document.body.childNodes[0];
+    liveChatButton.click();
+  }
+
   chooseLangArr.sort((item) => {
     let res = item.lang === activeLang ? -1 : 1
     return res;
@@ -66,21 +75,43 @@ export const Footer = ({t}) => {
       <section className={styles.footerUpperBlock}>
         <ul className={styles.linksFirst}>
           {linkKeyFirs.map((el) => {
-            return (
-              <li key={el.key}>
-                <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
-              </li>
-            )
+            if (el.key === "liveChat") {
+              return (
+                <li key={el.key}>
+                  <a style={{cursor: "pointer"}} onClick={(e) => liveChatClick(e)}>{t(`footer.${el.name}`)}</a>
+                </li>
+              )
+            } else {
+              return (
+                <li key={el.key}>
+                  <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
+                </li>
+              )
+            }
           } )}
         </ul>
+        {/*const linkKeySecond = [*/}
+        {/*{key: 'whyUseCrypto', route: '/whyUseCrypto', name: `whyUseCrypto`},*/}
+        {/*{key: 'security', route: '/#security', name: `Security`},*/}
+        {/*{key: 'privacy', route: '/#privacy', name: `Privacy`},*/}
+        {/*{key: 'termsAndConditions', route: '/termsAndConditions', name: `TermsAndConditions`},*/}
+        {/*]*/}
         <ul className={styles.linksSecond}>
-          {linkKeySecond.map((el) => {
-            return (
-              <li key={el.key}>
-                <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
-              </li>
-            )
-          } )}
+          <li>
+            <Link href={linkKeySecond[0].route}><a>{t(`footer.${linkKeySecond[0].name}`)}</a></Link>
+          </li>
+          <li>
+            <Link href={linkKeySecond[1].route}><a>{t(`footer.${linkKeySecond[1].name}`)}</a></Link>
+          </li>
+          <li>
+            <Link href={linkKeySecond[2].route}><a>{t(`footer.${linkKeySecond[2].name}`)}</a></Link>
+          </li>
+          <li>
+            <span onClick={() => dispatch(showPlaySafe(true))}>{t(`footer.playSafe`)}</span>
+          </li>
+          <li>
+            <span onClick={() => dispatch(showManageSubscriptions(true))}>{t(`footer.manageSubscriptions`)}</span>
+          </li>
         </ul>
       </section>
       <section className={styles.footerMiddleBlock}>

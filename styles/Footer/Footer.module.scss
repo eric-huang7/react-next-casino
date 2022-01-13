@@ -28,6 +28,10 @@
   font-family: "Verdana";
 
   margin-bottom: 35px;
+
+  & span {
+    cursor: pointer;
+  }
 }
 .linksFirst li:first-child:after{
   content: ' 7/24';
