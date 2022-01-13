@@ -23,6 +23,7 @@ import {showRegister} from "../../redux/actions/registerShow";
 import {showLogin} from "../../redux/actions/loginShow";
 import Head from "next/head";
 import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
+import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget";
 
 
 
@@ -104,7 +105,8 @@ if (userInfo.isAuthenticated) {
         {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t} /> : <></>}
         {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
         <MobileSideMenu t={t} userInform={userInfo}/>
-        <SelectCurrency t={t}/>
+        {/*<SelectCurrency t={t}/>*/}
+        {isShowModal.isShowCurrencySwitcher ? <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher} /> : <></>}
         <div className={styles.myAccountContainer}>
           <div className={styles.accountInnerContainer}>
             <SideMenu userInform={userInfo} t={t}/>

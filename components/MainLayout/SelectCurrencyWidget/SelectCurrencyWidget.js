@@ -74,6 +74,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
             cryptoCurrency={currencies.crypto_currency.results}
             stableCurrency={currencies.stable_currency.results}
             fiatCurrency={currencies.fiat_currency.results}
+            backButtonClickHandler={backButtonClickHandler}
           />
         </div>
       </div>

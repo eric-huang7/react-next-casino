@@ -4,20 +4,13 @@ import {setUserCurrencySwitcher} from "../../../../redux/actions/setSelectedCurr
 import {showDepositModal} from "../../../../redux/actions/showPopups";
 
 
-export const TryBitcoinContainer = ({t, currency}) => {
+export const TryBitcoinContainer = ({t, btcCurrency}) => {
 
   const dispatch = useDispatch()
   // console.log(currency, '<<<<<<<< deposit button');
 
   const tryBitcoinButtonHandler = () => {
-    dispatch(setUserCurrencySwitcher({
-      currencyId: currency.id,
-      currencyAbbreviation: currency.abbreviation,
-      currencySymbol: currency.symbol,
-      currencyType: currency.type,
-      isDepositEnabled: currency.isDepositEnabled,
-      isWithdrawEnabled: currency.isWithdrawEnabled,
-    }))
+    dispatch(setUserCurrencySwitcher(btcCurrency));
     dispatch(showDepositModal(true));
   }
 

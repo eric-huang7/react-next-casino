@@ -10,14 +10,7 @@ export const DepositButton = ({t, currency}) => {
   // console.log(currency, '<<<<<<<< deposit button')
 
   const currencyButtonHandler = () => {
-    dispatch(setUserCurrencySwitcher({
-      currencyId: currency.id,
-      currencyAbbreviation: currency.abbreviation,
-      currencySymbol: currency.symbol,
-      currencyType: currency.type,
-      isDepositEnabled: currency.isDepositEnabled,
-      isWithdrawEnabled: currency.isWithdrawEnabled,
-    }))
+    dispatch(setUserCurrencySwitcher(currency))
     dispatch(showDepositModal(true));
   }
 

@@ -43,7 +43,7 @@ export const CashoutPage = ({t, activeLink}) => {
           userInfo={balanceInfo.user.user}
         />
         {
-          typeOfCurrency.type === 3 ? <TryBitcoinContainer currency={currency.currency.results.find((el) => el.abbreviation === "BTC")} t={t}/> : <></>
+          typeOfCurrency.type === 3 ? <TryBitcoinContainer btcCurrency={currency.currency.results.find((el) => el.abbreviation === "BTC")} t={t}/> : <></>
         }
 
       </div>
