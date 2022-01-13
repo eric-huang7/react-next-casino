@@ -36,7 +36,8 @@ let {
   userLogin,
   activeBonuses,
   isShowDepositModal,
-  bonusesArr
+  bonusesArr,
+  paymentMethods
 } = props;
 
 
@@ -45,82 +46,120 @@ let {
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
-            <DepositInputsContainer userCurrency={userCurrency}
-                                    t={t}
-                                    userDepositValue={userDepositValue}
-                                    depositValueInputHandler={depositValueInputHandler}
-                                    currencySwitcherShowHandler={currencySwitcherShowHandler}
-                                    userDepositValueError={userDepositValueError}
+            <DepositHeading
+              t={t}
+              closeDepositModalHandler={closeDepositModalHandler}
+            />
+            <DepositInputsContainer
+              userCurrency={userCurrency}
+              t={t}
+              userDepositValue={userDepositValue}
+              depositValueInputHandler={depositValueInputHandler}
+              currencySwitcherShowHandler={currencySwitcherShowHandler}
+              userDepositValueError={userDepositValueError}
             />
             <div className={styles.divider}></div>
-            <BonusesBlockMainContainer t={t} isChecked={isChecked}
-                                       checkedInputHandler={checkedInputHandler}
-                                       isActiveBonusInput={isActiveBonusInput}
-                                       userCurrency={userCurrency}
-                                       showAllBonuses={showAllBonuses}
-                                       showAllBonusesHandler={showAllBonusesHandler}
-                                       chosenBonus={chosenBonus}
-                                       chooseBonusClickHandler={chooseBonusClickHandler}
-                                       setDepositButtonText={setDepositButtonText}
-                                       userDepositValue={userDepositValue}
-                                       userSelectedBonus={userSelectedBonus}
-                                       userLogin={userLogin}
-                                       activeBonuses={activeBonuses}
-                                       isShowDepositModal={isShowDepositModal}
-                                       bonusesArr={bonusesArr}
+            <BonusesBlockMainContainer
+              t={t}
+              isChecked={isChecked}
+              checkedInputHandler={checkedInputHandler}
+              isActiveBonusInput={isActiveBonusInput}
+              userCurrency={userCurrency}
+              showAllBonuses={showAllBonuses}
+              showAllBonusesHandler={showAllBonusesHandler}
+              chosenBonus={chosenBonus}
+              chooseBonusClickHandler={chooseBonusClickHandler}
+              setDepositButtonText={setDepositButtonText}
+              userDepositValue={userDepositValue}
+              userSelectedBonus={userSelectedBonus}
+              userLogin={userLogin}
+              activeBonuses={activeBonuses}
+              isShowDepositModal={isShowDepositModal}
+              bonusesArr={bonusesArr}
             />
             <DepositImages/>
-            <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
-                                bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
+            <BonusCodeActivator
+              t={t}
+              isActiveBonusInput={isActiveBonusInput}
+              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
+            />
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler}
-                               step={step} t={t}
-                               buttonText={buttonText}/>
+          <DepositButtonSubmit
+            userPayment={userPayment}
+            userDepositValue={userDepositValue}
+            stepHandler={stepHandler}
+            step={step}
+            t={t}
+            buttonText={buttonText}
+            userCurrency={userCurrency}
+          />
         </>
       )
     case 2:
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
-            <DepositInputsContainer userCurrency={userCurrency}
-                                    t={t}
-                                    userDepositValue={userDepositValue}
-                                    depositValueInputHandler={depositValueInputHandler}
-                                    currencySwitcherShowHandler={currencySwitcherShowHandler}
-                                    userDepositValueError={userDepositValueError}
+            <DepositHeading
+              t={t}
+              closeDepositModalHandler={closeDepositModalHandler}
             />
-            <BonusesBlockMainContainer t={t} isChecked={isChecked}
-                                       checkedInputHandler={checkedInputHandler}
-                                       isActiveBonusInput={isActiveBonusInput}
-                                       userCurrency={userCurrency}
-                                       showAllBonuses={showAllBonuses}
-                                       showAllBonusesHandler={showAllBonusesHandler}
-                                       chosenBonus={chosenBonus}
-                                       chooseBonusClickHandler={chooseBonusClickHandler}
-                                       setDepositButtonText={setDepositButtonText}
-                                       userDepositValue={userDepositValue}
-                                       userSelectedBonus={userSelectedBonus}
-                                       userLogin={userLogin}
-                                       activeBonuses={activeBonuses}
-                                       isShowDepositModal={isShowDepositModal}
-                                       bonusesArr={bonusesArr}
+            <DepositInputsContainer
+              userCurrency={userCurrency}
+              t={t}
+              userDepositValue={userDepositValue}
+              depositValueInputHandler={depositValueInputHandler}
+              currencySwitcherShowHandler={currencySwitcherShowHandler}
+              userDepositValueError={userDepositValueError}
             />
-            <ChoosePaymentMethod t={t} userPayment={userPayment}/>
-            <BonusCodeActivator t={t} isActiveBonusInput={isActiveBonusInput}
-                                bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}/>
+            <BonusesBlockMainContainer
+              t={t}
+              isChecked={isChecked}
+              checkedInputHandler={checkedInputHandler}
+              isActiveBonusInput={isActiveBonusInput}
+              userCurrency={userCurrency}
+              showAllBonuses={showAllBonuses}
+              showAllBonusesHandler={showAllBonusesHandler}
+              chosenBonus={chosenBonus}
+              chooseBonusClickHandler={chooseBonusClickHandler}
+              setDepositButtonText={setDepositButtonText}
+              userDepositValue={userDepositValue}
+              userSelectedBonus={userSelectedBonus}
+              userLogin={userLogin}
+              activeBonuses={activeBonuses}
+              isShowDepositModal={isShowDepositModal}
+              bonusesArr={bonusesArr}
+            />
+            <ChoosePaymentMethod
+              t={t}
+              userPayment={userPayment}
+              paymentMethods={paymentMethods}
+              userCurrency={userCurrency}
+            />
+            <BonusCodeActivator
+              t={t}
+              isActiveBonusInput={isActiveBonusInput}
+              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
+            />
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue} stepHandler={stepHandler}
-                               step={step} t={t}
-                               buttonText={buttonText}/>
+          <DepositButtonSubmit
+            userPayment={userPayment}
+            userDepositValue={userDepositValue}
+            stepHandler={stepHandler}
+            step={step}
+            t={t}
+            buttonText={buttonText}
+            userCurrency={userCurrency}
+          />
         </>
       )
     case 3:
       return (
         <>
           <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading t={t} closeDepositModalHandler={closeDepositModalHandler}/>
+            <DepositHeading
+              t={t}
+              closeDepositModalHandler={closeDepositModalHandler}
+            />
             <DepositLastPage
               t={t}
               userDepositValue={userDepositValue}
@@ -130,9 +169,16 @@ let {
               userCurrency={userCurrency}
             />
           </div>
-          <DepositButtonSubmit userPayment={userPayment} userDepositValue={userDepositValue}
-                               submitHandler={submitHandler} stepHandler={stepHandler} step={step} t={t}
-                               buttonText={"Submit"}/>
+          <DepositButtonSubmit
+            userPayment={userPayment}
+            userDepositValue={userDepositValue}
+            submitHandler={submitHandler}
+            stepHandler={stepHandler}
+            step={step}
+            t={t}
+            buttonText={"Submit"}
+            userCurrency={userCurrency}
+          />
         </>
       )
   }

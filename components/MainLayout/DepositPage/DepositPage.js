@@ -8,7 +8,11 @@ import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/acti
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {setUserBonus} from "../../../redux/actions/setUserBonus";
 import {bonusesFinder} from "../../../helpers/bonusesFinder";
-
+import {bonusesCalculator} from "../../../helpers/bonusesCalculator";
+import axios from "axios";
+import {payments_methods_url} from "../../../redux/url/url";
+import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import {DepositHeading} from "./DepositHeading";
 
 
 export const DepositPage = ({t}) => {
@@ -25,15 +29,13 @@ export const DepositPage = ({t}) => {
   const activeBonuses = useSelector((state) => state.bonuses);
   const userSelectedBonus = useSelector((state) => state.userBonus);
 
-
-  console.log(userCurrency, "userCurrencyuserCurrencyuserCurrencyuserCurrency")
-
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
   const [showAllBonuses, setShowAllBonuses] = useState(false);
   const [step, setStep] = useState(1);
   const [chosenBonus, setChosenBonus] = useState({});
   const [bonusesArr, setBonusesArr] = useState([]);
+  const [paymentMethods, setPaymentMethods] = useState(null);
 
   let newButtonText = `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`;
   const [buttonText, setNewButtonText] = useState(newButtonText);
@@ -41,13 +43,30 @@ export const DepositPage = ({t}) => {
     setNewButtonText(newButtonText);
   }
 
+  const changeButtonText = () => {
+    let activeBonus = bonusesArr.find((el) => el.id === chosenBonus);
+    // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus');
+    // // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus');
+    let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue, t);
+
+    setNewButtonText(buttonText);
+  }
+
+
   const chooseBonusClickHandler = (chosenUserBonus) => {
     dispatch(setUserBonus(chosenUserBonus));
     setChosenBonus(chosenUserBonus);
+    changeButtonText();
   }
 
+  useEffect(() => {
+    // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus effect');
+    changeButtonText();
+  }, [chosenBonus])
+
+
   const showAllBonusesHandler = () => {
-    if (showAllBonuses){
+    if (showAllBonuses) {
       setShowAllBonuses(false);
     } else {
       setShowAllBonuses(true);
@@ -113,6 +132,28 @@ export const DepositPage = ({t}) => {
 
   useEffect(() => {
     if (userLogin) {
+
+      if (isShowDepositModal) {
+        const config = {
+          params: {
+            currency_id: userCurrency.userCurrencyData.id,
+          }
+        }
+        // payments_methods_url
+        axios.get(payments_methods_url, config)
+          .then((data) => {
+            console.log(data.data.results);
+            setPaymentMethods(data.data.results);
+          })
+          .catch((err) => {
+            setPaymentMethods(null);
+            console.log(err.response);
+          })
+      } else {
+        setPaymentMethods(null);
+      }
+
+
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
       if (bonuses.length > 0) {
         setBonusesArr(bonuses);
@@ -120,7 +161,6 @@ export const DepositPage = ({t}) => {
         setBonusesArr([]);
         chooseBonusClickHandler(0);
       }
-
     } else {
       setBonusesArr([]);
     }
@@ -132,35 +172,49 @@ export const DepositPage = ({t}) => {
       {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
         <h2>{t("depositPage.mainHeading")}</h2>
-        <DepositPageStepper
-          step={step}
-          t={t}
-          bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-          isActiveBonusInput={isActiveBonusInput}
-          checkedInputHandler={checkedInputHandler}
-          currencySwitcherShowHandler={currencySwitcherShowHandler}
-          closeDepositModalHandler={closeDepositModalHandler}
-          isChecked={isChecked}
-          userCurrency={userCurrency}
-          stepHandler={stepHandler}
-          submitHandler={submitHandler}
-          userDepositValue={userDepositValue}
-          depositValueInputHandler={depositValueInputHandler}
-          userDepositValueError={userDepositValueError}
-          userPayment={userPayment}
-          userInfo={userInfo}
-          showAllBonuses={showAllBonuses}
-          showAllBonusesHandler={showAllBonusesHandler}
-          chosenBonus={chosenBonus}
-          chooseBonusClickHandler={chooseBonusClickHandler}
-          setDepositButtonText={setDepositButtonText}
-          buttonText={buttonText}
-          userSelectedBonus={userSelectedBonus}
-          userLogin={userLogin}
-          activeBonuses={activeBonuses}
-          isShowDepositModal={isShowDepositModal}
-          bonusesArr={bonusesArr}
-        />
+        {
+          paymentMethods
+            ?
+            <DepositPageStepper
+              step={step}
+              t={t}
+              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
+              isActiveBonusInput={isActiveBonusInput}
+              checkedInputHandler={checkedInputHandler}
+              currencySwitcherShowHandler={currencySwitcherShowHandler}
+              closeDepositModalHandler={closeDepositModalHandler}
+              isChecked={isChecked}
+              userCurrency={userCurrency}
+              stepHandler={stepHandler}
+              submitHandler={submitHandler}
+              userDepositValue={userDepositValue}
+              depositValueInputHandler={depositValueInputHandler}
+              userDepositValueError={userDepositValueError}
+              userPayment={userPayment}
+              userInfo={userInfo}
+              showAllBonuses={showAllBonuses}
+              showAllBonusesHandler={showAllBonusesHandler}
+              chosenBonus={chosenBonus}
+              chooseBonusClickHandler={chooseBonusClickHandler}
+              setDepositButtonText={setDepositButtonText}
+              buttonText={buttonText}
+              userSelectedBonus={userSelectedBonus}
+              userLogin={userLogin}
+              activeBonuses={activeBonuses}
+              isShowDepositModal={isShowDepositModal}
+              bonusesArr={bonusesArr}
+              paymentMethods={paymentMethods}
+            />
+            :
+            <div className={styles.depositInnerBlockWrapper}>
+              <DepositHeading
+                t={t}
+                closeDepositModalHandler={closeDepositModalHandler}
+              />
+              <LoadingComponent t={t}/>
+            </div>
+        }
+
       </div>
     </div>
   )

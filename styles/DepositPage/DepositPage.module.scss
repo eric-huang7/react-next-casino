@@ -520,8 +520,8 @@
     flex-wrap: wrap;
 
     & div {
-      width: 67px;
-      height: 40px;
+      min-width: 67px;
+      height: fit-content;
 
       border: 1px solid #dadada;
 

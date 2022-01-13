@@ -13,6 +13,7 @@ import {
   get_stable_currency
 } from "../../../redux/actions/currency";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import {hideRegister} from "../../../redux/actions/registerShow";
 
 
 
@@ -43,6 +44,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
   // console.log(currencies, "<<<<<<<, currency")
 
   const closeCurrenciesClickHandler = () => {
+    dispatch(hideRegister(false));
     dispatch(showCurrencySwitcher(false));
     dispatch(setCurrencySelectorType(true));
     if (backButtonShouldDoState !== null) {

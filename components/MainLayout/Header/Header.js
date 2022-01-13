@@ -10,6 +10,7 @@ import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import {useRouter} from "next/router";
 import {getActiveBonuses} from "../../../redux/actions/getBonuses";
 import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
+import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
 
 
 export const Header = ({t}) => {
@@ -24,6 +25,8 @@ export const Header = ({t}) => {
   let userLogined = userLogin.isAuthenticated;
   // let userInfo = userLogin;
   let bonusesData = useSelector((store) => store.bonuses);
+
+  let currencyData = useSelector((store) => store.getCurrency.currency);
 
 
   useEffect(() => {
@@ -53,8 +56,13 @@ export const Header = ({t}) => {
       // console.log(userLogin, 'From userBalance effect')
       dispatch(userBalance());
     }
+    if (userLogin.balance && currencyData) {
+      let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default));
+      let userCurrency = currencyData.results.find((currency) => Number(currency.id) === Number(userActiveCurrency.currency_id));
+      dispatch(setUserCurrencySwitcher(userCurrency));
+    }
     // console.log(userLogin.balance, 'From userBalance effect if true')
-  }, [userLogin.balance])
+  }, [userLogin.balance, currencyData])
 
 
   function closePopups(e) {

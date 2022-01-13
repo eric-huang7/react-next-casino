@@ -1,7 +1,5 @@
 import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
 import {currencyIconsUrl} from "../../../../helpers/imageUrl";
-import {useEffect} from "react";
-import axios from "axios";
 
 
 export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
@@ -21,12 +19,13 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
   return (
     <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
       <div  className={styles.iconContainer}>
-        {/*<img src={currencyIconsUrl()} alt="currency icon"/>*/}
-        {/*<svg href={"https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/currency/coins.svg"} id={"iconsSvg"}>*/}
+        {/*<img src={'/assets/icons/some.svg'} alt="currency icon"/>*/}
+        {/*<svg href={"/assets/icons/some.svg"} id={"iconsSvg"}>*/}
         {/*</svg>*/}
         {/*<svg >*/}
-        {/*  <use xlinkHref={"#ach"}></use>*/}
+        {/*  <use xlinkHref={"/assets/icons/some.svg#ach"}>some svg</use>*/}
         {/*</svg>*/}
+
 
       </div>
       <div  className={styles.currencyInfoContainer}>

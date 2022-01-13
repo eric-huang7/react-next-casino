@@ -1,6 +1,7 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useDispatch} from "react-redux";
 import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
+import {PaymentItem} from "./PaymentItem";
 
 const paymentsMethods = [
   {id: 1, name: 'VISA', img: '/assets/img/depositPage/payments/Visa.png'},
@@ -28,20 +29,22 @@ const paymentsMethods = [
   {id: 23, name: 'WorldPay', img: '/assets/img/depositPage/payments/WorldPay.png'},
 ]
 
-export const ChoosePaymentMethod = ({t, userPayment}) => {
+export const ChoosePaymentMethod = ({t, userPayment, paymentMethods, userCurrency}) => {
   const dispatch = useDispatch();
 
-  const paymentSelector = (e) => {
-    let chosenPayment = paymentsMethods.filter((el) => {
-      return el.id === Number(e.target.dataset.payment_id);
-    })
+  // const paymentSelector = (e) => {
+  //   let chosenPayment = paymentsMethods.filter((el) => {
+  //     return el.id === Number(e.target.dataset.payment_id);
+  //   })
+  //
+  //   dispatch(setUserPaymentMethod({
+  //     paymentId: chosenPayment[0].id,
+  //     paymentName: chosenPayment[0].name,
+  //     paymentImg: chosenPayment[0].img
+  //   }))
+  // }
 
-    dispatch(setUserPaymentMethod({
-      paymentId: chosenPayment[0].id,
-      paymentName: chosenPayment[0].name,
-      paymentImg: chosenPayment[0].img
-    }))
-  }
+  console.log(userCurrency, paymentMethods);
 
   return (
     <div className={styles.depositsChoosePaymentWrapper}>
@@ -50,20 +53,35 @@ export const ChoosePaymentMethod = ({t, userPayment}) => {
       </h3>
       <div className={styles.paymentMethodsBlock}>
         {
-          paymentsMethods.map((el) => {
-            return (
-              <div
-                data-payment_id={el.id}
-                key={el.id}
-                onClick={(e) => paymentSelector(e)}
-              >
-                <img
-                  data-payment_id={el.id}
-                  src={el.img}
-                  alt={el.name}/>
-              </div>
-            )
-          })
+          (userCurrency.userCurrencyData.type === 3) || (userCurrency.userCurrencyData.type === 0)
+            ?
+            paymentMethods["3"].map((method, ind) => {
+              return (
+                <PaymentItem method={method} type={'fiat'} key={`${ind} ${method.currency_from.currency} method type`}></PaymentItem>
+              )
+            })
+
+            :
+            paymentMethods["3"].map((method, ind) => {
+              return (
+                <PaymentItem method={method} type={'crypto'} key={`${ind} ${method.currency_from.currency} method type`}></PaymentItem>
+              )
+            })
+
+          // paymentsMethods.map((el) => {
+          //   return (
+          //     <div
+          //       data-payment_id={el.id}
+          //       key={el.id}
+          //       onClick={(e) => paymentSelector(e)}
+          //     >
+          //       <img
+          //         data-payment_id={el.id}
+          //         src={el.img}
+          //         alt={el.name}/>
+          //     </div>
+          //   )
+          // })
         }
       </div>
       <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
