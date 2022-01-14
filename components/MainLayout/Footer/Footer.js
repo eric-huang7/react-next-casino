@@ -16,6 +16,7 @@ export const Footer = ({t}) => {
     {key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487`},
     {key: 'faqs', route: '/contactUs#faq', name: `FAQs`},
     {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
+    {key: 'privacyPolicy', route: '/privacyPolicy', name: `privacyPolicy`},
   ]
   const linkKeySecond = [
     {key: 'whyUseCrypto', route: '/whyUseCrypto', name: `whyUseCrypto`},
