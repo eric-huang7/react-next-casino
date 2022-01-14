@@ -12,6 +12,8 @@ import {getActiveBonuses} from "../../../redux/actions/getBonuses";
 import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
 
+import Link from "next/link";
+
 
 export const Header = ({t}) => {
 
@@ -77,7 +79,9 @@ export const Header = ({t}) => {
 
   return (
     <header onClick={(e) => closePopups(e)} className={styles.mainHeader}>
-      <img className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
+      <Link href={'./'}>
+        <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
+      </Link>
       <Navigation t={t}/>
       <LangSwitcher href={router.route} locale={locale}/>
       <UserBlockNavigation t={t} userInfo={userLogin}/>

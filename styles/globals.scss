@@ -109,6 +109,11 @@ a {
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
+
+  max-width: 1920px;
+
+  margin: 0 auto;
+
 }
 
 * {
