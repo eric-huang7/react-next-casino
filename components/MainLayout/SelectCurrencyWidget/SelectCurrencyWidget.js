@@ -65,7 +65,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
 
     return (
       <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
-        {/*<Header t={t}/>*/}
+
         <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <SelectorHeading
             t={t}

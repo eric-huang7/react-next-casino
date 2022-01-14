@@ -24,7 +24,7 @@ import {showLogin} from "../../redux/actions/loginShow";
 import Head from "next/head";
 import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
 import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget";
-
+import {showCurrencySwitcher} from "../../redux/actions/showPopups";
 
 
 export const AccountMainLayout = ({t, children}) => {
@@ -85,7 +85,6 @@ export const AccountMainLayout = ({t, children}) => {
   }, [userInfo.isAuthenticated]);
 
 
-
   useEffect(() => {
     if (router.pathname === "/accounts/two_factor") {
       dispatch(auth());
@@ -93,39 +92,40 @@ export const AccountMainLayout = ({t, children}) => {
   }, [router.pathname])
 
 
-if (userInfo.isAuthenticated) {
-  return (
-    <>
-      <Head>
-        <title>Slots Idol</title>
-        <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
-      </Head>
-      <div  className={styles.accountMainLayoutWrapper}>
-        <Header t={t}/>
-        {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t} /> : <></>}
-        {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
-        <MobileSideMenu t={t} userInform={userInfo}/>
-        {/*<SelectCurrency t={t}/>*/}
-        {isShowModal.isShowCurrencySwitcher ? <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher} /> : <></>}
-        <div className={styles.myAccountContainer}>
-          <div className={styles.accountInnerContainer}>
-            <SideMenu userInform={userInfo} t={t}/>
-            <section className={styles.accountMainContainer}>
-              {children}
-            </section>
+  if (userInfo.isAuthenticated) {
+    return (
+      <>
+        <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>
+        <Head>
+          <title>Slots Idol</title>
+          <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
+        </Head>
+        <div className={styles.accountMainLayoutWrapper}>
+          <Header t={t}/>
+          {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
+          {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
+          <MobileSideMenu t={t} userInform={userInfo}/>
+          {/*<SelectCurrency t={t}/>*/}
+          {isShowModal.isShowCurrencySwitcher ?
+            <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}/> : <></>}
+          <div className={styles.myAccountContainer}>
+            <div className={styles.accountInnerContainer}>
+              <SideMenu userInform={userInfo} t={t}/>
+              <section className={styles.accountMainContainer}>
+                {children}
+              </section>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  )
-} else {
-return (
-  <div  className={styles.accountMainLayoutWrapper}>
-    <Header t={t}/>
-  </div>
-  )
-
-
-}
-
+      </>
+    )
+  } else {
+    return (
+      <>
+        <div className={styles.accountMainLayoutWrapper}>
+          <Header t={t}/>
+        </div>
+      </>
+    )
+  }
 }

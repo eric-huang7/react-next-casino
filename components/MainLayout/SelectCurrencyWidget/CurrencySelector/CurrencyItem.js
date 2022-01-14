@@ -1,6 +1,6 @@
 import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
-import {currencyIconsUrl} from "../../../../helpers/imageUrl";
 
+import {useEffect, useState} from "react";
 
 export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
 
@@ -15,17 +15,31 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
     colorBase = null;
   }
 
+useEffect(() => {
+  function svgSetter () {
+    let svg = document.getElementById("currencyIframe");
+    let container = document.getElementById(`currencyItemContainer${currencyData.abbreviation}`);
+    if (svg) {
+      let currencyIcon = svg.contentWindow.window.document.getElementById(currencyData.abbreviation.toLowerCase())
+
+      if (currencyIcon) {
+        container.innerHTML = currencyIcon.outerHTML;
+      } else {
+        container.innerHTML = currencyData.abbreviation;
+      }
+    } else {
+      container.innerHTML = currencyData.abbreviation;
+    }
+  }
+  svgSetter();
+}, [])
+
+
+
 
   return (
     <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
-      <div  className={styles.iconContainer}>
-        {/*<img src={'/assets/icons/some.svg'} alt="currency icon"/>*/}
-        {/*<svg href={"/assets/icons/some.svg"} id={"iconsSvg"}>*/}
-        {/*</svg>*/}
-        {/*<svg >*/}
-        {/*  <use xlinkHref={"/assets/icons/some.svg#ach"}>some svg</use>*/}
-        {/*</svg>*/}
-
+      <div id={`currencyItemContainer${currencyData.abbreviation}`} className={styles.iconContainer}>
 
       </div>
       <div  className={styles.currencyInfoContainer}>
@@ -36,6 +50,7 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
         </div>
         <span className={styles.name}>{name}</span>
       </div>
+
     </li>
   )
 }

@@ -16,7 +16,7 @@ export const Footer = ({t, screenWidth, userAuth}) => {
     {key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487`},
     {key: 'faqs', route: '/contactUs#faq', name: `FAQs`},
     {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
-    {key: 'privacyPolicy', route: '/privacyPolicy', name: `privacyPolicy`},
+    {key: 'privacyPolicy', route: '/privacy-policy', name: `privacyPolicy`},
     {key: 'paymentsMethods', route: '/paymentsMethods', name: `paymentsMethods`},
   ]
   const linkKeySecond = [
@@ -111,9 +111,16 @@ export const Footer = ({t, screenWidth, userAuth}) => {
           <li>
             <span onClick={() => dispatch(showPlaySafe(true))}>{t(`footer.playSafe`)}</span>
           </li>
-          <li>
-            <span onClick={() => dispatch(showManageSubscriptions(true))}>{t(`footer.manageSubscriptions`)}</span>
-          </li>
+          {
+            userAuth
+              ?
+              <li>
+                <span onClick={() => dispatch(showManageSubscriptions(true))}>{t(`footer.manageSubscriptions`)}</span>
+              </li>
+              :
+              <></>
+          }
+
         </ul>
       </section>
       <section className={styles.footerMiddleBlock}>

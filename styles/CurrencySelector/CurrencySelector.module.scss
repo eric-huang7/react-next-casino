@@ -7,6 +7,7 @@
   //bottom: 0;
 
   background-color: rgba(0, 0, 0, 0.8);
+  //background-color: #eeeeee;
 
   padding: 0 20px;
 
@@ -17,7 +18,10 @@
 
 
   overflow-y: scroll;
+
+
 }
+
 
 .hidden {
   display: none;
@@ -292,6 +296,7 @@
 
 .iconContainer {
   width: 35px;
+  height: 35px;
 
   margin-right: 7px;
 
@@ -300,6 +305,10 @@
   display: flex;
   align-items: center;
 
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
 
 }
 
