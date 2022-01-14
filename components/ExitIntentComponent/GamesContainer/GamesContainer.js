@@ -6,6 +6,8 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {GameItemContainer} from "./GameItemContainer";
 import {useRouter} from "next/router";
 import {freeGame, playPayGame} from "../../../redux/actions/playGames";
+import {showRegister} from "../../../redux/actions/registerShow";
+import {showExitIntentPopup} from "../../../redux/actions/showPopups";
 
 
 export const GamesContainer = ({t, exit}) => {
@@ -46,9 +48,10 @@ export const GamesContainer = ({t, exit}) => {
       }
       dispatch(playPayGame(sendData));
     } else {
+      dispatch(showRegister(true));
+      dispatch(showExitIntentPopup(false));
       console.log(gameData, 'GAME DATA!!!')
       console.log(user, "USER!!!S")
-      return
     }
   }
 
@@ -61,7 +64,13 @@ export const GamesContainer = ({t, exit}) => {
       <div className={styles.gamesMainContainer}>
         {gamesData.map((game) => {
           return (
-            <GameItemContainer playGameClickHandler={playGameClickHandler} playFunClickHandler={playFunClickHandler} key={`${game.name} game key`} t={t} gameData={game} />
+            <GameItemContainer
+              playGameClickHandler={playGameClickHandler}
+              playFunClickHandler={playFunClickHandler}
+              key={`${game.name} game key`}
+              t={t}
+              gameData={game}
+            />
           )
         })}
       </div>

@@ -225,7 +225,14 @@
     "heading": "Выберите валюту",
     "suggestedCurrencies": "Предлагаемые валюты",
     "otherRealMoneyCurrencies": "Другие валюты реальных денег",
-    "otherCryptoCurrencies": "Другие криптовалюты"
+    "otherCryptoCurrencies": "Другие криптовалюты",
+    "searchLabel": "Валюты",
+    "searchPlaceholder": "Введите валюту",
+    "popularCrypto" : "Популярная криптовалюта",
+    "stableCoins": "Стейблкоины",
+    "fiat": "Фиатные валюты",
+    "cryptoCurrencies": "Криптовалюты",
+    "nothingFound": "По вашему запросу совпадений не найдено"
   },
   "mobileSideMenu": {
     "userBlock": {

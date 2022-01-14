@@ -225,7 +225,14 @@
     "heading": "Select Currency",
     "suggestedCurrencies": "Suggested Currencies",
     "otherRealMoneyCurrencies": "Other Real Money Currencies",
-    "otherCryptoCurrencies": "Other Crypto Currencies"
+    "otherCryptoCurrencies": "Other Crypto Currencies",
+    "searchLabel": "Currencies",
+    "searchPlaceholder": "Type a currency",
+    "popularCrypto" : "Popular Crypto",
+    "stableCoins": "Stable Coins",
+    "fiat": "Fiat",
+    "cryptoCurrencies": "Crypto Currencies",
+    "nothingFound": "No matches were found for your query"
   },
   "mobileSideMenu": {
     "userBlock": {

@@ -62,16 +62,64 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
       <div className={styles.currencySelectorContainer}>
         <InputContainer searchValue={searchValue} searchInputHandler={searchInputHandler} t={t} />
         <div  className={styles.currenciesListsContainer}>
-          {popularFindArr.length === 0 ? <></> : <CurrencyList userAuth={userAuth} backButtonClickHandler={backButtonClickHandler} t={t} type={"Popular Crypto"} currenciesData={popularFindArr}/>}
-          {stableFindArr.length === 0 ? <></> : <CurrencyList userAuth={userAuth} backButtonClickHandler={backButtonClickHandler} t={t} type={"Stable Coins"} currenciesData={stableFindArr}/>}
-          {fiatFindArr.length === 0 ? <></> : <CurrencyList userAuth={userAuth} backButtonClickHandler={backButtonClickHandler} t={t} type={"Fiat"} currenciesData={fiatFindArr}/>}
-          {cryptoFindArr.length === 0 ? <></> : <CurrencyList userAuth={userAuth} backButtonClickHandler={backButtonClickHandler} t={t} type={"Crypto Currencies"} currenciesData={cryptoFindArr}/>}
+          {
+            popularFindArr.length === 0
+            ?
+            <></>
+            :
+            <CurrencyList
+              userAuth={userAuth}
+              backButtonClickHandler={backButtonClickHandler}
+              t={t}
+              type={t("selectCurrency.popularCrypto")}
+              currenciesData={popularFindArr}
+            />
+          }
+          {
+            stableFindArr.length === 0
+              ?
+              <></>
+              :
+              <CurrencyList
+                userAuth={userAuth}
+                backButtonClickHandler={backButtonClickHandler}
+                t={t}
+                type={t("selectCurrency.stableCoins")}
+                currenciesData={stableFindArr}
+              />
+          }
+          {
+            fiatFindArr.length === 0
+              ?
+              <></>
+              :
+              <CurrencyList
+                userAuth={userAuth}
+                backButtonClickHandler={backButtonClickHandler}
+                t={t}
+                type={t("selectCurrency.fiat")}
+                currenciesData={fiatFindArr}
+              />
+          }
+          {
+            cryptoFindArr.length === 0
+              ?
+              <></>
+              :
+              <CurrencyList
+                userAuth={userAuth}
+                backButtonClickHandler={backButtonClickHandler}
+                t={t}
+                type={t("selectCurrency.cryptoCurrencies")}
+                currenciesData={cryptoFindArr}
+              />
+          }
           {
             popularFindArr.length || stableFindArr.length || fiatFindArr.length || cryptoFindArr.length
               ?
               <></>
               :
-              <p className={styles.nothingFoundText}>{"No matches were found for your query"}</p>
+              <p className={styles.nothingFoundText}>{t("selectCurrency.nothingFound")}</p>
           }
         </div>
       </div>

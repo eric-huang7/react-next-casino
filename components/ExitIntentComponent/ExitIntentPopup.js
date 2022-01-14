@@ -9,10 +9,10 @@ import {bonusesFinder} from "../../helpers/bonusesFinder";
 
 
 
-export const ExitIntentPopup = ({t, userInfo}) => {
+export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   const dispatch = useDispatch();
-
-  const isShowExitIntent = true;
+  
+  // const isShowExitIntent = true;
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -86,7 +86,6 @@ export const ExitIntentPopup = ({t, userInfo}) => {
 
       if (notEmptyBalance.length !== 0) {
 
-        // TODO: GAMES
         return (
           <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
         )
@@ -107,6 +106,10 @@ export const ExitIntentPopup = ({t, userInfo}) => {
         <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
       )
     }
+  } else if (!activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {
+    return (
+      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
+    )
   } else {
     return (
       <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
