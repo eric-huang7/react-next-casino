@@ -1,9 +1,8 @@
-import styles from '../../styles/TermsAndConditions/TermsTextBlock.module.scss';
+import styles from '../../styles/PrivacyPolicy/PrivacyTextBlock.module.scss';
 import {useTranslation} from "next-i18next";
 
 export const TextBlock = ({ textData, textHeading}) => {
-const {t} = useTranslation("termsAndConditions")
-
+const {t} = useTranslation("privacyPolicy")
 
   return (
     <section className={styles.textBlockWrapper}>

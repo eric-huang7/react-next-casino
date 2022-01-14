@@ -2,21 +2,18 @@ import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss';
-import {MainBlock} from "../../components/TermsAndConditionsComponents/MainBlock";
-// import {PlayerBlock} from "../../components/TermsAndConditionsComponents/PlayerBlock";
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
-import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
 import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
-import {setLang} from "../../redux/actions/lang";
 import {useEffect} from "react";
 import {allDataTermsAndConditions} from "../../components/TermsAndConditionsComponents/allDatatermsAndConditions";
 import {getCurrency} from "../../redux/actions/currency";
+import {MainBlock} from "../../components/PrivacyPolicyPageComponents/MainBlock";
+import {TextBlock} from "../../components/PrivacyPolicyPageComponents/TextBlock";
 
 
-const TermsConditions = (props) => {
+const PrivacyPolicy = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
   const router = useRouter();
@@ -41,7 +38,6 @@ const TermsConditions = (props) => {
     <>
       <MainLayout t={t}>
         <MainBlock />
-        {/*<PlayerBlock />*/}
         <div className={styles.textWhyslotsBack}>
           <TextBlock
             textData={allDataTermsAndConditions.data}
@@ -58,9 +54,9 @@ const TermsConditions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['promotionsPage', 'common', 'termsAndConditions']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common', 'privacyPolicy']),
     },
   })
 }
 
-export default  TermsConditions;
+export default  PrivacyPolicy;
