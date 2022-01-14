@@ -17,6 +17,7 @@ export const Footer = ({t}) => {
     {key: 'faqs', route: '/contactUs#faq', name: `FAQs`},
     {key: 'contactUs', route: '/contactUs', name: `ContactUs`},
     {key: 'privacyPolicy', route: '/privacyPolicy', name: `privacyPolicy`},
+    {key: 'paymentsMethods', route: '/paymentsMethods', name: `paymentsMethods`},
   ]
   const linkKeySecond = [
     {key: 'whyUseCrypto', route: '/whyUseCrypto', name: `whyUseCrypto`},
