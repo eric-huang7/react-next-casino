@@ -8,7 +8,7 @@ import {useState} from "react";
 import {showManageSubscriptions, showPlaySafe} from "../../../redux/actions/showPopups";
 
 
-export const Footer = ({t}) => {
+export const Footer = ({t, screenWidth, userAuth}) => {
   const dispatch = useDispatch();
 
   const linkKeyFirs = [
@@ -127,7 +127,7 @@ export const Footer = ({t}) => {
           })}
         </div>
       </section>
-      <section className={styles.footerLowerBlock}>
+      <section className={`${styles.footerLowerBlock} ${userAuth && screenWidth > 1239 ? styles.paddingEnable : ""}`}>
         <div className={styles.divider}></div>
         <div className={styles.lowerFooter}>
           <div className={styles.socialBlock}>

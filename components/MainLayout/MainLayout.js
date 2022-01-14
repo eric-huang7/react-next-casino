@@ -82,7 +82,7 @@ const MainLayout = ({children, t}) => {
         {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
         {children}
         {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
-        <Footer t={t}/>
+        <Footer t={t} userAuth={userInfo.isAuthenticated} screenWidth={width}/>
         {/*<LangSwitcher href={router.route} locale={locale}/>*/}
       </div>
     </>
