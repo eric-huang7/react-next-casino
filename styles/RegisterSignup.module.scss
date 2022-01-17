@@ -183,24 +183,30 @@
 .iHaveBonus {
   overflow: hidden;
   height: 40px;
+
   & p {
     color: #ff0000;
 
     text-align: center;
+
+    cursor: pointer;
   }
   & input.bonusInput {
     width: 100%;
-
+    display: none;
   }
 }
 .showBonusInput {
   height: auto;
+
+  position: relative;
   & p {
     display: none;
   }
   & input.bonusInput {
     margin-top: 5.5%;
     color: #ff0000;
+    display: block;
   }
   & input.bonusInput::-moz-placeholder {
     color: #ff0000;
@@ -208,7 +214,18 @@
   & input.bonusInput::-webkit-input-placeholder {
     color: #ff0000;
   }
+  & .labelForBonusInput {
+    position: absolute;
+
+    font-size: 12px;
+    color: rgba(255, 0,0,0.5);
+
+    top: 20px;
+    left: 10px;
+  }
 }
+
+
 
 .agreeTermsWrapper {
   display: flex;

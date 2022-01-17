@@ -52,6 +52,7 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
+
   return (
     <>
       <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"} />

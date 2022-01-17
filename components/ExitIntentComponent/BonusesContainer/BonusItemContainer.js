@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 import {activateBonus, getUserActivePendingBonuses} from "../../../redux/actions/userData";
 import axios from "axios";
 import {user_url} from "../../../redux/url/url";
-import {setUserBonus} from "../../../redux/actions/setUserBonus";
+import {setUserBonus, setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";
 import {showDepositModal} from "../../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 import {showRegister} from "../../../redux/actions/registerShow";
@@ -34,7 +34,6 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
           'Content-Type': 'application/json',
         },
       }
-      console.log(bonusData, '<<<<<<<<<<<<<<<<<<<<<')
       const body = JSON.stringify(sendData);
       axios.patch(user_url, body, config).then((data) => {
         console.log(data, 'success');
@@ -60,6 +59,8 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
     } else {
       exit();
       dispatch(showRegister(true));
+      dispatch(setUserRegisterBonusCode(bonusData.redemption_code));
+
     }
   }
 

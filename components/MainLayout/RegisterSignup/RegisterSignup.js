@@ -1,38 +1,20 @@
 import styles from '../../../styles/RegisterSignup.module.scss'
 
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
-import {loadGetInitialProps} from "next/dist/shared/lib/utils";
+
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import {Header} from "../Header/Header";
+
 import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
-import {auth, signUp, userBalance} from "../../../redux/actions/userData";
+import {signUp} from "../../../redux/actions/userData";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
-import {backButtonShouldDo, showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
-
-let currensyVariants = [
-  {id: 1, currensy: "BTC", active: false},
-  {id: 2, currensy: "LTC", active: false},
-  {id: 5702, currensy: "EUR", active: false},
-  {id: 3982, currensy: "CAD", active: false},
-  {id: 5694, currensy: "AUD", active: true},
-  {id: 5713, currensy: "NOK", active: false},
-  {id: 5693, currensy: "USD", active: false},
-  {id: 5718, currensy: "RUB", active: false},
-  {id: 5717, currensy: "PLN", active: false},
-  {id: 5714, currensy: "NZD", active: false},
-  {id: 5709, currensy: "JPY", active: false},
-  {id: 5695, currensy: "BRL", active: false},
-  {id: 391, currensy: "BCH", active: false},
-  {id: 168, currensy: "ETH", active: false},
-  {id: 29, currensy: "DOGE", active: false},
-]
-
+import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";
 
 
 export const RegisterSignup = ({t, isShow}) => {
@@ -44,6 +26,8 @@ export const RegisterSignup = ({t, isShow}) => {
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
   const userData = useSelector((userData) => userData.authInfo);
   const userCurrency = useSelector((store) => store.userSelectedCurrency.userCurrencyData);
+  const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
+
 
 
   const [activeBonus, setActiveBonus] = useState(false);
@@ -135,7 +119,7 @@ export const RegisterSignup = ({t, isShow}) => {
 
   function showBonusInput() {
     if (activeBonus) {
-      setActiveBonus(false)
+      setActiveBonus(false);
     } else {
       setActiveBonus(true);
     }
@@ -176,6 +160,13 @@ export const RegisterSignup = ({t, isShow}) => {
     reset();
     setYouAgreeError('');
     setRegisterError('');
+    setActiveBonus(false);
+    if (isShowRegister.isShow) {
+      setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
+    } else {
+      setBonusCodedata('');
+      dispatch(setUserRegisterBonusCode(null));
+    }
   },[isShowRegister.isShow]);
 
   useEffect(() => {
@@ -252,27 +243,13 @@ export const RegisterSignup = ({t, isShow}) => {
                   value={userCurrency.abbreviation}
                   id={'currencyIn'}
                   type="text"/>
-                {/*<div className={`${styles.currencyVariants} ${isShowCurrency ? styles.activeCurrency : ''}`}>*/}
-                {/*  {*/}
-                {/*    currensyVariants.map((el) => {*/}
-                {/*      return (*/}
-                {/*        <div*/}
-                {/*          key={el.id}*/}
-                {/*          data-currency={el.id}*/}
-                {/*          onClick={(e) => setCurrency(e)}*/}
-                {/*          className={styles.currencyItem}*/}
-                {/*        >*/}
-                {/*          <p data-currency={el.id}>{el.currensy}</p>*/}
-                {/*        </div>*/}
-                {/*      )*/}
-                {/*    })*/}
-                {/*  }*/}
-                {/*</div>*/}
 
-                <div className={`${styles.iHaveBonus} ${activeBonus ? styles.showBonusInput : ''}`}>
+                <div className={`${styles.iHaveBonus} ${activeBonus || !!bonusCodeData ? styles.showBonusInput : ''}`}>
                   <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
+                  {bonusCodeData ? <label className={styles.labelForBonusInput} htmlFor="bonusIn">{t('registrationForm.bonusCodeInput')}</label> : <></>}
                   <input
                     onChange={(e) => setBonusCodedata(e.target.value)}
+                    value={bonusCodeData}
                     className={styles.bonusInput}
                     id={'bonusIn'}
                     type="text"

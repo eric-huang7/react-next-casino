@@ -61,8 +61,7 @@ export const stable_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?t
 export const fiat_currency_url = 'http://t-gpb.slotsidol.com:7000/currencies?types=3&isDepositEnabled=1&ordering=rank-ASC';
 
 
-// ######## get bonuses
-export const activeBonuses_url = 'http://t-gpb.slotsidol.com:7000/bonus_offer?active=1';
+
 
 // ######## get tournaments
 
@@ -93,3 +92,5 @@ export const get_bonuses_data_url = 'http://t-gpb.slotsidol.com:7000/bonus_redem
 
 export const put_bonus_redemption_url = 'http://t-gpb.slotsidol.com:7000/bonus_redemption';
 export const post_cancel_bonus_redemption_url = 'http://t-gpb.slotsidol.com:7000/bonus_cancelation';
+
+export const activeBonuses_url = 'http://t-gpb.slotsidol.com:7000/bonus_offer?active=1';

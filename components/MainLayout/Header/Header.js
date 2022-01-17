@@ -79,7 +79,7 @@ export const Header = ({t}) => {
 
   return (
     <header onClick={(e) => closePopups(e)} className={styles.mainHeader}>
-      <Link href={'./'}>
+      <Link href={'/'} passHref>
         <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       </Link>
       <Navigation t={t}/>

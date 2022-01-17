@@ -139,6 +139,7 @@ export const userData = (sendData) => async dispatch => {
     })
     dispatch(auth());
   } catch (e) {
+    console.log(e.response, 'LOGIN ERROR RESPONSE');
     dispatch({
       type: LOGIN_FAIL,
       payload: e.response

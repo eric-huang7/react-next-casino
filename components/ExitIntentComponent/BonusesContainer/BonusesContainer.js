@@ -30,7 +30,7 @@ export const BonusesContainer = ({t, exit}) => {
       bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
     }
 
-    console.log(bonusesList, 'arr');
+    // console.log(bonusesList, 'arr');
     return (
       <div className={styles.bonusMainContainer}>
         {

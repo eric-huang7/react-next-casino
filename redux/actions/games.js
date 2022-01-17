@@ -40,7 +40,7 @@ export const getGames = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get games endpoint', err)
+    console.log('error in get games endpoint', err.response)
   }
 }
 export const getNewGames = () => async dispatch => {
@@ -58,7 +58,7 @@ export const getNewGames = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_NEW_GAMES endpoint', err)
+    console.log('error in GET_NEW_GAMES endpoint', err.response)
   }
 }
 
@@ -77,7 +77,7 @@ export const getJackpotGames = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_JACKPOT_GAMES endpoint', err)
+    console.log('error in GET_JACKPOT_GAMES endpoint', err.response)
   }
 }
 
@@ -96,7 +96,7 @@ export const getTableGames = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_TABLE_GAMES endpoint', err)
+    console.log('error in GET_TABLE_GAMES endpoint', err.response)
   }
 }
 
@@ -115,7 +115,7 @@ export const getLatestGames = (userId) => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get latest games endpoint', err)
+    console.log('error in get latest games endpoint', err.response)
   }
 }
 
@@ -134,6 +134,6 @@ export const getTopGames = () => async dispatch => {
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_TOP_GAMES endpoint', err)
+    console.log('error in GET_TOP_GAMES endpoint', err.response)
   }
 }

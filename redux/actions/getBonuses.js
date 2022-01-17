@@ -9,7 +9,6 @@ export const getActiveBonuses = () => async dispatch => {
     withCredentials: true,
     params: {
       site_id: 1,
-      user_id: 1,
     }
   }
 
