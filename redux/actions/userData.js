@@ -523,6 +523,7 @@ export const signUp = (signUpData) => async dispatch => {
       type: SIGNUP_SUCCESS,
       payload: res.data
     })
+    dispatch(auth());
   } catch (e) {
     console.log(e.response, "SOME ERROR WHEN REGISTER USER");
     dispatch({

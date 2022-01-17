@@ -23,7 +23,7 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
     'WAVES': "#124fff",
     'HTML': "#001d8f",
     'CHZ': "#e14040",
-    'TOMO': "#313131",
+    'TOMO': "#565151",
     'FTM': "#3a7bfa",
     'XDC': "#3b447a",
     'CELO': "#d5ba3b",
@@ -33,9 +33,10 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
     'ZIL': "#6fbdba",
     'HT': "#272657",
     'WAN': "#4574da",
-    'IOST': "#000000",
-    'LUNA': "#00133f",
-    'ADA': "#112475",
+    'IOST': "#5e0000",
+    'LUNA': "#002bff",
+    'ADA': "#1c3a9d",
+    'BSC' : "#ffc241"
   }
 
   // base === "ETH" ? "#4fadcf" : base === "TRX" ? "#f00b0b" : base === "BNB" ? "#f0b90b" : "#ef8a13";

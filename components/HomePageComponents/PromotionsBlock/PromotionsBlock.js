@@ -7,10 +7,19 @@ import Slider from 'react-slick';
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Link from "next/link";
 import {promoData} from "./promoData";
+import {useSelector} from "react-redux";
+import {PromotionItem} from "./PromotionItem/PromotionItem";
+import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 
 
 export const PromotionsBlock = ({t}) => {
   const {height, width} = useWindowDimensions();
+
+  const promotionsData = useSelector((store) => store.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+
+
+  console.log(promotionsData.activeBonuses, "<<<<<<<<<<<<<<<<<,promotionsData")
 
   let itemsCount = 4;
   if (width <= 1165) {
@@ -19,7 +28,7 @@ export const PromotionsBlock = ({t}) => {
     itemsCount = 4;
   }
 
-let data = promoData();
+// let data = promoData();
 
   function SampleNextArrow(props) {
     const { className, onClick } = props;
@@ -56,30 +65,29 @@ let data = promoData();
       <div className={styles.promotionsHeading}></div>
       <div className={styles.promotionsBackground}>
         <div className={styles.promotionsSliderWrapper}>
-          <Slider {...sliderSettings}>
-            {data.map((el) => {
-              return (
-                <div key={el.id}>
-                  <div className={styles.promotionItemWrapper}>
-                    <div className={styles.promotionFrame}>
-                      <div className={styles.promoImage}>
-                        <img src={el.image} alt={`promotion ${el.id}`}/>
-                      </div>
-                    </div>
-                    <div className={styles.promotionTextBlock}>
-                      <div className={styles.frameTextBlock}>
-                        <p className={styles.promotionMainText}>{el.mainText}</p>
-                        <p className={styles.promotionAddText}>{el.addText}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </Slider>
-          <div className={styles.controlPanel}>
-            <Link href={'/#'}><a>{t(`homePage.moreButton`)}</a></Link>
-          </div>
+          {promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses
+            ?
+            <h2>Loading...</h2>
+            :
+            <>
+              <Slider {...sliderSettings}>
+                {promotionsData.activeBonuses.offers.map((el) => {
+                  // let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+                  return (
+                    <PromotionItem
+                      key={el.id}
+                      bonusInfo={el}
+                      // bonusCalculations={bonusCalculations}
+                    />
+                  )
+                })}
+              </Slider>
+              <div className={styles.controlPanel}>
+                <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
+              </div>
+            </>
+          }
+
         </div>
       </div>
     </section>
