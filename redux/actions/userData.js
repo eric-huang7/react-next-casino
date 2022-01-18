@@ -58,6 +58,7 @@ export const auth = () => async dispatch => {
       type: AUTH,
       payload: res.data
     })
+
   } catch (e) {
     dispatch({
       type: AUTH_FAIL,

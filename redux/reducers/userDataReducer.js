@@ -101,7 +101,7 @@ function userDataReducer(state = initialState, action) {
     case LOGIN_FAIL :
       return {
         ...state,
-        isAuthenticated: false,
+        isAuthenticated: null,
         loading: false,
         user: null,
         bonuses: null,
@@ -178,7 +178,7 @@ function userDataReducer(state = initialState, action) {
     case SIGNUP_FAIL :
       return {
         ...state,
-        isAuthenticated: false,
+        isAuthenticated: null,
         loading: false,
         user: null,
         bonuses: null,
