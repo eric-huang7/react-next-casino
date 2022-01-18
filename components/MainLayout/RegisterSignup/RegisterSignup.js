@@ -50,6 +50,9 @@ export const RegisterSignup = ({t, isShow}) => {
 
   if (userData.isAuthenticated) {
     dispatch(showRegister(false));
+
+    setBonusCodedata('');
+    dispatch(setUserRegisterBonusCode(null));
   }
 
   function registerCloseButtonHandler() {
@@ -141,7 +144,10 @@ export const RegisterSignup = ({t, isShow}) => {
       current_bonus_code: bonusCodeData,
     }
 
-    dispatch(signUp(body));
+    dispatch(signUp(body)).then((data) => {
+      setBonusCodedata('');
+      dispatch(setUserRegisterBonusCode(null));
+    });
   }
 
   const onSubmitHandler = (data) => {
@@ -174,6 +180,10 @@ export const RegisterSignup = ({t, isShow}) => {
       setRegisterError(userInfo.registerError.data.extra_error_info.message);
     }
   },[userInfo.registerError])
+
+  useEffect(() => {
+    setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
+  }, [userRegisterBonusCode])
 
 
   return (

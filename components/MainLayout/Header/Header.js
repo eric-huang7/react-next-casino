@@ -29,6 +29,7 @@ export const Header = ({t}) => {
   let bonusesData = useSelector((store) => store.bonuses);
 
   let currencyData = useSelector((store) => store.getCurrency.currency);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export const Header = ({t}) => {
         dispatch(userBalance());
       }
       if (!bonusesData.activeBonuses) {
-        dispatch(getActiveBonuses());
+        dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
       }
 
       let userData = {
@@ -51,7 +52,11 @@ export const Header = ({t}) => {
     } else {
       dispatch(auth());
     }
-  }, [userLogin.isAuthenticated])
+  }, [userLogin.isAuthenticated]);
+
+  useEffect(() => {
+    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+  }, [userCurrency.userCurrencyData.id])
 
   useEffect(() => {
     if (!userLogin.balance) {

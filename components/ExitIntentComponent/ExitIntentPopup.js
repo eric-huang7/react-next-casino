@@ -14,6 +14,11 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   
   // const isShowExitIntent = true;
 
+  const activeBonuses = useSelector((state) => state.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const gamesList = useSelector((store) => store.games);
+
+
   const [showPopup, setShowPopup] = useState(false);
 
   const exit = (e) => {
@@ -52,13 +57,11 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
 
 
   useEffect(() => {
-    dispatch(getActiveBonuses());
+    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
     dispatch(getTopGames());
-  }, [showPopup])
+  }, [showPopup, userCurrency.userCurrencyData.id])
 
-  const activeBonuses = useSelector((state) => state.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
-  const gamesList = useSelector((store) => store.games);
+
 
 
   if (activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {

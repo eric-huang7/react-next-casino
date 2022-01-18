@@ -19,6 +19,7 @@ const Accounts = (props) => {
   const dispatch = useDispatch();
   const currency = useSelector((store) => store.getCurrency);
   let bonusesData = useSelector((store) => store.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -36,9 +37,13 @@ const Accounts = (props) => {
     }
 
     if (!bonusesData.activeBonuses) {
-      dispatch(getActiveBonuses());
+      dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+  }, [userCurrency.userCurrencyData.id])
 
 
   return (
