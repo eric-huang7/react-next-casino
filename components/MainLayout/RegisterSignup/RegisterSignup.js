@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {yupResolver} from "@hookform/resolvers/yup";
 
 
 import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
@@ -29,7 +29,6 @@ export const RegisterSignup = ({t, isShow}) => {
   const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
 
 
-
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
@@ -45,7 +44,7 @@ export const RegisterSignup = ({t, isShow}) => {
   // const [currencyChoose, setCurrencyChoose] = useState(userCurrency.id); // default need change
   const [youAgree, setYouAgree] = useState(false);
   const [youAgreeError, setYouAgreeError] = useState('');
-  const [registerError, setRegisterError] =useState('');
+  const [registerError, setRegisterError] = useState('');
 
 
   if (userData.isAuthenticated) {
@@ -110,7 +109,7 @@ export const RegisterSignup = ({t, isShow}) => {
   //   // console.log(currencyRef.current.value);
   // }, [activeCurrency])
 
-  function showPass(){
+  function showPass() {
     if (isPassShow) {
       setIsPassShow(false);
       setPasswordInputType("password");
@@ -128,6 +127,8 @@ export const RegisterSignup = ({t, isShow}) => {
     }
   }
 
+
+  // 100% First Deposit Bonus
   // let site_id = 1;
   // let auth_type_id = 1;
   // let isAdmin = false;
@@ -136,7 +137,7 @@ export const RegisterSignup = ({t, isShow}) => {
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
     let body = {
       base_currency_id: userCurrency.id,
-      site_id : siteID,
+      site_id: siteID,
       auth_type_id: auth_type_id,
       username: userNameInfo,
       email: userEmailInfo,
@@ -144,17 +145,18 @@ export const RegisterSignup = ({t, isShow}) => {
       current_bonus_code: bonusCodeData,
     }
 
-    dispatch(signUp(body)).then((data) => {
-      setBonusCodedata('');
-      dispatch(setUserRegisterBonusCode(null));
-    });
+    dispatch(signUp(body));
+    //   .then((data) => {
+    //   setBonusCodedata('');
+    //   dispatch(setUserRegisterBonusCode(null));
+    // });
   }
 
   const onSubmitHandler = (data) => {
     // console.log(data, 'formDATA');
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
-      reset();
+      // reset();
     } else {
       setYouAgreeError('Read terms!');
     }
@@ -173,18 +175,38 @@ export const RegisterSignup = ({t, isShow}) => {
       setBonusCodedata('');
       dispatch(setUserRegisterBonusCode(null));
     }
-  },[isShowRegister.isShow]);
+  }, [isShowRegister.isShow]);
 
   useEffect(() => {
     if (userInfo.registerError) {
-      setRegisterError(userInfo.registerError.data.extra_error_info.message);
+
+      if (userInfo.registerError.data.error_code === "DUPLICATE_USER_NAME") {
+        reset();
+        // The provided username has already been used
+        setRegisterError(t("registrationForm.errors.duplicateUsername"));
+      } else if (userInfo.registerError.data.error_code === "BONUS_INVALID_OFFER_CODE") {
+
+        // Invalid Promo Code:
+        setRegisterError(t("registrationForm.errors.invalidPromo") + " " + bonusCodeData);
+      } else if (userInfo.registerError.data.error_code === "BONUS_REDEMPTION_CURRENCY_SPECIFICATION_NOT_FOUND") {
+
+        // Бонус код не подходит для выбраной вами валюты.
+        setRegisterError(t("registrationForm.errors.invalidPromoCurrency"));
+        } else if (userInfo.registerError.data.error_code === "DUPLICATE_EMAIL_ADDRESS") {
+        reset();
+        // The provided email address has already been used to sign up
+        setRegisterError(t("registrationForm.errors.duplicateEmail"));
+      } else {
+        setRegisterError(userInfo.registerError.data.extra_error_info.message);
+      }
+
+      console.log(userInfo.registerError, 'userInfo.registerError')
     }
-  },[userInfo.registerError])
+  }, [userInfo.registerError])
 
   useEffect(() => {
     setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
   }, [userRegisterBonusCode])
-
 
 
   // useEffect(() => {
@@ -196,7 +218,8 @@ export const RegisterSignup = ({t, isShow}) => {
 
 
   return (
-    <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
+    <div
+      className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
       {/*<Header t={t}/>*/}
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
@@ -217,29 +240,29 @@ export const RegisterSignup = ({t, isShow}) => {
               onSubmit={handleSubmit(onSubmitHandler)}
             >
               <label htmlFor={'emailIn'}>{t('registrationForm.emailInput')}</label>
-                <input
-                  onChange={(e) => setUserEmailData(e.target.value)}
-                  {...register("email")}
-                  id={'emailIn'}
-                  type="text"
-                />
+              <input
+                onChange={(e) => setUserEmailData(e.target.value)}
+                {...register("email")}
+                id={'emailIn'}
+                type="text"
+              />
               <span className={styles.errorMessage}>{t(errors.email?.message)}</span>
 
               <label htmlFor={'usernameIn'}>
                 {t('registrationForm.usernameInput')}
               </label>
-                <input
-                  onChange={(e) => setUsernameData(e.target.value)}
-                  {...register("username")}
-                  id={'usernameIn'}
-                  type="text"
-                />
+              <input
+                onChange={(e) => setUsernameData(e.target.value)}
+                {...register("username")}
+                id={'usernameIn'}
+                type="text"
+              />
               <span className={styles.errorMessage}>{t(errors.username?.message)}</span>
 
               <label htmlFor={'passwordIn'}>
                 {t('registrationForm.passwordInput')}
               </label>
-              <label className={styles.passwordEye}   htmlFor={'passwordIn'}>
+              <label className={styles.passwordEye} htmlFor={'passwordIn'}>
                 <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
                 <input
                   onChange={(e) => setPasswordData(e.target.value)}
@@ -254,34 +277,37 @@ export const RegisterSignup = ({t, isShow}) => {
               <label htmlFor={'currencyIn'}>
                 {t('registrationForm.currencyInput')}
               </label>
+              <input
+                readOnly={true}
+                // ref={currencyRef}
+                className={styles.currencyInput}
+                onClick={() => showCurrencyBlock()}
+                value={userCurrency.abbreviation}
+                id={'currencyIn'}
+                type="text"/>
+
+              <div className={`${styles.iHaveBonus} ${activeBonus || !!bonusCodeData ? styles.showBonusInput : ''}`}>
+                <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
+                {bonusCodeData ? <label className={styles.labelForBonusInput}
+                                        htmlFor="bonusIn">{t('registrationForm.bonusCodeInput')}</label> : <></>}
                 <input
-                  readOnly={true}
-                  // ref={currencyRef}
-                  className={styles.currencyInput}
-                  onClick={() => showCurrencyBlock()}
-                  value={userCurrency.abbreviation}
-                  id={'currencyIn'}
-                  type="text"/>
+                  onChange={(e) => setBonusCodedata(e.target.value)}
+                  value={bonusCodeData}
+                  className={styles.bonusInput}
+                  id={'bonusIn'}
+                  type="text"
+                  placeholder={t('registrationForm.bonusCodeInput')}/>
+              </div>
 
-                <div className={`${styles.iHaveBonus} ${activeBonus || !!bonusCodeData ? styles.showBonusInput : ''}`}>
-                  <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
-                  {bonusCodeData ? <label className={styles.labelForBonusInput} htmlFor="bonusIn">{t('registrationForm.bonusCodeInput')}</label> : <></>}
-                  <input
-                    onChange={(e) => setBonusCodedata(e.target.value)}
-                    value={bonusCodeData}
-                    className={styles.bonusInput}
-                    id={'bonusIn'}
-                    type="text"
-                    placeholder={t('registrationForm.bonusCodeInput')}/>
-                </div>
-
-                <div className={styles.agreeTermsWrapper}>
-                  <input onChange={(e) => youAgreeHandler(e)} className={styles.agreeTermsCheckbox} id={"agreeTerms"} type="checkbox"/>
-                  <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
-                    {t('registrationForm.iReadAndAgree')}
-                  </label>
-                  <Link href={'/termsAndConditions'}><a onClick={() => registerCloseButtonHandler()}>{t('registrationForm.termsOfUseLink')}</a></Link>
-                </div>
+              <div className={styles.agreeTermsWrapper}>
+                <input onChange={(e) => youAgreeHandler(e)} className={styles.agreeTermsCheckbox} id={"agreeTerms"}
+                       type="checkbox"/>
+                <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
+                  {t('registrationForm.iReadAndAgree')}
+                </label>
+                <Link href={'/termsAndConditions'}><a
+                  onClick={() => registerCloseButtonHandler()}>{t('registrationForm.termsOfUseLink')}</a></Link>
+              </div>
               <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
               <span className={styles.errorMessageRegister}>{registerError}</span>
             </form>

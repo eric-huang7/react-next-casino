@@ -55,7 +55,13 @@
     "termsOfUseLink": "terms of Use",
     "alreadyRegistered": "Already registered?",
     "logInLink": "Log in",
-    "signUpButton": "Sign Up"
+    "signUpButton": "Sign Up",
+    "errors": {
+      "duplicateUsername": "The provided username has already been used",
+      "duplicateEmail": "The provided email address has already been used to sign up",
+      "invalidPromo": "Invalid Promo Code:",
+      "invalidPromoCurrency": "The bonus code is not suitable for the currency you have chosen."
+    }
   },
   "loginForm": {
     "mainHeading": "DEPOSIT $ 100 AND GET $ 200",
