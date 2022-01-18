@@ -186,6 +186,15 @@ export const RegisterSignup = ({t, isShow}) => {
   }, [userRegisterBonusCode])
 
 
+
+  // useEffect(() => {
+  //
+  //   setBonusCodedata('');
+  //   dispatch(setUserRegisterBonusCode(null));
+  //
+  // }, [userCurrency.id])
+
+
   return (
     <div className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
       {/*<Header t={t}/>*/}

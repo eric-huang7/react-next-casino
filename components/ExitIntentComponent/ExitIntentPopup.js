@@ -24,16 +24,29 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   const exit = (e) => {
     dispatch(showExitIntentPopup(false));
     setShowPopup(false);
+
+    if (typeof window !== "undefined") {
+      const date = new Date().getTime() + 259200000; // milliseconds per 3 days 259200000
+      localStorage.setItem("exitTime", `${date}`);
+
+    }
+
   };
 
   const mouseEvent = (e) => {
     if (typeof window !== 'undefined') {
+      let savedTime = localStorage.getItem("exitTime");
+      let nowTime = new Date().getTime();
+
+      let isShowExitByTime = JSON.parse(savedTime) ? JSON.parse(savedTime) <= nowTime : true;
+
       const shouldShowExitIntent =
         !e.toElement &&
         !e.relatedTarget &&
         e.clientY < 10 &&
         e.clientY > -5 &&
-        window.innerWidth > 1065;
+        window.innerWidth > 1065 &&
+        isShowExitByTime;
 
       if (shouldShowExitIntent) {
         document.removeEventListener('mouseout', mouseEvent);
@@ -47,7 +60,7 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     const timer = setTimeout(() => {
       document.addEventListener('mouseout', mouseEvent);
       // document.querySelector('.exit-intent-popup').addEventListener('click', exit);
-    }, 10000);
+    }, 0);
 
     return () => {
       document.removeEventListener('mouseout', mouseEvent);
