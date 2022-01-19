@@ -37,7 +37,8 @@ let {
   activeBonuses,
   isShowDepositModal,
   bonusesArr,
-  paymentMethods
+  paymentMethods,
+  setPaymentMethods
 } = props;
 
 
@@ -134,6 +135,8 @@ let {
               userPayment={userPayment}
               paymentMethods={paymentMethods}
               userCurrency={userCurrency}
+              isShowDepositModal={isShowDepositModal}
+              setPaymentMethods={setPaymentMethods}
             />
             <BonusCodeActivator
               t={t}

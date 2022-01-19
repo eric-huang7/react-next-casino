@@ -133,27 +133,6 @@ export const DepositPage = ({t}) => {
   useEffect(() => {
     if (userLogin) {
 
-      if (isShowDepositModal) {
-        const config = {
-          params: {
-            currency_id: userCurrency.userCurrencyData.id,
-          }
-        }
-        // payments_methods_url
-        axios.get(payments_methods_url, config)
-          .then((data) => {
-            console.log(data.data.results);
-            setPaymentMethods(data.data.results);
-          })
-          .catch((err) => {
-            setPaymentMethods(null);
-            console.log(err.response);
-          })
-      } else {
-        setPaymentMethods(null);
-      }
-
-
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
       if (bonuses.length > 0) {
         setBonusesArr(bonuses);
@@ -172,9 +151,6 @@ export const DepositPage = ({t}) => {
       {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
         <h2>{t("depositPage.mainHeading")}</h2>
-        {
-          paymentMethods
-            ?
             <DepositPageStepper
               step={step}
               t={t}
@@ -204,17 +180,8 @@ export const DepositPage = ({t}) => {
               isShowDepositModal={isShowDepositModal}
               bonusesArr={bonusesArr}
               paymentMethods={paymentMethods}
+              setPaymentMethods={setPaymentMethods}
             />
-            :
-            <div className={styles.depositInnerBlockWrapper}>
-              <DepositHeading
-                t={t}
-                closeDepositModalHandler={closeDepositModalHandler}
-              />
-              <LoadingComponent t={t}/>
-            </div>
-        }
-
       </div>
     </div>
   )

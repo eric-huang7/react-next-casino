@@ -1,25 +1,29 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {paymentsMethodsUrl} from "../../../../helpers/imageUrl";
+import {useDispatch} from "react-redux";
+import {showCreditCardModal} from "../../../../redux/actions/showPopups";
 
 
 
 export const PaymentItem = ({method, type}) => {
+const dispatch = useDispatch();
 
+  const fiatClickHandler = () => {
 
-  if (type === 'fiat') {
+    dispatch(showCreditCardModal(true));
+  }
+
+  if (type === 'creditCard') {
     return (
-      <>
-        <div className={`${styles.paymentItem} ${styles.paymentItemFiat}`}>
-          <img src={paymentsMethodsUrl("master-card")} alt={`payment method ${method.currency_from.currency}`}/>
-          <img src={paymentsMethodsUrl("visa")} alt={`payment method ${method.currency_from.currency}`}/>
+        <div onClick={() => fiatClickHandler()} className={`${styles.paymentItem} ${styles.paymentItemFiat}`}>
+          <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
+          <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
         </div>
-      </>
-
     )
   } else {
     return (
-      <div className={styles.paymentItem}>
-        <img src={paymentsMethodsUrl(method.currency_from.currency.toLowerCase() + ".long")} alt={`payment method ${method.currency_from.currency}`}/>
+      <div className={`${styles.paymentItem} ${styles.cryptoPaymentImage}`}>
+        <img src={'/assets/img/depositPage/payments/crypto.png'} alt={`payment method icon crypto`}/>
       </div>
     )
   }

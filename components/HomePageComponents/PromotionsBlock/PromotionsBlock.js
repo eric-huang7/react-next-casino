@@ -27,8 +27,6 @@ export const PromotionsBlock = ({t}) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
 
-  console.log(promotionsData, "<<<<<<<<<<<<<<<<<,promotionsData")
-
   let itemsCount = 4;
   if (width <= 1165) {
     itemsCount = 3;
@@ -84,14 +82,11 @@ export const PromotionsBlock = ({t}) => {
                   let bonusCalculations = bonusesCalculator(el, userCurrency, t);
 
                   return (
-                    <>
                       <PromotionItem
                         key={el.id}
                         bonusInfo={el}
                         bonusCalculations={bonusCalculations}
                       />
-                    </>
-
                   )
                 })}
               </Slider>

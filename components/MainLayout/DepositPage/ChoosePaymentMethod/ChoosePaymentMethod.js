@@ -2,6 +2,10 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useDispatch} from "react-redux";
 import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
 import {PaymentItem} from "./PaymentItem";
+import {useEffect} from "react";
+import axios from "axios";
+import {payments_methods_url} from "../../../../redux/url/url";
+import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
 
 const paymentsMethods = [
   {id: 1, name: 'VISA', img: '/assets/img/depositPage/payments/Visa.png'},
@@ -29,8 +33,40 @@ const paymentsMethods = [
   {id: 23, name: 'WorldPay', img: '/assets/img/depositPage/payments/WorldPay.png'},
 ]
 
-export const ChoosePaymentMethod = ({t, userPayment, paymentMethods, userCurrency}) => {
+export const ChoosePaymentMethod = ({
+                                      isShowDepositModal,
+                                      setPaymentMethods,
+                                      t,
+                                      userPayment,
+                                      paymentMethods,
+                                      userCurrency
+                                    }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isShowDepositModal) {
+      const config = {
+        params: {
+          currency_id: userCurrency.userCurrencyData.id,
+        }
+      }
+      // payments_methods_url
+      axios.get(payments_methods_url, config)
+        .then((data) => {
+          console.log(data.data.results);
+          setPaymentMethods(data.data.results);
+        })
+        .catch((err) => {
+          setPaymentMethods(null);
+          console.log(err.response);
+        })
+    } else {
+      setPaymentMethods(null);
+    }
+    return () => {
+      setPaymentMethods(null);
+    }
+  }, [userCurrency])
 
   // const paymentSelector = (e) => {
   //   let chosenPayment = paymentsMethods.filter((el) => {
@@ -44,47 +80,39 @@ export const ChoosePaymentMethod = ({t, userPayment, paymentMethods, userCurrenc
   //   }))
   // }
 
-  console.log(userCurrency, paymentMethods);
+  console.log(userCurrency, paymentMethods, 'payments methods !!!!!!!!!!!!!!!!!');
 
-  return (
-    <div className={styles.depositsChoosePaymentWrapper}>
-      <h3 className={styles.choosePaymentHeading}>
-        {t("depositPage.choosePaymentMethod")}
-      </h3>
-      <div className={styles.paymentMethodsBlock}>
-        {
-          (userCurrency.userCurrencyData.type === 3) || (userCurrency.userCurrencyData.type === 0)
-            ?
-            paymentMethods["3"].map((method, ind) => {
-              return (
-                <PaymentItem method={method} type={'fiat'} key={`${ind} ${method.currency_from.currency} method type`}></PaymentItem>
-              )
-            })
-
-            :
-            paymentMethods["3"].map((method, ind) => {
-              return (
-                <PaymentItem method={method} type={'crypto'} key={`${ind} ${method.currency_from.currency} method type`}></PaymentItem>
-              )
-            })
-
-          // paymentsMethods.map((el) => {
-          //   return (
-          //     <div
-          //       data-payment_id={el.id}
-          //       key={el.id}
-          //       onClick={(e) => paymentSelector(e)}
-          //     >
-          //       <img
-          //         data-payment_id={el.id}
-          //         src={el.img}
-          //         alt={el.name}/>
-          //     </div>
-          //   )
-          // })
-        }
+  if (paymentMethods) {
+    return (
+      <div className={styles.depositsChoosePaymentWrapper}>
+        <h3 className={styles.choosePaymentHeading}>
+          {t("depositPage.choosePaymentMethod")}
+        </h3>
+        <div className={styles.paymentMethodsBlock}>
+          <PaymentItem
+            method={paymentMethods}
+            type={'creditCard'}
+          />
+          <PaymentItem
+            method={paymentMethods}
+            type={'crypto'}
+          />
+        </div>
+        <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
       </div>
-      <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
-    </div>
-  )
+    )
+  } else {
+
+    return (
+      <div className={styles.depositsChoosePaymentWrapper}>
+        <h3 className={styles.choosePaymentHeading}>
+          {t("depositPage.choosePaymentMethod")}
+        </h3>
+        <div className={styles.paymentLoading}>
+          <LoadingComponent t={t}/>
+        </div>
+      </div>
+    )
+  }
+
 }
