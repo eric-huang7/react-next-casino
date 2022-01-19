@@ -8,9 +8,15 @@ export const bonusesCalculator = (objOfBonus, userCurrency, t) => {
 
   if (objOfBonus?.spec) {
     let specArr =  JSON.parse(JSON.stringify(eval("(" + objOfBonus.spec + ")")));
+
     let filteredBonus = specArr.filter((elSpec) => {
       return elSpec.currency_id === Number(userCurrency.userCurrencyData.id)
     })
+    // console.log(objOfBonus, specArr, objOfBonus.spec, filteredBonus, userCurrency.userCurrencyData.id, 'bonus spec !!!!!!!!!!!!!!!!!!')
+
+    if (!filteredBonus[0]) {
+      return res;
+    }
 
     if (filteredBonus[0].max_cashout_type === 3) {
       res.y_key = t("bonuses.max_bonus");
@@ -27,9 +33,9 @@ export const bonusesCalculator = (objOfBonus, userCurrency, t) => {
     return res;
   } else {
     return {
-      x_key: "#",
-      y_key: "#",
-      min_deposit_key: "#",
+      x_key: "",
+      y_key: "",
+      min_deposit_key: "",
       wagner_require_key: Number(objOfBonus.wager_requirements)
     }
   }

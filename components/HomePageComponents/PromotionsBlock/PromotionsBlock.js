@@ -27,7 +27,7 @@ export const PromotionsBlock = ({t}) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
 
-  // console.log(promotionsData, "<<<<<<<<<<<<<<<<<,promotionsData")
+  console.log(promotionsData, "<<<<<<<<<<<<<<<<<,promotionsData")
 
   let itemsCount = 4;
   if (width <= 1165) {
@@ -65,6 +65,7 @@ export const PromotionsBlock = ({t}) => {
     centerMode: true,
     centerPadding: "0px",
     slidesToScroll: 1,
+    arrows: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   }
@@ -80,13 +81,17 @@ export const PromotionsBlock = ({t}) => {
             <>
               <Slider {...sliderSettings}>
                 {promotionsData.bonuses.offers.map((el) => {
-                  // let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+                  let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+
                   return (
-                    <PromotionItem
-                      key={el.id}
-                      bonusInfo={el}
-                      // bonusCalculations={bonusCalculations}
-                    />
+                    <>
+                      <PromotionItem
+                        key={el.id}
+                        bonusInfo={el}
+                        bonusCalculations={bonusCalculations}
+                      />
+                    </>
+
                   )
                 })}
               </Slider>

@@ -8,8 +8,6 @@ import {changeLocalUserSubscriptions} from "../redux/actions/userSubscriptionDat
 export default function useWebsocketNotification(userInfo, locale, browserNotify) {
   const dispatch = useDispatch();
 
-  console.log(userInfo.isAuthenticated, userInfo?.user?.token, 'user socket hook')
-
   let socketRef = useRef(null);
   let socket;
   function runSocket(maySound) {
