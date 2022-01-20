@@ -7,7 +7,7 @@ import {
   SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
   SHOW_MANAGE_SUBSCRIPTIONS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
-  SHOW_NOTIFICATIONS_POPUP,
+  SHOW_NOTIFICATIONS_POPUP, SHOW_PAYMENT_CURRENCY_SWITCHER,
   SHOW_PLAY_SAFE,
   SHOW_SEARCH_MODAL,
   SHOW_TOURNAMENTS,
@@ -97,6 +97,13 @@ export const showSearchModal = (isShow) => {
 export const showCurrencySwitcher = (isShow) => {
   return {
     type: SHOW_CURRENCY_SWITCHER,
+    payload: isShow
+  };
+}
+
+export const showPaymentCurrencySwitcher = (isShow) => {
+  return {
+    type: SHOW_PAYMENT_CURRENCY_SWITCHER,
     payload: isShow
   };
 }

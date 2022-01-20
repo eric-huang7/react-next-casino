@@ -2,7 +2,12 @@ import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {backButtonShouldDo, showCurrencySwitcher, showDepositModal} from "../../../redux/actions/showPopups";
+import {
+  backButtonShouldDo,
+  showCurrencySwitcher,
+  showDepositModal,
+  showPaymentCurrencySwitcher
+} from "../../../redux/actions/showPopups";
 import {DepositPageStepper} from "./DepositPageStepper";
 import {setErrorUserDepositValue, setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
@@ -100,6 +105,10 @@ export const DepositPage = ({t}) => {
   const hideCurrencyShowDepositModal = () => {
     dispatch(showCurrencySwitcher(false));
     dispatch(showDepositModal(true));
+  }
+  const hidePaymentCurrencyShowDepositModal = () => {
+    dispatch(showDepositModal(true));
+    dispatch(showPaymentCurrencySwitcher(false));
   }
 
   const currencySwitcherShowHandler = () => {

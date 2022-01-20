@@ -1,14 +1,26 @@
 import {
   ACTIVATE_ERROR_POPUP,
-  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SHOW_CREDIT_CARD_MODAL, SHOW_CRYPTO_MODAL,
+  BACK_BUTTON_SHOULD_DO,
+  CLOSE_All,
+  DEACTIVATE_ERROR_POPUP,
+  SHOW_CREDIT_CARD_MODAL,
+  SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
-  SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
-  SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_PAYMENTS_STEPPER,
-  SHOW_NOTIFICATIONS_POPUP, SHOW_PLAY_SAFE, SHOW_SEARCH_MODAL, SHOW_TOURNAMENTS, SHOW_TOURNAMENTS_DETAILS
+  SHOW_DEPOSIT_MODAL,
+  SHOW_EXIT_INTENT_POPUP,
+  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_MOBILE_PAYMENTS_STEPPER,
+  SHOW_NOTIFICATIONS_POPUP,
+  SHOW_PAYMENT_CURRENCY_SWITCHER,
+  SHOW_PLAY_SAFE,
+  SHOW_SEARCH_MODAL,
+  SHOW_TOURNAMENTS,
+  SHOW_TOURNAMENTS_DETAILS
 } from "../actions/types";
 
 const initialState = {
   isShowCurrencySwitcher: false,
+  isShowPaymentCurrencySwitcher: false,
   isShowDepositModal: false,
   actionForBackButton: false,
   isShowManageSubscriptions: false,
@@ -51,6 +63,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowCurrencySwitcher: payload,
+      }
+    case SHOW_PAYMENT_CURRENCY_SWITCHER :
+      return {
+        ...state,
+        isShowPaymentCurrencySwitcher: payload,
       }
     case CLOSE_All :
       return {

@@ -4,7 +4,7 @@ import {useState} from "react";
 import {validateExpiry} from "../../../../helpers/validateExpiryCardDate";
 
 
-export const InputsContainer = ({t, serverCardNumberError, cardNameErrorInput, setCardNameErrorInput, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCurdNumber, setCvvValue, setDateInput}) => {
+export const InputsContainer = ({t, serverCardNumberError, cardNameErrorInput, setCardNameErrorInput, cardNameInput, setCardNameInput, userCurrency, userDepositValue, cardDateError, amountError, cardNumber, cardNumberError, cvvValue, dateInput, setCardDateError, setAmountError, setCardNumberError, setCardNumber, setCvvValue, setDateInput}) => {
 
 const amountValueInputHandler = (e) => {
   if (e.target.value < 20) {
@@ -66,21 +66,21 @@ const cvvInputHandler = (e) => {
 const cardNumberInputHandler = (e) => {
   if (e.target.value.length === 0) {
     setCardNumberError(null);
-    setCurdNumber(e.target.value);
+    setCardNumber(e.target.value);
   } else if (e.target.value.length > 16) {
     console.log('cvv');
   } else if (e.target.value.length < 16) {
     console.log('error');
     if (serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard) {
       setCardNumberError('');
-      setCurdNumber(e.target.value);
+      setCardNumber(e.target.value);
     } else {
       setCardNumberError(t("creditCardPayment.errors.wrongCard"));
-      setCurdNumber(e.target.value);
+      setCardNumber(e.target.value);
     }
   } else {
     setCardNumberError(null);
-    setCurdNumber(e.target.value);
+    setCardNumber(e.target.value);
   }
 }
 

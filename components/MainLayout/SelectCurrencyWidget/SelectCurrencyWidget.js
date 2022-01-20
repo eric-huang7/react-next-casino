@@ -1,7 +1,7 @@
 import styles from '../../../styles/CurrencySelector/CurrencySelector.module.scss';
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useDispatch, useSelector} from "react-redux";
-import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {backButtonShouldDo, showCurrencySwitcher, showPaymentCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
 import {SelectorHeading} from "./SelectorHeading";
 import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
@@ -14,6 +14,7 @@ import {
 } from "../../../redux/actions/currency";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {hideRegister} from "../../../redux/actions/registerShow";
+import {PaymentCurrencySelector} from "./PaymentCurrencySelector/PaymentCurrencySelector";
 
 
 export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, t}) => {
@@ -24,7 +25,9 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
   const actionCurrencySelector = useSelector((store) => store.currencySelectorType);
   const currencies = useSelector((store) => store.getCurrency);
   const userAuth = useSelector((store) => store.authInfo.isAuthenticated);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
 
+  console.log(userPayment, 'paymentSelector');
 
   useEffect(() => {
     if (isShowCurrencySwitcher) {
@@ -46,7 +49,13 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
 
   const closeCurrenciesClickHandler = () => {
     dispatch(hideRegister(false));
-    dispatch(showCurrencySwitcher(false));
+
+    if (isShowPaymentCurrencySwitcher) {
+      dispatch(showPaymentCurrencySwitcher(false));
+    } else if (isShowCurrencySwitcher) {
+      dispatch(showCurrencySwitcher(false));
+    }
+
     dispatch(setCurrencySelectorType(true));
     if (backButtonShouldDoState !== null) {
       dispatch(backButtonShouldDo(false));
@@ -57,7 +66,11 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
     if (backButtonShouldDoState !== false) {
       backButtonShouldDoState();
     } else {
-      dispatch(showCurrencySwitcher(false));
+      if (isShowPaymentCurrencySwitcher) {
+        dispatch(showPaymentCurrencySwitcher(false));
+      } else if (isShowCurrencySwitcher) {
+        dispatch(showCurrencySwitcher(false));
+      }
     }
     dispatch(setCurrencySelectorType(true));
   }
@@ -103,7 +116,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
     }
   } else if (isShowPaymentCurrencySwitcher && !isShowCurrencySwitcher) {
     return (
-      <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
+      <div className={`${styles.selectCurrencyMainWrapper} ${isShowPaymentCurrencySwitcher ? "" : styles.hidden}`}>
 
         <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <SelectorHeading
@@ -112,15 +125,11 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
             closeCurrenciesClickHandler={closeCurrenciesClickHandler}
             text={"selectCurrency.headingPayment"}
           />
-          {/*<CurrencySelector*/}
-          {/*  t={t}*/}
-          {/*  popularCurrency={currencies.popular_currency.results}*/}
-          {/*  cryptoCurrency={currencies.crypto_currency.results}*/}
-          {/*  stableCurrency={currencies.stable_currency.results}*/}
-          {/*  fiatCurrency={currencies.fiat_currency.results}*/}
-          {/*  backButtonClickHandler={backButtonClickHandler}*/}
-          {/*  userAuth={userAuth}*/}
-          {/*/>*/}
+          <PaymentCurrencySelector
+            t={t}
+            userPayment={userPayment}
+            backButtonClickHandler={backButtonClickHandler}
+          />
         </div>
       </div>
     )

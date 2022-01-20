@@ -28,10 +28,13 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
     dispatch(setUserPaymentMethod(null));
   }
   const [amountError, setAmountError] = useState(null);
+
+  // TODO: ADD AMOUNT VALUE
+  const [amountValue, setAmountValue] = useState('');
   const [cardNumberError, setCardNumberError] = useState(null);
   const [dateInput, setDateInput] = useState('');
   const [cvvValue, setCvvValue] = useState('');
-  const [cardNumber, setCurdNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
   const [cardDateError, setCardDateError] = useState('')
   const [cardNameInput, setCardNameInput] = useState('')
   const [cardNameErrorInput, setCardNameErrorInput] = useState('')
@@ -48,7 +51,8 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
         cvv: Number(cvvValue),
         name: `${cardNameInput}`,
         expiry: `${date}`,
-        bonus_offer_id: ''
+        bonus_offer_id: '',
+        deposit_amount: ''
       }
     dispatch(postCreditCardPayment(paymentData));
     } else {
@@ -106,7 +110,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
               cvvValue={cvvValue}
               setCvvValue={setCvvValue}
               cardNumber={cardNumber}
-              setCurdNumber={setCurdNumber}
+              setCardNumber={setCardNumber}
               cardDateError={cardDateError}
               setCardDateError={setCardDateError}
               cardNameInput={cardNameInput}

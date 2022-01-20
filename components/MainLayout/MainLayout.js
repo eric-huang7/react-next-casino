@@ -52,7 +52,7 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-
+  console.log(isShowModal)
   return (
     <>
       <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"} />
@@ -75,7 +75,15 @@ const MainLayout = ({children, t}) => {
 
 
         {/*<SelectCurrency t={t}/>*/}
-        {isShowModal.isShowCurrencySwitcher ? <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher} /> : <></>}
+        {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
+          ?
+          <SelectCurrencyWidget
+            t={t}
+            isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
+            isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+          />
+          :
+          <></>}
 
         {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
         {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
