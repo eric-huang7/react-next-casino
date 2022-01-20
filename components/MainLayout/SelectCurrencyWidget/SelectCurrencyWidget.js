@@ -65,6 +65,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
   const backButtonClickHandler = () => {
     if (backButtonShouldDoState !== false) {
       backButtonShouldDoState();
+      dispatch(backButtonShouldDo(false));
     } else {
       if (isShowPaymentCurrencySwitcher) {
         dispatch(showPaymentCurrencySwitcher(false));

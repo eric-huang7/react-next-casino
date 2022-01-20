@@ -2,7 +2,7 @@ import {
   ACTIVATE_ERROR_POPUP,
   BACK_BUTTON_SHOULD_DO,
   CLOSE_All,
-  DEACTIVATE_ERROR_POPUP,
+  DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -36,6 +36,7 @@ const initialState = {
   showErrorPopup: false,
   errorPopupData: null,
   isShowExitIntentPopup: true,
+  depositModalStep: 1,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -47,6 +48,11 @@ function showPopupsReducer(state = initialState, action) {
         ...state,
         showErrorPopup: true,
         errorPopupData: payload,
+      }
+    case SET_DEPOSIT_STEP :
+      return {
+        ...state,
+        depositModalStep: payload,
       }
     case DEACTIVATE_ERROR_POPUP :
       return {
@@ -83,6 +89,12 @@ function showPopupsReducer(state = initialState, action) {
         isShowTournamentsDetails: false,
         isShowCreditCardModal: false,
         isShowCryptoModal: false,
+        isShowMobilePaymentsStepper: false,
+        actionForBackButtonPayments: false,
+        showErrorPopup: false,
+        errorPopupData: null,
+        depositModalStep: 1,
+        isShowPaymentCurrencySwitcher: false,
       }
     case SHOW_CREDIT_CARD_MODAL:
       return {

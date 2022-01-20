@@ -3,7 +3,7 @@ import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {
-  backButtonShouldDo,
+  backButtonShouldDo, setStepDepositModal,
   showCurrencySwitcher,
   showDepositModal,
   showPaymentCurrencySwitcher
@@ -25,7 +25,7 @@ export const DepositPage = ({t}) => {
 
   const userInfo = useSelector((state) => state.authInfo.user);
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
+  const isShowDepositModal = useSelector((state) => state.showPopupsReducer);
   const isShowCurrencyModal = useSelector((state) => state.showPopupsReducer.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userPayment = useSelector((state) => state.userPaymentMethod);
@@ -36,10 +36,11 @@ export const DepositPage = ({t}) => {
   const currencyData = useSelector((store) => store.getCurrency.currency);
 
 
+
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
   const [showAllBonuses, setShowAllBonuses] = useState(false);
-  const [step, setStep] = useState(1);
+  // const [step, setStep] = useState(isShowDepositModal.depositModalStep);
   const [chosenBonus, setChosenBonus] = useState({});
   const [bonusesArr, setBonusesArr] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState(null);
@@ -81,9 +82,10 @@ export const DepositPage = ({t}) => {
   }
 
   const stepHandler = (step) => {
-    setStep(step + 1);
+    // setStep(step + 1);
+    dispatch(setStepDepositModal(step + 1));
   }
-
+  console.log(isShowDepositModal.depositModalStep, 'steppp@@@')
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
@@ -126,7 +128,8 @@ export const DepositPage = ({t}) => {
     dispatch(setErrorUserDepositValue(''));
     dispatch(setErrorUserPaymentMethod(''));
     dispatch(setUserPaymentMethod(null));
-    setStep(1);
+    // setStep(1);
+    dispatch(setStepDepositModal(1));
   }
   const depositValueInputHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value));
@@ -151,17 +154,17 @@ export const DepositPage = ({t}) => {
     } else {
       setBonusesArr([]);
     }
-  }, [userCurrency, isShowDepositModal]);
+  }, [userCurrency, isShowDepositModal.isShowDepositModal]);
 
 
   return (
-    <div className={`${styles.depositPageWrapper} ${isShowDepositModal ? "" : styles.hide}`}>
+    <div className={`${styles.depositPageWrapper} ${isShowDepositModal.isShowDepositModal ? "" : styles.hide}`}>
       {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
         <h2>{t("depositPage.mainHeading")}</h2>
             <DepositPageStepper
               currencyData={currencyData}
-              step={step}
+              step={isShowDepositModal.depositModalStep}
               t={t}
               bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
               isActiveBonusInput={isActiveBonusInput}
@@ -186,7 +189,7 @@ export const DepositPage = ({t}) => {
               userSelectedBonus={userSelectedBonus}
               userLogin={userLogin}
               activeBonuses={activeBonuses}
-              isShowDepositModal={isShowDepositModal}
+              isShowDepositModal={isShowDepositModal.isShowDepositModal}
               bonusesArr={bonusesArr}
               paymentMethods={paymentMethods}
               setPaymentMethods={setPaymentMethods}

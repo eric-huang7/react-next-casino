@@ -1,6 +1,6 @@
 import {
   ACTIVATE_ERROR_POPUP,
-  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -112,6 +112,12 @@ export const showDepositModal = (isShow) => {
   return {
     type: SHOW_DEPOSIT_MODAL,
     payload: isShow
+  };
+}
+export const setStepDepositModal = (step) => {
+  return {
+    type: SET_DEPOSIT_STEP,
+    payload: step
   };
 }
 

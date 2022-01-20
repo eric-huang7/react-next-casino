@@ -5,7 +5,12 @@ import {ConfirmButton} from "./CreditCardComponents/ConfirmButton";
 import {PaymentHeading} from "./CreditCardComponents/Heading";
 import {InputsContainer} from "./CreditCardComponents/InputsContainer";
 import {useDispatch, useSelector} from "react-redux";
-import {showCreditCardModal, showCryptoModal, showDepositModal} from "../../../redux/actions/showPopups";
+import {
+  setStepDepositModal,
+  showCreditCardModal,
+  showCryptoModal,
+  showDepositModal
+} from "../../../redux/actions/showPopups";
 import {annulDeposit, postCreditCardPayment} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useState} from "react";
@@ -26,6 +31,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
     dispatch(showCreditCardModal(false));
     dispatch(annulDeposit());
     dispatch(setUserPaymentMethod(null));
+    dispatch(setStepDepositModal(1));
   }
 
   const backButtonClickHandler = () => {

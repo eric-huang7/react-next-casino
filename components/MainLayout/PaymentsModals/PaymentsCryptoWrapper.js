@@ -5,7 +5,7 @@ import {QRContainer} from "./CryptoComponents/QRContainer";
 import {ValueContainer} from "./CryptoComponents/ValueContainer";
 import {DepositAddressInput} from "./CryptoComponents/DepositAddressInput";
 import {useDispatch, useSelector} from "react-redux";
-import {showCryptoModal} from "../../../redux/actions/showPopups";
+import {setStepDepositModal, showCryptoModal} from "../../../redux/actions/showPopups";
 import {annulDeposit} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
@@ -19,6 +19,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
   const closeCrypto = () => {
     dispatch(showCryptoModal(false));
     dispatch(annulDeposit());
+    dispatch(setStepDepositModal(1));
   }
   console.log(paymentsData, 'chosen data payment####################');
   return (

@@ -21,7 +21,7 @@ import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContain
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
 import {getTournaments} from "../../redux/actions/getTournaments";
-import {closeAll} from "../../redux/actions/showPopups";
+import {closeAll, setStepDepositModal} from "../../redux/actions/showPopups";
 import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
 import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
