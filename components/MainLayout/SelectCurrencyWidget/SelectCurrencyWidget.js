@@ -16,8 +16,7 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {hideRegister} from "../../../redux/actions/registerShow";
 
 
-
-export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
+export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, t}) => {
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
 
@@ -28,17 +27,19 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
 
 
   useEffect(() => {
-    if (currencies.loading_popular_currency && !currencies.popular_currency?.success) {
-      dispatch(get_popular_currency());
-    }
-    if (currencies.loading_crypto_currency && !currencies.crypto_currency?.success) {
-      dispatch(get_crypto_currency());
-    }
-    if (currencies.loading_stable_currency && !currencies.stable_currency?.success) {
-      dispatch(get_stable_currency());
-    }
-    if (currencies.loading_fiat_currency && !currencies.fiat_currency?.success) {
-      dispatch(get_fiat_currency());
+    if (isShowCurrencySwitcher) {
+      if (currencies.loading_popular_currency && !currencies.popular_currency?.success) {
+        dispatch(get_popular_currency());
+      }
+      if (currencies.loading_crypto_currency && !currencies.crypto_currency?.success) {
+        dispatch(get_crypto_currency());
+      }
+      if (currencies.loading_stable_currency && !currencies.stable_currency?.success) {
+        dispatch(get_stable_currency());
+      }
+      if (currencies.loading_fiat_currency && !currencies.fiat_currency?.success) {
+        dispatch(get_fiat_currency());
+      }
     }
   }, [])
   // console.log(currencies, "<<<<<<<, currency")
@@ -60,9 +61,47 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
     }
     dispatch(setCurrencySelectorType(true));
   }
+  if (isShowCurrencySwitcher && !isShowPaymentCurrencySwitcher) {
+    if (currencies.popular_currency?.success && currencies.crypto_currency?.success && currencies.stable_currency?.success && currencies.fiat_currency?.success) {
 
-  if (currencies.popular_currency?.success && currencies.crypto_currency?.success && currencies.stable_currency?.success && currencies.fiat_currency?.success) {
+      return (
+        <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
 
+          <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+            <SelectorHeading
+              t={t}
+              backButtonClickHandler={backButtonClickHandler}
+              closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+              text={"selectCurrency.heading"}
+            />
+            <CurrencySelector
+              t={t}
+              popularCurrency={currencies.popular_currency.results}
+              cryptoCurrency={currencies.crypto_currency.results}
+              stableCurrency={currencies.stable_currency.results}
+              fiatCurrency={currencies.fiat_currency.results}
+              backButtonClickHandler={backButtonClickHandler}
+              userAuth={userAuth}
+            />
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
+          {/*<Header t={t}/>*/}
+          <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+            <SelectorHeading
+              t={t}
+              backButtonClickHandler={backButtonClickHandler}
+              closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+            />
+            <LoadingComponent t={t}/>
+          </div>
+        </div>
+      )
+    }
+  } else if (isShowPaymentCurrencySwitcher && !isShowCurrencySwitcher) {
     return (
       <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
 
@@ -71,34 +110,23 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, t}) => {
             t={t}
             backButtonClickHandler={backButtonClickHandler}
             closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+            text={"selectCurrency.headingPayment"}
           />
-          <CurrencySelector
-            t={t}
-            popularCurrency={currencies.popular_currency.results}
-            cryptoCurrency={currencies.crypto_currency.results}
-            stableCurrency={currencies.stable_currency.results}
-            fiatCurrency={currencies.fiat_currency.results}
-            backButtonClickHandler={backButtonClickHandler}
-            userAuth={userAuth}
-          />
+          {/*<CurrencySelector*/}
+          {/*  t={t}*/}
+          {/*  popularCurrency={currencies.popular_currency.results}*/}
+          {/*  cryptoCurrency={currencies.crypto_currency.results}*/}
+          {/*  stableCurrency={currencies.stable_currency.results}*/}
+          {/*  fiatCurrency={currencies.fiat_currency.results}*/}
+          {/*  backButtonClickHandler={backButtonClickHandler}*/}
+          {/*  userAuth={userAuth}*/}
+          {/*/>*/}
         </div>
       </div>
     )
+
   } else {
-    return (
-      <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
-        {/*<Header t={t}/>*/}
-        <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <SelectorHeading
-            t={t}
-            backButtonClickHandler={backButtonClickHandler}
-            closeCurrenciesClickHandler={closeCurrenciesClickHandler}
-          />
-          <LoadingComponent t={t}/>
-        </div>
-      </div>
-    )
+    return <></>
   }
-
 
 }

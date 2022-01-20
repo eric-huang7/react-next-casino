@@ -229,6 +229,7 @@
   },
   "selectCurrency": {
     "heading": "Выберите валюту",
+    "headingPayment": "Выберите платежную валюту",
     "suggestedCurrencies": "Предлагаемые валюты",
     "otherRealMoneyCurrencies": "Другие валюты реальных денег",
     "otherCryptoCurrencies": "Другие криптовалюты",
@@ -493,7 +494,8 @@
       "wrongCard": "Неправильный формат.",
       "wrongName": "Введите имя владельца карты.",
       "wrongDate": "Дата неверна!",
-      "serverCardNumberError": "Номер должен быть кредитной картой"
+      "serverCardNumberError": "Номер должен быть кредитной картой",
+      "errorPaymentMethod" : "Произошла ошибка. Пожалуйста попробуйте еще раз или обратитесть в службу поддержки."
     },
     "creditCard": "Номер кредитной карты",
     "expiryDate": "Срок",

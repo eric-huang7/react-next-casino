@@ -229,6 +229,7 @@
   },
   "selectCurrency": {
     "heading": "Select Currency",
+    "headingPayment": "Select payment currency",
     "suggestedCurrencies": "Suggested Currencies",
     "otherRealMoneyCurrencies": "Other Real Money Currencies",
     "otherCryptoCurrencies": "Other Crypto Currencies",
@@ -493,7 +494,8 @@
       "wrongCard": "Wrong format.",
       "wrongName": "Enter card holder name.",
       "wrongDate": "Date is wrong!",
-      "serverCardNumberError": "Number must be a credit card"
+      "serverCardNumberError": "Number must be a credit card",
+      "errorPaymentMethod" : "An error has occurred. Please try again or contact support."
     },
     "creditCard": "Credit Card Number",
     "expiryDate": "Expiry Date",

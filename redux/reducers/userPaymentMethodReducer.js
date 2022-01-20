@@ -1,10 +1,8 @@
 import {SET_ERROR_WRONG_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD} from "../actions/types";
 
 const initialState = {
-  paymentId: null,
-  paymentName: null,
-  paymentImg: null,
   paymentError: '',
+  paymentMethodData: null,
 }
 
 function setUserPaymentMethodReducer(state = initialState, action) {
@@ -14,9 +12,7 @@ function setUserPaymentMethodReducer(state = initialState, action) {
     case SET_USER_PAYMENT_METHOD :
       return {
         ...state,
-        paymentId: payload.paymentId,
-        paymentName: payload.paymentName,
-        paymentImg: payload.paymentImg,
+        paymentMethodData: payload
       }
     case SET_ERROR_WRONG_PAYMENT_METHOD:
       return {

@@ -114,11 +114,7 @@ export const DepositPage = ({t}) => {
     dispatch(setUserBonus(0));
     dispatch(setErrorUserDepositValue(''));
     dispatch(setErrorUserPaymentMethod(''));
-    dispatch(setUserPaymentMethod({
-      paymentId: null,
-      paymentName: null,
-      paymentImg: null
-    }))
+    dispatch(setUserPaymentMethod(null));
     setStep(1);
   }
   const depositValueInputHandler = (e) => {
@@ -140,6 +136,7 @@ export const DepositPage = ({t}) => {
         setBonusesArr([]);
         chooseBonusClickHandler(0);
       }
+
     } else {
       setBonusesArr([]);
     }

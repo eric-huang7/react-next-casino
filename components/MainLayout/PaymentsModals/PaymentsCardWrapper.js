@@ -10,15 +10,22 @@ import {annulDeposit, postCreditCardPayment} from "../../../redux/actions/deposi
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";
+import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 
 export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+
+  // console.log(userPayment, 'userPayment');
+
   const dispatch = useDispatch()
   const closeCardPayment = () => {
     dispatch(showCreditCardModal(false));
     dispatch(annulDeposit());
+    dispatch(setUserPaymentMethod(null));
   }
   const [amountError, setAmountError] = useState(null);
   const [cardNumberError, setCardNumberError] = useState(null);
@@ -32,7 +39,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
   const confirmButtonClickHandler = () => {
     if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
       let date = dateInput.split('/').join('')
-      console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.userCurrencyData.id, siteID, userInfo.user.user.id);
+      console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.userCurrencyData.id, siteID, userInfo.user.user.id, userInfo.user.user);
       let paymentData = {
         senderCurrency_id: userCurrency.userCurrencyData.id,
         user_id: `${userInfo.user.user.id}`,
@@ -40,14 +47,29 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
         number: `${cardNumber}`,
         cvv: Number(cvvValue),
         name: `${cardNameInput}`,
-        expiry: `${date}`
+        expiry: `${date}`,
+        bonus_offer_id: ''
       }
-    dispatch(postCreditCardPayment(paymentData))
+    dispatch(postCreditCardPayment(paymentData));
     } else {
       console.log('check errors')
     }
   }
 
+   if (!userPayment.paymentMethodData.methodData) {
+     return (
+       <div className={styles.paymentsMainWrapper}>
+         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+           <div className={styles.paymentsMainContainer}>
+             <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
+             <div className={styles.confirmedPayment}>
+                <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
+             </div>
+           </div>
+         </div>
+       </div>
+     )
+   }
   if (paymentsData?.creditPaymentData?.data?.success) {
     return (
       <div className={styles.paymentsMainWrapper}>

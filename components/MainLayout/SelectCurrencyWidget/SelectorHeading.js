@@ -1,7 +1,7 @@
 import styles from "../../../styles/CurrencySelector/CurrencySelector.module.scss";
 
 
-export const SelectorHeading = ({t, backButtonClickHandler, closeCurrenciesClickHandler}) => {
+export const SelectorHeading = ({t, backButtonClickHandler, closeCurrenciesClickHandler, text}) => {
 
 
   return (
@@ -11,7 +11,7 @@ export const SelectorHeading = ({t, backButtonClickHandler, closeCurrenciesClick
         className={styles.selectCurrencyBackButton}
       >
       </div>
-      <h3 className={styles.selectCurrencyHeading}>{t("selectCurrency.heading")}</h3>
+      <h3 className={styles.selectCurrencyHeading}>{t(text)}</h3>
       <div
         className={styles.selectCurrencyCloseButton}
         onClick={() => closeCurrenciesClickHandler()}

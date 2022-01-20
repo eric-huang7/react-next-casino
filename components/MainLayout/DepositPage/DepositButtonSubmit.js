@@ -6,6 +6,7 @@ import {setErrorUserPaymentMethod} from "../../../redux/actions/setUserPaymentMe
 import {payments_methods_url} from "../../../redux/url/url";
 import {siteID} from "../../../envs/envsForFetching";
 import axios from "axios";
+import {showCreditCardModal} from "../../../redux/actions/showPopups";
 
 export const DepositButtonSubmit = ({t, step, stepHandler, submitHandler, buttonText, userDepositValue, userPayment, userCurrency}) => {
 const dispatch = useDispatch();
@@ -29,9 +30,14 @@ const dispatch = useDispatch();
       }
     } else if (step === 2) {
 
-      if (!!userPayment.paymentId) {
-        stepHandler(step);
+      if (!!userPayment.paymentMethodData) {
+        // stepHandler(step);
         dispatch(setErrorUserPaymentMethod(''));
+        if (userPayment.paymentMethodData.paymentType === 'creditCard') {
+          dispatch(showCreditCardModal(true));
+        } else if (userPayment.paymentMethodData.paymentType === 'crypto') {
+          console.log(userPayment, "OPEN CRYPTO");
+        }
 
       } else {
 

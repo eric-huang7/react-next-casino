@@ -65,6 +65,7 @@ export const ChoosePaymentMethod = ({
     }
     return () => {
       setPaymentMethods(null);
+      dispatch(setUserPaymentMethod(null));
     }
   }, [userCurrency])
 
@@ -89,14 +90,31 @@ export const ChoosePaymentMethod = ({
           {t("depositPage.choosePaymentMethod")}
         </h3>
         <div className={styles.paymentMethodsBlock}>
-          <PaymentItem
-            method={paymentMethods}
-            type={'creditCard'}
-          />
-          <PaymentItem
-            method={paymentMethods}
-            type={'crypto'}
-          />
+          {
+            userCurrency.userCurrencyData.type === 3
+              ?
+              <>
+                <PaymentItem
+                  method={paymentMethods}
+                  type={'creditCard'}
+                  userCurrency={userCurrency}
+                  userPayment={userPayment}
+                />
+                <PaymentItem
+                  method={paymentMethods}
+                  type={'crypto'}
+                  userCurrency={userCurrency}
+                  userPayment={userPayment}
+                />
+              </>
+              :
+              <PaymentItem
+                method={paymentMethods}
+                type={'crypto'}
+                userCurrency={userCurrency}
+                userPayment={userPayment}
+              />
+          }
         </div>
         <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
       </div>
