@@ -5,7 +5,7 @@ import {ConfirmButton} from "./CreditCardComponents/ConfirmButton";
 import {PaymentHeading} from "./CreditCardComponents/Heading";
 import {InputsContainer} from "./CreditCardComponents/InputsContainer";
 import {useDispatch, useSelector} from "react-redux";
-import {showCreditCardModal, showCryptoModal} from "../../../redux/actions/showPopups";
+import {showCreditCardModal, showCryptoModal, showDepositModal} from "../../../redux/actions/showPopups";
 import {annulDeposit, postCreditCardPayment} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useState} from "react";
@@ -26,6 +26,11 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
     dispatch(showCreditCardModal(false));
     dispatch(annulDeposit());
     dispatch(setUserPaymentMethod(null));
+  }
+
+  const backButtonClickHandler = () => {
+    dispatch(showCreditCardModal(false));
+    dispatch(showDepositModal(true));
   }
   const [amountError, setAmountError] = useState(null);
 
@@ -65,7 +70,13 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
        <div className={styles.paymentsMainWrapper}>
          <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
            <div className={styles.paymentsMainContainer}>
-             <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
+             <PaymentHeading
+               closeHandler={closeCardPayment}
+               t={t}
+               type={'fiat'}
+               showBackButton={true}
+               backButtonClickHandler={backButtonClickHandler}
+             />
              <div className={styles.confirmedPayment}>
                 <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
              </div>
@@ -79,7 +90,11 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.paymentsMainContainer}>
-            <PaymentHeading closeHandler={closeCardPayment} t={t} type={'confirmed'} />
+            <PaymentHeading
+              closeHandler={closeCardPayment}
+              t={t}
+              type={'confirmed'}
+            />
             <div className={styles.confirmedPayment}>
               <div className={styles.confirmedImageWrapper}>
                 <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'} alt={'confirmed icon'}/>
@@ -95,7 +110,13 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.paymentsMainContainer}>
-            <PaymentHeading closeHandler={closeCardPayment} t={t} type={'fiat'} />
+            <PaymentHeading
+              closeHandler={closeCardPayment}
+              t={t}
+              type={'fiat'}
+              showBackButton={true}
+              backButtonClickHandler={backButtonClickHandler}
+            />
             <InputsContainer
               serverCardNumberError={paymentsData.isCreditPaymentError}
               userDepositValue={userDepositValue}

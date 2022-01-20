@@ -6,9 +6,10 @@ import {setErrorUserPaymentMethod} from "../../../redux/actions/setUserPaymentMe
 import {payments_methods_url} from "../../../redux/url/url";
 import {siteID} from "../../../envs/envsForFetching";
 import axios from "axios";
-import {showCreditCardModal} from "../../../redux/actions/showPopups";
+import {showCreditCardModal, showCryptoModal, showDepositModal} from "../../../redux/actions/showPopups";
+import {postCryptoPayment} from "../../../redux/actions/depositPayments";
 
-export const DepositButtonSubmit = ({t, step, stepHandler, submitHandler, buttonText, userDepositValue, userPayment, userCurrency}) => {
+export const DepositButtonSubmit = ({t, step, stepHandler, submitHandler, buttonText, userDepositValue, userPayment, userCurrency, userInfo, currencyData}) => {
 const dispatch = useDispatch();
 
   const submitButtonHandler = () => {
@@ -35,8 +36,41 @@ const dispatch = useDispatch();
         dispatch(setErrorUserPaymentMethod(''));
         if (userPayment.paymentMethodData.paymentType === 'creditCard') {
           dispatch(showCreditCardModal(true));
+          dispatch(showDepositModal(false));
+        } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
+
+          dispatch(setErrorUserPaymentMethod("depositPage.errors.choosePaymentMethod"));
         } else if (userPayment.paymentMethodData.paymentType === 'crypto') {
-          console.log(userPayment, "OPEN CRYPTO");
+
+          let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
+          if (userCurrency.userCurrencyData.type === 3) {
+
+            let paymentData = {
+              senderCurrency_id: currencyInfo.id,
+              user_id: `${userInfo.user.id}`,
+              site_id: siteID,
+              award_amount: `${userDepositValue}`,
+              receiverCurrency_id: userCurrency.userCurrencyData.id
+            }
+
+            dispatch(postCryptoPayment(paymentData, userPayment));
+            dispatch(showCryptoModal(true));
+            dispatch(showDepositModal(false));
+          } else {
+
+            let paymentData = {
+              senderCurrency_id: currencyInfo.id,
+              user_id: `${userInfo.user.id}`,
+              site_id: siteID,
+              award_amount: `${userDepositValue}`,
+              receiverCurrency_id: userCurrency.userCurrencyData.id
+            }
+
+            dispatch(postCryptoPayment(paymentData, null));
+            dispatch(showCryptoModal(true));
+            dispatch(showDepositModal(false));
+          }
+
         }
 
       } else {

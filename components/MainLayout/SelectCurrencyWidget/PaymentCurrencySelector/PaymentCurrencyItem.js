@@ -2,7 +2,7 @@ import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.
 import {useEffect} from "react";
 
 
-export const PaymentCurrencyItem = ({paymentMethod}) => {
+export const PaymentCurrencyItem = ({paymentMethod, chosePaymentClickHandler}) => {
 
   useEffect(() => {
     function svgSetter () {
@@ -24,8 +24,10 @@ export const PaymentCurrencyItem = ({paymentMethod}) => {
   }, [])
 
 
+
+
   return (
-    <li onClick={() => console.log(paymentMethod)} className={styles.currencyItem}>
+    <li onClick={() => chosePaymentClickHandler(paymentMethod)} className={`${styles.currencyItem} ${styles.paymentCurrencyItem}`}>
       <div id={`currencyItemContainer${paymentMethod.currency_from.currency}`} className={styles.iconContainer}>
 
       </div>

@@ -7,7 +7,7 @@ import {
   showDepositModal,
   showPaymentCurrencySwitcher
 } from "../../../../redux/actions/showPopups";
-import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
+import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
 
 
 export const PaymentItem = ({method, type, userCurrency, userPayment}) => {
@@ -42,6 +42,7 @@ export const PaymentItem = ({method, type, userCurrency, userPayment}) => {
         paymentType: 'creditCard',
       }))
     }
+    dispatch(setErrorUserPaymentMethod(''));
   }
 
   const cryptoClickHandler = () => {
@@ -88,7 +89,7 @@ export const PaymentItem = ({method, type, userCurrency, userPayment}) => {
       methodData: paymentMethods,
       paymentImg: '/assets/img/depositPage/visa-2.svg',
       paymentSecImg: '',
-      paymentType: 'crypto',
+      paymentType: 'cryptoArr',
     }))
     dispatch(showPaymentCurrencySwitcher(true));
     dispatch(showDepositModal(false));

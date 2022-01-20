@@ -10,6 +10,7 @@ import {DepositLastPage} from "./DepositLastPage/DepositLastPage";
 
 export const DepositPageStepper = (props) => {
 let {
+  currencyData,
   step,
   t,
   closeDepositModalHandler,
@@ -93,6 +94,8 @@ let {
             t={t}
             buttonText={buttonText}
             userCurrency={userCurrency}
+            userInfo={userInfo}
+            currencyData={currencyData}
           />
         </>
       )
@@ -152,6 +155,8 @@ let {
             t={t}
             buttonText={buttonText}
             userCurrency={userCurrency}
+            userInfo={userInfo}
+            currencyData={currencyData}
           />
         </>
       )
@@ -181,6 +186,8 @@ let {
             t={t}
             buttonText={"Submit"}
             userCurrency={userCurrency}
+            userInfo={userInfo}
+            currencyData={currencyData}
           />
         </>
       )

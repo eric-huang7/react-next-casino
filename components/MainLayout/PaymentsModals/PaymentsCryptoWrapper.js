@@ -20,7 +20,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
     dispatch(showCryptoModal(false));
     dispatch(annulDeposit());
   }
-
+  console.log(paymentsData, 'chosen data payment####################');
   return (
     <div className={styles.paymentsMainWrapper}>
       <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>

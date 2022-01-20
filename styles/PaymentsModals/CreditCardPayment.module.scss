@@ -67,6 +67,10 @@
     cursor: pointer;
   }
 
+  & .backButton.toDepositBackButton {
+    position: absolute;
+  }
+
   & .empty {
     width: 13px;
     height: 13px;

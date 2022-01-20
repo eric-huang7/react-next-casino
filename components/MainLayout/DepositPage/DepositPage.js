@@ -33,6 +33,8 @@ export const DepositPage = ({t}) => {
   const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage);
   const activeBonuses = useSelector((state) => state.bonuses);
   const userSelectedBonus = useSelector((state) => state.userBonus);
+  const currencyData = useSelector((store) => store.getCurrency.currency);
+
 
   const [activeBonus, setActiveBonus] = useState(false);
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false);
@@ -158,6 +160,7 @@ export const DepositPage = ({t}) => {
       <div className={styles.depositsMainBlock}>
         <h2>{t("depositPage.mainHeading")}</h2>
             <DepositPageStepper
+              currencyData={currencyData}
               step={step}
               t={t}
               bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
