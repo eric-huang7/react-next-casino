@@ -4,7 +4,7 @@ import {StepOneEnterAmount} from "./MobilePaymentsStepperComponents/StepOneEnter
 import {StepTwoPaymentMethod} from "./MobilePaymentsStepperComponents/StepTwoPaymentMethod";
 import {useDispatch, useSelector} from "react-redux";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
   backButtonShouldDo,
   showCreditCardModal,
@@ -18,7 +18,7 @@ import {showRegister} from "../../../redux/actions/registerShow";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 
 
-export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
+export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
   const [pageStep, setPageStep] = useState(1);
   let scrollHeight = useWindowScroll();
 
@@ -27,7 +27,17 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
-  console.log(userPayment, 'SSTEPPPERRR!!!!!!!!!!!!!@#@')
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [])
 
   const currencySwitcherShowHandler = () => {
     dispatch(showCurrencySwitcher(true));

@@ -10,9 +10,21 @@ import {annulDeposit} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import {useEffect} from "react";
 
 
-export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
+export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [])
+
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
@@ -23,7 +35,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
     dispatch(setStepDepositModal(1));
     dispatch(setUserPaymentMethod(null));
   }
-  console.log(paymentsData, 'chosen data payment####################');
+
   return (
     <div className={styles.paymentsMainWrapper}>
       <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>

@@ -10,7 +10,7 @@ import {paymentMethodsData} from "../../../../envs/paymetsMethods";
 
 export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, paymentMethods, setPaymentMethods, scrollHeight, paymentMethodChooser, isActivePayments, setIsActivePayments, errorPaymentMethod, userCurrency}) => {
 
-  console.log(userPayment, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
   return (
     <div className={styles.paymentMethodMainBlock}>
           <PaymentMethodsList

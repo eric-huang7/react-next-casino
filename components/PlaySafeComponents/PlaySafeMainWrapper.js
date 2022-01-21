@@ -2,8 +2,20 @@ import styles from '../../styles/PlaySafe/PlaySafe.module.scss';
 import {PlaySafeHeading} from "./PlaySafeHeading";
 import {PlaySafeLinksBlock} from "./PlaySafeLinksBlock";
 import Link from "next/link";
+import {useEffect} from "react";
 
-export const PlaySafeMainWrapper = ({t}) => {
+export const PlaySafeMainWrapper = ({t, isShow}) => {
+
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+    return  () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [])
 
   return (
     <div className={styles.playSafeMainWrapper}>

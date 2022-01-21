@@ -100,7 +100,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }
 
   const whatShouldDoPlayWithButton = () => {
-    console.log(userPayment, "????????????????????????????/")
+
     if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
       if (!userPayment && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
@@ -170,6 +170,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       setIsActivePayments(false)
     }
   }, [width])
+
+
 
   // console.log(paymentMethod, "+++++payment method")
   // ${userCurrency.userCurrencyData.type === 3 ? '' : styles.moveRight} --- for depositWidgetMainContainer

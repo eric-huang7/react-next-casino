@@ -55,7 +55,7 @@ export const SearchGamesContainer = ({t, searchGames, searchBar, heading}) => {
     }
   }
 
-  console.log(searchGames, 'modal window');
+  // console.log(searchGames, 'modal window');
 
   let games = searchGames.map((el) => {
     return <GamesItem showFrame={false} playFunClickHandler={playFunClickHandler}

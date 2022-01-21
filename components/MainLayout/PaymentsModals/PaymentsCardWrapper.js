@@ -13,12 +13,24 @@ import {
 } from "../../../redux/actions/showPopups";
 import {annulDeposit, postCreditCardPayment} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 
-export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
+export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
+
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [])
+
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
@@ -36,7 +48,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
 
   const backButtonClickHandler = () => {
     dispatch(showCreditCardModal(false));
-    dispatch(showDepositModal(true));
+    // dispatch(showDepositModal(true));
   }
   const [amountError, setAmountError] = useState(null);
 
@@ -53,7 +65,6 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
   const confirmButtonClickHandler = () => {
     if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
       let date = dateInput.split('/').join('')
-      console.log(date, cvvValue, cardNumber, cardNameInput, userCurrency.userCurrencyData.id, siteID, userInfo.user.user.id, userInfo.user.user);
       let paymentData = {
         senderCurrency_id: userCurrency.userCurrencyData.id,
         user_id: `${userInfo.user.user.id}`,
@@ -120,7 +131,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData}) => {
               closeHandler={closeCardPayment}
               t={t}
               type={'fiat'}
-              showBackButton={true}
+              showBackButton={false}
               backButtonClickHandler={backButtonClickHandler}
             />
             <InputsContainer

@@ -154,6 +154,18 @@ export const DepositPage = ({t}) => {
     } else {
       setBonusesArr([]);
     }
+    if (isShowDepositModal.isShowDepositModal) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+
+    if (isShowDepositModal.isShowDepositModal) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+
   }, [userCurrency, isShowDepositModal.isShowDepositModal]);
 
 

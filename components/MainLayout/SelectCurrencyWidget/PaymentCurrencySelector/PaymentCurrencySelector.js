@@ -52,7 +52,7 @@ export const PaymentCurrencySelector = ({
   const chosePaymentClickHandler = (paymentData) => {
     if (isShowMobileCryptoPayments) {
       let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === paymentData.currency_from.currency);
-      console.log('open qr code', currencyInfo.id, userInfo.user.id, siteID, userDepositValue, userCurrency.userCurrencyData.id, isShowMobileCryptoPayments);
+
       if (userCurrency.userCurrencyData.type === 3) {
 
         let sendPaymentData = {

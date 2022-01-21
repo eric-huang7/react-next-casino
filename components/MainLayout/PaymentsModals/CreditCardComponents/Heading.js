@@ -2,7 +2,7 @@ import styles from "../../../../styles/PaymentsModals/CreditCardPayment.module.s
 import Image from "next/image";
 
 
-export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBackButton, actionBackButton, showBackButton, backButtonClickHandler}) => {
+export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBackButton, showBackButton, backButtonClickHandler}) => {
 
   return (
     <div className={styles.paymentsHead}>
@@ -13,11 +13,11 @@ export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBac
           </button>
       }
       {
-        showBackButton ?
-          <button onClick={() => backButtonClickHandler()} className={`${styles.backButton} ${showBackButton ? styles.toDepositBackButton : ""}`}>
-          </button>
-          :
-          <div className={styles.empty}></div>
+        // showBackButton ?
+        //   <button onClick={() => backButtonClickHandler()} className={`${styles.backButton} ${showBackButton ? styles.toDepositBackButton : ""}`}>
+        //   </button>
+        //   :
+        //   <div className={styles.empty}></div>
       }
 
       <div className={styles.heading}>

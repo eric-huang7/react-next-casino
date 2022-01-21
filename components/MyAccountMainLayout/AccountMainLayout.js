@@ -25,6 +25,8 @@ import Head from "next/head";
 import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
 import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget";
 import {showCurrencySwitcher} from "../../redux/actions/showPopups";
+import {PaymentsCardWrapper} from "../MainLayout/PaymentsModals/PaymentsCardWrapper";
+import {PaymentsCryptoWrapper} from "../MainLayout/PaymentsModals/PaymentsCryptoWrapper";
 
 
 export const AccountMainLayout = ({t, children}) => {
@@ -32,6 +34,7 @@ export const AccountMainLayout = ({t, children}) => {
   const isShowModal = useSelector((store) => store.showPopupsReducer);
   const userInfo = useSelector((userInfo) => userInfo.authInfo);
   const currency = useSelector((store) => store.getCurrency);
+  const paymentsData = useSelector((store) => store.depositData);
   const router = useRouter();
 
   useEffect(() => {
@@ -104,6 +107,8 @@ export const AccountMainLayout = ({t, children}) => {
           <Header t={t}/>
           {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
           {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
+          {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
+          {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
           <MobileSideMenu t={t} userInform={userInfo}/>
           {/*<SelectCurrency t={t}/>*/}
           {isShowModal.isShowCurrencySwitcher ?

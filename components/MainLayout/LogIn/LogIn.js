@@ -96,6 +96,12 @@ export const LogIn = ({t, isShow}) => {
     setSelfExcludedTime("");
     setSelfExcludedError(false);
     setWrongPassOrLog(false);
+
+    if (isShowLogin) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
   },[isShowLogin])
 
 

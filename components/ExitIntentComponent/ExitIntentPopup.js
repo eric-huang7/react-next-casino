@@ -68,6 +68,14 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+  }, [showPopup]);
+
 
   useEffect(() => {
     dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));

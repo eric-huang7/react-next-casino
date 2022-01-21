@@ -22,6 +22,14 @@ export const RegisterSignup = ({t, isShow}) => {
     resolver: yupResolver(schemaRegister),
   });
 
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+  }, [isShow])
+
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
   const userData = useSelector((userData) => userData.authInfo);

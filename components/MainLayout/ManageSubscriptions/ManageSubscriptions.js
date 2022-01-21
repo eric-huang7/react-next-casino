@@ -17,6 +17,17 @@ export const ManageSubscriptions = ({t}) => {
     dispatch(showManageSubscriptions(false));
   }
 
+  useEffect(() => {
+    if (isShowSubscriptions) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [isShowSubscriptions])
+
   const [emailSubscript, setEmailSubscript] = useState(userInfo.authInfo.user.user.transactional_email_opt_in);
   const [smsSubscript, setSmsSubscript] = useState(userInfo.authInfo.user.user.transactional_sms_opt_in);
   const [notifySubscript, setNotifySubscript] = useState(userInfo.authInfo.user.user.browser_opt_in);

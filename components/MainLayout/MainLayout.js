@@ -53,9 +53,9 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-  const userPayment = useSelector((state) => state.userPaymentMethod);
+  // const userPayment = useSelector((state) => state.userPaymentMethod);
 
-  console.log(userPayment, 'userPAyment``````````````1111111111111111111111111111111111');
+  // console.log(userPayment, 'userPAyment``````````````1111111111111111111111111111111111');
 
 
   return (
@@ -69,12 +69,12 @@ const MainLayout = ({children, t}) => {
         <Header t={t}/>
         <ExitIntentPopup isShowExitIntent={isShowModal.isShowExitIntentPopup} t={t} userInfo={userInfo} />
         <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
-        {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
-        {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
-        {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper paymentsData={paymentsData} t={t}/> : <></>}
+        {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper isShow={isShowModal.isShowMobilePaymentsStepper} paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
+        {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
+        {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
         {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
         <MobileSideMenu t={t} userInform={userInfo}/>
-        {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper t={t}/> : <></>}
+        {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper isShow={isShowModal.isShowPlaySafe} t={t}/> : <></>}
         {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
         <LogIn isShow={logInShow} t={t}/>
 
