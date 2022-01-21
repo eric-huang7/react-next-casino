@@ -8,7 +8,7 @@ import {
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
   SHOW_EXIT_INTENT_POPUP,
-  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_CRYPTO_PAYMENTS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP,
   SHOW_PAYMENT_CURRENCY_SWITCHER,
@@ -17,6 +17,7 @@ import {
   SHOW_TOURNAMENTS,
   SHOW_TOURNAMENTS_DETAILS
 } from "../actions/types";
+import {showMobileCryptoPayments} from "../actions/showPopups";
 
 const initialState = {
   isShowCurrencySwitcher: false,
@@ -37,6 +38,7 @@ const initialState = {
   errorPopupData: null,
   isShowExitIntentPopup: true,
   depositModalStep: 1,
+  isShowMobileCryptoPayments: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -95,6 +97,12 @@ function showPopupsReducer(state = initialState, action) {
         errorPopupData: null,
         depositModalStep: 1,
         isShowPaymentCurrencySwitcher: false,
+        isShowMobileCryptoPayments: false,
+      }
+    case SHOW_MOBILE_CRYPTO_PAYMENTS:
+      return {
+        ...state,
+        isShowMobileCryptoPayments: payload
       }
     case SHOW_CREDIT_CARD_MODAL:
       return {

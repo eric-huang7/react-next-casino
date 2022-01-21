@@ -25,6 +25,9 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
   const dispatch = useDispatch();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+
+  console.log(userPayment, 'SSTEPPPERRR!!!!!!!!!!!!!@#@')
 
   const currencySwitcherShowHandler = () => {
     dispatch(showCurrencySwitcher(true));
@@ -82,15 +85,11 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
   }
 
   const whatShouldDoPlayWith = () => {
-    if (userCurrency.userCurrencyData.type === 3) {
       if (errorInputValue) {
         return
       } else {
         setPageStep(2);
       }
-    } else {
-      openWindow('crypto')
-    }
   }
 
   const whatShouldDoBackButton = () => {
@@ -103,7 +102,7 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
     dispatch(annulDeposit());
   }
   const methodClickHandler = (method) => {
-    if (method.type === 'crypto') {
+    if (method === 'crypto') {
       openWindow('crypto chosen type', method);
     } else {
       openWindow('card');
@@ -130,11 +129,14 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth}) => {
                 errorInputValue={errorInputValue}
                 currencySwitcherShowHandler={currencySwitcherShowHandler}
                 whatShouldDoPlayWith={whatShouldDoPlayWith}
+                userPayment={userPayment}
               />
               :
               <StepTwoPaymentMethod
+                userCurrency={userCurrency}
                 methodClickHandler={methodClickHandler}
                 t={t}
+                userPayment={userPayment}
               />
           }
         </div>

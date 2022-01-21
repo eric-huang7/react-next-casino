@@ -86,6 +86,7 @@ const MainLayout = ({children, t}) => {
             t={t}
             isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
             isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+            isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
           />
           :
           <></>}

@@ -10,7 +10,7 @@ export const StepperPlayWithButton = ({t, whatShouldDoPlayWith, userCurrency, us
       disabled={userCurrency.userCurrencyData.isDepositEnabled === 0  ? true : false}
       title={userCurrency.userCurrencyData.isDepositEnabled === 0 ? t("depositWidget.playWithTitle") : ""}
     >
-      {`${t("depositWidget.playWith")} ${userCurrency.userCurrencyData.symbol ? userCurrency.userCurrencyData.symbol : ''}${userDepositValue}${userCurrency.userCurrencyData.symbol ? "" : userCurrency.userCurrencyData.abbreviation}`}
+      {`${t("depositWidget.playWith")} ${userCurrency.userCurrencyData.symbol ? userCurrency.userCurrencyData.symbol : ''}${userDepositValue} ${userCurrency.userCurrencyData.symbol ? "" : userCurrency.userCurrencyData.abbreviation}`}
     </button>
   )
 }

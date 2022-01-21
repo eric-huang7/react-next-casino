@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
   backButtonShouldDo,
   setStepDepositModal,
-  showCurrencySwitcher,
+  showCurrencySwitcher, showMobileCryptoPayments,
   showPaymentCurrencySwitcher
 } from "../../../redux/actions/showPopups";
 import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
@@ -23,17 +23,22 @@ import {PaymentCurrencySelector} from "./PaymentCurrencySelector/PaymentCurrency
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 
 
-export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, t}) => {
+export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, isShowMobileCryptoPayments, t}) => {
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
 
   const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton);
   const actionCurrencySelector = useSelector((store) => store.currencySelectorType);
   const currencies = useSelector((store) => store.getCurrency);
-  const userAuth = useSelector((store) => store.authInfo.isAuthenticated);
+  const userAuth = useSelector((store) => store.authInfo);
   const userPayment = useSelector((state) => state.userPaymentMethod);
+  const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
 
+
+
+  console.log(isShowMobileCryptoPayments, "SWICCCCCCCCCCCCCCCCCCCCCCCC")
   useEffect(() => {
     if (isShowCurrencySwitcher) {
       if (currencies.loading_popular_currency && !currencies.popular_currency?.success) {
@@ -58,6 +63,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
     if (isShowPaymentCurrencySwitcher) {
       dispatch(setUserPaymentMethod(null));
       dispatch(showPaymentCurrencySwitcher(false));
+      dispatch(showMobileCryptoPayments(false));
     } else if (isShowCurrencySwitcher) {
       dispatch(showCurrencySwitcher(false));
     }
@@ -80,6 +86,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
         dispatch(showCurrencySwitcher(false));
       }
     }
+    dispatch(showMobileCryptoPayments(false));
     dispatch(setCurrencySelectorType(true));
   }
   if (isShowCurrencySwitcher && !isShowPaymentCurrencySwitcher) {
@@ -102,7 +109,7 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
               stableCurrency={currencies.stable_currency.results}
               fiatCurrency={currencies.fiat_currency.results}
               backButtonClickHandler={backButtonClickHandler}
-              userAuth={userAuth}
+              userAuth={userAuth.isAuthenticated}
             />
           </div>
         </div>
@@ -137,6 +144,11 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
             t={t}
             userPayment={userPayment}
             backButtonClickHandler={backButtonClickHandler}
+            isShowMobileCryptoPayments={isShowMobileCryptoPayments}
+            currencyData={currencies.currency}
+            userDepositValue={userDepositValue}
+            userInfo={userAuth.user}
+            userCurrency={userCurrency}
           />
         </div>
       </div>

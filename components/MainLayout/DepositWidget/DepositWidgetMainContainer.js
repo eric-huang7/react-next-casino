@@ -135,6 +135,14 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         dispatch(showMobilePaymentsStepper(true));
       }
 
+    } else if (userCurrency.userCurrencyData.type !== 3 && width <= 680) {
+      if (Number(userDepositValue) === 0) {
+        setErrorDepositValue(true);
+      } else {
+        setErrorPaymentMethod(false);
+        setErrorDepositValue(false);
+        dispatch(showMobilePaymentsStepper(true));
+      }
     } else {
         if (Number(userDepositValue) === 0) {
           setErrorDepositValue(true);
@@ -183,19 +191,27 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         errorDepositValue={errorDepositValue}
         t={t}
       />
-        <PaymentMethodMainBlock
-          scrollHeight={scrollHeight}
-          paymentMethodChooser={paymentMethodChooser}
-          isActivePayments={isActivePayments}
-          setIsActivePayments={setIsActivePayments}
-          t={t}
-          errorPaymentMethod={errorPaymentMethod}
-          userCurrency={userCurrency}
-          setPaymentMethods={setPaymentMethods}
-          paymentMethods={paymentMethods}
-          setErrorPaymentMethod={setErrorPaymentMethod}
-          userPayment={userPayment}
-        />
+      {
+        width <= 680
+          ?
+          <>
+          </>
+          :
+          <PaymentMethodMainBlock
+            scrollHeight={scrollHeight}
+            paymentMethodChooser={paymentMethodChooser}
+            isActivePayments={isActivePayments}
+            setIsActivePayments={setIsActivePayments}
+            t={t}
+            errorPaymentMethod={errorPaymentMethod}
+            userCurrency={userCurrency}
+            setPaymentMethods={setPaymentMethods}
+            paymentMethods={paymentMethods}
+            setErrorPaymentMethod={setErrorPaymentMethod}
+            userPayment={userPayment}
+          />
+      }
+
       <PlayWithButton
         width={width}
         userCurrency={userCurrency}

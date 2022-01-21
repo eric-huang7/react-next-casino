@@ -5,7 +5,7 @@ import {
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
-  SHOW_MANAGE_SUBSCRIPTIONS,
+  SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_CRYPTO_PAYMENTS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PAYMENT_CURRENCY_SWITCHER,
   SHOW_PLAY_SAFE,
@@ -33,6 +33,13 @@ export const showExitIntentPopup = (isShow) => {
 export const showMobilePaymentsStepper = (isShow) => {
   return {
     type: SHOW_MOBILE_PAYMENTS_STEPPER,
+    payload: isShow
+  }
+}
+
+export const showMobileCryptoPayments = (isShow) => {
+  return {
+    type: SHOW_MOBILE_CRYPTO_PAYMENTS,
     payload: isShow
   }
 }
