@@ -21,7 +21,7 @@ import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContain
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
 import {getTournaments} from "../../redux/actions/getTournaments";
-import {closeAll, setStepDepositModal} from "../../redux/actions/showPopups";
+import {backButtonShouldDo, closeAll, setStepDepositModal} from "../../redux/actions/showPopups";
 import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
 import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
@@ -40,6 +40,7 @@ const MainLayout = ({children, t}) => {
 
   useEffect(() => {
     dispatch(closeAll(false));
+    dispatch(backButtonShouldDo(false));
   }, [router])
 
 
@@ -52,7 +53,11 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-  console.log(isShowModal)
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+
+  console.log(userPayment, 'userPAyment``````````````1111111111111111111111111111111111');
+
+
   return (
     <>
       <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"} />

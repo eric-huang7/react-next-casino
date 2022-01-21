@@ -18,6 +18,7 @@ import {showRegister} from "../../../redux/actions/registerShow";
 import {siteID} from "../../../envs/envsForFetching";
 import {postCryptoPayment} from "../../../redux/actions/depositPayments";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 
 
 export const DepositWidgetMainContainer = ({t, userAuth}) => {
@@ -26,6 +27,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+  const currencyData = useSelector((store) => store.getCurrency.currency);
 
 
   let scrollHeight = useWindowScroll();
@@ -49,9 +52,10 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   const [isActivePayments, setIsActivePayments] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [paymentMethods, setPaymentMethods] = useState(null);
 
   const paymentMethodChooser = (method) => {
-    setPaymentMethod(method);
+    // setPaymentMethod(method);
     setIsActivePayments(false);
     setErrorPaymentMethod(false);
   }
@@ -66,44 +70,59 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
       dispatch(showCreditCardModal(true));
 
-    } else if (type === 'crypto') {
+    } else if (type === 'crypto' || type === 'crypto chosen type') {
+      let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
+
       let paymentData = {
-        senderCurrency_id: userCurrency.userCurrencyData.id,
+        senderCurrency_id: currencyInfo.id,
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
         receiverCurrency_id: userCurrency.userCurrencyData.id
       }
 
-      dispatch(postCryptoPayment(paymentData, null));
+      dispatch(postCryptoPayment(paymentData, userPayment));
       dispatch(showCryptoModal(true));
 
-    } else if (type === 'crypto chosen type') {
-      let paymentData = {
-        senderCurrency_id: paymentMethod.currency_id,
-        user_id: `${userAuth.user.user.id}`,
-        site_id: siteID,
-        award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.userCurrencyData.id
-      }
-      dispatch(postCryptoPayment(paymentData, paymentMethod));
-      dispatch(showCryptoModal(true));
     }
+    // else if (type === 'crypto chosen type') {
+    //   let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
+    //   let paymentData = {
+    //     senderCurrency_id: currencyInfo.id,
+    //     user_id: `${userAuth.user.user.id}`,
+    //     site_id: siteID,
+    //     award_amount: `${userDepositValue}`,
+    //     receiverCurrency_id: userCurrency.userCurrencyData.id
+    //   }
+    //   dispatch(postCryptoPayment(paymentData, paymentMethod));
+    //   dispatch(showCryptoModal(true));
+    // }
   }
 
   const whatShouldDoPlayWithButton = () => {
+    console.log(userPayment, "????????????????????????????/")
     if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
-      if (!paymentMethod && Number(userDepositValue) === 0) {
+      if (!userPayment && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
         setErrorDepositValue(true);
-      } else if (!paymentMethod) {
+      } else if (!userPayment) {
         setErrorPaymentMethod(true);
       } else if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
+      } else if (!userPayment.paymentMethodData) {
+        setErrorPaymentMethod(true);
+      } else if (!userPayment.paymentMethodData.paymentType) {
+        setErrorPaymentMethod(true);
+      } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
+        setErrorPaymentMethod(true);
       } else {
-        if (paymentMethod.type === 'crypto') {
+        if (userPayment.paymentMethodData.paymentType === 'crypto') {
+          setErrorPaymentMethod(false);
+          setErrorDepositValue(false);
           openWindow('crypto chosen type');
         } else {
+          setErrorPaymentMethod(false);
+          setErrorDepositValue(false);
           openWindow('fiat');
         }
       }
@@ -111,6 +130,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
+        setErrorPaymentMethod(false);
+        setErrorDepositValue(false);
         dispatch(showMobilePaymentsStepper(true));
       }
 
@@ -118,6 +139,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         if (Number(userDepositValue) === 0) {
           setErrorDepositValue(true);
         } else {
+          setErrorPaymentMethod(false);
+          setErrorDepositValue(false);
           openWindow('crypto');
         }
       }
@@ -129,8 +152,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       setIsActivePayments(false);
       setErrorPaymentMethod(false);
       setErrorDepositValue(false);
+
+      dispatch(setUserPaymentMethod(null));
     }
   }, [scrollHeight])
+
   useEffect(() => {
     if (width <= 680) {
       setIsActivePayments(false)
@@ -138,10 +164,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }, [width])
 
   // console.log(paymentMethod, "+++++payment method")
-
+  // ${userCurrency.userCurrencyData.type === 3 ? '' : styles.moveRight} --- for depositWidgetMainContainer
   return (
     <div
-      className={`${styles.depositWidgetMainContainer} ${userCurrency.userCurrencyData.type === 3 ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
+
+      className={`${styles.depositWidgetMainContainer} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <CurrencyChooser
         width={width}
         currencySwitcherShowHandler={currencySwitcherShowHandler}
@@ -156,18 +183,19 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         errorDepositValue={errorDepositValue}
         t={t}
       />
-      {((userCurrency.userCurrencyData.type === 3) || (userCurrency.userCurrencyData.type === 0)) && width > 680
-        ?
         <PaymentMethodMainBlock
           scrollHeight={scrollHeight}
-          paymentMethod={paymentMethod}
           paymentMethodChooser={paymentMethodChooser}
           isActivePayments={isActivePayments}
           setIsActivePayments={setIsActivePayments}
           t={t}
           errorPaymentMethod={errorPaymentMethod}
-        /> : <></>}
-
+          userCurrency={userCurrency}
+          setPaymentMethods={setPaymentMethods}
+          paymentMethods={paymentMethods}
+          setErrorPaymentMethod={setErrorPaymentMethod}
+          userPayment={userPayment}
+        />
       <PlayWithButton
         width={width}
         userCurrency={userCurrency}

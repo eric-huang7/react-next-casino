@@ -1,7 +1,12 @@
 import styles from '../../../styles/CurrencySelector/CurrencySelector.module.scss';
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useDispatch, useSelector} from "react-redux";
-import {backButtonShouldDo, showCurrencySwitcher, showPaymentCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {
+  backButtonShouldDo,
+  setStepDepositModal,
+  showCurrencySwitcher,
+  showPaymentCurrencySwitcher
+} from "../../../redux/actions/showPopups";
 import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
 import {SelectorHeading} from "./SelectorHeading";
 import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
@@ -15,6 +20,7 @@ import {
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {hideRegister} from "../../../redux/actions/registerShow";
 import {PaymentCurrencySelector} from "./PaymentCurrencySelector/PaymentCurrencySelector";
+import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 
 
 export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, t}) => {
@@ -27,7 +33,6 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
   const userAuth = useSelector((store) => store.authInfo.isAuthenticated);
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
-  console.log(userPayment, 'paymentSelector');
 
   useEffect(() => {
     if (isShowCurrencySwitcher) {
@@ -51,15 +56,17 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
     dispatch(hideRegister(false));
 
     if (isShowPaymentCurrencySwitcher) {
+      dispatch(setUserPaymentMethod(null));
       dispatch(showPaymentCurrencySwitcher(false));
     } else if (isShowCurrencySwitcher) {
       dispatch(showCurrencySwitcher(false));
     }
-
+    dispatch(setStepDepositModal(1));
     dispatch(setCurrencySelectorType(true));
     if (backButtonShouldDoState !== null) {
       dispatch(backButtonShouldDo(false));
     }
+
   }
 
   const backButtonClickHandler = () => {

@@ -468,6 +468,7 @@
     "deposit" : "Deposit",
     "playWithTitle" : "Please select a different currency",
     "card": "Card",
+    "cryptoPayment": "Crypto Payment",
     "bitcoin": "Bitcoin",
     "bitcoinCash": "Bitcoin Cash",
     "litecoin": "Litecoin",

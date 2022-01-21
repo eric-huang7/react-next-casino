@@ -9,6 +9,7 @@ import {setStepDepositModal, showCryptoModal} from "../../../redux/actions/showP
 import {annulDeposit} from "../../../redux/actions/depositPayments";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 
 
 export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
@@ -20,6 +21,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
     dispatch(showCryptoModal(false));
     dispatch(annulDeposit());
     dispatch(setStepDepositModal(1));
+    dispatch(setUserPaymentMethod(null));
   }
   console.log(paymentsData, 'chosen data payment####################');
   return (

@@ -44,7 +44,6 @@ const dispatch = useDispatch();
 
           let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
 
-          console.log(currencyInfo, 'curency info$$$$$$$$$$$$$')
           if (userCurrency.userCurrencyData.type === 3) {
 
             let paymentData = {

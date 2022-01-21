@@ -468,6 +468,7 @@
     "deposit" : "Депозит",
     "playWithTitle" : "Выберите дргугую валюту.",
     "card": "Карта",
+    "cryptoPayment": "Криптовалюта",
     "bitcoin": "Bitcoin",
     "bitcoinCash": "Bitcoin Cash",
     "litecoin": "Litecoin",

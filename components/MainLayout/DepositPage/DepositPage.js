@@ -85,7 +85,7 @@ export const DepositPage = ({t}) => {
     // setStep(step + 1);
     dispatch(setStepDepositModal(step + 1));
   }
-  console.log(isShowDepositModal.depositModalStep, 'steppp@@@')
+
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {

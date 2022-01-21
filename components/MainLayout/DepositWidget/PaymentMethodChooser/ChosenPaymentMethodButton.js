@@ -8,15 +8,22 @@ export const ChosenPaymentMethodButton = ({t, paymentData, isActivePayments, set
   return (
     <div onClick={() => setIsActivePayments(!isActivePayments)} className={styles.paymentMethodContainer}>
       <div className={styles.chosenPaymentMetodButton} id={'chosenPaymentButton'}>
-        <span className={styles.chosenPayment}>{t(paymentData.name)}</span>
+        {
+          paymentData.paymentMethodData.paymentType === 'creditCard'
+          ?
+            <span className={styles.chosenPayment}>{t("depositWidget.card")}</span>
+            :
+            <span className={styles.chosenPayment}>{t("depositWidget.cryptoPayment")}</span>
+        }
         <div className={styles.paymentCardIconBlock}>
-          {paymentData.type === 'card' ?
+          {paymentData.paymentMethodData.paymentType === 'creditCard' ?
             <>
-              <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'} src={paymentData.icon_one}/>
+              <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'} src={"/assets/img/depositWidget/cards.png"}/>
               {/*<Image layout={'fixed'} width={55} height={25} alt={'mastercard payment'} src={paymentData.icon_two}/>*/}
             </>
             :
-            <Image layout={'fixed'} width={20} height={20} alt={"bitcoin payment"} src={paymentData.icon_one}/>
+
+            <Image layout={'fixed'} width={20} height={20} alt={"bitcoin payment"} src={'/assets/img/depositPage/payments/crypto.png'}/>
           }
         </div>
       </div>

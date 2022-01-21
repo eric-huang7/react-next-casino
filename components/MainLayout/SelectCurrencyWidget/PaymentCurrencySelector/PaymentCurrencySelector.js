@@ -34,7 +34,7 @@ export const PaymentCurrencySelector = ({t, backButtonClickHandler, userPayment}
 
   const chosePaymentClickHandler = (paymentData) => {
 
-    console.log(paymentData, 'selected');
+    // console.log(paymentData, 'selected');
     backButtonClickHandler();
     dispatch(setUserPaymentMethod({
       methodData: paymentData,

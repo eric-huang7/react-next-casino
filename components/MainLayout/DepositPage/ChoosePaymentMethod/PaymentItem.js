@@ -83,8 +83,6 @@ export const PaymentItem = ({method, type, userCurrency, userPayment}) => {
       });
     }
 
-    console.log(paymentMethods, 'check!!!!!!!!!!@@@@@@@@@@@@@@');
-
     dispatch(setUserPaymentMethod({
       methodData: paymentMethods,
       paymentImg: '/assets/img/depositPage/visa-2.svg',
@@ -96,7 +94,7 @@ export const PaymentItem = ({method, type, userCurrency, userPayment}) => {
     dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal));
   }
 
-  console.log(userPayment, 'userPAyment!!!!!!!!!!!')
+
 
   if (type === 'creditCard') {
     return (
