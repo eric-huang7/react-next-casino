@@ -43,6 +43,8 @@ const dispatch = useDispatch();
         } else if (userPayment.paymentMethodData.paymentType === 'crypto') {
 
           let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
+
+          console.log(currencyInfo, 'curency info$$$$$$$$$$$$$')
           if (userCurrency.userCurrencyData.type === 3) {
 
             let paymentData = {
@@ -66,7 +68,7 @@ const dispatch = useDispatch();
               receiverCurrency_id: userCurrency.userCurrencyData.id
             }
 
-            dispatch(postCryptoPayment(paymentData, null));
+            dispatch(postCryptoPayment(paymentData, userPayment));
             dispatch(showCryptoModal(true));
             dispatch(showDepositModal(false));
           }

@@ -44,7 +44,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
                   t={t}
                   value={userDepositValue}
                   paymentsData={paymentsData.cryptoPaymentData}
-                  currency={userCurrency.userCurrencyData.abbreviation}
+                  currency={userCurrency}
                 />
                 <QRContainer
                   qrData={paymentsData.cryptoPaymentData.data.address}
@@ -52,7 +52,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData}) => {
                 <ValueContainer
                   value={userDepositValue}
                   paymentsData={paymentsData.cryptoPaymentData}
-                  currency={userCurrency.userCurrencyData.abbreviation}
+                  currency={userCurrency}
                 />
                 <DepositAddressInput
                   t={t}
