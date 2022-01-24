@@ -35,7 +35,22 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
+useEffect(() => {
+  let timer = setTimeout(() => {
+    if (isShowCurrencySwitcher || isShowPaymentCurrencySwitcher) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+  }, 1);
 
+
+  return () => {
+    document.body.style.overflowY = "auto"
+    clearTimeout(timer);
+
+  }
+}, [])
 
 
 
@@ -54,17 +69,8 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
         dispatch(get_fiat_currency());
       }
     }
-
-    if (isShowCurrencySwitcher || isShowPaymentCurrencySwitcher) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-    return () => {
-      document.body.style.overflowY = "auto"
-    }
-
   }, [])
+
   // console.log(currencies, "<<<<<<<, currency")
 
   const closeCurrenciesClickHandler = () => {

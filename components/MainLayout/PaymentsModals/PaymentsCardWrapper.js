@@ -21,13 +21,17 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
 
   useEffect(() => {
-    if (isShow) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
+    let timer = setTimeout(() => {
+      if (isShow) {
+        document.body.style.overflowY = "hidden"
+      } else {
+        document.body.style.overflowY = "auto"
+      }
+    }, 1);
+
     return () => {
       document.body.style.overflowY = "auto"
+      clearTimeout(timer);
     }
   }, [])
 

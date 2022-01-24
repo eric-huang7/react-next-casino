@@ -74,6 +74,9 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     } else {
       document.body.style.overflowY = "auto"
     }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
   }, [showPopup]);
 
 

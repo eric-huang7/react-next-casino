@@ -28,6 +28,9 @@ export const RegisterSignup = ({t, isShow}) => {
     } else {
       document.body.style.overflowY = "auto"
     }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
   }, [isShow])
 
   const dispatch = useDispatch();

@@ -25,9 +25,12 @@ export const TournamentModalDetails = ({t}) => {
     }
   };
   useEffect(() => {
+    document.body.style.overflowY = "hidden"
+
     document.body.addEventListener("click", handleOutsideClick);
     return () => {
       document.body.removeEventListener('click', handleOutsideClick);
+      document.body.style.overflowY = "auto"
     }
   }, []);
 
