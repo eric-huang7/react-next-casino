@@ -100,6 +100,9 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }
 
   const whatShouldDoPlayWithButton = () => {
+    if (!userAuth.isAuthenticated) {
+      dispatch(showRegister(true));
+    }
 
     if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
       if (!userPayment && Number(userDepositValue) === 0) {
@@ -194,11 +197,8 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         t={t}
       />
       {
-        width <= 680
+        width > 680 && userAuth.isAuthenticated
           ?
-          <>
-          </>
-          :
           <PaymentMethodMainBlock
             scrollHeight={scrollHeight}
             paymentMethodChooser={paymentMethodChooser}
@@ -212,6 +212,9 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
             setErrorPaymentMethod={setErrorPaymentMethod}
             userPayment={userPayment}
           />
+          :
+          <>
+          </>
       }
 
       <PlayWithButton
