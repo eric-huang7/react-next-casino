@@ -6,14 +6,13 @@ import Slider from 'react-slick';
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Link from "next/link";
-import {promoData} from "./promoData";
+// import {promoData} from "./promoData";
 import {useDispatch, useSelector} from "react-redux";
 import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
-import axios from "axios";
+// import axios from "axios";
 import {getAllBonuses} from "../../../redux/actions/getBonuses";
-
 
 
 export const PromotionsBlock = ({t}) => {
@@ -28,16 +27,49 @@ export const PromotionsBlock = ({t}) => {
 
 
   let itemsCount = 4;
-  if (width <= 1165) {
-    itemsCount = 3;
+
+  if (!promotionsData.loading && promotionsData.bonuses) {
+
+    if (promotionsData.bonuses.offers.length >= 4) {
+      if (width <= 1165) {
+        itemsCount = 3;
+      } else {
+        itemsCount = 4;
+      }
+    } else if (promotionsData.bonuses.offers.length === 3) {
+      if (width <= 1165) {
+        itemsCount = 1;
+      } else {
+        itemsCount = 3;
+      }
+    } else if (promotionsData.bonuses.offers.length === 2) {
+      if (width <= 1165) {
+        itemsCount = 1;
+      } else {
+        itemsCount = 2;
+      }
+    } else if (promotionsData.bonuses.offers.length === 1) {
+
+      if (width <= 1165) {
+        itemsCount = 1;
+      } else {
+        itemsCount = 1;
+      }
+    }
+
   } else {
-    itemsCount = 4;
+    if (width <= 1165) {
+      itemsCount = 3;
+    } else {
+      itemsCount = 4;
+    }
   }
+
 
 // let data = promoData();
 
   function SampleNextArrow(props) {
-    const { className, onClick } = props;
+    const {className, onClick} = props;
     return (
       <div
         className={styles.nextArr}
@@ -45,8 +77,9 @@ export const PromotionsBlock = ({t}) => {
       />
     );
   };
+
   function SamplePrevArrow(props) {
-    const { className, onClick } = props;
+    const {className, onClick} = props;
     return (
       <div
         className={styles.prevArr}
@@ -55,7 +88,7 @@ export const PromotionsBlock = ({t}) => {
     );
   };
   const sliderSettings = {
-    className: 'center',
+    // className: 'center',
     dots: false,
     infinite: true,
     speed: 500,
@@ -64,29 +97,47 @@ export const PromotionsBlock = ({t}) => {
     centerPadding: "0px",
     slidesToScroll: 1,
     arrows: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow/>,
+    prevArrow: <SamplePrevArrow/>,
   }
-  return (
-    <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
-      <div className={styles.promotionsHeading}></div>
-      <div className={styles.promotionsBackground}>
-        <div className={styles.promotionsSliderWrapper}>
-          {promotionsData.loading && !promotionsData.bonuses
-            ?
-            <h2>Loading...</h2>
-            :
+
+  if (promotionsData.loading && !promotionsData.bonuses) {
+    return (
+      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
+        <div className={styles.promotionsHeading}></div>
+        <h2 className={styles.loadingEmptyPromotions}>{t('homePage.loading')}</h2>
+        <div className={styles.controlPanel}>
+          <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
+        </div>
+      </section>
+    )
+  } else if (promotionsData.bonuses.offers.length === 0) {
+    return (
+      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
+        <div className={styles.promotionsHeading}></div>
+        <h2 className={styles.loadingEmptyPromotions}>{t('homePage.checkLater')}</h2>
+        <div className={styles.controlPanel}>
+          <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
+        </div>
+      </section>
+    )
+  } else {
+    return (
+      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
+        <div className={styles.promotionsHeading}></div>
+        <div className={styles.promotionsBackground}>
+          <div className={styles.promotionsSliderWrapper}>
             <>
               <Slider {...sliderSettings}>
                 {promotionsData.bonuses.offers.map((el) => {
                   let bonusCalculations = bonusesCalculator(el, userCurrency, t);
 
                   return (
-                      <PromotionItem
-                        key={el.id}
-                        bonusInfo={el}
-                        bonusCalculations={bonusCalculations}
-                      />
+                    <PromotionItem
+                      key={el.id}
+                      bonusInfo={el}
+                      bonusCalculations={bonusCalculations}
+                    />
                   )
                 })}
               </Slider>
@@ -94,10 +145,11 @@ export const PromotionsBlock = ({t}) => {
                 <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
               </div>
             </>
-          }
-
+          </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
+
+
 }

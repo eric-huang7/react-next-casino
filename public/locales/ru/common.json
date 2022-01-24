@@ -87,7 +87,9 @@
     "tableGames": "настольные игры",
     "providers": "провайдеры",
     "searchBar": "поиск...",
-    "moreButton": "больше..."
+    "moreButton": "больше...",
+    "loading": "Загрузка...",
+    "checkLater": "Проверьте пожалуйста позже..."
   },
   "totalJackpots" : {
     "latestWinners" : "последние победители",
