@@ -33,6 +33,8 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const currenciesList = useSelector((store) => store.getCurrency);
+
   const dispatch = useDispatch()
   const closeCrypto = () => {
     dispatch(showCryptoModal(false));
@@ -47,7 +49,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
         <div className={styles.paymentsMainContainer}>
           <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'} />
           {
-            paymentsData.isCryptoPaymentDataLoading ?
+            paymentsData.isCryptoPaymentDataLoading || currenciesList.loading ?
               <>
                 <LoadingComponent t={t} text={"loadingComponent"}/>
               </>
@@ -64,6 +66,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
                   value={userDepositValue}
                   paymentsData={paymentsData.cryptoPaymentData}
                   currency={userCurrency}
+                  currenciesList={currenciesList}
                 />
                 <QRContainer
                   qrData={paymentsData.cryptoPaymentData.data.address}
@@ -72,6 +75,7 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
                   value={userDepositValue}
                   paymentsData={paymentsData.cryptoPaymentData}
                   currency={userCurrency}
+                  currenciesList={currenciesList}
                 />
                 <DepositAddressInput
                   t={t}

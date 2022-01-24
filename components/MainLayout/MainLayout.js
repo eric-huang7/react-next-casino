@@ -53,10 +53,10 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-  // const userPayment = useSelector((state) => state.userPaymentMethod);
+  const userPayment = useSelector((state) => state.userPaymentMethod);
 
 
-  // console.log(isShowModal, 'userPAyment``````````````1111111111111111111111111111111111');
+  console.log(userPayment, 'userPAyment``````````````1111111111111111111111111111111111');
 
 
   return (

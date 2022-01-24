@@ -479,9 +479,9 @@
     "paymentError": "Select a payment method."
   },
   "cryptoPayment": {
-    "heading": "Avaiting Payment",
+    "heading": "Awaiting Payment",
     "textBlock": {
-      "firstBlock": "Complate the payment by sending ",
+      "firstBlock": "Complete the payment by sending ",
       "secondBlock": " to your depositing address or\nscanning the QR code.",
       "around": "around "
     },

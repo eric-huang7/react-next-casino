@@ -1,7 +1,7 @@
 import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss';
 
 
-export const ValueContainer = ({value, currency, paymentsData}) => {
+export const ValueContainer = ({value, currency, paymentsData, currenciesList}) => {
 
   let paymentValue = `${value} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_to.currency}`;
 
@@ -11,9 +11,13 @@ export const ValueContainer = ({value, currency, paymentsData}) => {
 
   if (paymentsData.paymentMethod.paymentMethodData.methodData.hasOwnProperty("rate_from")) {
     if (paymentsData.paymentMethod.paymentMethodData.methodData.rate_to === '1') {
-      needToPayValue = paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value;
+      const paymentCurrency = currenciesList.currency.results.find((searchCurrency) => searchCurrency.abbreviation === paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency);
+
+      needToPayValue = parseFloat((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value).toFixed(paymentCurrency.decimal));;
     } else {
-      needToPayValue = (paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value) / paymentsData.paymentMethod.paymentMethodData.methodData.rate_to;
+      const paymentCurrency = currenciesList.currency.results.find((searchCurrency) => searchCurrency.abbreviation === paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency);
+
+      needToPayValue = parseFloat(((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value) / paymentsData.paymentMethod.paymentMethodData.methodData.rate_to).toFixed(paymentCurrency.decimal));
     }
     needToPayRes = `${needToPayValue} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency} \n`;
   }

@@ -24,7 +24,7 @@ import {showLogin} from "../../redux/actions/loginShow";
 import Head from "next/head";
 import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
 import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget";
-import {showCurrencySwitcher} from "../../redux/actions/showPopups";
+import {backButtonShouldDo, closeAll, showCurrencySwitcher} from "../../redux/actions/showPopups";
 import {PaymentsCardWrapper} from "../MainLayout/PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "../MainLayout/PaymentsModals/PaymentsCryptoWrapper";
 
@@ -37,6 +37,16 @@ export const AccountMainLayout = ({t, children}) => {
   const paymentsData = useSelector((store) => store.depositData);
   const router = useRouter();
 
+
+  const userPayment = useSelector((state) => state.userPaymentMethod);
+
+  console.log(userPayment, 'userPayment!!!!!!!!!!!!!!!!!!!!!');
+
+  useEffect(() => {
+    dispatch(closeAll(false));
+    dispatch(backButtonShouldDo(false));
+  }, [router])
+
   useEffect(() => {
 
     if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
@@ -47,6 +57,8 @@ export const AccountMainLayout = ({t, children}) => {
       dispatch(showLogin(true));
     }
   }, [userInfo.userAuthLoading, userInfo.isAuthenticated]);
+
+
 
 
   useEffect(() => {
@@ -106,13 +118,21 @@ export const AccountMainLayout = ({t, children}) => {
         <div className={styles.accountMainLayoutWrapper}>
           <Header t={t}/>
           {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
-          {isShowModal.isShowDepositModal ? <DepositPage t={t}/> : ""}
+          <DepositPage t={t}/>
           {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
           {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
           <MobileSideMenu t={t} userInform={userInfo}/>
           {/*<SelectCurrency t={t}/>*/}
-          {isShowModal.isShowCurrencySwitcher ?
-            <SelectCurrencyWidget t={t} isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}/> : <></>}
+          {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
+            ?
+            <SelectCurrencyWidget
+              t={t}
+              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
+              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
+            />
+            :
+            <></>}
           <div className={styles.myAccountContainer}>
             <div className={styles.accountInnerContainer}>
               <SideMenu userInform={userInfo} t={t}/>
