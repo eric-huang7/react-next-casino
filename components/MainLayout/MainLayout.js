@@ -56,8 +56,6 @@ const MainLayout = ({children, t}) => {
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
 
-  console.log(userPayment, 'userPAyment``````````````1111111111111111111111111111111111');
-
 
   return (
     <>

@@ -17,6 +17,7 @@ import {
 } from "../../helpers/gamesURL";
 import {setGames} from "../../redux/actions/games";
 import {SearchGamesContainer} from "../../components/SearchGamesModalWindow/SearchGamesContainer";
+import axios from "axios";
 
 
 
@@ -30,7 +31,7 @@ const GamesPage = (props) => {
   const searchRef = useRef('');
   // console.log(router, 'zxczxc');
 
-  // console.log(props, 'PROPS GAMES')
+  console.log(props, 'PROPS GAMES')
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -52,13 +53,184 @@ const GamesPage = (props) => {
   const [requestGamesData, setRequestGamesData] = useState([]);
   const [pageCounter, setPageCounter] = useState(0);
   const [total_rows, setTotal_rows] = useState(0);
+  const [heading, setHeading] = useState('all-games');
+  const [gamesError, setGamesError] = useState('');
+  // useEffect(() => {
+  //   dispatch(setGames(props.gamesData.results));
+  //   setRequestGamesData(props.gamesData.results);
+  //   setPageCounter(1);
+  //   setTotal_rows(props.gamesData.total_rows);
+  //   searchRef.current.value = '';
+  // }, [props.gamesData]);
+
+
+
   useEffect(() => {
-    dispatch(setGames(props.gamesData.results));
-    setRequestGamesData(props.gamesData.results);
+    let res;
+    let heading;
+    let whatSearch;
     setPageCounter(1);
-    setTotal_rows(props.gamesData.total_rows);
     searchRef.current.value = '';
-  }, [props.gamesData]);
+
+    setGamesError("");
+
+    if (props.query.id === 'all-games') {
+
+      heading = props.query.id;
+      axios.get(allProvidersURL(100))
+        .then((data) => {
+          console.log(data.data);
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        })
+
+    } else if (props.query.id === 'new-games') {
+
+      heading = props.query.id;
+      axios.get(newGames_url(100))
+        .then((data) => {
+        dispatch(setGames(data.data.results));
+        setRequestGamesData(data.data.results);
+        setTotal_rows(data.data.total_rows);
+      })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+
+    } else if (props.query.id === 'btc-games') {
+
+      heading = props.query.id;
+      axios.get(topGames_url(100))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+
+    } else if (props.query.id === 'top-games') {
+
+      heading = props.query.id;
+      axios.get(topGames_url(100))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+
+    } else if (props.query.id === 'jackpot-games') {
+
+      heading = props.query.id;
+      axios.get(jackpotGames_url(100))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+
+
+    } else if (props.query.id === 'table-games') {
+
+      heading = props.query.id;
+      axios.get(tableGames_url(100))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+
+    } else if (props.query.id === 'tournaments') {
+
+      whatSearch = JSON.parse(props.query.tournamentData);
+      heading = props.query.id;
+      if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+        let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+        axios.get(game_provider_category_ids(provider, whatSearch.game_category_ids))
+          .then((data) => {
+            dispatch(setGames(data.data.results));
+            setRequestGamesData(data.data.results);
+            setTotal_rows(data.data.total_rows);
+          })
+          .catch((err) => {
+            setGamesError('gamesPage.error');
+          });
+      } else if (whatSearch.game_category_ids) {
+        axios.get(game_category_ids(whatSearch.game_category_ids))
+          .then((data) => {
+            dispatch(setGames(data.data.results));
+            setRequestGamesData(data.data.results);
+            setTotal_rows(data.data.total_rows);
+          })
+          .catch((err) => {
+            setGamesError('gamesPage.error');
+          });
+      } else if (whatSearch.game_provider_ids) {
+        let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+
+        axios.get(game_provider_ids(provider))
+          .then((data) => {
+            dispatch(setGames(data.data.results));
+            setRequestGamesData(data.data.results);
+            setTotal_rows(data.data.total_rows);
+          })
+          .catch((err) => {
+            setGamesError('gamesPage.error');
+          });
+      } else {
+        axios.get(game_ids(whatSearch.game_ids))
+          .then((data) => {
+            dispatch(setGames(data.data.results));
+            setRequestGamesData(data.data.results);
+            setTotal_rows(data.data.total_rows);
+          })
+          .catch((err) => {
+            setGamesError('gamesPage.error');
+          });
+      }
+
+    } else if (props.query.id === 'bonus-games') {
+      heading = props.query.active_bonus;
+      axios.get(topGames_url(100))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+    } else {
+
+      heading = props.query.id;
+      axios.get(chosenProviderURL(props.query.id))
+        .then((data) => {
+          dispatch(setGames(data.data.results));
+          setRequestGamesData(data.data.results);
+          setTotal_rows(data.data.total_rows);
+
+        })
+        .catch((err) => {
+          setGamesError('gamesPage.error');
+        });
+    }
+    setHeading(heading);
+  }, [props.query])
 
 
   const allGames = useSelector((store) => store.games);
@@ -66,18 +238,16 @@ const GamesPage = (props) => {
 
   useEffect(() => {
     if (requestGamesData.length === total_rows) {
-      // console.log(requestGamesData.length, props.gamesData.total_rows, pageCounter, "<===== games data total rows")
       setIsShowMoreButton(false);
     } else {
-      // console.log(requestGamesData, 'games data')
+
     }
     return () => {
       setIsShowMoreButton(true);
     }
-  }, [requestGamesData])
+  }, [props.query, total_rows, requestGamesData])
 
-  // console.log(searchGames, "$$$$$$$$$$$$")
-  // console.log(pageCounter, total_rows, requestGamesData.length, props.gamesData,  "###################")
+
   return (
     <>
       <MainLayout t={t}>
@@ -87,10 +257,10 @@ const GamesPage = (props) => {
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
         {
           searchGames.length >= 0 && searchRef.current.value ?
-            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={props.heading}/>
+            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={heading}/>
             :
           <GamesContainer
-          heading={props.heading}
+          heading={heading}
           gamesData={requestGamesData}
           setRequestGamesData={setRequestGamesData}
           pageCounter={pageCounter}
@@ -99,7 +269,9 @@ const GamesPage = (props) => {
           setIsShowMoreButton={setIsShowMoreButton}
           totalRows={total_rows}
           setTotal_rows={setTotal_rows}
-          t={t}/>
+          t={t}
+          gamesError={gamesError}
+          />
         }
       </MainLayout>
     </>
@@ -108,74 +280,12 @@ const GamesPage = (props) => {
 
 
 export const getServerSideProps = async (context) => {
-  // console.log(context, 'server pid');
-  let res;
-  let heading;
-  let whatSearch;
 
-  if (context.query.id === 'all-games') {
-
-    heading = context.query.id;
-    res = await fetch(allProvidersURL(100));
-
-  } else if (context.query.id === 'new-games') {
-
-    heading = context.query.id;
-    res = await fetch(newGames_url(100));
-
-  } else if (context.query.id === 'btc-games') {
-
-    heading = context.query.id;
-    res = await fetch(topGames_url(100));
-
-  } else if (context.query.id === 'top-games') {
-
-    heading = context.query.id;
-    res = await fetch(topGames_url(100));
-
-  } else if (context.query.id === 'jackpot-games') {
-
-    heading = context.query.id;
-    res = await fetch(jackpotGames_url(100));
-
-
-  } else if (context.query.id === 'table-games') {
-
-    heading = context.query.id;
-    res = await fetch(tableGames_url(100));
-
-  } else if (context.query.id === 'tournaments') {
-
-    whatSearch = JSON.parse(context.query.tournamentData);
-    heading = context.query.id;
-    if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-      let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
-      res = await fetch(game_provider_category_ids(provider, whatSearch.game_category_ids));
-    } else if (whatSearch.game_category_ids) {
-      res = await fetch(game_category_ids(whatSearch.game_category_ids));
-    } else if (whatSearch.game_provider_ids) {
-      let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
-
-      res = await fetch(game_provider_ids(provider));
-    } else {
-      res = await fetch(game_ids(whatSearch.game_ids))
-    }
-
-  } else if (context.query.id === 'bonus-games') {
-    heading = context.query.active_bonus;
-    res = await fetch(topGames_url(100));
-  } else {
-
-    heading = context.query.id;
-    res = await fetch(chosenProviderURL(context.query.id));
-
-  }
-  let gamesData = await res.json();
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),
-      gamesData: {...gamesData},
-      heading: heading,
+
+      query: context.query,
     },
   })
 }

@@ -394,7 +394,8 @@
     "heading": "Провайдеры",
     "allProviders": "Все провайдеры",
     "providerItem": "игр",
-    "providerItemIconDescription": "иконка провайдера"
+    "providerItemIconDescription": "иконка провайдера",
+    "error": "Упс... Произошла ошибка. Перезагрузите страницу или обратитесь в службу поддержки."
   },
   "gamesPage": {
     "headings": {
@@ -407,7 +408,8 @@
       "tournaments": "Турниры"
     },
     "moreButton": "еще...",
-    "notFound" : "Упс! Мы ничего не нашли!"
+    "notFound" : "Упс! Мы ничего не нашли!",
+    "error": "Упс... Произошла ошибка. Перезагрузите страницу или обратитесь в службу поддержки."
   },
   "notificationsPage": {
     "header": {

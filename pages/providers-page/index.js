@@ -2,13 +2,15 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getCurrency} from "../../redux/actions/currency";
 import {MainBlock} from "../../components/HomePageComponents/MainBlock";
 import {ChooseCategoryBlock} from "../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
 import {ProvidersContainer} from "../../components/ProvidersPageComponents/ProvidersContainer";
 import {SearchGamesContainer} from "../../components/SearchGamesModalWindow/SearchGamesContainer";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
+import axios from "axios";
+import {serverUrl} from "../../envs/url";
 
 
 const ProvidersPage = (props) => {
@@ -16,6 +18,9 @@ const ProvidersPage = (props) => {
   const dispatch = useDispatch();
   const searchRef = useRef('');
   let searchGames = useSelector((store) => store.games.searchGames);
+
+  const [providersData, setProvidersData] = useState([]);
+  const [providersError, setProvidersError] = useState('');
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -30,9 +35,17 @@ const ProvidersPage = (props) => {
     dispatch(getCurrency());
     // dispatch(getActiveBonuses());
 
+    axios.get(serverUrl + 'game_providers')
+      .then((data) => {
+
+        setProvidersData(data.data.results);
+        setProvidersError('');
+      })
+      .catch((err) => {
+        setProvidersError('providersPage.error');
+      })
   }, []);
 
-  // console.log(props.providersData.results, 'props providers')
 
 
   return (
@@ -47,7 +60,7 @@ const ProvidersPage = (props) => {
           searchGames.length >= 0 && searchRef.current.value ?
             <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
             :
-            <ProvidersContainer t={t} providersData={props.providersData.results}/>
+            <ProvidersContainer t={t} providersData={providersData} providersError={providersError}/>
         }
       </MainLayout>
     </>
@@ -56,14 +69,14 @@ const ProvidersPage = (props) => {
 
 
 export const getServerSideProps = async (context) => {
-  // console.log(context.req.headers['accept-language'].split(',')[0], 'CON');
-  const res = await fetch('http://t-gpb.slotsidol.com:7000/game_providers');
-  const providersData = await res.json();
+
+  // const res = await fetch('http://t-gpb.slotsidol.com:7000/game_providers');
+  // const providersData = await res.json();
 
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),
-      providersData: {...providersData},
+      // providersData: {...providersData},
     },
   })
 }

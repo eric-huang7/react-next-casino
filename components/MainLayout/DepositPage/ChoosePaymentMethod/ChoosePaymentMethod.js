@@ -69,7 +69,7 @@ export const ChoosePaymentMethod = ({
       dispatch(setUserPaymentMethod(null));
     }
   }, [userCurrency])
-  console.log('!!!!@@', userCurrency);
+
   // const paymentSelector = (e) => {
   //   let chosenPayment = paymentsMethods.filter((el) => {
   //     return el.id === Number(e.target.dataset.payment_id);

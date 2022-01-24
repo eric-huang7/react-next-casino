@@ -38,10 +38,6 @@ export const AccountMainLayout = ({t, children}) => {
   const router = useRouter();
 
 
-  const userPayment = useSelector((state) => state.userPaymentMethod);
-
-  console.log(userPayment, 'userPayment!!!!!!!!!!!!!!!!!!!!!');
-
   useEffect(() => {
     dispatch(closeAll(false));
     dispatch(backButtonShouldDo(false));

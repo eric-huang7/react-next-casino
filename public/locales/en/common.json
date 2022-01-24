@@ -394,7 +394,8 @@
     "heading": "Providers",
     "allProviders": "All Providers",
     "providerItem": "games",
-    "providerItemIconDescription": "provider icon"
+    "providerItemIconDescription": "provider icon",
+    "error": "Oops... An error has occurred. Reload the page or contact support."
   },
   "gamesPage": {
     "headings": {
@@ -407,7 +408,8 @@
       "tournaments": "Tournaments"
     },
     "moreButton": "more...",
-    "notFound" : "Whoops! There's no search results!"
+    "notFound" : "Whoops! There's no search results!",
+    "error": "Oops... An error has occurred. Reload the page or contact support."
   },
   "notificationsPage": {
     "header": {

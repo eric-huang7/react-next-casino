@@ -17,7 +17,7 @@ import {
 import {setGames} from "../../redux/actions/games";
 
 
-export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows, setTotal_rows}) => {
+export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows, setTotal_rows, gamesError}) => {
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
 
@@ -86,7 +86,16 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
     />
   })
 
-
+if (gamesError) {
+  return (
+      <div className={styles.gamesMainContainer}>
+        <GamesPageHeading heading={heading} t={t} />
+        <div className={styles.gamesItemsContainer}>
+          <h2 className={styles.errorMessage}>{t(gamesError)}</h2>
+        </div>
+      </div>
+  )
+} else {
   return (
     <>
       <div className={styles.gamesMainContainer}>
@@ -107,5 +116,7 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
       />
     </>
   )
+}
+
 }
 

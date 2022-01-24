@@ -4,9 +4,9 @@ import {AllProvidersItem} from "./AllProvidersItem";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 
-export const ProvidersContainer = ({t, providersData}) => {
+export const ProvidersContainer = ({t, providersData, providersError}) => {
   const router = useRouter()
-  // console.log(router, 'router')
+
   let countOfGames = 0;
   providersData.map((el) => {
     countOfGames += Number(el.games);
@@ -36,8 +36,16 @@ export const ProvidersContainer = ({t, providersData}) => {
       <div className={styles.providersMainContainer}>
         <h2 className={styles.providersMainHeading}>{t('providersPage.heading')}</h2>
         <div className={styles.providersItemsContainer}>
-          <AllProvidersItem locale={router.locale} allGamesClickHandler={allGamesClickHandler} t={t} providerData={'asd'} countOfGames={countOfGames}/>
-          {providers}
+          {
+            providersError ?
+              <h2 className={styles.errorMessage}>{t(providersError)}</h2>
+              :
+              <>
+                <AllProvidersItem locale={router.locale} allGamesClickHandler={allGamesClickHandler} t={t} providerData={'asd'} countOfGames={countOfGames}/>
+                {providers}
+              </>
+          }
+
         </div>
       </div>
   )
