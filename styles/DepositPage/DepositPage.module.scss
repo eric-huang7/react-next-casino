@@ -502,6 +502,14 @@
 
 .depositsChoosePaymentWrapper {
 
+  & div.paymentLoading {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
   & .choosePaymentHeading {
     font-size: 18px;
     font-weight: 600;
@@ -562,10 +570,6 @@
         height: 100%;
       }
 
-    }
-
-    & div.paymentLoading {
-      height: 50px;
     }
   }
 }

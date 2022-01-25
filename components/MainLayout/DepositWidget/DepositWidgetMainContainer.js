@@ -103,7 +103,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
     if (!userAuth.isAuthenticated) {
       dispatch(showRegister(true));
     }
-    console.log(userPayment, '#########$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+
     if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
       if (!userPayment && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
@@ -184,8 +184,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
 
 
-  // console.log(paymentMethod, "+++++payment method")
-  // ${userCurrency.userCurrencyData.type === 3 ? '' : styles.moveRight} --- for depositWidgetMainContainer
+
   return (
     <div
 
