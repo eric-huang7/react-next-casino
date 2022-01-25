@@ -49,7 +49,7 @@ const dispatch = useDispatch();
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['navbarLinks', 'promotionsPage', 'common']),
+      ...await serverSideTranslations(locale, ['navbarLinks', 'promotionsPage', 'common', 'newsData']),
     },
   })
 }

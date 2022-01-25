@@ -18,6 +18,7 @@
     }
   },
   "bonuses": {
+    "noBonuses": "Проверьте пожалуйста позже...",
     "max_bonus": "максимальную сумму бонуса в зависимости от суммы награды",
     "bonusBlockInfoNotBonus": "Мне не нужен бонус.",
     "bonusBlockInfoLink": "инфо",

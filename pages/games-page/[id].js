@@ -283,7 +283,7 @@ export const getServerSideProps = async (context) => {
 
   return ({
     props: {
-      ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),
+      ...await serverSideTranslations(context.locale, ['promotionsPage', 'common', 'newsData']),
 
       query: context.query,
     },

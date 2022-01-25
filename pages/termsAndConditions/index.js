@@ -58,7 +58,7 @@ const TermsConditions = (props) => {
 export const getStaticProps = async ({ locale }) => {
   return ({
     props: {
-      ...await serverSideTranslations(locale, ['promotionsPage', 'common', 'termsAndConditions']),
+      ...await serverSideTranslations(locale, ['promotionsPage', 'common', 'termsAndConditions', 'newsData']),
     },
   })
 }

@@ -52,3 +52,38 @@ export const newsData = () => {
 
   return slides;
 }
+
+
+//import styles from "../../../styles/HomePage/NewsBlock.module.scss";
+// import {newsImageUrl} from "../../../helpers/imageUrl";
+// import {dateFormatter} from "../../../helpers/dateTranslator";
+//
+//
+// export const NewsItem = ({newsData, locale}) => {
+//
+//   const imgArr = newsData.image.split(".");
+//   const imgName = `${imgArr[0]}_${locale}.${imgArr[1]}`;
+//
+//   const date = dateFormatter(newsData.start_time, locale, false);
+//
+//
+//
+//   return (
+//     <div className={styles.newsItemContainer}>
+//       <div className={styles.newItemWrapper}>
+//         <div className={styles.newFrame}>
+//
+//         </div>
+//         <div className={styles.newImage}>
+//           <img src={newsImageUrl(imgName)} alt={`new ${newsData.id}`}/>
+//         </div>
+//         <div className={styles.newTextBlock}>
+//           <div className={styles.frameTextBlock}>
+//             <p className={styles.newMainText}>{newsData.mainText}</p>
+//             <p className={styles.newDateText}>{date}</p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }

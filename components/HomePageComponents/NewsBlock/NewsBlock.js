@@ -6,11 +6,32 @@ import Slider from 'react-slick';
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Link from "next/link";
-import {newsData} from "./newsData";
+// import {newsData} from "./newsData";
+import {NewsItem} from "./NewsItem";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {news_active_url} from "../../../redux/url/url";
+import {useRouter} from "next/router";
 
 
 export const NewsBlock = ({t, isBackShow}) => {
   const {height, width} = useWindowDimensions();
+  const router = useRouter();
+
+  const [newsData, setNewsData] = useState([]);
+  const [newsError, setNewsError] = useState('');
+
+  useEffect(() => {
+    axios.get(news_active_url)
+      .then((data) => {
+        console.log(data, 'NEWS!@@@@@@@@@@@@@@@');
+        setNewsData(data.data.results);
+      })
+      .catch((data) => {
+        console.log(data);
+        setNewsError("Ooops... Some error occurred!");
+      })
+  }, [])
 
   let itemsCount = 4;
   if (width <= 1165) {
@@ -19,7 +40,7 @@ export const NewsBlock = ({t, isBackShow}) => {
     itemsCount = 4;
   }
 
-let data = newsData();
+// let data = newsData();
 
   function SampleNextArrow(props) {
     const { className, onClick } = props;
@@ -58,23 +79,13 @@ let data = newsData();
         <div className={styles.darkBackground}>
           <div className={styles.newsSliderWrapper}>
             <Slider {...sliderSettings}>
-              {data.map((el) => {
+              {newsData.map((el) => {
                 return (
-                  <div key={el.id}>
-                    <div className={styles.newItemWrapper}>
-                      <div className={styles.newImage}>
-                        <div className={styles.newFrame}>
-                        </div>
-                        <img src={el.image} alt={`new ${el.id}`}/>
-                      </div>
-                      <div className={styles.newTextBlock}>
-                        <div className={styles.frameTextBlock}>
-                          <p className={styles.newMainText}>{el.mainText}</p>
-                          <p className={styles.newDateText}>{el.date}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <NewsItem
+                    key={`${el.id} news item`}
+                    newsData={el}
+                    locale={router.locale}
+                  />
                 )
               })}
             </Slider>

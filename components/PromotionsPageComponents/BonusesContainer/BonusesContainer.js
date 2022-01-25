@@ -49,7 +49,7 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency, userData}) => 
     )
   } else {
     return (
-      <p style={{color: 'white', width: '100px', margin: '50px auto'}}>NO bonus</p>
+      <p className={styles.noBonuses}>{t('bonuses.noBonuses')}</p>
     )
   }
 

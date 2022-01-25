@@ -7,13 +7,13 @@ export const jackpotGames_url = serverUrl + 'games?type=4';
 export const tableGames_url = serverUrl + 'games?type=2';
 export const freeGame_url = serverUrl + 'free_game';
 export const payGame_url = serverUrl + 'start_game';
-export const latest_games = (userId) => `http://localhost:3001/recent_games?user_id=${userId}`;
-export const topGames_url = `http://localhost:3001/games?ordering=times_played-DESC`;
+export const latest_games = (userId) => `${serverUrl}recent_games?user_id=${userId}`;
+export const topGames_url = `${serverUrl}games?ordering=times_played-DESC`;
 
 // ########## Winners && Jackpots url
 
 export const winners_url = serverUrl + 'winners';
-export const winners_latest_url = `http://localhost:3001/winners?begin_date=${Math.ceil((Date.now() - 604800000) / 1000)}&min_win=20`; // 604800000 milliseconds for 7 days
+export const winners_latest_url = `${serverUrl}winners?begin_date=${Math.ceil((Date.now() - 604800000) / 1000)}&min_win=20`; // 604800000 milliseconds for 7 days
 
 export const jackpots_url = serverUrl + 'jackpots?amount=10000';
 
@@ -33,7 +33,7 @@ export const qr_auth_url = serverUrl + 'authenticator';
 // ########## sessions
 // ?isCurrent=true&ordering=id-DESC
 export const user_sessions_url = serverUrl + 'sessions'
-export const delete_user_session_url = (id) => `http://localhost:3001/sessions/${id}`
+export const delete_user_session_url = (id) => `${serverUrl}sessions/${id}`
 
 // ########## user info
 
@@ -80,9 +80,9 @@ export const payments_methods_url = serverUrl + 'payment_methods';
 
 // ######## PAYMENTS
 
-export const get_user_payments_url = "http://localhost:3001/payments?ordering=timestamp-desc";
+export const get_user_payments_url = serverUrl + 'payments?ordering=timestamp-desc';
 
-export const post_withdraw_url = "http://localhost:3001/withdraw";
+export const post_withdraw_url = serverUrl + 'withdraw';
 
 // ######### BETS
 
@@ -96,3 +96,7 @@ export const put_bonus_redemption_url = serverUrl + 'bonus_redemption';
 export const post_cancel_bonus_redemption_url = serverUrl + 'bonus_cancelation';
 
 export const activeBonuses_url = serverUrl + 'bonus_offer?active=1';
+
+
+// NEWS DATA
+export const news_active_url = serverUrl + 'news?active=1';

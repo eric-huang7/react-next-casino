@@ -18,6 +18,7 @@
     }
   },
   "bonuses": {
+    "noBonuses": "Check back later...",
     "max_bonus": "maximum bonus amount based on award amount",
     "bonusBlockInfoNotBonus": "I don't need a bonus.",
     "bonusBlockInfoLink": "info",
