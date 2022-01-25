@@ -5,7 +5,7 @@ import {bonusesFinder} from "../../../helpers/bonusesFinder";
 import {useRouter} from "next/router";
 import {bonusesCalculator} from "./bonusesCalculator";
 
-export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
+export const BonusesContainer = ({t, activeBonuses, userCurrency, userData}) => {
   const router = useRouter();
   let locale = router.locale
   let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
@@ -20,14 +20,26 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency}) => {
               let bonusCalculations = bonusesCalculator(bonus, userCurrency, t);
               return (
                 <div key={bonus.id}>
-                  <TypeOneBonusContainer bonusCalculations={bonusCalculations} locale={locale} bonusInfo={bonus} t={t}/>
+                  <TypeOneBonusContainer
+                    bonusCalculations={bonusCalculations}
+                    locale={locale}
+                    bonusInfo={bonus}
+                    t={t}
+                    userData={userData}
+                  />
                 </div>
               )
             } else {
               let bonusCalculations = bonusesCalculator(bonus, userCurrency);
               return (
                 <div key={bonus.id}>
-                  <TypeTwoBonusContainer bonusCalculations={bonusCalculations} locale={locale} bonusInfo={bonus} t={t}/>
+                  <TypeTwoBonusContainer
+                    bonusCalculations={bonusCalculations}
+                    locale={locale}
+                    bonusInfo={bonus}
+                    t={t}
+                    userData={userData}
+                  />
                 </div>
               )
             }

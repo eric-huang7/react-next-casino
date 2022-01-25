@@ -8,7 +8,7 @@ import {BonusAmountInfo} from "./BonusAmountInfo";
 import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 
 
-export const TypeOneBonusContainer = ({t, bonusInfo, locale, bonusCalculations}) => {
+export const TypeOneBonusContainer = ({t, bonusInfo, locale, bonusCalculations, userData}) => {
   const {height, width} = useWindowDimensions();
 
   return (
@@ -18,7 +18,7 @@ export const TypeOneBonusContainer = ({t, bonusInfo, locale, bonusCalculations})
         <BonusImage bonusInfo={bonusInfo}/>
         <div className={styles.bonusFrame}>
           <div className={styles.bonusInfoBlock}>
-            <BonusButton bonusInfo={bonusInfo}/>
+            <BonusButton bonusInfo={bonusInfo} userData={userData}/>
             <BonusShortDescriptionBlock locale={locale} t={t} bonusInfo={bonusInfo}/>
             <BonusAmountInfo bonusCalculations={bonusCalculations} t={t} bonusInfo={bonusInfo}/>
             {width > 700 ? <BonusLongDescriptionBlock bonusCalculations={bonusCalculations} t={t} bonusInfo={bonusInfo}/> : ""}

@@ -33,6 +33,9 @@ export const PromotionsContainer = ({}) => {
 
   const activeBonuses = useSelector((state) => state.bonuses);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userData = useSelector((store) => store.authInfo);
+
+
 
 
 
@@ -40,8 +43,8 @@ export const PromotionsContainer = ({}) => {
 
   return (
     <div className={styles.promotionsWrapper}>
-      <MainBlock dataForMainBlock={dataForMainBlock} t={t}/>
-      <BonusesContainer userCurrency={userCurrency} activeBonuses={activeBonuses} t={t}/>
+      <MainBlock dataForMainBlock={dataForMainBlock} userData={userData} t={t}/>
+      <BonusesContainer userData={userData} userCurrency={userCurrency} activeBonuses={activeBonuses} t={t}/>
     </div>
   )
 }

@@ -2,13 +2,15 @@ import styles from '../../../styles/PromotionsPage/MainBlock.module.scss';
 import {showDepositModal} from "../../../redux/actions/showPopups";
 import {useDispatch, useSelector} from "react-redux";
 
-export const WelcomeBlock = ({t, dataForMainBlock, locale}) => {
+export const WelcomeBlock = ({t, dataForMainBlock, locale, userData}) => {
   const dispatch = useDispatch();
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
   const closeDepositModalHandler = () => {
-    if (!isShowDepositModal) {
-      dispatch(showDepositModal(true));
+    if (userData.isAuthenticated) {
+      if (!isShowDepositModal) {
+        dispatch(showDepositModal(true));
+      }
     }
   }
 

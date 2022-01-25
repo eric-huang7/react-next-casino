@@ -5,18 +5,20 @@ import {setUserBonus} from "../../../../redux/actions/setUserBonus";
 import {useRouter} from "next/router";
 // import imageButton from '/assets/img/promotionsPage/bonus2.png'
 
-export const BonusButton = ({bonusInfo}) => {
+export const BonusButton = ({bonusInfo, userData}) => {
   const router = useRouter()
   const dispatch = useDispatch();
   const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
 
   const openDepositModalHandler = () => {
-    console.log(bonusInfo, 'bonus button')
-    if (!isShowDepositModal) {
-      dispatch(setUserBonus(bonusInfo.id));
-      dispatch(showDepositModal(true));
+    if (userData.isAuthenticated) {
+      if (!isShowDepositModal) {
+        dispatch(setUserBonus(bonusInfo.id));
+        dispatch(showDepositModal(true));
+      }
     }
   }
+
   let bonusButton = null;
   if (bonusInfo.button) {
     bonusButton = bonusInfo.button.split('.').join(`_${router.locale}.`);
