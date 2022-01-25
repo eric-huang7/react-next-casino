@@ -30,6 +30,19 @@
 .darkBackground {
   background-color: rgba(0,0,0,0.3);
 }
+
+.errorMessage {
+  color: #ffffff;
+  margin: 70px auto 70px;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: #ffffff;
+  font-family: "Neon", Arial, sans-serif;
+}
+
+
 .newsSliderWrapper {
   width: 1290px;
   margin: 18px auto;
@@ -39,6 +52,13 @@
 
 
 }
+
+.newsItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .newItemWrapper {
   width: 317px;
@@ -81,23 +101,15 @@
 .newTextBlock {
   background-color: #2163ab;
 
-  //position: absolute;
-
   width: 100%;
 
-  //bottom: 0;
-  //left: 0;
   height: 165px;
 
   padding: 0 5px 5px 5px ;
 
   & > .frameTextBlock {
     width: 100%;
-    //height: 100%;
-    //border-bottom: 1px solid rgba(255,255,255,0.5);
-    //border-left: 1px solid rgba(255,255,255,0.5);
-    //border-right: 1px solid rgba(255,255,255,0.5);
-
+    height: 100%;
     padding: 10px;
 
     display: flex;
@@ -129,12 +141,14 @@
   //left: 0;
   height: 85px;
 
+
+
   display: flex;
   align-items: center;
 
   margin: 0px auto 0 auto;
 }
-.controlPanel a {
+.controlPanel span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,7 +204,7 @@
     left: 1.6%;
     top: 1.5%;
   }
-  .controlPanel a {
+  .controlPanel span {
     left: 0px;
   }
 }
@@ -202,13 +216,15 @@
     width: 215px;
     height: 365px;
   }
-  .promoImage {
 
-    width: 200px;
+  .newImage {
+    width: 100%;
     height: 199px;
 
     overflow: hidden;
+
   }
+
   .newFrame {
     width: 95.5%;
     height: 100%;
@@ -217,8 +233,8 @@
   }
   .newTextBlock {
 
-    bottom: 0;
-    left: 0;
+    //bottom: 0;
+    //left: 0;
     height: 165px;
 
     padding: 0 5px 5px 5px ;
@@ -236,7 +252,7 @@
     & > div > .newAddText {
     }
   }
-  .controlPanel a {
+  .controlPanel span {
     left: 0px;
     top: 2px;
 
@@ -342,7 +358,7 @@
     position: absolute;
 
     top: 9px;
-    left: 0;
+    left: 4px;
 
     z-index: 1;
   }
@@ -357,7 +373,7 @@
     position: absolute;
 
     top: 9px;
-    right: 0;
+    right: -3px;
 
     z-index: 1;
   }

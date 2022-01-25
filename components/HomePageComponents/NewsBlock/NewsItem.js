@@ -16,11 +16,9 @@ export const NewsItem = ({newsData, locale}) => {
 
 
   return (
-    <div>
+    <div className={styles.newsItemContainer}>
       <div className={styles.newItemWrapper}>
         <div className={styles.newImage}>
-          <div className={styles.newFrame}>
-          </div>
           <img src={newsImageUrl(imgName)} alt={`new ${newsData.id}`}/>
         </div>
         <div className={styles.newTextBlock}>

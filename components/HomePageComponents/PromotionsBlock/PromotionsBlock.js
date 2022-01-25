@@ -63,9 +63,9 @@ export const PromotionsBlock = ({t}) => {
 
   } else {
     if (width <= 1165) {
-      itemsCount = 3;
+      itemsCount = 1;
     } else {
-      itemsCount = 4;
+      itemsCount = 1;
     }
   }
 

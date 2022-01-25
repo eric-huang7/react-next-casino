@@ -227,7 +227,8 @@
     "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
     "email": "Email must be a valid email",
     "wrongPasswordOrEmail": "Incorrect password or email!",
-    "selfExcluded": "Account has been self excluded till:"
+    "selfExcluded": "Account has been self excluded till:",
+    "errorMessage": "Oops... An error has occurred. Reload the page or contact support."
   },
   "selectCurrency": {
     "heading": "Select Currency",

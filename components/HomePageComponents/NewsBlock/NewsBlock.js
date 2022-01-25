@@ -20,25 +20,52 @@ export const NewsBlock = ({t, isBackShow}) => {
 
   const [newsData, setNewsData] = useState([]);
   const [newsError, setNewsError] = useState('');
+  const [loadingNews, setLoadingNews] = useState(true);
 
   useEffect(() => {
     axios.get(news_active_url)
       .then((data) => {
         console.log(data, 'NEWS!@@@@@@@@@@@@@@@');
         setNewsData(data.data.results);
+        setLoadingNews(false);
       })
       .catch((data) => {
         console.log(data);
-        setNewsError("Ooops... Some error occurred!");
+        setLoadingNews(false);
+        setNewsError('errors.errorMessage');
       })
   }, [])
 
   let itemsCount = 4;
-  if (width <= 1165) {
-    itemsCount = 3;
-  } else {
-    itemsCount = 4;
+  if (!loadingNews && newsData) {
+    if (newsData.length >= 4) {
+      if (width <= 1165) {
+        itemsCount = 3;
+      } else {
+        itemsCount = 4;
+      }
+    } else if (newsData.length === 3) {
+      if (width <= 1165) {
+        itemsCount = 3;
+      } else {
+        itemsCount = 3;
+      }
+    } else if (newsData.length === 2) {
+      if (width <= 1165) {
+        itemsCount = 1;
+      } else {
+        itemsCount = 2;
+      }
+    } else {
+      if (width <= 1165) {
+        itemsCount = 1;
+      } else {
+        itemsCount = 1;
+      }
+    }
   }
+
+
 
 // let data = newsData();
 
@@ -72,30 +99,51 @@ export const NewsBlock = ({t, isBackShow}) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   }
-  return (
-    <section className={styles.newsMainWrapper}>
-      <div className={styles.newsHeading}></div>
-      <div className={`${styles.newsBackground} ${isBackShow ? styles.backShow : ''}`}>
-        <div className={styles.darkBackground}>
-          <div className={styles.newsSliderWrapper}>
-            <Slider {...sliderSettings}>
-              {newsData.map((el) => {
-                return (
-                  <NewsItem
-                    key={`${el.id} news item`}
-                    newsData={el}
-                    locale={router.locale}
-                  />
-                )
-              })}
-            </Slider>
-            <div className={styles.controlPanel}>
-              <Link href={'/#'}><a>{t(`homePage.moreButton`)}</a></Link>
+
+  if (newsError) {
+    return (
+      <section className={styles.newsMainWrapper}>
+        <div className={styles.newsHeading}></div>
+        <div className={`${styles.newsBackground}`}>
+          <h3 className={styles.errorMessage}>{t(newsError)}</h3>
+        </div>
+      </section>
+    )
+  } else if (newsData.length === 0) {
+    return (
+      <section className={styles.newsMainWrapper}>
+        <div className={styles.newsHeading}></div>
+        <div className={`${styles.newsBackground}`}>
+          <h3 className={styles.errorMessage}>{t('homePage.checkLater')}</h3>
+        </div>
+      </section>
+    )
+  } else {
+    return (
+      <section className={styles.newsMainWrapper}>
+        <div className={styles.newsHeading}></div>
+        <div className={`${styles.newsBackground} ${isBackShow ? styles.backShow : ''}`}>
+          <div className={styles.darkBackground}>
+            <div className={styles.newsSliderWrapper}>
+              <Slider {...sliderSettings}>
+                {newsData.map((el) => {
+                  return (
+                    <NewsItem
+                      key={`${el.id} news item`}
+                      newsData={el}
+                      locale={router.locale}
+                    />
+                  )
+                })}
+              </Slider>
+              <div className={styles.controlPanel}>
+                <span>{""}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-      </div>
-    </section>
-  )
+        </div>
+      </section>
+    )
+  }
 }
