@@ -53,7 +53,7 @@ const dispatch = useDispatch();
               award_amount: `${userDepositValue}`,
               receiverCurrency_id: userCurrency.userCurrencyData.id
             }
-            console.log(userPayment, 'DEPOSIT!!!!!!!!!!!!!!!!!!!!!!');
+            // console.log(userPayment, 'DEPOSIT!!!!!!!!!!!!!!!!!!!!!!');
             dispatch(postCryptoPayment(paymentData, userPayment));
             dispatch(showCryptoModal(true));
             dispatch(showDepositModal(false));

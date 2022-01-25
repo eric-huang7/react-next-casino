@@ -175,10 +175,12 @@ margin-bottom: 30px;
   & .cardsWrapper {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
+
+    overflow: hidden;
 
     & img {
-      width: 100%;
+      width: 50%;
       height: 100%;
     }
 

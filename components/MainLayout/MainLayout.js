@@ -53,33 +53,132 @@ const MainLayout = ({children, t}) => {
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
 
-  const userPayment = useSelector((state) => state.userPaymentMethod);
+  // const userPayment = useSelector((state) => state.userPaymentMethod);
 
+  useEffect(() => {
 
+    for (let showModalKey in isShowModal) {
+      if (
+        showModalKey === 'isShowDepositModal'
+        ||
+        showModalKey === 'isShowMobileCryptoPayments'
+        ||
+        showModalKey === 'isShowCreditCardModal'
+        ||
+        showModalKey === 'isShowCryptoModal'
+        ||
+        showModalKey === 'isShowMobilePaymentsStepper'
+        ||
+        showModalKey === 'isShowPaymentCurrencySwitcher'
+        ||
+        showModalKey === 'isShowCurrencySwitcher'
+      ) {
+        if (isShowModal[showModalKey] === true) {
+          document.body.style.overflowY = "hidden"
+          break;
+        } else {
+          document.body.style.overflowY = "auto"
+        }
+      }
+    }
+  }, [isShowModal])
 
   return (
     <>
-      <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"} />
+      <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>
       <Head>
         <title>Slots Idol</title>
         <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
       </Head>
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
-        <ExitIntentPopup isShowExitIntent={isShowModal.isShowExitIntentPopup} t={t} userInfo={userInfo} />
-        <DepositWidgetMainContainer userAuth={userInfo} t={t}/>
-        {isShowModal.isShowMobilePaymentsStepper ? <MobilePaymentsStepper isShow={isShowModal.isShowMobilePaymentsStepper} paymentsData={paymentsData} userAuth={userInfo} t={t}/> : <></>}
-        {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
-        {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
-        {isShowModal.isShowSearchModal ? <SearchModalWindowWrapper isShowSearchModal={isShowModal.isShowSearchModal} t={t}/> : <></>}
-        <MobileSideMenu t={t} userInform={userInfo}/>
-        {isShowModal.isShowPlaySafe ? <PlaySafeMainWrapper isShow={isShowModal.isShowPlaySafe} t={t}/> : <></>}
-        {userInfo.isAuthenticated ? "" : <RegisterSignup isShow={registerShow} t={t}/>}
-        <LogIn isShow={logInShow} t={t}/>
+        <ExitIntentPopup
+          isShowExitIntent={isShowModal.isShowExitIntentPopup}
+          t={t}
+          userInfo={userInfo}
+        />
+        <DepositWidgetMainContainer
+          userAuth={userInfo}
+          t={t}
+        />
+        {
+          isShowModal.isShowMobilePaymentsStepper
+            ?
+          <MobilePaymentsStepper
+            isShow={isShowModal.isShowMobilePaymentsStepper}
+            paymentsData={paymentsData}
+            userAuth={userInfo}
+            t={t}
+          />
+            :
+            <></>
+        }
+        {
+          isShowModal.isShowCreditCardModal
+            ?
+          <PaymentsCardWrapper
+            isShow={isShowModal.isShowCreditCardModal}
+            paymentsData={paymentsData}
+            userInfo={userInfo}
+            t={t}
+          />
+            :
+            <></>
+        }
+        {
+          isShowModal.isShowCryptoModal
+            ?
+          <PaymentsCryptoWrapper
+            isShow={isShowModal.isShowCryptoModal}
+            paymentsData={paymentsData}
+            t={t}
+          />
+            :
+            <></>
+        }
+        {
+          isShowModal.isShowSearchModal
+            ?
+          <SearchModalWindowWrapper
+            isShowSearchModal={isShowModal.isShowSearchModal}
+            t={t}
+          />
+            :
+            <></>
+        }
+        <MobileSideMenu
+          t={t}
+          userInform={userInfo}
+        />
+        {
+          isShowModal.isShowPlaySafe
+          ?
+            <PlaySafeMainWrapper
+              isShow={isShowModal.isShowPlaySafe}
+              t={t}
+            />
+            :
+            <></>
+        }
+        {
+          userInfo.isAuthenticated
+            ?
+            ""
+            :
+            <RegisterSignup
+              isShow={registerShow}
+              t={t}
+            />
+        }
+        <LogIn
+          isShow={logInShow}
+          t={t}
+        />
 
 
         {/*<SelectCurrency t={t}/>*/}
-        {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
+        {
+          isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
           ?
           <SelectCurrencyWidget
             t={t}
@@ -88,16 +187,60 @@ const MainLayout = ({children, t}) => {
             isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
           />
           :
-          <></>}
+          <></>
+        }
 
-        {userInfo.isAuthenticated ? <DepositPage t={t}/> : ""}
-        {userInfo.isAuthenticated ? <ManageSubscriptions t={t}/> : ""}
-        <TournamentIcon toursref={toursref}/>
-        <TournamentMainContainer toursref={toursref} router={router} isShowModal={isShowModal} userInfo={userInfo} t={t} />
-        {isShowModal.isShowTournamentsDetails ? <TournamentModalDetails t={t}/> : <></>}
+        {userInfo.isAuthenticated
+          ?
+          <DepositPage
+            t={t}
+          />
+          :
+          ""
+        }
+        {
+          userInfo.isAuthenticated
+            ?
+            <ManageSubscriptions
+              t={t}
+            />
+            :
+            ""
+        }
+        <TournamentIcon
+          toursref={toursref}
+        />
+        <TournamentMainContainer
+          toursref={toursref}
+          router={router}
+          isShowModal={isShowModal}
+          userInfo={userInfo}
+          t={t}
+        />
+        {isShowModal.isShowTournamentsDetails
+          ?
+          <TournamentModalDetails
+            t={t}
+          />
+          :
+          <></>
+        }
         {children}
-        {userInfo.isAuthenticated && width > 1239 ? <FooterAreaContainer userData={userInfo} t={t}/> : ""}
-        <Footer t={t} userAuth={userInfo.isAuthenticated} screenWidth={width}/>
+        {
+          userInfo.isAuthenticated && width > 1239
+            ?
+            <FooterAreaContainer
+              userData={userInfo}
+              t={t}
+            />
+            :
+            ""
+        }
+        <Footer
+          t={t}
+          userAuth={userInfo.isAuthenticated}
+          screenWidth={width}
+        />
         {/*<LangSwitcher href={router.route} locale={locale}/>*/}
       </div>
     </>

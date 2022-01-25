@@ -12,43 +12,47 @@ import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
 // import axios from "axios";
-import {getAllBonuses} from "../../../redux/actions/getBonuses";
+import {getActiveBonuses, getAllBonuses} from "../../../redux/actions/getBonuses";
 
 
 export const PromotionsBlock = ({t}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllBonuses());
-  }, [])
+
+
+  // const promotionsData = useSelector((store) => store.bonuses);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   const promotionsData = useSelector((store) => store.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+
+  useEffect(() => {
+    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+  }, [userCurrency.userCurrencyData])
 
 
   let itemsCount = 4;
 
-  if (!promotionsData.loading && promotionsData.bonuses) {
+  if (!promotionsData.loadingActiveBonuses && promotionsData.activeBonuses) {
 
-    if (promotionsData.bonuses.offers.length >= 4) {
+    if (promotionsData.activeBonuses.offers.length >= 4) {
       if (width <= 1165) {
         itemsCount = 3;
       } else {
         itemsCount = 4;
       }
-    } else if (promotionsData.bonuses.offers.length === 3) {
+    } else if (promotionsData.activeBonuses.offers.length === 3) {
       if (width <= 1165) {
         itemsCount = 1;
       } else {
         itemsCount = 3;
       }
-    } else if (promotionsData.bonuses.offers.length === 2) {
+    } else if (promotionsData.activeBonuses.offers.length === 2) {
       if (width <= 1165) {
         itemsCount = 1;
       } else {
         itemsCount = 2;
       }
-    } else if (promotionsData.bonuses.offers.length === 1) {
+    } else if (promotionsData.activeBonuses.offers.length === 1) {
 
       if (width <= 1165) {
         itemsCount = 1;
@@ -101,7 +105,7 @@ export const PromotionsBlock = ({t}) => {
     prevArrow: <SamplePrevArrow/>,
   }
 
-  if (promotionsData.loading && !promotionsData.bonuses) {
+  if (promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses) {
     return (
       <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
         <div className={styles.promotionsHeading}></div>
@@ -111,7 +115,7 @@ export const PromotionsBlock = ({t}) => {
         </div>
       </section>
     )
-  } else if (promotionsData.bonuses.offers.length === 0) {
+  } else if (promotionsData.activeBonuses.offers.length === 0) {
     return (
       <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
         <div className={styles.promotionsHeading}></div>
@@ -129,7 +133,7 @@ export const PromotionsBlock = ({t}) => {
           <div className={styles.promotionsSliderWrapper}>
             <>
               <Slider {...sliderSettings}>
-                {promotionsData.bonuses.offers.map((el) => {
+                {promotionsData.activeBonuses.offers.map((el) => {
                   let bonusCalculations = bonusesCalculator(el, userCurrency, t);
 
                   return (

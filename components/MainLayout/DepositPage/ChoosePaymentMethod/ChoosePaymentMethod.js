@@ -81,7 +81,7 @@ export const ChoosePaymentMethod = ({
   //     paymentImg: chosenPayment[0].img
   //   }))
   // }
-
+  // console.log(paymentMethods, userCurrency.userCurrencyData.type, "payment methods!!!!!!!!!!!!!!")
 
   if (paymentMethods) {
     return (
@@ -91,29 +91,41 @@ export const ChoosePaymentMethod = ({
         </h3>
         <div className={styles.paymentMethodsBlock}>
           {
-            userCurrency.userCurrencyData.type === 3
+            paymentMethods['2'].length !== 0
               ?
-              <>
-                <PaymentItem
-                  method={paymentMethods}
-                  type={'creditCard'}
-                  userCurrency={userCurrency}
-                  userPayment={userPayment}
-                />
-                <PaymentItem
-                  method={paymentMethods}
-                  type={'crypto'}
-                  userCurrency={userCurrency}
-                  userPayment={userPayment}
-                />
-              </>
-              :
               <PaymentItem
                 method={paymentMethods}
                 type={'crypto'}
                 userCurrency={userCurrency}
                 userPayment={userPayment}
               />
+              :
+              <></>
+          }
+          {
+            userCurrency.userCurrencyData.type !== 3 && paymentMethods['2'].length === 0
+            ?
+              <PaymentItem
+                method={paymentMethods}
+                type={'crypto'}
+                userCurrency={userCurrency}
+                userPayment={userPayment}
+              />
+              :
+              <>
+              </>
+          }
+          {
+            paymentMethods['3'].length !== 0
+              ?
+              <PaymentItem
+                method={paymentMethods}
+                type={'creditCard'}
+                userCurrency={userCurrency}
+                userPayment={userPayment}
+              />
+              :
+              <></>
           }
         </div>
         <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
@@ -134,3 +146,28 @@ export const ChoosePaymentMethod = ({
   }
 
 }
+
+
+// userCurrency.userCurrencyData.type === 3
+//   ?
+//   <>
+//     <PaymentItem
+//       method={paymentMethods}
+//       type={'creditCard'}
+//       userCurrency={userCurrency}
+//       userPayment={userPayment}
+//     />
+//     <PaymentItem
+//       method={paymentMethods}
+//       type={'crypto'}
+//       userCurrency={userCurrency}
+//       userPayment={userPayment}
+//     />
+//   </>
+//   :
+//   <PaymentItem
+//     method={paymentMethods}
+//     type={'crypto'}
+//     userCurrency={userCurrency}
+//     userPayment={userPayment}
+//   />

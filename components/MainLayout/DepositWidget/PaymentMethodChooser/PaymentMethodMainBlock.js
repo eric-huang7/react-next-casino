@@ -4,7 +4,7 @@ import {PaymentMethodsList} from "./PaymentMethodsList";
 import {useEffect, useState} from "react";
 import {ChosenPaymentMethodButton} from "./ChosenPaymentMethodButton";
 import {ErrorMessage} from "../ErrorsMessages/ErrorMessage";
-import {paymentMethodsData} from "../../../../envs/paymetsMethods";
+// import {paymentMethodsData} from "../../../../envs/paymetsMethods";
 
 
 
@@ -14,7 +14,7 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
   return (
     <div className={styles.paymentMethodMainBlock}>
           <PaymentMethodsList
-            paymentMethodsData={paymentMethodsData}
+            // paymentMethodsData={paymentMethodsData}
             scrollHeight={scrollHeight}
             isActivePayments={isActivePayments}
             paymentMethodChooser={paymentMethodChooser}

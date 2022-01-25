@@ -103,7 +103,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
     if (!userAuth.isAuthenticated) {
       dispatch(showRegister(true));
     }
-
+    console.log(userPayment, '#########$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     if ((userCurrency.userCurrencyData.type === 3 && width > 680)) {
       if (!userPayment && Number(userDepositValue) === 0) {
         setErrorPaymentMethod(true);
@@ -129,7 +129,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
           openWindow('fiat');
         }
       }
-    } else if ((userCurrency.userCurrencyData.type === 3 && width <= 680)) {
+    } else if (width <= 680) {
       if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
@@ -138,21 +138,29 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         dispatch(showMobilePaymentsStepper(true));
       }
 
-    } else if (userCurrency.userCurrencyData.type !== 3 && width <= 680) {
-      if (Number(userDepositValue) === 0) {
-        setErrorDepositValue(true);
-      } else {
-        setErrorPaymentMethod(false);
-        setErrorDepositValue(false);
-        dispatch(showMobilePaymentsStepper(true));
-      }
     } else {
         if (Number(userDepositValue) === 0) {
           setErrorDepositValue(true);
+        } else if (!userPayment) {
+          setErrorPaymentMethod(true);
+        } else if (Number(userDepositValue) === 0) {
+          setErrorDepositValue(true);
+        } else if (!userPayment.paymentMethodData) {
+          setErrorPaymentMethod(true);
+        } else if (!userPayment.paymentMethodData.paymentType) {
+          setErrorPaymentMethod(true);
+        } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
+          setErrorPaymentMethod(true);
         } else {
-          setErrorPaymentMethod(false);
-          setErrorDepositValue(false);
-          openWindow('crypto');
+          if (userPayment.paymentMethodData.paymentType === 'crypto') {
+            setErrorPaymentMethod(false);
+            setErrorDepositValue(false);
+            openWindow('crypto chosen type');
+          } else {
+            setErrorPaymentMethod(false);
+            setErrorDepositValue(false);
+            openWindow('fiat');
+          }
         }
       }
     }
@@ -181,7 +189,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   return (
     <div
 
-      className={`${styles.depositWidgetMainContainer} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
+      className={`${styles.depositWidgetMainContainer} ${userAuth.isAuthenticated ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <CurrencyChooser
         width={width}
         currencySwitcherShowHandler={currencySwitcherShowHandler}

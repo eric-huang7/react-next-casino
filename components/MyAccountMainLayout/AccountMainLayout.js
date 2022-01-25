@@ -54,7 +54,33 @@ export const AccountMainLayout = ({t, children}) => {
     }
   }, [userInfo.userAuthLoading, userInfo.isAuthenticated]);
 
+  useEffect(() => {
 
+    for (let showModalKey in isShowModal) {
+      if (
+        showModalKey === 'isShowDepositModal'
+        ||
+        showModalKey === 'isShowMobileCryptoPayments'
+        ||
+        showModalKey === 'isShowCreditCardModal'
+        ||
+        showModalKey === 'isShowCryptoModal'
+        ||
+        showModalKey === 'isShowMobilePaymentsStepper'
+        ||
+        showModalKey === 'isShowPaymentCurrencySwitcher'
+        ||
+        showModalKey === 'isShowCurrencySwitcher'
+      ) {
+        if (isShowModal[showModalKey] === true) {
+          document.body.style.overflowY = "hidden"
+          break;
+        } else {
+          document.body.style.overflowY = "auto"
+        }
+      }
+    }
+  }, [isShowModal])
 
 
   useEffect(() => {

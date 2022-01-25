@@ -6,8 +6,7 @@ import axios from "axios";
 import {payments_methods_url} from "../../../../redux/url/url";
 import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
 import {useDispatch} from "react-redux";
-
-
+import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
 
 
 export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userPayment}) => {
@@ -39,32 +38,12 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
     // }
   }, [])
 
-  return (
-    <div className={styles.stepTwoWrapper}>
-      {
-          userCurrency.userCurrencyData.type === 3
+  if (paymentMethods) {
+    return (
+      <div className={styles.stepTwoWrapper}>
+        {
+          paymentMethods['2'].length !== 0
             ?
-            <>
-              <PaymentMethodItem
-                methodClickHandler={methodClickHandler}
-                t={t}
-                // paymentData={el}
-                method={paymentMethods}
-                type={'creditCard'}
-                userCurrency={userCurrency}
-                userPayment={userPayment}
-              />
-              <PaymentMethodItem
-                methodClickHandler={methodClickHandler}
-                t={t}
-                // paymentData={el}
-                method={paymentMethods}
-                type={'crypto'}
-                userCurrency={userCurrency}
-                userPayment={userPayment}
-              />
-            </>
-            :
             <PaymentMethodItem
               methodClickHandler={methodClickHandler}
               t={t}
@@ -74,11 +53,82 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
               userCurrency={userCurrency}
               userPayment={userPayment}
             />
-      }
-    </div>
-  )
+            :
+            <></>
+        }
+        {
+          userCurrency.userCurrencyData.type !== 3 && paymentMethods['2'].length === 0
+            ?
+            <PaymentMethodItem
+              methodClickHandler={methodClickHandler}
+              t={t}
+              // paymentData={el}
+              method={paymentMethods}
+              type={'crypto'}
+              userCurrency={userCurrency}
+              userPayment={userPayment}
+            />
+            :
+            <>
+            </>
+        }
+        {
+          paymentMethods['3'].length !== 0
+            ?
+            <PaymentMethodItem
+              methodClickHandler={methodClickHandler}
+              t={t}
+              // paymentData={el}
+              method={paymentMethods}
+              type={'creditCard'}
+              userCurrency={userCurrency}
+              userPayment={userPayment}
+            />
+            :
+            <></>
+        }
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.stepTwoWrapper}>
+        <LoadingComponent t={t} />
+      </div>
+      )
+  }
 }
 
-//      {
-//         paymentMethodsData.map((el) => <PaymentMethodItem key={`${el.currency} payment stepper`} methodClickHandler={methodClickHandler} t={t} paymentData={el}/>)
-//       }
+// {
+//   userCurrency.userCurrencyData.type === 3
+//     ?
+//     <>
+//       <PaymentMethodItem
+//         methodClickHandler={methodClickHandler}
+//         t={t}
+//         // paymentData={el}
+//         method={paymentMethods}
+//         type={'creditCard'}
+//         userCurrency={userCurrency}
+//         userPayment={userPayment}
+//       />
+//       <PaymentMethodItem
+//         methodClickHandler={methodClickHandler}
+//         t={t}
+//         // paymentData={el}
+//         method={paymentMethods}
+//         type={'crypto'}
+//         userCurrency={userCurrency}
+//         userPayment={userPayment}
+//       />
+//     </>
+//     :
+//     <PaymentMethodItem
+//       methodClickHandler={methodClickHandler}
+//       t={t}
+//       // paymentData={el}
+//       method={paymentMethods}
+//       type={'crypto'}
+//       userCurrency={userCurrency}
+//       userPayment={userPayment}
+//     />
+// }
