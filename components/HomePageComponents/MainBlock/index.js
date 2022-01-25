@@ -3,6 +3,7 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {SlotMachineInterface} from "./SlotMachineInterface/SlotMachineInterfase";
 
 import Image from "next/image";
+import {SubmitButton} from "./SlotMachineInterface/SubmitButton";
 
 export const MainBlock = () => {
   const {height, width} = useWindowDimensions();
@@ -17,7 +18,8 @@ export const MainBlock = () => {
           <div className={styles.slotsDancer}>
             <div className={styles.slotMachineIng}>
               <SlotMachineInterface />
-              <img  src={`/assets/img/homeImg/slot_machine${width < 1065 ? '-mobile' : ''}.png`}  alt="slot machine"/>
+              <img src={`/assets/img/homeImg/slot_machine${width < 1065 ? '-mobile' : ''}.png`}  alt="slot machine"/>
+              <SubmitButton />
             </div>
             <div className={styles.dancingGirlImg}>
               <img src={`/assets/img/homeImg/dance-girl${width < 1065 ? '-mobile' : ''}.png`}  alt="dancing girl"/>

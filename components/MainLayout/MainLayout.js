@@ -57,8 +57,6 @@ const MainLayout = ({children, t}) => {
 
   useEffect(() => {
 
-    console.log(isShowModal);
-
     for (let showModalKey in isShowModal) {
       if (
         showModalKey === 'actionForBackButton'
@@ -75,23 +73,23 @@ const MainLayout = ({children, t}) => {
         ||
         showModalKey === 'isShowExitIntentPopup'
       ) {
-        console.log('auto')
+
       } else {
         if (isShowModal[showModalKey] === true) {
-          console.log(isShowModal[showModalKey], showModalKey)
           document.body.style.overflowY = "hidden"
           break;
         } else {
           document.body.style.overflowY = "auto"
+          if (logInShow || registerShow) {
+            document.body.style.overflowY = "hidden"
+          } else {
+            document.body.style.overflowY = "auto"
+          }
         }
       }
     }
 
-    if (logInShow || registerShow) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
+
 
 
   }, [isShowModal, registerShow, logInShow])

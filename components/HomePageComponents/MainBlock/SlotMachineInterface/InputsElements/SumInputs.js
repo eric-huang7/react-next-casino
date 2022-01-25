@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {useEffect, useState} from "react";
 import {showCurrencySwitcher} from "../../../../../redux/actions/showPopups";
+import {BonusBlock} from "../BonusBlock/BonusBlock";
 
 
 export const SumInputs = () => {
@@ -46,7 +47,6 @@ export const SumInputs = () => {
     <>
       <div className={styles.inputsWrapper}>
         <input onChange={(e) => sumInputChangeHandler(e)} id="sumInputMain"  className={styles.sumInput} maxLength={10} type="number"/>
-        <label htmlFor="sumInputMain" className={styles.sumInputLabel}>{'$'}</label>
         <div
           className={styles.currencyButton}
           onClick={() => currencyButtonClickHAndler()}
@@ -55,24 +55,11 @@ export const SumInputs = () => {
         </div>
       </div>
       <div className={styles.dividerUp}/>
-      <div className={styles.bonusInfoBlockWrapper}>
-        <div className={styles.bonusInfoBlock}>
-          <p>
-            First Deposit Bonus
-          </p>
-          <Link href={'#'}><a>info</a></Link>
-        </div>
-        <p className={styles.bonusInfoText}>
-          100% up to $100 plus 200 free spin...
-        </p>
-        <div className={styles.bonusSwitcher}>
-          <label className={styles.switch}>
-            <input onChange={(e) => checkedInputHandler(e)} className={styles.bonusSwitcherInput} type="checkbox" checked={isChecked} />
-              <span className={`${styles.slider} ${styles.round}`}>
-              </span>
-          </label>
-        </div>
-      </div>
+      <BonusBlock
+        // t={t}
+        isChecked={isChecked}
+        checkedInputHandler={checkedInputHandler}
+      />
       <div className={styles.dividerDown}/>
       <div className={styles.typePayments}>
       </div>

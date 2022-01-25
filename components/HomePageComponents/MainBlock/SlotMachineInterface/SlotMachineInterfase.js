@@ -1,5 +1,3 @@
-
-
 import styles from '../../../../styles/HomePage/SlotMachineInterfase.module.scss'
 import {SumInputs} from "./InputsElements/SumInputs";
 
