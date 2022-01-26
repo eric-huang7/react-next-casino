@@ -197,8 +197,6 @@ export const DepositPage = ({t}) => {
               setDepositButtonText={setDepositButtonText}
               buttonText={buttonText}
               userSelectedBonus={userSelectedBonus}
-              userLogin={userLogin}
-              activeBonuses={activeBonuses}
               isShowDepositModal={isShowDepositModal.isShowDepositModal}
               bonusesArr={bonusesArr}
               paymentMethods={paymentMethods}

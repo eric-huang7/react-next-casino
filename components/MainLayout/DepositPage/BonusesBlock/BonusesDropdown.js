@@ -6,7 +6,7 @@ import {iconsUrl} from "../../../../helpers/imageUrl";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
-export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chosenBonus,
+export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses,
                                   chooseBonusClickHandler, userSelectedBonus}) => {
   // const userSelectedBonus = useSelector((state) => state.userBonus)
 
@@ -32,7 +32,6 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses, chos
                 bonusDescription={`bonuses.${el.id}.deposit_bonus.description`}
                 isUseBonus={isUseBonus}
                 chooseBonusClickHandler={chooseBonusClickHandler}
-                chosenBonus={chosenBonus}
               />
             )
           })

@@ -10,13 +10,10 @@ export const BonusesBlockMainContainer = (props) => {
     userCurrency,
     showAllBonuses,
     showAllBonusesHandler,
-    chosenBonus,
     chooseBonusClickHandler,
     setDepositButtonText,
     userDepositValue,
     userSelectedBonus,
-    userLogin,
-    activeBonuses,
     isShowDepositModal,
     bonusesArr
   } = props;
@@ -30,13 +27,10 @@ export const BonusesBlockMainContainer = (props) => {
           userCurrency={userCurrency}
           t={t}
           isUseBonus={isChecked}
-          activeBonuses={activeBonuses}
-          chosenBonus={chosenBonus}
           chooseBonusClickHandler={chooseBonusClickHandler}
           setDepositButtonText={setDepositButtonText}
           userDepositValue={userDepositValue}
           userSelectedBonus={userSelectedBonus}
-          userLogin={userLogin}
           isShowDepositModal={isShowDepositModal}
           bonusesArr={bonusesArr}
         />

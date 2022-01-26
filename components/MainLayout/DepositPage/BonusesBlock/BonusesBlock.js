@@ -6,13 +6,11 @@ import {useTranslation} from "next-i18next";
 export const BonusesBlock = (props) => {
   const {t} = useTranslation('promotionsPage');
   let {
-    // t,
     isUseBonus,
     bonusHeading,
     bonusImage,
     bonusDescription,
     bonusLink,
-    chosenBonus,
     chooseBonusClickHandler,
     bonusId,
     classImageNotActive

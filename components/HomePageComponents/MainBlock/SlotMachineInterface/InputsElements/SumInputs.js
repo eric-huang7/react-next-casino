@@ -7,6 +7,12 @@ import {useEffect, useState} from "react";
 import {showCurrencySwitcher} from "../../../../../redux/actions/showPopups";
 import {BonusBlock} from "../BonusBlock/BonusBlock";
 import {setUserDepositValue} from "../../../../../redux/actions/setUserDepositValue";
+import {bonusesFinder} from "../../../../../helpers/bonusesFinder";
+import {CurrencyButton} from "./CurrencyButton";
+import {DepositValueInput} from "./DepositValueInput";
+import {setUserBonus} from "../../../../../redux/actions/setUserBonus";
+import {BonusesContainer} from "../BonusBlock/BonusesContainer";
+
 
 
 export const SumInputs = () => {
@@ -14,9 +20,13 @@ export const SumInputs = () => {
 
   const sumInputVal = useSelector(({userDepositValue}) => userDepositValue.value);
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
-  const userSelectedCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
+  const activeBonuses = useSelector((state) => state.bonuses);
 
   const [isChecked, setIsChecked] = useState(true);
+  const [bonusesArr, setBonusesArr] = useState([]);
+  const [chosenBonus, setChosenBonus] = useState({});
   // const [depositValue, setDepositValue] = useState(sumInputVal);
 
   const sumInputChangeHandler = (e) => {
@@ -31,14 +41,20 @@ export const SumInputs = () => {
   const checkedInputHandler = (e) => {
     if (isChecked) {
       setIsChecked(false);
+      chooseBonusClickHandler(0);
     } else {
       setIsChecked(true);
     }
-    // console.log(e);
+  }
+
+  const chooseBonusClickHandler = (chosenUserBonus) => {
+    dispatch(setUserBonus(chosenUserBonus));
+    // setChosenBonus(chosenUserBonus);
+    // changeButtonText();
   }
 
   const currencyButtonClickHAndler = () => {
-    // console.log(isShowCurrencySwitcher, userSelectedCurrency);
+    // console.log(isShowCurrencySwitcher, userCurrency);
     if (isShowCurrencySwitcher) {
       dispatch(showCurrencySwitcher(false));
     } else {
@@ -46,29 +62,40 @@ export const SumInputs = () => {
     }
   }
 
+  useEffect(() => {
+    if (userLogin) {
+
+      let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
+      if (bonuses.length > 0) {
+      setBonusesArr(bonuses);
+      } else {
+      setBonusesArr([]);
+      chooseBonusClickHandler(0);
+      }
+
+      } else {
+      setBonusesArr([]);
+      }
+
+  }, [userCurrency, userLogin]);
+
   return (
     <>
       <div className={styles.inputsWrapper}>
-        <input
-          onChange={(e) => sumInputChangeHandler(e)}
-          id="sumInputMain"
-          className={styles.sumInput}
-          maxLength={10}
-          type="number"
-          value={sumInputVal}
+        <DepositValueInput
+          sumInputChangeHandler={sumInputChangeHandler}
+          sumInputVal={sumInputVal}
         />
-        <div
-          className={styles.currencyButton}
-          onClick={() => currencyButtonClickHAndler()}
-        >
-            <span className={styles.currencyButtonValue}>{userSelectedCurrency.userCurrencyData.abbreviation}</span>
-        </div>
+        <CurrencyButton
+          userCurrency={userCurrency}
+          currencyButtonClickHAndler={currencyButtonClickHAndler}
+        />
       </div>
       <div className={styles.dividerUp}/>
-      <BonusBlock
-        // t={t}
+      <BonusesContainer
         isChecked={isChecked}
         checkedInputHandler={checkedInputHandler}
+        bonusesArr={bonusesArr}
       />
       <div className={styles.dividerDown}/>
       <div className={styles.typePayments}>

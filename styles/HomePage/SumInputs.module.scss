@@ -26,6 +26,7 @@
   color: #3a3a3a;
   font-family: "Source Sans";
 }
+
 .sumInput::-webkit-outer-spin-button,
 .sumInput::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -97,6 +98,7 @@
   border-radius: 5px;
   margin-left: 3%;
 }
+
 .dividerDown {
   border-top: 1px solid #787a7b;
 }
@@ -106,12 +108,15 @@
 
   margin-left: 16%;
   margin-top: 8%;
+
+  padding-right: 13%;
 }
 
 .bonusInfoBlock {
   display: flex;
 }
-.bonusInfoBlock:before {
+
+.bonusIconBlock {
   content: '';
 
   position: absolute;
@@ -121,28 +126,44 @@
   width: 14%;
   height: 110%;
 
-  background-image: url("/assets/icons/home/bonus_info_icon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  //background-image: url("/assets/icons/home/bonus_info_icon.svg");
+  //background-repeat: no-repeat;
+  //background-position: center;
+  //background-size: contain;
+  & img {
+    width: 100%;
+    //height: 100%;
+  }
 }
 
 .bonusInfoBlock p,
-.bonusInfoBlock a {
+.bonusInfoBlock span {
   font-size: 1em;
   line-height: 27px;
   color: #b2b1b1;
   font-family: "Verdana";
   white-space: nowrap;
+
+  cursor: pointer;
 }
+
 .bonusInfoBlock p {
   margin: 0 10% 0 0;
+
+  max-width: 180px;
+
+  background-color: #ff0e0e;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.bonusInfoBlock a {
+
+.bonusInfoBlock span {
   text-decoration: underline;
 
   font-style: italic;
 }
+
 .bonusInfoText {
   font-size: 14px;
   line-height: 27px;
@@ -155,6 +176,14 @@
 
   position: relative;
   left: -15%;
+
+  //background-color: #ff0e0e;
+
+  //max-width: 300px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 // #################Switcher
@@ -165,6 +194,7 @@
   top: 10%;
   right: 2%;
 }
+
 .switch {
   position: relative;
   display: inline-block;
@@ -172,7 +202,9 @@
   height: 40px;
 }
 
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 .slider {
   position: absolute;
@@ -185,6 +217,7 @@
   -webkit-transition: .4s;
   transition: .4s;
 }
+
 .slider:before {
   position: absolute;
   content: "NO";
@@ -219,6 +252,7 @@
   content: "YES";
   color: #ff0000;
 }
+
 .slider.round {
   border-radius: 34px;
 }
@@ -246,7 +280,7 @@
     right: 6%;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 0.9em;
     line-height: 27px;
     color: #b2b1b1;
@@ -255,12 +289,38 @@
   }
   .bonusInfoBlock p {
     margin: 0 5% 0 0;
+
+    max-width: 160px;
+  }
+  .bonusIconBlock {
+    content: '';
+
+    position: absolute;
+    top: -52%;
+    left: -16%;
+
+    width: 14%;
+    height: 110%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    //background-image: url("/assets/icons/home/bonus_info_icon.svg");
+    //background-repeat: no-repeat;
+    //background-position: center;
+    //background-size: contain;
+    & img {
+      width: 100%;
+      //height: 100%;
+    }
   }
   .bonusInfoText {
     font-size: 12px;
     line-height: 24px;
   }
 }
+
 @media screen and (max-width: 1500px) {
   .sumInputLabel {
 
@@ -280,7 +340,7 @@
     line-height: 23px;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 0.7em;
     line-height: 23px;
     color: #b2b1b1;
@@ -307,7 +367,9 @@
     height: 30px;
   }
 
-  .switch input {display:none;}
+  .switch input {
+    display: none;
+  }
 
   .slider {
     position: absolute;
@@ -348,6 +410,7 @@
     color: #ff0000;
   }
 }
+
 @media screen and (max-width: 1380px) {
   .inputsWrapper {
     width: 100%;
@@ -386,7 +449,7 @@
     line-height: 19px;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 0.6em;
     line-height: 23px;
     color: #b2b1b1;
@@ -395,6 +458,8 @@
   }
   .bonusInfoBlock p {
     margin: 0 5% 0 0;
+
+    max-width: 140px;
   }
   .bonusInfoText {
     font-size: 9px;
@@ -438,7 +503,7 @@
     line-height: 19px;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 0.6em;
     line-height: 23px;
     color: #b2b1b1;
@@ -447,6 +512,8 @@
   }
   .bonusInfoBlock p {
     margin: 0 5% 0 0;
+
+    max-width: 100px;
   }
   .bonusInfoText {
     font-size: 8px;
@@ -491,20 +558,22 @@
     right: 8%;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 1.2em;
     line-height: 23px;
     color: #b2b1b1;
     font-family: "Verdana";
     white-space: nowrap;
   }
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     text-decoration: none;
 
     font-style: normal;
   }
   .bonusInfoBlock p {
     margin: 0 5% 0 0;
+
+    max-width: 185px;
   }
   .bonusInfoText {
     font-size: 18px;
@@ -555,7 +624,7 @@
 
 }
 
-@media screen and (max-width: 940px)  {
+@media screen and (max-width: 940px) {
   .sumInput {
     font-size: 41px;
   }
@@ -582,7 +651,7 @@
     top: 20%;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 1em;
     line-height: 23px;
     color: #b2b1b1;
@@ -629,7 +698,23 @@
   }
 }
 
-@media screen and (max-width: 640px)  {
+@media screen and (max-width: 810px) {
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+
+    max-width: 165px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+
+    max-width: 190px;
+  }
+}
+
+@media screen and (max-width: 640px) {
   .sumInput {
     font-size: 41px;
   }
@@ -651,13 +736,20 @@
     top: 22%;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 1em;
     line-height: 23px;
     color: #b2b1b1;
     font-family: "Verdana";
     white-space: nowrap;
   }
+
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+
+    max-width: 160px;
+  }
+
   .bonusInfoText {
     font-size: 14px;
     line-height: 40px;
@@ -696,7 +788,7 @@
   }
 }
 
-@media screen and (max-width: 520px)  {
+@media screen and (max-width: 520px) {
   .sumInput {
     font-size: 41px;
   }
@@ -723,7 +815,7 @@
     top: 20%;
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 0.9em;
     line-height: 23px;
     color: #b2b1b1;
@@ -767,7 +859,8 @@
     color: #ff0000;
   }
 }
-@media screen and (max-width: 460px)  {
+
+@media screen and (max-width: 460px) {
   .sumInput {
     margin-left: 6px;
     margin-top: 4px;
@@ -809,26 +902,36 @@
   }
 
   .bonusInfoBlock {
-   margin-left: 22px;
+    margin-left: 22px;
   }
-  .bonusInfoBlock:before {
-    content: '';
-
+  .bonusIconBlock {
     position: absolute;
     top: -32%;
     left: -15%;
 
     width: 19%;
     height: 80%;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
   .bonusInfoBlock p,
-  .bonusInfoBlock a {
+  .bonusInfoBlock span {
     font-size: 10px;
     line-height: 25px;
     color: #b2b1b1;
     font-family: "Verdana";
     white-space: nowrap;
   }
+
+  .bonusInfoBlock p {
+    margin: 0 5% 0 0;
+
+    max-width: 120px;
+  }
+
   .bonusInfoText {
     font-size: 10px;
     line-height: 28px;
@@ -876,3 +979,40 @@
   }
 }
 
+@media screen and (max-width: 430px) {
+  .bonusSwitcher {
+    position: absolute;
+
+    top: -27%;
+    right: 6%;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 39px;
+    height: 18px;
+  }
+  .slider:before {
+    height: 15px;
+    width: 15px;
+    left: 22px;
+    bottom: 1px;
+
+    text-align: center;
+    font-size: 7px;
+    line-height: 14px;
+  }
+
+  .bonusSwitcherInput:checked + .slider:before {
+    -webkit-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    transform: translateX(-20px);
+    content: "YES";
+    color: #ff0000;
+  }
+
+  .typePayments {
+    display: none;
+  }
+}

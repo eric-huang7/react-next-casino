@@ -29,13 +29,10 @@ let {
   userInfo,
   showAllBonuses,
   showAllBonusesHandler,
-  chosenBonus,
   chooseBonusClickHandler,
   setDepositButtonText,
   buttonText,
   userSelectedBonus,
-  userLogin,
-  activeBonuses,
   isShowDepositModal,
   bonusesArr,
   paymentMethods,
@@ -69,13 +66,10 @@ let {
               userCurrency={userCurrency}
               showAllBonuses={showAllBonuses}
               showAllBonusesHandler={showAllBonusesHandler}
-              chosenBonus={chosenBonus}
               chooseBonusClickHandler={chooseBonusClickHandler}
               setDepositButtonText={setDepositButtonText}
               userDepositValue={userDepositValue}
               userSelectedBonus={userSelectedBonus}
-              userLogin={userLogin}
-              activeBonuses={activeBonuses}
               isShowDepositModal={isShowDepositModal}
               bonusesArr={bonusesArr}
             />
@@ -123,13 +117,10 @@ let {
               userCurrency={userCurrency}
               showAllBonuses={showAllBonuses}
               showAllBonusesHandler={showAllBonusesHandler}
-              chosenBonus={chosenBonus}
               chooseBonusClickHandler={chooseBonusClickHandler}
               setDepositButtonText={setDepositButtonText}
               userDepositValue={userDepositValue}
               userSelectedBonus={userSelectedBonus}
-              userLogin={userLogin}
-              activeBonuses={activeBonuses}
               isShowDepositModal={isShowDepositModal}
               bonusesArr={bonusesArr}
             />
