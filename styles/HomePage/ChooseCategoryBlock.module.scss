@@ -6,7 +6,7 @@
 
   width: 100%;
 
-  background-color: rgba(0,0,0,0.51);
+  background-color: rgb(21, 21, 21);
 
   padding: 10px 22px 10px 25px;
 
@@ -180,8 +180,10 @@
 
 }
 
-@media screen and (max-width: 1400px) {
-
+@media screen and (max-width: 1065px) {
+  .categoryWrapper {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 @media screen and (max-width: 920px) {

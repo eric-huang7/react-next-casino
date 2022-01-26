@@ -23,10 +23,11 @@ export const SumInputs = () => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
   const activeBonuses = useSelector((state) => state.bonuses);
+  const userSelectedBonus = useSelector((state) => state.userBonus);
 
   const [isChecked, setIsChecked] = useState(true);
   const [bonusesArr, setBonusesArr] = useState([]);
-  const [chosenBonus, setChosenBonus] = useState({});
+  const [selectedBonus, setSelectedBonus] = useState();
   // const [depositValue, setDepositValue] = useState(sumInputVal);
 
   const sumInputChangeHandler = (e) => {
@@ -39,6 +40,8 @@ export const SumInputs = () => {
     // }
   }
   const checkedInputHandler = (e) => {
+    e.stopPropagation();
+
     if (isChecked) {
       setIsChecked(false);
       chooseBonusClickHandler(0);
@@ -49,6 +52,7 @@ export const SumInputs = () => {
 
   const chooseBonusClickHandler = (chosenUserBonus) => {
     dispatch(setUserBonus(chosenUserBonus));
+    setSelectedBonus(chosenUserBonus);
     // setChosenBonus(chosenUserBonus);
     // changeButtonText();
   }
@@ -66,6 +70,7 @@ export const SumInputs = () => {
     if (userLogin) {
 
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
+
       if (bonuses.length > 0) {
       setBonusesArr(bonuses);
       } else {
@@ -77,7 +82,7 @@ export const SumInputs = () => {
       setBonusesArr([]);
       }
 
-  }, [userCurrency, userLogin]);
+  }, [userCurrency, userLogin, activeBonuses]);
 
   return (
     <>
@@ -93,9 +98,13 @@ export const SumInputs = () => {
       </div>
       <div className={styles.dividerUp}/>
       <BonusesContainer
+        selectedBonus={selectedBonus}
         isChecked={isChecked}
         checkedInputHandler={checkedInputHandler}
         bonusesArr={bonusesArr}
+        userSelectedBonus={userSelectedBonus}
+        userCurrency={userCurrency}
+        chooseBonusClickHandler={chooseBonusClickHandler}
       />
       <div className={styles.dividerDown}/>
       <div className={styles.typePayments}>

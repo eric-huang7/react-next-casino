@@ -6,15 +6,20 @@ import {iconsUrl} from "../../../../../helpers/imageUrl";
 
 
 
-export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus}) => {
+export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler}) => {
   const {t} = useTranslation('promotionsPage');
 
   console.log(bonusData, 'bonusDAta########')
 
+  const infoClickHandler = (e) => {
+    e.stopPropagation()
+    console.log('Info!!!!')
+  }
+
 
 if (isUseBonus) {
   return (
-    <div className={styles.bonusInfoBlockWrapper}>
+    <div onClick={(e) => openBonusesDropdownHandler(e)} className={styles.bonusInfoBlockWrapper}>
       <div className={styles.bonusInfoBlock}>
         <div className={styles.bonusIconBlock}>
           <img src={iconsUrl(bonusData.icon)} alt="bonus icon"/>
@@ -22,7 +27,7 @@ if (isUseBonus) {
         <p>
           {t(`bonuses.${bonusData.id}.deposit_bonus.heading`)}
         </p>
-        <span>{t("bonuses.bonusBlockInfoLink")}</span>
+        <span onClick={(e) => infoClickHandler(e)}>{t("bonuses.bonusBlockInfoLink")}</span>
       </div>
       <p className={styles.bonusInfoText}>
         {t(`bonuses.${bonusData.id}.deposit_bonus.description`)}
@@ -46,7 +51,7 @@ if (isUseBonus) {
         {/*<span>info</span>*/}
       </div>
       <p className={styles.bonusInfoText}>
-        100% dsf sadfsd fasdf asdfas dfasd fasdf asdfasdf asdf asdfasdfasdfdas
+        <br/>
       </p>
       <BonusSwitcher
         checkedInputHandler={checkedInputHandler}

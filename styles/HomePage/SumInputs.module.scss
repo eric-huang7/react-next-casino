@@ -110,6 +110,8 @@
   margin-top: 8%;
 
   padding-right: 13%;
+
+  cursor: pointer;
 }
 
 .bonusInfoBlock {
@@ -148,11 +150,9 @@
 }
 
 .bonusInfoBlock p {
-  margin: 0 10% 0 0;
+  margin: 0 5% 0 0;
 
   max-width: 180px;
-
-  background-color: #ff0e0e;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -273,6 +273,71 @@
   background-size: cover;
 }
 
+.bonusDropdownContainer {
+  position: absolute;
+
+  background-color: #ffffff;
+
+  //bottom: -1000px;
+
+  z-index: 3;
+
+  max-height: 230px;
+
+  overflow-y: auto;
+
+  & .bonusDropItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+
+    border-bottom: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+
+    & .bonusIconWrapper {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+
+      margin-right: 25px;
+
+      & img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    & .bonusInfoWrapper {
+      & span {
+        display: block;
+        font-family: "Verdana";
+        color: #9e9e9e;
+      }
+      & .bonusHeading {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #808080;
+      }
+      & .bonusDescription {
+        font-size: 12px;
+        color: #9e9e9e;
+      }
+    }
+  }
+  & .bonusDropItem:hover {
+    background-color: #ececec;
+    transition: background-color 0.2s ease-in-out;
+
+    cursor: pointer;
+  }
+}
+
+.hideDropDown {
+  display: none;
+}
+
 
 @media screen and (max-width: 1800px) {
   .currencyButton:after {
@@ -288,7 +353,7 @@
     white-space: nowrap;
   }
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 160px;
   }
@@ -348,7 +413,7 @@
     white-space: nowrap;
   }
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
   }
   .bonusInfoText {
     font-size: 10px;
@@ -457,7 +522,7 @@
     white-space: nowrap;
   }
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 140px;
   }
@@ -571,7 +636,7 @@
     font-style: normal;
   }
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 185px;
   }
@@ -700,7 +765,7 @@
 
 @media screen and (max-width: 810px) {
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 165px;
   }
@@ -708,7 +773,7 @@
 
 @media screen and (max-width: 780px) {
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 190px;
   }
@@ -745,7 +810,7 @@
   }
 
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 1.5% 0 0;
 
     max-width: 160px;
   }
@@ -927,7 +992,7 @@
   }
 
   .bonusInfoBlock p {
-    margin: 0 5% 0 0;
+    margin: 0 2% 0 0;
 
     max-width: 120px;
   }
