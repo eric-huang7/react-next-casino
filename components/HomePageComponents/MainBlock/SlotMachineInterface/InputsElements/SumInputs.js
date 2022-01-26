@@ -6,18 +6,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showCurrencySwitcher} from "../../../../../redux/actions/showPopups";
 import {BonusBlock} from "../BonusBlock/BonusBlock";
+import {setUserDepositValue} from "../../../../../redux/actions/setUserDepositValue";
 
 
 export const SumInputs = () => {
-  const sumInputVall = useSelector(({userDepositValue}) => userDepositValue.value);
+  const dispatch = useDispatch();
+
+  const sumInputVal = useSelector(({userDepositValue}) => userDepositValue.value);
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
   const userSelectedCurrency = useSelector((state) => state.userSelectedCurrency);
 
-  const dispatch = useDispatch();
-  const [isChecked, setIsChecked] = useState(true)
+  const [isChecked, setIsChecked] = useState(true);
+  // const [depositValue, setDepositValue] = useState(sumInputVal);
 
   const sumInputChangeHandler = (e) => {
-    console.log(e.target.value);
+    dispatch(setUserDepositValue(e.target.value));
     // let val = e.target.value
     // if (val.length > 10) {
     //   return false
@@ -46,7 +49,14 @@ export const SumInputs = () => {
   return (
     <>
       <div className={styles.inputsWrapper}>
-        <input onChange={(e) => sumInputChangeHandler(e)} id="sumInputMain"  className={styles.sumInput} maxLength={10} type="number"/>
+        <input
+          onChange={(e) => sumInputChangeHandler(e)}
+          id="sumInputMain"
+          className={styles.sumInput}
+          maxLength={10}
+          type="number"
+          value={sumInputVal}
+        />
         <div
           className={styles.currencyButton}
           onClick={() => currencyButtonClickHAndler()}

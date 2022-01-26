@@ -11,7 +11,7 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
         type="number"
         id="depositInputCount"
         className={styles.depositSummInput}
-        defaultValue={userDepositValue}
+        value={userDepositValue}
         onChange={(e) => depositValueInputHandler(e)}
       />
       <span className={styles.errorMessage}>{t(userDepositValueError)}</span>
