@@ -41,7 +41,7 @@ if (isUseBonus) {
   return (
     <div className={styles.bonusInfoBlockWrapper}>
       <div className={styles.bonusInfoBlock}>
-        <div className={styles.bonusIconBlock}>
+        <div className={`${styles.bonusIconBlock} ${styles.noBonusIcon}`}>
           <img src={bonusData.icon} alt="no bonus icon"/>
         </div>
         <p>

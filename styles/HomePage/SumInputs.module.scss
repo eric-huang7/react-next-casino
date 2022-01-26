@@ -138,6 +138,12 @@
   }
 }
 
+.noBonusIcon {
+  //position: relative;
+
+  top: -22%;
+}
+
 .bonusInfoBlock p,
 .bonusInfoBlock span {
   font-size: 1em;
@@ -380,6 +386,12 @@
       //height: 100%;
     }
   }
+  .noBonusIcon {
+    //position: relative;
+
+    top: -32%;
+  }
+
   .bonusInfoText {
     font-size: 12px;
     line-height: 24px;
@@ -622,6 +634,13 @@
     top: 29%;
     right: 8%;
   }
+
+  .noBonusIcon {
+    //position: relative;
+
+    top: -44%;
+  }
+
   .bonusInfoBlock p,
   .bonusInfoBlock span {
     font-size: 1.2em;
@@ -982,6 +1001,13 @@
       height: 100%;
     }
   }
+
+  .noBonusIcon {
+    //position: relative;
+
+    top: -22%;
+  }
+
   .bonusInfoBlock p,
   .bonusInfoBlock span {
     font-size: 10px;
