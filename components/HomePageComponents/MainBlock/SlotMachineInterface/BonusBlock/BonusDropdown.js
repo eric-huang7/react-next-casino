@@ -8,17 +8,12 @@ import {useEffect, useState} from "react";
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
 
-
   const [isShowDropdown, setIsShowDropdown] = useState(false);
 
   const [bonusForShow, setBonusForShow] = useState(null);
 
-  console.log(userSelectedBonus, 'userSelectedBonus')
-
   const openBonusesDropdownHandler = (e) => {
-
     setIsShowDropdown((prevState => !prevState));
-
   }
 
   useEffect(() => {

@@ -70,7 +70,11 @@ export const DepositPage = ({t}) => {
   useEffect(() => {
     // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus effect');
     changeButtonText();
-  }, [chosenBonus])
+  }, [chosenBonus]);
+
+  useEffect(() => {
+    setChosenBonus(userSelectedBonus.bonus_id);
+  }, [userSelectedBonus.bonus_id])
 
 
   const showAllBonusesHandler = () => {

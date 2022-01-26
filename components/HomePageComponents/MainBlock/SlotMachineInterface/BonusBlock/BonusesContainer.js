@@ -4,20 +4,12 @@ import {BonusDropdown} from "./BonusDropdown";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, userSelectedBonus, userCurrency, selectedBonus, chooseBonusClickHandler}) => {
-  console.log(bonusesArr, 'slots bonuses#################');
 
   if (isChecked) {
 
     if (bonusesArr.length > 0) {
 
       return (
-        <>
-          {/*<BonusBlock*/}
-          {/*  isChecked={isChecked}*/}
-          {/*  checkedInputHandler={checkedInputHandler}*/}
-          {/*  bonusData={bonusesArr[0]}*/}
-          {/*  isUseBonus={true}*/}
-          {/*/>*/}
           <BonusDropdown
             selectedBonus={selectedBonus}
             isChecked={isChecked}
@@ -28,7 +20,6 @@ export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, us
             userCurrency={userCurrency}
             chooseBonusClickHandler={chooseBonusClickHandler}
           />
-        </>
       )
 
     } else {

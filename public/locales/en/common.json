@@ -89,7 +89,8 @@
     "searchBar": "search...",
     "moreButton": "more...",
     "loading": "Loading...",
-    "checkLater": "Check back later..."
+    "checkLater": "Check back later...",
+    "playButton": "Play"
   },
   "totalJackpots" : {
     "latestWinners" : "latest winners",

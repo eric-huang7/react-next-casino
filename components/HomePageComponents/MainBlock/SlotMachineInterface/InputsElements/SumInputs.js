@@ -28,16 +28,10 @@ export const SumInputs = () => {
   const [isChecked, setIsChecked] = useState(true);
   const [bonusesArr, setBonusesArr] = useState([]);
   const [selectedBonus, setSelectedBonus] = useState();
-  // const [depositValue, setDepositValue] = useState(sumInputVal);
+
 
   const sumInputChangeHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value));
-    // let val = e.target.value
-    // if (val.length > 10) {
-    //   return false
-    // } else {
-    //   // dispatch(setVal(val));
-    // }
   }
   const checkedInputHandler = (e) => {
     e.stopPropagation();
@@ -53,12 +47,9 @@ export const SumInputs = () => {
   const chooseBonusClickHandler = (chosenUserBonus) => {
     dispatch(setUserBonus(chosenUserBonus));
     setSelectedBonus(chosenUserBonus);
-    // setChosenBonus(chosenUserBonus);
-    // changeButtonText();
   }
 
   const currencyButtonClickHAndler = () => {
-    // console.log(isShowCurrencySwitcher, userCurrency);
     if (isShowCurrencySwitcher) {
       dispatch(showCurrencySwitcher(false));
     } else {

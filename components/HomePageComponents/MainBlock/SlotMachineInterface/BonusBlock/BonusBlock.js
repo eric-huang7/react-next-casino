@@ -9,7 +9,6 @@ import {iconsUrl} from "../../../../../helpers/imageUrl";
 export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler}) => {
   const {t} = useTranslation('promotionsPage');
 
-  console.log(bonusData, 'bonusDAta########')
 
   const infoClickHandler = (e) => {
     e.stopPropagation()

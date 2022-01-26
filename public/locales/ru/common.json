@@ -89,7 +89,8 @@
     "searchBar": "поиск...",
     "moreButton": "больше...",
     "loading": "Загрузка...",
-    "checkLater": "Проверьте пожалуйста позже..."
+    "checkLater": "Проверьте пожалуйста позже...",
+    "playButton": "Играть"
   },
   "totalJackpots" : {
     "latestWinners" : "последние победители",
