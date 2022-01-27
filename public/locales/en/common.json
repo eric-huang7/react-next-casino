@@ -91,6 +91,9 @@
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend"
+    },
+    "errors": {
+      "responseError": "An error has occurred. Please try again or contact support."
     }
   },
   "pageNames": {

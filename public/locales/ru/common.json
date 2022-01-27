@@ -91,6 +91,9 @@
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend"
+    },
+    "errors": {
+      "responseError": "Произошла ошибка. Попробуйте еще раз или обратитесть в службу поддержки."
     }
   },
   "pageNames": {

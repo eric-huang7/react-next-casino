@@ -5,7 +5,7 @@ import {ResetPasswordButton} from "../ResetPasswordButton";
 import {InputContainer} from "../EmailEnteringContainer/InputContainer";
 
 
-export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler, errors, whatDoBackButton, closeForgotPasswordHandler}) => {
+export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler, errors, whatDoBackButton, closeForgotPasswordHandler, requestError}) => {
 
   return (
     <div className={`${styles.forgotPasswordWrapper} `}>
@@ -24,6 +24,7 @@ export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler
               onSubmitHandler={onSubmitHandler}
               errors={errors}
               t={t}
+              requestError={requestError}
             />
           </div>
         </div>

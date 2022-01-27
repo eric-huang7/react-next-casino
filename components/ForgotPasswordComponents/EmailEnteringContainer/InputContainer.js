@@ -2,7 +2,7 @@ import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
 import {useRef, useState} from "react";
 
 
-export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandler}) => {
+export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandler, requestError}) => {
 
   const [moveLabel, setMoveLabel] = useState(false);
 
@@ -12,7 +12,7 @@ export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandl
 
   const onBlurEmailHandler = (e) => {
     if (e.target.value) {
-      return
+
     } else {
       setMoveLabel(false);
     }
@@ -37,6 +37,7 @@ export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandl
         />
       </form>
       <span className={styles.emailError}>{t(errors.email?.message)}</span>
+      <p className={styles.emailError}>{t(requestError)}</p>
     </div>
   )
 }

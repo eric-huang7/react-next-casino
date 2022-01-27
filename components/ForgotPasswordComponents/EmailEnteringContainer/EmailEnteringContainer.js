@@ -6,7 +6,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaEmail} from "../../../schemasForms/emailForm";
 
 
-export const EmailEnteringContainer = ({t, handleSubmit, register, onSubmitHandler, errors, showResendContainerClickHandler}) => {
+export const EmailEnteringContainer = ({t, handleSubmit, register, onSubmitHandler, errors, showResendContainerClickHandler, requestError}) => {
 
 
 
@@ -20,6 +20,7 @@ export const EmailEnteringContainer = ({t, handleSubmit, register, onSubmitHandl
         handleSubmit={handleSubmit}
         onSubmitHandler={onSubmitHandler}
         errors={errors}
+        requestError={requestError}
         t={t}
       />
       <ResendButton

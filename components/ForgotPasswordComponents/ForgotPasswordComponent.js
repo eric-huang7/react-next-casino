@@ -11,6 +11,9 @@ import {ResendEmailContainer} from "./ResendEmailContainer/ResendEmailContainer"
 import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 import {showLogin} from "../../redux/actions/loginShow";
+import axios from "axios";
+import {phone_number_url} from "../../redux/url/url";
+import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 
 
 export const ForgotPasswordComponent = ({t}) => {
@@ -22,10 +25,31 @@ export const ForgotPasswordComponent = ({t}) => {
 
   const [successSend, setSuccessSend] = useState(false);
   const [showResendContainer, setShowResendContainer] = useState(false);
+  const [requestError, setRequestError] = useState('');
+  // const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitHandler = (data) => {
-    console.log(data, 'USER EMAIL');
-    setSuccessSend(true);
+    const config = {
+      params: {
+        type: 2,
+        email: data.email
+      }
+    }
+    // setIsLoading(true);
+    axios.get(phone_number_url, config)
+      .then((res) => {
+        if (res.data.success) {
+          // setIsLoading(false);
+          setSuccessSend(true);
+          setRequestError('');
+        }
+        console.log(res, 'response data');
+      })
+      .catch((err) => {
+        // setIsLoading(false);
+        setRequestError('forgotPasswordForm.errors.responseError');
+        console.log(err.response, 'response err');
+      })
   }
 
   const closeForgotPasswordHandler = () => {
@@ -33,6 +57,7 @@ export const ForgotPasswordComponent = ({t}) => {
   }
   const showResendContainerClickHandler = () => {
     reset();
+    setRequestError('');
     setShowResendContainer((prevState => !prevState));
   }
 
@@ -41,36 +66,38 @@ export const ForgotPasswordComponent = ({t}) => {
     dispatch(showLogin(true));
   }
 
-  if (showResendContainer) {
+
+  if (successSend) {
     return (
-      <ResendEmailContainer
-        t={t}
-        register={register}
-        onSubmitHandler={onSubmitHandler}
-        handleSubmit={handleSubmit}
-        errors={errors}
-        whatDoBackButton={showResendContainerClickHandler}
-        closeForgotPasswordHandler={closeForgotPasswordHandler}
-      />
-    )
-  } else {
-    if (successSend) {
-      return (
-        <div className={`${styles.forgotPasswordWrapper} `}>
-          <div className={styles.mainContainer}>
-            <div className={styles.instructionsBlock}>
-              <HeadingBlock
-                t={t}
-                closeForgotPasswordHandler={closeForgotPasswordHandler}
-                whatDoBackButton={backButtonClickHandler}
-                text={'forgotPasswordForm.headings.instructionsSent'}
-              />
-              <InstructionsSendContainer
-                t={t}
-              />
-            </div>
+      <div className={`${styles.forgotPasswordWrapper} `}>
+        <div className={styles.mainContainer}>
+          <div className={styles.instructionsBlock}>
+            <HeadingBlock
+              t={t}
+              closeForgotPasswordHandler={closeForgotPasswordHandler}
+              whatDoBackButton={backButtonClickHandler}
+              text={'forgotPasswordForm.headings.instructionsSent'}
+            />
+            <InstructionsSendContainer
+              t={t}
+            />
           </div>
         </div>
+      </div>
+    )
+  } else {
+    if (showResendContainer) {
+      return (
+        <ResendEmailContainer
+          t={t}
+          register={register}
+          onSubmitHandler={onSubmitHandler}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          whatDoBackButton={showResendContainerClickHandler}
+          closeForgotPasswordHandler={closeForgotPasswordHandler}
+          requestError={requestError}
+        />
       )
     } else {
       return (
@@ -90,6 +117,7 @@ export const ForgotPasswordComponent = ({t}) => {
                   onSubmitHandler={onSubmitHandler}
                   register={register}
                   showResendContainerClickHandler={showResendContainerClickHandler}
+                  requestError={requestError}
                   t={t}
                 />
               </div>
