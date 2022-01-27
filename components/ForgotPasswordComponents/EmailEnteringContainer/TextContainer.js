@@ -12,19 +12,21 @@ export const TextContainer = ({t}) => {
   return (
     <>
       <p className={styles.instructionsText}>
-        Fill in your e-mail address and we will
-        send you instructions on how to reset
-        your password via e-mail.
+        {t('forgotPasswordForm.textBlocks.instructionsText')}
       </p>
       <p className={styles.supportText}>
-        Contact us via
+        <span>
+          {t('forgotPasswordForm.textBlocks.supportText.firstPart')}
+        </span>
         <span
           className={styles.supportLink}
           onClick={() => liveChatClick()}
         >
-          {` ${'Support'} ` }
+          {` ${t('forgotPasswordForm.textBlocks.supportText.support')} ` }
         </span>
-        if you need further help.
+        <span>
+          {t('forgotPasswordForm.textBlocks.supportText.secondPart')}
+        </span>
       </p>
     </>
   )

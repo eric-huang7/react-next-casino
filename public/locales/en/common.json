@@ -74,7 +74,24 @@
     "forgotPassword": "Forgot Password?"
   },
   "forgotPasswordForm": {
-    "emailLabel": "Your email"
+    "emailLabel": "Your email",
+    "headings": {
+      "forgotPassword": "Forgot password?",
+      "instructionsSent": "Instruction Sent",
+      "resendEmail": "Resend email"
+    },
+    "textBlocks": {
+      "instructionsText": "Fill in your e-mail address and we will send you instructions on how to reset your password via e-mail.",
+      "supportText": {
+        "firstPart": "Contact us via",
+        "support": "Support",
+        "secondPart": "if you need further help."
+      }
+    },
+    "buttonsText": {
+      "resetPassword": "Reset password",
+      "resend": "Resend"
+    }
   },
   "pageNames": {
     "home": "Home Page",

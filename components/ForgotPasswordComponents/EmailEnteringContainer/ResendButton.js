@@ -1,11 +1,11 @@
 import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
 
 
-export const ResendButton = ({t}) => {
+export const ResendButton = ({t, showResendContainerClickHandler}) => {
 
 
   return (
-    <button className={styles.resendButton}>
+    <button onClick={() => showResendContainerClickHandler()} className={styles.resendButton}>
       Resend confirmation instructions?
     </button>
   )

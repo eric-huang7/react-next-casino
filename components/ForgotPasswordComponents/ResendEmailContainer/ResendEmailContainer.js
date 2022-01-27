@@ -5,13 +5,18 @@ import {ResetPasswordButton} from "../ResetPasswordButton";
 import {InputContainer} from "../EmailEnteringContainer/InputContainer";
 
 
-export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler, errors}) => {
+export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler, errors, whatDoBackButton, closeForgotPasswordHandler}) => {
 
   return (
     <div className={`${styles.forgotPasswordWrapper} `}>
       <div className={styles.mainContainer}>
         <div className={styles.instructionsBlock}>
-          <HeadingBlock t={t}/>
+          <HeadingBlock
+            t={t}
+            whatDoBackButton={whatDoBackButton}
+            closeForgotPasswordHandler={closeForgotPasswordHandler}
+            text={'forgotPasswordForm.headings.resendEmail'}
+          />
           <div className={`${styles.innerContainer} ${styles.resendContainer}`}>
             <InputContainer
               register={register}
@@ -22,7 +27,10 @@ export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler
             />
           </div>
         </div>
-        <ResetPasswordButton t={t} />
+        <ResetPasswordButton
+          t={t}
+          text={'forgotPasswordForm.buttonsText.resend'}
+        />
       </div>
     </div>
   )

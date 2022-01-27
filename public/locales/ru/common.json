@@ -74,7 +74,24 @@
     "forgotPassword": "Не помнишь пароль?"
   },
   "forgotPasswordForm": {
-    "emailLabel": "Твой email"
+    "emailLabel": "Твой email",
+    "headings": {
+      "forgotPassword": "Забыли пароль?",
+      "instructionsSent": "Инструкция отправлена",
+      "resendEmail": "Отправить еще раз"
+    },
+    "textBlocks": {
+      "instructionsText": "Заполните свой адрес электронной почты, и мы вышлем вам инструкции по сбросу пароля по электронной почте.",
+      "supportText": {
+        "firstPart": "Свяжитесь с нами через",
+        "support": "Поддержку",
+        "secondPart": "если вам нужна дополнительная помощь."
+      }
+    },
+    "buttonsText": {
+      "resetPassword": "Reset password",
+      "resend": "Resend"
+    }
   },
   "pageNames": {
     "home": "Домашняя Page",
