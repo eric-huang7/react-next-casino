@@ -80,6 +80,7 @@ export const ForgotPasswordComponent = ({t}) => {
             />
             <InstructionsSendContainer
               t={t}
+              text={'forgotPasswordForm.instructionsSentText'}
             />
           </div>
         </div>

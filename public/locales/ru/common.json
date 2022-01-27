@@ -88,6 +88,7 @@
         "secondPart": "если вам нужна дополнительная помощь."
       }
     },
+    "instructionsSentText": "На почту отправлено письмо с инструкциями по смене пароля. ",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend"

@@ -88,6 +88,7 @@
         "secondPart": "if you need further help."
       }
     },
+    "instructionsSentText": "An email has been sent with instructions on how to change your password.",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend"
