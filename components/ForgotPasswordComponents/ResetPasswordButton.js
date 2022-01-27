@@ -5,7 +5,11 @@ export const ResetPasswordButton = ({t}) => {
 
 
   return (
-    <button className={styles.resetPasswordButton}>
+    <button
+      className={styles.resetPasswordButton}
+      type={"submit"}
+      form={'forgotPasswordForm'}
+    >
       Reset password
     </button>
   )

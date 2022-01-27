@@ -1,4 +1,4 @@
-import styles from "../../styles/ForgotPassword/ForgotPassword.module.scss";
+import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
 
 
 export const ResendButton = ({t}) => {

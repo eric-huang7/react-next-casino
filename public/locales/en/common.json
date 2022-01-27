@@ -228,6 +228,7 @@
     "passwordMaximum": "Password must be no more than 32 characters.",
     "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
     "email": "Email must be a valid email",
+    "emailRequired": "This is a required field!",
     "wrongPasswordOrEmail": "Incorrect password or email!",
     "selfExcluded": "Account has been self excluded till:",
     "errorMessage": "Oops... An error has occurred. Reload the page or contact support."
