@@ -73,6 +73,9 @@
     "signUpButton": "Войти",
     "forgotPassword": "Не помнишь пароль?"
   },
+  "forgotPasswordForm": {
+    "emailLabel": "Твой email"
+  },
   "pageNames": {
     "home": "Домашняя Page",
     "promotions" : "промо акции Page",
@@ -534,7 +537,6 @@
       "bonusHistory": "Бонусы",
       "bonuses": "Бонусы",
       "profileInfo": "Данные профиля",
-      "gamblingLimits": "Ответственная игра",
       "documents": "Документы",
       "changePassword": "Изменить Пароль",
       "googleAuth" : "Двухфакторная аутентификация Google",

@@ -73,6 +73,9 @@
     "signUpButton": "Log In",
     "forgotPassword": "Forgot Password?"
   },
+  "forgotPasswordForm": {
+    "emailLabel": "Your email"
+  },
   "pageNames": {
     "home": "Home Page",
     "promotions" : "Promotions Page",
@@ -534,7 +537,6 @@
       "bonusHistory": "Bonuses",
       "bonuses": "Bonuses",
       "profileInfo": "Profile Info",
-      "gamblingLimits": "Gambling Limits",
       "documents": "Documents",
       "changePassword": "Change Password",
       "googleAuth" : "Google Authenticator",
