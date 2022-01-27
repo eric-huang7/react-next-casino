@@ -3,12 +3,12 @@ import {SumInputs} from "./InputsElements/SumInputs";
 import {setUserDepositValue} from "../../../../redux/actions/setUserDepositValue";
 import {useDispatch, useSelector} from "react-redux";
 
-export const SlotMachineInterface = () => {
+export const SlotMachineInterface = ({userLogin}) => {
 
 
   return (
     <div className={styles.interfaceWrapper}>
-      <SumInputs/>
+      <SumInputs userLogin={userLogin}/>
     </div>
   )
 }

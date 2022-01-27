@@ -3,15 +3,20 @@ import {useState} from "react";
 import {showDepositModal} from "../../../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "next-i18next";
+import {showRegister} from "../../../../redux/actions/registerShow";
 
 
-export const SubmitButton = ({width}) => {
+export const SubmitButton = ({width, userLogin}) => {
   const {t} = useTranslation('common');
 
   const dispatch = useDispatch();
 
   const submitButtonClickHandler = () => {
-    dispatch(showDepositModal(true));
+    if (userLogin) {
+      dispatch(showDepositModal(true));
+    } else {
+      dispatch(showRegister(true));
+    }
   }
 
 

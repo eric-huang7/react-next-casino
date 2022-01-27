@@ -3,7 +3,7 @@ import {BonusBlock} from "./BonusBlock";
 import {BonusesBlock} from "../../../../MainLayout/DepositPage/BonusesBlock/BonusesBlock";
 import {iconsUrl} from "../../../../../helpers/imageUrl";
 import {BonusItem} from "./BonusItem";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
@@ -13,7 +13,12 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
   const [bonusForShow, setBonusForShow] = useState(null);
 
   const openBonusesDropdownHandler = (e) => {
-    setIsShowDropdown((prevState => !prevState));
+    if (e === 'close') {
+      setIsShowDropdown(false);
+    } else {
+      setIsShowDropdown((prevState => !prevState));
+    }
+
   }
 
   useEffect(() => {
@@ -32,7 +37,32 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
     return () => {
       setBonusForShow(null);
     }
-  }, [userCurrency, userSelectedBonus.bonus_id])
+  }, [userCurrency, userSelectedBonus.bonus_id]);
+
+  const bonusDropRef = useRef();
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(bonusDropRef.current)) {
+      openBonusesDropdownHandler("close")
+    }
+    if (path.includes((bonusDropRef.current))) {
+      openBonusesDropdownHandler();
+    }
+    if (path.includes((bonusDropRef.current))) {
+      openBonusesDropdownHandler();
+    }
+  };
+
+
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    }
+  }, []);
+
 
 
   if (bonusesArr.length > 0) {
@@ -47,6 +77,7 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
           bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
           isUseBonus={true}
           openBonusesDropdownHandler={openBonusesDropdownHandler}
+          bonusDropRef={bonusDropRef}
         />
         <div className={`${styles.bonusDropdownContainer} ${isShowDropdown ? "" : styles.hideDropDown}`}>
           {

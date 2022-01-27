@@ -4,9 +4,11 @@ import {SlotMachineInterface} from "./SlotMachineInterface/SlotMachineInterfase"
 
 import Image from "next/image";
 import {SubmitButton} from "./SlotMachineInterface/SubmitButton";
+import {useSelector} from "react-redux";
 
 export const MainBlock = () => {
   const {height, width} = useWindowDimensions();
+  const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
 
   return  (
     <div className={styles.mainBlockWrapper}>
@@ -17,9 +19,9 @@ export const MainBlock = () => {
         <div className={styles.slotsDancerWrapper}>
           <div className={styles.slotsDancer}>
             <div className={styles.slotMachineIng}>
-              <SlotMachineInterface />
+              <SlotMachineInterface userLogin={userLogin} />
               <img src={`/assets/img/homeImg/slot_machine${width <= 1065 ? '-mobile' : ''}.png`}  alt="slot machine"/>
-              <SubmitButton width={width}/>
+              <SubmitButton width={width} userLogin={userLogin}/>
             </div>
             <div className={styles.dancingGirlImg}>
               <img src={`/assets/img/homeImg/dance-girl${width <= 1065 ? '-mobile' : ''}.png`}  alt="dancing girl"/>

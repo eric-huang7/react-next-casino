@@ -6,7 +6,7 @@ import {iconsUrl} from "../../../../../helpers/imageUrl";
 
 
 
-export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler}) => {
+export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler, bonusDropRef}) => {
   const {t} = useTranslation('promotionsPage');
 
 
@@ -18,7 +18,7 @@ export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBon
 
 if (isUseBonus) {
   return (
-    <div onClick={(e) => openBonusesDropdownHandler(e)} className={styles.bonusInfoBlockWrapper}>
+    <div ref={bonusDropRef} onClick={(e) => openBonusesDropdownHandler(e)} className={styles.bonusInfoBlockWrapper}>
       <div className={styles.bonusInfoBlock}>
         <div className={styles.bonusIconBlock}>
           <img src={iconsUrl(bonusData.icon)} alt="bonus icon"/>

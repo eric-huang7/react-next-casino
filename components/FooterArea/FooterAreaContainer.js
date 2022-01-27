@@ -29,7 +29,6 @@ export const FooterAreaContainer = ({t, userData}) => {
       setActiveTime(false);
     }
     if (path.includes((slotRef.current))) {
-      console.log(slotRef);
       setActiveSlots(true);
     }
     if (path.includes((timeref.current))) {

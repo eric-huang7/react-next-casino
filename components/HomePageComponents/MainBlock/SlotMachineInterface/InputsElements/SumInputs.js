@@ -15,13 +15,13 @@ import {BonusesContainer} from "../BonusBlock/BonusesContainer";
 
 
 
-export const SumInputs = () => {
+export const SumInputs = ({userLogin}) => {
   const dispatch = useDispatch();
 
   const sumInputVal = useSelector(({userDepositValue}) => userDepositValue.value);
   const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
+
   const activeBonuses = useSelector((state) => state.bonuses);
   const userSelectedBonus = useSelector((state) => state.userBonus);
 
@@ -58,7 +58,7 @@ export const SumInputs = () => {
   }
 
   useEffect(() => {
-    if (userLogin) {
+    // if (userLogin) {
 
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
 
@@ -69,9 +69,9 @@ export const SumInputs = () => {
       chooseBonusClickHandler(0);
       }
 
-      } else {
-      setBonusesArr([]);
-      }
+      // } else {
+      // setBonusesArr([]);
+      // }
 
   }, [userCurrency, userLogin, activeBonuses]);
 
