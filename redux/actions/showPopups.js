@@ -4,7 +4,7 @@ import {
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
-  SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP,
+  SHOW_DEPOSIT_MODAL, SHOW_EXIT_INTENT_POPUP, SHOW_FORGOT_PASSWORD,
   SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_CRYPTO_PAYMENTS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP, SHOW_PAYMENT_CURRENCY_SWITCHER,
@@ -26,6 +26,13 @@ export const closeAll = (isShow) => {
 export const showExitIntentPopup = (isShow) => {
   return {
     type: SHOW_EXIT_INTENT_POPUP,
+    payload: isShow
+  }
+}
+
+export const showForgotPasswordPopup = (isShow) => {
+  return {
+    type: SHOW_FORGOT_PASSWORD,
     payload: isShow
   }
 }

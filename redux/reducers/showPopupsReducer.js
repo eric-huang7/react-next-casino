@@ -7,7 +7,7 @@ import {
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
   SHOW_DEPOSIT_MODAL,
-  SHOW_EXIT_INTENT_POPUP,
+  SHOW_EXIT_INTENT_POPUP, SHOW_FORGOT_PASSWORD,
   SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_CRYPTO_PAYMENTS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
   SHOW_NOTIFICATIONS_POPUP,
@@ -39,12 +39,19 @@ const initialState = {
   isShowExitIntentPopup: true,
   depositModalStep: 1,
   isShowMobileCryptoPayments: false,
+  isShowForgotPassword: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case SHOW_FORGOT_PASSWORD :
+      return {
+        ...state,
+        isShowForgotPassword: payload,
+      }
+
     case ACTIVATE_ERROR_POPUP :
       return {
         ...state,
@@ -98,6 +105,7 @@ function showPopupsReducer(state = initialState, action) {
         depositModalStep: 1,
         isShowPaymentCurrencySwitcher: false,
         isShowMobileCryptoPayments: false,
+        isShowForgotPassword: false,
       }
     case SHOW_MOBILE_CRYPTO_PAYMENTS:
       return {

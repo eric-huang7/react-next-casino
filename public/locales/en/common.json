@@ -70,7 +70,8 @@
     "passwordInput": "Password",
     "alreadyRegistered": "Not registered yet?",
     "registerLink": "Register",
-    "signUpButton": "Log In"
+    "signUpButton": "Log In",
+    "forgotPassword": "Forgot Password?"
   },
   "pageNames": {
     "home": "Home Page",

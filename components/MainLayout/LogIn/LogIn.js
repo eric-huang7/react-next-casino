@@ -13,6 +13,7 @@ import {schemaLogin} from '../../../schemasForms/loginForm'
 import {dateFormatter} from "../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
 import {auth_type_id, is_admin, siteID} from "../../../envs/envsForFetching";
+import {showForgotPasswordPopup} from "../../../redux/actions/showPopups";
 
 
 
@@ -26,6 +27,10 @@ export const LogIn = ({t, isShow}) => {
   const dispatch = useDispatch();
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
 
+  const forgotPasswordClickHandler = () => {
+    dispatch(showForgotPasswordPopup(true));
+    dispatch(showLogin(false));
+  }
 
   function loginCloseButtonHandler() {
     if (isShowLogin) {
@@ -179,6 +184,9 @@ export const LogIn = ({t, isShow}) => {
 
 
             </form>
+            <div className={styles.forgotPassword}>
+              <button onClick={() => forgotPasswordClickHandler()}>{t('loginForm.forgotPassword')}</button>
+            </div>
             <div className={styles.notAlreadyRegistered}>
               <p className={styles.alredyText}>{t('loginForm.alreadyRegistered')}</p>
               <p onClick={() => openRegister()} className={styles.logInText}>{t('loginForm.registerLink')}</p>

@@ -29,6 +29,7 @@ import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
 import Head from "next/head";
 import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
 import {SelectCurrencyWidget} from "./SelectCurrencyWidget/SelectCurrencyWidget";
+import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswordComponent";
 
 
 const MainLayout = ({children, t}) => {
@@ -253,6 +254,14 @@ const MainLayout = ({children, t}) => {
           screenWidth={width}
         />
         {/*<LangSwitcher href={router.route} locale={locale}/>*/}
+        {isShowModal.isShowForgotPassword
+          ?
+          <ForgotPasswordComponent
+            t={t}
+          />
+          :
+          <></>
+        }
       </div>
     </>
   )

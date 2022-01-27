@@ -15,7 +15,7 @@
 
   background-color: rgba(0,0,0, 0.8);
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 .forClosePopup {
@@ -230,6 +230,23 @@
 
   position: relative;
   top: -10px;
+}
+
+.forgotPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & button {
+    font-size: 15px;
+    color: #ff0000;
+    font-family: "Segoe UI";
+
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+  }
 }
 
 @media screen and (max-width: 1065px) {
