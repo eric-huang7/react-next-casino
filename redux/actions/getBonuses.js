@@ -19,7 +19,6 @@ export const getAllBonuses = () => async dispatch => {
       type: GET_ALL_BONUSES,
       payload: res.data
     })
-    console.log(res, 'all bonuses fetch result')
   } catch (e) {
     console.log('SOME ERROR IN GET ALL BONUSES', e.response);
   }
@@ -40,7 +39,6 @@ export const getActiveBonuses = (currencyId) => async dispatch => {
       type: GET_ACTIVE_BONUSES,
       payload: res.data
     })
-    console.log(res, 'bonuses fetch result')
   } catch (e) {
     console.log('SOME ERROR IN GET ACTIVE BONUSES', e.response);
   }

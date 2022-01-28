@@ -25,7 +25,6 @@ export const NewsBlock = ({t, isBackShow}) => {
   useEffect(() => {
     axios.get(news_active_url)
       .then((data) => {
-        console.log(data, 'NEWS!@@@@@@@@@@@@@@@');
         setNewsData(data.data.results);
         setLoadingNews(false);
       })

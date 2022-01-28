@@ -58,7 +58,9 @@ export const auth = () => async dispatch => {
       type: AUTH,
       payload: res.data
     })
-    console.log(res.data, 'FROM AUTH@@@@@@@@@@@@@@@@@@@@@')
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userAuth", 'true');
+    }
   } catch (e) {
     dispatch({
       type: AUTH_FAIL,
@@ -70,6 +72,8 @@ export const auth = () => async dispatch => {
 }
 
 export const changePasswordLogin = (userData) => {
+
+
   return {
     type: CHANGE_PASSWORD_LOGIN,
     payload: userData
@@ -554,6 +558,9 @@ export const logout = () => async dispatch => {
       type: LOGOUT_SUCCESS,
       payload: res.data,
     })
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userAuth", 'false');
+    }
     dispatch(annulActiveBonuses());
   } catch (e) {
     console.log(e, "SOME ERROR WHEN LOGOUT USER");

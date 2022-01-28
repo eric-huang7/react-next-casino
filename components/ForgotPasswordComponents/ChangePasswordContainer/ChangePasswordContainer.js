@@ -44,7 +44,9 @@ export const ChangePasswordContainer = ({t, token}) => {
         setRequestError('');
         setRequestSuccess(true);
         dispatch(changePasswordLogin(data.data));
-        console.log(data.data, 'change password success');
+        if (typeof window !== "undefined") {
+          localStorage.setItem("userAuth", 'true');
+        }
       })
       .catch((err) => {
         reset();

@@ -32,7 +32,11 @@ export const Header = ({t}) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
 
+
+
   useEffect(() => {
+    let userLogLocal = localStorage.getItem("userAuth");
+
     if (userLogined) {
       if (!userLogin.balance) {
         dispatch(userBalance());
@@ -50,7 +54,9 @@ export const Header = ({t}) => {
       dispatch(changeLocalUserSubscriptions(userData));
 
     } else {
-      dispatch(auth());
+      if (JSON.parse(userLogLocal)) {
+        dispatch(auth());
+      }
     }
   }, [userLogin.isAuthenticated]);
 
