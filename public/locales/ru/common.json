@@ -93,9 +93,10 @@
     "instructionsSentText": "На почту отправлено письмо с инструкциями по смене пароля.",
     "successPasswordChange": "Ваш пароль был успешно изменен.",
     "buttonsText": {
-      "resetPassword": "Reset password",
-      "resend": "Resend",
-      "submit": "Подтвердить"
+      "resetPassword": "Сбросить пароль",
+      "resend": "Отправить",
+      "submit": "Подтвердить",
+      "resendConfirmation": "Отправить инструкции по подтверждению еще раз?"
     },
     "errors": {
       "responseError": "Произошла ошибка. Попробуйте еще раз или обратитесть в службу поддержки."

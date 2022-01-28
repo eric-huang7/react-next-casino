@@ -6,7 +6,7 @@ export const ResendButton = ({t, showResendContainerClickHandler}) => {
 
   return (
     <button onClick={() => showResendContainerClickHandler()} className={styles.resendButton}>
-      Resend confirmation instructions?
+      {t('forgotPasswordForm.buttonsText.resendConfirmation')}
     </button>
   )
 }
