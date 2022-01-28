@@ -48,7 +48,6 @@ const MainLayout = ({children, t, token}) => {
   useEffect(() => {
     dispatch(closeAll(false));
     dispatch(backButtonShouldDo(false));
-    console.log("close")
   }, [router])
 
 

@@ -88,9 +88,6 @@ export const Header = ({t}) => {
       <Link href={'/'} passHref>
         <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       </Link>
-      <Link href={"http://localhost:3000/reset-pswd?token=aasdasdasd"}>
-        <a style={{color: "white"}}>TOKEN URL</a>
-      </Link>
       <Navigation t={t}/>
       <LangSwitcher href={router.route} locale={locale}/>
       <UserBlockNavigation t={t} userInfo={userLogin}/>

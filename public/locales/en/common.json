@@ -79,7 +79,8 @@
       "forgotPassword": "Forgot password?",
       "instructionsSent": "Instruction Sent",
       "resendEmail": "Resend email",
-      "changePassword": "Change your password"
+      "changePassword": "Change your password",
+      "passwordChanged": "Password Changed"
     },
     "textBlocks": {
       "instructionsText": "Fill in your e-mail address and we will send you instructions on how to reset your password via e-mail.",
@@ -90,6 +91,7 @@
       }
     },
     "instructionsSentText": "An email has been sent with instructions on how to change your password.",
+    "successPasswordChange": "Your password has been changed successfully.",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend",

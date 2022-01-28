@@ -5,7 +5,7 @@ import {
   AUTH,
   AUTH_FAIL,
   BALANCE,
-  CANCEL_BONUS, DELETE_SESSION,
+  CANCEL_BONUS, CHANGE_PASSWORD_LOGIN, DELETE_SESSION,
   GET_ACTIVE_PENDING_BONUSES, GET_ACTIVE_SESSIONS,
   GET_BONUS_HISTORY_DATA, GET_CLOSED_SESSIONS, GET_DOCUMENT,
   GET_SAVED_KEYS,
@@ -58,7 +58,7 @@ export const auth = () => async dispatch => {
       type: AUTH,
       payload: res.data
     })
-
+    console.log(res.data, 'FROM AUTH@@@@@@@@@@@@@@@@@@@@@')
   } catch (e) {
     dispatch({
       type: AUTH_FAIL,
@@ -67,6 +67,13 @@ export const auth = () => async dispatch => {
     console.log('SOME ERROR IN AUTH', e.response);
   }
 
+}
+
+export const changePasswordLogin = (userData) => {
+  return {
+    type: CHANGE_PASSWORD_LOGIN,
+    payload: userData
+  }
 }
 
 export const getDocuments = () => async dispatch => {
@@ -303,8 +310,6 @@ export const deleteUserSession = (params) => async dispatch => {
 }
 
 
-
-
 export const getUserBets = () => async dispatch => {
   const config = {
     // withCredentials: true,
@@ -440,7 +445,7 @@ export const mayYwoFactorAuth = (isMay) => {
   return {
     type: MAY_TWO_FACTOR_AUTH,
     payload: isMay
-}
+  }
 
 
 }

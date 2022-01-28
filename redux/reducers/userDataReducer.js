@@ -18,7 +18,7 @@ import {
   MAY_TWO_FACTOR_AUTH,
   GET_ACTIVE_SESSIONS,
   GET_CLOSED_SESSIONS,
-  GET_DOCUMENT,
+  GET_DOCUMENT, CHANGE_PASSWORD_LOGIN,
 
 } from "../actions/types";
 
@@ -96,7 +96,15 @@ function userDataReducer(state = initialState, action) {
         loading: false,
         error: null,
         registerError: null,
-
+      }
+    case CHANGE_PASSWORD_LOGIN :
+      return {
+        ...state,
+        user: {...payload},
+        isAuthenticated: true,
+        loading: false,
+        error: null,
+        registerError: null,
       }
     case LOGIN_FAIL :
       return {

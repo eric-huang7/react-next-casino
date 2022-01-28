@@ -79,7 +79,8 @@
       "forgotPassword": "Забыли пароль?",
       "instructionsSent": "Инструкция отправлена",
       "resendEmail": "Отправить еще раз",
-      "changePassword": "Измените ваш пароль"
+      "changePassword": "Измените ваш пароль",
+      "passwordChanged": "Пароль изменен"
     },
     "textBlocks": {
       "instructionsText": "Заполните свой адрес электронной почты, и мы вышлем вам инструкции по сбросу пароля по электронной почте.",
@@ -89,7 +90,8 @@
         "secondPart": "если вам нужна дополнительная помощь."
       }
     },
-    "instructionsSentText": "На почту отправлено письмо с инструкциями по смене пароля. ",
+    "instructionsSentText": "На почту отправлено письмо с инструкциями по смене пароля.",
+    "successPasswordChange": "Ваш пароль был успешно изменен.",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend",

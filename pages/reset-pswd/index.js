@@ -42,13 +42,11 @@ export default function ResetPswd(props) {
   // const state = useSelector((state) => state);
   useEffect(() => {
     if (props.token) {
-      console.log("open")
-      console.log(props.token);
       dispatch(showChangePasswordPopup(true));
     } else {
       router.replace('/')
         .catch((e) => {
-          console.log(e);
+
         })
     }
 
@@ -78,10 +76,8 @@ export const getServerSideProps = async (context) => {
 
   let token = null;
   if (context.query.token) {
-    console.log(context.query.token, "success")
     token = context.query.token;
   } else {
-    console.log(context.query.token, "FUUU");
   }
 
   return ({

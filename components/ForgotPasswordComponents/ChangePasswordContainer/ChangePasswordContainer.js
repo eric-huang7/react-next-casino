@@ -10,7 +10,8 @@ import {useState} from "react";
 import {schemaChangePasswordWindow} from "../../../schemasForms/changePasswordWindowForm";
 import {token_url} from "../../../redux/url/url";
 import axios from "axios";
-import {auth} from "../../../redux/actions/userData";
+import {auth, changePasswordLogin} from "../../../redux/actions/userData";
+import {InstructionsSendContainer} from "../InstructionsSendContainer/InstructionsSendContainer";
 
 
 export const ChangePasswordContainer = ({t, token}) => {
@@ -32,13 +33,6 @@ export const ChangePasswordContainer = ({t, token}) => {
   }
 
   const onSubmitHandler = (data) => {
-    // const config = {
-    //   withCredentials: true,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // } e3aaf4d2ca20441fa94f23ee37dc33b2
-
     let userData = {
       type: 2,
       password: data.password,
@@ -49,20 +43,37 @@ export const ChangePasswordContainer = ({t, token}) => {
       .then((data) => {
         setRequestError('');
         setRequestSuccess(true);
-        // dispatch(auth());
-        console.log(data, 'change password success');
+        dispatch(changePasswordLogin(data.data));
+        console.log(data.data, 'change password success');
       })
       .catch((err) => {
+        reset();
         setRequestSuccess(false);
         setRequestError('forgotPasswordForm.errors.responseError');
         console.log(err.response, 'change password error!!!!');
       })
-
-    console.log(data, userData, 'change password');
   }
 
   if (requestSuccess) {
-
+    return (
+      <div className={`${styles.forgotPasswordWrapper} `}>
+        <div className={styles.mainContainer}>
+          <div className={styles.instructionsBlock}>
+            <HeadingBlock
+              t={t}
+              closeForgotPasswordHandler={closeForgotPasswordHandler}
+              whatDoBackButton={backButtonClickHandler}
+              text={'forgotPasswordForm.headings.passwordChanged'}
+              isShowBackButton={false}
+            />
+            <InstructionsSendContainer
+              t={t}
+              text={'forgotPasswordForm.successPasswordChange'}
+            />
+          </div>
+        </div>
+      </div>
+    )
   } else {
     return (
       <div className={`${styles.forgotPasswordWrapper} `}>
