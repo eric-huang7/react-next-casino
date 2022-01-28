@@ -2,7 +2,7 @@ import {
   ACTIVATE_ERROR_POPUP,
   BACK_BUTTON_SHOULD_DO,
   CLOSE_All,
-  DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP,
+  DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP, SHOW_CHANGE_PASSWORD_WINDOW,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -40,6 +40,7 @@ const initialState = {
   depositModalStep: 1,
   isShowMobileCryptoPayments: false,
   isShowForgotPassword: false,
+  isShowChangePassword: false,
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -51,7 +52,11 @@ function showPopupsReducer(state = initialState, action) {
         ...state,
         isShowForgotPassword: payload,
       }
-
+    case SHOW_CHANGE_PASSWORD_WINDOW :
+      return {
+        ...state,
+        isShowChangePassword: payload,
+      }
     case ACTIVATE_ERROR_POPUP :
       return {
         ...state,
@@ -106,6 +111,7 @@ function showPopupsReducer(state = initialState, action) {
         isShowPaymentCurrencySwitcher: false,
         isShowMobileCryptoPayments: false,
         isShowForgotPassword: false,
+        isShowChangePassword: false,
       }
     case SHOW_MOBILE_CRYPTO_PAYMENTS:
       return {

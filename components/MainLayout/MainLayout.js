@@ -21,7 +21,12 @@ import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContain
 import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
 import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
 import {getTournaments} from "../../redux/actions/getTournaments";
-import {backButtonShouldDo, closeAll, setStepDepositModal} from "../../redux/actions/showPopups";
+import {
+  backButtonShouldDo,
+  closeAll,
+  setStepDepositModal,
+  showChangePasswordPopup
+} from "../../redux/actions/showPopups";
 import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
 import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
@@ -30,6 +35,7 @@ import Head from "next/head";
 import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
 import {SelectCurrencyWidget} from "./SelectCurrencyWidget/SelectCurrencyWidget";
 import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswordComponent";
+import {ChangePasswordContainer} from "../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
 
 
 const MainLayout = ({children, t}) => {
@@ -42,6 +48,7 @@ const MainLayout = ({children, t}) => {
   useEffect(() => {
     dispatch(closeAll(false));
     dispatch(backButtonShouldDo(false));
+    console.log("close")
   }, [router])
 
 
@@ -55,6 +62,11 @@ const MainLayout = ({children, t}) => {
   let toursref = useRef()
 
   // const userPayment = useSelector((state) => state.userPaymentMethod);
+  useEffect(() => {
+    console.log("open")
+    dispatch(showChangePasswordPopup(true));
+  }, [router])
+
 
   useEffect(() => {
 
@@ -91,8 +103,6 @@ const MainLayout = ({children, t}) => {
     }
 
 
-
-
   }, [isShowModal, registerShow, logInShow])
 
   return (
@@ -116,45 +126,45 @@ const MainLayout = ({children, t}) => {
         {
           isShowModal.isShowMobilePaymentsStepper
             ?
-          <MobilePaymentsStepper
-            isShow={isShowModal.isShowMobilePaymentsStepper}
-            paymentsData={paymentsData}
-            userAuth={userInfo}
-            t={t}
-          />
+            <MobilePaymentsStepper
+              isShow={isShowModal.isShowMobilePaymentsStepper}
+              paymentsData={paymentsData}
+              userAuth={userInfo}
+              t={t}
+            />
             :
             <></>
         }
         {
           isShowModal.isShowCreditCardModal
             ?
-          <PaymentsCardWrapper
-            isShow={isShowModal.isShowCreditCardModal}
-            paymentsData={paymentsData}
-            userInfo={userInfo}
-            t={t}
-          />
+            <PaymentsCardWrapper
+              isShow={isShowModal.isShowCreditCardModal}
+              paymentsData={paymentsData}
+              userInfo={userInfo}
+              t={t}
+            />
             :
             <></>
         }
         {
           isShowModal.isShowCryptoModal
             ?
-          <PaymentsCryptoWrapper
-            isShow={isShowModal.isShowCryptoModal}
-            paymentsData={paymentsData}
-            t={t}
-          />
+            <PaymentsCryptoWrapper
+              isShow={isShowModal.isShowCryptoModal}
+              paymentsData={paymentsData}
+              t={t}
+            />
             :
             <></>
         }
         {
           isShowModal.isShowSearchModal
             ?
-          <SearchModalWindowWrapper
-            isShowSearchModal={isShowModal.isShowSearchModal}
-            t={t}
-          />
+            <SearchModalWindowWrapper
+              isShowSearchModal={isShowModal.isShowSearchModal}
+              t={t}
+            />
             :
             <></>
         }
@@ -164,7 +174,7 @@ const MainLayout = ({children, t}) => {
         />
         {
           isShowModal.isShowPlaySafe
-          ?
+            ?
             <PlaySafeMainWrapper
               isShow={isShowModal.isShowPlaySafe}
               t={t}
@@ -191,15 +201,15 @@ const MainLayout = ({children, t}) => {
         {/*<SelectCurrency t={t}/>*/}
         {
           isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
-          ?
-          <SelectCurrencyWidget
-            t={t}
-            isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-            isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-            isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-          />
-          :
-          <></>
+            ?
+            <SelectCurrencyWidget
+              t={t}
+              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
+              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
+            />
+            :
+            <></>
         }
 
         {userInfo.isAuthenticated
@@ -261,6 +271,15 @@ const MainLayout = ({children, t}) => {
           />
           :
           <></>
+        }
+        {
+          isShowModal.isShowChangePassword
+            ?
+            <ChangePasswordContainer
+              t={t}
+            />
+            :
+            <></>
         }
       </div>
     </>

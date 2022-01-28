@@ -1,6 +1,6 @@
 import {
   ACTIVATE_ERROR_POPUP,
-  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP,
+  BACK_BUTTON_SHOULD_DO, CLOSE_All, DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP, SHOW_CHANGE_PASSWORD_WINDOW,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -33,6 +33,13 @@ export const showExitIntentPopup = (isShow) => {
 export const showForgotPasswordPopup = (isShow) => {
   return {
     type: SHOW_FORGOT_PASSWORD,
+    payload: isShow
+  }
+}
+
+export const showChangePasswordPopup = (isShow) => {
+  return {
+    type: SHOW_CHANGE_PASSWORD_WINDOW,
     payload: isShow
   }
 }

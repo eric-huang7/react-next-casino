@@ -1,16 +1,25 @@
 import styles from "../../styles/ForgotPassword/ForgotPassword.module.scss";
 
 
-export const HeadingBlock = ({t, closeForgotPasswordHandler, whatDoBackButton, text}) => {
+export const HeadingBlock = ({t, closeForgotPasswordHandler, whatDoBackButton, text, isShowBackButton}) => {
 
   return (
     <div className={styles.blockHeading}>
-      <button
-        className={styles.backButton}
-        onClick={() => whatDoBackButton()}
-      >
-      </button>
-      <h3 className={styles.heading}>{t(text)}</h3>
+      {
+        isShowBackButton
+          ?
+          <button
+            className={styles.backButton}
+            onClick={() => whatDoBackButton()}
+          >
+          </button>
+          :
+          <div className={styles.emptyBlock}>
+
+          </div>
+      }
+
+      <h3 className={`${styles.heading} ${isShowBackButton ? '' : styles.smallHeading}`}>{t(text)}</h3>
       <button
         onClick={() => closeForgotPasswordHandler()}
         className={styles.closeButton}

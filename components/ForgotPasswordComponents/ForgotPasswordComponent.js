@@ -77,6 +77,7 @@ export const ForgotPasswordComponent = ({t}) => {
               closeForgotPasswordHandler={closeForgotPasswordHandler}
               whatDoBackButton={backButtonClickHandler}
               text={'forgotPasswordForm.headings.instructionsSent'}
+              isShowBackButton={true}
             />
             <InstructionsSendContainer
               t={t}
@@ -109,6 +110,7 @@ export const ForgotPasswordComponent = ({t}) => {
                 t={t}
                 closeForgotPasswordHandler={closeForgotPasswordHandler}
                 whatDoBackButton={backButtonClickHandler}
+                isShowBackButton={true}
                 text={'forgotPasswordForm.headings.forgotPassword'}
               />
               <div className={styles.innerContainer}>
@@ -126,6 +128,7 @@ export const ForgotPasswordComponent = ({t}) => {
             <ResetPasswordButton
               t={t}
               text={'forgotPasswordForm.buttonsText.resetPassword'}
+              whichForm={'forgotPasswordForm'}
             />
           </div>
         </div>

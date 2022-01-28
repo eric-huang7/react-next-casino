@@ -16,6 +16,7 @@ export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler
             whatDoBackButton={whatDoBackButton}
             closeForgotPasswordHandler={closeForgotPasswordHandler}
             text={'forgotPasswordForm.headings.resendEmail'}
+            isShowBackButton={true}
           />
           <div className={`${styles.innerContainer} ${styles.resendContainer}`}>
             <InputContainer
@@ -31,6 +32,7 @@ export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler
         <ResetPasswordButton
           t={t}
           text={'forgotPasswordForm.buttonsText.resend'}
+          whichForm={'forgotPasswordForm'}
         />
       </div>
     </div>

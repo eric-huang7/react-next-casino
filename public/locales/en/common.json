@@ -78,7 +78,8 @@
     "headings": {
       "forgotPassword": "Forgot password?",
       "instructionsSent": "Instruction Sent",
-      "resendEmail": "Resend email"
+      "resendEmail": "Resend email",
+      "changePassword": "Change your password"
     },
     "textBlocks": {
       "instructionsText": "Fill in your e-mail address and we will send you instructions on how to reset your password via e-mail.",
@@ -91,7 +92,8 @@
     "instructionsSentText": "An email has been sent with instructions on how to change your password.",
     "buttonsText": {
       "resetPassword": "Reset password",
-      "resend": "Resend"
+      "resend": "Resend",
+      "submit": "Submit"
     },
     "errors": {
       "responseError": "An error has occurred. Please try again or contact support."
@@ -252,10 +254,11 @@
     "passwordMaximum": "Password must be no more than 32 characters.",
     "passwordGeneral": "The password must contain numbers, uppercase and lowercase letters, and special characters.",
     "email": "Email must be a valid email",
-    "emailRequired": "This is a required field!",
+    "requiredField": "This is a required field!",
     "wrongPasswordOrEmail": "Incorrect password or email!",
     "selfExcluded": "Account has been self excluded till:",
-    "errorMessage": "Oops... An error has occurred. Reload the page or contact support."
+    "errorMessage": "Oops... An error has occurred. Reload the page or contact support.",
+    "passwordsMatch" : "Passwords must match!"
   },
   "selectCurrency": {
     "heading": "Select Currency",

@@ -1,10 +1,10 @@
 import * as yup from "yup";
 
-export const schemaChangePassword = yup.object().shape({
+export const schemaChangePasswordWindow = yup.object().shape({
   password: yup.string().min(8, 'errors.passwordMinimum').max(32, 'errors.passwordMaximum').matches(
     /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*?[#?!@$%^&*-\.])?.{8,}$/,
     'errors.passwordGeneral'
-  ).required()
+  ).required('errors.requiredField'),
+  passwordConfirmation: yup.string().oneOf([yup.ref('password')], 'errors.passwordsMatch')
+
 })
-// old => ^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-\.])?.{8,}$
-// ^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$
