@@ -26,7 +26,17 @@ export const SubmitButton = ({width, userLogin}) => {
       className={styles.submitButton}
     >
       <span>{t('homePage.playButton')}</span>
-      {width <= 1065 ? <></> : <img src={'/assets/img/homeImg/buttonSlot.png'} alt="slot-machine button image"/>}
+      {
+        width <= 1065
+          ?
+          <></>
+          :
+          <img
+            onDragStart={(e) => e.preventDefault()}
+            src={'/assets/img/homeImg/buttonSlot.png'}
+            alt="slot-machine button image"
+          />
+      }
 
     </div>
   )

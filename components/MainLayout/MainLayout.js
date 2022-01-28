@@ -38,7 +38,7 @@ import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswor
 import {ChangePasswordContainer} from "../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
 
 
-const MainLayout = ({children, t}) => {
+const MainLayout = ({children, t, token}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
@@ -62,10 +62,6 @@ const MainLayout = ({children, t}) => {
   let toursref = useRef()
 
   // const userPayment = useSelector((state) => state.userPaymentMethod);
-  useEffect(() => {
-    console.log("open")
-    dispatch(showChangePasswordPopup(true));
-  }, [router])
 
 
   useEffect(() => {
@@ -273,10 +269,11 @@ const MainLayout = ({children, t}) => {
           <></>
         }
         {
-          isShowModal.isShowChangePassword
+          isShowModal.isShowChangePassword && token
             ?
             <ChangePasswordContainer
               t={t}
+              token={token}
             />
             :
             <></>

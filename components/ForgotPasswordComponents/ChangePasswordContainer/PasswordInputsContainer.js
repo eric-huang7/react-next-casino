@@ -19,7 +19,7 @@ export const PasswordInputsContainer = ({t, handleSubmit, onSubmitHandler, regis
           </label>
           <input
             {...register("password")}
-            type="text"
+            type="password"
             className={errors.password ? styles.errorField : ""}
             id={'changePasswordWindowInput'}
           />
@@ -35,7 +35,7 @@ export const PasswordInputsContainer = ({t, handleSubmit, onSubmitHandler, regis
           </label>
           <input
             {...register("passwordConfirmation")}
-            type="text"
+            type="password"
             className={errors.passwordConfirmation ? styles.errorField : ""}
             id={'confirmPasswordWindowInput'}
           />

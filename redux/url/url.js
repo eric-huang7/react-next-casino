@@ -39,7 +39,9 @@ export const delete_user_session_url = (id) => `${serverUrl}sessions/${id}`
 
 export const user_url = serverUrl + 'user';
 
-export const phone_number_url = serverUrl + 'token'
+export const phone_number_url = serverUrl + 'token';
+
+export const token_url = serverUrl + 'token';
 
 // ########## register
 

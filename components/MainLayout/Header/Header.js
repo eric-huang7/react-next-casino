@@ -59,17 +59,18 @@ export const Header = ({t}) => {
   }, [userCurrency.userCurrencyData.id])
 
   useEffect(() => {
-    if (!userLogin.balance) {
-      // console.log(userLogin, 'From userBalance effect')
-      dispatch(userBalance());
+    if (userLogin.isAuthenticated) {
+      if (!userLogin.balance) {
+        dispatch(userBalance());
+      }
+      if (userLogin.balance && currencyData) {
+        let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default));
+        let userCurrency = currencyData.results.find((currency) => Number(currency.id) === Number(userActiveCurrency.currency_id));
+        dispatch(setUserCurrencySwitcher(userCurrency));
+      }
     }
-    if (userLogin.balance && currencyData) {
-      let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default));
-      let userCurrency = currencyData.results.find((currency) => Number(currency.id) === Number(userActiveCurrency.currency_id));
-      dispatch(setUserCurrencySwitcher(userCurrency));
-    }
-    // console.log(userLogin.balance, 'From userBalance effect if true')
-  }, [userLogin.balance, currencyData])
+
+  }, [userLogin.balance, currencyData, userLogin.isAuthenticated])
 
 
   function closePopups(e) {
@@ -86,6 +87,9 @@ export const Header = ({t}) => {
     <header onClick={(e) => closePopups(e)} className={styles.mainHeader}>
       <Link href={'/'} passHref>
         <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
+      </Link>
+      <Link href={"http://localhost:3000/reset-pswd?token=aasdasdasd"}>
+        <a style={{color: "white"}}>TOKEN URL</a>
       </Link>
       <Navigation t={t}/>
       <LangSwitcher href={router.route} locale={locale}/>
