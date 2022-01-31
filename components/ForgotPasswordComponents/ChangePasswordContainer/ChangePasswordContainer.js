@@ -41,18 +41,28 @@ export const ChangePasswordContainer = ({t, token}) => {
 
     axios.patch(token_url, userData)
       .then((data) => {
-        setRequestError('');
-        setRequestSuccess(true);
-        dispatch(changePasswordLogin(data.data));
-        if (typeof window !== "undefined") {
-          localStorage.setItem("userAuth", 'true');
+        if (data.data.success) {
+          setRequestError('');
+          setRequestSuccess(true);
+          dispatch(changePasswordLogin(data.data));
+          if (typeof window !== "undefined") {
+            localStorage.setItem("userAuth", 'true');
+          }
+        } else if (data.data.extra_error_info === 'Token invalid') {
+          reset();
+          setRequestSuccess(false);
+          setRequestError('forgotPasswordForm.errors.responseErrorToken');
+        } else {
+          reset();
+          setRequestSuccess(false);
+          setRequestError('forgotPasswordForm.errors.responseError');
         }
       })
       .catch((err) => {
         reset();
         setRequestSuccess(false);
         setRequestError('forgotPasswordForm.errors.responseError');
-        console.log(err.response, 'change password error!!!!');
+        // console.log(err.response, 'change password error!!!!');
       })
   }
 

@@ -101,7 +101,8 @@
       "resendConfirmation": "Resend confirmation instructions?"
     },
     "errors": {
-      "responseError": "An error has occurred. Please try again or contact support."
+      "responseError": "An error has occurred. Please try again or contact support.",
+      "responseErrorToken": "Ups, seems like you have already used this link before."
     }
   },
   "pageNames": {

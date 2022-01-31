@@ -27,13 +27,13 @@ export default function ResetPswd(props) {
       } else {
         router.replace('/')
           .catch((e) => {
-
+            console.log(e, 'Error when redirect');
           })
       }
     } else {
       router.replace('/')
         .catch((e) => {
-
+          console.log(e, 'Error when redirect');
         })
     }
   }, [router])
