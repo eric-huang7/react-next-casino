@@ -19,25 +19,11 @@ export default function ResetPswd(props) {
 
 
   useEffect(() => {
-    dispatch(showChangePasswordPopup(true));
 
-    // let userLogLocal = localStorage.getItem("userAuth");
-    //
-    // if (!userLogin) {
-    //   if (props.token && !JSON.parse(userLogLocal)) {
-    //     dispatch(showChangePasswordPopup(true));
-    //   } else {
-    //     router.replace('/')
-    //       .catch((e) => {
-    //         console.log(e, 'Error when redirect');
-    //       })
-    //   }
-    // } else {
-    //   router.replace('/')
-    //     .catch((e) => {
-    //       console.log(e, 'Error when redirect');
-    //     })
-    // }
+    if (props.token) {
+      dispatch(showChangePasswordPopup(true));
+    }
+
   }, [router])
 
   return (
@@ -66,6 +52,7 @@ export const getServerSideProps = async (context) => {
   if (context.query.token) {
     token = context.query.token;
   } else {
+
   }
 
   return ({
