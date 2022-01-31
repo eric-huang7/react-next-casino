@@ -12,6 +12,7 @@ import {CurrencyButton} from "./CurrencyButton";
 import {DepositValueInput} from "./DepositValueInput";
 import {setUserBonus} from "../../../../../redux/actions/setUserBonus";
 import {BonusesContainer} from "../BonusBlock/BonusesContainer";
+import {getActiveBonuses} from "../../../../../redux/actions/getBonuses";
 
 
 
@@ -74,6 +75,10 @@ export const SumInputs = ({userLogin}) => {
       // }
 
   }, [userCurrency, userLogin, activeBonuses]);
+
+  useEffect(() => {
+    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+  }, [userLogin])
 
   return (
     <>
