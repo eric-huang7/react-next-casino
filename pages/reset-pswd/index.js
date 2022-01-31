@@ -15,27 +15,29 @@ export default function ResetPswd(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
+  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
 
 
   useEffect(() => {
-    let userLogLocal = localStorage.getItem("userAuth");
+    dispatch(showChangePasswordPopup(true));
 
-    if (!userLogin) {
-      if (props.token && !JSON.parse(userLogLocal)) {
-        dispatch(showChangePasswordPopup(true));
-      } else {
-        router.replace('/')
-          .catch((e) => {
-            console.log(e, 'Error when redirect');
-          })
-      }
-    } else {
-      router.replace('/')
-        .catch((e) => {
-          console.log(e, 'Error when redirect');
-        })
-    }
+    // let userLogLocal = localStorage.getItem("userAuth");
+    //
+    // if (!userLogin) {
+    //   if (props.token && !JSON.parse(userLogLocal)) {
+    //     dispatch(showChangePasswordPopup(true));
+    //   } else {
+    //     router.replace('/')
+    //       .catch((e) => {
+    //         console.log(e, 'Error when redirect');
+    //       })
+    //   }
+    // } else {
+    //   router.replace('/')
+    //     .catch((e) => {
+    //       console.log(e, 'Error when redirect');
+    //     })
+    // }
   }, [router])
 
   return (
