@@ -148,26 +148,26 @@
 
   margin: 0px auto 0 auto;
 }
-.controlPanel span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-  //left: -8px;
-  top: 1px;
-
-  font-size: 14px;
-  color: #ffffff;
-  font-family: "Verdana";
-
-  width: 200px;
-  height: 50px;
-
-  margin: 0 auto;
-
-  border: 1px solid #6a6d71;
-}
+//.controlPanel span {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//  position: relative;
+//  //left: -8px;
+//  top: 1px;
+//
+//  font-size: 14px;
+//  color: #ffffff;
+//  font-family: "Verdana";
+//
+//  width: 200px;
+//  height: 50px;
+//
+//  margin: 0 auto;
+//
+//  border: 1px solid #6a6d71;
+//}
 
 .prevArr, .nextArr {
 
@@ -189,10 +189,10 @@
   top: 103.9%;
 }
 .prevArr {
-  left: 37%;
+  left: 45%;
 }
 .nextArr {
-  right: 37%;
+  right: 45%;
 
   transform: rotateZ(180deg);
 }
@@ -204,9 +204,9 @@
     left: 1.6%;
     top: 1.5%;
   }
-  .controlPanel span {
-    left: 0px;
-  }
+  //.controlPanel span {
+  //  left: 0px;
+  //}
 }
 @media screen and (max-width: 1330px) {
   .newsSliderWrapper {
@@ -252,15 +252,15 @@
     & > div > .newAddText {
     }
   }
-  .controlPanel span {
-    left: 0px;
-    top: 2px;
-
-    font-size: 14px;
-
-    width: 135px;
-    height: 45px;
-  }
+  //.controlPanel span {
+  //  left: 0px;
+  //  top: 2px;
+  //
+  //  font-size: 14px;
+  //
+  //  width: 135px;
+  //  height: 45px;
+  //}
 
   .prevArr, .nextArr {
     width: 45px;
@@ -269,10 +269,10 @@
     top: 105.9%;
   }
   .prevArr {
-    left: 37%;
+    left: 44.5%;
   }
   .nextArr {
-    right: 37%;
+    right: 44.5%;
   }
 }
 @media screen and (max-width: 1165px) {
@@ -302,10 +302,10 @@
     top: 106.5%;
   }
   .prevArr {
-    left: 32%;
+    left: 42.5%;
   }
   .nextArr {
-    right: 32%;
+    right: 42.5%;
   }
 }
 @media screen and (max-width: 860px) {
@@ -319,10 +319,10 @@
   }
 
   .prevArr {
-    left: 32%;
+    left: 42.5%;
   }
   .nextArr {
-    right: 32%;
+    right: 42.5%;
   }
 }
 @media screen and (max-width: 660px) {
