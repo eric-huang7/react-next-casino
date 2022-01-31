@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {Header} from "./Header/Header";
 
 import styles from '../../styles/MainLayout.module.scss'

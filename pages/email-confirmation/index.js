@@ -11,7 +11,7 @@ import {auth} from "../../redux/actions/userData";
 
 
 
-export default function ResetPswd(props) {
+export default function EmailConfirmation(props) {
   const {t} = useTranslation('common');
   const dispatch = useDispatch();
   const router = useRouter();
@@ -23,21 +23,19 @@ export default function ResetPswd(props) {
   useEffect(() => {
 
     if (props.token) {
-      let userData = {
+      let sendData = {
         type: 1,
         token: props.token,
       }
-      console.log(props.token,userData, 'props.token');
+      console.log(props.token,sendData, 'props.token');
 
-      axios.patch(token_url, userData)
+      axios.patch(token_url, sendData)
         .then((data) => {
         if (data.data.extra_error_info) {
           console.log(data, "extra_error_info!!!!!!!!!!!!!!");
         } else {
           console.log(data, "success!!!!!!!!!!!!!!!!!!");
         }
-
-        dispatch(auth());
       }).catch((e) => {
         console.log(e.response, "some error!!!!!!!!!!!!!!!!!");
       })
