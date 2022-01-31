@@ -36,6 +36,8 @@ import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
 import {SelectCurrencyWidget} from "./SelectCurrencyWidget/SelectCurrencyWidget";
 import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswordComponent";
 import {ChangePasswordContainer} from "../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
+import {showLogin} from "../../redux/actions/loginShow";
+import {showRegister} from "../../redux/actions/registerShow";
 
 
 const MainLayout = ({children, t, token}) => {
@@ -48,6 +50,8 @@ const MainLayout = ({children, t, token}) => {
   useEffect(() => {
     dispatch(closeAll(false));
     dispatch(backButtonShouldDo(false));
+    dispatch(showLogin(false));
+    dispatch(showRegister(false));
   }, [router])
 
 
