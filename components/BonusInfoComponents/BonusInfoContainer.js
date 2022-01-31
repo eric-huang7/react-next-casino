@@ -7,7 +7,7 @@ export const BonusInfoContainer = () => {
 
 
   return (
-    <div className={`${styles.mainWrapper} `}>
+    <div className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
 
       </div>
