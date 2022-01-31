@@ -70,7 +70,9 @@ export const GamesSliderBlock = ({t, type, games}) => {
   } else {
     itemsCount = 5;
   }
+
   let slides = [];
+  let linkPath = '/';
 
     if (type === 'NEW_GAMES') {
       if (games.loadingNewGames) {
@@ -80,6 +82,8 @@ export const GamesSliderBlock = ({t, type, games}) => {
         // if (games.isSearchEmpty) {
           let newGamesSlicedArr = games.newGames.results.slice();
           slides = newGamesSlicedArr;
+
+        linkPath = '/games-page/new-games';
         // } else {
         //   let newGamesSlicedArr = games.searchGames.slice();
         //   slides = newGamesSlicedArr;
@@ -96,6 +100,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
         let jackpotSlicedArr = games.jackpotGames.results.slice();
         slides = jackpotSlicedArr;
 
+        linkPath = '/games-page/jackpot-games';
       }
     } else if (type === 'TABLE_GAMES') {
       if (games.loadingTableGames) {
@@ -105,7 +110,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
         // filter by type 2
         let tableSlicedGames = games.tableGames.results.slice();
         slides = tableSlicedGames;
-
+        linkPath = '/games-page/table-games';
 
       }
     }
@@ -169,7 +174,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
         </Slider>
 
         <div className={styles.controlPanel}>
-          <Link href={'/#'}><a>{t(`homePage.moreButton`)}</a></Link>
+          <Link href={linkPath}><a>{t(`homePage.moreButton`)}</a></Link>
         </div>
       </div>
     </section>
