@@ -6,13 +6,15 @@ import {BonusPageLink} from "./MainContainerComponents/BonusPageLink";
 
 
 
-export const MainBonusInfoContainer = () => {
+export const MainBonusInfoContainer = ({closeButtonClickHandler}) => {
 
 
   return (
     <div className={styles.mainBonusContainer}>
 
-      <Heading />
+      <Heading
+          closeButtonClickHandler={closeButtonClickHandler}
+      />
       <BonusInfoBlock />
       <BonusAdditionalInfo />
       <BonusPageLink />

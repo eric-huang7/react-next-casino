@@ -1,13 +1,17 @@
 import styles from "../../../styles/BonusInfoComponent/BonusInfoComponent.module.scss";
 
 
-export const Heading = () => {
+export const Heading = ({closeButtonClickHandler}) => {
 
 
   return (
     <div className={styles.heading}>
+        <div className={styles.empty}>
+
+        </div>
       <h4>{'Bonus info'}</h4>
       <button
+          onClick={(e) => closeButtonClickHandler(e)}
         className={styles.closeButton}
       >
         <span className={styles.closeOne}></span>

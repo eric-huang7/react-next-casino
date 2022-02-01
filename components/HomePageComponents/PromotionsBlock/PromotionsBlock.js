@@ -25,9 +25,11 @@ export const PromotionsBlock = ({t}) => {
 
   const promotionsData = useSelector((store) => store.bonuses);
 
+
+
   useEffect(() => {
     dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
-  }, [userCurrency.userCurrencyData])
+  }, [userCurrency.userCurrencyData.id])
 
 
   let itemsCount = 4;

@@ -7,7 +7,7 @@ export const MainHeading = ({text}) => {
 
   return (
     <h3 className={styles.mainHeading}>
-      {"Deposit $100 and get $200"}
+      {text}
     </h3>
   )
 }

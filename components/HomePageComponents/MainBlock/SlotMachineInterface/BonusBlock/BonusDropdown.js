@@ -4,6 +4,7 @@ import {BonusesBlock} from "../../../../MainLayout/DepositPage/BonusesBlock/Bonu
 import {iconsUrl} from "../../../../../helpers/imageUrl";
 import {BonusItem} from "./BonusItem";
 import {useEffect, useRef, useState} from "react";
+import {BonusInfoContainer} from "../../../../BonusInfoComponents/BonusInfoContainer";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
@@ -64,6 +65,13 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
   }, []);
 
 
+  const [isShowBonusInfo, setIsShowBonusInfo] = useState(false);
+
+  const infoClickHandler = (e) => {
+    e.stopPropagation()
+    setIsShowBonusInfo((prevState => !prevState));
+  }
+
 
   if (bonusesArr.length > 0) {
 
@@ -78,7 +86,18 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
           isUseBonus={true}
           openBonusesDropdownHandler={openBonusesDropdownHandler}
           bonusDropRef={bonusDropRef}
+          infoClickHandler={infoClickHandler}
         />
+        {
+          isShowBonusInfo
+            ?
+              <BonusInfoContainer
+                  infoClickHandler={setIsShowBonusInfo}
+                  isShow={isShowBonusInfo}
+              />
+              :
+              <></>
+        }
         <div className={`${styles.bonusDropdownContainer} ${isShowDropdown ? "" : styles.hideDropDown}`}>
           {
             bonusesArr.map((el) => {

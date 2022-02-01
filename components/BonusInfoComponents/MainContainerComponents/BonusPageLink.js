@@ -8,7 +8,7 @@ export const BonusPageLink = () => {
 
   return (
     <div className={styles.bonusPageLinkWrapper}>
-      <Link href={'/termsAndConditions'}><a>{'General Bonus Terms & Conditions'}</a></Link>
+      <Link href={'/termsAndConditions'}><a >{'General Bonus Terms & Conditions'}</a></Link>
     </div>
   )
 }

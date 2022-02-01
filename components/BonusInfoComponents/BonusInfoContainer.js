@@ -6,15 +6,30 @@ import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 
 
-export const BonusInfoContainer = () => {
+export const BonusInfoContainer = ({isShow, infoClickHandler}) => {
   const bonusInfoRef = useRef();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isShow) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [])
+
+  const closeButtonClickHandler = (e) => {
+    infoClickHandler(!isShow);
+  }
 
 
   const handleOutsideClick = (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
     if (!path.includes(bonusInfoRef.current)) {
-      // dispatch(showForgotPasswordPopup(false));
+      closeButtonClickHandler(false);
     }
   };
   useEffect(() => {
@@ -25,11 +40,15 @@ export const BonusInfoContainer = () => {
     }
   }, []);
 
+
+
   return (
     <div className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
         <MainHeading text={"Deposit $100 and get $200"} />
-        <MainBonusInfoContainer />
+        <MainBonusInfoContainer
+            closeButtonClickHandler={closeButtonClickHandler}
+        />
       </div>
     </div>
   )
