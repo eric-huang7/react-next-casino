@@ -354,6 +354,23 @@
       "choosePaymentMethod" : "Choose payment method!"
     }
   },
+  "bonusInfoContainer": {
+    "bonusInfoHeading": "Deposit $100 and get $200",
+    "bonusTermsConditionsLink": "General Bonus Terms & Conditions",
+    "bonusInfo": {
+      "heading": "Bonus info",
+      "maxBonus": "Max bonus",
+      "freeSpins": "Free spins",
+      "wageringRequirements" : "Wagering Requirements",
+      "maxBet": "Max Bet per Game Round",
+      "minimumDepositFreeSpins" : "A minimum deposit of {{key_min_deposit}} {{key_user_currency}} is required to receive the {{key_free_spins}} free spins.",
+      "minimumDeposit" : "A minimum deposit of {{key_min_deposit}} {{key_user_currency}}.",
+      "freeSpinsDescriptionLong": "{{free_spin_amount}} instant + {{free_spin_value}}({{free_spin_per_day}} per day, starting in 24 hours)",
+      "freeSpinsDescriptionShort": "{{free_spin_amount}} instant",
+      "wagering": "X{{wager_requirements}} Bonus",
+      "noWagering": "No Wagering"
+    }
+  },
   "whyUseCryptoPage": {
     "whyUseBitcoinBlock": {
       "heading": "Why use Bitcoin?",

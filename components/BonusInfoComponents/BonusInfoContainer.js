@@ -45,7 +45,7 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
   return (
     <div className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
-        <MainHeading text={"Deposit $100 and get $200"} />
+        <MainHeading text={"bonusInfoContainer.bonusInfoHeading"} />
         <MainBonusInfoContainer
             closeButtonClickHandler={closeButtonClickHandler}
             bonusData={bonusData}

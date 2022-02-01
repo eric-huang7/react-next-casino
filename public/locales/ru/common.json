@@ -327,7 +327,7 @@
     }
   },
   "depositPage": {
-    "mainHeading": "ВНЕСИТЕ $ 100 И ПОЛУЧИТЕ $ 200",
+    "mainHeading": "ВНЕСИТЕ $100 И ПОЛУЧИТЕ $200",
     "innerHeading": "СУММА ВКЛАДА",
     "depositInputLabel": "Введите сумму депозита",
     "bonusBlockHeading": "ВЫБЕРИТЕ СВОЙ БОНУС",
@@ -352,6 +352,23 @@
     "errors": {
       "wrongValue": "Неверное значение",
       "choosePaymentMethod" : "Выберите способ оплаты!"
+    }
+  },
+  "bonusInfoContainer": {
+    "bonusInfoHeading": "ВНЕСИТЕ $100 И ПОЛУЧИТЕ $200",
+    "bonusTermsConditionsLink": "Общие правила и условия бонусов",
+    "bonusInfo": {
+      "heading": "Бонус инфо",
+      "maxBonus": "Максимальный бонус",
+      "freeSpins": "Бесплатные спины",
+      "wageringRequirements" : "Требования к ставкам",
+      "maxBet": "Максимальная ставка на раунд игры",
+      "minimumDepositFreeSpins" : "Для получения {{key_free_spins}} бесплатных вращений требуется минимальный депозит в размере {{key_min_deposit}} {{key_user_currency}}.",
+      "minimumDeposit" : "Минимальный депозит {{key_min_deposit}} {{key_user_currency}}.",
+      "freeSpinsDescriptionLong": "{{free_spin_amount}} мгновенно + {{free_spin_value}}({{free_spin_per_day}} в день, начиная с полуночи)",
+      "freeSpinsDescriptionShort": "{{free_spin_amount}} мгновенно",
+      "wagering": "X{{wager_requirements}} бонус",
+      "noWagering": "Без отыгрыша"
     }
   },
   "whyUseCryptoPage": {
