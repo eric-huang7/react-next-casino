@@ -76,9 +76,9 @@ export const SumInputs = ({userLogin}) => {
 
   }, [userCurrency, userLogin, activeBonuses]);
 
-  useEffect(() => {
-    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
-  }, [userLogin])
+  // useEffect(() => {
+  //   dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+  // }, [userLogin])
 
   return (
     <>

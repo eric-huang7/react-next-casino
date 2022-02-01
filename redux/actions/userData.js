@@ -561,7 +561,7 @@ export const logout = () => async dispatch => {
     if (typeof window !== "undefined") {
       localStorage.setItem("userAuth", 'false');
     }
-    dispatch(annulActiveBonuses());
+    // dispatch(annulActiveBonuses());
   } catch (e) {
     console.log(e, "SOME ERROR WHEN LOGOUT USER");
     dispatch({
