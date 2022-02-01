@@ -72,6 +72,7 @@ export const BonusesBlock = (props) => {
                     infoClickHandler={setIsShowBonusInfo}
                     isShow={isShowBonusInfo}
                     userCurrency={userCurrency}
+                    fromDeposit={true}
                 />
                 :
                 <></>

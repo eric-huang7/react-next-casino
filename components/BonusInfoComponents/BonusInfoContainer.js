@@ -6,7 +6,7 @@ import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 
 
-export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCurrency}) => {
+export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCurrency, fromDeposit}) => {
   const bonusInfoRef = useRef();
   const dispatch = useDispatch();
 
@@ -14,10 +14,20 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
     if (isShow) {
       document.body.style.overflowY = "hidden"
     } else {
-      document.body.style.overflowY = "auto"
+      if (fromDeposit) {
+
+      } else {
+        document.body.style.overflowY = "auto"
+      }
+
     }
     return () => {
-      document.body.style.overflowY = "auto"
+      if (fromDeposit) {
+
+      } else {
+        document.body.style.overflowY = "auto"
+      }
+
     }
   }, [])
 
