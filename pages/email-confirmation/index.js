@@ -3,11 +3,12 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from '../../components/MainLayout/MainLayout'
 import {useRouter} from "next/router";
 import {HomePageContainer} from "../../components/HomePageComponents/HomePageContainer";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {token_url} from "../../redux/url/url";
 import axios from "axios";
 import {auth} from "../../redux/actions/userData";
+import {showEmailValidationErrorPopup, showEmailValidationSuccessPopup} from "../../redux/actions/showPopups";
 
 
 
@@ -18,7 +19,7 @@ export default function EmailConfirmation(props) {
   const locale = router.locale;
 
   // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-
+  const [emailError, setEmailError] = useState(null);
 
   useEffect(() => {
 
@@ -32,11 +33,23 @@ export default function EmailConfirmation(props) {
       axios.patch(token_url, sendData)
         .then((data) => {
         if (data.data.extra_error_info) {
+
+          setEmailError('used_token')
+
+          dispatch(showEmailValidationErrorPopup(true));
+
           console.log(data, "extra_error_info!!!!!!!!!!!!!!");
         } else {
+
+          setEmailError(null)
+          dispatch(showEmailValidationSuccessPopup(true));
+
           console.log(data, "success!!!!!!!!!!!!!!!!!!");
         }
       }).catch((e) => {
+        setEmailError('other_error')
+        dispatch(showEmailValidationErrorPopup(true));
+
         console.log(e.response, "some error!!!!!!!!!!!!!!!!!");
       })
     }
@@ -48,6 +61,7 @@ export default function EmailConfirmation(props) {
     <>
       <MainLayout
         t={t}
+        emailError={emailError}
         // token={props.token}
       >
         <HomePageContainer

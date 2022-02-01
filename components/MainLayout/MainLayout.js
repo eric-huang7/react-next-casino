@@ -37,9 +37,11 @@ import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswor
 import {ChangePasswordContainer} from "../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
 import {showLogin} from "../../redux/actions/loginShow";
 import {showRegister} from "../../redux/actions/registerShow";
+import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
+import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 
 
-const MainLayout = ({children, t, token}) => {
+const MainLayout = ({children, t, token, emailError}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
@@ -280,6 +282,26 @@ const MainLayout = ({children, t, token}) => {
             :
             <></>
         }
+        {
+          isShowModal.isShowEmailValidationSuccess
+              ?
+              <EmailValidationContainer t={t}/>
+              :
+              <>
+              </>
+        }
+        {
+          isShowModal.isShowEmailValidationError
+              ?
+              <EmailValidationError
+                  t={t}
+                  emailError={emailError}
+              />
+              :
+              <>
+              </>
+        }
+
       </div>
     </>
   )

@@ -14,6 +14,8 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
   const [bonusForShow, setBonusForShow] = useState(null);
 
   const openBonusesDropdownHandler = (e) => {
+
+
     if (e === 'close') {
       setIsShowDropdown(false);
     } else {
@@ -45,14 +47,16 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
   const handleOutsideClick = (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
     if (!path.includes(bonusDropRef.current)) {
+
       openBonusesDropdownHandler("close")
+    }
+    if (path.includes((bonusDropRef.current))) {
+
+      openBonusesDropdownHandler();
     }
     if (path.includes((bonusDropRef.current))) {
       openBonusesDropdownHandler();
     }
-    // if (path.includes((bonusDropRef.current))) {
-    //   openBonusesDropdownHandler();
-    // }
   };
 
 

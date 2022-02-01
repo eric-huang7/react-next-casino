@@ -81,7 +81,9 @@
       "resendEmail": "Resend email",
       "changePassword": "Change your password",
       "passwordChanged": "Password Changed",
-      "emailSent": "Email Sent"
+      "emailSent": "Email Sent",
+      "success": "Success",
+      "error": "Error Occurred"
     },
     "textBlocks": {
       "instructionsText": "Fill in your e-mail address and we will send you instructions on how to reset your password via e-mail.",
@@ -94,6 +96,7 @@
     "instructionsSentText": "An email has been sent with instructions on how to change your password.",
     "emailConfirmInstructionsSend" : "Please click on the verification link in the email to activate your account. If you do not receive an email in a few seconds please check your spam folder.",
     "successPasswordChange": "Your password has been changed successfully.",
+    "successEmailValidation": "Your email has been successfully verified.",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend",

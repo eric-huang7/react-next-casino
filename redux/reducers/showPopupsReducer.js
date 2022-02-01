@@ -6,7 +6,7 @@ import {
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
-  SHOW_DEPOSIT_MODAL,
+  SHOW_DEPOSIT_MODAL, SHOW_EMAIL_VALIDATION_ERROR, SHOW_EMAIL_VALIDATION_SUCCESS,
   SHOW_EXIT_INTENT_POPUP, SHOW_FORGOT_PASSWORD,
   SHOW_MANAGE_SUBSCRIPTIONS, SHOW_MOBILE_CRYPTO_PAYMENTS,
   SHOW_MOBILE_PAYMENTS_STEPPER,
@@ -41,6 +41,9 @@ const initialState = {
   isShowMobileCryptoPayments: false,
   isShowForgotPassword: false,
   isShowChangePassword: false,
+  isShowEmailValidationSuccess: false,
+  isShowEmailValidationError: false,
+
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -51,6 +54,16 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowForgotPassword: payload,
+      }
+    case SHOW_EMAIL_VALIDATION_SUCCESS :
+      return {
+        ...state,
+        isShowEmailValidationSuccess: payload,
+      }
+    case SHOW_EMAIL_VALIDATION_ERROR :
+      return {
+        ...state,
+        isShowEmailValidationError: payload,
       }
     case SHOW_CHANGE_PASSWORD_WINDOW :
       return {
@@ -112,6 +125,8 @@ function showPopupsReducer(state = initialState, action) {
         isShowMobileCryptoPayments: false,
         isShowForgotPassword: false,
         isShowChangePassword: false,
+        isShowEmailValidationSuccess: false,
+        isShowEmailValidationError: false,
       }
     case SHOW_MOBILE_CRYPTO_PAYMENTS:
       return {
