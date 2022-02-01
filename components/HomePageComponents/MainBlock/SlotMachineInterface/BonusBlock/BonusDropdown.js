@@ -50,9 +50,9 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
     if (path.includes((bonusDropRef.current))) {
       openBonusesDropdownHandler();
     }
-    if (path.includes((bonusDropRef.current))) {
-      openBonusesDropdownHandler();
-    }
+    // if (path.includes((bonusDropRef.current))) {
+    //   openBonusesDropdownHandler();
+    // }
   };
 
 

@@ -40,10 +40,14 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
     }
   }, []);
 
+const clickPropag = (e) => {
 
+  e.stopPropagation();
+  e.preventDefault();
+}
 
   return (
-    <div className={`${styles.mainWrapper}`}>
+    <div onClick={(e) => clickPropag(e)} className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
         <MainHeading text={"bonusInfoContainer.bonusInfoHeading"} />
         <MainBonusInfoContainer

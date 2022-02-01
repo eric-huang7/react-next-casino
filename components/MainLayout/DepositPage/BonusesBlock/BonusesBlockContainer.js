@@ -41,6 +41,7 @@ export const BonusesBlockContainer = (props) => {
             showAllBonuses={showAllBonuses}
             chooseBonusClickHandler={chooseBonusClickHandler}
             userSelectedBonus={userSelectedBonus}
+            userCurrency={userCurrency}
           />
       )
     } else {
@@ -54,6 +55,7 @@ export const BonusesBlockContainer = (props) => {
           bonusDescription={iDontNeedBonus.info}
           isUseBonus={isUseBonus}
           bonusLink={'/#bonusLink'}
+          canShowInfo={false}
         />
       )
     }
@@ -67,6 +69,7 @@ export const BonusesBlockContainer = (props) => {
         bonusDescription={iDontNeedBonus.info}
         isUseBonus={isUseBonus}
         bonusLink={'/#bonusLink'}
+        canShowInfo={false}
       />
     )
   }

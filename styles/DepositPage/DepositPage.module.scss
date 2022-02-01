@@ -37,7 +37,13 @@
 
     text-align: center;
   }
+
+  & h2.ru {
+    font-family: Arial, sans-serif;
+  }
 }
+
+
 
 .depositInnerBlockWrapper {
   border-radius: 15px;
@@ -103,6 +109,8 @@
     cursor: pointer;
   }
 }
+
+
 
 .depositInputsBlock {
 

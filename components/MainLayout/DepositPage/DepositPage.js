@@ -18,10 +18,12 @@ import axios from "axios";
 import {payments_methods_url} from "../../../redux/url/url";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {DepositHeading} from "./DepositHeading";
+import {useRouter} from "next/router";
 
 
 export const DepositPage = ({t}) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const userInfo = useSelector((state) => state.authInfo.user);
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated);
@@ -77,7 +79,9 @@ export const DepositPage = ({t}) => {
   }, [userSelectedBonus.bonus_id])
 
 
-  const showAllBonusesHandler = () => {
+  const showAllBonusesHandler = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     if (showAllBonuses) {
       setShowAllBonuses(false);
     } else {
@@ -175,7 +179,7 @@ export const DepositPage = ({t}) => {
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal.isShowDepositModal ? "" : styles.hide}`}>
       {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
-        <h2>{t("depositPage.mainHeading")}</h2>
+        <h2 className={`${router.locale === 'ru' ? styles.ru : ""}`}>{t("depositPage.mainHeading")}</h2>
             <DepositPageStepper
               currencyData={currencyData}
               step={isShowDepositModal.depositModalStep}

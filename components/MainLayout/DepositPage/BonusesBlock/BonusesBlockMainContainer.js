@@ -21,7 +21,7 @@ export const BonusesBlockMainContainer = (props) => {
   return (
     <div className={styles.depositsBonusesBlock}>
       <p className={styles.selectBonus}>{t("depositPage.bonusBlockHeading")}</p>
-      <div onClick={() => showAllBonusesHandler()} className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : styles.hideBonuses}`}>
+      <div onClick={(e) => showAllBonusesHandler(e)} className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : styles.hideBonuses}`}>
         <BonusesBlockContainer
           showAllBonuses={showAllBonuses}
           userCurrency={userCurrency}
