@@ -6,7 +6,7 @@ import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch} from "react-redux";
 
 
-export const BonusInfoContainer = ({isShow, infoClickHandler}) => {
+export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCurrency}) => {
   const bonusInfoRef = useRef();
   const dispatch = useDispatch();
 
@@ -48,6 +48,8 @@ export const BonusInfoContainer = ({isShow, infoClickHandler}) => {
         <MainHeading text={"Deposit $100 and get $200"} />
         <MainBonusInfoContainer
             closeButtonClickHandler={closeButtonClickHandler}
+            bonusData={bonusData}
+            userCurrency={userCurrency}
         />
       </div>
     </div>

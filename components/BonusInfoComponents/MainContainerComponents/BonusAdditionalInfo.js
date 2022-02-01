@@ -1,13 +1,13 @@
 import styles from "../../../styles/BonusInfoComponent/BonusInfoComponent.module.scss";
 
 
-export const BonusAdditionalInfo = () => {
+export const BonusAdditionalInfo = ({bonusData}) => {
 
   return (
     <div className={styles.additionalBonusInfo}>
       <img src={'/assets/icons/arrowsIcon.png'} alt="icon exchange"/>
       <p>
-        {'A minimum deposit of 20 USD is required to receive the 180 free spins.'}
+        {bonusData.min_deposit}
       </p>
     </div>
   )

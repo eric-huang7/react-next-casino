@@ -92,8 +92,10 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
           isShowBonusInfo
             ?
               <BonusInfoContainer
+                  bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
                   infoClickHandler={setIsShowBonusInfo}
                   isShow={isShowBonusInfo}
+                  userCurrency={userCurrency}
               />
               :
               <></>

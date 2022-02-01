@@ -1,27 +1,36 @@
 import styles from "../../../styles/BonusInfoComponent/BonusInfoComponent.module.scss";
 
 
-export const BonusInfoBlock = () => {
+export const BonusInfoBlock = ({bonusData, userCurrency}) => {
 
 
-  return (
-    <ul className={styles.infoBlock}>
-      <li className={styles.infoItem}>
-        <p>{'Max bonus'}</p>
-        <p>{'100% up to $100'}</p>
-      </li>
-      <li className={styles.infoItem}>
-        <p>{'Free spins'}</p>
-        <p>{'20 instant + 160 (20 per day, starting in 24 hours)'}</p>
-      </li>
-      <li className={styles.infoItem}>
-        <p>{'Wagering Requirements'}</p>
-        <p>{'x40 Bonus'}</p>
-      </li>
-      <li className={styles.infoItem}>
-        <p>{'Max Bet per Game Round'}</p>
-        <p>{'5 USD'}</p>
-      </li>
-    </ul>
-  )
+    return (
+        <ul className={styles.infoBlock}>
+            <li className={styles.infoItem}>
+                <p>{'Max bonus'}</p>
+                <p>{bonusData.max_bonus}</p>
+            </li>
+            <li className={styles.infoItem}>
+                <p>{'Free spins'}</p>
+                <p>{bonusData.free_spins}</p>
+            </li>
+            <li className={styles.infoItem}>
+                <p>{'Wagering Requirements'}</p>
+                <p>{bonusData.wagering}</p>
+            </li>
+
+            {
+                bonusData.max_bet === 0
+                    ?
+                    <>
+                    </>
+                    :
+                    <li className={styles.infoItem}>
+                        <p>{'Max Bet per Game Round'}</p>
+                        <p>{bonusData.max_bet}</p>
+                    </li>
+            }
+        </ul>
+    )
 }
+
