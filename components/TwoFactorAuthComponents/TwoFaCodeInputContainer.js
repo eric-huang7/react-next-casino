@@ -1,8 +1,9 @@
 import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 import {InstructionsTextContainer} from "./InstructionsTextContainer";
+import {TwoFaCodeInput} from "./FormsConponents/TwoFaCodeInput";
 
 
-export const TwoFaCodeInputContainer = ({t}) => {
+export const TwoFaCodeInputContainer = ({t, }) => {
 
 
   return (
@@ -11,11 +12,9 @@ export const TwoFaCodeInputContainer = ({t}) => {
         text={'Enter the code to continue.'}
         t={t}
       />
-      <div className={styles.inputsContainer}>
-        <form >
-          <input type="text" className={styles.twoFaCodeInput} placeholder={'TwoFa'}/>
-        </form>
-      </div>
+      <TwoFaCodeInput
+        error={'asd'}
+      />
       <p className={styles.errorMessage}>{'Asdasd asd asd'}</p>
     </div>
   )

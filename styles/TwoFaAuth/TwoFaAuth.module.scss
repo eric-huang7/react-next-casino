@@ -180,3 +180,59 @@
   }
 
 }
+
+.twoFaCodeInputsContainer {
+  width: 100%;
+
+  padding: 0 20px;
+
+  & form {
+    width: 100%;
+
+    & .twoFaCodeInputs {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-wrap: nowrap;
+
+      & .twoFaCodeInput {
+        width: 55px;
+        height: 55px;
+
+        background-color: #f2f6f9;
+
+        border: 1px solid #b5b7b8;
+        border-radius: 7px;
+
+        outline: none;
+
+        font-size: 30px;
+        line-height: 26px;
+        color: #707070;
+        font-family: "Segoe UI", Arial, sans-serif;
+        text-align: center;
+        -moz-appearance: textfield;
+
+        margin: 0 5px;
+      }
+
+      & .twoFaCodeInput::-webkit-outer-spin-button,
+      .twoFaCodeInput::-webkit-inner-spin-button {
+
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    & .twoFaCodeInputs.errorBlockInput {
+      & .twoFaCodeInput {
+        border: 1px solid #ff0000;
+        background-color: rgba(255, 0, 0, 0.1);
+        color: #ff0000;
+      }
+    }
+  }
+}
