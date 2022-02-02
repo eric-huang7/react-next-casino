@@ -370,6 +370,7 @@
       "minimumDeposit" : "Минимальный депозит {{key_min_deposit}} {{key_user_currency}}.",
       "freeSpinsDescriptionLong": "{{free_spin_amount}} мгновенно + {{free_spin_value}}({{free_spin_per_day}} в день, начиная с полуночи)",
       "freeSpinsDescriptionShort": "{{free_spin_amount}} мгновенно",
+      "freeSpinsNone" : "Ничего",
       "wagering": "X{{wager_requirements}} бонус",
       "noWagering": "Без отыгрыша"
     }

@@ -3,12 +3,19 @@ import styles from "../../../styles/BonusInfoComponent/BonusInfoComponent.module
 
 export const BonusAdditionalInfo = ({bonusData}) => {
 
-  return (
-    <div className={styles.additionalBonusInfo}>
-      <img src={'/assets/icons/arrowsIcon.png'} alt="icon exchange"/>
-      <p>
-        {bonusData.min_deposit}
-      </p>
-    </div>
-  )
+  if (bonusData.min_deposit) {
+    return (
+      <div className={styles.additionalBonusInfo}>
+        <img src={'/assets/icons/arrowsIcon.png'} alt="icon exchange"/>
+        <p>
+          {bonusData.min_deposit}
+        </p>
+      </div>
+    )
+  } else {
+    return (
+        <></>
+    )
+  }
+
 }

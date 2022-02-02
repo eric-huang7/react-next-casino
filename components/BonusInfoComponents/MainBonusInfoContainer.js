@@ -9,10 +9,9 @@ import {useTranslation} from "next-i18next";
 export const MainBonusInfoContainer = ({closeButtonClickHandler, bonusData, userCurrency}) => {
     const {t} = useTranslation('common');
 
-    // console.log(bonusData, userCurrency.userCurrencyData, "!!!!!!")
 
     let bonusInfo = bonusInfoCalculator(bonusData, userCurrency.userCurrencyData, t);
-    // console.log(bonusInfo, "@@@@@@@@@@@@@@@@@@@@@@");
+
 
     return (
         <div className={styles.mainBonusContainer}>
@@ -87,7 +86,7 @@ function bonusInfoCalculator(bonusData, userCurrency, t) {
                     }
                 }
             } else {
-                result.min_deposit = result.min_deposit =  t("bonusInfoContainer.bonusInfo.minimumDeposit", {key_min_deposit: 0, key_user_currency: userCurrency.abbreviation});
+                result.min_deposit = 0;
                     // `A minimum deposit of ${0} ${userCurrency.abbreviation}`;
             }
 
@@ -109,7 +108,12 @@ function bonusInfoCalculator(bonusData, userCurrency, t) {
         result.free_spins = t("bonusInfoContainer.bonusInfo.freeSpinsDescriptionLong", {free_spin_amount: bonusData.free_spin_amount, free_spin_value: multiply, free_spin_per_day: bonusData.free_spin_per_day});
             // `${bonusData.free_spin_amount} instant + ${bonusData.free_spin_days * bonusData.free_spin_per_day}(${bonusData.free_spin_per_day} per day, starting in 24 hours)`;
     } else {
-        result.free_spins = t("bonusInfoContainer.bonusInfo.freeSpinsDescriptionShort", {free_spin_amount: bonusData.free_spin_amount});
+        if (bonusData.free_spin_amount) {
+            result.free_spins = t("bonusInfoContainer.bonusInfo.freeSpinsDescriptionShort", {free_spin_amount: bonusData.free_spin_amount});
+        } else {
+            result.free_spins = t("bonusInfoContainer.bonusInfo.freeSpinsNone");
+        }
+
             // `${bonusData.free_spin_amount} instant`;
     }
 
