@@ -13,7 +13,7 @@ export const TwoFaCodeInputContainer = ({t, }) => {
         t={t}
       />
       <TwoFaCodeInput
-        error={'asd'}
+        error={''}
       />
       <p className={styles.errorMessage}>{'Asdasd asd asd'}</p>
     </div>
