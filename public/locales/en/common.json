@@ -96,7 +96,7 @@
     "instructionsSentText": "An email has been sent with instructions on how to change your password.",
     "emailConfirmInstructionsSend" : "Please click on the verification link in the email to activate your account. If you do not receive an email in a few seconds please check your spam folder.",
     "successPasswordChange": "Your password has been changed successfully.",
-    "successEmailValidation": "Your email has been successfully verified.",
+    "successEmailValidation": "Congratulations your email has been validated! Thank you for choosing SlotsIdol Casino. You are now eligible for sign up bonuses.",
     "buttonsText": {
       "resetPassword": "Reset password",
       "resend": "Resend",
@@ -105,7 +105,9 @@
     },
     "errors": {
       "responseError": "An error has occurred. Please try again or contact support.",
-      "responseErrorToken": "Ups, seems like you have already used this link before."
+      "responseErrorToken": "Ups, seems like you have already used this link before.",
+      "errorEmailValidationToken": "Token invalid or expired. Try to resend confirmation instructions.",
+      "errorEmailValidationOther": "An error has occurred. Please try again or contact support."
     }
   },
   "pageNames": {

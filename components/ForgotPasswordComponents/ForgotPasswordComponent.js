@@ -9,7 +9,7 @@ import {InstructionsSendContainer} from "./InstructionsSendContainer/Instruction
 import {useEffect, useRef, useState} from "react";
 // import {ResendEmailContainer} from "./ResendEmailContainer/ResendEmailContainer";
 import {showForgotPasswordPopup, showTournaments} from "../../redux/actions/showPopups";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../redux/actions/loginShow";
 import axios from "axios";
 import {token_url} from "../../redux/url/url";
@@ -23,6 +23,10 @@ export const ForgotPasswordComponent = ({t}) => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
     resolver: yupResolver(schemaEmail),
   });
+
+  const userLogin = useSelector((store) => store.authInfo.isAuthenticated);
+
+  console.log(userLogin, 'FFFFFFFFFFFFFFFFFFFF')
 
   const [successSendPswd, setSuccessSendPswd] = useState(false);
   const [successSendEmail, setSuccessSendEmail] = useState(false);
@@ -118,7 +122,7 @@ export const ForgotPasswordComponent = ({t}) => {
               closeForgotPasswordHandler={closeForgotPasswordHandler}
               whatDoBackButton={backButtonClickHandler}
               text={'forgotPasswordForm.headings.instructionsSent'}
-              isShowBackButton={true}
+              isShowBackButton={userLogin ? false : true}
             />
             <InstructionsSendContainer
               t={t}
@@ -140,7 +144,7 @@ export const ForgotPasswordComponent = ({t}) => {
               closeForgotPasswordHandler={closeForgotPasswordHandler}
               whatDoBackButton={backButtonClickHandler}
               text={'forgotPasswordForm.headings.emailSent'}
-              isShowBackButton={true}
+              isShowBackButton={userLogin ? false : true}
             />
             <InstructionsSendContainer
               t={t}
@@ -192,7 +196,7 @@ export const ForgotPasswordComponent = ({t}) => {
                 t={t}
                 closeForgotPasswordHandler={closeForgotPasswordHandler}
                 whatDoBackButton={backButtonClickHandler}
-                isShowBackButton={true}
+                isShowBackButton={userLogin ? false : true}
                 text={'forgotPasswordForm.headings.forgotPassword'}
               />
               <div className={styles.innerContainer}>

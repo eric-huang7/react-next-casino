@@ -7,9 +7,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {token_url} from "../../redux/url/url";
 import axios from "axios";
-import {auth} from "../../redux/actions/userData";
+import {auth, changePasswordLogin} from "../../redux/actions/userData";
 import {showEmailValidationErrorPopup, showEmailValidationSuccessPopup} from "../../redux/actions/showPopups";
-
 
 
 export default function EmailConfirmation(props) {
@@ -28,30 +27,48 @@ export default function EmailConfirmation(props) {
         type: 1,
         token: props.token,
       }
-      console.log(props.token,sendData, 'props.token');
 
-      axios.patch(token_url, sendData)
-        .then((data) => {
-        if (data.data.extra_error_info) {
+      const timer = setTimeout(() => {
 
-          setEmailError('used_token')
+        axios.patch(token_url, sendData)
+          .then((data) => {
+            if (data.data.success) {
+              setEmailError(null)
+              dispatch(showEmailValidationSuccessPopup(true));
 
-          dispatch(showEmailValidationErrorPopup(true));
+              console.log(data, "success!!!!!!!!!!!!!!!!!!");
+              dispatch(changePasswordLogin(data.data));
+              if (typeof window !== "undefined") {
+                localStorage.setItem("userAuth", 'true');
+              }
+            } else if (data.data.extra_error_info === 'Token invalid') {
+              setEmailError('used_token')
 
-          console.log(data, "extra_error_info!!!!!!!!!!!!!!");
-        } else {
+              dispatch(showEmailValidationErrorPopup(true));
 
-          setEmailError(null)
-          dispatch(showEmailValidationSuccessPopup(true));
+              console.log(data, "extra_error_info!!!!!!!!!!!!!!");
 
-          console.log(data, "success!!!!!!!!!!!!!!!!!!");
-        }
-      }).catch((e) => {
-        setEmailError('other_error')
-        dispatch(showEmailValidationErrorPopup(true));
+            } else {
+              setEmailError('other_error')
+              dispatch(showEmailValidationErrorPopup(true));
 
-        console.log(e.response, "some error!!!!!!!!!!!!!!!!!");
-      })
+              console.log(data, "some other_error!!!!!!!!!!!!!!!!!");
+            }
+          })
+          .catch((e) => {
+            setEmailError('other_error')
+            dispatch(showEmailValidationErrorPopup(true));
+
+            console.log(e.response, "some error!!!!!!!!!!!!!!!!!");
+          })
+
+
+      }, 3000);
+
+      return () => {
+        console.log('timer clear');
+        clearTimeout(timer);
+      }
     }
 
   }, [])

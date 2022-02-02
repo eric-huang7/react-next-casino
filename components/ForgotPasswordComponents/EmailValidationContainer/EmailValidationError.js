@@ -51,14 +51,15 @@ export const EmailValidationError = ({t, emailError}) => {
                         isShowBackButton={false}
                     />
                     <ErrorTextBlock
-                        text={"sd"}
+                        text={emailError === 'used_token' ? 'forgotPasswordForm.errors.errorEmailValidationToken' : 'forgotPasswordForm.errors.errorEmailValidationOther'}
                         t={t}
                     />
-
-                    <ResendButton
-                        t={t}
-                        showResendContainerClickHandler={showResendContainerClickHandler}
-                    />
+                    <div className={styles.resendButtonContainer}>
+                        <ResendButton
+                          t={t}
+                          showResendContainerClickHandler={showResendContainerClickHandler}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
