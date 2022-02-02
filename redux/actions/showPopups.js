@@ -21,7 +21,7 @@ import {
   SHOW_PLAY_SAFE,
   SHOW_SEARCH_MODAL,
   SHOW_TOURNAMENTS,
-  SHOW_TOURNAMENTS_DETAILS,
+  SHOW_TOURNAMENTS_DETAILS, SHOW_TWO_FA_WINDOW,
 } from "./types";
 import {log} from "qrcode/lib/core/galois-field";
 
@@ -36,6 +36,13 @@ export const closeAll = (isShow) => {
 export const showExitIntentPopup = (isShow) => {
   return {
     type: SHOW_EXIT_INTENT_POPUP,
+    payload: isShow
+  }
+}
+
+export const showTwoFaPopup = (isShow) => {
+  return {
+    type: SHOW_TWO_FA_WINDOW,
     payload: isShow
   }
 }

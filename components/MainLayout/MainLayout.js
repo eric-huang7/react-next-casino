@@ -39,6 +39,7 @@ import {showLogin} from "../../redux/actions/loginShow";
 import {showRegister} from "../../redux/actions/registerShow";
 import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
+import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
 
 
 const MainLayout = ({children, t, token, emailError}) => {
@@ -301,6 +302,7 @@ const MainLayout = ({children, t, token, emailError}) => {
               <>
               </>
         }
+        <TwoFactorAutContainer t={t} />
 
       </div>
     </>

@@ -26,8 +26,6 @@ export const ForgotPasswordComponent = ({t}) => {
 
   const userLogin = useSelector((store) => store.authInfo.isAuthenticated);
 
-  console.log(userLogin, 'FFFFFFFFFFFFFFFFFFFF')
-
   const [successSendPswd, setSuccessSendPswd] = useState(false);
   const [successSendEmail, setSuccessSendEmail] = useState(false);
   const [showResendContainer, setShowResendContainer] = useState(false);

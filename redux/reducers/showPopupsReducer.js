@@ -15,7 +15,7 @@ import {
   SHOW_PLAY_SAFE,
   SHOW_SEARCH_MODAL,
   SHOW_TOURNAMENTS,
-  SHOW_TOURNAMENTS_DETAILS
+  SHOW_TOURNAMENTS_DETAILS, SHOW_TWO_FA_WINDOW
 } from "../actions/types";
 import {showMobileCryptoPayments} from "../actions/showPopups";
 
@@ -43,7 +43,7 @@ const initialState = {
   isShowChangePassword: false,
   isShowEmailValidationSuccess: false,
   isShowEmailValidationError: false,
-
+  isShowTwoFaPopup: false
 }
 
 function showPopupsReducer(state = initialState, action) {
@@ -54,6 +54,11 @@ function showPopupsReducer(state = initialState, action) {
       return {
         ...state,
         isShowForgotPassword: payload,
+      }
+    case SHOW_TWO_FA_WINDOW :
+      return {
+        ...state,
+        isShowTwoFaPopup: payload,
       }
     case SHOW_EMAIL_VALIDATION_SUCCESS :
       return {
@@ -127,6 +132,7 @@ function showPopupsReducer(state = initialState, action) {
         isShowChangePassword: false,
         isShowEmailValidationSuccess: false,
         isShowEmailValidationError: false,
+        isShowTwoFaPopup: false
       }
     case SHOW_MOBILE_CRYPTO_PAYMENTS:
       return {
