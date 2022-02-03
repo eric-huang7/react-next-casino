@@ -302,9 +302,9 @@ const MainLayout = ({children, t, token, emailError}) => {
               <>
               </>
         }
-        <TwoFactorAutContainer
-          t={t}
-        />
+        {/*<TwoFactorAutContainer*/}
+        {/*  t={t}*/}
+        {/*/>*/}
 
       </div>
     </>

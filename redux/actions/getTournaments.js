@@ -1,6 +1,6 @@
 import axios from "axios";
 import {get_tournaments_url} from "../url/url";
-import {GET_TOURNAMENTS} from "./types";
+import {GET_TOURNAMENTS, SET_ACTIVE_TOURNAMENT} from "./types";
 
 export const getTournaments = () => async dispatch => {
   const config = {
@@ -19,4 +19,12 @@ export const getTournaments = () => async dispatch => {
   } catch (err) {
     console.log('error in get tournaments endpoint', err)
   }
+}
+
+export const setActiveTournaments = (tournamentData) => {
+  return {
+    type: SET_ACTIVE_TOURNAMENT,
+    payload: tournamentData,
+  }
+
 }

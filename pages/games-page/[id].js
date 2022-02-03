@@ -31,8 +31,6 @@ const GamesPage = (props) => {
   const searchRef = useRef('');
   // console.log(router, 'zxczxc');
 
-  console.log(props, 'PROPS GAMES')
-
   useEffect(() => {
     // dispatch(setLang(locale));
     // dispatch(getGames());

@@ -1,5 +1,5 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentModaldetails.module.scss';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {showTournamentsDetails} from "../../../../redux/actions/showPopups";
 import {useEffect, useRef} from "react";
 import {useRouter} from "next/router";
@@ -9,7 +9,10 @@ export const TournamentModalDetails = ({t}) => {
   const hideDetails = () => {
     dispatch(showTournamentsDetails(false));
   }
-  const router = useRouter()
+  const router = useRouter();
+
+  const tournamentsData = useSelector((store) => store.tournaments.activeTournament);
+  console.log(tournamentsData, '************************')
 
   // useEffect(() => {
   //   dispatch(showTournamentsDetails(false));
@@ -43,9 +46,9 @@ export const TournamentModalDetails = ({t}) => {
             <span className={styles.closeOne}></span>
             <span className={styles.closeTwo}></span>
           </button>
-          <h2 className={styles.textHeading}>{t("tournaments.details.heading")}</h2>
+          <h2 className={styles.textHeading}>{t(`tournaments.details.${tournamentsData.frontend_id}.heading`)}</h2>
           <p className={styles.textInfo}>
-            {t("tournaments.details.text")}
+            {t(`tournaments.details.${tournamentsData.frontend_id}.text`)}
           </p>
         </div>
       </div>

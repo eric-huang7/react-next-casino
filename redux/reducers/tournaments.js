@@ -1,9 +1,10 @@
-import {GET_TOURNAMENTS} from "../actions/types";
+import {GET_TOURNAMENTS, SET_ACTIVE_TOURNAMENT} from "../actions/types";
 
 
 const initialState = {
   tournaments: null,
-  loadingTournaments: true
+  loadingTournaments: true,
+  activeTournament: null,
 }
 
 function tournamentsReducer(state = initialState, action) {
@@ -16,6 +17,11 @@ function tournamentsReducer(state = initialState, action) {
         ...state,
         tournaments: {...payload},
         loadingTournaments: false
+      }
+    case SET_ACTIVE_TOURNAMENT:
+      return {
+        ...state,
+        activeTournament: {...payload},
       }
     default:
       return state;

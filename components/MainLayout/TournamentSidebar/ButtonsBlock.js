@@ -4,11 +4,24 @@ import { formatDuration, intervalToDuration } from 'date-fns'
 import {dateTimer} from "../../../helpers/timer";
 import {Timer} from "./Timer";
 import {DepositRegistrationButton} from "./DepositRegistrationButton";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {setActiveTournaments} from "../../../redux/actions/getTournaments";
 
 
 export const ButtonsBlock = ({t, tournaments, sliderPosition, router, userInfo, showDetails}) => {
-
+const dispatch = useDispatch();
 // Number(tournaments.tournaments.results[sliderPosition].time_finished)
+
+
+  useEffect(() => {
+    if (tournaments.tournaments) {
+      dispatch(setActiveTournaments(tournaments.tournaments.results[sliderPosition]));
+    }
+
+  }, [sliderPosition, tournaments.tournaments])
+
+
   if (tournaments.loadingTournaments) {
     return <></>
   } else {

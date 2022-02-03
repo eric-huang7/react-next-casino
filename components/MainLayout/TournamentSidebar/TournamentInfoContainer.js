@@ -6,7 +6,7 @@ import {ButtonsBlock} from "./ButtonsBlock";
 
 
 export const TournamentInfoContainer = ({t, router, userInfo, showDetails}) => {
-  const tournaments = useSelector((store) => store.tournaments)
+  const tournaments = useSelector((store) => store.tournaments);
 
   const [sliderPosition, setSliderPosition] = useState(0);
 
