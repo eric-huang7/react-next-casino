@@ -256,3 +256,179 @@
 
   overflow: hidden;
 }
+
+
+@media screen and (max-width: 550px) {
+  .innerWrapper {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 50px;
+    border-radius: 10px 10px 0 0;
+    background-color: #ff0000;
+
+    & h3 {
+      margin: 0 5px 0 33px;
+
+      font-size: 18px;
+      font-weight: 400;
+      color: #ffffff;
+      font-family: "Arial", sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+
+      width: 100%;
+    }
+  }
+
+  .inputsBlock {
+    & .instructionsText {
+      font-size: 14px;
+    }
+
+    & .errorMessage {
+      font-size: 12px;
+    }
+  }
+
+  .twoFaCodeInputsContainer {
+
+    padding: 0 10px;
+
+    & form {
+
+      & .twoFaCodeInputs {
+
+        & input {
+          width: 45px;
+          height: 45px;
+
+          background-color: #f2f6f9;
+
+          border: 1px solid #b5b7b8;
+          border-radius: 7px;
+
+          outline: none;
+
+          font-size: 30px;
+          line-height: 26px;
+          color: #707070;
+          font-family: "Segoe UI", Arial, sans-serif;
+          text-align: center;
+          -moz-appearance: textfield;
+
+          margin: 0 5px;
+
+
+        }
+
+        & input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+
+      & .twoFaCodeInputs.errorBlockInput {
+        & input {
+          border: 1px solid #ff0000;
+          background-color: rgba(255, 0, 0, 0.1);
+          color: #ff0000;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 50px;
+    border-radius: 10px 10px 0 0;
+    background-color: #ff0000;
+
+    & h3 {
+      margin: 0 5px 0 33px;
+
+      font-size: 16px;
+      font-weight: 400;
+      color: #ffffff;
+      font-family: "Arial", sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+
+      width: 100%;
+    }
+  }
+
+  .inputsBlock {
+    & .instructionsText {
+      font-size: 14px;
+    }
+
+    & .errorMessage {
+      font-size: 12px;
+    }
+  }
+
+  .twoFaCodeInputsContainer {
+
+    padding: 0 10px;
+
+    & form {
+
+      & .twoFaCodeInputs {
+
+        & input {
+          width: 35px;
+          height: 40px;
+
+          background-color: #f2f6f9;
+
+          border: 1px solid #b5b7b8;
+          border-radius: 7px;
+
+          outline: none;
+
+          font-size: 25px;
+          line-height: 26px;
+          color: #707070;
+          font-family: "Segoe UI", Arial, sans-serif;
+          text-align: center;
+          -moz-appearance: textfield;
+
+          margin: 0 2px;
+
+
+        }
+
+        & input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+
+      & .twoFaCodeInputs.errorBlockInput {
+        & input {
+          border: 1px solid #ff0000;
+          background-color: rgba(255, 0, 0, 0.1);
+          color: #ff0000;
+        }
+      }
+    }
+  }
+}
