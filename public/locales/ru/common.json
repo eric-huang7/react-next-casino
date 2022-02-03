@@ -373,7 +373,7 @@
       "freeSpinsDescriptionLong": "{{free_spin_amount}} мгновенно + {{free_spin_value}}({{free_spin_per_day}} в день, начиная с полуночи)",
       "freeSpinsDescriptionShort": "{{free_spin_amount}} мгновенно",
       "freeSpinsNone" : "Ничего",
-      "wagering": "X{{wager_requirements}} бонус",
+      "wagering": "x{{wager_requirements}} бонус",
       "noWagering": "Без отыгрыша"
     }
   },

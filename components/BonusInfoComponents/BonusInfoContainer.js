@@ -59,7 +59,7 @@ const clickPropag = (e) => {
   return (
     <div onClick={(e) => clickPropag(e)} className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
-        <MainHeading text={"bonusInfoContainer.bonusInfoHeading"} />
+        {/*<MainHeading text={"bonusInfoContainer.bonusInfoHeading"} />*/}
         <MainBonusInfoContainer
             closeButtonClickHandler={closeButtonClickHandler}
             bonusData={bonusData}

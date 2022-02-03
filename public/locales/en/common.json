@@ -373,7 +373,7 @@
       "freeSpinsDescriptionLong": "{{free_spin_amount}} instant + {{free_spin_value}}({{free_spin_per_day}} per day, starting in 24 hours)",
       "freeSpinsDescriptionShort": "{{free_spin_amount}} instant",
       "freeSpinsNone" : "None",
-      "wagering": "X{{wager_requirements}} Bonus",
+      "wagering": "x{{wager_requirements}} Bonus",
       "noWagering": "No Wagering"
     }
   },
