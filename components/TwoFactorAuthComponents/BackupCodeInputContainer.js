@@ -35,12 +35,12 @@ export const BackupCodeInputContainer = ({t}) => {
           setIsLoading(false);
           dispatch(auth());
           setAuthError('');
-          dispatch(showTwoFaPopup(false));
           setValue('');
+          dispatch(showTwoFaPopup(false));
         })
         .catch((err) => {
           setIsLoading(false);
-          setAuthError('Неверный код. Пожалуйста, попробуй еще раз.');
+          setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
           setValue('');
         })
       setValue('');
@@ -59,7 +59,7 @@ export const BackupCodeInputContainer = ({t}) => {
           :
           <>
             <InstructionsTextContainer
-              text={'Enter the code to continue.'}
+              text={'twoFactorAuthPopup.instructionText'}
               t={t}
             />
             <BackupCodeInput
@@ -67,7 +67,7 @@ export const BackupCodeInputContainer = ({t}) => {
               value={value}
               inputCodeHandler={inputCodeHandler}
             />
-            <p className={styles.errorMessage}>{authError}</p>
+            <p className={styles.errorMessage}>{t(authError)}</p>
           </>
       }
     </div>

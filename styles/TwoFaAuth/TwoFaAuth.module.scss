@@ -118,6 +118,9 @@
 
     cursor: pointer;
   }
+  & button:hover {
+    text-decoration: underline;
+  }
 }
 
 .inputsBlock {

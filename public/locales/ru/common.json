@@ -999,5 +999,19 @@
         }
       }
     }
+  },
+  "twoFactorAuthPopup": {
+    "headings": {
+      "twoFaCode": "Двухфакторная аутентификация",
+      "backupCode": "Введи свой резервный код ниже"
+    },
+    "instructionText": "Введи код аутентификации",
+    "errorMessage": {
+      "wrongCode": "Неверный код. Пожалуйста, попробуй еще раз."
+    },
+    "buttons": {
+      "useBackupCode" : "Использовать резервный код",
+      "useTwoFaCode": "Использовать основной код 2FA"
+    }
   }
 }

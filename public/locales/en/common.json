@@ -999,7 +999,20 @@
         }
       }
     }
-
+  },
+  "twoFactorAuthPopup": {
+    "headings": {
+      "twoFaCode": "Two-Factor Authentication",
+      "backupCode": "Enter your backup code below"
+    },
+    "instructionText": "Enter the code to continue.",
+    "errorMessage": {
+      "wrongCode": "Incorrect code. Please try again."
+    },
+    "buttons": {
+      "useBackupCode" : "Use a backup code instead",
+      "useTwoFaCode": "Use a code from 2FA instead"
+    }
   }
 
 }

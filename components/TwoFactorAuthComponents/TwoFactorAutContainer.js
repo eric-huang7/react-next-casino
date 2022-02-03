@@ -43,7 +43,7 @@ export const TwoFactorAutContainer = ({t}) => {
         <div ref={twoFaAuthRef} className={styles.mainContainer}>
           <Heading
             t={t}
-            text={showTwoFaInputCode ? 'TWO-FACTOR AUTHENTICATION' : 'ENTER YOUR BACKUP CODE BELOW'}
+            text={showTwoFaInputCode ? 'twoFactorAuthPopup.headings.twoFaCode' : 'twoFactorAuthPopup.headings.backupCode'}
             closeHandler={closeTwoFaAuthHandler}
           />
           {
@@ -59,7 +59,7 @@ export const TwoFactorAutContainer = ({t}) => {
           }
           <ChangeWindowButton
             t={t}
-            text={showTwoFaInputCode ? 'Use a backup code instead' : 'Use a code from 2FA instead'}
+            text={showTwoFaInputCode ? 'twoFactorAuthPopup.buttons.useBackupCode' : 'twoFactorAuthPopup.buttons.useTwoFaCode'}
             changeWindowAction={changeWindowAction}
           />
         </div>

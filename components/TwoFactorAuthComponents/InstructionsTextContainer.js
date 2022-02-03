@@ -6,7 +6,7 @@ export const InstructionsTextContainer = ({t, text}) => {
 
   return (
     <p className={styles.instructionsText}>
-      {text}
+      {t(text)}
     </p>
   )
 }

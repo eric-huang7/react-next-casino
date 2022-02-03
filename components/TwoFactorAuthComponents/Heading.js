@@ -8,7 +8,7 @@ export const Heading = ({t, text, closeHandler}) => {
   return (
     <div className={styles.heading}>
       <h3>
-        {text}
+        {t(text)}
       </h3>
       <button onClick={() => closeHandler()} className={styles.closeButton}>
         <span className={styles.closeOne}></span>

@@ -4,7 +4,7 @@ import {TwoFaCodeInput} from "./FormsConponents/TwoFaCodeInput";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {qr_auth_url} from "../../redux/url/url";
-import {auth, mayYwoFactorAuth} from "../../redux/actions/userData";
+import {auth} from "../../redux/actions/userData";
 import {useDispatch} from "react-redux";
 import {showTwoFaPopup} from "../../redux/actions/showPopups";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
@@ -38,13 +38,14 @@ export const TwoFaCodeInputContainer = ({t,}) => {
           setIsLoading(false);
           dispatch(auth());
           setAuthError('');
-          dispatch(showTwoFaPopup(false));
-          setValue('');
           codeRef.current.retry();
+          setValue('');
+          dispatch(showTwoFaPopup(false));
+
         })
         .catch((err) => {
           setIsLoading(false);
-          setAuthError('Неверный код. Пожалуйста, попробуй еще раз.');
+          setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
           setValue('');
           codeRef.current.retry();
         })
@@ -63,7 +64,7 @@ export const TwoFaCodeInputContainer = ({t,}) => {
           :
           <>
             <InstructionsTextContainer
-              text={'Enter the code to continue.'}
+              text={'twoFactorAuthPopup.instructionText'}
               t={t}
             />
             <TwoFaCodeInput
@@ -75,7 +76,7 @@ export const TwoFaCodeInputContainer = ({t,}) => {
             <p
               className={styles.errorMessage}
             >
-              {authError}
+              {t(authError)}
             </p>
           </>
       }
