@@ -11,13 +11,13 @@ import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 
 
 export const TwoFaCodeInputContainer = ({t,}) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [authError, setAuthError] = useState('');
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const codeRef = useRef(undefined)
+  const codeRef = useRef(undefined);
 
   const handleChange = (val) => {
     setAuthError('');
@@ -48,7 +48,6 @@ export const TwoFaCodeInputContainer = ({t,}) => {
           setValue('');
           codeRef.current.retry();
         })
-
       setValue('');
     }
   }, [value])
