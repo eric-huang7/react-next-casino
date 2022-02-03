@@ -302,10 +302,15 @@ const MainLayout = ({children, t, token, emailError}) => {
               <>
               </>
         }
-        {/*<TwoFactorAutContainer*/}
-        {/*  t={t}*/}
-        {/*/>*/}
-
+        {
+          isShowModal.isShowTwoFaPopup
+          ?
+            <TwoFactorAutContainer
+              t={t}
+            />
+            :
+            <></>
+        }
       </div>
     </>
   )

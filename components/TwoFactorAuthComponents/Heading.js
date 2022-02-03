@@ -1,7 +1,7 @@
 import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 
 
-export const Heading = ({t, text}) => {
+export const Heading = ({t, text, closeHandler}) => {
 
 
 
@@ -10,7 +10,7 @@ export const Heading = ({t, text}) => {
       <h3>
         {text}
       </h3>
-      <button className={styles.closeButton}>
+      <button onClick={() => closeHandler()} className={styles.closeButton}>
         <span className={styles.closeOne}></span>
         <span className={styles.closeTwo}></span>
       </button>

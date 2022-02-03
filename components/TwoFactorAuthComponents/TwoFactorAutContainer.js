@@ -29,6 +29,10 @@ export const TwoFactorAutContainer = ({t}) => {
     }
   }, []);
 
+  const closeTwoFaAuthHandler = () => {
+    dispatch(showTwoFaPopup(false));
+  }
+
   const changeWindowAction = () => {
     setShowTwoFaInputCode((prevState => !prevState));
   }
@@ -40,6 +44,7 @@ export const TwoFactorAutContainer = ({t}) => {
           <Heading
             t={t}
             text={showTwoFaInputCode ? 'TWO-FACTOR AUTHENTICATION' : 'ENTER YOUR BACKUP CODE BELOW'}
+            closeHandler={closeTwoFaAuthHandler}
           />
           {
             showTwoFaInputCode

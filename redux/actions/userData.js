@@ -40,8 +40,9 @@ import {
 } from "../url/url";
 
 import {siteID} from "../../envs/envsForFetching";
-import {errorPopupActivate, errorPopupDeactivate} from "./showPopups";
+import {errorPopupActivate, errorPopupDeactivate, showTwoFaPopup} from "./showPopups";
 import {annulActiveBonuses} from "./getBonuses";
+import {showLogin} from "./loginShow";
 
 axios.defaults.withCredentials = true;
 
@@ -145,11 +146,19 @@ export const userData = (sendData) => async dispatch => {
   try {
     const res = await axios.post(login_url, body, config);
     console.log(res, 'LOGIN RESPONSE');
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: res.data
-    })
-    dispatch(auth());
+    if (res.data.user.is_2fa_enabled === 1) {
+
+      dispatch(showLogin(false));
+      dispatch(showTwoFaPopup(true));
+
+    } else {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      })
+      dispatch(auth());
+    }
+
   } catch (e) {
     console.log(e.response, 'LOGIN ERROR RESPONSE');
     dispatch({

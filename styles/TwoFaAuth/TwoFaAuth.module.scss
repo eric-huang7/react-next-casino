@@ -189,8 +189,12 @@
   & form {
     width: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     & .twoFaCodeInputs {
-      width: 100%;
+      //width: 100%;
 
       display: flex;
       align-items: center;
@@ -198,7 +202,7 @@
 
       flex-wrap: nowrap;
 
-      & .twoFaCodeInput {
+      & input {
         width: 55px;
         height: 55px;
 
@@ -217,10 +221,12 @@
         -moz-appearance: textfield;
 
         margin: 0 5px;
+
+
       }
 
-      & .twoFaCodeInput::-webkit-outer-spin-button,
-      .twoFaCodeInput::-webkit-inner-spin-button {
+      & input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
 
         -webkit-appearance: none;
         margin: 0;
@@ -228,11 +234,22 @@
     }
 
     & .twoFaCodeInputs.errorBlockInput {
-      & .twoFaCodeInput {
+      & input {
         border: 1px solid #ff0000;
         background-color: rgba(255, 0, 0, 0.1);
         color: #ff0000;
       }
     }
   }
+}
+
+.loadingWrapper {
+  margin-top: 30px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
