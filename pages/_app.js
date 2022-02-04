@@ -6,8 +6,9 @@ import "../styles/globals.scss"
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import useWebsocketNotification from "../hooks/useWebsocketNotification";
+// import useWebsocketNotification from "../hooks/useWebsocketNotification";
 import {NotifyProvider} from "../components/NotifyContext/NotifyContext";
+import nextI18NextConfig from '../next-i18next.config';
 
 
 const MyApp = ({Component, pageProps}) => {
@@ -50,4 +51,4 @@ const MyApp = ({Component, pageProps}) => {
 }
 
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(MyApp, nextI18NextConfig)

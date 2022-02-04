@@ -5,4 +5,5 @@ module.exports = {
     defaultNS: [],
     localeDetection: true,
   },
+  serializeConfig: false,
 };

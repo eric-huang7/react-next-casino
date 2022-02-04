@@ -10,9 +10,9 @@ const {t} = useTranslation("privacyPolicy")
         <div className={styles.textBlockFrame}>
           <h2 className={styles.textBlockHeading}>{t(textHeading)}</h2>
           <div className={styles.textInfoBlock}>
-            <p>
-              {textData}
-            </p>
+
+            <div dangerouslySetInnerHTML={{__html: t('text')}} />
+
           </div>
         </div>
       </div>
