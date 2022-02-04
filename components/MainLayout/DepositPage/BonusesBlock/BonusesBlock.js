@@ -60,7 +60,7 @@ export const BonusesBlock = (props) => {
                     }
 
                 </div>
-                <p className={styles.bonusDescriptionInfo}>{t(bonusDescription)}</p>
+                <p className={styles.bonusDescriptionInfo}>{bonusDescription}</p>
             </div>
         </div>
 

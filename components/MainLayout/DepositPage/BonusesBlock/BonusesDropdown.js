@@ -2,6 +2,7 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {BonusesBlock} from "./BonusesBlock";
 import {useSelector} from "react-redux";
 import {iconsUrl} from "../../../../helpers/imageUrl";
+import {bonusInfoCalculator} from "../../../../helpers/bonusInfoCalculator";
 
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
@@ -22,6 +23,9 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses,
             }
   return res
   }).map((el) => {
+
+            let bonusDescription = bonusInfoCalculator(el, userCurrency.userCurrencyData, t);
+
             return(
               <BonusesBlock
                 key={`${el.id} bonus`}
@@ -29,7 +33,7 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses,
                 bonusId={el.id}
                 bonusImage={iconsUrl(el.icon)}
                 bonusHeading={`bonuses.${el.id}.deposit_bonus.heading`}
-                bonusDescription={`bonuses.${el.id}.deposit_bonus.description`}
+                bonusDescription={`${bonusDescription.max_bonus}${bonusDescription.free_spins_amount ? ` + ${bonusDescription.free_spins_amount} ${t('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}
                 isUseBonus={isUseBonus}
                 chooseBonusClickHandler={chooseBonusClickHandler}
                 bonusData={el}
