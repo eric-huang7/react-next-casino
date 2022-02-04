@@ -3,10 +3,11 @@ import Link from "next/link";
 import {useTranslation} from "next-i18next";
 import {BonusSwitcher} from "./BonusSwitcher";
 import {iconsUrl} from "../../../../../helpers/imageUrl";
+import {bonusInfoCalculator} from "../../../../../helpers/bonusInfoCalculator";
 
 
 
-export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler, bonusDropRef, infoClickHandler}) => {
+export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBonus, openBonusesDropdownHandler, bonusDropRef, infoClickHandler, generalTranslate, userCurrency}) => {
   const {t} = useTranslation('promotionsPage');
 
 
@@ -14,6 +15,9 @@ export const BonusBlock = ({ checkedInputHandler, isChecked, bonusData, isUseBon
 
 
 if (isUseBonus) {
+
+  let bonusInfo = bonusInfoCalculator(bonusData, userCurrency.userCurrencyData, generalTranslate);
+
   return (
     <div ref={bonusDropRef} onClick={(e) => openBonusesDropdownHandler(e)} className={styles.bonusInfoBlockWrapper}>
       <div className={styles.bonusInfoBlock}>
@@ -26,7 +30,8 @@ if (isUseBonus) {
         <span onClick={(e) => infoClickHandler(e)}>{t("bonuses.bonusBlockInfoLink")}</span>
       </div>
       <p className={styles.bonusInfoText}>
-        {t(`bonuses.${bonusData.id}.deposit_bonus.description`)}
+        {`${bonusInfo.max_bonus}${bonusInfo.free_spins_amount ? ` + ${bonusInfo.free_spins_amount} ${generalTranslate('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}
+        {/*{t(`bonuses.${bonusData.id}.deposit_bonus.description`)}*/}
       </p>
       <BonusSwitcher
         checkedInputHandler={checkedInputHandler}

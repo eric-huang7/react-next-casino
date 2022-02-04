@@ -5,9 +5,13 @@ import {iconsUrl} from "../../../../../helpers/imageUrl";
 import {BonusItem} from "./BonusItem";
 import {useEffect, useRef, useState} from "react";
 import {BonusInfoContainer} from "../../../../BonusInfoComponents/BonusInfoContainer";
+import {BonusDropdownContainer} from "./BonusDropdownContainer";
+import {useTranslation} from "next-i18next";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
+
+  const {t} = useTranslation('common');
 
   const [isShowDropdown, setIsShowDropdown] = useState(false);
 
@@ -91,6 +95,8 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
           openBonusesDropdownHandler={openBonusesDropdownHandler}
           bonusDropRef={bonusDropRef}
           infoClickHandler={infoClickHandler}
+          generalTranslate={t}
+          userCurrency={userCurrency}
         />
         {
           isShowBonusInfo
@@ -104,20 +110,14 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
               :
               <></>
         }
-        <div className={`${styles.bonusDropdownContainer} ${isShowDropdown ? "" : styles.hideDropDown}`}>
-          {
-            bonusesArr.map((el) => {
-              return(
-                <BonusItem
-                  key={`${el.id} bonus slot machine`}
-                  bonusData={el}
-                  openBonusesDropdownHandler={openBonusesDropdownHandler}
-                  chooseBonusClickHandler={chooseBonusClickHandler}
-                />
-              )
-            })
-          }
-        </div>
+        <BonusDropdownContainer
+          chooseBonusClickHandler={chooseBonusClickHandler}
+          bonusesArr={bonusesArr}
+          isShowDropdown={isShowDropdown}
+          openBonusesDropdownHandler={openBonusesDropdownHandler}
+          userCurrency={userCurrency}
+          generalTranslate={t}
+        />
       </>
 
     )
