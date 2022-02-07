@@ -1,9 +1,9 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
-import Router, {useRouter} from "next/router";
+
 
 
 export const ControlPanel = ({setIsFullScreen}) => {
-  const router = useRouter();
+
 
 
   const minimizeHandler = () => {

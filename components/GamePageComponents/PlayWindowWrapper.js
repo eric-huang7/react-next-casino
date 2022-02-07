@@ -1,10 +1,10 @@
 import styles from '../../styles/GamePage/GamePage.module.scss';
 import {ControlPanel} from "./PlayWindowComponents/ControlPanel";
 import {GameWindow} from "./PlayWindowComponents/GameWindow";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
-export const PlayWindowWrapper = () => {
+const PlayWindowWrapper = () => {
 
   const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -26,6 +26,8 @@ export const PlayWindowWrapper = () => {
     </div>
   )
 }
+
+export default React.memo(PlayWindowWrapper);
 
 // https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/currency/coins.svg.
 

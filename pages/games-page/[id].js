@@ -197,7 +197,10 @@ const GamesPage = (props) => {
             setGamesError('gamesPage.error');
           });
       } else {
-        let gamesId = whatSearch.game_category_ids.split('|').filter((el) => el !== "").join(',');
+        let gamesId = whatSearch.game_ids.split('|').filter((el) => el !== "").join(',');
+
+        console.log(gamesId, 'asdasdasdasda')
+
         axios.get(game_ids(gamesId))
           .then((data) => {
             dispatch(setGames(data.data.results));

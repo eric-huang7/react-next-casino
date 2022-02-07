@@ -8,7 +8,7 @@ module.exports = {
     localeDetection: true,
 
     backend: {
-      loadPath: `http://tst-si-site.slotsidol.com:3030/locale_demo.php?lng={{lng}}&ns={{ns}}`
+      loadPath: `http://t-gpb.slotsidol.com:7000/i18n?ns={{ns}}&lng={{lng}}`
     },
   },
 
@@ -18,3 +18,5 @@ module.exports = {
 
   ns: ['common', 'navbarLinks', 'newsData', 'privacyPolicy', 'promotionsPage', 'termsAndConditions']
 };
+
+// http://t-gpb.slotsidol.com:7000/i18n?ns={{ns}}&lng={{lng}}
