@@ -159,7 +159,8 @@ const GamesPage = (props) => {
       heading = props.query.id;
       if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
         let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
-        axios.get(game_provider_category_ids(provider, whatSearch.game_category_ids))
+        let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== "").join(',');
+        axios.get(game_provider_category_ids(provider, categoryId))
           .then((data) => {
             dispatch(setGames(data.data.results));
             setRequestGamesData(data.data.results);
@@ -169,18 +170,24 @@ const GamesPage = (props) => {
             setGamesError('gamesPage.error');
           });
       } else if (whatSearch.game_category_ids) {
-        axios.get(game_category_ids(whatSearch.game_category_ids))
+        // whatSearch.game_category_ids
+        // axios.get(game_category_ids(whatSearch.game_category_ids))
+        let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== "").join(',');
+        axios.get('http://t-gpb.slotsidol.com:7000/games', {params: {type: categoryId}})
           .then((data) => {
+            console.log(data, '%%%%%%%%%%%%%%%%%%%%%%%%%%')
             dispatch(setGames(data.data.results));
             setRequestGamesData(data.data.results);
             setTotal_rows(data.data.total_rows);
           })
           .catch((err) => {
+            console.log(err.response, 'errData%%%%%%%%%%%%%%%%%')
             setGamesError('gamesPage.error');
           });
       } else if (whatSearch.game_provider_ids) {
         let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
 
+        // axios.get(game_provider_ids(provider))
         axios.get(game_provider_ids(provider))
           .then((data) => {
             dispatch(setGames(data.data.results));
@@ -191,7 +198,8 @@ const GamesPage = (props) => {
             setGamesError('gamesPage.error');
           });
       } else {
-        axios.get(game_ids(whatSearch.game_ids))
+        let gamesId = whatSearch.game_category_ids.split('|').filter((el) => el !== "").join(',');
+        axios.get(game_ids(gamesId))
           .then((data) => {
             dispatch(setGames(data.data.results));
             setRequestGamesData(data.data.results);

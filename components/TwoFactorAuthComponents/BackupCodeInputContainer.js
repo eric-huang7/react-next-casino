@@ -47,6 +47,11 @@ export const BackupCodeInputContainer = ({t}) => {
     }
   }, [value])
 
+  const backupCodeFormHandler = (e) => {
+    e.preventDefault();
+    setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
+  }
+
   return (
     <div className={styles.inputsBlock}>
 
@@ -66,6 +71,7 @@ export const BackupCodeInputContainer = ({t}) => {
               error={authError}
               value={value}
               inputCodeHandler={inputCodeHandler}
+              backupCodeFormHandler={backupCodeFormHandler}
             />
             <p className={styles.errorMessage}>{t(authError)}</p>
           </>

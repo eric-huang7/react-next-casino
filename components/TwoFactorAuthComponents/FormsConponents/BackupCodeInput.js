@@ -1,12 +1,12 @@
 import styles from "../../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 
 
-export const BackupCodeInput = ({error, value, inputCodeHandler}) => {
+export const BackupCodeInput = ({error, value, inputCodeHandler, backupCodeFormHandler}) => {
 
 
   return (
     <div className={styles.backupCodeInputContainer}>
-      <form >
+      <form onSubmit={(e) => backupCodeFormHandler(e)}>
         <input
           type="text"
           className={`${styles.backupCodeInput} ${error ? styles.errorField : ''}`}
