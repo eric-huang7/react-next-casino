@@ -1,0 +1,20 @@
+.gamePageMainSection {
+  padding: 100px 0;
+
+
+  background-color: #282828;
+
+  background-image: url("/assets/img/gamePage/backIcons.png");
+  background-position: center;
+
+
+  min-height: 95vh;
+}
+
+.red {
+  width: 550px;
+  height: 550px;
+
+  background: rgb(255,0,0);
+  background: radial-gradient(circle, rgba(255,0,0,0.16708690312062324) 2%, rgba(255,0,0,0.1390756986388305) 17%, rgba(0,0,0,0) 100%);
+}
