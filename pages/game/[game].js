@@ -10,11 +10,14 @@ const PlayGamePage = (props) => {
   console.log(props, '# page props');
 
   return (
-    <MainLayout t={t}>
-      <GamePageMainContainer
-        t={t}
-      />
-    </MainLayout>
+    <>
+      <MainLayout t={t}>
+        <GamePageMainContainer
+          t={t}
+        />
+      </MainLayout>
+    </>
+
   )
 }
 

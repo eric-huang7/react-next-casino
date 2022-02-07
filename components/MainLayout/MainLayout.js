@@ -40,6 +40,7 @@ import {showRegister} from "../../redux/actions/registerShow";
 import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
+import {PlayWindowWrapper} from "../GamePageComponents/PlayWindowWrapper";
 
 
 const MainLayout = ({children, t, token, emailError}) => {
@@ -115,6 +116,8 @@ const MainLayout = ({children, t, token, emailError}) => {
       </Head>
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
+        <PlayWindowWrapper/>
+
         <ExitIntentPopup
           isShowExitIntent={isShowModal.isShowExitIntentPopup}
           t={t}

@@ -22,7 +22,9 @@ export const MobileSideListLinks = ({t, dataList, messages}) => {
       </>
     )
   } else {
-
+    return (
+      <></>
+    )
   }
 
 }
