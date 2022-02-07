@@ -48,7 +48,7 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
             pathname: '/games-page/bonus-games',
             query: {
               id: "bonus-games",
-              bonus_heading: t(`bonuses.${bonusData.id}.deposit_bonus.heading`),
+              bonus_heading: t(`bonuses.bonus_${bonusData.id}.deposit_bonus.heading`),
             }
           })
         }
@@ -68,11 +68,11 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
     <div className={styles.bonusItemContainer}>
       <BonusImageContainer bonusData={bonusData} />
       <div  className={styles.bonusInfoContainer}>
-        <BonusTittle locale={router.locale} title={t(`bonuses.${bonusData.id}.deposit_bonus.heading`)} />
+        <BonusTittle locale={router.locale} title={t(`bonuses.bonus_${bonusData.id}.deposit_bonus.heading`)} />
         <div className={styles.bonusInfoInnerContainer}>
           <BonusIcon bonusData={bonusData} />
           <div  className={styles.bonusDataContainer}>
-            <BonusDescription locale={router.locale} description={t(`bonuses.${bonusData.id}.deposit_bonus.description`)} />
+            <BonusDescription locale={router.locale} description={t(`bonuses.bonus_${bonusData.id}.deposit_bonus.description`)} />
             <BonusSubmitButton userData={userData.isAuthenticated} submitBonusHandler={submitBonusHandler} />
           </div>
         </div>

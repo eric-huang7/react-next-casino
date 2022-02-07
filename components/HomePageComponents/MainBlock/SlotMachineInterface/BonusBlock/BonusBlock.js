@@ -25,7 +25,7 @@ if (isUseBonus) {
           <img src={iconsUrl(bonusData.icon)} alt="bonus icon"/>
         </div>
         <p>
-          {t(`bonuses.${bonusData.id}.deposit_bonus.heading`)}
+          {t(`bonuses.bonus_${bonusData.id}.deposit_bonus.heading`)}
         </p>
         <span onClick={(e) => infoClickHandler(e)}>{t("bonuses.bonusBlockInfoLink")}</span>
       </div>

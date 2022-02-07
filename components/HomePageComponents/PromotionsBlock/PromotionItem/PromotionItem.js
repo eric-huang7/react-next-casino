@@ -12,8 +12,8 @@ export const PromotionItem = ({bonusInfo, bonusCalculations}) => {
         <div className={styles.promotionFrame}>
           <div className={`${styles.promoHeading} __promoHeading`}>
             <h3>
-              <span>{t(`bonuses.${bonusInfo?.id}.description_short.line_one`)} </span>
-              <span>{t(`bonuses.${bonusInfo?.id}.description_short.line_two`)}</span>
+              <span>{t(`bonuses.bonus_${bonusInfo?.id}.description_short.line_one`)} </span>
+              <span>{t(`bonuses.bonus_${bonusInfo?.id}.description_short.line_two`)}</span>
             </h3>
           </div>
           <div className={styles.promoImage}>
@@ -23,18 +23,18 @@ export const PromotionItem = ({bonusInfo, bonusCalculations}) => {
         <div className={styles.promotionTextBlock}>
           <div className={styles.frameTextBlock}>
             <p className={styles.promotionMainText}>
-              {t(`bonuses.${bonusInfo?.id}.description_long`, {x_key: bonusCalculations.x_key, y_key: bonusCalculations.y_key, wagner_require_key: bonusCalculations.wagner_require_key})}
+              {t(`bonuses.bonus_${bonusInfo?.id}.description_long`, {x_key: bonusCalculations.x_key, y_key: bonusCalculations.y_key, wagner_require_key: bonusCalculations.wagner_require_key})}
             </p>
             <p className={styles.promotionAddText}>{bonusInfo.addText}</p>
             <ul className={styles.promotionAddTextList}>
               <li>
-                {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.max_bonus_amount`, {y_key: bonusCalculations.y_key})}
+                {t(`bonuses.bonus_${bonusInfo?.id}.bonus_amount_info.max_bonus_amount`, {y_key: bonusCalculations.y_key})}
               </li>
               <li>
-                {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.min_deposit_amount`, {min_deposit_key: bonusCalculations.min_deposit_key})}
+                {t(`bonuses.bonus_${bonusInfo?.id}.bonus_amount_info.min_deposit_amount`, {min_deposit_key: bonusCalculations.min_deposit_key})}
               </li>
               <li>
-                {t(`bonuses.${bonusInfo?.id}.bonus_amount_info.playthrough_value`, {wagner_require_key: bonusCalculations.wagner_require_key})}
+                {t(`bonuses.bonus_${bonusInfo?.id}.bonus_amount_info.playthrough_value`, {wagner_require_key: bonusCalculations.wagner_require_key})}
               </li>
             </ul>
           </div>

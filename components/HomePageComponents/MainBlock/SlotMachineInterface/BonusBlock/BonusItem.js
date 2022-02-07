@@ -14,13 +14,14 @@ export const BonusItem = ({bonusData, chooseBonusClickHandler, openBonusesDropdo
 
   let bonusInfo = bonusInfoCalculator(bonusData, userCurrency.userCurrencyData, generalTranslate);
 
+
   return (
     <div onClick={() => bonusItemClickHandler()} className={styles.bonusDropItem}>
       <div className={styles.bonusIconWrapper}>
         <img src={iconsUrl(bonusData.icon)} alt="bonus icon"/>
       </div>
       <div className={styles.bonusInfoWrapper}>
-        <span className={styles.bonusHeading}>{t(`bonuses.${bonusData.id}.deposit_bonus.heading`)}</span>
+        <span className={styles.bonusHeading}>{t(`bonuses.bonus_${bonusData.id}.deposit_bonus.heading`)}</span>
         <span className={styles.bonusDescription}>{`${bonusInfo.max_bonus}${bonusInfo.free_spins_amount ? ` + ${bonusInfo.free_spins_amount} ${generalTranslate('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}</span>
         {/*<span className={styles.bonusDescription}>{t(`bonuses.${bonusData.id}.deposit_bonus.description`)}</span>*/}
       </div>
