@@ -18,6 +18,7 @@ import {
 import {setGames} from "../../redux/actions/games";
 import {SearchGamesContainer} from "../../components/SearchGamesModalWindow/SearchGamesContainer";
 import axios from "axios";
+import {log} from "qrcode/lib/core/galois-field";
 
 
 
@@ -29,7 +30,7 @@ const GamesPage = (props) => {
   const {id} = router.query;
 
   const searchRef = useRef('');
-  // console.log(router, 'zxczxc');
+
 
   useEffect(() => {
     // dispatch(setLang(locale));
@@ -77,7 +78,6 @@ const GamesPage = (props) => {
       heading = props.query.id;
       axios.get(allProvidersURL(100))
         .then((data) => {
-          console.log(data.data);
           dispatch(setGames(data.data.results));
           setRequestGamesData(data.data.results);
           setTotal_rows(data.data.total_rows);
@@ -170,18 +170,17 @@ const GamesPage = (props) => {
             setGamesError('gamesPage.error');
           });
       } else if (whatSearch.game_category_ids) {
-        // whatSearch.game_category_ids
-        // axios.get(game_category_ids(whatSearch.game_category_ids))
         let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== "").join(',');
-        axios.get('http://t-gpb.slotsidol.com:7000/games', {params: {type: categoryId}})
+
+        axios.get(game_category_ids(categoryId))
           .then((data) => {
-            console.log(data, '%%%%%%%%%%%%%%%%%%%%%%%%%%')
+
             dispatch(setGames(data.data.results));
             setRequestGamesData(data.data.results);
             setTotal_rows(data.data.total_rows);
           })
           .catch((err) => {
-            console.log(err.response, 'errData%%%%%%%%%%%%%%%%%')
+
             setGamesError('gamesPage.error');
           });
       } else if (whatSearch.game_provider_ids) {
