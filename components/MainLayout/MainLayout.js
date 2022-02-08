@@ -41,6 +41,7 @@ import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidat
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
 import PlayWindowWrapper from "../GamePageComponents/PlayWindowWrapper";
+import {GamePageMainContainer} from "../GamePageComponents/GamePageMainContainer";
 
 
 
@@ -117,7 +118,7 @@ const MainLayout = ({children, t, token, emailError}) => {
       </Head>
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
-        {/*<PlayWindowWrapper />*/}
+
         <ExitIntentPopup
           isShowExitIntent={isShowModal.isShowExitIntentPopup}
           t={t}

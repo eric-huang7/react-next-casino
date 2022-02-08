@@ -5,11 +5,11 @@ import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
 
-const PlayWindowWrapper = () => {
+const PlayWindowWrapper = ({isFullScreen, setIsFullScreen}) => {
 
   const router = useRouter();
 
-  const [isFullScreen, setIsFullScreen] = useState(false);
+
 
   useEffect(() => {
     if (isFullScreen) {

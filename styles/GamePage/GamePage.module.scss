@@ -1,6 +1,19 @@
 .gamePageMainSection {
   //padding: 100px 0;
+  position: fixed;
 
+  top: 0;
+  left: 0;
+
+  z-index: 18;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.8);
+
+  overflow-y: hidden;
+  overflow-x: hidden;
 
   background-color: #282828;
 
@@ -10,11 +23,15 @@
 
   min-height: 95vh;
 
-  position: relative;
+  //position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fullScreenMainSection {
+  z-index: 30;
 }
 
 .blackBack {
@@ -85,7 +102,7 @@
   position: absolute;
   width: calc((100vh - 154px)*var(--aspect-ratio));
   max-width: calc(100% - 578px);
-  top: 140px;
+  top: 150px;
   left: 50%;
   bottom: auto;
 

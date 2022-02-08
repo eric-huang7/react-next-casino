@@ -9,6 +9,7 @@ import {useEffect} from "react";
 // import useWebsocketNotification from "../hooks/useWebsocketNotification";
 import {NotifyProvider} from "../components/NotifyContext/NotifyContext";
 import nextI18nextConfig from '../next-i18next.config';
+import {GameProvider} from "../components/GamePageComponents/GameProvider";
 
 
 const MyApp = ({Component, pageProps}) => {
@@ -44,7 +45,9 @@ const MyApp = ({Component, pageProps}) => {
   return (
     <Provider store={store}>
       <NotifyProvider store={store}>
-        <Component {...pageProps} />
+        <GameProvider>
+          <Component {...pageProps} />
+        </GameProvider>
       </NotifyProvider>
     </Provider>
   )

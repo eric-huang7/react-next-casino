@@ -22,7 +22,7 @@ import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./reducers/tournaments";
 import depositReducer from "./reducers/depositPaymentsReducer";
 import currencySelectorTypeReducer from "./reducers/currencySelectorTypeReducer";
-
+import showPlayWindowReducer from "./reducers/showPlayWindowReducer";
 
 
 export const rootReducer = combineReducers({
@@ -48,4 +48,5 @@ export const rootReducer = combineReducers({
   tournaments: tournamentsReducer,
   depositData: depositReducer,
   currencySelectorType: currencySelectorTypeReducer,
+  showPlayWindowReducer: showPlayWindowReducer
 })
