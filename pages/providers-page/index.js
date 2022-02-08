@@ -50,7 +50,7 @@ const ProvidersPage = (props) => {
 
   return (
     <>
-      <MainLayout t={t}>
+      {/*<MainLayout t={t}>*/}
         <MainBlock />
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in futu
@@ -62,7 +62,7 @@ const ProvidersPage = (props) => {
             :
             <ProvidersContainer t={t} providersData={providersData} providersError={providersError}/>
         }
-      </MainLayout>
+      {/*</MainLayout>*/}
     </>
   )
 }

@@ -9,36 +9,49 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
   const dispatch = useDispatch();
 
   let socketRef = useRef(null);
-  let socket;
-  function runSocket(maySound) {
+  // let socket;
+  const restart = () => {
+    let maySound = browserNotify
+    runSocket(maySound, userInfo);
+  }
+  function runSocket(maySound, userInf) {
+
+
     if (socketRef.current) {
-      socketRef.current.close();
+      socketRef.current.close(1000);
+      socketRef.current = null;
     }
-    if (userInfo.isAuthenticated) {
-      if (userInfo.user.token) {
-        socket = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInfo.user.token}&locale=${locale}`);
+    if (userInf.isAuthenticated) {
+      if (userInf.user.token) {
+        socketRef.current = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInf.user.token}&locale=${locale}`);
       }
 
-      socket.onopen = function (e) {
+      socketRef.current.onopen = function (e) {
         console.log('socket open!')
-        if (socket.readyState !== 3) {
-          socketRef.current = socket;
+        if (socketRef.current.readyState !== 3) {
+          // socketRef.current = socket;
         } else {
-          socket.close()
+          socketRef.current.close(1000);
+          socketRef.current = null;
         }
 
       };
 
-      socket.onclose = function (e) {
+      socketRef.current.onclose = function (e) {
         if (e.wasClean) {
           console.log('close clear', e.code, "@", e.reason);
         } else {
           console.log('close dirt', e);
+          if (userInf.user.token) {
+            // socketRef.current = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInf.user.token}&locale=${locale}`);
+            restart();
+          }
         }
-        runSocket(maySound);
+
+        // runSocket(maySound, userInfo);
       };
 
-      socket.onmessage = function (e) {
+      socketRef.current.onmessage = function (e) {
         // console.log('message ===>>>', e);
         let data = JSON.parse(e.data);
         console.log('===>> data', data);
@@ -65,19 +78,24 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
 
       };
 
-      socket.onerror = function (error) {
+      socketRef.current.onerror = function (error) {
         console.log('some socket error ===> ', error)
-        socket.close();
+        if (socketRef.current !== null) {
+          socketRef.current.close(1000);
+          socketRef.current = null;
+        }
+
       };
-    } else {
-      if (socketRef.current !== null) {
-        socketRef.current.close(1000);
-        console.log('socket close unmount  ', )
-      }
-      if (socket.readyState === 3) {
-        socket.close()
-      }
     }
+    // else {
+    //   if (socketRef.current !== null) {
+    //     socketRef.current.close(1000);
+    //     console.log('socket close unmount  ', )
+    //   }
+    //   if (socketRef.current.readyState === 3) {
+    //     socketRef.current.close(1000)
+    //   }
+    // }
   }
 
 
@@ -87,9 +105,9 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
       let maySound = browserNotify
       if (userInfo.user.token) {
         if(socketRef.current === null) {
-          runSocket(maySound);
+          runSocket(maySound, userInfo);
         } else {
-          socketRef.current.close()
+          socketRef.current.close(1000)
           socketRef.current = null;
         }
       }
@@ -97,10 +115,11 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
     return () => {
       if (socketRef.current !== null) {
         socketRef.current.close(1000);
-        console.log('socket close unmount  ')
+        socketRef.current = null;
+        console.log('socket close unmount  !')
       }
     }
-  }, [userInfo.isAuthenticated, userInfo?.user?.token]);
+  }, [userInfo.isAuthenticated, userInfo.user]);
 
 
   return socketRef;

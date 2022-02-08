@@ -255,7 +255,7 @@ const GamesPage = (props) => {
 
   return (
     <>
-      <MainLayout t={t}>
+      {/*<MainLayout t={t}>*/}
         <MainBlock />
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
@@ -278,7 +278,7 @@ const GamesPage = (props) => {
           gamesError={gamesError}
           />
         }
-      </MainLayout>
+      {/*</MainLayout>*/}
     </>
   )
 }

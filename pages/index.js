@@ -12,7 +12,7 @@ export default function Home(props) {
   // const dispatch = useDispatch();
   const router = useRouter();
   const locale = router.locale;
-  // console.log(router, "home LOCALE")
+
 
   // useEffect(() => {
   //   // dispatch(setLang(locale));
@@ -42,14 +42,14 @@ export default function Home(props) {
   return (
 
     <>
-      <MainLayout t={t}>
+      {/*<MainLayout t={t}>*/}
         <HomePageContainer
           t={t}
           // games={games}
           // jackpots={jackpots}
           // winners={winners}
         />
-      </MainLayout>
+      {/*</MainLayout>*/}
 
     </>
   )

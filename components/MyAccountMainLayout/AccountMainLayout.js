@@ -138,7 +138,7 @@ export const AccountMainLayout = ({t, children}) => {
           <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
         </Head>
         <div className={styles.accountMainLayoutWrapper}>
-          <Header t={t}/>
+          {/*<Header t={t}/>*/}
           {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
           <DepositPage t={t}/>
           {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
@@ -170,7 +170,7 @@ export const AccountMainLayout = ({t, children}) => {
     return (
       <>
         <div className={styles.accountMainLayoutWrapper}>
-          <Header t={t}/>
+          {/*<Header t={t}/>*/}
         </div>
       </>
     )

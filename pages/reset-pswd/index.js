@@ -6,6 +6,7 @@ import {HomePageContainer} from "../../components/HomePageComponents/HomePageCon
 import {useEffect} from "react";
 import {showChangePasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch, useSelector} from "react-redux";
+import {ChangePasswordContainer} from "../../components/ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
 
 
 
@@ -16,23 +17,38 @@ export default function ResetPswd(props) {
   const locale = router.locale;
 
   // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-
+  const isShowModal = useSelector((store) => store.showPopupsReducer);
 
   useEffect(() => {
 
-    if (props.token) {
-      dispatch(showChangePasswordPopup(true));
+    const timer = setTimeout(() => {
+      if (props.token) {
+        console.log('show')
+        dispatch(showChangePasswordPopup(true));
+      }
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
     }
-
   }, [router])
 
   return (
 
     <>
-      <MainLayout
-        t={t}
-        token={props.token}
-      >
+      {/*<MainLayout*/}
+      {/*  t={t}*/}
+      {/*  token={props.token}*/}
+      {/*>*/}
+        {
+          isShowModal.isShowChangePassword && props.token
+            ?
+            <ChangePasswordContainer
+              t={t}
+              token={props.token}
+            />
+            :
+            <></>
+        }
         <HomePageContainer
           t={t}
           // games={games}
@@ -40,7 +56,7 @@ export default function ResetPswd(props) {
           // winners={winners}
 
         />
-      </MainLayout>
+      {/*</MainLayout>*/}
 
     </>
   )

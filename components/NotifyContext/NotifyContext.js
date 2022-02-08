@@ -12,10 +12,12 @@ const NotifyProvider = (props) => {
   const userInfo = useSelector((store) => store.authInfo);
   let browserNotify = useSelector((state) => state.userSubscriptionsData.notifySubscribe);
 
-  const socket = useWebsocketNotification(userInfo, locale, browserNotify);
+  console.log(userInfo, 'asdasd');
+
+  // const socket =
 
   return (
-    <NotifyContext.Provider value={{socket: socket}}>
+    <NotifyContext.Provider value={{socket: useWebsocketNotification(userInfo, locale, browserNotify)}}>
       {
         props.children
       }

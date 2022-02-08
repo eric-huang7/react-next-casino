@@ -34,14 +34,14 @@ const dispatch = useDispatch();
   }, []);
   return (
     <>
-      <MainLayout t={t}>
+      {/*<MainLayout t={t}>*/}
         <MainBlockWhyUseCrypto />
         <WhyUseBitcoinBlock t={t}/>
         <WhyUseBitcoinItemsContainer t={t}/>
         <GetStartedWith t={t} />
         <GetStartedInstructionsContainer t={t}/>
         <NewsBlock t={t} isBackShow={false}/>
-      </MainLayout>
+      {/*</MainLayout>*/}
     </>
   )
 }
