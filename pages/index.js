@@ -42,14 +42,14 @@ export default function Home(props) {
   return (
 
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <HomePageContainer
           t={t}
           // games={games}
           // jackpots={jackpots}
           // winners={winners}
         />
-      {/*</MainLayout>*/}
+      </MainLayout>
 
     </>
   )

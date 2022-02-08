@@ -8,9 +8,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {token_url} from "../../redux/url/url";
 import axios from "axios";
 import {auth, changePasswordLogin} from "../../redux/actions/userData";
-import {showEmailValidationErrorPopup, showEmailValidationSuccessPopup} from "../../redux/actions/showPopups";
-import {EmailValidationError} from "../../components/ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
-import {EmailValidationContainer} from "../../components/ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
+import {
+  showEmailValidationErrorPopup,
+  showEmailValidationSuccessPopup,
+  showTwoFaPopup
+} from "../../redux/actions/showPopups";
 
 
 export default function EmailConfirmation(props) {
@@ -19,7 +21,6 @@ export default function EmailConfirmation(props) {
   const router = useRouter();
   const locale = router.locale;
 
-  const isShowModal = useSelector((store) => store.showPopupsReducer);
   // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
   const [emailError, setEmailError] = useState(null);
 
@@ -37,11 +38,19 @@ export default function EmailConfirmation(props) {
           .then((data) => {
             if (data.data.success) {
 
-              setEmailError(null)
-              dispatch(showEmailValidationSuccessPopup(true));
-              dispatch(changePasswordLogin(data.data));
-              if (typeof window !== "undefined") {
-                localStorage.setItem("userAuth", 'true');
+
+              if (data.data.user.is_2fa_enabled === 1) {
+
+                console.log(data.data.user, 'is_2fa_enabled');
+                setEmailError(null);
+                dispatch(showTwoFaPopup(true));
+              } else {
+                setEmailError(null);
+                dispatch(showEmailValidationSuccessPopup(true));
+                dispatch(changePasswordLogin(data.data));
+                if (typeof window !== "undefined") {
+                  localStorage.setItem("userAuth", 'true');
+                }
               }
 
             } else if (data.data.extra_error_info === 'Token invalid') {
@@ -76,30 +85,11 @@ export default function EmailConfirmation(props) {
   return (
 
     <>
-      {/*<MainLayout*/}
-      {/*  t={t}*/}
-      {/*  emailError={emailError}*/}
-      {/*  // token={props.token}*/}
-      {/*>*/}
-      {
-        isShowModal.isShowEmailValidationError
-          ?
-          <EmailValidationError
-            t={t}
-            emailError={emailError}
-          />
-          :
-          <>
-          </>
-      }
-      {
-        isShowModal.isShowEmailValidationSuccess
-          ?
-          <EmailValidationContainer t={t}/>
-          :
-          <>
-          </>
-      }
+      <MainLayout
+        t={t}
+        emailError={emailError}
+        // token={props.token}
+      >
         <HomePageContainer
           t={t}
           // games={games}
@@ -107,7 +97,7 @@ export default function EmailConfirmation(props) {
           // winners={winners}
 
         />
-      {/*</MainLayout>*/}
+      </MainLayout>
 
     </>
   )

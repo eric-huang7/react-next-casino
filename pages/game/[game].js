@@ -7,14 +7,15 @@ import {GamePageMainContainer} from "../../components/GamePageComponents/GamePag
 const PlayGamePage = (props) => {
   const {t} = useTranslation('common');
 
+  console.log(props, '# page props');
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <GamePageMainContainer
           t={t}
         />
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
 
   )

@@ -15,6 +15,8 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
 
     let amount = numberTransformer(balanceData[0].current_balance);
 
+    // console.log(userInfo?.balance?.balances);
+
     let balance = balanceData.length === 0 ? "0.00" : amount;
     let currency = balanceData.length === 0
       ?

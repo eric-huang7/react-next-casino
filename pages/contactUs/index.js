@@ -37,7 +37,7 @@ const ContactUs = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <MainBlock />
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
@@ -46,7 +46,7 @@ const ContactUs = (props) => {
           <WhySlotsIdol t={t} isBackShow={false}/>
         </div>
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
 
     </>
   )

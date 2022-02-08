@@ -52,7 +52,6 @@ const MainLayout = ({children, t, token, emailError}) => {
 
 
   useEffect(() => {
-    console.log('close');
     dispatch(closeAll(false));
     dispatch(backButtonShouldDo(false));
     dispatch(showLogin(false));
@@ -277,35 +276,35 @@ const MainLayout = ({children, t, token, emailError}) => {
           :
           <></>
         }
-        {/*{*/}
-        {/*  isShowModal.isShowChangePassword && token*/}
-        {/*    ?*/}
-        {/*    <ChangePasswordContainer*/}
-        {/*      t={t}*/}
-        {/*      token={token}*/}
-        {/*    />*/}
-        {/*    :*/}
-        {/*    <></>*/}
-        {/*}*/}
-        {/*{*/}
-        {/*  isShowModal.isShowEmailValidationSuccess*/}
-        {/*      ?*/}
-        {/*      <EmailValidationContainer t={t}/>*/}
-        {/*      :*/}
-        {/*      <>*/}
-        {/*      </>*/}
-        {/*}*/}
-        {/*{*/}
-        {/*  isShowModal.isShowEmailValidationError*/}
-        {/*      ?*/}
-        {/*      <EmailValidationError*/}
-        {/*          t={t}*/}
-        {/*          emailError={emailError}*/}
-        {/*      />*/}
-        {/*      :*/}
-        {/*      <>*/}
-        {/*      </>*/}
-        {/*}*/}
+        {
+          isShowModal.isShowChangePassword && token
+            ?
+            <ChangePasswordContainer
+              t={t}
+              token={token}
+            />
+            :
+            <></>
+        }
+        {
+          isShowModal.isShowEmailValidationSuccess
+              ?
+              <EmailValidationContainer t={t}/>
+              :
+              <>
+              </>
+        }
+        {
+          isShowModal.isShowEmailValidationError
+              ?
+              <EmailValidationError
+                  t={t}
+                  emailError={emailError}
+              />
+              :
+              <>
+              </>
+        }
         {
           isShowModal.isShowTwoFaPopup
           ?

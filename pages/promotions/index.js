@@ -37,10 +37,10 @@ const Promotions = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <PromotionsContainer />
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
   )
 }

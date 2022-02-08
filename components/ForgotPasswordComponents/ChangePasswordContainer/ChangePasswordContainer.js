@@ -2,7 +2,7 @@ import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
 import {HeadingBlock} from "../HeadingBlock";
 import {ResetPasswordButton} from "../ResetPasswordButton";
 import {useDispatch} from "react-redux";
-import {showChangePasswordPopup} from "../../../redux/actions/showPopups";
+import {showChangePasswordPopup, showTwoFaPopup} from "../../../redux/actions/showPopups";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {PasswordInputsContainer} from "./PasswordInputsContainer";
@@ -12,6 +12,7 @@ import {token_url} from "../../../redux/url/url";
 import axios from "axios";
 import {auth, changePasswordLogin} from "../../../redux/actions/userData";
 import {InstructionsSendContainer} from "../InstructionsSendContainer/InstructionsSendContainer";
+import {showLogin} from "../../../redux/actions/loginShow";
 
 
 export const ChangePasswordContainer = ({t, token}) => {
@@ -42,12 +43,21 @@ export const ChangePasswordContainer = ({t, token}) => {
     axios.patch(token_url, userData)
       .then((data) => {
         if (data.data.success) {
-          setRequestError('');
-          setRequestSuccess(true);
-          dispatch(changePasswordLogin(data.data));
-          if (typeof window !== "undefined") {
-            localStorage.setItem("userAuth", 'true');
+
+          if (data.data.user.is_2fa_enabled === 1) {
+
+            dispatch(showChangePasswordPopup(false));
+            dispatch(showTwoFaPopup(true));
+
+          } else {
+            setRequestError('');
+            setRequestSuccess(true);
+            dispatch(changePasswordLogin(data.data));
+            if (typeof window !== "undefined") {
+              localStorage.setItem("userAuth", 'true');
+            }
           }
+
         } else if (data.data.extra_error_info === 'Token invalid') {
           reset();
           setRequestSuccess(false);

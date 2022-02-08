@@ -48,7 +48,7 @@ const NotificationsPage = () => {
 
   return (
     <>
-        {/*<MainLayout t={t}>*/}
+        <MainLayout t={t}>
           <div className={styles.mainWrapper}>
 
               {
@@ -60,7 +60,7 @@ const NotificationsPage = () => {
                   : ''
               }
           </div>
-        {/*</MainLayout>*/}
+        </MainLayout>
     </>
 
   )

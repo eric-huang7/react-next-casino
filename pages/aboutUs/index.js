@@ -46,14 +46,14 @@ const AboutUS = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <MainBlock t={t}/>
         <div className={styles.textWhyslotsBack}>
           <TextBlocks t={t}/>
           <WhySlotsIdol t={t} isBackShow={false}/>
         </div>
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
   )
 }

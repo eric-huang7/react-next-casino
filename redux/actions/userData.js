@@ -156,7 +156,10 @@ export const userData = (sendData) => async dispatch => {
         type: LOGIN_SUCCESS,
         payload: res.data
       })
-      dispatch(auth());
+      // dispatch(auth());
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userAuth", 'true');
+      }
     }
 
   } catch (e) {
@@ -543,6 +546,9 @@ export const signUp = (signUpData) => async dispatch => {
       payload: res.data
     })
     dispatch(auth());
+    // if (typeof window !== "undefined") {
+    //   localStorage.setItem("userAuth", 'true');
+    // }
   } catch (e) {
     console.log(e.response, "SOME ERROR WHEN REGISTER USER");
     dispatch({

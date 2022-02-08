@@ -83,6 +83,7 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
         if (socketRef.current !== null) {
           socketRef.current.close(1000);
           socketRef.current = null;
+          // restart();
         }
 
       };

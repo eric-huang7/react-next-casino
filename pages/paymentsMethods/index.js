@@ -33,7 +33,7 @@ const PaymentsMethods = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <div className={styles.paymentsMainWrapper}>
           <PaymentsInformationBlock t={t}/>
           {/*<PaymentsDepositBlock t={t}/>*/}
@@ -41,7 +41,7 @@ const PaymentsMethods = (props) => {
         </div>
 
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
   )
 }

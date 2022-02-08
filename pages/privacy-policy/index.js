@@ -36,7 +36,7 @@ const PrivacyPolicy = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <MainBlock />
         <div className={styles.textWhyslotsBack}>
           <TextBlock
@@ -46,7 +46,7 @@ const PrivacyPolicy = (props) => {
           <WhySlotsIdol t={t} isBackShow={false}/>
         </div>
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
   )
 }

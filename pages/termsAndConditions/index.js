@@ -39,7 +39,7 @@ const TermsConditions = (props) => {
 
   return (
     <>
-      {/*<MainLayout t={t}>*/}
+      <MainLayout t={t}>
         <MainBlock />
         {/*<PlayerBlock />*/}
         <div className={styles.textWhyslotsBack}>
@@ -50,7 +50,7 @@ const TermsConditions = (props) => {
           <WhySlotsIdol t={t} isBackShow={false}/>
         </div>
         <NewsBlock t={t} isBackShow={false}/>
-      {/*</MainLayout>*/}
+      </MainLayout>
     </>
   )
 }
