@@ -39,7 +39,9 @@ export const PlayWindowWrapper = ({isFullScreen, setIsFullScreen, isMinimized, s
       {
         isMinimized
           ?
-          <MinimizedControlPanel />
+          <MinimizedControlPanel
+            closeGameHandler={closeGameHandler}
+          />
           :
           <></>
       }

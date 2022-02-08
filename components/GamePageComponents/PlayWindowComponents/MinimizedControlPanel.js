@@ -1,12 +1,16 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
 
 
-export const MinimizedControlPanel = () => {
+export const MinimizedControlPanel = ({closeGameHandler}) => {
+
 
   return (
     <div className={styles.minimizedControlPanel}>
       <p>Game Name</p>
-      <button className={styles.closeButton}></button>
+      <button
+        onClick={() => closeGameHandler()}
+        className={styles.closeButton}
+      />
     </div>
   )
 }

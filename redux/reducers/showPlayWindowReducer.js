@@ -1,8 +1,9 @@
-import {SHOW_GAME_WINDOW} from "../actions/types";
+import {MINIMIZE_GAME_WINDOW, SHOW_GAME_WINDOW} from "../actions/types";
 
 
 const initialState = {
-  isShowPlayWindow: false
+  isShowPlayWindow: false,
+  isMinimizePlayWindow: false
 }
 
 function showPlayWindowReducer(state = initialState, action) {
@@ -14,6 +15,11 @@ function showPlayWindowReducer(state = initialState, action) {
       return {
         ...state,
         isShowPlayWindow: payload
+      }
+    case MINIMIZE_GAME_WINDOW:
+      return {
+        ...state,
+        isMinimizePlayWindow: payload
       }
     default:
       return state
