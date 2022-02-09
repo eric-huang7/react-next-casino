@@ -1,24 +1,36 @@
 import {GamePageMainContainer} from "./GamePageMainContainer";
 import {useTranslation} from "next-i18next";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
+import {minimizeGameWindow, showGameWindow} from "../../redux/actions/showGameWindow";
 
 
 export const GameProvider = ({children}) => {
   const {t} = useTranslation('common');
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer.isShowPlayWindow);
+  useEffect(() => {
 
-  console.log(showPlayWindow);
+    if (router.pathname.slice(1).split('/')[0] === 'accounts') {
+      dispatch(showGameWindow(false));
+      dispatch(minimizeGameWindow(false));
+    }
+  }, [router])
+
+  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
+
 
   return (
     <>
       {children}
       {
-        showPlayWindow
+        showPlayWindow.isShowPlayWindow
         ?
           <GamePageMainContainer
             t={t}
-            isShow={true}
+            isMinimized={showPlayWindow.isMinimizePlayWindow}
           />
           :
           <></>

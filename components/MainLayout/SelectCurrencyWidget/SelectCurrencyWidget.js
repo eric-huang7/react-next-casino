@@ -100,6 +100,9 @@ useEffect(() => {
         dispatch(showPaymentCurrencySwitcher(false));
       } else if (isShowCurrencySwitcher) {
         dispatch(showCurrencySwitcher(false));
+      } else {
+        dispatch(showPaymentCurrencySwitcher(false));
+        dispatch(showCurrencySwitcher(false));
       }
     }
     dispatch(showMobileCryptoPayments(false));

@@ -64,7 +64,7 @@ const MainLayout = ({children, t, token, emailError}) => {
   const isShowModal = useSelector((store) => store.showPopupsReducer);
   const paymentsData = useSelector((store) => store.depositData);
 
-  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer.isShowPlayWindow);
+  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
   // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
@@ -100,7 +100,7 @@ const MainLayout = ({children, t, token, emailError}) => {
           document.body.style.overflowY = "auto";
           if (logInShow || registerShow) {
             document.body.style.overflowY = "hidden";
-          } else if (showPlayWindow) {
+          } else if (showPlayWindow.isShowPlayWindow && !showPlayWindow.isMinimizePlayWindow) {
             document.body.style.overflowY = "hidden";
           } else {
             document.body.style.overflowY = "auto";
