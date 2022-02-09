@@ -82,6 +82,8 @@ export const PATCH_CHANGE_CURRENCY = 'PATCH_CHANGE_CURRENCY';
 export const PLAY_FREE_GAME = 'PLAY_FREE_GAME';
 export const PLAY_GAME = 'PLAY_GAME';
 
+export const DELETE_GAME_LINK = 'DELETE_GAME_LINK';
+
 // ############## CURRENCIES
 
 export const GET_CURRENCY = "GET_CURRENCY";

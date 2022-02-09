@@ -12,7 +12,8 @@ import {GameItemContainer} from "./GameItemContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {freeGame, playPayGame} from "../../../redux/actions/playGames";
+import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
+import {showGameWindow} from "../../../redux/actions/showGameWindow";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
@@ -25,19 +26,35 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      router.push(playGames.startGame.game_link);
-
+      if (width > 1065) {
+        dispatch(showGameWindow(true));
+      } else {
+        // router.push(playGames.startGame.game_link);
+        // dispatch(deleteGameLink());
+      }
     }
     if (playGames.freeGame?.game_link) {
-      router.push(playGames.freeGame.game_link);
+      if (width > 1065) {
+        console.log('start');
+        dispatch(showGameWindow(true));
+      } else {
+        // router.push(playGames.freeGame.game_link);
+        // dispatch(deleteGameLink());
+      }
     }
+    console.log(playGames, '@@@@@@@@@@!!!!!!!!!!')
   }, [playGames]);
+
+
+
+
   const playFunClickHandler = (gameData) => {
     let sendData = {
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
     }
     dispatch(freeGame(sendData));
+    dispatch(showGameWindow(true));
   }
   const playGameClickHAndler = (gameData, user) => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {

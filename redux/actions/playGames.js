@@ -1,5 +1,5 @@
 import {freeGame_url, payGame_url} from "../url/url";
-import {PLAY_FREE_GAME, PLAY_GAME} from "./types";
+import {DELETE_GAME_LINK, PLAY_FREE_GAME, PLAY_GAME} from "./types";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -44,5 +44,12 @@ export const playPayGame = (gameData) => async dispatch => {
 
   } catch (e) {
     console.log(e.response.data, 'SOME ERROR WHEN GET PAYED GAME')
+  }
+}
+
+export const deleteGameLink = () => {
+  return {
+    type: DELETE_GAME_LINK,
+    payload: null,
   }
 }

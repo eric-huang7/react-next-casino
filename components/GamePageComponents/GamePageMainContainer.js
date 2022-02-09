@@ -4,6 +4,7 @@ import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {minimizeGameWindow} from "../../redux/actions/showGameWindow";
+import {Header} from "../MainLayout/Header/Header";
 
 
 export const GamePageMainContainer = ({t, isMinimized}) => {
@@ -35,16 +36,20 @@ export const GamePageMainContainer = ({t, isMinimized}) => {
   }, []);
 
   return (
-    <section ref={gameWrapperRef} className={`${styles.gamePageMainSection} ${isFullScreen ? styles.fullScreenMainSection : ""} ${isMinimized ? styles.minimizedMainSection : ''}`}>
-      <Background
-        isMinimized={isMinimized}
-      />
-      <PlayWindowWrapper
-      isFullScreen={isFullScreen}
-      setIsFullScreen={setIsFullScreen}
-      minimizedHandler={minimizeHandler}
-      isMinimized={isMinimized}
-      />
-    </section>
+    <>
+      <section ref={gameWrapperRef} className={`${styles.gamePageMainSection} ${isFullScreen ? styles.fullScreenMainSection : ""} ${isMinimized ? styles.minimizedMainSection : ''}`}>
+        <Background
+          isMinimized={isMinimized}
+        />
+        <PlayWindowWrapper
+          isFullScreen={isFullScreen}
+          setIsFullScreen={setIsFullScreen}
+          minimizedHandler={minimizeHandler}
+          isMinimized={isMinimized}
+          t={t}
+        />
+      </section>
+    </>
+
   )
 }

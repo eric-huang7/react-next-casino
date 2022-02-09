@@ -6,6 +6,8 @@ import {GamesSlider} from "./GamesSlider";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
 import {freeGame, playPayGame} from "../../redux/actions/playGames";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import {showGameWindow} from "../../redux/actions/showGameWindow";
 
 export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime, footerArea}) => {
   const games = useSelector((store) => store.games);
@@ -15,13 +17,19 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const {height, width} = useWindowDimensions();
+
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      router.push(playGames.startGame.game_link);
+      // router.push(playGames.startGame.game_link);
       console.log(playGames.startGame.game_link)
     }
     if (playGames.freeGame?.game_link) {
-      router.push(playGames.freeGame.game_link);
+      console.log('start!!');
+      if (width > 1065) {
+        dispatch(showGameWindow(true));
+      }
+      // router.push(playGames.freeGame.game_link);
       console.log(playGames.freeGame.game_link)
     }
   }, [playGames]);
