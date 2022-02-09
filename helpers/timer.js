@@ -17,29 +17,34 @@ const locales = {
 export const dateTimer = (time, locale) => {
   let res = '';
 
-  let duration = intervalToDuration({
-    start: new Date(time * 1000),
-    end: new Date(),
-  });
+  try {
+    let duration = intervalToDuration({
+      start: new Date(time * 1000),
+      end: new Date(),
+    });
 
-  let timer = formatDuration(duration, {
-    delimiter: ' ',
-    locale: locales[locale],
+    let timer = formatDuration(duration, {
+      delimiter: ' ',
+      locale: locales[locale],
 
-  });
-  timer.split(' ').map((el) => {
-    if (Number(el)) {
-      return el;
-    } else {
-      return el.slice(0, 1);
-    }
-  }).map((el, ind) => {
-    if (ind % 2 === 0) {
-      return res += ' ' + el;
-    } else {
-      return res += el;
-    }
-  })
+    });
+    timer.split(' ').map((el) => {
+      if (Number(el)) {
+        return el;
+      } else {
+        return el.slice(0, 1);
+      }
+    }).map((el, ind) => {
+      if (ind % 2 === 0) {
+        return res += ' ' + el;
+      } else {
+        return res += el;
+      }
+    })
+  } catch (e) {
+    return res = null
+  }
+
 
   return res;
 }
