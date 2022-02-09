@@ -94,16 +94,16 @@ const MainLayout = ({children, t, token, emailError}) => {
 
       } else {
         if (isShowModal[showModalKey] === true) {
-          document.body.style.overflowY = "hidden"
+          document.body.style.overflowY = "hidden";
           break;
         } else {
-          document.body.style.overflowY = "auto"
+          document.body.style.overflowY = "auto";
           if (logInShow || registerShow) {
-            document.body.style.overflowY = "hidden"
+            document.body.style.overflowY = "hidden";
           } else if (showPlayWindow) {
-            document.body.style.overflowY = "hidden"
+            document.body.style.overflowY = "hidden";
           } else {
-            document.body.style.overflowY = "auto"
+            document.body.style.overflowY = "auto";
           }
         }
       }

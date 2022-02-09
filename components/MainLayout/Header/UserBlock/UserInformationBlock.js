@@ -13,9 +13,14 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
     let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default));
 
 
-    let amount = numberTransformer(balanceData[0].current_balance);
+    let amount = '';
 
-    // console.log(userInfo?.balance?.balances);
+    try {
+      amount = numberTransformer(`${balanceData[0].current_balance}`);
+    } catch (e) {
+      amount = '';
+    }
+
 
     let balance = balanceData.length === 0 ? "0.00" : amount;
     let currency = balanceData.length === 0
@@ -65,7 +70,7 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
             {`${balance} ${currency}`}
           </span>
           {
-            isShowBalanceList ? <BalanceMenuContainer t={t} balanceData={userInfo} activeBalance={balanceData} currencyData={userCurrency} /> : <></>
+            isShowBalanceList && balanceData.length > 0 ? <BalanceMenuContainer t={t} balanceData={userInfo} activeBalance={balanceData} currencyData={userCurrency} /> : <></>
           }
         </div>
       </div>

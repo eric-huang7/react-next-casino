@@ -12,7 +12,14 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
 
 
     let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default));
-    let amount = numberTransformer(balanceData[0].current_balance);
+
+    let amount = '!';
+
+    try {
+      amount = numberTransformer(balanceData[0].current_balance);
+    } catch (e) {
+      amount = '!';
+    }
 
     let balance = balanceData.length === 0
       ?

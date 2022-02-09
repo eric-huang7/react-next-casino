@@ -71,8 +71,14 @@ export const Header = ({t}) => {
       }
       if (userLogin.balance && currencyData) {
         let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default));
-        let userCurrency = currencyData.results.find((currency) => Number(currency.id) === Number(userActiveCurrency.currency_id));
-        dispatch(setUserCurrencySwitcher(userCurrency));
+        let userCurrency = '';
+
+        try {
+          userCurrency = currencyData.results.find((currency) => Number(currency.id) === Number(userActiveCurrency.currency_id));
+          dispatch(setUserCurrencySwitcher(userCurrency));
+        } catch (e) {
+
+        }
       }
     }
 
