@@ -9,10 +9,23 @@ export const NewsItem = ({newsData, locale}) => {
 
   const {t} = useTranslation('newsData');
 
-  const imgArr = newsData.image.split(".");
-  const imgName = `${imgArr[0]}_${locale}.${imgArr[1]}`;
+  let imgName = 'news image';
 
-  const date = dateFormatter(newsData.start_time, locale, false);
+  try {
+    const imgArr = newsData.image.split(".");
+    imgName = `${imgArr[0]}_${locale}.${imgArr[1]}`;
+  } catch (e) {
+    imgName = 'news image';
+  }
+
+let date = `${new Date().getTime() / 1000}000`;
+  try {
+    date = dateFormatter(newsData.start_time, locale, false);
+  } catch (e) {
+    date = `${new Date().getTime() / 1000}000`;
+  }
+
+
 
 
   return (
