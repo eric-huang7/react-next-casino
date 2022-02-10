@@ -27,7 +27,6 @@ export const Header = ({t}) => {
   let userLogined = userLogin.isAuthenticated;
   // let userInfo = userLogin;
   let bonusesData = useSelector((store) => store.bonuses);
-
   let currencyData = useSelector((store) => store.getCurrency.currency);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 

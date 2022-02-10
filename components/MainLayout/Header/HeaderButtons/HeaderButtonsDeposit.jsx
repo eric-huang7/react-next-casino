@@ -15,6 +15,7 @@ export const HeaderButtonsDeposit = ({t, isUserLogined}) => {
 
   return (
       <div className={`${styles.userMainBlockButtons} ${styles.depositButtons} ${isUserLogined ? '' : styles.hide}`}>
+        {/*<Link href={}></Link>*/}
         <button>{t('header.navbarButtons.cashOut')}</button>
         <button onClick={() => closeDepositModalHandler()}>{t('header.navbarButtons.deposit')}</button>
       </div>

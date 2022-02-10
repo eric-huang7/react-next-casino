@@ -30,20 +30,28 @@ export const CashoutPage = ({t, activeLink}) => {
           t={t}
           activeLink={activeLink}
         />
-        <AvailableToCashoutBlock
-          typeOfCurrency={typeOfCurrency}
-          balanceData={balanceInfo.balance.balances}
-          t={t}
-        />
-        <SelectPaymentContainer
-          t={t}
-          typeOfCurrency={typeOfCurrency}
-          currencyData={currency.currency.results}
-          balanceData={balanceInfo.balance.balances}
-          userInfo={balanceInfo.user.user}
-        />
         {
-          typeOfCurrency.type === 3 ? <TryBitcoinContainer btcCurrency={currency.currency.results.find((el) => el.abbreviation === "BTC")} t={t}/> : <></>
+          typeOfCurrency
+            ?
+            <>
+              <AvailableToCashoutBlock
+                typeOfCurrency={typeOfCurrency}
+                balanceData={balanceInfo.balance.balances}
+                t={t}
+              />
+              <SelectPaymentContainer
+                t={t}
+                typeOfCurrency={typeOfCurrency}
+                currencyData={currency.currency.results}
+                balanceData={balanceInfo.balance.balances}
+                userInfo={balanceInfo.user.user}
+              />
+            </>
+            :
+            <></>
+        }
+        {
+          typeOfCurrency ? typeOfCurrency.type === 3 ? <TryBitcoinContainer btcCurrency={currency.currency.results.find((el) => el.abbreviation === "BTC")} t={t}/> : <></> : <></>
         }
 
       </div>

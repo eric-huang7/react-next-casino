@@ -22,15 +22,6 @@ const Accounts = (props) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
 
     if (!currency.currency) {
       dispatch(getCurrency());

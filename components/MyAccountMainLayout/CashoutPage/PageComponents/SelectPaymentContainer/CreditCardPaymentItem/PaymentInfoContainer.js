@@ -4,11 +4,14 @@ import {numberTransformer} from "../../../../../../helpers/numberTransformer";
 
 export const PaymentInfoContainer = ({t, typeOfCurrency}) => {
 
-  let min = numberTransformer(typeOfCurrency.withdrawMin);
+  let min = numberTransformer(`${typeOfCurrency.withdrawMin}`);
+  let max = numberTransformer(`${typeOfCurrency.withdrawMax}`);
+
+  console.log(typeOfCurrency)
 
   return (
     <div className={styles.paymentInfoContainer}>
-      <p>{t("myAccount.cashoutPage.selectPaymentContainer.creditCardPaymentDetails", {min_value: min , currency: typeOfCurrency.abbreviation})}</p>
+      <p>{t("myAccount.cashoutPage.selectPaymentContainer.creditCardPaymentDetails", {min_value: min , max_value: max, currency: typeOfCurrency.abbreviation})}</p>
     </div>
   )
 }

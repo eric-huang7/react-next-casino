@@ -8,6 +8,7 @@ import {BonusesPageContainer} from "../../../components/MyAccountMainLayout/Bonu
 import {ProfileInfoPage} from "../../../components/MyAccountMainLayout/ProfileInfoPage/ProfileInfoPage";
 import {GamblingLimitsPage} from "../../../components/MyAccountMainLayout/GamblingLimitsPage/GamblingLimitsPage";
 import {DocumentsPage} from "../../../components/MyAccountMainLayout/DocumentsPage/DocumentsPage";
+import {CashoutPage} from "../../../components/MyAccountMainLayout/CashoutPage/CashoutPage";
 
 const PageType = (props) => {
   const router = useRouter();
@@ -50,6 +51,12 @@ const PageType = (props) => {
       return (
         <AccountMainLayout t={t}>
           <DocumentsPage t={t} />
+        </AccountMainLayout>
+      )
+    case "cashout" :
+      return (
+        <AccountMainLayout t={t}>
+          <CashoutPage t={t} activeLink={null}/>
         </AccountMainLayout>
       )
     default:
