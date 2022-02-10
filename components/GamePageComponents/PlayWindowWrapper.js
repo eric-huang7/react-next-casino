@@ -11,10 +11,7 @@ import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGam
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 
 
-export const PlayWindowWrapper = ({t, isFullScreen, setIsFullScreen, isMinimized, minimizedHandler}) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const playGames = useSelector((state) => state.playGame);
+export const PlayWindowWrapper = ({t, isFullScreen, setIsFullScreen, isMinimized, minimizedHandler, closeGameHandler, playGames}) => {
 
 
   useEffect(() => {
@@ -26,17 +23,10 @@ export const PlayWindowWrapper = ({t, isFullScreen, setIsFullScreen, isMinimized
     }
   }, [isFullScreen])
 
-  const closeGameHandler = () => {
-    dispatch(showGameWindow(false));
-    dispatch(minimizeGameWindow(false));
-    dispatch(deleteGameLink());
-  }
-
-  console.log(playGames);
 
   return (
     <div
-      className={`${styles.playWindowWrapper} ${isFullScreen ? styles.fullScreenWindow : ''}`}
+      className={`${styles.playWindowWrapper} ${isFullScreen ? styles.fullScreenWindow : ''} ${isMinimized ? styles.minimizedPlayWindow : ""}`}
     >
 
       {

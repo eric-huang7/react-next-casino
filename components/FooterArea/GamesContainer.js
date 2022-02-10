@@ -26,9 +26,9 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
     }
     if (playGames.freeGame?.game_link) {
       console.log('start!!');
-      if (width > 1065) {
-        dispatch(showGameWindow(true));
-      }
+      // if (width > 1065) {
+      //   router.push(`/game/${playGames.gameName}`).then((data) => dispatch(showGameWindow(true)));
+      // }
       // router.push(playGames.freeGame.game_link);
       console.log(playGames.freeGame.game_link)
     }
@@ -40,6 +40,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
     }
+    console.log('start free game ))))))))))))))))))))')
     dispatch(freeGame(sendData));
   }
   const playGameClickHandler = (gameData, user) => {

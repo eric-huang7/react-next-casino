@@ -1,17 +1,17 @@
 import styles from "../../styles/GamePage/GamePage.module.scss";
 
 
-export const Background = ({isMinimized}) => {
+export const Background = () => {
 
   return(
     <>
-      <div className={`${styles.red} ${styles.redOne} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.red} ${styles.redTwo} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.red} ${styles.redTree} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.blue} ${styles.blueOne} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.blue} ${styles.blueTwo} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.blue} ${styles.blueTree} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
-      <div className={`${styles.blackBack} ${isMinimized ? styles.backgroundMinimized : ''}`}/>
+      <div className={`${styles.red} ${styles.redOne}`}/>
+      <div className={`${styles.red} ${styles.redTwo}`}/>
+      <div className={`${styles.red} ${styles.redTree}`}/>
+      <div className={`${styles.blue} ${styles.blueOne}`}/>
+      <div className={`${styles.blue} ${styles.blueTwo}`}/>
+      <div className={`${styles.blue} ${styles.blueTree}`}/>
+      <div className={`${styles.blackBack}`}/>
     </>
   )
 }

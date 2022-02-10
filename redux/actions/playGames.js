@@ -11,13 +11,16 @@ export const freeGame = (gameData) => async dispatch => {
       'Content-Type': 'application/json',
     },
   }
-  const body = JSON.stringify(gameData);
+  const body = JSON.stringify(gameData.data);
 
   try {
     const res = await axios.post(freeGame_url, body, config);
     dispatch({
       type: PLAY_FREE_GAME,
-      payload: res.data
+      payload: {
+        data: {...res.data},
+        gameName: gameData.gameName
+      }
     })
 
   } catch (e) {
@@ -33,13 +36,16 @@ export const playPayGame = (gameData) => async dispatch => {
     },
   }
 
-  const body = JSON.stringify(gameData);
+  const body = JSON.stringify(gameData.data);
 
   try {
     const res = await axios.post(payGame_url, body, config);
     dispatch({
       type: PLAY_GAME,
-      payload: res.data
+      payload: {
+        data: {...res.data},
+        gameName: gameData.gameName
+      }
     })
 
   } catch (e) {

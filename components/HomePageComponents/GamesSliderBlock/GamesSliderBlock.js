@@ -34,18 +34,17 @@ export const GamesSliderBlock = ({t, type, games}) => {
       }
     }
     if (playGames.freeGame?.game_link) {
-      if (width > 1065) {
-        console.log('start');
-        dispatch(showGameWindow(true));
-      } else {
-        // router.push(playGames.freeGame.game_link);
-        // dispatch(deleteGameLink());
-      }
+      // if (width > 1065) {
+      //   console.log('start');
+      //   router.push(`/game/${playGames.gameName}`).then((data) => dispatch(showGameWindow(true)));
+      //
+      // } else {
+      //   // router.push(playGames.freeGame.game_link);
+      //   // dispatch(deleteGameLink());
+      // }
     }
     console.log(playGames, '@@@@@@@@@@!!!!!!!!!!')
   }, [playGames]);
-
-
 
 
   const playFunClickHandler = (gameData) => {
@@ -53,8 +52,17 @@ export const GamesSliderBlock = ({t, type, games}) => {
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
     }
-    dispatch(freeGame(sendData));
-    dispatch(showGameWindow(true));
+    console.log(gameData, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    dispatch(deleteGameLink());
+    dispatch(freeGame({
+      data: sendData,
+      gameName: gameData.name ? gameData.name : "..."
+    }))
+    router.push(`/game/${playGames.gameName}`).then((data) => {
+      dispatch(showGameWindow(true));
+    });
+
+    // dispatch(showGameWindow(true));
   }
   const playGameClickHAndler = (gameData, user) => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {
@@ -91,67 +99,67 @@ export const GamesSliderBlock = ({t, type, games}) => {
   let slides = [];
   let linkPath = '/';
 
-    if (type === 'NEW_GAMES') {
-      if (games.loadingNewGames) {
+  if (type === 'NEW_GAMES') {
+    if (games.loadingNewGames) {
 
-        return <h1>Loading...</h1>
-      } else {
-        // if (games.isSearchEmpty) {
-          let newGamesSlicedArr = games.newGames.results.slice();
-          slides = newGamesSlicedArr;
+      return <h1>Loading...</h1>
+    } else {
+      // if (games.isSearchEmpty) {
+      let newGamesSlicedArr = games.newGames.results.slice();
+      slides = newGamesSlicedArr;
 
-        linkPath = '/games-page/new-games';
-        // } else {
-        //   let newGamesSlicedArr = games.searchGames.slice();
-        //   slides = newGamesSlicedArr;
-        // }
+      linkPath = '/games-page/new-games';
+      // } else {
+      //   let newGamesSlicedArr = games.searchGames.slice();
+      //   slides = newGamesSlicedArr;
+      // }
 
 
-      }
-    } else if (type === 'JACKPOT_GAMES') {
-      if (games.loadingJackpotGames) {
-
-        return <h1>Loading...</h1>
-      } else {
-        // filter by type 4
-        let jackpotSlicedArr = games.jackpotGames.results.slice();
-        slides = jackpotSlicedArr;
-
-        linkPath = '/games-page/jackpot-games';
-      }
-    } else if (type === 'TABLE_GAMES') {
-      if (games.loadingTableGames) {
-
-        return <h1>Loading...</h1>
-      } else {
-        // filter by type 2
-        let tableSlicedGames = games.tableGames.results.slice();
-        slides = tableSlicedGames;
-        linkPath = '/games-page/table-games';
-
-      }
     }
+  } else if (type === 'JACKPOT_GAMES') {
+    if (games.loadingJackpotGames) {
+
+      return <h1>Loading...</h1>
+    } else {
+      // filter by type 4
+      let jackpotSlicedArr = games.jackpotGames.results.slice();
+      slides = jackpotSlicedArr;
+
+      linkPath = '/games-page/jackpot-games';
+    }
+  } else if (type === 'TABLE_GAMES') {
+    if (games.loadingTableGames) {
+
+      return <h1>Loading...</h1>
+    } else {
+      // filter by type 2
+      let tableSlicedGames = games.tableGames.results.slice();
+      slides = tableSlicedGames;
+      linkPath = '/games-page/table-games';
+
+    }
+  }
 
 
+  function SampleNextArrow(props) {
+    const {className, onClick} = props;
+    return (
+      <div
+        className={styles.nextArr}
+        onClick={onClick}
+      />
+    );
+  };
 
-    function SampleNextArrow(props) {
-      const { className, onClick } = props;
-      return (
-        <div
-          className={styles.nextArr}
-          onClick={onClick}
-        />
-      );
-    };
-    function SamplePrevArrow(props) {
-      const { className, onClick } = props;
-      return (
-        <div
-          className={styles.prevArr}
-          onClick={onClick}
-        />
-      );
-    };
+  function SamplePrevArrow(props) {
+    const {className, onClick} = props;
+    return (
+      <div
+        className={styles.prevArr}
+        onClick={onClick}
+      />
+    );
+  };
 
   const sliderSettings = {
     dots: false,
@@ -162,30 +170,30 @@ export const GamesSliderBlock = ({t, type, games}) => {
     slidesPerRow: itemsCount,
 
     // slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
+    nextArrow: <SampleNextArrow/>,
+    prevArrow: <SamplePrevArrow/>
   }
   return (
     <section className={styles.sliderMainWrapper}>
-      <div className={`${type === 'NEW_GAMES' 
-        ? styles.sliderHeadingNewGames : type === 'JACKPOT_GAMES' 
-        ? styles.sliderHeadingJackpotGames : type === 'TABLE_GAMES'
-        ? styles.sliderHeadingTableGames : styles.sliderHeadingTableGames
+      <div className={`${type === 'NEW_GAMES'
+        ? styles.sliderHeadingNewGames : type === 'JACKPOT_GAMES'
+          ? styles.sliderHeadingJackpotGames : type === 'TABLE_GAMES'
+            ? styles.sliderHeadingTableGames : styles.sliderHeadingTableGames
       } ${styles.sliderHeading}`}></div>
       <div className={styles.gamesWrapper}>
         <Slider {...sliderSettings}>
           {slides.map((el, ind) => {
             return (
-                <div className={styles.slideItemsWrapperDesc} key={ind}>
-                  <GameItemContainer
-                    playGameClickHAndler={playGameClickHAndler}
-                    playFunClickHandler={playFunClickHandler}
-                    ind={ind}
-                    t={t}
-                    gameData={el}
-                    user={user}
-                  />
-                </div>
+              <div className={styles.slideItemsWrapperDesc} key={ind}>
+                <GameItemContainer
+                  playGameClickHAndler={playGameClickHAndler}
+                  playFunClickHandler={playFunClickHandler}
+                  ind={ind}
+                  t={t}
+                  gameData={el}
+                  user={user}
+                />
+              </div>
             )
           })}
         </Slider>

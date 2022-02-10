@@ -2,12 +2,14 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {GamePageMainContainer} from "../../components/GamePageComponents/GamePageMainContainer";
+import {useSelector} from "react-redux";
 
 
 const PlayGamePage = (props) => {
   const {t} = useTranslation('common');
 
   console.log(props, '# page props');
+
 
   return (
     <>

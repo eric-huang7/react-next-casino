@@ -100,8 +100,6 @@ const MainLayout = ({children, t, token, emailError}) => {
           document.body.style.overflowY = "auto";
           if (logInShow || registerShow) {
             document.body.style.overflowY = "hidden";
-          } else if (showPlayWindow.isShowPlayWindow && !showPlayWindow.isMinimizePlayWindow) {
-            document.body.style.overflowY = "hidden";
           } else {
             document.body.style.overflowY = "auto";
           }
