@@ -11,17 +11,17 @@ import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGam
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 
 
-export const PlayWindowWrapper = ({t, isFullScreen, setIsFullScreen, isMinimized, minimizedHandler, closeGameHandler, playGames}) => {
+export const PlayWindowWrapper = ({t, isFullScreen, fullscreenClickHandler, isMinimized, minimizedHandler, closeGameHandler, playGames, maximizeHandler}) => {
 
 
-  useEffect(() => {
-    if (isFullScreen) {
-      console.log('full')
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-  }, [isFullScreen])
+  // useEffect(() => {
+  //   if (isFullScreen) {
+  //     console.log('full')
+  //     document.body.style.overflowY = "hidden"
+  //   } else {
+  //     document.body.style.overflowY = "auto"
+  //   }
+  // }, [isFullScreen])
 
 
   return (
@@ -37,14 +37,14 @@ export const PlayWindowWrapper = ({t, isFullScreen, setIsFullScreen, isMinimized
               closeGameHandler={closeGameHandler}
             />
             <MinimizedOpenFullScreenContainer
-              minimizedHandler={minimizedHandler}
+              maximizeHandler={maximizeHandler}
             />
           </>
 
           :
           <>
             <ControlPanel
-              setIsFullScreen={setIsFullScreen}
+              fullscreenClickHandler={fullscreenClickHandler}
               closeGameHandler={closeGameHandler}
               minimizedHandler={minimizedHandler}
             />

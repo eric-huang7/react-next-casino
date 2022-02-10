@@ -132,7 +132,7 @@
   max-height: calc(100vh - 185px);
   transition: .3s ease;
 
-  background-color: rgba(0,0,0, 0.2);
+  background-color: rgba(0,0,0, 1);
 
   & .controlPanel {
     width: 50px;
@@ -186,7 +186,6 @@
   //--aspect-ratio: 16/9;
   position: fixed;
 
-  top: auto;
 
   top: auto;
   left: 30px;
@@ -202,7 +201,9 @@
   max-height: 340px;
   transition: .3s ease;
 
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 1);
+
+  overflow: hidden;
 
   & .minimizedControlPanel {
     display: flex;

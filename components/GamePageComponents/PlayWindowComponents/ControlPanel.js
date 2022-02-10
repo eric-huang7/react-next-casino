@@ -2,12 +2,9 @@ import styles from "../../../styles/GamePage/GamePage.module.scss";
 
 
 
-export const ControlPanel = ({setIsFullScreen, closeGameHandler, minimizedHandler}) => {
+export const ControlPanel = ({fullscreenClickHandler, closeGameHandler, minimizedHandler}) => {
 
 
-  const fullScreenHandler = () => {
-    setIsFullScreen((prevState) => !prevState);
-  }
 
   return (
     <div className={styles.controlPanel}>
@@ -16,7 +13,7 @@ export const ControlPanel = ({setIsFullScreen, closeGameHandler, minimizedHandle
         className={styles.close}
       />
       <button
-        onClick={() => fullScreenHandler()}
+        onClick={() => fullscreenClickHandler()}
         className={styles.fullScreen}
       />
       <button

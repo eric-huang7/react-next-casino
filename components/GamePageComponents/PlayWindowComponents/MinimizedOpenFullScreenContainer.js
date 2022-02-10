@@ -1,14 +1,14 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
 
 
-export const MinimizedOpenFullScreenContainer = ({minimizedHandler}) => {
+export const MinimizedOpenFullScreenContainer = ({maximizeHandler}) => {
 
 
 
   return (
     <div
       className={styles.openFullScreenContainer}
-      onClick={() => minimizedHandler()}
+      onClick={() => maximizeHandler()}
     >
 
     </div>

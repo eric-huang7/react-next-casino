@@ -26,12 +26,12 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      if (width > 1065) {
-        dispatch(showGameWindow(true));
-      } else {
-        // router.push(playGames.startGame.game_link);
-        // dispatch(deleteGameLink());
-      }
+      // if (width > 1065) {
+      //   dispatch(showGameWindow(true));
+      // } else {
+      //   // router.push(playGames.startGame.game_link);
+      //   // dispatch(deleteGameLink());
+      // }
     }
     if (playGames.freeGame?.game_link) {
       // if (width > 1065) {
@@ -52,13 +52,13 @@ export const GamesSliderBlock = ({t, type, games}) => {
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
     }
-    console.log(gameData, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
     dispatch(deleteGameLink());
     dispatch(freeGame({
       data: sendData,
       gameName: gameData.name ? gameData.name : "..."
     }))
-    router.push(`/game/${playGames.gameName}`).then((data) => {
+    router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
       dispatch(showGameWindow(true));
     });
 
@@ -77,7 +77,14 @@ export const GamesSliderBlock = ({t, type, games}) => {
         balance_id: `${userBalance[0].id}`
       }
       // game_provider_id, game_id, user_id, is_bonus, balance_id
-      dispatch(playPayGame(sendData));
+      dispatch(deleteGameLink());
+      dispatch(playPayGame({
+        data : sendData,
+        gameName: gameData.name ? gameData.name : "..."
+      }));
+      router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+        dispatch(showGameWindow(true));
+      });
     } else {
       console.log(gameData, 'GAME DATA!!!');
       console.log(user, "USER!!!S");

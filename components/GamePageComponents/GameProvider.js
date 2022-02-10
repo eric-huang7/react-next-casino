@@ -19,15 +19,28 @@ export const GameProvider = ({children}) => {
   console.log(showPlayWindow, playGames, '$$$$$$$$$$')
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  const minimizeHandler = () => {
-    dispatch(minimizeGameWindow(!showPlayWindow.isMinimizePlayWindow));
-
-    if (showPlayWindow.isMinimizePlayWindow) {
-      setIsFullScreen(false);
-      router.push(`/game/${playGames.gameName}`)
+  const fullscreenClickHandler = () => {
+    if (!isFullScreen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
     }
+
+    setIsFullScreen(prevState => !prevState);
+  }
+  const minimizeHandler = () => {
+    router.back();
+    dispatch(minimizeGameWindow(true));
+    setIsFullScreen(false);
+  }
+  const maximizeHandler = () => {
+    router.push(`/game/${playGames.gameName}`);
   }
   const closeGameHandler = () => {
+    if (router.pathname.slice(1).split('/')[0] === 'game') {
+      router.back();
+    }
+
     dispatch(showGameWindow(false));
     dispatch(minimizeGameWindow(false));
     dispatch(deleteGameLink());
@@ -56,8 +69,9 @@ export const GameProvider = ({children}) => {
           ?
           <PlayWindowWrapper
             isFullScreen={isFullScreen}
-            setIsFullScreen={setIsFullScreen}
+            fullscreenClickHandler={fullscreenClickHandler}
             minimizedHandler={minimizeHandler}
+            maximizeHandler={maximizeHandler}
             isMinimized={showPlayWindow.isMinimizePlayWindow}
             closeGameHandler={closeGameHandler}
             t={t}
