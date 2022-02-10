@@ -26,31 +26,37 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      // if (width > 1065) {
-      //   dispatch(showGameWindow(true));
-      // } else {
-      //   // router.push(playGames.startGame.game_link);
-      //   // dispatch(deleteGameLink());
-      // }
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth <= 1065) {
+          router.push(playGames.startGame.game_link);
+        }
+      }
     }
+
     if (playGames.freeGame?.game_link) {
-      // if (width > 1065) {
-      //   console.log('start');
-      //   router.push(`/game/${playGames.gameName}`).then((data) => dispatch(showGameWindow(true)));
-      //
-      // } else {
-      //   // router.push(playGames.freeGame.game_link);
-      //   // dispatch(deleteGameLink());
-      // }
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth <= 1065) {
+          router.push(playGames.freeGame.game_link);
+        }
+      }
     }
-    console.log(playGames, '@@@@@@@@@@!!!!!!!!!!')
   }, [playGames]);
 
 
   const playFunClickHandler = (gameData) => {
+
     let sendData = {
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
+    }
+
+    if (typeof window !== "undefined") {
+      let saveData = JSON.stringify({
+        data: sendData,
+        gameName: gameData.name ? gameData.name : "..."
+      })
+
+      localStorage.setItem("user_last_game", saveData);
     }
 
     dispatch(deleteGameLink());
@@ -58,11 +64,12 @@ export const GamesSliderBlock = ({t, type, games}) => {
       data: sendData,
       gameName: gameData.name ? gameData.name : "..."
     }))
-    router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
-      dispatch(showGameWindow(true));
-    });
 
-    // dispatch(showGameWindow(true));
+    if (window.innerWidth > 1065) {
+      router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+        dispatch(showGameWindow(true));
+      });
+    }
   }
   const playGameClickHAndler = (gameData, user) => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {
@@ -76,19 +83,30 @@ export const GamesSliderBlock = ({t, type, games}) => {
         is_bonus: is_bonus,
         balance_id: `${userBalance[0].id}`
       }
+      if (typeof window !== "undefined") {
+        let saveData = JSON.stringify({
+          data: {
+            game_provider_id: sendData.game_provider_id,
+            game_id: sendData.game_provided_id
+          },
+          gameName: gameData.name ? gameData.name : "..."
+        })
+        localStorage.setItem("user_last_game", saveData);
+      }
       // game_provider_id, game_id, user_id, is_bonus, balance_id
+
       dispatch(deleteGameLink());
       dispatch(playPayGame({
         data : sendData,
         gameName: gameData.name ? gameData.name : "..."
       }));
-      router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
-        dispatch(showGameWindow(true));
-      });
+      if (window.innerWidth > 1065) {
+        router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+          dispatch(showGameWindow(true));
+        });
+      }
     } else {
-      console.log(gameData, 'GAME DATA!!!');
-      console.log(user, "USER!!!S");
-      return
+
     }
   }
 
@@ -116,10 +134,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
       slides = newGamesSlicedArr;
 
       linkPath = '/games-page/new-games';
-      // } else {
-      //   let newGamesSlicedArr = games.searchGames.slice();
-      //   slides = newGamesSlicedArr;
-      // }
+
 
 
     }
@@ -128,7 +143,7 @@ export const GamesSliderBlock = ({t, type, games}) => {
 
       return <h1>Loading...</h1>
     } else {
-      // filter by type 4
+
       let jackpotSlicedArr = games.jackpotGames.results.slice();
       slides = jackpotSlicedArr;
 

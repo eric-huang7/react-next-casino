@@ -16,19 +16,17 @@ export const GameProvider = ({children}) => {
   const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
   const playGames = useSelector((state) => state.playGame);
 
-  console.log(showPlayWindow, playGames, '$$$$$$$$$$')
-
 
   const fullscreenClickHandler = () => {
     dispatch(fullScreenGameWindow(!showPlayWindow.isFullScreen));
-
-
   }
+
   const minimizeHandler = () => {
     router.back();
     dispatch(minimizeGameWindow(true));
     dispatch(fullScreenGameWindow(false));
   }
+
   const maximizeHandler = () => {
     router.push(`/game/${playGames.gameName}`);
   }
@@ -53,7 +51,6 @@ export const GameProvider = ({children}) => {
     if (router.pathname.slice(1).split('/')[0] === 'game') {
       dispatch(minimizeGameWindow(false));
     }
-    console.log(router.pathname.slice(1).split('/'), '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
   }, [router])
 
 

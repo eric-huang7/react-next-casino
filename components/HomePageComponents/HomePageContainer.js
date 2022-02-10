@@ -20,27 +20,24 @@ export const HomePageContainer = ({t}) => {
   let searchGames = useSelector((store) => store.games.searchGames);
 
   useEffect(() => {
-    // dispatch(setLang(locale));
+
     dispatch(getGames());
-    dispatch(getNewGames()); //new games
-    dispatch(getJackpotGames()); // Jackpot Games
-    dispatch(getTableGames()); // Table Games
+    dispatch(getNewGames());
+    dispatch(getJackpotGames());
+    dispatch(getTableGames());
 
     dispatch(getJackpots());
     dispatch(getWinners());
     dispatch(getLatestWinners());
     dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
 
   }, []);
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
 
 
   const games = useSelector((games) => games.games);
   const winners = useSelector((winners) => winners.winners);
   const jackpots = useSelector((jackpots) => jackpots.jackpots);
-  const userCurrencies = useSelector((state) => state);
-  const activeBonuses = useSelector((state) => state.bonuses);
+
 
   return (
     <>

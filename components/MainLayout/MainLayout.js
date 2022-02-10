@@ -40,15 +40,11 @@ import {showRegister} from "../../redux/actions/registerShow";
 import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
-import PlayWindowWrapper from "../GamePageComponents/PlayWindowWrapper";
-import {GamePageMainContainer} from "../GamePageComponents/GamePageMainContainer";
-
 
 
 const MainLayout = ({children, t, token, emailError}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const locale = router.locale;
   const {width, height} = useWindowDimensions();
 
 
@@ -67,10 +63,7 @@ const MainLayout = ({children, t, token, emailError}) => {
   const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
-  // console.log(userInfo.isAuthenticated, 'layout  add term to show manage subscriptions');
   let toursref = useRef()
-
-  // const userPayment = useSelector((state) => state.userPaymentMethod);
 
 
   useEffect(() => {

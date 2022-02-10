@@ -51,11 +51,9 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }
 
   const [isActivePayments, setIsActivePayments] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState(null);
   const [paymentMethods, setPaymentMethods] = useState(null);
 
   const paymentMethodChooser = (method) => {
-    // setPaymentMethod(method);
     setIsActivePayments(false);
     setErrorPaymentMethod(false);
   }
@@ -85,18 +83,6 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       dispatch(showCryptoModal(true));
 
     }
-    // else if (type === 'crypto chosen type') {
-    //   let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
-    //   let paymentData = {
-    //     senderCurrency_id: currencyInfo.id,
-    //     user_id: `${userAuth.user.user.id}`,
-    //     site_id: siteID,
-    //     award_amount: `${userDepositValue}`,
-    //     receiverCurrency_id: userCurrency.userCurrencyData.id
-    //   }
-    //   dispatch(postCryptoPayment(paymentData, paymentMethod));
-    //   dispatch(showCryptoModal(true));
-    // }
   }
 
   const whatShouldDoPlayWithButton = () => {

@@ -14,16 +14,6 @@ import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 export const PlayWindowWrapper = ({t, isFullScreen, fullscreenClickHandler, isMinimized, minimizedHandler, closeGameHandler, playGames, maximizeHandler}) => {
 
 
-  // useEffect(() => {
-  //   if (isFullScreen) {
-  //     console.log('full')
-  //     document.body.style.overflowY = "hidden"
-  //   } else {
-  //     document.body.style.overflowY = "auto"
-  //   }
-  // }, [isFullScreen])
-
-
   return (
     <div
       className={`${styles.playWindowWrapper} ${isFullScreen ? styles.fullScreenWindow : ''} ${isMinimized ? styles.minimizedPlayWindow : ""}`}
