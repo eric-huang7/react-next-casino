@@ -1,9 +1,10 @@
-import {MINIMIZE_GAME_WINDOW, SHOW_GAME_WINDOW} from "../actions/types";
+import {FULL_SCREEN_GAME_WINDOW, MINIMIZE_GAME_WINDOW, SHOW_GAME_WINDOW} from "../actions/types";
 
 
 const initialState = {
   isShowPlayWindow: false,
-  isMinimizePlayWindow: false
+  isMinimizePlayWindow: false,
+  isFullScreen: false,
 }
 
 function showPlayWindowReducer(state = initialState, action) {
@@ -20,6 +21,11 @@ function showPlayWindowReducer(state = initialState, action) {
       return {
         ...state,
         isMinimizePlayWindow: payload
+      }
+    case FULL_SCREEN_GAME_WINDOW:
+      return {
+        ...state,
+        isFullScreen: payload
       }
     default:
       return state

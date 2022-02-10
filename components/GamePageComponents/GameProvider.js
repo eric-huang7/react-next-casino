@@ -3,7 +3,7 @@ import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect, useRef, useState} from "react";
-import {minimizeGameWindow, showGameWindow} from "../../redux/actions/showGameWindow";
+import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/actions/showGameWindow";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {deleteGameLink} from "../../redux/actions/playGames";
 
@@ -17,21 +17,17 @@ export const GameProvider = ({children}) => {
   const playGames = useSelector((state) => state.playGame);
 
   console.log(showPlayWindow, playGames, '$$$$$$$$$$')
-  const [isFullScreen, setIsFullScreen] = useState(false);
+
 
   const fullscreenClickHandler = () => {
-    if (!isFullScreen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "auto";
-    }
+    dispatch(fullScreenGameWindow(!showPlayWindow.isFullScreen));
 
-    setIsFullScreen(prevState => !prevState);
+
   }
   const minimizeHandler = () => {
     router.back();
     dispatch(minimizeGameWindow(true));
-    setIsFullScreen(false);
+    dispatch(fullScreenGameWindow(false));
   }
   const maximizeHandler = () => {
     router.push(`/game/${playGames.gameName}`);
@@ -52,7 +48,7 @@ export const GameProvider = ({children}) => {
     }
     if (router.pathname.slice(1).split('/')[0] !== 'game') {
       dispatch(minimizeGameWindow(true));
-      setIsFullScreen(false);
+      dispatch(fullScreenGameWindow(false));
     }
     if (router.pathname.slice(1).split('/')[0] === 'game') {
       dispatch(minimizeGameWindow(false));
@@ -68,7 +64,7 @@ export const GameProvider = ({children}) => {
         showPlayWindow.isShowPlayWindow
           ?
           <PlayWindowWrapper
-            isFullScreen={isFullScreen}
+            isFullScreen={showPlayWindow.isFullScreen}
             fullscreenClickHandler={fullscreenClickHandler}
             minimizedHandler={minimizeHandler}
             maximizeHandler={maximizeHandler}
