@@ -1,6 +1,9 @@
 import styles from '../../../../styles/Header/HeaderButtons.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {showDepositModal} from "../../../../redux/actions/showPopups";
+import Link from "next/link";
+
+
 
 
 export const HeaderButtonsDeposit = ({t, isUserLogined}) => {
@@ -15,8 +18,8 @@ export const HeaderButtonsDeposit = ({t, isUserLogined}) => {
 
   return (
       <div className={`${styles.userMainBlockButtons} ${styles.depositButtons} ${isUserLogined ? '' : styles.hide}`}>
-        {/*<Link href={}></Link>*/}
-        <button>{t('header.navbarButtons.cashOut')}</button>
+        <Link href={'/accounts/cashout'}><a>{t('header.navbarButtons.cashOut')}</a></Link>
+        {/*<button>{t('header.navbarButtons.cashOut')}</button>*/}
         <button onClick={() => closeDepositModalHandler()}>{t('header.navbarButtons.deposit')}</button>
       </div>
   )

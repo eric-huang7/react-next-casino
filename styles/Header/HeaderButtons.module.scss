@@ -4,7 +4,10 @@
     align-items: center;
     margin-right: 55px;
 }
-.userMainBlockButtons button {
+
+.userMainBlockButtons button, .userMainBlockButtons a  {
+    //display: block;
+
     width: 111px;
     height: 31px;
     border-radius: 10px;
@@ -20,7 +23,14 @@
     font-family: "Verdana";
     text-transform: uppercase;
 }
-.userMainBlockButtons button:nth-child(2) {
+
+.userMainBlockButtons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userMainBlockButtons button {
     margin-left: 17px;
     color: #ffffff;
 
@@ -42,7 +52,7 @@
         margin-right: 31px;
     }
 
-    .userMainBlockButtons button {
+    .userMainBlockButtons button, .userMainBlockButtons a {
         width: 85px;
         height: 29px;
 
@@ -60,7 +70,7 @@
     .userMainBlockButtons {
         margin-right: 11px;
     }
-    .userMainBlockButtons button {
+    .userMainBlockButtons button, .userMainBlockButtons a {
         width: 65px;
         height: 29px;
 
