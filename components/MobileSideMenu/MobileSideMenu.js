@@ -1,17 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
-
 import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
-import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit";
-import {HeaderButtonsRegistration} from "../MainLayout/Header/HeaderButtons/HeaderButtonsRegistration";
-import {MobileSideList} from "./MobileSideList";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
 import {MobileListContainer} from "./MobileListContainer";
-import {MobileSideLangSwitcher} from "./MobileSideLangswitcher";
 import {LogoutButtonMobileMenu} from "./LogoutButtonMobileMenu";
 import {UserInfoBlock} from "./UserInfoBlock";
+import {SideLagSwitcherWrapper} from "./SideLagSwitcherWrapper";
+import {SideMenuLogo} from "./SideMenuLogo";
+import {SideMenuCloseComponent} from "./SideMenuCloseComponent";
 
 const socilaLinks = [
  {key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg'},
@@ -57,24 +54,29 @@ export const MobileSideMenu = ({t, userInform}) => {
    <div className={`${styles.sideMenuWrapper} ${isShowMobileMenu ? styles.showMobileMenu : ''}`}>
     <div className={`${styles.sideMenuMainWrapper}`}>
      <div className={styles.sideMenuHeader}>
-      <div className={styles.sideMenuCloseButton} onClick={() => closeClickHandler()}>
-       <span></span>
-       <span></span>
-      </div>
-      <div className={styles.sideMenuLogo}>
-       <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
-      </div>
-      <UserInfoBlock t={t} userInform={userInform} currency={currency}/>
+      <SideMenuCloseComponent
+        closeClickHandler={closeClickHandler}
+      />
+      <SideMenuLogo />
+      <UserInfoBlock
+        t={t}
+        userInform={userInform}
+        currency={currency}
+      />
       <div className={styles.mobileSideListWrapper}>
-       <MobileListContainer isAuth={userInform.isAuthenticated} t={t}/>
-       <div className={`${styles.mobileSideLangSwitcherButton} ${isOpenLanguages ? styles.activeLangMenu : ""}`}>
-        <img src={'/assets/img/mobileSideMenu/globe.svg'} alt="language icon"/>
-        <div className={styles.languageWrapper}>
-         <p onClick={() => openLanguagesClickHandler()}>{t('mobileSideMenu.listMenu.language')}</p>
-         <MobileSideLangSwitcher isOpenLanguages={isOpenLanguages}/>
-        </div>
-       </div>
-       <LogoutButtonMobileMenu t={t} isLogined={userInform.isAuthenticated}/>
+       <MobileListContainer
+         isAuth={userInform.isAuthenticated}
+         t={t}
+       />
+       <SideLagSwitcherWrapper
+         t={t}
+         isOpenLanguages={isOpenLanguages}
+         openLanguagesClickHandler={openLanguagesClickHandler}
+       />
+       <LogoutButtonMobileMenu
+         t={t}
+         isLogined={userInform.isAuthenticated}
+       />
       </div>
       <div className={styles.sideMenuFooter}>
        <div className={styles.sideMenuFooterIconsBlock}>
@@ -89,8 +91,6 @@ export const MobileSideMenu = ({t, userInform}) => {
        <p className={styles.sideFooterRights}>2020 SlotsIdol.com&#169; All Rights Reserved</p>
       </div>
      </div>
-
-
     </div>
    </div>
 

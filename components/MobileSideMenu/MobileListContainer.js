@@ -58,12 +58,12 @@ let listArr = [
         ]
       },
       {id: "6.2", name: "FAQ", type: "link", path: "/contactUs#faq"},
-      {id: "6.3", name: "mobileSideMenu.innerLists.help.aboutBitcoin", type: "link", path: "/#AboutBitcoin"},
-      {id: "6.4", name: "mobileSideMenu.innerLists.help.instantExchanger", type: "link", path: "/#InstantBTCtoEURexchanger"},
-      {id: "6.5", name: "mobileSideMenu.innerLists.help.provabilityExplained", type: "link", path: "/#ProvabilityExplained"},
+      // {id: "6.3", name: "mobileSideMenu.innerLists.help.aboutBitcoin", type: "link", path: "/#AboutBitcoin"},
+      // {id: "6.4", name: "mobileSideMenu.innerLists.help.instantExchanger", type: "link", path: "/#InstantBTCtoEURexchanger"},
+      // {id: "6.5", name: "mobileSideMenu.innerLists.help.provabilityExplained", type: "link", path: "/#ProvabilityExplained"},
       {id: "6.6", name: "mobileSideMenu.innerLists.help.playSafe", type: "button", path: "/#PlaySafe"},
-      {id: "6.7", name: "mobileSideMenu.innerLists.help.complains", type: "link", path: "/#Complains"},
-      {id: "6.8", name: "mobileSideMenu.innerLists.help.howToBuyCrypto", type: "link", path: "/#HowToBuyCrypto"},
+      // {id: "6.7", name: "mobileSideMenu.innerLists.help.complains", type: "link", path: "/#Complains"},
+      // {id: "6.8", name: "mobileSideMenu.innerLists.help.howToBuyCrypto", type: "link", path: "/#HowToBuyCrypto"},
       {id: "6.9", name: "mobileSideMenu.innerLists.help.manageSubscriptions", type: "button", path: "/#manageSubscriptions"}
     ]
   },
@@ -75,8 +75,8 @@ let listArr = [
       {id: "7.1", name: "mobileSideMenu.innerLists.info.aboutUs", type: "link", path: "/aboutUs"},
       {id: "7.2", name: "mobileSideMenu.innerLists.info.termsAndConditions", type: "link", path: "/termsAndConditions"},
       {id: "7.3", name: "mobileSideMenu.innerLists.info.payments", type: "link", path: "/paymentsMethods"},
-      {id: "7.4", name: "mobileSideMenu.innerLists.info.privacyPolicy", type: "link", path: "/#PrivacyPolicy"},
-      {id: "7.5", name: "mobileSideMenu.innerLists.info.affiliateProgram", type: "link", path: "/#AffiliateProgram"},
+      {id: "7.4", name: "mobileSideMenu.innerLists.info.privacyPolicy", type: "link", path: "/privacy-policy"},
+      // {id: "7.5", name: "mobileSideMenu.innerLists.info.affiliateProgram", type: "link", path: "/#AffiliateProgram"},
       // {id: "7.6", name: "mobileSideMenu.innerLists.info.bonusTermsAndConditions", type: "link", path: "/#BonusTermsAndConditions"},
     ]
   },
@@ -136,31 +136,9 @@ export const MobileListContainer = ({t, isAuth}) => {
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[7]}/>
       </li>
-      <li className={styles.mobileSideListItem}>
-        <MobileSideListLinks t={t} dataList={listArr[8]}/>
-      </li>
+      {/*<li className={styles.mobileSideListItem}>*/}
+      {/*  <MobileSideListLinks t={t} dataList={listArr[8]}/>*/}
+      {/*</li>*/}
     </ul>
   )
 }
-
-//      {
-//         listArr.map((el) => {
-//           if (el.type === 'link') {
-//            return (
-//              <li key={el.id} className={styles.mobileSideListItem}>
-//               <MobileSideListLinks t={t} dataList={el}/>
-//              </li>
-//            )
-//           } else {
-//             return (
-//               <li
-//                 key={el.id}
-//                 className={styles.mobileSideListItem}
-//               >
-//                 <img src={el.icon} alt='side menu icon'/>
-//                 <DropMenu el={el} t={t}/>
-//               </li>
-//             )
-//           }
-//       })
-//       }
