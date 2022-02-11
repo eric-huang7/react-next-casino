@@ -17,7 +17,7 @@ export const UserBlockNavigation = ({t, userInfo}) => {
   const currency = useSelector((state) => state.getCurrency);
   const messagesData = useSelector((store) => store.notifications);
 
-
+  console.log(userInfo.isAuthenticated, currency.loading, '@@@@@@@@@@@@@@@@')
   return (
     <div className={styles.userMainBlockWrapper}>
       <div className={`${styles.userMainBlock} ${userInfo.isAuthenticated ? "" : styles.hide}`}>

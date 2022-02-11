@@ -6,6 +6,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {freeGame} from "../../redux/actions/playGames";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
+import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/actions/games";
+import {getJackpots} from "../../redux/actions/latestJackpots";
+import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
+import {getCurrency} from "../../redux/actions/currency";
 
 
 const PlayGamePage = (props) => {
@@ -13,6 +17,9 @@ const PlayGamePage = (props) => {
   const playGames = useSelector((state) => state.playGame);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getCurrency());
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -13,6 +13,7 @@ import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {phone_number_url} from "../../../../redux/url/url";
+import {SecurityQuestionSelector} from "./SecurityQuestionSelector";
 
 
 export const EditProfileMainContainer = ({t, userInfo}) => {
@@ -36,6 +37,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
   const [mobile, setMobile] = useState(userInfo.unconfirmed_phone ? userInfo.unconfirmed_phone : '');
   const [enteredMobile, setEnteredMobile] = useState('');
   const [security_question, setSecurity_question] = useState(userInfo.security_question ? t("myAccount.editProfilePage.fieldAlreadySpec") : '');
+  const [security_question_selector, setSecurity_question_selector] = useState(userInfo.security_question ? t("myAccount.editProfilePage.fieldAlreadySpec") : '');
   const [security_answer, setSecurity_answer] = useState(userInfo.security_answer ? t("myAccount.editProfilePage.fieldAlreadySpec") : '');
   const [emailPromo, setEmailPromo] = useState(userInfo.transactional_email_opt_in);
   const [smsPromo, setSmsPromo] = useState(userInfo.transactional_sms_opt_in);
@@ -66,6 +68,10 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
     setMobile(value);
     setEnteredMobile(value);
   }
+  const securityQuestionSelectorHandler = (value) => {
+    setSecurity_question_selector(value);
+    setSecurity_question("");
+  }
   const securityQuestionInputHandler = (value) => {
     setSecurity_question(value);
   }
@@ -90,7 +96,18 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
 
 
   const saveButtonClickHandler = () => {
-
+    let sendSecurityQuestion = '';
+    if (security_question_selector) {
+      if (security_question_selector === "enter") {
+        sendSecurityQuestion = security_question;
+      } else if (security_question_selector === "0") {
+        sendSecurityQuestion = '';
+      } else {
+        sendSecurityQuestion = security_question_selector;
+      }
+    } else {
+      sendSecurityQuestion = '';
+    }
 
    let sendData = {
       id: userInfo.id,
@@ -101,7 +118,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       city: city ? city : null,
       address_1: address.trim() ? address : null,
       postal_code: postalCode.trim() ? postalCode : null,
-      security_question: security_question.trim() ? security_question : null,
+      security_question: sendSecurityQuestion.trim() ? sendSecurityQuestion : null,
       security_answer: security_answer.trim() ? security_answer : null,
       transactional_email_opt_in: emailPromo ? emailPromo : 0,
       transactional_sms_opt_in: smsPromo ? smsPromo : 0,
@@ -166,6 +183,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
     })
   }
 
+  console.log(security_question_selector, security_question);
 
   return (
     <div className={styles.mainContainer}>
@@ -245,14 +263,31 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         disableEdit={userInfo.unconfirmed_phone ? true : false}
         phoneError={phoneError}
       />
-      <InputContainer
+      <SecurityQuestionSelector
         t={t}
-        inputName={t("myAccount.editProfilePage.secQuestion")}
-        inputId={'questionInput'}
-        value={security_question}
-        valueHandler={securityQuestionInputHandler}
+        value={security_question_selector}
+        genderSelectorHandler={securityQuestionSelectorHandler}
         disableEdit={userInfo.security_question ? true : false}
       />
+      {
+        userInfo.security_question
+          ?
+          <></>
+          :
+          security_question_selector === 'enter'
+            ?
+          <InputContainer
+            t={t}
+            inputName={t("myAccount.editProfilePage.secQuestion")}
+            inputId={'questionInput'}
+            value={security_question}
+            valueHandler={securityQuestionInputHandler}
+            disableEdit={userInfo.security_question ? true : false}
+          />
+            :
+            <></>
+      }
+
       <InputContainer
         t={t}
         inputName={t("myAccount.editProfilePage.secAnswer")}

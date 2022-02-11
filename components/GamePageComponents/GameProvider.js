@@ -16,7 +16,6 @@ export const GameProvider = ({children}) => {
   const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
   const playGames = useSelector((state) => state.playGame);
 
-
   const fullscreenClickHandler = () => {
     dispatch(fullScreenGameWindow(!showPlayWindow.isFullScreen));
   }
@@ -30,6 +29,7 @@ export const GameProvider = ({children}) => {
   const maximizeHandler = () => {
     router.push(`/game/${playGames.gameName}`);
   }
+
   const closeGameHandler = () => {
     if (router.pathname.slice(1).split('/')[0] === 'game') {
       router.back();
