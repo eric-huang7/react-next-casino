@@ -4,8 +4,8 @@ import {numberTransformer} from "../../../../../helpers/numberTransformer";
 
 export const PaymentInfoContainer = ({t, typeOfCurrency, chosenPayment}) => {
 
-  let min = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${chosenPayment.withdrawMin}`);
-  let max = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMax}` : `${chosenPayment.withdrawMax}`);
+  let min = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${typeOfCurrency.withdrawMin}`);
+  let max = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMax}` : `${typeOfCurrency.withdrawMax}`);
 
 
   return (

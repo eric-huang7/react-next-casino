@@ -9,9 +9,13 @@ import {useRouter} from "next/router";
 
 
 export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
+  console.log(typeOfCurrency, 'type', chosenPayment, 'chusen');
+
+
   const router = useRouter();
   const [amountValue, setAmountValue] = useState('');
   const [addressValue, setAddressValue] = useState('');
+  const [memoAddressValue, setMemoAddressValue] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,6 +25,9 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
   const addressInputHandler = (value) => {
     setAddressValue(value);
   }
+  const memoAddressInputHandler = (value) => {
+    setMemoAddressValue(value);
+  }
 
   const withdrawFormHandler = (e) => {
     e.preventDefault();
@@ -29,7 +36,7 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
       currency_id: chosenPayment ? chosenPayment.id : typeOfCurrency.id,
       currency_to: typeOfCurrency.id,
       user_id: userInfo.id,
-      memo: "",
+      memo: memoAddressValue,
       address: addressValue,
       amount: amountValue
     }
@@ -81,7 +88,21 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
           t={t}
           addressInputHandler={addressInputHandler}
           addressValue={addressValue}
+          name={"myAccount.cashoutPage.selectPaymentContainer.address"}
         />
+        {
+          typeOfCurrency.memo_req !== 0
+          ?
+            <AddressInput
+              t={t}
+              addressInputHandler={memoAddressInputHandler}
+              addressValue={memoAddressValue}
+              name={"myAccount.cashoutPage.selectPaymentContainer.memoAddress"}
+            />
+            :
+            <></>
+        }
+
         <span className={styles.errorMessage}>{errorMessage}</span>
         <span className={styles.successMessage}>{successMessage}</span>
         <ButtonContainer

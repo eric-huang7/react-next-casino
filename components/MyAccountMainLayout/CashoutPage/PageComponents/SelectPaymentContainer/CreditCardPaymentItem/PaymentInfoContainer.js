@@ -7,7 +7,6 @@ export const PaymentInfoContainer = ({t, typeOfCurrency}) => {
   let min = numberTransformer(`${typeOfCurrency.withdrawMin}`);
   let max = numberTransformer(`${typeOfCurrency.withdrawMax}`);
 
-  console.log(typeOfCurrency)
 
   return (
     <div className={styles.paymentInfoContainer}>

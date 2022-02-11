@@ -152,6 +152,7 @@ export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currency
               isActive={cryptoItem}
               balanceData={balanceData}
               typeOfCurrency={typeOfCurrency}
+              // chosenPayment={typeOfCurrency}
               activateItemClickHandler={activateItemClickHandler}
               userInfo={userInfo}
             />

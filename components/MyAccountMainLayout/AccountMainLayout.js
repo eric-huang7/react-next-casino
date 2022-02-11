@@ -6,25 +6,21 @@ import {SideMenu} from "./AccountLayoutConponents/SideMenu";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {
-  auth, getActiveUserSessions, getClosedUserSessions, getDocuments, getQrAuth,
+  auth, getActiveUserSessions, getClosedUserSessions, getDocuments,
   getUserActivePendingBonuses,
   getUserBets,
   getUserBonuses,
   getUserPayments,
-  userBalance
 } from "../../redux/actions/userData";
 import {getCurrency, getCurrencyJurisdiction} from "../../redux/actions/currency";
 import {DepositPage} from "../MainLayout/DepositPage/DepositPage";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
-import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
 import {useRouter} from "next/router";
-import MainLayout from "../MainLayout/MainLayout";
-import {showRegister} from "../../redux/actions/registerShow";
 import {showLogin} from "../../redux/actions/loginShow";
 import Head from "next/head";
 import {ErrorMessageContainer} from "./ErrorMessage/ErrorMessageContainer";
 import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget";
-import {backButtonShouldDo, closeAll, showCurrencySwitcher} from "../../redux/actions/showPopups";
+import {backButtonShouldDo, closeAll} from "../../redux/actions/showPopups";
 import {PaymentsCardWrapper} from "../MainLayout/PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "../MainLayout/PaymentsModals/PaymentsCryptoWrapper";
 
@@ -103,10 +99,7 @@ export const AccountMainLayout = ({t, children}) => {
       if (!userInfo.userClosedSessions) {
         dispatch(getClosedUserSessions());
       }
-      // if (!userInfo.balance) {
-      //   console.log('balance fetch', userInfo.balance)
-      //   dispatch(userBalance());
-      // }
+
       if (!currency.currency_jurisdiction) {
         dispatch(getCurrencyJurisdiction());
       }
@@ -122,7 +115,6 @@ export const AccountMainLayout = ({t, children}) => {
 
     }
 
-    // console.log('effect fetcher', userInfo)
   }, [userInfo.isAuthenticated]);
 
 

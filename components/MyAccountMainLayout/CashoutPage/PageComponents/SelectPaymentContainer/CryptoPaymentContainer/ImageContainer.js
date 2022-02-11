@@ -6,7 +6,7 @@ export const ImageContainer = ({t, typeOfCurrency}) => {
 
   return (
     <div  className={styles.methodImageContainer}>
-      <img src={`/assets/img/myAccount/cashoutPage/${typeOfCurrency}.png`} alt="bitcoin icon"/>
+      <img src={`/assets/img/myAccount/cashoutPage/${typeOfCurrency}.png`} alt="coin icon"/>
     </div>
   )
 }

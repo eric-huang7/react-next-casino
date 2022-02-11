@@ -1,13 +1,13 @@
 import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
 
 
-export const AddressInput = ({t, addressInputHandler, addressValue}) => {
+export const AddressInput = ({t, addressInputHandler, addressValue, name}) => {
 
-
+  // "myAccount.cashoutPage.selectPaymentContainer.address"
 
   return (
     <div className={styles.addressInputContainer}>
-      <label htmlFor="addressInputContainer" className={styles.addressLabel}>{t("myAccount.cashoutPage.selectPaymentContainer.address")}</label>
+      <label htmlFor="addressInputContainer" className={styles.addressLabel}>{t(name)}</label>
       <input
         onChange={(e) => addressInputHandler(e.target.value)}
         value={addressValue}
