@@ -1,10 +1,12 @@
 import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
 import {numberTransformer} from "../../../../../../helpers/numberTransformer";
+import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
 
 
 export const AmountInput = ({t, typeOfCurrency, amountValue, amountInputHandler}) => {
 
   let min = numberTransformer(`${typeOfCurrency.withdrawMin}`);
+  let step = decimalStepCounter(typeOfCurrency.decimal);
 
   return (
     <div  className={styles.valueInputContainer}>
@@ -15,6 +17,7 @@ export const AmountInput = ({t, typeOfCurrency, amountValue, amountInputHandler}
           value={amountValue}
           type="number"
           min={min}
+          step={step}
           id={"withdrawValueInput"}
           className={styles.withdrawValueInput}
         />
