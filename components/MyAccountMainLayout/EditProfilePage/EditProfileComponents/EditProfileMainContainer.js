@@ -16,7 +16,8 @@ import {phone_number_url} from "../../../../redux/url/url";
 import {SecurityQuestionSelector} from "./SecurityQuestionSelector";
 
 
-export const EditProfileMainContainer = ({t, userInfo}) => {
+export const EditProfileMainContainer = ({t, userInfo, currencyJurisdiction}) => {
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -109,7 +110,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
       sendSecurityQuestion = '';
     }
 
-   let sendData = {
+    let sendData = {
       id: userInfo.id,
       full_name: fullName.trim() ? fullName : null,
       birthday: null,
@@ -173,31 +174,35 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
     }
     axios.get(phone_number_url, config)
       .then((data) => {
-      setPhoneError("");
-      dispatch(patchUserData(sendData));
-      router.push('/accounts/profile-info');
-    })
+        setPhoneError("");
+        dispatch(patchUserData(sendData));
+        router.push('/accounts/profile-info');
+      })
       .catch((e) => {
-      // Не удалось добавить телефон. Номер телефона недействителен.
-      setPhoneError(t("myAccount.editProfilePage.fieldAlreadySpec"));
-    })
+        // Не удалось добавить телефон. Номер телефона недействителен.
+        setPhoneError(t("myAccount.editProfilePage.fieldAlreadySpec"));
+      })
   }
-
-  console.log(security_question_selector, security_question);
 
   return (
     <div className={styles.mainContainer}>
       <p className={styles.textInfo}>
         {t("myAccount.editProfilePage.textBlock")}
       </p>
-      <InputContainer
-        t={t}
-        inputName={t("myAccount.editProfilePage.fullName")}
-        inputId={'nameInput'}
-        value={fullName}
-        valueHandler={fullNameInputHandler}
-        disableEdit={false}
-      />
+      {
+        currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
+          ?
+          <InputContainer
+            t={t}
+            inputName={t("myAccount.editProfilePage.fullName")}
+            inputId={'nameInput'}
+            value={fullName}
+            valueHandler={fullNameInputHandler}
+            disableEdit={false}
+          />
+          :
+          <></>
+      }
       <InputContainer
         t={t}
         inputName={t("myAccount.editProfilePage.nickname")}
@@ -218,51 +223,59 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
         setBYear={setBYear}
         bYear={bYear}
       />
-      <GenderSelector
-        t={t}
-        value={gender}
-        genderSelectorHandler={genderSelectorHandler}
-        disableEdit={userInfo.gender ? true : false}
-      />
-      <CountrySelector
-        value={country}
-        countrySelectorHandler={countrySelectorHandler}
-        disableEdit={userInfo.country_code ? true : false}
-        t={t}
-      />
-      <InputContainer
-        t={t}
-        inputName={t("myAccount.editProfilePage.city")}
-        inputId={'cityInput'}
-        value={city}
-        valueHandler={cityInputHandler}
-        disableEdit={userInfo.city ? true : false}
-      />
-      <InputContainer
-        t={t}
-        inputName={t("myAccount.editProfilePage.address")}
-        inputId={'addressInput'}
-        value={address}
-        valueHandler={addressInputHandler}
-        disableEdit={(address_1 + " " + address_2).trim() ? true : false}
-      />
-      <InputContainer
-        t={t}
-        inputName={t("myAccount.editProfilePage.postalCode")}
-        inputId={'postalCodeInput'}
-        value={postalCode}
-        valueHandler={postalCodeInputHandler}
-        disableEdit={userInfo.postal_code ? true : false}
-      />
-      <InputContainer
-        t={t}
-        inputName={t("myAccount.editProfilePage.mobile")}
-        inputId={'mobileInput'}
-        value={mobile}
-        valueHandler={mobileInputHandler}
-        disableEdit={userInfo.unconfirmed_phone ? true : false}
-        phoneError={phoneError}
-      />
+      {
+        currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
+          ?
+          <>
+            <GenderSelector
+              t={t}
+              value={gender}
+              genderSelectorHandler={genderSelectorHandler}
+              disableEdit={userInfo.gender ? true : false}
+            />
+            <CountrySelector
+              value={country}
+              countrySelectorHandler={countrySelectorHandler}
+              disableEdit={userInfo.country_code ? true : false}
+              t={t}
+            />
+            <InputContainer
+              t={t}
+              inputName={t("myAccount.editProfilePage.city")}
+              inputId={'cityInput'}
+              value={city}
+              valueHandler={cityInputHandler}
+              disableEdit={userInfo.city ? true : false}
+            />
+            <InputContainer
+              t={t}
+              inputName={t("myAccount.editProfilePage.address")}
+              inputId={'addressInput'}
+              value={address}
+              valueHandler={addressInputHandler}
+              disableEdit={(address_1 + " " + address_2).trim() ? true : false}
+            />
+            <InputContainer
+              t={t}
+              inputName={t("myAccount.editProfilePage.postalCode")}
+              inputId={'postalCodeInput'}
+              value={postalCode}
+              valueHandler={postalCodeInputHandler}
+              disableEdit={userInfo.postal_code ? true : false}
+            />
+            <InputContainer
+              t={t}
+              inputName={t("myAccount.editProfilePage.mobile")}
+              inputId={'mobileInput'}
+              value={mobile}
+              valueHandler={mobileInputHandler}
+              disableEdit={userInfo.unconfirmed_phone ? true : false}
+              phoneError={phoneError}
+            />
+          </>
+          :
+          <></>
+      }
       <SecurityQuestionSelector
         t={t}
         value={security_question_selector}
@@ -276,14 +289,14 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
           :
           security_question_selector === 'enter'
             ?
-          <InputContainer
-            t={t}
-            inputName={t("myAccount.editProfilePage.enterSecQuestion")}
-            inputId={'questionInput'}
-            value={security_question}
-            valueHandler={securityQuestionInputHandler}
-            disableEdit={userInfo.security_question ? true : false}
-          />
+            <InputContainer
+              t={t}
+              inputName={t("myAccount.editProfilePage.enterSecQuestion")}
+              inputId={'questionInput'}
+              value={security_question}
+              valueHandler={securityQuestionInputHandler}
+              disableEdit={userInfo.security_question ? true : false}
+            />
             :
             <></>
       }

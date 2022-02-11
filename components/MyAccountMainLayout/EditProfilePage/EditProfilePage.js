@@ -2,16 +2,28 @@ import styles from '../../../styles/MyAccount/UserInfoPage/EditProfilePage.modul
 import {Heading} from "../ComponentsForPages/Heading";
 import {EditProfileMainContainer} from "./EditProfileComponents/EditProfileMainContainer";
 import {useSelector} from "react-redux";
+import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 
 
 
 export const EditProfilePage = ({t}) => {
   const userInfo = useSelector((store) => store.authInfo);
+  const currencyJurisdiction = useSelector((store) => store.getCurrency);
 
-  return (
-    <div className={styles.editProfileMainContainer}>
-      <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
-      <EditProfileMainContainer userInfo={userInfo.user.user} t={t}/>
-    </div>
-  )
+
+  if (currencyJurisdiction.loading_currency_jurisdiction || !userInfo.isAuthenticated) {
+    return (
+      <div>
+        <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
+        <LoadingComponent t={t}/>
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.editProfileMainContainer}>
+        <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
+        <EditProfileMainContainer currencyJurisdiction={currencyJurisdiction} userInfo={userInfo.user.user} t={t}/>
+      </div>
+    )
+  }
 }

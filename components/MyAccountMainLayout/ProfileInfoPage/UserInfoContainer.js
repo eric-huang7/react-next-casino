@@ -9,11 +9,11 @@ import {LastClosedSessionsBlock} from "./LastClosedSessionsBlock/LastClosedSessi
 import {GoogleAuthBlock} from "./GoogleAuthBlock/GoogleAuthBlock";
 
 
-export const UserInfoContainer = ({t, userInfo}) => {
+export const UserInfoContainer = ({t, userInfo, currencyJurisdiction}) => {
 
   return (
     <div className={styles.mainContaainer}>
-      <UserInfoBlock userInfo={userInfo} t={t}/>
+      <UserInfoBlock userInfo={userInfo} t={t} currencyJurisdiction={currencyJurisdiction}/>
       <PhoneVerification t={t} userInfo={userInfo}/>
       <ChangePasswordBlock t={t} userInfo={userInfo}/>
       <SocialNetworkBlock t={t} userInfo={userInfo}/>

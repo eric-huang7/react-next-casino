@@ -1,6 +1,6 @@
 import {
   GET_CRYPTO_CURRENCY,
-  GET_CURRENCY,
+  GET_CURRENCY, GET_CURRENCY_JURISDICTIONS,
   GET_FIAT_CURRENCY,
   GET_POPULAR_CURRENCY,
   GET_STABLE_CURRENCY
@@ -18,7 +18,9 @@ const initialState = {
   stable_currency: null,
   loading_stable_currency: true,
   fiat_currency: null,
-  loading_fiat_currency: true
+  loading_fiat_currency: true,
+  currency_jurisdiction: null,
+  loading_currency_jurisdiction: true
 }
 
 function getCurrency(state = initialState, action) {
@@ -54,6 +56,12 @@ function getCurrency(state = initialState, action) {
         ...state,
         fiat_currency: {...payload},
         loading_fiat_currency: false
+      }
+    case GET_CURRENCY_JURISDICTIONS:
+      return {
+        ...state,
+        currency_jurisdiction: {...payload},
+        loading_currency_jurisdiction: false
       }
 
     default:

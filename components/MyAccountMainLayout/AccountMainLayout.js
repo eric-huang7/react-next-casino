@@ -13,7 +13,7 @@ import {
   getUserPayments,
   userBalance
 } from "../../redux/actions/userData";
-import {getCurrency} from "../../redux/actions/currency";
+import {getCurrency, getCurrencyJurisdiction} from "../../redux/actions/currency";
 import {DepositPage} from "../MainLayout/DepositPage/DepositPage";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
 import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
@@ -107,6 +107,9 @@ export const AccountMainLayout = ({t, children}) => {
       //   console.log('balance fetch', userInfo.balance)
       //   dispatch(userBalance());
       // }
+      if (!currency.currency_jurisdiction) {
+        dispatch(getCurrencyJurisdiction());
+      }
       if (!userInfo.userBetsData) {
         dispatch(getUserBets());
       }
