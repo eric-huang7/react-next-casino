@@ -1,7 +1,7 @@
 import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
 
 
-export const AddressInput = ({t, addressInputHandler, addressValue}) => {
+export const AddressInput = ({t, addressInputHandler, addressValue, addressError}) => {
 
 
   return (
@@ -14,6 +14,7 @@ export const AddressInput = ({t, addressInputHandler, addressValue}) => {
         className={styles.addressInput}
         id={"addressInputContainer"}
       />
+      <span className={styles.formErrorMessage}>{addressError}</span>
     </div>
   )
 }

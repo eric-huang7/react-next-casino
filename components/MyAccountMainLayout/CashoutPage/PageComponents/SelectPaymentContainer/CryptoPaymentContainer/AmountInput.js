@@ -3,7 +3,7 @@ import {numberTransformer} from "../../../../../../helpers/numberTransformer";
 import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
 
 
-export const AmountInput = ({t, chosenPayment, typeOfCurrency, amountInputHandler, amountValue, valueRef}) => {
+export const AmountInput = ({t, chosenPayment, typeOfCurrency, amountInputHandler, amountValue, valueRef, valueError}) => {
 
   let min = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${typeOfCurrency.withdrawMin}`);
 
@@ -25,8 +25,12 @@ export const AmountInput = ({t, chosenPayment, typeOfCurrency, amountInputHandle
           className={styles.withdrawValueInput}
         />
         <label htmlFor="withdrawValueInput"
-               className={styles.currencyLabel}>{chosenPayment ? chosenPayment.abbreviation : typeOfCurrency.abbreviation}</label>
+               className={styles.currencyLabel}
+        >
+          {chosenPayment ? chosenPayment.abbreviation : typeOfCurrency.abbreviation}
+        </label>
       </div>
+      <span className={styles.formErrorMessage}>{valueError}</span>
     </div>
   )
 }

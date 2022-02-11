@@ -14,6 +14,8 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
   const [addressValue, setAddressValue] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [valueError, setValueError] = useState('');
+  const [addressError, setAddressError] = useState('');
 
   const amountInputHandler = (value) => {
     setAmountValue(value);
@@ -39,17 +41,24 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
     }
     const body = JSON.stringify(sendData);
 
-    axios.post(post_withdraw_url, body, config)
-      .then((data) => {
-        console.log('withdraw Success', data);
-        setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
-        setErrorMessage('');
-      })
-      .catch((e) => {
-        console.log(e.response, 'withdraw Error');
-        setSuccessMessage('');
-        setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"))
-      })
+    if (Number(typeOfCurrency.withdrawMin) > Number(amountValue)) {
+      setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueErrorMessage'));
+    } else if (addressValue.length === 0) {
+      setAddressError(t('myAccount.cashoutPage.selectPaymentContainer.errors.emptyAddressErrorMessage'));
+    } else {
+      axios.post(post_withdraw_url, body, config)
+        .then((data) => {
+          console.log('withdraw Success', data);
+          setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
+          setErrorMessage('');
+        })
+        .catch((e) => {
+          console.log(e.response, 'withdraw Error');
+          setSuccessMessage('');
+          setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"))
+        })
+    }
+
   }
 
   useEffect(() => {
@@ -67,11 +76,13 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
           typeOfCurrency={typeOfCurrency}
           amountInputHandler={amountInputHandler}
           amountValue={amountValue}
+          valueError={valueError}
         />
         <AddressInput
           t={t}
           addressInputHandler={addressInputHandler}
           addressValue={addressValue}
+          addressError={addressError}
         />
         <span className={styles.errorMessage}>{errorMessage}</span>
         <span className={styles.successMessage}>{successMessage}</span>

@@ -12,6 +12,7 @@ export const UserInfoBlock = ({t, userInfo, currencyJurisdiction}) => {
   let receiveEmails = userInfo.user.user.transactional_email_opt_in === 1 ? 'Yes' : "No";
   let receiveSms = userInfo.user.user.transactional_sms_opt_in === 1 ? 'Yes' : "No";
 
+  
   return (
     <div className={styles.userInfoBlock}>
       <table cellSpacing={0} className={styles.personalInfoTable}>

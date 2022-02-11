@@ -16,6 +16,8 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
   const [memoAddressValue, setMemoAddressValue] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [valueError, setValueError] = useState('');
+  const [addressError, setAddressError] = useState('');
 
   const valueRef = useRef();
 
@@ -31,7 +33,7 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
 
   const withdrawFormHandler = (e) => {
     e.preventDefault();
-    // const currency_to = typeOfCurrency;
+
     const sendData = {
       currency_id: chosenPayment ? chosenPayment.id : typeOfCurrency.id,
       currency_to: typeOfCurrency.id,
@@ -52,17 +54,26 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
     }
     const body = JSON.stringify(sendData);
 
-    axios.post(post_withdraw_url, body, config)
-      .then((data) => {
-        console.log('withdraw Success', data);
-        setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
-        setErrorMessage('');
-      })
-      .catch((e) => {
-        console.log(e.response, 'withdraw Error');
-        setSuccessMessage('');
-        setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"))
-      })
+    if (Number(chosenPayment ? chosenPayment.withdrawMin : typeOfCurrency.withdrawMin) > Number(amountValue)) {
+      setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueErrorMessage'));
+    } else if (addressValue.length === 0) {
+      setAddressError(t('myAccount.cashoutPage.selectPaymentContainer.errors.emptyAddressErrorMessage'));
+    } else {
+      setValueError('');
+      setAddressError('');
+      axios.post(post_withdraw_url, body, config)
+        .then((data) => {
+          console.log('withdraw Success', data);
+          setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
+          setErrorMessage('');
+        })
+        .catch((e) => {
+          console.log(e.response, 'withdraw Error');
+          setSuccessMessage('');
+
+          setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
+        })
+    }
   }
 
 
@@ -84,12 +95,14 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
           amountInputHandler={amountInputHandler}
           amountValue={amountValue}
           valueRef={valueRef}
+          valueError={valueError}
         />
         <AddressInput
           t={t}
           addressInputHandler={addressInputHandler}
           addressValue={addressValue}
           name={"myAccount.cashoutPage.selectPaymentContainer.address"}
+          addressError={addressError}
         />
         {
           typeOfCurrency.memo_req !== 0
