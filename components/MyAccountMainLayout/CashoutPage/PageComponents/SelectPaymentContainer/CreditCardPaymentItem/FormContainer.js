@@ -46,6 +46,8 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
     } else if (addressValue.length === 0) {
       setAddressError(t('myAccount.cashoutPage.selectPaymentContainer.errors.emptyAddressErrorMessage'));
     } else {
+      setValueError('');
+      setAddressError('');
       axios.post(post_withdraw_url, body, config)
         .then((data) => {
           console.log('withdraw Success', data);
@@ -66,6 +68,8 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
     setAmountValue('');
     setSuccessMessage('');
     setErrorMessage('');
+    setValueError('');
+    setAddressError('');
   }, [router])
 
   return (

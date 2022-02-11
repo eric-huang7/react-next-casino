@@ -83,6 +83,8 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
     setAmountValue('');
     setSuccessMessage('');
     setErrorMessage('');
+    setValueError('');
+    setAddressError('');
   }, [router])
 
   return (

@@ -106,7 +106,7 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
       let maySound = browserNotify
       if (userInfo.user.token) {
         if(socketRef.current === null) {
-          // runSocket(maySound, userInfo);
+          runSocket(maySound, userInfo);
         } else {
           socketRef.current.close(1000)
           socketRef.current = null;
