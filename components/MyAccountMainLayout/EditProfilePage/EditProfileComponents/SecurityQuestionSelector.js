@@ -1,17 +1,19 @@
 import styles from '../../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss';
 
 const listOfSecurityQuestions = [
-  {id: 1, question: "What was your childhood nickname?"},
-  {id: 2, question: "In what city did you meet your spouse/significant other?"},
-  {id: 3, question: "What is the name of your favorite childhood friend?"},
-  {id: 4, question: "What street did you live on in third grade?"},
-  {id: 5, question: "What is the middle name of your youngest child?"},
-  {id: 6, question: "What was the last name of your third grade teacher?"},
-  {id: 7, question: "In what city does your nearest sibling live?"},
-  {id: 8, question: "What is your maternal grandmother's maiden name?"},
-  {id: 9, question: "In what city or town was your first job?"},
-  {id: 10, question: "What is your spouse's mother's maiden name?"},
+  {id: 1, question: "myAccount.editProfilePage.secQuestionsList.question_1"},
+  {id: 2, question: "myAccount.editProfilePage.secQuestionsList.question_2"},
+  {id: 3, question: "myAccount.editProfilePage.secQuestionsList.question_3"},
+  {id: 4, question: "myAccount.editProfilePage.secQuestionsList.question_4"},
+  {id: 5, question: "myAccount.editProfilePage.secQuestionsList.question_5"},
+  {id: 6, question: "myAccount.editProfilePage.secQuestionsList.question_6"},
+  {id: 7, question: "myAccount.editProfilePage.secQuestionsList.question_7"},
+  {id: 8, question: "myAccount.editProfilePage.secQuestionsList.question_8"},
+  {id: 9, question: "myAccount.editProfilePage.secQuestionsList.question_9"},
+  {id: 10, question: "myAccount.editProfilePage.secQuestionsList.question_10"},
 ]
+
+// myAccount.editProfilePage.secQuestionsList.question_1
 
 export const SecurityQuestionSelector = ({t, disableEdit, value, genderSelectorHandler}) => {
 
@@ -44,11 +46,11 @@ export const SecurityQuestionSelector = ({t, disableEdit, value, genderSelectorH
               {
                 listOfSecurityQuestions.map((question) => {
                   return (
-                    <option key={`${question.id} security question`} value={question.question}>{question.question}</option>
+                    <option key={`${question.id} security question`} value={t(question.question)}>{t(question.question)}</option>
                   )
                 })
               }
-              <option value={'enter'}>{"Enter your question."}</option>
+              <option value={'enter'}>{t("myAccount.editProfilePage.secQuestionsList.question_11")}</option>
             </select>
         }
       </div>

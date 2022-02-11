@@ -278,7 +278,7 @@ export const EditProfileMainContainer = ({t, userInfo}) => {
             ?
           <InputContainer
             t={t}
-            inputName={t("myAccount.editProfilePage.secQuestion")}
+            inputName={t("myAccount.editProfilePage.enterSecQuestion")}
             inputId={'questionInput'}
             value={security_question}
             valueHandler={securityQuestionInputHandler}
