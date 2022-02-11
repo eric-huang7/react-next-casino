@@ -2,15 +2,13 @@ import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.m
 import {AmountInput} from "./AmountInput";
 import {AddressInput} from "./AddressInput";
 import {ButtonContainer} from "./ButtonContainer";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {post_withdraw_url} from "../../../../../../redux/url/url";
 import axios from "axios";
 import {useRouter} from "next/router";
 
 
 export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
-  console.log(typeOfCurrency, 'type', chosenPayment, 'chusen');
-
 
   const router = useRouter();
   const [amountValue, setAmountValue] = useState('');
@@ -18,6 +16,8 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
   const [memoAddressValue, setMemoAddressValue] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const valueRef = useRef();
 
   const amountInputHandler = (value) => {
     setAmountValue(value);
@@ -83,6 +83,7 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
           chosenPayment={chosenPayment}
           amountInputHandler={amountInputHandler}
           amountValue={amountValue}
+          valueRef={valueRef}
         />
         <AddressInput
           t={t}

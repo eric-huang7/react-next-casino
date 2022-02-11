@@ -1,8 +1,10 @@
 import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
+import {numberTransformer} from "../../../../../../helpers/numberTransformer";
 
 
 export const AmountInput = ({t, typeOfCurrency, amountValue, amountInputHandler}) => {
 
+  let min = numberTransformer(`${typeOfCurrency.withdrawMin}`);
 
   return (
     <div  className={styles.valueInputContainer}>
@@ -12,6 +14,7 @@ export const AmountInput = ({t, typeOfCurrency, amountValue, amountInputHandler}
           onChange={(e) => amountInputHandler(e.target.value)}
           value={amountValue}
           type="number"
+          min={min}
           id={"withdrawValueInput"}
           className={styles.withdrawValueInput}
         />
