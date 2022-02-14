@@ -6,6 +6,7 @@ import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
 export const AmountInput = ({t, chosenPayment, typeOfCurrency, amountInputHandler, amountValue, valueRef, valueError}) => {
 
   let min = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${typeOfCurrency.withdrawMin}`);
+  let max = numberTransformer(chosenPayment ? `${chosenPayment.withdrawMax}` : `${typeOfCurrency.withdrawMax}`);
 
   let step = decimalStepCounter(chosenPayment ? chosenPayment.decimal : typeOfCurrency.decimal);
 
@@ -20,6 +21,7 @@ export const AmountInput = ({t, chosenPayment, typeOfCurrency, amountInputHandle
           value={amountValue}
           type="number"
           min={min}
+          max={max}
           step={step}
           id={"withdrawValueInput"}
           className={styles.withdrawValueInput}
