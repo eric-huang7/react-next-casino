@@ -128,11 +128,11 @@
   --aspect-ratio: 16/9;
 
   width: calc((100vh - 154px)*var(--aspect-ratio));
-  max-width: calc(100% - 578px);
+  max-width: calc(100% - 78px);
 
 
   height: 55vw;
-  max-height: calc(100vh - 185px);
+  max-height: calc(100vh - 205px);
 
   transition: .3s ease;
 
