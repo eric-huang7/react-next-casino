@@ -34,20 +34,6 @@
   z-index: 30;
 }
 
-//.minimizedMainSection {
-//  z-index: 10;
-//
-//  top: auto;
-//  left: 30px;
-//  bottom: 90px;
-//
-//  width: 533px;
-//  height: 340px;
-//  min-height: 340px;
-//
-//  background-image: none;
-//
-//}
 
 .blackBack {
   position: absolute;
@@ -139,16 +125,16 @@
   background-color: rgba(0,0,0, 1);
 
   & .controlPanel {
-    width: 50px;
-    min-width: 35px;
-    height: 23%;
-    min-height: 130px;
+    width: 30px;
+    min-width: 25px;
+    height: 18%;
+    min-height: 100px;
 
     background-color: rgba(0,0,0, 0.5);
 
     position: absolute;
     top: 0;
-    right: -50px;
+    right: -30px;
 
     display: flex;
     flex-direction: column;
@@ -163,8 +149,8 @@
 
       margin-bottom: 8px;
 
-      width: 34px;
-      height: 34px;
+      width: 24px;
+      height: 24px;
 
       border-radius: 50%;
 
@@ -317,15 +303,15 @@
   & span {
     display: block;
 
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
 
     border-top: 1px solid #ffffff;
     border-right: 1px solid #ffffff;
 
     transform: rotateZ(135deg);
 
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
 }
 
