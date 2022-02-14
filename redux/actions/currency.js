@@ -118,6 +118,9 @@ export const get_fiat_currency = () => async dispatch => {
 
   try {
     const res = await axios.get(fiat_currency_url, config);
+
+    console.log(res, 'IN GET FIAT CURRENCY');
+
     dispatch({
       type: GET_FIAT_CURRENCY,
       payload: res.data
