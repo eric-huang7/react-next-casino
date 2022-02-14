@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {post_withdraw_url} from "../../../../../../redux/url/url";
 import {useRouter} from "next/router";
+import {useSelector} from "react-redux";
 
 
 export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
@@ -16,6 +17,8 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [valueError, setValueError] = useState('');
   const [addressError, setAddressError] = useState('');
+
+  const balanceInfo = useSelector((store) => store.authInfo);
 
   const amountInputHandler = (value) => {
     setAmountValue(value);
@@ -41,26 +44,35 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
     }
     const body = JSON.stringify(sendData);
 
-    if (Number(typeOfCurrency.withdrawMin) > Number(amountValue)) {
-      setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueErrorMessage'));
-    } else if (addressValue.length === 0) {
-      setAddressError(t('myAccount.cashoutPage.selectPaymentContainer.errors.emptyAddressErrorMessage'));
-    } else {
-      setValueError('');
-      setAddressError('');
-      axios.post(post_withdraw_url, body, config)
-        .then((data) => {
-          console.log('withdraw Success', data);
-          setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
-          setErrorMessage('');
-        })
-        .catch((e) => {
-          console.log(e.response, 'withdraw Error');
-          setSuccessMessage('');
-          setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"))
-        })
-    }
+    try {
+      let permittedСashoutValue = balanceInfo.balance.balances.find((el) => el.currency_id === (`${typeOfCurrency.id}`)).cash_amount;
 
+      if (Number(permittedСashoutValue) < Number(amountValue)) {
+        setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueErrorMessage'));
+      } else if (Number(typeOfCurrency.withdrawMin) > Number(amountValue)) {
+        setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueMinErrorMessage'));
+      } else if (Number(typeOfCurrency.withdrawMax) < Number(amountValue)) {
+        setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueMaxErrorMessage'));
+      } else if (addressValue.length === 0) {
+        setAddressError(t('myAccount.cashoutPage.selectPaymentContainer.errors.emptyAddressErrorMessage'));
+      } else {
+        setValueError('');
+        setAddressError('');
+        axios.post(post_withdraw_url, body, config)
+          .then((data) => {
+            console.log('withdraw Success', data);
+            setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
+            setErrorMessage('');
+          })
+          .catch((e) => {
+            console.log(e.response, 'withdraw Error');
+            setSuccessMessage('');
+            setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
+          })
+      }
+    } catch (e) {
+      setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
+    }
   }
 
   useEffect(() => {

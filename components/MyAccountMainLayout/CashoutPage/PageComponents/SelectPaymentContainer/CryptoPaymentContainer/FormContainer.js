@@ -58,7 +58,7 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
     const body = JSON.stringify(sendData);
     try {
       let permittedСashoutValue = balanceInfo.balance.balances.find((el) => el.currency_id === (chosenPayment ? `${chosenPayment.id}` : `${typeOfCurrency.id}`)).cash_amount;
-      console.log(typeOfCurrency, chosenPayment, balanceInfo.balance, permittedСashoutValue, Number(permittedСashoutValue) < Number(amountValue),  '!!!!');
+
       if (Number(permittedСashoutValue) < Number(amountValue)) {
         setValueError(t('myAccount.cashoutPage.selectPaymentContainer.errors.valueErrorMessage'));
       } else if (Number(chosenPayment ? chosenPayment.withdrawMin : typeOfCurrency.withdrawMin) > Number(amountValue)) {
