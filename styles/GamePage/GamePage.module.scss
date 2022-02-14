@@ -182,13 +182,13 @@
   bottom: 90px;
 
   width: 100%;
-  max-width: 533px;
+  max-width: 417px;
 
 
   z-index: 9;
   transform: translateX(0);
-  height: 340px;
-  max-height: 340px;
+  height: 235px;
+  max-height: 235px;
   transition: .3s ease;
 
   background-color: rgba(0, 0, 0, 1);
@@ -202,7 +202,8 @@
 
     padding: 0 10px;
 
-    min-height: 38px;
+    height: 20px;
+    min-height: 20px;
 
     background-color: #2b2b2b;
 
@@ -221,8 +222,8 @@
 
       background-color: rgba(53, 69, 72, 0.5);
 
-      width: 34px;
-      height: 34px;
+      width: 24px;
+      height: 24px;
 
       border-radius: 50%;
 
@@ -323,7 +324,7 @@
 .openFullScreenContainer {
   position: absolute;
 
-  top: 38px;
+  top: 20px;
   bottom: 0;
   left: 0;
   right: 0;
