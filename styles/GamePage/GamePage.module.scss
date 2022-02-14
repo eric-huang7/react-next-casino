@@ -117,19 +117,23 @@
 }
 
 .playWindowWrapper {
-  --aspect-ratio: 16/9;
+
   position: absolute;
-  width: calc((100vh - 154px)*var(--aspect-ratio));
-  max-width: calc(100% - 578px);
   top: 130px;
-  left: 50%;
   bottom: auto;
-
-
+  left: 50%;
   z-index: 11;
   transform: translateX(-50%);
+
+  --aspect-ratio: 16/9;
+
+  width: calc((100vh - 154px)*var(--aspect-ratio));
+  max-width: calc(100% - 578px);
+
+
   height: 55vw;
   max-height: calc(100vh - 185px);
+
   transition: .3s ease;
 
   background-color: rgba(0,0,0, 1);

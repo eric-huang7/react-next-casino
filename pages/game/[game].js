@@ -7,12 +7,15 @@ import {useEffect} from "react";
 import {freeGame} from "../../redux/actions/playGames";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
 import {getCurrency} from "../../redux/actions/currency";
+import {useRouter} from "next/router";
+
 
 
 const PlayGamePage = (props) => {
   const {t} = useTranslation('common');
   const playGames = useSelector((state) => state.playGame);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(getCurrency());
@@ -22,11 +25,16 @@ const PlayGamePage = (props) => {
     const timer = setTimeout(() => {
       if (!playGames.freeGame && !playGames.startGame) {
         let lastGameData = JSON.parse(localStorage.getItem('user_last_game'));
-        dispatch(freeGame({
-          data: lastGameData.data,
-          gameName: lastGameData.gameName ? lastGameData.gameName : "..."
-        }));
-        dispatch(showGameWindow(true));
+        if (lastGameData) {
+          dispatch(freeGame({
+            data: lastGameData.data,
+            gameName: lastGameData.gameName ? lastGameData.gameName : "..."
+          }));
+          dispatch(showGameWindow(true));
+        } else {
+          router.push('/');
+        }
+
       }
     }, 1000);
 
