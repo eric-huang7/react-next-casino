@@ -3,38 +3,37 @@ import {useEffect} from "react";
 
 
 export const ImageContainer = ({t, typeOfCurrency}) => {
-  useEffect(() => {
+  console.log(typeOfCurrency, 'typeOfCurrency')
 
+  useEffect(() => {
     function svgSetter() {
       let svg = document.getElementById("currencyIframe");
-      let container = document.getElementById(`currencyImageContainer${typeOfCurrency}`);
+      let container = document.getElementById(`currencyImageContainer${typeOfCurrency.abbreviation}`);
       if (svg) {
-        let currencyIcon = svg.contentWindow.window.document.getElementById(typeOfCurrency.toLowerCase())
+        let currencyIcon = svg.contentWindow.window.document.getElementById(typeOfCurrency.abbreviation.toLowerCase())
         if (currencyIcon) {
           container.innerHTML = currencyIcon.outerHTML;
         } else {
-          container.innerHTML = typeOfCurrency;
+          container.innerHTML = typeOfCurrency.abbreviation;
         }
       } else {
-        container.innerHTML = typeOfCurrency;
+        container.innerHTML = typeOfCurrency.abbreviation;
       }
     }
 
-    // svgSetter();
-
-    const timer = setTimeout(() => {
       svgSetter();
-    }, 10);
-
-    return () => {
-      clearTimeout(timer);
-    }
 
   }, [typeOfCurrency])
 
   return (
-    <div id={`currencyImageContainer${typeOfCurrency}`} className={styles.methodImageContainer}>
+    <>
+      <div id={`currencyImageContainer${typeOfCurrency.abbreviation}`} className={styles.methodImageContainer}>
 
-    </div>
+      </div>
+      <span className={styles.coinName}>
+        {typeOfCurrency.name}
+      </span>
+    </>
+
   )
 }

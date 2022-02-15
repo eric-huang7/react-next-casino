@@ -17,7 +17,7 @@ export const CryptoPaymentItem = ({t, isActive, balanceData, chosenPayment, type
     <li onClick={() => activateItemClickHandler(isActive)} className={`${styles.methodItem} ${isActive.isActive ? styles.activeMethodItem : ""}`}>
       <div className={styles.paymentItemMainContainer}>
         <ImageContainer
-          typeOfCurrency={typeOfCurrency.abbreviation}
+          typeOfCurrency={typeOfCurrency}
           t={t}
         />
         <PaymentInfoContainer

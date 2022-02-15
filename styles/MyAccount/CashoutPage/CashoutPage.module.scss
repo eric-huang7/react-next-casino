@@ -153,9 +153,21 @@
           background-color: #eeeeee;
 
           min-height: 55px;
+          & .coinName {
+            font-size: 16px;
+            letter-spacing: 0px;
+            color: #595656;
+            font-family: "Verdana", Arial, sans-serif;
 
+            min-width: 100px;
+
+            margin-right: 5px;
+
+            display: block;
+            flex-shrink: 0;
+          }
           & .methodImageContainer {
-            width: 308px;
+            width: 35px;
 
             flex-shrink: 0;
 
@@ -166,13 +178,18 @@
             font-family: Verdana, Arial, sans-serif;
             font-size: 24px;
 
+            margin-left: 5px;
+            margin-right: 5px;
+
             & svg {
-              width: 19%;
+              width: 100%;
               height: auto;
             }
           }
 
           & .creditCardImageContainer {
+            width: 308px;
+
             & img {
               width: 19%;
               height: auto;
@@ -418,7 +435,7 @@
           & .paymentItemMainContainer {
 
             & .methodImageContainer {
-              width: 150px;
+              width: 30px;
 
               flex-shrink: 0;
 
@@ -427,13 +444,14 @@
               justify-content: center;
 
               & svg {
-                width: 39%;
+                width: 100%;
                 height: auto;
 
               }
             }
 
             & .creditCardImageContainer {
+              width: 150px;
               & img {
                 width: 34%;
                 height: auto;
