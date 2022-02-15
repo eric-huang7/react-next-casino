@@ -159,12 +159,14 @@
             color: #595656;
             font-family: "Verdana", Arial, sans-serif;
 
-            min-width: 100px;
+            min-width: 50px;
 
             margin-right: 5px;
 
             display: block;
-            flex-shrink: 0;
+            //flex-shrink: 0;
+
+            white-space: break-spaces;
           }
           & .methodImageContainer {
             width: 35px;
