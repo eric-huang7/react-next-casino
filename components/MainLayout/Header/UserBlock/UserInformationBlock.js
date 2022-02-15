@@ -12,6 +12,11 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
   if (userCurrency.currency && userInfo.balance) {
     let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default));
 
+    if (balanceData.length === 0) {
+      if (userInfo?.balance?.balances?.length > 0) {
+        balanceData = userInfo?.balance?.balances;
+      }
+    }
 
     let amount = '';
 

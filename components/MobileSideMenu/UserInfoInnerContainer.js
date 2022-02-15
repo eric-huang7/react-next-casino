@@ -8,17 +8,20 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
   if (userCurrency.currency && userInform.balance) {
     let userName = userInform.user.user.username;
 
-
-
-
     let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default));
 
-    let amount = '!';
+    if (balanceData.length === 0) {
+      if (userInform?.balance?.balances?.length > 0) {
+        balanceData = userInform?.balance?.balances;
+      }
+    }
+
+    let amount = '';
 
     try {
       amount = numberTransformer(balanceData[0].current_balance);
     } catch (e) {
-      amount = '!';
+      amount = '';
     }
 
     let balance = balanceData.length === 0
