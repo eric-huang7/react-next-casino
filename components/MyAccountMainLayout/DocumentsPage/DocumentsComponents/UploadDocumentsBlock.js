@@ -8,6 +8,7 @@ import {document_url} from "../../../../redux/url/url";
 import {getDocuments} from "../../../../redux/actions/userData";
 import {useDispatch} from "react-redux";
 
+const fileTypes = ["image/jpeg", "image/png", "image/svg+xml", "application/pdf", "image/webp"];
 
 export const UploadDocumentsBlock = ({t}) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const UploadDocumentsBlock = ({t}) => {
   const [descriptionError, setDescriptionError] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [fileError, setFileError] = useState('');
 
   const descriptionInputHandler = (value) => {
     setDescription(value);
@@ -27,27 +29,38 @@ export const UploadDocumentsBlock = ({t}) => {
     e.preventDefault();
     if (selectedFile) {
       if (description) {
-        setIsUploading(true);
+        let validFile = fileTypes.includes(selectedFile.type);
+        setDescriptionError('');
+        if (validFile) {
+          let fileSize = 10000000;
+          if (fileSize >= selectedFile.size) {
+            console.log( selectedFile, validFile);
+            setIsUploading(true);
+            const formData = new FormData();
+            formData.append("file", selectedFile);
+            formData.append("description", description);
+            formData.append("type", "1");
 
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-        formData.append("description", description);
-        formData.append("type", "1");
+            axios.post(document_url, formData)
+              .then((res) => {
 
-        axios.post(document_url, formData)
-          .then((res) => {
-            console.log(res, 'file Upload');
-            setDescriptionError("")
-            setDescription('');
-            setSelectedFile("");
-            dispatch(getDocuments());
-            setIsUploading(false);
-          })
-          .catch((e) => {
-            setIsUploading(false);
-            setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload"));
-            console.log(e.response, 'Some error when upload file!');
-          })
+                setDescriptionError("")
+                setDescription('');
+                setSelectedFile("");
+                setFileError('');
+                dispatch(getDocuments());
+                setIsUploading(false);
+              })
+              .catch((e) => {
+                setIsUploading(false);
+                setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload"));
+              })
+          } else {
+            setFileError(t('myAccount.documentsPage.uploadDocumentBlock.errors.bigFile'));
+          }
+        } else {
+          setFileError(t('myAccount.documentsPage.uploadDocumentBlock.errors.wrongType'));
+        }
       } else {
         setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.describeFile"));
       }
@@ -68,6 +81,7 @@ export const UploadDocumentsBlock = ({t}) => {
           fileInputHandler={fileInputHandler}
           selectedFile={selectedFile}
           isUploading={isUploading}
+          fileError={fileError}
         />
         <FileDescriptionContainer
           t={t}
