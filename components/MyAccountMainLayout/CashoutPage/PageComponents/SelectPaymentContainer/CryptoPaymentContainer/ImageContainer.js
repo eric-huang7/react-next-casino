@@ -3,7 +3,6 @@ import {useEffect} from "react";
 
 
 export const ImageContainer = ({t, typeOfCurrency}) => {
-  console.log(typeOfCurrency, 'typeOfCurrency')
 
   useEffect(() => {
     function svgSetter() {
@@ -14,10 +13,10 @@ export const ImageContainer = ({t, typeOfCurrency}) => {
         if (currencyIcon) {
           container.innerHTML = currencyIcon.outerHTML;
         } else {
-          container.innerHTML = typeOfCurrency.abbreviation;
+          container.innerHTML = "";
         }
       } else {
-        container.innerHTML = typeOfCurrency.abbreviation;
+        container.innerHTML = "";
       }
     }
 
