@@ -4,6 +4,7 @@ import {useEffect} from "react";
 
 export const ImageContainer = ({t, typeOfCurrency}) => {
   useEffect(() => {
+
     function svgSetter() {
       let svg = document.getElementById("currencyIframe");
       let container = document.getElementById(`currencyImageContainer${typeOfCurrency}`);
@@ -19,7 +20,15 @@ export const ImageContainer = ({t, typeOfCurrency}) => {
       }
     }
 
-    svgSetter();
+    // svgSetter();
+
+    const timer = setTimeout(() => {
+      svgSetter();
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+    }
 
   }, [typeOfCurrency])
 

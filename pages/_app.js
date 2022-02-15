@@ -44,6 +44,7 @@ const MyApp = ({Component, pageProps}) => {
 
   return (
     <Provider store={store}>
+      <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>
       <NotifyProvider store={store}>
         <GameProvider>
           <Component {...pageProps} />
