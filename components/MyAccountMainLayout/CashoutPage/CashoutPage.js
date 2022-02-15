@@ -9,13 +9,13 @@ import {useSelector} from "react-redux";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 
 
-export const CashoutPage = ({t, activeLink}) => {
+export const CashoutPage = ({t, activeLink, activeCurrencyId}) => {
   const balanceInfo = useSelector((store) => store.authInfo);
   const currency = useSelector((store) => store.getCurrency);
 
   if (balanceInfo.balance && currency.currency) {
 
-    let typeOfCurrency = currency.currency.results.find((el) => el.abbreviation === activeLink);
+    let typeOfCurrency = currency.currency.results.find((el) => Number(el.id) === Number(activeCurrencyId));
 
     return (
       <div className={styles.mainContainer}>

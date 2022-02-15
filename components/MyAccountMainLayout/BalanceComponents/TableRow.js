@@ -11,7 +11,7 @@ export const TableRow = ({t, balanceData, currencyData}) => {
   const dispatch = useDispatch();
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id));
-  // let amount = Number(balanceData.current_balance);
+
   let amount = numberTransformer(balanceData.current_balance);
   let cashOut = numberTransformer(balanceData.cash_amount);
 
@@ -53,7 +53,11 @@ export const TableRow = ({t, balanceData, currencyData}) => {
       <td className={styles.tableActions}>
         <div>
           <DepositButton currency={currency} t={t}/>
-          <Link href={`/accounts/cashout/${currency.abbreviation}`}
+          <Link
+            href={{
+              pathname: `/accounts/cashout/${currency.abbreviation}`,
+              query: {currency_id: `${currency.id}`}
+            }}
           >
             <a className={styles.cashoutLink}>
               {t("myAccount.balance.buttons.cashout")}

@@ -11,7 +11,7 @@ const Cashout = (props) => {
 
   return (
     <AccountMainLayout t={t}>
-      <CashoutPage t={t} activeLink={props.pageInfo.query.currency}/>
+      <CashoutPage t={t} activeLink={props.pageInfo.query.currency} activeCurrencyId={props.pageInfo.query.currency_id}/>
     </AccountMainLayout>
   )
 }

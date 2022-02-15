@@ -8,7 +8,16 @@ export const LinkItem = ({balanceData, currencyData, activeLink}) => {
 
   return (
     <li className={`${styles.linkItem} ${activeLink === currency.abbreviation ? styles.activeLink : ""}`}>
-      <Link href={`/accounts/cashout/${currency.abbreviation}`}><a>{currency.abbreviation}</a></Link>
+      <Link
+        href={{
+          pathname: `/accounts/cashout/${currency.abbreviation}`,
+          query: {currency_id: `${currency.id}`}
+        }}
+      >
+        <a>
+          {currency.abbreviation}
+        </a>
+      </Link>
     </li>
   )
 }
