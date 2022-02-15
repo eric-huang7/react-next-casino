@@ -14,6 +14,8 @@ export const UploadDocumentsBlock = ({t}) => {
   const [description, setDescription] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+
   const descriptionInputHandler = (value) => {
     setDescription(value);
   }
@@ -25,6 +27,8 @@ export const UploadDocumentsBlock = ({t}) => {
     e.preventDefault();
     if (selectedFile) {
       if (description) {
+        setIsUploading(true);
+
         const formData = new FormData();
         formData.append("file", selectedFile);
         formData.append("description", description);
@@ -37,8 +41,10 @@ export const UploadDocumentsBlock = ({t}) => {
             setDescription('');
             setSelectedFile("");
             dispatch(getDocuments());
+            setIsUploading(false);
           })
           .catch((e) => {
+            setIsUploading(false);
             setDescriptionError(t("myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload"));
             console.log(e.response, 'Some error when upload file!');
           })
@@ -61,6 +67,7 @@ export const UploadDocumentsBlock = ({t}) => {
           t={t}
           fileInputHandler={fileInputHandler}
           selectedFile={selectedFile}
+          isUploading={isUploading}
         />
         <FileDescriptionContainer
           t={t}
