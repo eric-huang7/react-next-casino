@@ -32,7 +32,7 @@ export const UploadDocumentsBlock = ({t}) => {
         let validFile = fileTypes.includes(selectedFile.type);
         setDescriptionError('');
         if (validFile) {
-          let fileSize = 10000000;
+          let fileSize = 10485760;
           if (fileSize >= selectedFile.size) {
             console.log( selectedFile, validFile);
             setIsUploading(true);
