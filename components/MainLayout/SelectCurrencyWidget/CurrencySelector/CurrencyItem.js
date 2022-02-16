@@ -51,7 +51,8 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
 useEffect(() => {
   function svgSetter () {
     let svg = document.getElementById("currencyIframe");
-    let container = document.getElementById(`currencyItemContainer${currencyData.abbreviation}`);
+    // ${currencyData.abbreviation}
+    let container = document.getElementById(`currencyItemContainer${currencyData.id}`);
     if (svg) {
       let currencyIcon = svg.contentWindow.window.document.getElementById(currencyData.abbreviation.toLowerCase())
 
@@ -69,10 +70,10 @@ useEffect(() => {
 
 
 
-
+  // ${currencyData.abbreviation}
   return (
     <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
-      <div id={`currencyItemContainer${currencyData.abbreviation}`} className={styles.iconContainer}>
+      <div id={`currencyItemContainer${currencyData.id}`} className={styles.iconContainer}>
 
       </div>
       <div  className={styles.currencyInfoContainer}>
