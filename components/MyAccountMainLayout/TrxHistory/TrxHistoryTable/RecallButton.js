@@ -9,7 +9,7 @@ export const RecallButton = ({t, recallClickHandler}) => {
       onClick={() => recallClickHandler()}
       className={styles.recallButton}
     >
-      {"Recall"}
+      {t('myAccount.history.transactions.table.recallButton')}
     </button>
   )
 }

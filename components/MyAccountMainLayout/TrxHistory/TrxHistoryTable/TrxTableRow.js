@@ -1,12 +1,8 @@
 import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss';
-import {currencyInfo} from "../../../../helpers/currencyInfo";
-import {dateFormatter} from "../../../../helpers/dateTranslator";
-import {useRouter} from "next/router";
 import {RecallButton} from "./RecallButton";
 import {post_withdraw_url} from "../../../../redux/url/url";
 import axios from "axios";
 import {getUserPayments} from "../../../../redux/actions/userData";
-import {use} from "../../../../next-i18next.config";
 import {useDispatch} from "react-redux";
 
 
