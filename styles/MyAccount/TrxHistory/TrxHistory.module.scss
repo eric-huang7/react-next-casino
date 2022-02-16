@@ -205,6 +205,24 @@
   padding-bottom: 15px;
 }
 
+.recallButton {
+  background-color: #ff0000;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "Verdana", Arial, sans-serif;
+
+  margin-left: 5px;
+
+  padding: 5px;
+
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1225px) {
   .inputsContainer {
     display: flex;

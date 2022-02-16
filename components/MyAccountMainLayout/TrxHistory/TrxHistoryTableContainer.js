@@ -55,6 +55,7 @@ export const TrxHistoryTableContainer = ({t, userInfo, currencyData, wasFilterin
                   paymentSystem={paymentSystem}
                   currencyData = {currencyData}
                   paymentData = {paymentData}
+                  userInfo={userInfo}
                   t = {t}
                 />
               )

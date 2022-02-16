@@ -79,6 +79,10 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
           .catch((e) => {
             console.log(e.response, 'withdraw Error');
             setSuccessMessage('');
+            let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS';
+            if (responseErrorCode) {
+
+            }
 
             setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
           })
