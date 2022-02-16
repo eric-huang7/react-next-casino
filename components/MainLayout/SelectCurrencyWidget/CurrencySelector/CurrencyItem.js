@@ -1,8 +1,10 @@
 import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {svgSetter} from "../../../../helpers/iconNameFinder";
 
 export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
+
 
   const abbr = currencyData.abbreviation;
   const name = currencyData.name;
@@ -46,34 +48,15 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
   }
 
 
-
-
 useEffect(() => {
-  function svgSetter () {
-    let svg = document.getElementById("currencyIframe");
-    // ${currencyData.abbreviation}
-    let container = document.getElementById(`currencyItemContainer${currencyData.id}`);
-    if (svg) {
-      let currencyIcon = svg.contentWindow.window.document.getElementById(currencyData.abbreviation.toLowerCase())
-
-      if (currencyIcon) {
-        container.innerHTML = currencyIcon.outerHTML;
-      } else {
-        container.innerHTML = currencyData.abbreviation;
-      }
-    } else {
-      container.innerHTML = currencyData.abbreviation;
-    }
-  }
-  svgSetter();
+  const returnAbbr = true;
+  svgSetter(currencyData, returnAbbr);
 }, [])
 
 
-
-  // ${currencyData.abbreviation}
   return (
     <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
-      <div id={`currencyItemContainer${currencyData.id}`} className={styles.iconContainer}>
+      <div id={`currencyImageContainer${currencyData.id}`} className={styles.iconContainer}>
 
       </div>
       <div  className={styles.currencyInfoContainer}>

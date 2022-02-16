@@ -1,11 +1,18 @@
 import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
 import {useEffect} from "react";
+import {useSelector} from "react-redux";
 
 
 export const PaymentCurrencyItem = ({paymentMethod, chosePaymentClickHandler}) => {
+  const currencyData = useSelector((store) => store.getCurrency.currency.results);
 
+// paymentMethod.currency_from.currency
   useEffect(() => {
+    // let currencyForPayment = paymentMethod;
+    // console.log(currencyData, 'currencyData.getCurrency.currency.results')
+
     function svgSetter () {
+
       let svg = document.getElementById("currencyIframe");
       let container = document.getElementById(`currencyItemContainer${paymentMethod.currency_from.currency}`);
       if (svg) {

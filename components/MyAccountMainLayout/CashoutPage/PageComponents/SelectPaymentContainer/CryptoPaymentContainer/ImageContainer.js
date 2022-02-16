@@ -1,27 +1,12 @@
 import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
 import {useEffect} from "react";
+import {svgSetter} from "../../../../../../helpers/iconNameFinder";
 
 
 export const ImageContainer = ({t, typeOfCurrency}) => {
 
   useEffect(() => {
-    function svgSetter() {
-      let svg = document.getElementById("currencyIframe");
-      let container = document.getElementById(`currencyImageContainer${typeOfCurrency.id}`);
-      if (svg) {
-        let currencyIcon = svg.contentWindow.window.document.getElementById(typeOfCurrency.abbreviation.toLowerCase())
-        if (currencyIcon) {
-          container.innerHTML = currencyIcon.outerHTML;
-        } else {
-          container.innerHTML = "";
-        }
-      } else {
-        container.innerHTML = "";
-      }
-    }
-
-      svgSetter();
-
+      svgSetter(typeOfCurrency);
   }, [typeOfCurrency])
 
   return (
