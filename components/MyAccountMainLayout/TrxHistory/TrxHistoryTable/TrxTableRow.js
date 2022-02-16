@@ -21,7 +21,6 @@ const dispatch = useDispatch();
     axios.delete(post_withdraw_url + `/${paymentData.id}`)
       .then((data) => {
         dispatch(getUserPayments(params));
-
       })
       .catch((e) => {
         dispatch(getUserPayments(params));
@@ -36,8 +35,7 @@ const dispatch = useDispatch();
       <td style={paymentData.status === 3 ? {color: "red"} : paymentData.status === 2 ? {color: "green"} : {color: "#595656"}}>
         {t(status)}
         {
-          paymentData.status === 2 && <RecallButton recallClickHandler={recallClickHandler} t={t}/>
-
+          paymentData.status === 1 && <RecallButton recallClickHandler={recallClickHandler} t={t}/>
         }
       </td>
       <td>

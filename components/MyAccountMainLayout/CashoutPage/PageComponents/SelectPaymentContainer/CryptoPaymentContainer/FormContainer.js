@@ -6,11 +6,12 @@ import {useEffect, useRef, useState} from "react";
 import {post_withdraw_url} from "../../../../../../redux/url/url";
 import axios from "axios";
 import {useRouter} from "next/router";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserPayments, userBalance} from "../../../../../../redux/actions/userData";
 
 
 export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
-
+  const dispatch = useDispatch();
   const router = useRouter();
   const [amountValue, setAmountValue] = useState('');
   const [addressValue, setAddressValue] = useState('');
@@ -36,7 +37,7 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
 
   const withdrawFormHandler = (e) => {
     e.preventDefault();
-
+    let params = {user_id: Number(userInfo.id)};
     const sendData = {
       currency_id: chosenPayment ? chosenPayment.id : typeOfCurrency.id,
       currency_to: typeOfCurrency.id,
@@ -75,15 +76,16 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
             console.log('withdraw Success', data);
             setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
             setErrorMessage('');
+            dispatch(getUserPayments(params));
+            dispatch(userBalance());
           })
           .catch((e) => {
             console.log(e.response, 'withdraw Error');
             setSuccessMessage('');
             let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS';
             if (responseErrorCode) {
-
+              dispatch(getUserPayments(params));
             }
-
             setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
           })
       }
