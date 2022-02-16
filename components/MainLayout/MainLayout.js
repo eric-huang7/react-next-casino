@@ -107,7 +107,7 @@ const MainLayout = ({children, t, token, emailError}) => {
 
   return (
     <>
-      <iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>
+      {/*<iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>*/}
       <Head>
         <title>Slots Idol</title>
         <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>

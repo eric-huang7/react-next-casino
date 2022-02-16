@@ -39,8 +39,6 @@ export const CurrencyItem = ({t, currencyData, currencySelectorHandler}) => {
     'BSC' : "#ffc241"
   }
 
-  // base === "ETH" ? "#4fadcf" : base === "TRX" ? "#f00b0b" : base === "BNB" ? "#f0b90b" : "#ef8a13";
-
   if (base) {
     colorBase = !!baseVariants[base] ? baseVariants[base] : "#ef8a13";
   } else {
