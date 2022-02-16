@@ -35,18 +35,18 @@ export const GoogleAuthContainer = ({t, authData, setIsShowSavedKeys, setSavedKe
     const body = JSON.stringify(googleAuthData);
 
        axios.post(qr_auth_url, body, config).then((data) => {
-         console.log(data, "<< Post user saved keys");
+
            setSavedKeys(data.data.backup_codes);
            setIsShowSavedKeys(true);
            dispatch(mayYwoFactorAuth(true));
            setGoogleAuthError("");
        }).catch((error) => {
-         console.log(error.response, "SOME ERROR WHEN Post user saved keys");
+
            // Введен неверный код. Пожалуйста попробуйте еще раз или свяжитесь со службой поддержки.
            setGoogleAuthError(t("myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.errors.invalidCode"))
        })
 
-    // console.log(googleKeyValue, authData.qrAuth.key);
+
   }
 
 

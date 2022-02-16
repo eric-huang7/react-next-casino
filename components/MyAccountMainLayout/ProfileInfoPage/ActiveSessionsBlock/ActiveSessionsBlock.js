@@ -9,10 +9,10 @@ import {getActiveUserSessions, getClosedUserSessions} from "../../../../redux/ac
 
 export const ActiveSessionsBlock = ({t, userInfo}) => {
 const dispatch = useDispatch();
-  // console.log(userInfo);
+
 
   const closeSessionHandler = (session) => {
-    // console.log(session, 'session');
+
     let body1 = {
       site_id : siteID,
       auth_type_id: auth_type_id,
@@ -23,12 +23,12 @@ const dispatch = useDispatch();
     let body = JSON.stringify(body1);
     axios.delete(delete_user_session_url(session.id))
       .then((data) => {
-      console.log(data, 'from delete session');
+
       dispatch(getActiveUserSessions());
       dispatch(getClosedUserSessions());
     })
       .catch((error) => {
-        console.log(error, 'error from delete user session');
+
       })
   }
 

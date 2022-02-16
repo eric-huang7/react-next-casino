@@ -67,7 +67,7 @@ export const auth = () => async dispatch => {
       type: AUTH_FAIL,
       payload: e.response
     })
-    console.log('SOME ERROR IN AUTH', e.response);
+
   }
 
 }
@@ -95,7 +95,7 @@ export const getDocuments = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET DOCUMENT', e.response);
+
   }
 }
 
@@ -109,10 +109,9 @@ export const deleteDocuments = (docId) => async dispatch => {
   try {
     const res = await axios.delete(document_url + `/${docId}`);
 
-    console.log(res, 'delete success')
     dispatch(getDocuments())
   } catch (e) {
-    console.log('SOME ERROR IN GET DOCUMENT', e.response);
+
   }
 }
 
@@ -128,10 +127,10 @@ export const changeDocuments = (documentData) => async dispatch => {
   try {
     const res = await axios.patch(document_url, body, config);
 
-    console.log(res, 'change document success');
+
     dispatch(getDocuments());
   } catch (e) {
-    console.log('SOME ERROR IN change DOCUMENT', e.response);
+
   }
 }
 
@@ -145,7 +144,7 @@ export const userData = (sendData) => async dispatch => {
   const body = JSON.stringify(sendData);
   try {
     const res = await axios.post(login_url, body, config);
-    console.log(res, 'LOGIN RESPONSE');
+
     if (res.data.user.is_2fa_enabled === 1) {
 
       dispatch(showLogin(false));
@@ -163,7 +162,7 @@ export const userData = (sendData) => async dispatch => {
     }
 
   } catch (e) {
-    console.log(e.response, 'LOGIN ERROR RESPONSE');
+
     dispatch({
       type: LOGIN_FAIL,
       payload: e.response
@@ -181,13 +180,13 @@ export const userBalance = () => async dispatch => {
   try {
 
     const res = await axios.get(user_balance_url, config)
-    console.log(res, 'from GET_USER_BALANCE')
+
     dispatch({
       type: BALANCE,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response)
+
   }
 }
 
@@ -203,13 +202,13 @@ export const getUserPayments = (params) => async dispatch => {
   try {
 
     const res = await axios.get(get_user_payments_url, config)
-    console.log(res, "<<< res from GET_USER_PAYMENTS")
+
     dispatch({
       type: GET_USER_PAYMENTS,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response)
+
   }
 }
 
@@ -225,13 +224,13 @@ export const getUserBonuses = (params) => async dispatch => {
   try {
 
     const res = await axios.get(get_bonuses_data_url, config)
-    console.log(res, "<<< res from GET_BONUS_HISTORY_DATA")
+
     dispatch({
       type: GET_BONUS_HISTORY_DATA,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response)
+
   }
 }
 
@@ -252,7 +251,7 @@ export const getUserActivePendingBonuses = (params) => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, 'error from GET_ACTIVE_PENDING_BONUSES')
+
   }
 }
 
@@ -276,7 +275,7 @@ export const getActiveUserSessions = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, 'error from GET_ACTIVE_SESSIONS')
+
   }
 }
 export const getClosedUserSessions = () => async dispatch => {
@@ -299,7 +298,7 @@ export const getClosedUserSessions = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, 'error from GET_ACTIVE_SESSIONS')
+
   }
 }
 
@@ -319,9 +318,9 @@ export const deleteUserSession = (params) => async dispatch => {
       type: DELETE_SESSION,
       payload: res.data
     })
-    console.log(res.data, "data from DELETE_SESSION")
+
   } catch (e) {
-    console.log(e.response, 'error from DELETE_SESSION')
+
   }
 }
 
@@ -336,13 +335,13 @@ export const getUserBets = () => async dispatch => {
   try {
 
     const res = await axios.get(get_user_bets, config)
-    console.log(res, "<<< res from GET_USER_BETS_DATA")
+
     dispatch({
       type: GET_USER_BETS_DATA,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response)
+
   }
 }
 
@@ -357,13 +356,13 @@ export const addCurrencyToUserList = (currency_id) => async dispatch => {
   try {
 
     const res = await axios.post(post_add_user_currency, body, config)
-    console.log(res, "<< POST user add currency");
+
     dispatch({
       type: ADD_CURRENCY_TO_USER,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, '<<<< SOME ERROR when post add user currency')
+
   }
 
 }
@@ -378,7 +377,7 @@ export const activateBonus = (bonusData) => async dispatch => {
   const body = JSON.stringify(bonusData);
   try {
     const res = await axios.put(put_bonus_redemption_url, body, config);
-    console.log(res, "<< Put user activate bonus");
+
     dispatch({
       type: ACTIVATE_BONUS,
       payload: res.data
@@ -389,7 +388,7 @@ export const activateBonus = (bonusData) => async dispatch => {
     dispatch(errorPopupActivate("myAccount.popupErrors.bonusNotActivate"));
     dispatch(getUserActivePendingBonuses({status: "1,5"}));
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
-    console.log(e.response, "SOME ERROR WHEN activate bonus");
+
   }
 }
 
@@ -404,7 +403,7 @@ export const cancelBonus = (bonusData) => async dispatch => {
   const body = JSON.stringify(bonusData);
   try {
     const res = await axios.post(post_cancel_bonus_redemption_url, body, config);
-    console.log(res, "<< Post user cancel bonus");
+
     dispatch({
       type: CANCEL_BONUS,
       payload: res.data
@@ -416,7 +415,6 @@ export const cancelBonus = (bonusData) => async dispatch => {
     dispatch(getUserActivePendingBonuses({status: "1,5"}));
     dispatch(getUserBonuses({status: "1,2,3,4,6"}));
 
-    console.log(e.response, "SOME ERROR WHEN cancel bonus");
   }
 }
 
@@ -430,10 +428,10 @@ export const patchUserData = (userData) => async dispatch => {
   const body = JSON.stringify(userData)
   try {
     let res = await axios.patch(user_url, body, config);
-    console.log(res, '<< patch user data')
+
     dispatch(auth());
   } catch (e) {
-    console.log(e.response, 'SOME ERROR when patch user data')
+
   }
 }
 
@@ -453,7 +451,7 @@ export const getQrAuth = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, 'error from GET QR_AUTH')
+
   }
 }
 
@@ -476,13 +474,13 @@ export const postSavedKeys = (googleTokenData) => async dispatch => {
   const body = JSON.stringify(googleTokenData);
   try {
     const res = await axios.post(qr_auth_url, body, config);
-    console.log(res, "<< Post user saved keys");
+
     dispatch({
       type: GET_SAVED_KEYS,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, "SOME ERROR WHEN Post user saved keys");
+
   }
 }
 
@@ -503,7 +501,7 @@ export const getTokenUserPhone = (params) => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, 'error from GET_ACTIVE_PENDING_BONUSES')
+
   }
 }
 
@@ -518,14 +516,14 @@ export const patchUserActiveCurrency = (userData) => async dispatch => {
 
   try {
     const res = await axios.patch(user_url, body, config);
-    console.log(res, "<< PATCH user active currency");
+
     dispatch({
       type: PATCH_CHANGE_CURRENCY,
       payload: res.data
     })
     dispatch(userBalance());
   } catch (e) {
-    console.log(e.response, "SOME ERROR WHEN change active currency");
+
   }
 
 }
@@ -540,7 +538,7 @@ export const signUp = (signUpData) => async dispatch => {
   const body = JSON.stringify(signUpData);
   try {
     const res = await axios.post(signUp_url, body, config);
-    console.log(res, "REGISTER RESPONSE")
+
     dispatch({
       type: SIGNUP_SUCCESS,
       payload: res.data
@@ -550,7 +548,7 @@ export const signUp = (signUpData) => async dispatch => {
     //   localStorage.setItem("userAuth", 'true');
     // }
   } catch (e) {
-    console.log(e.response, "SOME ERROR WHEN REGISTER USER");
+
     dispatch({
       type: SIGNUP_FAIL,
       payload: e.response
@@ -568,7 +566,7 @@ export const logout = () => async dispatch => {
 
   try {
     const res = await axios.delete(logout_url, config);
-    console.log(res, "LOGOUT RESPONSE");
+
     dispatch({
       type: LOGOUT_SUCCESS,
       payload: res.data,
@@ -578,7 +576,7 @@ export const logout = () => async dispatch => {
     }
     // dispatch(annulActiveBonuses());
   } catch (e) {
-    console.log(e, "SOME ERROR WHEN LOGOUT USER");
+
     dispatch({
       type: LOGOUT_FAIL,
       payload: e.response,

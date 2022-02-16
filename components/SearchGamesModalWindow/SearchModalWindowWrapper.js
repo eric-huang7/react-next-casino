@@ -10,7 +10,7 @@ export const SearchModalWindowWrapper = ({t}) => {
   const searchBar = useRef('')
 
   let searchGames = useSelector((store) => store.games.searchGames);
-  // console.log(searchGames, 'search games')
+
 
   return (
     <div className={styles.searchPopupWrapper}>

@@ -12,7 +12,6 @@ export const bonusesCalculator = (objOfBonus, userCurrency, t) => {
     let filteredBonus = specArr.filter((elSpec) => {
       return elSpec.currency_id === Number(userCurrency.userCurrencyData.id)
     })
-    // console.log(objOfBonus, specArr, objOfBonus.spec, filteredBonus, userCurrency.userCurrencyData.id, 'bonus spec !!!!!!!!!!!!!!!!!!')
 
     if (!filteredBonus[0]) {
       return res;

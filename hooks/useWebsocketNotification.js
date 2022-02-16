@@ -27,7 +27,7 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
       }
 
       socketRef.current.onopen = function (e) {
-        console.log('socket open!')
+
         if (socketRef.current.readyState !== 3) {
           // socketRef.current = socket;
         } else {
@@ -39,9 +39,9 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
 
       socketRef.current.onclose = function (e) {
         if (e.wasClean) {
-          console.log('close clear', e.code, "@", e.reason);
+
         } else {
-          console.log('close dirt', e);
+
           if (userInf.user.token) {
             // socketRef.current = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInf.user.token}&locale=${locale}`);
             restart();
@@ -52,9 +52,9 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
       };
 
       socketRef.current.onmessage = function (e) {
-        // console.log('message ===>>>', e);
+
         let data = JSON.parse(e.data);
-        console.log('===>> data', data);
+
         if (data.type === 2) {
           dispatch(setNotifyTypeTwo(data));
         } else if (data.type === 3) {
@@ -73,13 +73,12 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
           // }
         } else if (data.type === 1){
           dispatch(setNotifyTypeOne(data));
-          console.log('SOME READ NOTIFY type_1  ');
         }
 
       };
 
       socketRef.current.onerror = function (error) {
-        console.log('some socket error ===> ', error)
+        // console.log('some socket error ===> ', error)
         if (socketRef.current !== null) {
           socketRef.current.close(1000);
           socketRef.current = null;
@@ -91,7 +90,6 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
     // else {
     //   if (socketRef.current !== null) {
     //     socketRef.current.close(1000);
-    //     console.log('socket close unmount  ', )
     //   }
     //   if (socketRef.current.readyState === 3) {
     //     socketRef.current.close(1000)
@@ -117,7 +115,6 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
       if (socketRef.current !== null) {
         socketRef.current.close(1000);
         socketRef.current = null;
-        console.log('socket close unmount  !')
       }
     }
   }, [userInfo.isAuthenticated, userInfo.user]);

@@ -21,7 +21,7 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
   const deactivateButtonClickHandler = (e) => {
     e.preventDefault();
 
-    console.log(deactivateCodeValue);
+
     let googleAuthData = {
       // key: authData.qrAuth.key,
       token: deactivateCodeValue,
@@ -37,14 +37,14 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
 
     axios.post(qr_auth_url, body, config)
       .then((data) => {
-        console.log(data, "<< Post user saved keys");
+
         dispatch(mayYwoFactorAuth(false));
         // dispatch(auth());
         setDeactivateError("");
         router.push('/accounts/profile-info');
       })
       .catch((error) => {
-        console.log(error.response, "SOME ERROR WHEN Post user saved keys");
+
         // Не удалось отключить двухфакторную аутентификацию. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.
         setDeactivateError(t("myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable"))
       })

@@ -23,7 +23,6 @@ export const CurrencySelector = ({t, heading, currenciesList, actionCurrencySele
         currency_id: e.id
       }
       dispatch(addCurrencyToUserList(currency));
-      console.log(e.id, e.abbreviation, e.symbol, e.type, '<<<< data for post')
     }
 
     // dispatch(showCurrencySwitcher(false));

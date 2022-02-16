@@ -53,12 +53,7 @@ export const TournamentSliderContainer = ({t, tournaments, router, setSliderPosi
     variableWidth: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    // slidesToScroll: 1,
-    // afterChange: () => {
-    //   setSliderCount({...sliderCount, updateCount: sliderCount.updateCount + 1 })
-    //   console.log(slideRef.current, 'ref')
-    // },
-    // beforeChange: (current, next) => setSliderCount({...sliderCount, slideIndex: next })
+
   };
 
   if (tournaments.loadingTournaments) {

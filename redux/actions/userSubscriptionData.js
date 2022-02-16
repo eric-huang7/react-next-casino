@@ -15,13 +15,13 @@ export const changeUserSubscriptions = (subscriptionsData) => async dispatch => 
   const body = JSON.stringify({id, transactional_email_opt_in, transactional_sms_opt_in, browser_opt_in});
   try {
     const res = await axios.patch(user_url, body, config);
-    console.log(res, 'USER SUBSCRIPTIONS RESPONSE');
+
     dispatch({
       type: CHANGE_USER_SUBSCRIPTIONS,
       payload: res.data
     })
   } catch (e) {
-    console.log(e.response, "user subscriptions error");
+
     dispatch({
       type: FAIL_CHANGE_USER_SUBSCRIPTIONS,
       payload: e.response

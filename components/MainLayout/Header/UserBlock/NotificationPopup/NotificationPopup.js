@@ -15,13 +15,13 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
   useEffect(() => {
     let timerShow = setInterval(() => {
       timerCount = timerCount + 1;
-      // console.log(timerCount);
+
     }, 1000)
     return () => {
       if (timerCount >= 5) {
         checkReadMessages();
       } else {
-        // console.log(timerCount, 'not time')
+
       }
       clearInterval(timerShow);
     }

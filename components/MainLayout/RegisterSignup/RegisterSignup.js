@@ -90,14 +90,7 @@ export const RegisterSignup = ({t, isShow}) => {
     setYouAgree(e.target.checked);
   }
 
-  // let currencyRef = useRef('')
 
-  // const setCurrency = (e) => {
-  //   // console.log(e.target.dataset.currency, '!!!!!!');
-  //   setCurrencyChoose(Number(e.target.dataset.currency));
-  //   setActiveCurrency(e.target.innerText);
-  //   setIsShowCurrency(false);
-  // }
 
   const hideCurrencyShowRegisterModal = () => {
     dispatch(showCurrencySwitcher(false));
@@ -117,7 +110,7 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   // useEffect(() => {
-  //   // console.log(currencyRef.current.value);
+
   // }, [activeCurrency])
 
   function showPass() {
@@ -164,7 +157,7 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   const onSubmitHandler = (data) => {
-    // console.log(data, 'formDATA');
+
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
       // reset();
@@ -211,7 +204,6 @@ export const RegisterSignup = ({t, isShow}) => {
         setRegisterError(userInfo.registerError.data.extra_error_info.message);
       }
 
-      console.log(userInfo.registerError, 'userInfo.registerError')
     }
   }, [userInfo.registerError])
 

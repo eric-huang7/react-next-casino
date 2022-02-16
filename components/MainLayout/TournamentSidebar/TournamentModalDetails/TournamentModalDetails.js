@@ -12,11 +12,6 @@ export const TournamentModalDetails = ({t}) => {
   const router = useRouter();
 
   const tournamentsData = useSelector((store) => store.tournaments.activeTournament);
-  console.log(tournamentsData, '************************')
-
-  // useEffect(() => {
-  //   dispatch(showTournamentsDetails(false));
-  // }, [router])
 
 
   const tournamentDetails = useRef();

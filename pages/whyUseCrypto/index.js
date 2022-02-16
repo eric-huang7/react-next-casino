@@ -15,7 +15,7 @@ import {useDispatch} from "react-redux";
 
 const WhyUseCrypto = (props) => {
   const { t } = useTranslation('common');
-  // console.log(props);
+
 
 const dispatch = useDispatch();
   useEffect(() => {

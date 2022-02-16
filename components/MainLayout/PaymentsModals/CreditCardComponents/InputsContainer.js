@@ -22,7 +22,6 @@ const cardDateValue = (e) => {
   let date = e.target.value.replace(/\//g, "").substring(0, 2) + (e.target.value.length > 2 ? '/' : '') + e.target.value.replace(/\//g, "").substring(2, 4);
 
     if (date.length > 5) {
-      // console.log('date')
     } else {
       if (date.length > 0) {
         if (date[0].match(/[2-9]/)) {
@@ -53,9 +52,9 @@ const cardDateValue = (e) => {
 
 const cvvInputHandler = (e) => {
   if (e.target.value.length > 4) {
-    // console.log('cvv');
+
   } else if (e.target.value.length < 3) {
-    // console.log('wrong cvv')
+
     setCvvValue(e.target.value);
   } else {
 
@@ -68,9 +67,9 @@ const cardNumberInputHandler = (e) => {
     setCardNumberError(null);
     setCardNumber(e.target.value);
   } else if (e.target.value.length > 16) {
-    // console.log('cvv');
+
   } else if (e.target.value.length < 16) {
-    // console.log('error');
+
     if (serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard) {
       setCardNumberError('');
       setCardNumber(e.target.value);

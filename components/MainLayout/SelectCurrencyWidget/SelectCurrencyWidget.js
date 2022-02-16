@@ -71,7 +71,6 @@ useEffect(() => {
     }
   }, [])
 
-  // console.log(currencies, "<<<<<<<, currency")
 
   const closeCurrenciesClickHandler = () => {
     dispatch(hideRegister(false));

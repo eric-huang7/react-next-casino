@@ -3,7 +3,7 @@ import {dateFormatter} from "../../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
 
 export const BetsHistoryRow = ({t, betData}) => {
-  // console.log(betData, "bet data+++++++++++")
+
   const router = useRouter();
 
   let currency = betData.currency_abrv;

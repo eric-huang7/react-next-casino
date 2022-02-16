@@ -55,8 +55,7 @@ export const DepositPage = ({t}) => {
 
   const changeButtonText = () => {
     let activeBonus = bonusesArr.find((el) => el.id === chosenBonus);
-    // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus');
-    // // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus');
+
     let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue, t);
 
     setNewButtonText(buttonText);
@@ -70,7 +69,7 @@ export const DepositPage = ({t}) => {
   }
 
   useEffect(() => {
-    // console.log(activeBonus, userSelectedBonus, chosenBonus, 'filtered Bonus effect');
+
     changeButtonText();
   }, [chosenBonus]);
 
@@ -97,7 +96,6 @@ export const DepositPage = ({t}) => {
 
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
-    // console.log(userSelectedBonus, 'selctedBonus')
     if (isChecked) {
       chooseBonusClickHandler(0);
       setIsChecked(false);
@@ -145,7 +143,7 @@ export const DepositPage = ({t}) => {
   }
 
   const submitHandler = () => {
-    console.log('Submit');
+
   }
 
   useEffect(() => {

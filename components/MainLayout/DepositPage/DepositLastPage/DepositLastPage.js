@@ -5,7 +5,6 @@ import {useSelector} from "react-redux";
 export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler, userDepositValueError, userInfo, userCurrency}) => {
   const chosenPayment = useSelector((state) => state.userPaymentMethod)
 
-  // console.log(chosenPayment, userInfo, '@@@@@@@@')
   return (
     <div className={styles.depositLastWrapper}>
       <div className={styles.chosenPaymentMethodBlock}>

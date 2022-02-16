@@ -17,8 +17,6 @@ export const SearchHeading = ({t, searchBar}) => {
     //   searchBar.current.blur();
     //
     //   let res = await axios.get(searchGames_url(searchBar.current.value));
-    //   console.log(e.target.value);
-    //   console.log(res.data.results, '<+++++++++++ search!!');
     //   dispatch(setSearchGames(res.data.results));
     //   if (searchBar.current.value === '') {
     //     dispatch(setSearchGames([]));

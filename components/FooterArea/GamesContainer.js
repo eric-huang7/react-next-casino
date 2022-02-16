@@ -20,18 +20,6 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
   const {height, width} = useWindowDimensions();
 
   useEffect(() => {
-    // if (playGames.startGame?.game_link) {
-    //   // router.push(playGames.startGame.game_link);
-    //   console.log(playGames.startGame.game_link)
-    // }
-    // if (playGames.freeGame?.game_link) {
-    //   console.log('start!!');
-    //   // if (width > 1065) {
-    //   //   router.push(`/game/${playGames.gameName}`).then((data) => dispatch(showGameWindow(true)));
-    //   // }
-    //   // router.push(playGames.freeGame.game_link);
-    //   console.log(playGames.freeGame.game_link)
-    // }
     if (playGames.startGame?.game_link) {
       if (typeof window !== 'undefined') {
         if (window.innerWidth <= 1065) {

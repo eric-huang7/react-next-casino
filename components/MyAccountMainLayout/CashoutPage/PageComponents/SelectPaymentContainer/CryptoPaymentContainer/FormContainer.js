@@ -73,14 +73,14 @@ export const FormContainer = ({t, typeOfCurrency, chosenPayment, userInfo}) => {
         setAddressError('');
         axios.post(post_withdraw_url, body, config)
           .then((data) => {
-            console.log('withdraw Success', data);
+
             setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
             setErrorMessage('');
             dispatch(getUserPayments(params));
             dispatch(userBalance());
           })
           .catch((e) => {
-            console.log(e.response, 'withdraw Error');
+
             setSuccessMessage('');
             let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS';
             if (responseErrorCode) {

@@ -13,7 +13,6 @@ export const ManageSubscriptions = ({t}) => {
   const isShowSubscriptions = useSelector((state) => state.showPopupsReducer.isShowManageSubscriptions);
 
   const closeButtonHandler = () => {
-    // console.log(userInfo)
     dispatch(showManageSubscriptions(false));
   }
 

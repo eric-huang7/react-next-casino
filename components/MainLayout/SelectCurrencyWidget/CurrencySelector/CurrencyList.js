@@ -19,7 +19,6 @@ export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, u
       }
 
     backButtonClickHandler();
-      // console.log(currencyData.id, currencyData.abbreviation, currencyData.symbol, currencyData.type, '<<<< data for post')
   }
 
 

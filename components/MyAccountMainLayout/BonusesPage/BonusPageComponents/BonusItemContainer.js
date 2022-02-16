@@ -7,7 +7,6 @@ import {PendingBonus} from "./PendingBonus";
 
 export const BonusItemContainer = ({t, bonusData, currencyData, activateBonusClickHandler, cancelBonusClickHandler}) => {
   const router = useRouter();
-  // console.log(bonusData, 'Bonus data')
 
   let title = bonusData.title ? bonusData.title : "-";
   let stage = statusValue(bonusData.status);

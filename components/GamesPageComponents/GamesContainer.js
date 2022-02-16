@@ -30,7 +30,6 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
 
   useEffect(() => {
     return () => {
-      // console.log(heading)
       setPageCounter(0);
       setIsShowMoreButton(true);
     }

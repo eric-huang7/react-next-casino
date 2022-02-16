@@ -72,7 +72,6 @@ export const ChangePasswordContainer = ({t, token}) => {
         reset();
         setRequestSuccess(false);
         setRequestError('forgotPasswordForm.errors.responseError');
-        // console.log(err.response, 'change password error!!!!');
       })
   }
 

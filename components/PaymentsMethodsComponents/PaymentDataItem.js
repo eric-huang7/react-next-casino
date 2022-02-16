@@ -9,7 +9,7 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
 
   const depositPaymentsClickHandler = () => {
     dispatch(showDepositModal(true));
-    console.log(isOpenDepositWindow);
+
   }
 
 

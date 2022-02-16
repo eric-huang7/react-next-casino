@@ -10,7 +10,6 @@ import {userData} from "../../../redux/actions/userData";
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
 
-  // console.log(jackpots, 'jackpots INFO BLOCK!!');
 
   let isHidden = false;
   if (width <= 1165) {

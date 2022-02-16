@@ -34,7 +34,6 @@ export const UploadDocumentsBlock = ({t}) => {
         if (validFile) {
           let fileSize = 10485760;
           if (fileSize >= selectedFile.size) {
-            console.log( selectedFile, validFile);
             setIsUploading(true);
             const formData = new FormData();
             formData.append("file", selectedFile);

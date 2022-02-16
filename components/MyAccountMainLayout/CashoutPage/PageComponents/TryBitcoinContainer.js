@@ -7,7 +7,7 @@ import {showDepositModal} from "../../../../redux/actions/showPopups";
 export const TryBitcoinContainer = ({t, btcCurrency}) => {
 
   const dispatch = useDispatch()
-  // console.log(currency, '<<<<<<<< deposit button');
+
 
   const tryBitcoinButtonHandler = () => {
     dispatch(setUserCurrencySwitcher(btcCurrency));

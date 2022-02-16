@@ -9,10 +9,8 @@ const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: 
 
 export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses,
                                   chooseBonusClickHandler, userSelectedBonus, userCurrency}) => {
-  // const userSelectedBonus = useSelector((state) => state.userBonus)
 
   if (allBonuses.length > 0) {
-    // console.log(allBonuses, 'All bonuses');
     return (
       <div className={`${styles.bonusesDropdownWrapper} ${showAllBonuses ? styles.dropdownWrapperActive : ''}`}>
         {

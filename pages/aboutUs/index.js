@@ -7,10 +7,7 @@ import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {MainBlock} from "../../components/AboutUsPageComponents/MainBlock/MainBlock";
 import {TextBlocks} from "../../components/AboutUsPageComponents/TextBlocks/TextBlocks";
-import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
-import {useRouter} from "next/router";
-import {setLang} from "../../redux/actions/lang";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {getCurrency} from "../../redux/actions/currency";
 
@@ -18,14 +15,6 @@ import {getCurrency} from "../../redux/actions/currency";
 const AboutUS = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  // const activeLang = useSelector(({lang}) => lang.activeLang);
-  //
-  // useEffect(() => {
-  //   dispatch(setLang(router.locale));
-  //   console.log( router, "$$$$$$$$$$$$$$$$$$")
-  // },[])
 
   useEffect(() => {
     // dispatch(setLang(locale));

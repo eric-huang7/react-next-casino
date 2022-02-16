@@ -34,13 +34,13 @@ export const getGames = () => async dispatch => {
 
   try {
     const res = await axios.get(games_url, config)
-    console.log('response data from games endpoint=====', res)
+
     dispatch({
       type: GET_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get games endpoint', err.response)
+
   }
 }
 export const getNewGames = () => async dispatch => {
@@ -52,13 +52,13 @@ export const getNewGames = () => async dispatch => {
 
   try {
     const res = await axios.get(newGames_url, config)
-    console.log('response data from games endpoint=====', res)
+
     dispatch({
       type: GET_NEW_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_NEW_GAMES endpoint', err.response)
+
   }
 }
 
@@ -71,13 +71,13 @@ export const getJackpotGames = () => async dispatch => {
 
   try {
     const res = await axios.get(jackpotGames_url, config)
-    console.log('response data from games endpoint=====', res)
+
     dispatch({
       type: GET_JACKPOT_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_JACKPOT_GAMES endpoint', err.response)
+
   }
 }
 
@@ -90,13 +90,13 @@ export const getTableGames = () => async dispatch => {
 
   try {
     const res = await axios.get(tableGames_url, config)
-    console.log('response data from games endpoint=====', res)
+
     dispatch({
       type: GET_TABLE_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_TABLE_GAMES endpoint', err.response)
+
   }
 }
 
@@ -109,13 +109,13 @@ export const getLatestGames = (userId) => async dispatch => {
 
   try {
     const res = await axios.get(latest_games(userId), config);
-    console.log('response data from latest games endpoint=====', res)
+
     dispatch({
       type: GET_LATEST_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get latest games endpoint', err.response)
+
   }
 }
 
@@ -128,12 +128,12 @@ export const getTopGames = () => async dispatch => {
 
   try {
     const res = await axios.get(topGames_url, config)
-    console.log('response data from top games endpoint=====', res)
+
     dispatch({
       type: GET_TOP_GAMES,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in GET_TOP_GAMES endpoint', err.response)
+
   }
 }

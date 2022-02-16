@@ -29,7 +29,6 @@ export const NewsBlock = ({t, isBackShow}) => {
         setLoadingNews(false);
       })
       .catch((data) => {
-        console.log(data);
         setLoadingNews(false);
         setNewsError('errors.errorMessage');
       })

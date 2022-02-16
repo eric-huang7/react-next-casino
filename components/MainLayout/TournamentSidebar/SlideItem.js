@@ -17,7 +17,6 @@ export const SlideItem = ({t, setSliderPosition, count, tournamentData, router, 
 
 
   const tournamentClickHandler = () => {
-    console.log(tournamentData, '<======= tournament data');
     let sendData = JSON.stringify({
       // game_category_ids: 4,
       game_category_ids: tournamentData.game_category_ids ? `${tournamentData.game_category_ids}` : "",

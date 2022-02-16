@@ -14,7 +14,7 @@ export const TwoFactorAuthPage = ({t}) => {
   const [isShowSavedKeys, setIsShowSavedKeys] = useState(false);
   const [savedKeys, setSavedKeys] = useState([])
 
-  // console.log(authData);
+
 
   useEffect(() => {
     dispatch(getQrAuth());

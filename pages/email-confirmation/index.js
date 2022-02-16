@@ -41,7 +41,6 @@ export default function EmailConfirmation(props) {
 
               if (data.data.user.is_2fa_enabled === 1) {
 
-                console.log(data.data.user, 'is_2fa_enabled');
                 setEmailError(null);
                 dispatch(showTwoFaPopup(true));
               } else {

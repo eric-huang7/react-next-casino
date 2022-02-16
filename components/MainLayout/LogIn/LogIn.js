@@ -76,12 +76,12 @@ export const LogIn = ({t, isShow}) => {
 
   useEffect(() => {
     if (userInfo.error) {
-      console.log(userInfo.error, '<<<<<<<<<<<<<');
+
       if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
         let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
         let timeExclude = dateFormatter(timeAll, router.locale);
         setSelfExcludedTime(timeExclude);
-        console.log(timeExclude, '<<<<<<<<<<<<< time');
+
         setPasswordData('');
         setSelfExcludedError(true);
       } else {
@@ -117,7 +117,7 @@ export const LogIn = ({t, isShow}) => {
 
 
   function loginUser() {
-    // console.log('send req', loginData, passwordData)
+
     let sendData = {
       site_id : siteID,
       auth_type_id: auth_type_id,

@@ -36,15 +36,6 @@ const NotificationsPage = () => {
   const notifyData = useSelector((store) => store.notifications);
   const userInfo = useSelector((store) => store.authInfo)
 
-  // const userAuth = userInfo.isAuthenticated;
-  // if (typeof window !== 'undefined') {
-  //   if (!userAuth) {
-  //     router.replace('/', '/' ,{locale: router.locale}).then((data) => console.log('Not logined ', data))
-  //   }
-  // }
-
-
-
 
   return (
     <>

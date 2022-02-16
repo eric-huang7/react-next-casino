@@ -32,10 +32,6 @@ export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, ga
     setTotal_rows(newGamesData.total_rows);
     setPageCounter(pageCounter + 1);
     setRequestGamesData([...gamesData, ...newGamesData.results]);
-
-    // console.log(newGamesData, 'new games data')
-
-    ;
   }
 
   if (isShowMoreButton) {

@@ -17,8 +17,6 @@ const Promotions = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation('common');
 
-  // console.log(props, 'promotions');
-
   useEffect(() => {
     // dispatch(setLang(locale));
     // dispatch(getGames());

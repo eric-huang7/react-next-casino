@@ -1,7 +1,6 @@
 import styles from '../../../styles/ExitIntentComponent/GamesContainer/GamesContainer.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getTopGames} from "../../../redux/actions/games";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {GameItemContainer} from "./GameItemContainer";
 import {useRouter} from "next/router";

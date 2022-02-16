@@ -13,7 +13,7 @@ import {getCurrency} from "../../redux/actions/currency";
 
 const PaymentsMethods = (props) => {
   const { t } = useTranslation('common');
-  // console.log(props);
+
 
   const dispatch = useDispatch();
   useEffect(() => {

@@ -1,5 +1,5 @@
 import styles from '../../../styles/ExitIntentComponent/GamesContainer/GamesContainer.module.scss';
-import Image from "next/image";
+
 import {gameUrl} from "../../../helpers/imageUrl";
 import {GameImage} from "./GameImage";
 

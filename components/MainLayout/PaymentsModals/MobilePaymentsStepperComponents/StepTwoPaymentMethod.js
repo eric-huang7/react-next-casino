@@ -24,18 +24,12 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
     // payments_methods_url
     axios.get(payments_methods_url, config)
       .then((data) => {
-        // console.log(data.data.results);
         setPaymentMethods(data.data.results);
       })
       .catch((err) => {
         setPaymentMethods(null);
-        // console.log(err.response);
       })
 
-    // return () => {
-    //   setPaymentMethods(null);
-    //   dispatch(setUserPaymentMethod(null));
-    // }
   }, [])
 
   if (paymentMethods) {

@@ -40,7 +40,6 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
-  // console.log(userPayment, 'userPayment');
 
   const dispatch = useDispatch()
   const closeCardPayment = () => {
@@ -82,7 +81,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
       }
     dispatch(postCreditCardPayment(paymentData));
     } else {
-      console.log('check errors')
+
     }
   }
 

@@ -24,7 +24,7 @@ export const freeGame = (gameData) => async dispatch => {
     })
 
   } catch (e) {
-    console.log(e.response.data, 'SOME ERROR WHEN GET FREE GAME')
+
   }
 }
 
@@ -49,7 +49,7 @@ export const playPayGame = (gameData) => async dispatch => {
     })
 
   } catch (e) {
-    console.log(e.response.data, 'SOME ERROR WHEN GET PAYED GAME')
+
   }
 }
 

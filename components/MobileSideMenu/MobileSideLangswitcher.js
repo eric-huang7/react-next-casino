@@ -24,7 +24,6 @@ export const MobileSideLangSwitcher = ({isOpenLanguages}) => {
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
 
   const langChooser = (e) => {
-    console.log(e.target.dataset.lang)
     let today = new Date();
     let nextYear = new Date();
     nextYear.setFullYear(today.getFullYear() + 1);

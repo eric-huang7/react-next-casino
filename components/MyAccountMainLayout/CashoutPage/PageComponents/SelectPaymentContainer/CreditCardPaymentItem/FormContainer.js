@@ -60,12 +60,10 @@ export const FormContainer = ({t, typeOfCurrency, userInfo}) => {
         setAddressError('');
         axios.post(post_withdraw_url, body, config)
           .then((data) => {
-            console.log('withdraw Success', data);
             setSuccessMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.successMessage"));
             setErrorMessage('');
           })
           .catch((e) => {
-            console.log(e.response, 'withdraw Error');
             setSuccessMessage('');
             setErrorMessage(t("myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage"));
           })

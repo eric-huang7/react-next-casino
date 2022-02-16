@@ -66,17 +66,16 @@ export const BonusPageInfoContainer = ({t, bonusInfo, currency}) => {
         }
         setPromoCodeValue('');
         setPromoErrorValue('')
-        console.log(data, 'bonus data!!');
+
       }).catch((errorData) => {
-        console.log(errorData.response, 'error data!!');
+
         setPromoCodeValue('');
         setPromoDepositText('');
         setPromoErrorValue(t(errorText) + " " + promoCodeValue);
       })
 
-
     // dispatch(patchUserBonusCode(userData))
-    // console.log(promoCodeValue);
+
   }
 
   if (bonusInfo?.activePendingBonuses?.success && !currency.loading) {

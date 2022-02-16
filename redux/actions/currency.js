@@ -30,7 +30,7 @@ export const getCurrency = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET CURRENCY', e);
+
   }
 }
 
@@ -51,7 +51,7 @@ export const getCurrencyJurisdiction = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET_CURRENCY_JURISDICTIONS', e);
+
   }
 }
 
@@ -69,7 +69,7 @@ export const get_popular_currency = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET popular CURRENCY', e);
+
   }
 }
 
@@ -87,7 +87,7 @@ export const get_crypto_currency = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET CRYPTO CURRENCY', e);
+
   }
 }
 
@@ -105,7 +105,7 @@ export const get_stable_currency = () => async dispatch => {
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET STABLE CURRENCY', e);
+
   }
 }
 
@@ -119,13 +119,11 @@ export const get_fiat_currency = () => async dispatch => {
   try {
     const res = await axios.get(fiat_currency_url, config);
 
-    console.log(res, 'IN GET FIAT CURRENCY');
-
     dispatch({
       type: GET_FIAT_CURRENCY,
       payload: res.data
     })
   } catch (e) {
-    console.log('SOME ERROR IN GET FIAT CURRENCY', e);
+
   }
 }

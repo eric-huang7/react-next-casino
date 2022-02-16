@@ -34,7 +34,6 @@ export const BonusesBlock = (props) => {
         if (chooseBonusClickHandler) {
             chooseBonusClickHandler(bonusId)
         } else {
-            // console.log('not choose bonus', bonusId);
         }
     }
     return (<>

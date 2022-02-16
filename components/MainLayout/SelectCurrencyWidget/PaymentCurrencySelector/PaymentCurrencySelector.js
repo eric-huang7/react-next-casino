@@ -30,8 +30,6 @@ export const PaymentCurrencySelector = ({
 
   const [cryptoFindArr, setCryptoFindArr] = useState(userPayment.paymentMethodData?.methodData);
 
-  console.log(userPayment, cryptoFindArr, 'userPaymentuserPaymentuserPayment')
-
   const searchInputHandler = (value) => {
     setSearchValue(value);
 
@@ -110,7 +108,7 @@ export const PaymentCurrencySelector = ({
         // dispatch(showDepositModal(false));
       }
     } else {
-      // console.log(paymentData, 'selected');
+
       backButtonClickHandler();
       dispatch(setUserPaymentMethod({
         methodData: paymentData,

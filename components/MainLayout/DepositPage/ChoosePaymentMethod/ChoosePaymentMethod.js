@@ -32,7 +32,6 @@ export const ChoosePaymentMethod = ({
         })
         .catch((err) => {
           setPaymentMethods(null);
-          // console.log(err.response);
         })
     } else {
       setPaymentMethods(null);

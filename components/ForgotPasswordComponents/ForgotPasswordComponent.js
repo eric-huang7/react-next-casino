@@ -47,13 +47,12 @@ export const ForgotPasswordComponent = ({t}) => {
           setSuccessSendPswd(true);
           setRequestError('');
         }
-        console.log(res, 'response data');
       })
       .catch((err) => {
         // setIsLoading(false);
 
         setRequestError('forgotPasswordForm.errors.responseError');
-        // console.log(err.response, 'response err');
+
       })
   }
   const onSubmitEmailResendHandler = (data) => {

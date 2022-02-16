@@ -1,6 +1,4 @@
 import styles from '../../../styles/AboutUs/MainBlock.module.scss'
-import {Trans} from "next-i18next";
-import {useEffect, useState} from "react";
 
 export const MainBlock = ({t}) => {
 

@@ -11,13 +11,13 @@ export const getTournaments = () => async dispatch => {
 
   try {
     const res = await axios.get(get_tournaments_url, config)
-    console.log('response data from tournaments endpoint=====', res)
+
     dispatch({
       type: GET_TOURNAMENTS,
       payload: res.data
     })
   } catch (err) {
-    console.log('error in get tournaments endpoint', err)
+
   }
 }
 

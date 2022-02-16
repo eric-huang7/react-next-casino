@@ -10,7 +10,6 @@ export const BalancePage = ({t}) => {
   const balanceInfo = useSelector((store) => store.authInfo);
   const currency = useSelector((store) => store.getCurrency);
 
-  // console.log('balance page', currency, balanceInfo)
 
   return (
     <div className={styles.mainContainer}>

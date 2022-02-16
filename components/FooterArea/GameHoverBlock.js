@@ -5,11 +5,9 @@ export const GameHoverBlock = ({t, user, playFunClickHandler, playGameClickHAndl
 
   const playFreeClickHandler = () => {
     playFunClickHandler(gameData);
-    console.log(gameData, "play fan");
   }
   const playPaidClickHandler = () => {
     playGameClickHAndler(gameData, user)
-    console.log(gameData, "play paid");
   }
 
   return (
