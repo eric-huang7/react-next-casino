@@ -3,7 +3,7 @@ import Link from "next/link";
 import {LinkItem} from "./LinkItem";
 
 
-export const LinksBlock = ({t, balanceData, currencyData, activeLink}) => {
+export const LinksBlock = ({t, balanceData, currencyData, activeLink, activeCurrencyId}) => {
 
 
   return (
@@ -21,6 +21,7 @@ export const LinksBlock = ({t, balanceData, currencyData, activeLink}) => {
                   balanceData={el}
                   currencyData={currencyData}
                   activeLink={activeLink}
+                  activeCurrencyId={activeCurrencyId}
                 />
             )
           })

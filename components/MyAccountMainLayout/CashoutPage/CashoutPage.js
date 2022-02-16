@@ -29,6 +29,7 @@ export const CashoutPage = ({t, activeLink, activeCurrencyId}) => {
           currencyData={currency.currency.results}
           t={t}
           activeLink={activeLink}
+          activeCurrencyId={activeCurrencyId}
         />
         {
           typeOfCurrency

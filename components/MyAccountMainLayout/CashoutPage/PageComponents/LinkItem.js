@@ -2,12 +2,12 @@ import styles from "../../../../styles/MyAccount/CashoutPage/CashoutPage.module.
 import Link from "next/link";
 
 
-export const LinkItem = ({balanceData, currencyData, activeLink}) => {
+export const LinkItem = ({balanceData, currencyData, activeLink, activeCurrencyId}) => {
 
   let currency = currencyData.find((el) => Number(el.id) === Number(balanceData.currency_id));
 
   return (
-    <li className={`${styles.linkItem} ${activeLink === currency.abbreviation ? styles.activeLink : ""}`}>
+    <li className={`${styles.linkItem} ${Number(activeCurrencyId) === Number(currency.id) ? styles.activeLink : ""}`}>
       <Link
         href={{
           pathname: `/accounts/cashout/${currency.abbreviation}`,
