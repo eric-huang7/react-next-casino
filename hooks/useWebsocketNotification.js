@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setNotifyTypeFour, setNotifyTypeOne, setNotifyTypeThree, setNotifyTypeTwo} from "../redux/actions/setNotify";
 import {notificator} from "../helpers/notificator";
 import {changeLocalUserSubscriptions} from "../redux/actions/userSubscriptionData";
+import {socketUrl} from "../envs/url";
 
 
 export default function useWebsocketNotification(userInfo, locale, browserNotify) {
@@ -23,7 +24,7 @@ export default function useWebsocketNotification(userInfo, locale, browserNotify
     }
     if (userInf.isAuthenticated) {
       if (userInf.user.token) {
-        socketRef.current = new WebSocket(`ws://t-gpb.slotsidol.com:7700?token=${userInf.user.token}&locale=${locale}`);
+        socketRef.current = new WebSocket(`${socketUrl}?token=${userInf.user.token}&locale=${locale}`);
       }
 
       socketRef.current.onopen = function (e) {

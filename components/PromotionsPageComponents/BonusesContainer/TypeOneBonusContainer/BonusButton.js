@@ -3,7 +3,8 @@ import {showDepositModal} from "../../../../redux/actions/showPopups";
 import {useDispatch, useSelector} from "react-redux";
 import {setUserBonus} from "../../../../redux/actions/setUserBonus";
 import {useRouter} from "next/router";
-// import imageButton from '/assets/img/promotionsPage/bonus2.png'
+import {imagesUrl} from "../../../../envs/url";
+
 
 export const BonusButton = ({bonusInfo, userData}) => {
   const router = useRouter()
@@ -29,7 +30,7 @@ export const BonusButton = ({bonusInfo, userData}) => {
     <div onClick={() => openDepositModalHandler()} className={styles.bonusButtonBlock}>
       {/*<div className={styles.bonusButton}></div>*/}
       <img draggable={false}
-           src={bonusButton ? `https://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/images/${bonusButton}` : bonusImage}
+           src={bonusButton ? `${imagesUrl}images/${bonusButton}` : bonusImage}
            alt="bonus button icon"/>
     </div>
   )

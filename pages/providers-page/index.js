@@ -70,8 +70,6 @@ const ProvidersPage = (props) => {
 
 export const getServerSideProps = async (context) => {
 
-  // const res = await fetch('http://t-gpb.slotsidol.com:7000/game_providers');
-  // const providersData = await res.json();
 
   return ({
     props: {

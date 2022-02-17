@@ -1,5 +1,5 @@
 import styles from "../../../styles/TournamentSidebar/TournamentSidebar.module.scss";
-import {imagesUrl} from "../../../helpers/imgUrl";
+import {slideImagesUrl} from "../../../helpers/imgUrl";
 
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ export const SlideItem = ({t, setSliderPosition, count, tournamentData, router, 
   let image = 'tournament_image';
 
   try {
-    image = imagesUrl(tournamentData.image.split('.')[0] + `_${router.locale}` + '.png');
+    image = slideImagesUrl(tournamentData.image.split('.')[0] + `_${router.locale}` + '.png');
   } catch (e) {
     image = 'tournament_image';
   }
