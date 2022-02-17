@@ -1,3 +1,5 @@
+@import './colors.module';
+
 @font-face {
   font-family: 'Verdana';
   src: url("/fonts/verdana/Verdana.ttf");
@@ -124,9 +126,9 @@ a {
 
 // Fix for slider color view
 ._promotionsBlock div.slick-slide:nth-child(odd) > div > div > div {
-  background-color: #2280eb;
+  background-color: $blue-background;
   & > div:nth-child(2) {
-    background-color: #2280eb;
+    background-color: $blue-background;
   }
 
   & .__promoHeading {
@@ -139,9 +141,9 @@ a {
       //font-size: 24px;
       //color: #ffffff;
       //font-family: "Neon", Arial, sans-serif;
-      text-shadow: #ff7d7d 3px 2px 43px, #ff7d7d 3px 2px 100px, #ff7d7d 3px 2px 100px;
+      text-shadow: $pink-text-shadow 3px 2px 43px, $pink-text-shadow 3px 2px 100px, $pink-text-shadow 3px 2px 100px;
 
-      filter: drop-shadow(0px 2px 0.5px #ff7d7d);
+      filter: drop-shadow(0px 2px 0.5px $pink-text-shadow);
     }
   }
 }
@@ -149,6 +151,6 @@ a {
 .loadingHeader {
   margin: 0 auto;
   text-align: center;
-  color: #ff0e0e;
+  color: $red-color;
 }
 

@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .selectCurrencyMainWrapper {
 
   position: fixed;
@@ -6,7 +8,7 @@
   //right: 0;
   //bottom: 0;
 
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $black-back-modals;
   //background-color: #eeeeee;
 
   padding: 0 20px;
@@ -58,7 +60,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: #ff0e0e;
+  background-color: $red-color;
   position: relative;
 
   & .selectCurrencyBackButton {

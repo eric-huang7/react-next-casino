@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 
 .userMainBlockButtons {
     display: flex;
@@ -41,7 +43,7 @@
     background-color: #7e7e7e;
 }
 .registrationButtons button:nth-child(2) {
-    background-color: #ff0000;
+    background-color: $red-color;
 }
 
 .hide {

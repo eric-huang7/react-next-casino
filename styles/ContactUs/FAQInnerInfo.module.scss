@@ -1,8 +1,10 @@
+@import '../colors.module';
+
 .faqItemInnerInfo {
 
 }
 .faqItemInnerInfoHeading{
-  color: #ff0e0e;
+  color: $red-color;
   position: relative;
 
   user-select: none;
@@ -51,6 +53,6 @@
   .faqItemInnerInfoHeading {
     font-size: 14px;
 
-    color: #ff0e0e;
+    color: $red-color;
   }
 }

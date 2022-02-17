@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .bonusMainHeadingBlock {
   display: flex;
   flex-direction: column;
@@ -49,7 +51,7 @@
 
   bottom: 0;
   right: 0;
-  background-color: #2163ab;
+  background-color: $dark-blue-back;
 
 
 
@@ -118,7 +120,7 @@
 
   }
   & .bonusHeadingLineTwo {
-    color: #ff0000;
+    color: $red-color;
   }
 
 }

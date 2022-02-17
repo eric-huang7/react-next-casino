@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .myAccountContainer {
 
   display: flex;
@@ -17,7 +19,7 @@
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #ff0000;
+  color: $red-color;
   font-family: "Verdana", Arial, sans-serif;
 
   height: 93px;
@@ -45,7 +47,7 @@
 
   padding: 5px 40px;
 
-  background-color: #ff0000;
+  background-color: $red-color;
 
   z-index: 20;
 

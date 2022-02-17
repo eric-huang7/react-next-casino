@@ -1,4 +1,4 @@
-
+@import '../../colors.module';
 
 
 .userInfoBlock {
@@ -48,7 +48,7 @@
   border-radius: 17px;
   border: none;
 
-  background-color: #ff0000;
+  background-color: $red-color;
 
   padding-left: 52px;
   padding-right: 10px;

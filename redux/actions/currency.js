@@ -14,12 +14,13 @@ import {
   GET_POPULAR_CURRENCY,
   GET_STABLE_CURRENCY
 } from "./types";
+import {siteID} from "../../envs/envsForFetching";
 
 
 export const getCurrency = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 
@@ -37,7 +38,7 @@ export const getCurrency = () => async dispatch => {
 export const getCurrencyJurisdiction = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1,
+      site_id: siteID,
       types: 3,
       isDepositEnabled: 1,
       quantity: 1
@@ -58,7 +59,7 @@ export const getCurrencyJurisdiction = () => async dispatch => {
 export const get_popular_currency = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 
@@ -76,7 +77,7 @@ export const get_popular_currency = () => async dispatch => {
 export const get_crypto_currency = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 
@@ -94,7 +95,7 @@ export const get_crypto_currency = () => async dispatch => {
 export const get_stable_currency = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 
@@ -112,7 +113,7 @@ export const get_stable_currency = () => async dispatch => {
 export const get_fiat_currency = () => async dispatch => {
   const config = {
     params: {
-      site_id: 1
+      site_id: siteID
     }
   }
 

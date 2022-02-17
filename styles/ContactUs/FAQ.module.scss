@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .faqSection {
   width: 100%;
 
@@ -15,7 +17,7 @@
 .faqHeading {
   font-size: 30px;
   letter-spacing: 1px;
-  color: #ff0000;
+  color: $red-color;
   font-family: "Verdana";
 
   margin: 0;
@@ -33,7 +35,7 @@
 }
 
 .faqItem {
-  border-bottom: 1px solid #ff0e0e;
+  border-bottom: 1px solid $red-color;
 }
 .faqItem:last-child {
   border-bottom: none;
@@ -127,6 +129,6 @@
   .faqItemMainBlockHeading {
     font-size: 18px;
 
-    color: #ff0e0e;
+    color: $red-color;
   }
 }

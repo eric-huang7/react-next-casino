@@ -1,3 +1,5 @@
+@import './colors.module';
+
 .langSwitcherBlock {
   cursor: pointer;
   transition: right 0.5s ease-in-out;
@@ -14,7 +16,7 @@
   width: 111px;
   height: 31px;
   //padding: 8px;
-  background-color: #a7a7a7;
+  background-color: $gray-back-color;
   border-radius: 10px 10px 10px 10px;
 
   text-align: center;
@@ -38,7 +40,7 @@
 }
 
 .langSwitcherBlock:hover .langSwitcherBlockList {
-  background-color: #a7a7a7;
+  background-color: $gray-back-color;
 
   width: 100%;
 
@@ -92,7 +94,7 @@
 
   text-align: center;
 
-  background-color: #d5d5d5;
+  background-color: $hover-gray-back-color;
 }
 
 .langSwitcherBlockListItem:first-child:hover {

@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .newsMainWrapper {
   width: 100%;
 
@@ -28,11 +30,10 @@
   background-repeat: no-repeat;
 }
 .darkBackground {
-  background-color: rgba(0,0,0,0.3);
+  background-color: $light-black-back;
 }
 
 .errorMessage {
-  color: #ffffff;
   margin: 70px auto 70px;
 
   text-align: center;
@@ -85,19 +86,7 @@
   width: 100%;
   margin: 0 auto;
 }
-//.newFrame {
-//  width: 97%;
-//  height: 100%;
-//
-//  border: 1px solid rgba(255,255,255,0.5);
-//
-//  background-color: transparent;
-//
-//  position: absolute;
-//
-// left: 1.6%;
-//  top: 1.5%;
-//}
+
 .newTextBlock {
   background-color: #2163ab;
 
@@ -134,9 +123,7 @@
 }
 
 .controlPanel {
-  //background-color: rgba(0,0,0,0.3);
 
-  //position: absolute;
   width: 100%;
   //left: 0;
   height: 85px;
@@ -148,26 +135,6 @@
 
   margin: 0px auto 0 auto;
 }
-//.controlPanel span {
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//
-//  position: relative;
-//  //left: -8px;
-//  top: 1px;
-//
-//  font-size: 14px;
-//  color: #ffffff;
-//  font-family: "Verdana";
-//
-//  width: 200px;
-//  height: 50px;
-//
-//  margin: 0 auto;
-//
-//  border: 1px solid #6a6d71;
-//}
 
 .prevArr, .nextArr {
 
@@ -353,7 +320,7 @@
     width: 215px;
     height: 336px;
 
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     position: absolute;
 
@@ -368,7 +335,7 @@
     width: 220px;
     height: 336px;
 
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     position: absolute;
 
@@ -378,7 +345,7 @@
     z-index: 1;
   }
   .controlPanel {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
     position: relative;
     margin: 20px auto 0 auto;
     left: 0;

@@ -1,3 +1,4 @@
+@import '../colors.module';
 .twoFaAuthWrapper {
 
   position: fixed;
@@ -10,7 +11,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $black-back-modals;
 
   overflow-y: auto;
 }
@@ -42,7 +43,7 @@
 
   min-height: 58px;
   border-radius: 10px 10px 0 0;
-  background-color: #ff0000;
+  background-color: $red-color;
 
   & h3 {
     margin: 0 5px 0 33px;
@@ -103,7 +104,7 @@
   & button {
     font-size: 15px;
     line-height: 26px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Segoe UI", Arial, sans-serif;
     text-align: center;
 
@@ -140,7 +141,7 @@
   & .errorMessage {
     font-size: 14px;
     line-height: 22px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Segoe UI", Arial, sans-serif;
 
     margin: 0;
@@ -176,9 +177,9 @@
     }
 
     & .backupCodeInput.errorField {
-      border: 1px solid #ff0000;
+      border: 1px solid $red-color;
       background-color: rgba(255, 0, 0, 0.1);
-      color: #ff0000;
+      color: $red-color;
     }
   }
 
@@ -238,9 +239,9 @@
 
     & .twoFaCodeInputs.errorBlockInput {
       & input {
-        border: 1px solid #ff0000;
+        border: 1px solid $red-color;
         background-color: rgba(255, 0, 0, 0.1);
-        color: #ff0000;
+        color: $red-color;
       }
     }
   }
@@ -272,7 +273,7 @@
 
     min-height: 50px;
     border-radius: 10px 10px 0 0;
-    background-color: #ff0000;
+    background-color: $red-color;
 
     & h3 {
       margin: 0 5px 0 33px;
@@ -339,9 +340,9 @@
 
       & .twoFaCodeInputs.errorBlockInput {
         & input {
-          border: 1px solid #ff0000;
+          border: 1px solid $red-color;
           background-color: rgba(255, 0, 0, 0.1);
-          color: #ff0000;
+          color: $red-color;
         }
       }
     }
@@ -357,7 +358,7 @@
 
     min-height: 50px;
     border-radius: 10px 10px 0 0;
-    background-color: #ff0000;
+    background-color: $red-color;
 
     & h3 {
       margin: 0 5px 0 33px;
@@ -424,9 +425,9 @@
 
       & .twoFaCodeInputs.errorBlockInput {
         & input {
-          border: 1px solid #ff0000;
+          border: 1px solid $red-color;
           background-color: rgba(255, 0, 0, 0.1);
-          color: #ff0000;
+          color: $red-color;
         }
       }
     }

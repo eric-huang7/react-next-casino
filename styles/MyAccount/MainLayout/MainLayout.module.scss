@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .accountMainLayoutWrapper {
   background-color: #000000;
 
@@ -48,7 +50,7 @@
   & .accountHeading {
     height: 93px;
 
-    background-color: #ff0000;
+    background-color: $red-color;
 
     font-size: 24px;
     font-weight: 400;
@@ -86,7 +88,7 @@
   display: flex;
   align-items: center;
 
-  border-bottom: 1px solid #a7a7a7;
+  border-bottom: 1px solid $gray-back-color;
 
   position: relative;
 
@@ -144,8 +146,8 @@
   width: 8px;
   height: 8px;
 
-  border-top: 2px solid #ff0000;
-  border-right: 2px solid #ff0000;
+  border-top: 2px solid $red-color;
+  border-right: 2px solid $red-color;
 
   transform: rotateZ(45deg);
 
@@ -153,9 +155,9 @@
 }
 
 .activeItem {
-  background-color: #ff0000;
+  background-color: $red-color;
 
-  border-bottom: 1px solid #a7a7a7;
+  border-bottom: 1px solid $gray-back-color;
 
   position: relative;
 
@@ -250,9 +252,9 @@
   }
 
   .activeItem {
-    background-color: #ff0000;
+    background-color: $red-color;
 
-    border-bottom: 1px solid #a7a7a7;
+    border-bottom: 1px solid $gray-back-color;
 
     position: relative;
 

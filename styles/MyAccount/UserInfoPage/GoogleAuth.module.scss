@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .googleAuthMainBlock {
   padding: 25px 20px 35px 10px;
 }
@@ -5,7 +7,7 @@
 .googleAuthHeading {
   font-size: 18px;
   letter-spacing: 0px;
-  color: #747272;
+  color: $light-gray-text;
   font-family: "Verdana", Arial, sans-serif;
 
   margin-bottom: 45px;
@@ -24,7 +26,7 @@
   border-radius: 17px;
   border: none;
 
-  background-color: #ff0000;
+  background-color: $red-color;
 
   padding-left: 52px;
   padding-right: 10px;

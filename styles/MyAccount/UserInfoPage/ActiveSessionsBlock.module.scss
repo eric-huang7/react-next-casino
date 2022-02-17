@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .sessionsTableWrapper {
   max-height: 600px;
 
@@ -5,7 +7,7 @@
 
 }
 .sessionCloseButton {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   border: none;
   border-radius: 5px;
@@ -28,7 +30,7 @@
 .activeSessionsHeading {
   font-size: 18px;
   letter-spacing: 0px;
-  color: #747272;
+  color: $light-gray-text;
   font-family: "Verdana", Arial, sans-serif;
 
   margin-bottom: 45px;
@@ -40,7 +42,7 @@
 
   font-size: 15px;
   letter-spacing: 0px;
-  color: #747272;
+  color: $light-gray-text;
   font-family: "Verdana", Arial, sans-serif;
 
 

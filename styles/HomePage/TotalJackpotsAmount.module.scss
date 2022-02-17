@@ -1,3 +1,4 @@
+@import '../colors.module';
 
 .totalJackpotsMainWrapper {
   margin-top: 200px;
@@ -27,7 +28,7 @@
   font-size: 90px;
   letter-spacing: 2px;
   line-height: 58px;
-  color: #ff2929;
+  color: $red-color;
   font-weight: bold;
   font-family: "Gobold";
 

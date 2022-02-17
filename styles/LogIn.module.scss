@@ -1,3 +1,5 @@
+@import './colors.module';
+
 .hideLogIn {
   display: none;
 }
@@ -13,7 +15,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0,0,0, 0.8);
+  background-color: $black-back-modals;
 
   overflow-y: auto;
 
@@ -39,7 +41,7 @@
 .logInHeading h2{
   font-size: 33px;
   line-height: 64px;
-  color: #ff0000;
+  color: $red-color;
   font-weight: bold;
   font-family: "Gobold";
   text-transform: uppercase;
@@ -61,7 +63,7 @@
   padding: 4px;
 }
 .logInInnerBlockHead {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   border-radius: 15px 15px 0 0;
 
@@ -152,12 +154,12 @@
     }
 
     & input:focus {
-      border: 1px solid #ff0000;
+      border: 1px solid $red-color;
       border-radius: 0px;
 
     }
     & input:focus-visible {
-      border: 1px solid #ff0000;
+      border: 1px solid $red-color;
       border-radius: 0px;
     }
   }
@@ -188,7 +190,7 @@
     font-family: "Verdana";
   }
   & .logInText {
-    color: #ff0000;
+    color: $red-color;
     margin-left: 10px;
   }
   & .logInText:hover {
@@ -214,7 +216,7 @@
     font-family: "Myriad Pro";
     text-transform: uppercase;
 
-    background-color: #ff0000;
+    background-color: $red-color;
     width: 100%;
     height: 100%;
 
@@ -226,7 +228,7 @@
 
 .errorMessage {
   font-size: 12px;
-  color: #ff0e0e;
+  color: $red-color;
 
   position: relative;
   top: -10px;
@@ -239,7 +241,7 @@
 
   & button {
     font-size: 15px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Segoe UI", Arial, sans-serif;
 
     border: none;

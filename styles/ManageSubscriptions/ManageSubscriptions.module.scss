@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .subscriptions__MainWrapper {
   position: fixed;
   top: 0;
@@ -7,7 +9,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0,0,0, 0.8);
+  background-color: $black-back-modals;
 
   overflow-y: auto;
 
@@ -32,7 +34,7 @@
   background-color: #ffffff;
 
   & .subscriptions__heading {
-    background-color: #ff0000;
+    background-color: $red-color;
 
     border-radius: 15px 15px 0 0;
 
@@ -140,7 +142,7 @@
   width: 430px;
   height: 74px;
   border-radius: 15px;
-  background-color: #ff0000;
+  background-color: $red-color;
   border: 4px solid #ffffff;
 
   margin-top: 25px;
@@ -174,7 +176,7 @@
     background-color: #ffffff;
 
     & .subscriptions__heading {
-      background-color: #ff0000;
+      background-color: $red-color;
 
       border-radius: 15px 15px 0 0;
 
@@ -273,7 +275,7 @@
     background-color: #ffffff;
 
     & .subscriptions__heading {
-      background-color: #ff0000;
+      background-color: $red-color;
 
       border-radius: 15px 15px 0 0;
 

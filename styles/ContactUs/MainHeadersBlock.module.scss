@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .mainSection {
   background-image: url("/assets/img/contactUs/mainContactUs_back.webp");
   background-position: center;
@@ -44,10 +46,10 @@
     padding: 0.4em;
     box-shadow: 0 0 .2rem #fff,
     0 0 .2rem #fff,
-    0 0 1rem #ff0909,
-    0 0 0.8rem #ff0909,
-    0 0 0.8rem #ff0909,
-    inset 0 0 1.3rem #ff0909;
+    0 0 1rem $red-color,
+    0 0 0.8rem $red-color,
+    0 0 0.8rem $red-color,
+    inset 0 0 1.3rem $red-color;
   }
 }
 .hours {

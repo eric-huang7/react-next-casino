@@ -1,3 +1,4 @@
+@import '../colors.module';
 .instructionsMainWrapper {
   margin-bottom: 140px;
 }
@@ -19,7 +20,7 @@
 .redArea {
   position: absolute;
 
-  background-color: #ff0e0e;
+  background-color: $red-color;
 
   z-index: 1;
 
@@ -131,7 +132,7 @@ margin-bottom: 50px;
     height: 60px;
     width: 1000vw;
 
-    background-color: #ff0e0e;
+    background-color: $red-color;
 
     z-index: -1;
   }

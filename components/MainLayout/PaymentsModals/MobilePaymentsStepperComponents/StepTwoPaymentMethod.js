@@ -1,5 +1,4 @@
 import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
-import {paymentMethodsData} from "../../../../envs/paymetsMethods";
 import {PaymentMethodItem} from "./PaymentMethodItem";
 import {useEffect, useState} from "react";
 import axios from "axios";

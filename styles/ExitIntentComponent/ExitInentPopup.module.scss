@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .exit_intent_popup {
   position: fixed;
   top: 0;
@@ -9,7 +11,7 @@
   height: 100vh;
 
   z-index: 20;
-  background: rgba(0, 0, 0, 0.8);
+  background: $black-back-modals;
   transform: translateY(60%) scale(0);
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 
@@ -47,7 +49,7 @@
 
 
 .headingBlock {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   min-height: 50px;
 
@@ -149,7 +151,7 @@
 
     min-height: 75px;
 
-    background-color: #ff0000;
+    background-color: $red-color;
 
     border: 4px solid #ffffff;
     border-radius: 15px;

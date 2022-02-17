@@ -1,3 +1,4 @@
+@import '../../colors.module';
 
 .secondHeadingContainer {
   padding-bottom: 30px;
@@ -10,7 +11,7 @@
 
     font-size: 16px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 }
@@ -29,7 +30,7 @@
 
       font-size: 16px;
       letter-spacing: 0px;
-      color: #595656;
+      color: $gray-text-color;
       font-family: "Verdana", Arial, sans-serif;
       white-space: nowrap;
     }
@@ -62,19 +63,19 @@
       height: 36px;
       border-radius: 20px 20px 0 0;
       background-color: transparent;
-      border: 2px solid #ff0000;
+      border: 2px solid $red-color;
 
       & a {
         font-size: 18px;
         font-weight: 600;
         letter-spacing: 0px;
-        color: #ff0000;
+        color: $red-color;
         font-family: "Verdana", Arial, sans-serif;
       }
     }
 
     & .activeLink {
-      background-color: #ff0000;
+      background-color: $red-color;
 
       & a {
         color: #ffffff;
@@ -86,7 +87,7 @@
 
 .availableCashoutBlock {
   border-radius: 5px;
-  background-color: #ff0000;
+  background-color: $red-color;
 
   padding: 11px 17px;
 
@@ -110,7 +111,7 @@
 .formErrorMessage {
   font-size: 14px;
   letter-spacing: 0px;
-  color: #ff0000;
+  color: $red-color;
   font-family: "Verdana", Arial, sans-serif;
 }
 
@@ -125,7 +126,7 @@
 
     font-size: 16px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 
@@ -156,7 +157,7 @@
           & .coinName {
             font-size: 16px;
             letter-spacing: 0px;
-            color: #595656;
+            color: $gray-text-color;
             font-family: "Verdana", Arial, sans-serif;
 
             min-width: 50px;
@@ -215,7 +216,7 @@
 
               font-size: 13px;
               letter-spacing: 0px;
-              color: #595656;
+              color: $gray-text-color;
               font-family: "Verdana", Arial, sans-serif;
               text-align: right;
             }
@@ -237,7 +238,7 @@
             & .amountLabel {
               font-size: 16px;
               letter-spacing: 0px;
-              color: #595656;
+              color: $gray-text-color;
               font-family: "Verdana", Arial, sans-serif;
 
               margin-bottom: 10px;
@@ -258,7 +259,7 @@
 
                 font-size: 16px;
                 letter-spacing: 0px;
-                color: #595656;
+                color: $gray-text-color;
                 font-family: "Verdana", Arial, sans-serif;
 
                 margin-right: 15px;
@@ -292,7 +293,7 @@
 
               font-size: 16px;
               letter-spacing: 0px;
-              color: #595656;
+              color: $gray-text-color;
               font-family: "Verdana", Arial, sans-serif;
 
             }
@@ -300,7 +301,7 @@
             & label {
               font-size: 16px;
               letter-spacing: 0px;
-              color: #595656;
+              color: $gray-text-color;
               font-family: "Verdana", Arial, sans-serif;
 
               margin-bottom: 10px;
@@ -317,7 +318,7 @@
             outline: none;
 
             border-radius: 17px;
-            background-color: #ff0000;
+            background-color: $red-color;
 
             font-size: 15px;
             letter-spacing: 0px;
@@ -328,7 +329,7 @@
           & .errorMessage, .successMessage {
             font-size: 15px;
             letter-spacing: 0px;
-            color: #ff0000;
+            color: $red-color;
             font-family: "Verdana", Arial, sans-serif;
 
             display: block;
@@ -367,8 +368,8 @@
 
       & .methodItem.activeMethodItem .indicatorContainer {
 
-        border-top: 2px solid #ff0000;
-        border-left: 2px solid #ff0000;
+        border-top: 2px solid $red-color;
+        border-left: 2px solid $red-color;
 
         transform: rotateZ(45deg);
       }
@@ -387,7 +388,7 @@
     margin: 0 0 40px 0;
 
     font-size: 16px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 
@@ -395,7 +396,7 @@
     width: fit-content;
     height: 34px;
     border-radius: 17px;
-    background-color: #ff0000;
+    background-color: $red-color;
 
     border: none;
     outline: none;
@@ -525,8 +526,8 @@
 
         & .methodItem.activeMethodItem .indicatorContainer {
 
-          border-top: 2px solid #ff0000;
-          border-left: 2px solid #ff0000;
+          border-top: 2px solid $red-color;
+          border-left: 2px solid $red-color;
 
           transform: rotateZ(45deg);
         }

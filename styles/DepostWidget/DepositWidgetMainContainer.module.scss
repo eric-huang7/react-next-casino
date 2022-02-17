@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .depositWidgetMainContainer {
 
   position: fixed;
@@ -106,7 +108,7 @@
 
 .widgetAmountInput:focus {
   outline: none;
-  border: 0.95px solid #ff0e0e;
+  border: 0.95px solid $red-color;
 }
 
 .currencyLabel {
@@ -383,7 +385,7 @@
   z-index: 1;
 
   & .errorMessageInnerWrapper {
-    background-color: #ff0000;
+    background-color: $red-color;
 
     display: flex;
     align-items: center;
@@ -407,7 +409,7 @@
     width: 20px;
     height: 20px;
 
-    background-color: #ff0000;
+    background-color: $red-color;
 
     transform: rotateZ(45deg);
 
@@ -485,7 +487,7 @@
     width: 90px;
     height: 39px;
     border-radius: 10px;
-    background-color: #ff0000;
+    background-color: $red-color;
 
 
     border: none;

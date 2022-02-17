@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .playSafeMainWrapper {
   background-color: rgba(0, 0, 0, 1);
 
@@ -38,7 +40,7 @@
   & h2 {
     font-size: 30px;
     letter-spacing: 1px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Verdana";
     margin: 0 0 20px 0;
     text-transform: uppercase;
@@ -95,7 +97,7 @@
   }
 
   & a {
-    color: #ff0000;
+    color: $red-color;
   }
 
   & .firstTextBlock {
@@ -152,7 +154,7 @@
         }
 
         & a {
-          color: #ff0000;
+          color: $red-color;
           flex-shrink: 1;
           flex-grow: 1;
         }
@@ -183,7 +185,7 @@
     & h2 {
       font-size: 30px;
       letter-spacing: 1px;
-      color: #ff0000;
+      color: $red-color;
       font-family: "Segoe UI";
       margin: 0 0 20px 0;
       text-transform: uppercase;
@@ -218,7 +220,7 @@
     }
 
     & a {
-      color: #ff0000;
+      color: $red-color;
     }
 
     & .firstTextBlock {
@@ -279,7 +281,7 @@
           }
 
           & a {
-            color: #ff0000;
+            color: $red-color;
             flex-shrink: 1;
             flex-grow: 1;
           }

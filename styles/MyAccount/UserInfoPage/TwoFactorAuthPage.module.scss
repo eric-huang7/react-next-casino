@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .googleAuthContainer {
   padding: 0px 0px 20px 15px;
 }
@@ -47,7 +49,7 @@
   }
 
   & p.cantScan {
-    color: #ff0000;
+    color: $red-color;
 
     margin: 20px 0;
   }
@@ -85,7 +87,7 @@
   & p.errorMessage {
     font-size: 12px;
 
-    color: #ff0000;
+    color: $red-color;
   }
 
   & .inputsBlock {
@@ -118,7 +120,7 @@
 
       border-radius: 17px;
 
-      background-color: #ff0000;
+      background-color: $red-color;
 
       font-size: 15px;
       letter-spacing: 0px;
@@ -207,7 +209,7 @@
   & p.errorMessage {
     font-size: 12px;
 
-    color: #ff0000;
+    color: $red-color;
   }
 
   & .inputsBlock {
@@ -238,7 +240,7 @@
 
       border-radius: 17px;
 
-      background-color: #ff0000;
+      background-color: $red-color;
 
       font-size: 15px;
       letter-spacing: 0px;

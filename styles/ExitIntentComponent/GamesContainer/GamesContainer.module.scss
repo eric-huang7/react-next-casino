@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .gamesMainContainer {
   padding: 15px 10px 15px 20px;
 }
@@ -36,7 +38,7 @@
   & h3 {
     font-size: 24px;
     letter-spacing: 1px;
-    color: #595959;
+    color: $gray-text-color;
     font-family: "Myriad Pro", Arial, sans-serif;
     text-transform: uppercase;
 

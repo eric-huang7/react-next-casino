@@ -133,8 +133,8 @@ export const RegisterSignup = ({t, isShow}) => {
 
 
   // 100% First Deposit Bonus
-  // let site_id = 1;
-  // let auth_type_id = 1;
+  // let site_id = siteID;
+  // let auth_type_id = auth_type_id;
   // let isAdmin = false;
   // let userId = 100000;
 //currency, user_id, site_id, auth_type_id, username, email, password

@@ -1,4 +1,4 @@
-
+@import './colors.module';
 .registerSignupWrapper {
   position: fixed;
 
@@ -10,7 +10,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0,0,0, 0.8);
+  background-color: $black-back-modals;
 
   overflow-y: auto;
 }
@@ -36,7 +36,7 @@
 .registerHeading h2{
   font-size: 33px;
   line-height: 64px;
-  color: #ff0000;
+  color: $red-color;
   font-weight: bold;
   font-family: "Gobold";
   text-transform: uppercase;
@@ -59,7 +59,7 @@
 }
 
 .registerInnerBlockHead {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   border-radius: 15px 15px 0 0;
 
@@ -155,12 +155,12 @@
       margin-bottom: 0px;
     }
     & input:focus {
-      border: 1px solid #ff0000;
+      border: 1px solid $red-color;
       border-radius: 0px;
 
     }
     & input:focus-visible {
-      border: 1px solid #ff0000;
+      border: 1px solid $red-color;
       border-radius: 0px;
     }
   }
@@ -185,7 +185,7 @@
   height: 40px;
 
   & p {
-    color: #ff0000;
+    color: $red-color;
 
     text-align: center;
 
@@ -205,14 +205,14 @@
   }
   & input.bonusInput {
     margin-top: 5.5%;
-    color: #ff0000;
+    color: $red-color;
     display: block;
   }
   & input.bonusInput::-moz-placeholder {
-    color: #ff0000;
+    color: $red-color;
   }
   & input.bonusInput::-webkit-input-placeholder {
-    color: #ff0000;
+    color: $red-color;
   }
   & .labelForBonusInput {
     position: absolute;
@@ -262,7 +262,7 @@
     left: -40px;
   }
   & input.agreeTermsCheckbox:checked + .iReadAndAgreeLabel:before {
-    background-color: #ff0000;
+    background-color: $red-color;
 
     background-image: url("/assets/img/registerSignup/checked.svg");
     background-size: auto;
@@ -271,7 +271,7 @@
   }
 
   & a {
-    color: #452562;
+    color: $purple-link;
     text-decoration: underline;
     font-size: 10px;
 
@@ -293,7 +293,7 @@
     font-family: "Verdana";
   }
   & .LogInText {
-    color: #ff0000;
+    color: $red-color;
     margin-left: 10px;
   }
   & .LogInText:hover {
@@ -319,7 +319,7 @@
     font-family: "Myriad Pro";
     text-transform: uppercase;
 
-    background-color: #ff0000;
+    background-color: $red-color;
     width: 100%;
     height: 100%;
 
@@ -358,7 +358,7 @@
   }
   & div:hover {
 
-    background-color: #ff0000;
+    background-color: $red-color;
 
     & p {
       color: #ffffff;
@@ -369,13 +369,13 @@
   display: flex;
 
   height: auto;
-  border: 1px solid #ff0000;
+  border: 1px solid $red-color;
   border-top: 0px;
 }
 
 .errorMessage, .errorMessageYouAgree, .errorMessageRegister {
   font-size: 12px;
-  color: #ff0000;
+  color: $red-color;
 
   position: relative;
   top: -10px;

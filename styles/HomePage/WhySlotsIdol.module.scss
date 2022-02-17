@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .whySlotsMainwrapper {
   width: 100%;
 
@@ -66,7 +68,7 @@
 }
 
 .whySlotsInfoblock {
-  background-color: rgba(0,0,0,0.3);
+  background-color: $light-black-back;
 
   width: 100%;
   padding: 40px 0;
@@ -111,7 +113,7 @@
     }
   }
   .whySlotsInfoblock {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     width: 100%;
     padding: 40px 0;
@@ -149,7 +151,7 @@
     }
   }
   .whySlotsInfoblock {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     width: 100%;
     padding: 40px 0;
@@ -187,7 +189,7 @@
     }
   }
   .whySlotsInfoblock {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     width: 100%;
     padding: 20px 0;
@@ -256,7 +258,7 @@
   }
 
   .whySlotsInfoblock {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     width: 100%;
     padding: 20px 0;

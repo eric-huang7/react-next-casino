@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .inputsWrapper {
   width: 100%;
   height: 43%;
@@ -17,7 +19,7 @@
   padding-left: 3%;
 
   background-color: #f1f1f1;
-  border: 0.95px solid #ff0e0e;
+  border: 0.95px solid $red-color;
 
   outline: none;
 
@@ -183,7 +185,7 @@
   position: relative;
   left: -15%;
 
-  //background-color: #ff0e0e;
+  //background-color: $red-color;
 
   //max-width: 300px;
 
@@ -244,11 +246,11 @@
 }
 
 .bonusSwitcherInput:checked + .slider {
-  background-color: #ff0e0e;
+  background-color: $red-color;
 }
 
 .bonusSwitcherInput:focus + .slider {
-  box-shadow: 0 0 1px #ff0e0e;
+  box-shadow: 0 0 1px $red-color;
 }
 
 .bonusSwitcherInput:checked + .slider:before {
@@ -256,7 +258,7 @@
   -ms-transform: translateX(-32px);
   transform: translateX(-32px);
   content: "YES";
-  color: #ff0000;
+  color: $red-color;
 }
 
 .slider.round {
@@ -472,11 +474,11 @@
   }
 
   .bonusSwitcherInput:checked + .slider {
-    background-color: #ff0e0e;
+    background-color: $red-color;
   }
 
   .bonusSwitcherInput:focus + .slider {
-    box-shadow: 0 0 1px #ff0e0e;
+    box-shadow: 0 0 1px $red-color;
   }
 
   .bonusSwitcherInput:checked + .slider:before {
@@ -484,7 +486,7 @@
     -ms-transform: translateX(-29px);
     transform: translateX(-29px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 }
 
@@ -703,7 +705,7 @@
     -ms-transform: translateX(-52px);
     transform: translateX(-52px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 
 }
@@ -778,7 +780,7 @@
     -ms-transform: translateX(-35px);
     transform: translateX(-35px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 }
 
@@ -868,7 +870,7 @@
     -ms-transform: translateX(-29px);
     transform: translateX(-29px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 }
 
@@ -940,7 +942,7 @@
     -ms-transform: translateX(-27px);
     transform: translateX(-27px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 }
 
@@ -956,7 +958,7 @@
     padding-left: 7%;
 
     background-color: #f1f1f1;
-    border: 0.95px solid #ff0e0e;
+    border: 0.95px solid $red-color;
 
     outline: none;
 
@@ -1060,7 +1062,7 @@
     -ms-transform: translateX(-31px);
     transform: translateX(-31px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 
   .typePayments {
@@ -1100,7 +1102,7 @@
     -ms-transform: translateX(-20px);
     transform: translateX(-20px);
     content: "YES";
-    color: #ff0000;
+    color: $red-color;
   }
 
   .typePayments {

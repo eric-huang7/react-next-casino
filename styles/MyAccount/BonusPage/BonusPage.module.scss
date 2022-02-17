@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .mainContainer {
   display: grid;
   align-content: center;
@@ -35,7 +37,7 @@
 
     font-size: 15px;
     letter-spacing: 0px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 
@@ -45,7 +47,7 @@
     width: 121px;
     height: 34px;
     border-radius: 17px;
-    background-color: #ff0000;
+    background-color: $red-color;
 
     font-size: 15px;
     letter-spacing: 0px;
@@ -93,7 +95,7 @@
 
     font-size: 16px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana", Arial, sans-serif;
   }
   & div:first-child {
@@ -126,20 +128,20 @@
   min-height: 34px;
 
   border-radius: 17px;
-  border: 1px solid #ff0000;
+  border: 1px solid $red-color;
 
   background-color: transparent;
 
   font-size: 15px;
   letter-spacing: 0px;
-  color: #ff0000;
+  color: $red-color;
   font-family: "Verdana", Arial, sans-serif;
 
   cursor: pointer;
 }
 
 .activateBonus {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   color: #ffffff;
 }
@@ -161,7 +163,7 @@
 .errorMessage {
   font-size: 10px;
   letter-spacing: 0px;
-  color: #ff0000;
+  color: $red-color;
   font-family: "Verdana", Arial, sans-serif;
 }
 .promoDepositText {
@@ -171,7 +173,7 @@
 
   font-size: 12px;
   letter-spacing: 0px;
-  color: #4b4b4b;
+  color: $gray-text-color;
   font-family: "Verdana", Arial, sans-serif;
 }
 
@@ -184,7 +186,7 @@
 .addPromoMainHeading {
   font-size: 15px;
   letter-spacing: 0px;
-  color: #595656;
+  color: $gray-text-color;
   font-family: "Verdana", Arial, sans-serif;
 
   margin: 0;
@@ -225,7 +227,7 @@
     min-width: 121px;
     height: 34px;
     border-radius: 17px;
-    background-color: #ff0000;
+    background-color: $red-color;
 
     border: none;
 
@@ -252,7 +254,7 @@
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 0px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 }
@@ -264,7 +266,7 @@
 .noBonusesText {
   font-size: 15px;
   letter-spacing: 0px;
-  color: #595656;
+  color: $gray-text-color;
   font-family: "Verdana", Arial, sans-serif;
 
   margin-left: 30px;
@@ -311,9 +313,9 @@
       min-width: 15px;
 
       font-size: 16px;
-      color: #ff0000;
+      color: $red-color;
       letter-spacing: 0px;
-      color: #ff0000;
+      color: $red-color;
       font-family: "Verdana", Arial, sans-serif;
     }
 
@@ -346,7 +348,7 @@
 
       font-size: 16px;
       letter-spacing: 0px;
-      color: #595656;
+      color: $gray-text-color;
       font-family: "Verdana", Arial, sans-serif;
     }
     & div:first-child {
@@ -373,18 +375,18 @@
     min-height: 26px;
 
     border-radius: 13px;
-    border: 1px solid #ff0000;
+    border: 1px solid $red-color;
 
     background-color: transparent;
 
     font-size: 14px;
     letter-spacing: 0px;
-    color: #ff0000;
+    color: $red-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 
   .activateBonus {
-    background-color: #ff0000;
+    background-color: $red-color;
 
     color: #ffffff;
   }

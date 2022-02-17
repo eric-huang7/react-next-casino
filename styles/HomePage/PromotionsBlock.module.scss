@@ -1,3 +1,5 @@
+@import '../colors.module';
+
 .promotionsMainWrapper {
   width: 100%;
 
@@ -31,7 +33,7 @@
 }
 
 .promotionsBackground {
-  background-color: rgba(0,0,0,0.3);
+  background-color: $light-black-back;
   width: 100%;
 }
 
@@ -52,9 +54,9 @@
       font-size: 24px;
       color: #ffffff;
       font-family: "Neon", Arial, sans-serif;
-      text-shadow: #47b6ff 3px 2px 43px, #47b6ff 3px 2px 100px, #47b6ff 3px 2px 100px;
+      text-shadow: $blue-shadow 3px 2px 43px, $blue-shadow 3px 2px 100px, $blue-shadow 3px 2px 100px;
 
-      filter: drop-shadow(0px 2px 0.5px #47b6ff);
+      filter: drop-shadow(0px 2px 0.5px $blue-shadow);
     }
   }
 }
@@ -63,7 +65,7 @@
 
 
 .sliderMainClass {
-  background-color: #ff0e0e;
+  background-color: $red-color;
 }
 
 .promotionMainItemWrapper {
@@ -112,7 +114,7 @@
 }
 
 .promotionTextBlock {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   position: absolute;
 
@@ -169,7 +171,7 @@
 }
 
 .controlPanel {
-  //background-color: rgba(0,0,0,0.3);
+  //background-color: $light-black-back;
 
   //position: absolute;
   width: 100%;
@@ -371,7 +373,7 @@
     width: 216px;
     height: 427px;
 
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     position: absolute;
 
@@ -386,7 +388,7 @@
     width: 221px;
     height: 427px;
 
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
 
     position: absolute;
 
@@ -396,7 +398,7 @@
     z-index: 1;
   }
   .controlPanel {
-    background-color: rgba(0,0,0,0.3);
+    background-color: $light-black-back;
     position: relative;
     margin: 20px auto 0 auto;
     left: 0;

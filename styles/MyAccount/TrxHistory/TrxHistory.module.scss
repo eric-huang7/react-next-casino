@@ -1,3 +1,5 @@
+@import '../../colors.module';
+
 .linksWrapper {
   width: 100%;
 
@@ -8,7 +10,7 @@
 
     height: 40px;
 
-    border: 2px solid #ff0000;
+    border: 2px solid $red-color;
     border-radius: 20px 20px 0 0;
 
     padding: 0 5px 0 40px;
@@ -22,14 +24,14 @@
       font-size: 15px;
       letter-spacing: 0px;
       line-height: 58px;
-      color: #ff0000;
+      color: $red-color;
       font-family: "Verdana";
 
       white-space: nowrap;
     }
   }
   & .activeLink {
-    background-color: #ff0000;
+    background-color: $red-color;
 
     & a {
       color: #ffffff;
@@ -96,7 +98,7 @@
   & label {
     font-size: 15px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana";
 
     margin-right: 10px;
@@ -114,7 +116,7 @@
 
     font-size: 15px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana";
   }
 
@@ -127,7 +129,7 @@
     border-radius: 17px;
     border: none;
 
-    background-color: #ff0000;
+    background-color: $red-color;
 
     font-size: 15px;
     letter-spacing: 0px;
@@ -160,7 +162,7 @@
     & p {
       font-size: 15px;
       letter-spacing: 0px;
-      color: #595656;
+      color: $gray-text-color;
       font-family: "Verdana", Arial, sans-serif;
     }
   }
@@ -175,7 +177,7 @@
 
     font-size: 14px;
     letter-spacing: 0px;
-    color: #595656;
+    color: $gray-text-color;
     font-family: "Verdana", Arial, sans-serif;
   }
 
@@ -195,7 +197,7 @@
 .noDataFiltering {
   font-size: 15px;
   letter-spacing: 0px;
-  color: #595656;
+  color: $gray-text-color;
   font-family: "Verdana", Arial, sans-serif;
 
   text-align: center;
@@ -206,7 +208,7 @@
 }
 
 .recallButton {
-  background-color: #ff0000;
+  background-color: $red-color;
 
   border: none;
   outline: none;
@@ -261,7 +263,7 @@
 
       height: 40px;
 
-      border: 2px solid #ff0000;
+      border: 2px solid $red-color;
       border-radius: 20px 20px 0 0;
 
       padding: 0 3px 0 20px;
@@ -275,14 +277,14 @@
         font-size: 12px;
         letter-spacing: 0px;
         line-height: 58px;
-        color: #ff0000;
+        color: $red-color;
         font-family: "Verdana";
 
         white-space: nowrap;
       }
     }
     & .activeLink {
-      background-color: #ff0000;
+      background-color: $red-color;
 
       & a {
         color: #ffffff;
