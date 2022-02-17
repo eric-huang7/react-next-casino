@@ -1,7 +1,8 @@
 import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss';
-import {useDispatch, useSelector} from "react-redux";
+
 import {BalanceItem} from "./BalanceItem";
-import {patchUserActiveCurrency} from "../../redux/actions/userData";
+import BalanceItemError from "./BalanceErrorBoundary/BalansItemError";
+
 
 
 export const BalanceMenuContainer = ({t, balanceData, currencyData, activeBalance}) => {
@@ -21,7 +22,13 @@ export const BalanceMenuContainer = ({t, balanceData, currencyData, activeBalanc
           balanceArr.map((el) => {
 
             return (
-              <BalanceItem key={`${el.id} balance item`} balanceData={el} currencyData={currencyData} />
+              <BalanceItemError key={`${el.id} balance item`}>
+                <BalanceItem
+                  key={`${el.id} balance item`}
+                  balanceData={el}
+                  currencyData={currencyData}
+                />
+              </BalanceItemError>
             )
           })
         }

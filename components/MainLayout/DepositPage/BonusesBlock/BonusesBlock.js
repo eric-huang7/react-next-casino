@@ -3,6 +3,7 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useTranslation} from "next-i18next";
 import {BonusInfoContainer} from "../../../BonusInfoComponents/BonusInfoContainer";
 import {useState} from "react";
+import BonusErrorHandler from "../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
 
 
 export const BonusesBlock = (props) => {
@@ -66,13 +67,15 @@ export const BonusesBlock = (props) => {
         {
             isShowBonusInfo
                 ?
-                <BonusInfoContainer
+              <BonusErrorHandler>
+                  <BonusInfoContainer
                     bonusData={bonusData}
                     infoClickHandler={setIsShowBonusInfo}
                     isShow={isShowBonusInfo}
                     userCurrency={userCurrency}
                     fromDeposit={true}
-                />
+                  />
+              </BonusErrorHandler>
                 :
                 <></>
         }

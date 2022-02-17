@@ -7,13 +7,11 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaEmail} from "../../schemasForms/emailForm";
 import {InstructionsSendContainer} from "./InstructionsSendContainer/InstructionsSendContainer";
 import {useEffect, useRef, useState} from "react";
-// import {ResendEmailContainer} from "./ResendEmailContainer/ResendEmailContainer";
-import {showForgotPasswordPopup, showTournaments} from "../../redux/actions/showPopups";
+import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
 import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../redux/actions/loginShow";
 import axios from "axios";
 import {token_url} from "../../redux/url/url";
-// import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 import {InputContainer} from "./EmailEnteringContainer/InputContainer";
 
 
@@ -30,7 +28,7 @@ export const ForgotPasswordComponent = ({t}) => {
   const [successSendEmail, setSuccessSendEmail] = useState(false);
   const [showResendContainer, setShowResendContainer] = useState(false);
   const [requestError, setRequestError] = useState('');
-  // const [isLoading, setIsLoading] = useState(false);
+
 
   const onSubmitEmailPswdHandler = (data) => {
     const config = {
@@ -52,7 +50,6 @@ export const ForgotPasswordComponent = ({t}) => {
         // setIsLoading(false);
 
         setRequestError('forgotPasswordForm.errors.responseError');
-
       })
   }
   const onSubmitEmailResendHandler = (data) => {

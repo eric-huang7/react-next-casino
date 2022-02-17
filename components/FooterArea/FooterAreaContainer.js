@@ -1,11 +1,10 @@
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
-import Image from "next/image";
 import {ImgContainer} from "./ImgContainer";
 import {useEffect, useRef, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/actions/games";
-import {showTournaments} from "../../redux/actions/showPopups";
+
 
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();

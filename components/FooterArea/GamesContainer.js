@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGames";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
+import GameSliderErrorHandler from "./ErrorHandler/GameSliderErrorHandler";
 
 export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime, footerArea}) => {
   const games = useSelector((store) => store.games);
@@ -117,15 +118,17 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
         router={router}
       />
       <div className={styles.gamesListContainer}>
-        <GamesSlider
-          playFunClickHandler={playFunClickHandler}
-          playGameClickHandler={playGameClickHandler}
-          activeSlots={activeSlots}
-          activeTime={activeTime}
-          userInfo={userInfo}
-          gamesData={games}
-          t={t}
-        />
+        <GameSliderErrorHandler>
+          <GamesSlider
+            playFunClickHandler={playFunClickHandler}
+            playGameClickHandler={playGameClickHandler}
+            activeSlots={activeSlots}
+            activeTime={activeTime}
+            userInfo={userInfo}
+            gamesData={games}
+            t={t}
+          />
+        </GameSliderErrorHandler>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@ import {DesktopMenuContainer} from "../../../DesktopMenuComponents/DesktopMenuCo
 import {useState} from "react";
 import {BalanceMenuContainer} from "../../../BalanceMenuContainer/BalanceMenuContainer";
 import {numberTransformer} from "../../../../helpers/numberTransformer";
+import BalanceErrorBoundary from "../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary";
 
 
 export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
@@ -75,7 +76,18 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
             {`${balance} ${currency}`}
           </span>
           {
-            isShowBalanceList && balanceData.length > 0 ? <BalanceMenuContainer t={t} balanceData={userInfo} activeBalance={balanceData} currencyData={userCurrency} /> : <></>
+            isShowBalanceList && balanceData.length > 0
+              ?
+              <BalanceErrorBoundary>
+                <BalanceMenuContainer
+                  t={t}
+                  balanceData={userInfo}
+                  activeBalance={balanceData}
+                  currencyData={userCurrency}
+                />
+              </BalanceErrorBoundary>
+              :
+              <></>
           }
         </div>
       </div>

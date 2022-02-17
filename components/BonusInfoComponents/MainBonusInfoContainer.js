@@ -5,6 +5,7 @@ import {BonusAdditionalInfo} from "./MainContainerComponents/BonusAdditionalInfo
 import {BonusPageLink} from "./MainContainerComponents/BonusPageLink";
 import {useTranslation} from "next-i18next";
 import {bonusInfoCalculator} from "../../helpers/bonusInfoCalculator";
+import BonusErrorHandler from "./ErrorHandlers/BonusErrorHandler";
 
 
 export const MainBonusInfoContainer = ({closeButtonClickHandler, bonusData, userCurrency}) => {
@@ -21,16 +22,20 @@ export const MainBonusInfoContainer = ({closeButtonClickHandler, bonusData, user
                 closeButtonClickHandler={closeButtonClickHandler}
                 t={t}
             />
+          <BonusErrorHandler>
             <BonusInfoBlock
-                bonusData={bonusInfo}
-                userCurrency={userCurrency}
-                t={t}
+              bonusData={bonusInfo}
+              userCurrency={userCurrency}
+              t={t}
             />
+          </BonusErrorHandler>
+          <BonusErrorHandler>
             <BonusAdditionalInfo
-                bonusData={bonusInfo}
-                userCurrency={userCurrency}
-                t={t}
+              bonusData={bonusInfo}
+              userCurrency={userCurrency}
+              t={t}
             />
+          </BonusErrorHandler>
             <BonusPageLink
              t={t}
             />

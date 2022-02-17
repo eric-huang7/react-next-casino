@@ -6,6 +6,7 @@ import {SliderComponent} from "../SearchGamesModalWindow/SliderComponent";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {GamesItem} from "./GameItem";
+import GameItemErrorHandler from "./ErrorHandler/GameItemErrorHandler";
 
 
 export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, playFunClickHandler, playGameClickHandler}) => {
@@ -16,14 +17,16 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     if (!gamesData.loadingLatestGames) {
       gamesLast = gamesData.latestGames.results.map((el) => {
         return (
-          <GamesItem
-            t={t}
-            playFunClickHandler={playFunClickHandler}
-            playGameClickHandler={playGameClickHandler}
-            userInfo={userInfo}
-            gameData={el}
-            key={`${el.id} ${el.name} game page`}
-          />
+          <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
+            <GamesItem
+              t={t}
+              playFunClickHandler={playFunClickHandler}
+              playGameClickHandler={playGameClickHandler}
+              userInfo={userInfo}
+              gameData={el}
+              key={`${el.id} ${el.name} game page`}
+            />
+          </GameItemErrorHandler>
           )
       })
     }
@@ -31,14 +34,16 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     if (!gamesData.loadingTopGames) {
       gamesTop = gamesData.topGames.results.map((el) => {
         return (
-          <GamesItem
-            t={t}
-            playFunClickHandler={playFunClickHandler}
-            playGameClickHandler={playGameClickHandler}
-            userInfo={userInfo}
-            gameData={el}
-            key={`${el.id} ${el.name} game page`}
-          />
+          <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
+            <GamesItem
+              t={t}
+              playFunClickHandler={playFunClickHandler}
+              playGameClickHandler={playGameClickHandler}
+              userInfo={userInfo}
+              gameData={el}
+              key={`${el.id} ${el.name} game page`}
+            />
+          </GameItemErrorHandler>
         )
       })
     }

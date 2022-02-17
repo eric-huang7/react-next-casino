@@ -4,23 +4,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {GamesPageHeading} from "./GamesPageHeading";
 import {MoreButton} from "./MoreButton";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGames";
-import {
-  allProvidersURL,
-  chosenProviderURL,
-  jackpotGames_url,
-  newGames_url,
-  tableGames_url,
-  topGames_url
-} from "../../helpers/gamesURL";
-import {setGames} from "../../redux/actions/games";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
-import {showRegister} from "../../redux/actions/registerShow";
-import {showExitIntentPopup} from "../../redux/actions/showPopups";
+import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
 
 
-export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, pageCounter, setPageCounter, isShowMoreButton, setIsShowMoreButton, totalRows, setTotal_rows, gamesError}) => {
+
+export const GamesContainer = (props) => {
+  const {
+    t,
+    gamesData,
+    heading,
+    setRequestGamesData,
+    pageCounter,
+    setPageCounter,
+    isShowMoreButton,
+    setIsShowMoreButton,
+    totalRows,
+    setTotal_rows,
+    gamesError
+  } = props;
+
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
 
@@ -124,15 +129,19 @@ export const GamesContainer = ({t, gamesData, heading, setRequestGamesData, page
 
 
   let games = gamesData.map((el, ind) => {
-    return <GamesItem
-      showFrame={false}
-      playFunClickHandler={playFunClickHandler}
-      playGameClickHandler={playGameClickHandler}
-      key={`${el.id} ${el.name} game page`}
-      userInfo={userInfo}
-      t={t}
-      gameData={el}
-    />
+    return (
+      <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
+        <GamesItem
+          showFrame={false}
+          playFunClickHandler={playFunClickHandler}
+          playGameClickHandler={playGameClickHandler}
+          key={`${el.id} ${el.name} game page`}
+          userInfo={userInfo}
+          t={t}
+          gameData={el}
+        />
+      </GamesItemErrorHandler>
+    )
   })
 
 if (gamesError) {

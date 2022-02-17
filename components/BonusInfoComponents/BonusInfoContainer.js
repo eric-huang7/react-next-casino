@@ -1,6 +1,7 @@
 import styles from "../../styles/BonusInfoComponent/BonusInfoComponent.module.scss";
 import {useEffect, useRef} from "react";
 import {MainBonusInfoContainer} from "./MainBonusInfoContainer";
+import BonusErrorHandler from "./ErrorHandlers/BonusErrorHandler";
 
 
 export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCurrency, fromDeposit}) => {
@@ -55,11 +56,13 @@ const clickPropag = (e) => {
     <div onClick={(e) => clickPropag(e)} className={`${styles.mainWrapper}`}>
       <div ref={bonusInfoRef} className={styles.mainContainer}>
         {/*<MainHeading text={"bonusInfoContainer.bonusInfoHeading"} />*/}
-        <MainBonusInfoContainer
+        <BonusErrorHandler>
+          <MainBonusInfoContainer
             closeButtonClickHandler={closeButtonClickHandler}
             bonusData={bonusData}
             userCurrency={userCurrency}
-        />
+          />
+        </BonusErrorHandler>
       </div>
     </div>
   )

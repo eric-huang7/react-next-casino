@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from "react";
 import {BonusInfoContainer} from "../../../../BonusInfoComponents/BonusInfoContainer";
 import {BonusDropdownContainer} from "./BonusDropdownContainer";
 import {useTranslation} from "next-i18next";
+import BonusErrorHandler from "../../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
@@ -101,12 +102,14 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
         {
           isShowBonusInfo
             ?
+            <BonusErrorHandler>
               <BonusInfoContainer
-                  bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
-                  infoClickHandler={setIsShowBonusInfo}
-                  isShow={isShowBonusInfo}
-                  userCurrency={userCurrency}
+                bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
+                infoClickHandler={setIsShowBonusInfo}
+                isShow={isShowBonusInfo}
+                userCurrency={userCurrency}
               />
+            </BonusErrorHandler>
               :
               <></>
         }

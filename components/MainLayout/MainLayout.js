@@ -40,6 +40,7 @@ import {showRegister} from "../../redux/actions/registerShow";
 import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
+import ExitIntentError from "../ExitIntentComponent/ExitIntentError/ExitIntentError";
 
 
 const MainLayout = ({children, t, token, emailError}) => {
@@ -115,11 +116,14 @@ const MainLayout = ({children, t, token, emailError}) => {
       <div className={styles.mainLayoutWrapper}>
         <Header t={t}/>
 
-        <ExitIntentPopup
-          isShowExitIntent={isShowModal.isShowExitIntentPopup}
-          t={t}
-          userInfo={userInfo}
-        />
+        <ExitIntentError>
+          <ExitIntentPopup
+            isShowExitIntent={isShowModal.isShowExitIntentPopup}
+            t={t}
+            userInfo={userInfo}
+          />
+        </ExitIntentError>
+
         <DepositWidgetMainContainer
           userAuth={userInfo}
           t={t}
