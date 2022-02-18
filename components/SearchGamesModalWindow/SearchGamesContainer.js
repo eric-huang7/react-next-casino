@@ -7,6 +7,8 @@ import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGam
 import {TextForEmpty} from "./TextForEmpty";
 import {GamesPageHeading} from "../GamesPageComponents/GamesPageHeading";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
+import GamesItemErrorHandler from '../GamesPageComponents/GamesPageErrorHandler/GameItemErrorHandler'
+import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 
 
 export const SearchGamesContainer = ({t, searchGames, searchBar, heading}) => {
@@ -104,9 +106,19 @@ export const SearchGamesContainer = ({t, searchGames, searchBar, heading}) => {
   }
 
   let games = searchGames.map((el) => {
-    return <GamesItem showFrame={false} playFunClickHandler={playFunClickHandler}
-                      playGameClickHandler={playGameClickHandler} key={`${el.id} ${el.name} game page`}
-                      userInfo={userInfo} t={t} gameData={el}/>
+    return (
+      <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
+        <GamesItem
+          showFrame={false}
+          playFunClickHandler={playFunClickHandler}
+          playGameClickHandler={playGameClickHandler}
+          key={`${el.id} ${el.name} game page`}
+          userInfo={userInfo}
+          t={t}
+          gameData={el}
+        />
+      </GamesItemErrorHandler>
+    )
   })
 
   if (searchBar.current.value !== "" && games.length === 0) {
@@ -117,7 +129,9 @@ export const SearchGamesContainer = ({t, searchGames, searchBar, heading}) => {
     return (
       <div className={styles.gamesWrapper}>
         <div className={styles.searchContainer}>
-          <GamesPageHeading t={t} heading={heading}/>
+          <ErrorEmpty>
+            <GamesPageHeading t={t} heading={heading}/>
+          </ErrorEmpty>
           <h3 className={styles.gamesMatchingHeading}>{`${t("searchGames.gamesMatching")} "${searchBar.current.value}"`}</h3>
           <div className={styles.gamesList}>
             {games}

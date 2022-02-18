@@ -1,6 +1,6 @@
-import styles from '../../styles/ProvidersPage/ProvidersContainer.module.scss';
+import styles from '../../styles/ProvidersPage/ProvidersContainer.module.scss'
 
-export const AllProvidersItem = ({t, providerData, countOfGames, allGamesClickHandler, locale}) => {
+export const AllProvidersItem = ({ t, countOfGames, allGamesClickHandler, locale }) => {
 
   return (
     <div onClick={() => allGamesClickHandler()} className={styles.providerItemBlock}>

@@ -1,83 +1,69 @@
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import {useTranslation} from "next-i18next";
-import {useDispatch, useSelector} from "react-redux";
-import MainLayout from "../../components/MainLayout/MainLayout";
-import {useEffect, useRef, useState} from "react";
-import {getCurrency} from "../../redux/actions/currency";
-import {MainBlock} from "../../components/HomePageComponents/MainBlock";
-import {ChooseCategoryBlock} from "../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock";
-import {ProvidersContainer} from "../../components/ProvidersPageComponents/ProvidersContainer";
-import {SearchGamesContainer} from "../../components/SearchGamesModalWindow/SearchGamesContainer";
-import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import axios from "axios";
-import {serverUrl} from "../../envs/url";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import MainLayout from '../../components/MainLayout/MainLayout'
+import { useEffect, useRef, useState } from 'react'
+import { getCurrency } from '../../redux/actions/currency'
+import { MainBlock } from '../../components/HomePageComponents/MainBlock'
+import { ChooseCategoryBlock } from '../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock'
+import { ProvidersContainer } from '../../components/ProvidersPageComponents/ProvidersContainer'
+import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
+import axios from 'axios'
+import { serverUrl } from '../../envs/url'
+import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 
+const ProvidersPage = () => {
+  const { t } = useTranslation('common')
+  const dispatch = useDispatch()
+  const searchRef = useRef('')
+  let searchGames = useSelector((store) => store.games.searchGames)
 
-const ProvidersPage = (props) => {
-  const {t} = useTranslation('common');
-  const dispatch = useDispatch();
-  const searchRef = useRef('');
-  let searchGames = useSelector((store) => store.games.searchGames);
-
-  const [providersData, setProvidersData] = useState([]);
-  const [providersError, setProvidersError] = useState('');
+  const [providersData, setProvidersData] = useState([])
+  const [providersError, setProvidersError] = useState('')
 
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
-    dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
-
+    dispatch(getCurrency())
     axios.get(serverUrl + 'game_providers')
       .then((data) => {
 
-        setProvidersData(data.data.results);
-        setProvidersError('');
+        setProvidersData(data.data.results)
+        setProvidersError('')
       })
       .catch((err) => {
-        setProvidersError('providersPage.error');
+        setProvidersError('providersPage.error')
       })
-  }, []);
-
-
+  }, [])
 
   return (
     <>
       <MainLayout t={t}>
-        <MainBlock />
+        <MainBlock/>
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in futu
         re */}
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={true} t={t}/>
         {
           searchGames.length >= 0 && searchRef.current.value ?
-            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
+            <ErrorEmpty>
+              <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
+            </ErrorEmpty>
             :
-            <ProvidersContainer t={t} providersData={providersData} providersError={providersError}/>
+            <ErrorEmpty>
+              <ProvidersContainer t={t} providersData={providersData} providersError={providersError}/>
+            </ErrorEmpty>
         }
       </MainLayout>
     </>
   )
 }
 
-
 export const getServerSideProps = async (context) => {
-
 
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common', 'newsData']),
-      // providersData: {...providersData},
     },
   })
 }
 
-
-export default ProvidersPage;
+export default ProvidersPage
