@@ -24,6 +24,7 @@ import {backButtonShouldDo, closeAll} from "../../redux/actions/showPopups";
 import {PaymentsCardWrapper} from "../MainLayout/PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "../MainLayout/PaymentsModals/PaymentsCryptoWrapper";
 import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
+import ErrorHeaderPage from "../ErrorBoundaryComponents/ErrorBoundaryHeader";
 
 
 export const AccountMainLayout = ({t, children}) => {
@@ -135,7 +136,9 @@ export const AccountMainLayout = ({t, children}) => {
           <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
         </Head>
         <div className={styles.accountMainLayoutWrapper}>
-          <Header t={t}/>
+          <ErrorHeaderPage>
+            <Header t={t}/>
+          </ErrorHeaderPage>
           {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
           <ErrorEmpty>
             <DepositPage t={t}/>
@@ -169,7 +172,9 @@ export const AccountMainLayout = ({t, children}) => {
     return (
       <>
         <div className={styles.accountMainLayoutWrapper}>
-          <Header t={t}/>
+          <ErrorHeaderPage>
+            <Header t={t}/>
+          </ErrorHeaderPage>
         </div>
       </>
     )

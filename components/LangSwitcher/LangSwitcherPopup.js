@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
 import {LangItem} from "./LangItem";
 
-export const LangSwitcherPopup = ({arrLang, langChooser, hrefMain}) => {
+export const LangSwitcherPopup = ({arrLang, langChooser}) => {
   const router = useRouter();
   let hrefRoute = router.route;
 

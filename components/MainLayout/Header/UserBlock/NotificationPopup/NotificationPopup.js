@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import {browserNotifications} from "../../../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
+import ErrorEmpty from "../../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo, t, hideBellHandler}) => {
@@ -60,10 +61,14 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
       <div className={`${styles.notificationPopupWrapper}`}>
         <div className={styles.notificationHeading}>
           <span>{t("notificationPopup.header.heading")}</span>
-          <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+          <ErrorEmpty>
+            <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+          </ErrorEmpty>
         </div>
         <div className={styles.messagesBlock}>
-          <MessagesContainer t={t} notifyData={notifyData}/>
+          <ErrorEmpty>
+            <MessagesContainer t={t} notifyData={notifyData}/>
+          </ErrorEmpty>
         </div>
         <MoreButton t={t}/>
       </div>

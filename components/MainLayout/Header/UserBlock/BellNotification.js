@@ -4,6 +4,7 @@ import {NotificationPopup} from "./NotificationPopup/NotificationPopup";
 import {useContext, useEffect} from "react";
 import {NotifyContext} from "../../../NotifyContext/NotifyContext";
 import {notificator} from "../../../../helpers/notificator";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const BellNotification = ({t, messageCount, hideBellHandler, showBellHandler, isShowNotifications, subscriptInfo, checkReadMessages, showMessages}) => {
@@ -33,8 +34,24 @@ export const BellNotification = ({t, messageCount, hideBellHandler, showBellHand
       onMouseLeave={() => hideBellHandler()}
       className={styles.userMainBlockBellIcon}
     >
-      <NotificationCounter messageCount={messageCount}/>
-      {isShowNotifications ? <NotificationPopup hideBellHandler={hideBellHandler} t={t} subscriptInfo={subscriptInfo} checkReadMessages={checkReadMessages} notifyData={showMessages} isShowNotifications={isShowNotifications}/> : <></>}
+      <ErrorEmpty>
+        <NotificationCounter messageCount={messageCount}/>
+      </ErrorEmpty>
+
+      {isShowNotifications
+        ?
+        <ErrorEmpty>
+        <NotificationPopup
+          hideBellHandler={hideBellHandler}
+          t={t}
+          subscriptInfo={subscriptInfo}
+          checkReadMessages={checkReadMessages}
+          notifyData={showMessages}
+          isShowNotifications={isShowNotifications}
+        />
+        </ErrorEmpty>
+        : <></>
+      }
     </div>
   )
 }

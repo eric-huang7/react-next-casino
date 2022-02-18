@@ -23,7 +23,7 @@ let arrLanguages = [
 ];
 
 
-const LangSwitcher = ({href, locale}) => {
+const LangSwitcher = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
@@ -74,7 +74,7 @@ const LangSwitcher = ({href, locale}) => {
           {activeLangNow.language}
         </span>
       </div>
-      <LangSwitcherPopup arrLang={arrLanguages} langChooser={langChooser} hrefMain={href}/>
+      <LangSwitcherPopup arrLang={arrLanguages} langChooser={langChooser} />
     </div>
   )
 }

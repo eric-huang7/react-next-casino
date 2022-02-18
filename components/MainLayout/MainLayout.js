@@ -41,6 +41,7 @@ import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationC
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
 import ExitIntentError from "../ExitIntentComponent/ExitIntentError/ExitIntentError";
 import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
+import ErrorHeaderPage from "../ErrorBoundaryComponents/ErrorBoundaryHeader";
 
 
 const MainLayout = ({children, t, token, emailError}) => {
@@ -114,7 +115,9 @@ const MainLayout = ({children, t, token, emailError}) => {
         <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
       </Head>
       <div className={styles.mainLayoutWrapper}>
-        <Header t={t}/>
+        <ErrorHeaderPage>
+          <Header t={t}/>
+        </ErrorHeaderPage>
 
         <ExitIntentError>
           <ExitIntentPopup
@@ -266,11 +269,13 @@ const MainLayout = ({children, t, token, emailError}) => {
             :
             ""
         }
-        <Footer
-          t={t}
-          userAuth={userInfo.isAuthenticated}
-          screenWidth={width}
-        />
+        <ErrorEmpty>
+          <Footer
+            t={t}
+            userAuth={userInfo.isAuthenticated}
+            screenWidth={width}
+          />
+        </ErrorEmpty>
         {/*<LangSwitcher href={router.route} locale={locale}/>*/}
         {isShowModal.isShowForgotPassword
           ?

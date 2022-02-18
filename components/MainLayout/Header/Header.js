@@ -13,6 +13,7 @@ import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscript
 import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
 
 import Link from "next/link";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const Header = ({t}) => {
@@ -100,7 +101,9 @@ export const Header = ({t}) => {
         <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
       </Link>
       <Navigation t={t}/>
-      <LangSwitcher href={router.route} locale={locale}/>
+      <ErrorEmpty>
+        <LangSwitcher />
+      </ErrorEmpty>
       <UserBlockNavigation t={t} userInfo={userLogin}/>
     </header>
   )

@@ -3,6 +3,7 @@ import styles from '../../../../styles/Header/BurgerButton.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {showMobileMenu} from "../../../../redux/actions/sideMobileMenuShow";
 import {NotificationCounter} from "./NotificationCounter";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 
@@ -39,7 +40,13 @@ export const BurgerButton = ({userLogined}) => {
         width={'32px'}
         height={'24px'}
       />
-      {(unreadMessages.length > 0 && userLogined) ? <NotificationCounter unreadMessages={unreadMessages} /> : <></>}
+      {(unreadMessages.length > 0 && userLogined)
+        ?
+        <ErrorEmpty>
+          <NotificationCounter unreadMessages={unreadMessages} />
+        </ErrorEmpty>
+        :
+        <></>}
     </div>
   )
 }
