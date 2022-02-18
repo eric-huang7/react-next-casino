@@ -1,7 +1,7 @@
 import styles from '../../styles/PaymentsMethodsPage/PaymentsDepositBlock.module.scss';
 import {PaymentDataItem} from "./PaymentDataItem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import {useState} from "react";
+
 
 const depositInfo = {
   depositId: 1,
@@ -20,8 +20,7 @@ const depositInfo = {
 
 
 export const PaymentsDepositBlock = ({t, }) => {
-  const {height, width} = useWindowDimensions();
-
+  const {width} = useWindowDimensions();
 
   let arrItemsFullScreen =  [
     <PaymentDataItem key={`${depositInfo.depositId} deposit 1`} t={t} dataInfo={depositInfo} type={"deposit"}/>,

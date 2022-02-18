@@ -54,7 +54,6 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
           <span>{t("paymentsMethodsPage.buttonText")}</span>
         </div>
       }
-
     </div>
   )
 }

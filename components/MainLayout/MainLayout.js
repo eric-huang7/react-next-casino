@@ -1,5 +1,4 @@
 import { Header } from './Header/Header'
-
 import styles from '../../styles/MainLayout.module.scss'
 import { Footer } from './Footer/Footer'
 import { RegisterSignup } from './RegisterSignup/RegisterSignup'
@@ -25,7 +24,6 @@ import { DepositWidgetMainContainer } from './DepositWidget/DepositWidgetMainCon
 import { PaymentsCardWrapper } from './PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from './PaymentsModals/PaymentsCryptoWrapper'
 import { MobilePaymentsStepper } from './PaymentsModals/MobilePaymentsStepper'
-import Head from 'next/head'
 import { ExitIntentPopup } from '../ExitIntentComponent/ExitIntentPopup'
 import { SelectCurrencyWidget } from './SelectCurrencyWidget/SelectCurrencyWidget'
 import { ForgotPasswordComponent } from '../ForgotPasswordComponents/ForgotPasswordComponent'
@@ -179,10 +177,7 @@ const MainLayout = ({ children, t, token, emailError }) => {
           isShowModal.isShowPlaySafe
             ?
             <ErrorEmpty>
-              <PlaySafeMainWrapper
-                isShow={isShowModal.isShowPlaySafe}
-                t={t}
-              />
+              <PlaySafeMainWrapper/>
             </ErrorEmpty>
             :
             <></>

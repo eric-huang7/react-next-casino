@@ -17,7 +17,7 @@ const withdrawInfo = {
 }
 
 export const PaymentsWithdrawBlock = ({t}) => {
-  const {height, width} = useWindowDimensions();
+  const {width} = useWindowDimensions();
 
   let arrItemsFullScreen = [
     <PaymentDataItem key={`${withdrawInfo.depositId} withdraw 1`} t={t} dataInfo={withdrawInfo} type={'withdraw'}/>,

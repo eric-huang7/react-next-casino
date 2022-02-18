@@ -11,20 +11,20 @@ export const PlaySafeLinksBlock = ({t}) => {
       <ul className={styles.linksList}>
         <li className={styles.linkItem}>
           <div className={styles.linkItemBlock}>
-            <p>GamCare</p>
-            <Link href={"https://gamcare.org/"}><a>gamcare.org</a></Link>
+            <p>{"GamCare"}</p>
+            <Link href={"https://gamcare.org/"}><a>{"gamcare.org"}</a></Link>
           </div>
         </li>
         <li className={styles.linkItem}>
           <div className={styles.linkItemBlock}>
-            <p>GordonHouse</p>
-            <Link href={"https://gordonhouse.org/"}><a>gordonhouse.org</a></Link>
+            <p>{"GordonHouse"}</p>
+            <Link href={"https://gordonhouse.org/"}><a>{"gordonhouse.org"}</a></Link>
           </div>
         </li>
         <li className={styles.linkItem}>
           <div className={styles.linkItemBlock}>
-            <p>Gam-Anon</p>
-            <Link href={"https://gamblersanonymous.org/"}><a>gamblersanonymous.org</a></Link>
+            <p>{"Gam - Anon"}</p>
+            <Link href={"https://gamblersanonymous.org/"}><a>{"gamblersanonymous.org"}</a></Link>
           </div>
         </li>
       </ul>
