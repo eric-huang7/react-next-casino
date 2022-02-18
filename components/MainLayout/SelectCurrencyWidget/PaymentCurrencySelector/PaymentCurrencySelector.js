@@ -13,6 +13,7 @@ import {
   showMobileCryptoPayments, showMobilePaymentsStepper,
   showPaymentCurrencySwitcher
 } from "../../../../redux/actions/showPopups";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const PaymentCurrencySelector = ({
@@ -131,11 +132,13 @@ export const PaymentCurrencySelector = ({
                 ?
                 cryptoFindArr.map((paymentMethod) => {
                   return (
-                    <PaymentCurrencyItem
-                      key={`payment method ${paymentMethod.currency_from.currency}`}
-                      paymentMethod={paymentMethod}
-                      chosePaymentClickHandler={chosePaymentClickHandler}
-                    />
+                    <ErrorEmpty key={`payment method ${paymentMethod.currency_from.currency}`}>
+                      <PaymentCurrencyItem
+                        key={`payment method ${paymentMethod.currency_from.currency}`}
+                        paymentMethod={paymentMethod}
+                        chosePaymentClickHandler={chosePaymentClickHandler}
+                      />
+                    </ErrorEmpty>
                   )
                 })
                 :

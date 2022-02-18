@@ -3,6 +3,7 @@ import {CurrencyItem} from "./CurrencyItem";
 import {useDispatch} from "react-redux";
 import {setUserCurrencySwitcher} from "../../../../redux/actions/setSelectedCurrency";
 import {addCurrencyToUserList} from "../../../../redux/actions/userData";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, userAuth}) => {
@@ -29,12 +30,14 @@ export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, u
         currenciesData.map((currency) => {
 
           return(
-            <CurrencyItem
-              t={t}
-              currencyData={currency}
-              key={`${currency.id} currency`}
-              currencySelectorHandler={currencySelectorHandler}
-            />
+            <ErrorEmpty key={`${currency.id} currency`}>
+              <CurrencyItem
+                t={t}
+                currencyData={currency}
+                key={`${currency.id} currency`}
+                currencySelectorHandler={currencySelectorHandler}
+              />
+            </ErrorEmpty>
           )
         })
       }

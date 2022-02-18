@@ -21,9 +21,15 @@ import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {hideRegister} from "../../../redux/actions/registerShow";
 import {PaymentCurrencySelector} from "./PaymentCurrencySelector/PaymentCurrencySelector";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 
-export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurrencySwitcher, isShowMobileCryptoPayments, t}) => {
+export const SelectCurrencyWidget = ({
+                                       isShowCurrencySwitcher,
+                                       isShowPaymentCurrencySwitcher,
+                                       isShowMobileCryptoPayments,
+                                       t
+                                     }) => {
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
 
@@ -35,23 +41,22 @@ export const SelectCurrencyWidget = ({isShowCurrencySwitcher, isShowPaymentCurre
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
-useEffect(() => {
-  let timer = setTimeout(() => {
-    if (isShowCurrencySwitcher || isShowPaymentCurrencySwitcher) {
-      document.body.style.overflowY = "hidden"
-    } else {
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      if (isShowCurrencySwitcher || isShowPaymentCurrencySwitcher) {
+        document.body.style.overflowY = "hidden"
+      } else {
+        document.body.style.overflowY = "auto"
+      }
+    }, 1);
+
+
+    return () => {
       document.body.style.overflowY = "auto"
+      clearTimeout(timer);
+
     }
-  }, 1);
-
-
-  return () => {
-    document.body.style.overflowY = "auto"
-    clearTimeout(timer);
-
-  }
-}, [])
-
+  }, [])
 
 
   useEffect(() => {
@@ -114,21 +119,25 @@ useEffect(() => {
         <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
 
           <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-            <SelectorHeading
-              t={t}
-              backButtonClickHandler={backButtonClickHandler}
-              closeCurrenciesClickHandler={closeCurrenciesClickHandler}
-              text={"selectCurrency.heading"}
-            />
-            <CurrencySelector
-              t={t}
-              popularCurrency={currencies.popular_currency.results}
-              cryptoCurrency={currencies.crypto_currency.results}
-              stableCurrency={currencies.stable_currency.results}
-              fiatCurrency={currencies.fiat_currency.results}
-              backButtonClickHandler={backButtonClickHandler}
-              userAuth={userAuth.isAuthenticated}
-            />
+            <ErrorText>
+              <SelectorHeading
+                t={t}
+                backButtonClickHandler={backButtonClickHandler}
+                closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+                text={"selectCurrency.heading"}
+              />
+            </ErrorText>
+            <ErrorText>
+              <CurrencySelector
+                t={t}
+                popularCurrency={currencies.popular_currency.results}
+                cryptoCurrency={currencies.crypto_currency.results}
+                stableCurrency={currencies.stable_currency.results}
+                fiatCurrency={currencies.fiat_currency.results}
+                backButtonClickHandler={backButtonClickHandler}
+                userAuth={userAuth.isAuthenticated}
+              />
+            </ErrorText>
           </div>
         </div>
       )
@@ -137,11 +146,13 @@ useEffect(() => {
         <div className={`${styles.selectCurrencyMainWrapper} ${isShowCurrencySwitcher ? "" : styles.hidden}`}>
           {/*<Header t={t}/>*/}
           <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-            <SelectorHeading
-              t={t}
-              backButtonClickHandler={backButtonClickHandler}
-              closeCurrenciesClickHandler={closeCurrenciesClickHandler}
-            />
+            <ErrorText>
+              <SelectorHeading
+                t={t}
+                backButtonClickHandler={backButtonClickHandler}
+                closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+              />
+            </ErrorText>
             <LoadingComponent t={t}/>
           </div>
         </div>
@@ -152,22 +163,26 @@ useEffect(() => {
       <div className={`${styles.selectCurrencyMainWrapper} ${isShowPaymentCurrencySwitcher ? "" : styles.hidden}`}>
 
         <div className={`${styles.selectCurrencyMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <SelectorHeading
-            t={t}
-            backButtonClickHandler={backButtonClickHandler}
-            closeCurrenciesClickHandler={closeCurrenciesClickHandler}
-            text={"selectCurrency.headingPayment"}
-          />
-          <PaymentCurrencySelector
-            t={t}
-            userPayment={userPayment}
-            backButtonClickHandler={backButtonClickHandler}
-            isShowMobileCryptoPayments={isShowMobileCryptoPayments}
-            currencyData={currencies.currency}
-            userDepositValue={userDepositValue}
-            userInfo={userAuth.user}
-            userCurrency={userCurrency}
-          />
+          <ErrorText>
+            <SelectorHeading
+              t={t}
+              backButtonClickHandler={backButtonClickHandler}
+              closeCurrenciesClickHandler={closeCurrenciesClickHandler}
+              text={"selectCurrency.headingPayment"}
+            />
+          </ErrorText>
+          <ErrorText>
+            <PaymentCurrencySelector
+              t={t}
+              userPayment={userPayment}
+              backButtonClickHandler={backButtonClickHandler}
+              isShowMobileCryptoPayments={isShowMobileCryptoPayments}
+              currencyData={currencies.currency}
+              userDepositValue={userDepositValue}
+              userInfo={userAuth.user}
+              userCurrency={userCurrency}
+            />
+          </ErrorText>
         </div>
       </div>
     )
