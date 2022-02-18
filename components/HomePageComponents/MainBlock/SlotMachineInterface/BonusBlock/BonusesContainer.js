@@ -1,5 +1,6 @@
 import {BonusBlock} from "./BonusBlock";
 import {BonusDropdown} from "./BonusDropdown";
+import ErrorEmpty from "../../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
@@ -10,6 +11,7 @@ export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, us
     if (bonusesArr.length > 0) {
 
       return (
+        <ErrorEmpty>
           <BonusDropdown
             selectedBonus={selectedBonus}
             isChecked={isChecked}
@@ -20,15 +22,13 @@ export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, us
             userCurrency={userCurrency}
             chooseBonusClickHandler={chooseBonusClickHandler}
           />
+        </ErrorEmpty>
       )
 
     } else {
 
       return (
         <BonusBlock
-          // bonusImage={iDontNeedBonus.icon}
-          // bonusHeading={iDontNeedBonus.heading}
-          // bonusDescription={iDontNeedBonus.info}
           checkedInputHandler={checkedInputHandler}
           isChecked={isChecked}
           bonusData={iDontNeedBonus}
@@ -41,9 +41,6 @@ export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, us
 
     return (
       <BonusBlock
-        // bonusImage={iDontNeedBonus.icon}
-        // bonusHeading={iDontNeedBonus.heading}
-        // bonusDescription={iDontNeedBonus.info}
         checkedInputHandler={checkedInputHandler}
         isChecked={isChecked}
         bonusData={iDontNeedBonus}

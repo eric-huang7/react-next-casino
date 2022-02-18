@@ -37,41 +37,46 @@ export const SearchBar = ({t, searchRef}) => {
       searchRef.current.blur();
 
       let res;
-      if (router.query.id === 'all-games' || !router.query.id) {
-        res = await axios.get(searchGames_url(searchRef.current.value));
-      } else if (router.query.id === 'new-games') {
-        res = await axios.get(search_newGames_url(searchRef.current.value));
-      } else if (router.query.id === 'btc-games') {
-        res = await axios.get(search_topGames_url(searchRef.current.value));
-      } else if (router.query.id === 'top-games') {
-        res = await axios.get(search_topGames_url(searchRef.current.value));
-      } else if (router.query.id === 'jackpot-games') {
-        res = await axios.get(search_jackpotGames_url(searchRef.current.value));
-      } else if (router.query.id === 'table-games') {
-        res = await axios.get(search_tableGames_url(searchRef.current.value));
-      } else if (router.query.id === 'tournaments') {
+      try {
+        if (router.query.id === 'all-games' || !router.query.id) {
+          res = await axios.get(searchGames_url(searchRef.current.value));
+        } else if (router.query.id === 'new-games') {
+          res = await axios.get(search_newGames_url(searchRef.current.value));
+        } else if (router.query.id === 'btc-games') {
+          res = await axios.get(search_topGames_url(searchRef.current.value));
+        } else if (router.query.id === 'top-games') {
+          res = await axios.get(search_topGames_url(searchRef.current.value));
+        } else if (router.query.id === 'jackpot-games') {
+          res = await axios.get(search_jackpotGames_url(searchRef.current.value));
+        } else if (router.query.id === 'table-games') {
+          res = await axios.get(search_tableGames_url(searchRef.current.value));
+        } else if (router.query.id === 'tournaments') {
 
-        let whatSearch = JSON.parse(router.query.tournamentData);
-        if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-          let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
-          res = await axios.get(game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value));
+          let whatSearch = JSON.parse(router.query.tournamentData);
+          if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+            res = await axios.get(game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value));
 
-        } else if (whatSearch.game_category_ids) {
-          res = await axios.get(game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value));
+          } else if (whatSearch.game_category_ids) {
+            res = await axios.get(game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value));
 
-        } else if (whatSearch.game_provider_ids) {
-          let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
-          res = await axios.get(game_provider_ids_search(providers, searchRef.current.value));
+          } else if (whatSearch.game_provider_ids) {
+            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== "").join(',');
+            res = await axios.get(game_provider_ids_search(providers, searchRef.current.value));
+
+          } else {
+            res = await axios.get(game_ids_search(whatSearch.game_ids, searchRef.current.value))
+
+          }
 
         } else {
-          res = await axios.get(game_ids_search(whatSearch.game_ids, searchRef.current.value))
-
+          res = await axios.get(search_chosenProviderGames_url(router.query.id, searchRef.current.value));
         }
 
-      } else {
-        res = await axios.get(search_chosenProviderGames_url(router.query.id, searchRef.current.value));
+        dispatch(setSearchGames(res.data.results));
+      } catch (e) {
+        dispatch(setSearchGames([]));
       }
-      dispatch(setSearchGames(res.data.results));
     }
     if (!searchRef.current.value || searchRef.current.value.trim() === '') {
       dispatch(setSearchGames([]));

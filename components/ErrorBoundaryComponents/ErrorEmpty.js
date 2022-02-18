@@ -1,7 +1,7 @@
 import React from "react";
 import {logErrorToMyService} from "../../helpers/errorLoger";
 
-class ErrorBoundaryHeader extends React.Component {
+class ErrorEmpty extends React.Component {
   constructor(props) {
     super(props);
     this.state = {hasError: false};
@@ -19,10 +19,10 @@ class ErrorBoundaryHeader extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <h1>Что-то пошло не так.</h1>;
+      return <></>;
     }
     return this.props.children;
   }
 }
 
-export default ErrorBoundaryHeader;
+export default ErrorEmpty;

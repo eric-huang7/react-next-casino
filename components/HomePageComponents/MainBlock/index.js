@@ -1,10 +1,9 @@
 import styles from '../../../styles/HomePage/MainBlock.module.scss'
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {SlotMachineInterface} from "./SlotMachineInterface/SlotMachineInterfase";
-
-import Image from "next/image";
 import {SubmitButton} from "./SlotMachineInterface/SubmitButton";
 import {useSelector} from "react-redux";
+
 
 export const MainBlock = () => {
   const {height, width} = useWindowDimensions();

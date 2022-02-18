@@ -59,7 +59,6 @@ export const SumInputs = ({userLogin}) => {
   }
 
   useEffect(() => {
-    // if (userLogin) {
 
       let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
 
@@ -70,15 +69,8 @@ export const SumInputs = ({userLogin}) => {
       chooseBonusClickHandler(0);
       }
 
-      // } else {
-      // setBonusesArr([]);
-      // }
-
   }, [userCurrency, userLogin, activeBonuses]);
 
-  // useEffect(() => {
-  //   dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
-  // }, [userLogin])
 
   return (
     <>

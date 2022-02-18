@@ -1,6 +1,7 @@
 import styles from '../../../styles/NotificationsPage/SideBlockNotifyPage.module.scss';
-import {urlGen} from "../../HomePageComponents/GamesSliderBlock/url";
+
 import {PlayGameHoverButtons} from "./PlayGameHoverButtons";
+import {gameUrl} from "../../../helpers/imageUrl";
 
 
 export const GameItem = ({gameData, isLoading, t, user, playFunClickHandler, playGameClickHandler}) => {
@@ -8,7 +9,7 @@ export const GameItem = ({gameData, isLoading, t, user, playFunClickHandler, pla
   return (
     <div className={styles.gameItemWrapper}>
       <div className={styles.gameImgBlock}>
-        <img src={urlGen(gameData.id)} alt={`game image ${gameData.name}`}/>
+        <img src={gameUrl(gameData.id)} alt={`game image ${gameData.name}`}/>
       </div>
       <div className={styles.gameNameBlock}>
         <p>{gameData.name}</p>

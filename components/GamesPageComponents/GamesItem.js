@@ -1,7 +1,7 @@
 import styles from '../../styles/GamesPage/GamesPage.module.scss';
-import {urlGen} from "../HomePageComponents/GamesSliderBlock/url";
-import {GameHoverButtons} from "../HomePageComponents/GamesSliderBlock/GameHoverButtons";
+
 import {GamesHoverButtons} from "./GamesHoverButtons";
+import {gameUrl} from "../../helpers/imageUrl";
 
 export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameClickHandler, showFrame}) => {
 
@@ -9,7 +9,7 @@ export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameC
   return (
     <div className={`${styles.gameItemWrapper} ${showFrame ? styles.frame : ''}`}>
         <img
-          src={urlGen(gameData.id)}
+          src={gameUrl(gameData.id)}
           // layout={"fill"}
           alt={`game image ${gameData.name}`}
         />

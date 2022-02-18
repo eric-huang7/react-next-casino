@@ -1,5 +1,5 @@
 import styles from '../../../styles/HomePage/GamesSliderBlock.module.scss';
-import Image from "next/image";
+
 import Link from "next/link";
 
 import "slick-carousel/slick/slick.css";
@@ -14,6 +14,7 @@ import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
 import {showGameWindow} from "../../../redux/actions/showGameWindow";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const GamesSliderBlock = ({t, type, games}) => {
@@ -207,14 +208,16 @@ export const GamesSliderBlock = ({t, type, games}) => {
           {slides.map((el, ind) => {
             return (
               <div className={styles.slideItemsWrapperDesc} key={ind}>
-                <GameItemContainer
-                  playGameClickHAndler={playGameClickHAndler}
-                  playFunClickHandler={playFunClickHandler}
-                  ind={ind}
-                  t={t}
-                  gameData={el}
-                  user={user}
-                />
+                <ErrorEmpty>
+                  <GameItemContainer
+                    playGameClickHAndler={playGameClickHAndler}
+                    playFunClickHandler={playFunClickHandler}
+                    ind={ind}
+                    t={t}
+                    gameData={el}
+                    user={user}
+                  />
+                </ErrorEmpty>
               </div>
             )
           })}

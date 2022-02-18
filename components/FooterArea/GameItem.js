@@ -1,6 +1,7 @@
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
-import {urlGen} from "../HomePageComponents/GamesSliderBlock/url";
+
 import {GameHoverBlock} from "./GameHoverBlock";
+import {gameUrl} from "../../helpers/imageUrl";
 
 
 
@@ -10,7 +11,7 @@ export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameC
   return (
     <div className={`${styles.gameItemWrapper} ${showFrame ? styles.frame : ''}`}>
       <img
-        src={urlGen(gameData.id)}
+        src={gameUrl(gameData.id)}
         // layout={"fill"}
         alt={`game image ${gameData.name}`}
       />

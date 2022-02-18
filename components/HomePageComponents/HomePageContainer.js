@@ -12,6 +12,7 @@ import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
 import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch, useSelector} from "react-redux";
 import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
+import ErrorText from "../ErrorBoundaryComponents/ErrorText";
 
 
 export const HomePageContainer = ({t}) => {
@@ -42,7 +43,10 @@ export const HomePageContainer = ({t}) => {
   return (
     <>
       <MainBlock/>
-      {/*<JackpotBlock />*/}
+
+      {/*<ErrorText>*/}
+      {/*  <JackpotBlock />*/}
+      {/*</ErrorText>*/}
       {/*API for jackpots will add in future */}
       <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
       {
@@ -50,13 +54,25 @@ export const HomePageContainer = ({t}) => {
           <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
           :
           <>
-            <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
-            <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
+            <ErrorText>
+              <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
+            </ErrorText>
+            <ErrorText>
+              <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
+            </ErrorText>
             <PromotionsBlock t={t}/>
-            <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
-            <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
-            <NewsBlock t={t} isBackShow={true}/>
-            <WhySlotsIdol t={t} isBackShow={true}/>
+            <ErrorText>
+              <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
+            </ErrorText>
+            <ErrorText>
+              <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
+            </ErrorText>
+            <ErrorText>
+              <NewsBlock t={t} isBackShow={true}/>
+            </ErrorText>
+            <ErrorText>
+              <WhySlotsIdol t={t} isBackShow={true}/>
+            </ErrorText>
           </>
       }
     </>

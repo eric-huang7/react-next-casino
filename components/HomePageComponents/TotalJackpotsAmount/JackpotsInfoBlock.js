@@ -1,5 +1,6 @@
 import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
-import {urlGen} from "./url";
+
+import {gameUrl} from "../../../helpers/imageUrl";
 
 export const JackpotsInfoBlock = ({isHidden, heading, jackpotsData}) => {
 
@@ -26,7 +27,7 @@ export const JackpotsInfoBlock = ({isHidden, heading, jackpotsData}) => {
             return (
               <li className={styles.winnersListItem} key={el.game.id}>
                 <div className={styles.winnersImageWrapper}>
-                  <img src={urlGen(el.game.game.id)} alt={`game ${el.game.game.id}`}/>
+                  <img src={gameUrl(el.game.game.id)} alt={`game ${el.game.game.id}`}/>
                 </div>
                 <div className={styles.winnersTextblock}>
                   <p className={styles.winnersAmount}>{`${currency} ${locale}`}</p>

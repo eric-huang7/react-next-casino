@@ -1,13 +1,11 @@
-import styles from "../../../../../styles/HomePage/SumInputs.module.scss";
+
 import {BonusBlock} from "./BonusBlock";
-import {BonusesBlock} from "../../../../MainLayout/DepositPage/BonusesBlock/BonusesBlock";
-import {iconsUrl} from "../../../../../helpers/imageUrl";
-import {BonusItem} from "./BonusItem";
 import {useEffect, useRef, useState} from "react";
 import {BonusInfoContainer} from "../../../../BonusInfoComponents/BonusInfoContainer";
 import {BonusDropdownContainer} from "./BonusDropdownContainer";
 import {useTranslation} from "next-i18next";
 import BonusErrorHandler from "../../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
+import ErrorText from "../../../../ErrorBoundaryComponents/ErrorText";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
@@ -87,18 +85,20 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
 
     return (
       <>
-        <BonusBlock
-          key={`${bonusForShow ? bonusForShow.id : bonusesArr[0].id} bonus slot machine`}
-          isChecked={isChecked}
-          checkedInputHandler={checkedInputHandler}
-          bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
-          isUseBonus={true}
-          openBonusesDropdownHandler={openBonusesDropdownHandler}
-          bonusDropRef={bonusDropRef}
-          infoClickHandler={infoClickHandler}
-          generalTranslate={t}
-          userCurrency={userCurrency}
-        />
+        <ErrorText>
+          <BonusBlock
+            key={`${bonusForShow ? bonusForShow.id : bonusesArr[0].id} bonus slot machine`}
+            isChecked={isChecked}
+            checkedInputHandler={checkedInputHandler}
+            bonusData={bonusForShow ? bonusForShow : bonusesArr[0]}
+            isUseBonus={true}
+            openBonusesDropdownHandler={openBonusesDropdownHandler}
+            bonusDropRef={bonusDropRef}
+            infoClickHandler={infoClickHandler}
+            generalTranslate={t}
+            userCurrency={userCurrency}
+          />
+        </ErrorText>
         {
           isShowBonusInfo
             ?
@@ -128,9 +128,6 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
     return (
 
       <BonusBlock
-        // bonusImage={iDontNeedBonus.icon}
-        // bonusHeading={iDontNeedBonus.heading}
-        // bonusDescription={iDontNeedBonus.info}
         checkedInputHandler={checkedInputHandler}
         isChecked={isChecked}
         bonusData={iDontNeedBonus}

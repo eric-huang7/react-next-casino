@@ -1,6 +1,7 @@
 import styles from "../../../../../styles/HomePage/SumInputs.module.scss";
 import {BonusItem} from "./BonusItem";
 import {useTranslation} from "next-i18next";
+import ErrorEmpty from "../../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const BonusDropdownContainer = ({isShowDropdown, bonusesArr, openBonusesDropdownHandler, chooseBonusClickHandler, userCurrency, generalTranslate}) => {
@@ -12,14 +13,16 @@ export const BonusDropdownContainer = ({isShowDropdown, bonusesArr, openBonusesD
       {
         bonusesArr.map((el) => {
           return(
-            <BonusItem
-              key={`${el.id} bonus slot machine`}
-              bonusData={el}
-              openBonusesDropdownHandler={openBonusesDropdownHandler}
-              chooseBonusClickHandler={chooseBonusClickHandler}
-              generalTranslate={generalTranslate}
-              userCurrency={userCurrency}
-            />
+            <ErrorEmpty key={`${el.id} bonus slot machine`}>
+              <BonusItem
+                key={`${el.id} bonus slot machine`}
+                bonusData={el}
+                openBonusesDropdownHandler={openBonusesDropdownHandler}
+                chooseBonusClickHandler={chooseBonusClickHandler}
+                generalTranslate={generalTranslate}
+                userCurrency={userCurrency}
+              />
+            </ErrorEmpty>
           )
         })
       }
