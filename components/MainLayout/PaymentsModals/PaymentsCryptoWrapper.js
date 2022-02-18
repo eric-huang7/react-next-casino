@@ -11,6 +11,8 @@ import useWindowScroll from "../../../hooks/useWindowScroll";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {useEffect} from "react";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
@@ -47,7 +49,9 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
     <div className={styles.paymentsMainWrapper}>
       <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
         <div className={styles.paymentsMainContainer}>
-          <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'} />
+          <ErrorText>
+            <PaymentHeading closeHandler={closeCrypto} t={t} type={'crypto'}/>
+          </ErrorText>
           {
             paymentsData.isCryptoPaymentDataLoading || currenciesList.loading ?
               <>
@@ -60,29 +64,37 @@ export const PaymentsCryptoWrapper = ({t, paymentsData, isShow}) => {
                   <p style={{color: "#ff0000"}}>{paymentsData.isCryptoPaymentError.data.extra_error_info.message}</p>
                 </>
                 :
-              <>
-                <TextBlock
-                  t={t}
-                  value={userDepositValue}
-                  paymentsData={paymentsData.cryptoPaymentData}
-                  currency={userCurrency}
-                  currenciesList={currenciesList}
-                />
-                <QRContainer
-                  qrData={paymentsData.cryptoPaymentData.data.address}
-                />
-                <ValueContainer
-                  value={userDepositValue}
-                  paymentsData={paymentsData.cryptoPaymentData}
-                  currency={userCurrency}
-                  currenciesList={currenciesList}
-                />
-                <DepositAddressInput
-                  t={t}
-                  addressData={paymentsData.cryptoPaymentData.data.address}
-                  memoData={paymentsData.cryptoPaymentData.data.memo}
-                />
-              </>
+                <>
+                  <ErrorText>
+                    <TextBlock
+                      t={t}
+                      value={userDepositValue}
+                      paymentsData={paymentsData.cryptoPaymentData}
+                      currency={userCurrency}
+                      currenciesList={currenciesList}
+                    />
+                  </ErrorText>
+                  <ErrorEmpty>
+                    <QRContainer
+                      qrData={paymentsData.cryptoPaymentData.data.address}
+                    />
+                  </ErrorEmpty>
+                  <ErrorEmpty>
+                    <ValueContainer
+                      value={userDepositValue}
+                      paymentsData={paymentsData.cryptoPaymentData}
+                      currency={userCurrency}
+                      currenciesList={currenciesList}
+                    />
+                  </ErrorEmpty>
+                  <ErrorEmpty>
+                  <DepositAddressInput
+                    t={t}
+                    addressData={paymentsData.cryptoPaymentData.data.address}
+                    memoData={paymentsData.cryptoPaymentData.data.memo}
+                  />
+                  </ErrorEmpty>
+                </>
           }
         </div>
       </div>

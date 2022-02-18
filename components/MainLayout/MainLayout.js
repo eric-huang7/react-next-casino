@@ -137,35 +137,41 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           isShowModal.isShowMobilePaymentsStepper
             ?
-            <MobilePaymentsStepper
-              isShow={isShowModal.isShowMobilePaymentsStepper}
-              paymentsData={paymentsData}
-              userAuth={userInfo}
-              t={t}
-            />
+            <ErrorEmpty>
+              <MobilePaymentsStepper
+                isShow={isShowModal.isShowMobilePaymentsStepper}
+                paymentsData={paymentsData}
+                userAuth={userInfo}
+                t={t}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
         {
           isShowModal.isShowCreditCardModal
             ?
-            <PaymentsCardWrapper
-              isShow={isShowModal.isShowCreditCardModal}
-              paymentsData={paymentsData}
-              userInfo={userInfo}
-              t={t}
-            />
+            <ErrorEmpty>
+              <PaymentsCardWrapper
+                isShow={isShowModal.isShowCreditCardModal}
+                paymentsData={paymentsData}
+                userInfo={userInfo}
+                t={t}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
         {
           isShowModal.isShowCryptoModal
             ?
-            <PaymentsCryptoWrapper
-              isShow={isShowModal.isShowCryptoModal}
-              paymentsData={paymentsData}
-              t={t}
-            />
+            <ErrorEmpty>
+              <PaymentsCryptoWrapper
+                isShow={isShowModal.isShowCryptoModal}
+                paymentsData={paymentsData}
+                t={t}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
@@ -186,10 +192,12 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           isShowModal.isShowPlaySafe
             ?
-            <PlaySafeMainWrapper
-              isShow={isShowModal.isShowPlaySafe}
-              t={t}
-            />
+            <ErrorEmpty>
+              <PlaySafeMainWrapper
+                isShow={isShowModal.isShowPlaySafe}
+                t={t}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
@@ -198,25 +206,30 @@ const MainLayout = ({children, t, token, emailError}) => {
             ?
             ""
             :
-            <RegisterSignup
-              isShow={registerShow}
-              t={t}
-            />
+            <ErrorEmpty>
+              <RegisterSignup
+                isShow={registerShow}
+                t={t}
+              />
+            </ErrorEmpty>
         }
-        <LogIn
-          isShow={logInShow}
-          t={t}
-        />
-
+        <ErrorEmpty>
+          <LogIn
+            isShow={logInShow}
+            t={t}
+          />
+        </ErrorEmpty>
         {
           isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
             ?
-            <SelectCurrencyWidget
-              t={t}
-              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-            />
+            <ErrorEmpty>
+              <SelectCurrencyWidget
+                t={t}
+                isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
+                isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+                isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
@@ -234,9 +247,11 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           userInfo.isAuthenticated
             ?
-            <ManageSubscriptions
-              t={t}
-            />
+            <ErrorEmpty>
+              <ManageSubscriptions
+                t={t}
+              />
+            </ErrorEmpty>
             :
             ""
         }
@@ -252,9 +267,11 @@ const MainLayout = ({children, t, token, emailError}) => {
         />
         {isShowModal.isShowTournamentsDetails
           ?
-          <TournamentModalDetails
-            t={t}
-          />
+          <ErrorEmpty>
+            <TournamentModalDetails
+              t={t}
+            />
+          </ErrorEmpty>
           :
           <></>
         }
@@ -262,10 +279,12 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           userInfo.isAuthenticated && width > 1239
             ?
-            <FooterAreaContainer
-              userData={userInfo}
-              t={t}
-            />
+            <ErrorEmpty>
+              <FooterAreaContainer
+                userData={userInfo}
+                t={t}
+              />
+            </ErrorEmpty>
             :
             ""
         }
@@ -279,47 +298,57 @@ const MainLayout = ({children, t, token, emailError}) => {
         {/*<LangSwitcher href={router.route} locale={locale}/>*/}
         {isShowModal.isShowForgotPassword
           ?
-          <ForgotPasswordComponent
-            t={t}
-          />
+          <ErrorEmpty>
+            <ForgotPasswordComponent
+              t={t}
+            />
+          </ErrorEmpty>
           :
           <></>
         }
         {
           isShowModal.isShowChangePassword && token
             ?
+          <ErrorEmpty>
             <ChangePasswordContainer
               t={t}
               token={token}
             />
+          </ErrorEmpty>
             :
             <></>
         }
         {
           isShowModal.isShowEmailValidationSuccess
-              ?
-              <EmailValidationContainer t={t}/>
-              :
-              <>
-              </>
+            ?
+          <ErrorEmpty>
+            <EmailValidationContainer t={t}/>
+          </ErrorEmpty>
+            :
+            <>
+            </>
         }
         {
           isShowModal.isShowEmailValidationError
-              ?
-              <EmailValidationError
-                  t={t}
-                  emailError={emailError}
-              />
-              :
-              <>
-              </>
+            ?
+          <ErrorEmpty>
+            <EmailValidationError
+              t={t}
+              emailError={emailError}
+            />
+          </ErrorEmpty>
+            :
+            <>
+            </>
         }
         {
           isShowModal.isShowTwoFaPopup
-          ?
+            ?
+          <ErrorEmpty>
             <TwoFactorAutContainer
               t={t}
             />
+          </ErrorEmpty>
             :
             <></>
         }

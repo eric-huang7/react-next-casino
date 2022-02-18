@@ -139,22 +139,59 @@ export const AccountMainLayout = ({t, children}) => {
           <ErrorHeaderPage>
             <Header t={t}/>
           </ErrorHeaderPage>
-          {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
+          {
+            isShowModal.showErrorPopup
+              ?
+            <ErrorEmpty>
+              <ErrorMessageContainer
+                errorData={isShowModal}
+                t={t}
+              />
+            </ErrorEmpty>
+              : <></>
+          }
           <ErrorEmpty>
             <DepositPage t={t}/>
           </ErrorEmpty>
-          {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
-          {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
+          {
+            isShowModal.isShowCreditCardModal
+              ?
+            <ErrorEmpty>
+              <PaymentsCardWrapper
+                isShow={isShowModal.isShowCreditCardModal}
+                paymentsData={paymentsData}
+                userInfo={userInfo}
+                t={t}
+              />
+            </ErrorEmpty>
+              :
+              <></>
+          }
+          {
+            isShowModal.isShowCryptoModal
+              ?
+            <ErrorEmpty>
+              <PaymentsCryptoWrapper
+                isShow={isShowModal.isShowCryptoModal}
+                paymentsData={paymentsData}
+                t={t}
+              />
+            </ErrorEmpty>
+              :
+              <></>
+          }
           <MobileSideMenu t={t} userInform={userInfo}/>
           {/*<SelectCurrency t={t}/>*/}
           {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
             ?
-            <SelectCurrencyWidget
-              t={t}
-              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-            />
+            <ErrorEmpty>
+              <SelectCurrencyWidget
+                t={t}
+                isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
+                isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
+                isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
+              />
+            </ErrorEmpty>
             :
             <></>}
           <div className={styles.myAccountContainer}>

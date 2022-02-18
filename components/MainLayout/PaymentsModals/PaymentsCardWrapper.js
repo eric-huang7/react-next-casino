@@ -17,6 +17,8 @@ import {useEffect, useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
 
@@ -79,45 +81,50 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
         bonus_offer_id: '',
         deposit_amount: ''
       }
-    dispatch(postCreditCardPayment(paymentData));
+      dispatch(postCreditCardPayment(paymentData));
     } else {
 
     }
   }
 
-   if (!userPayment.paymentMethodData.methodData) {
-     return (
-       <div className={styles.paymentsMainWrapper}>
-         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-           <div className={styles.paymentsMainContainer}>
-             <PaymentHeading
-               closeHandler={closeCardPayment}
-               t={t}
-               type={'fiat'}
-               showBackButton={true}
-               backButtonClickHandler={backButtonClickHandler}
-             />
-             <div className={styles.confirmedPayment}>
-                <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
-             </div>
-           </div>
-         </div>
-       </div>
-     )
-   }
+  if (!userPayment.paymentMethodData.methodData) {
+    return (
+      <div className={styles.paymentsMainWrapper}>
+        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+          <div className={styles.paymentsMainContainer}>
+            <ErrorText>
+              <PaymentHeading
+                closeHandler={closeCardPayment}
+                t={t}
+                type={'fiat'}
+                showBackButton={true}
+                backButtonClickHandler={backButtonClickHandler}
+              />
+            </ErrorText>
+            <div className={styles.confirmedPayment}>
+              <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
   if (paymentsData?.creditPaymentData?.data?.success) {
     return (
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.paymentsMainContainer}>
-            <PaymentHeading
-              closeHandler={closeCardPayment}
-              t={t}
-              type={'confirmed'}
-            />
+            <ErrorText>
+              <PaymentHeading
+                closeHandler={closeCardPayment}
+                t={t}
+                type={'confirmed'}
+              />
+            </ErrorText>
             <div className={styles.confirmedPayment}>
               <div className={styles.confirmedImageWrapper}>
-                <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'} alt={'confirmed icon'}/>
+                <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'}
+                       alt={'confirmed icon'}/>
               </div>
               <p className={styles.confirmedText}>{t("creditCardPayment.confirmText")}</p>
             </div>
@@ -130,40 +137,46 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.paymentsMainContainer}>
-            <PaymentHeading
-              closeHandler={closeCardPayment}
-              t={t}
-              type={'fiat'}
-              showBackButton={false}
-              backButtonClickHandler={backButtonClickHandler}
-            />
-            <InputsContainer
-              serverCardNumberError={paymentsData.isCreditPaymentError}
-              userDepositValue={userDepositValue}
-              userCurrency={userCurrency}
-              t={t}
-              amountError={amountError}
-              setAmountError={setAmountError}
-              cardNumberError={cardNumberError}
-              setCardNumberError={setCardNumberError}
-              dateInput={dateInput}
-              setDateInput={setDateInput}
-              cvvValue={cvvValue}
-              setCvvValue={setCvvValue}
-              cardNumber={cardNumber}
-              setCardNumber={setCardNumber}
-              cardDateError={cardDateError}
-              setCardDateError={setCardDateError}
-              cardNameInput={cardNameInput}
-              setCardNameInput={setCardNameInput}
-              setCardNameErrorInput={setCardNameErrorInput}
-              cardNameErrorInput={cardNameErrorInput}
-            />
+            <ErrorText>
+              <PaymentHeading
+                closeHandler={closeCardPayment}
+                t={t}
+                type={'fiat'}
+                showBackButton={false}
+                backButtonClickHandler={backButtonClickHandler}
+              />
+            </ErrorText>
+            <ErrorText>
+              <InputsContainer
+                serverCardNumberError={paymentsData.isCreditPaymentError}
+                userDepositValue={userDepositValue}
+                userCurrency={userCurrency}
+                t={t}
+                amountError={amountError}
+                setAmountError={setAmountError}
+                cardNumberError={cardNumberError}
+                setCardNumberError={setCardNumberError}
+                dateInput={dateInput}
+                setDateInput={setDateInput}
+                cvvValue={cvvValue}
+                setCvvValue={setCvvValue}
+                cardNumber={cardNumber}
+                setCardNumber={setCardNumber}
+                cardDateError={cardDateError}
+                setCardDateError={setCardDateError}
+                cardNameInput={cardNameInput}
+                setCardNameInput={setCardNameInput}
+                setCardNameErrorInput={setCardNameErrorInput}
+                cardNameErrorInput={cardNameErrorInput}
+              />
+            </ErrorText>
           </div>
-          <ConfirmButton
-            t={t}
-            confirmButtonClickHandler={confirmButtonClickHandler}
-          />
+          <ErrorEmpty>
+            <ConfirmButton
+              t={t}
+              confirmButtonClickHandler={confirmButtonClickHandler}
+            />
+          </ErrorEmpty>
         </div>
       </div>
     )

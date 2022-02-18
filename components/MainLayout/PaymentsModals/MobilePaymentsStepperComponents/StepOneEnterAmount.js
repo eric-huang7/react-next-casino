@@ -1,5 +1,6 @@
 import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
 import {StepperPlayWithButton} from "./StepperPlayWithButton";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const StepOneEnterAmount = ({t, userCurrency, userDepositValue, valueInputHandler, errorInputValue, currencySwitcherShowHandler, whatShouldDoPlayWith}) => {
@@ -20,13 +21,14 @@ export const StepOneEnterAmount = ({t, userCurrency, userDepositValue, valueInpu
         <span className={styles.errorMessage}>{errorInputValue}</span>
         <button onClick={() => currencySwitcherShowHandler()} className={styles.stepperCurrencyButton}>{userCurrency.userCurrencyData.abbreviation}</button>
       </div>
-
-      <StepperPlayWithButton
-        t={t}
-        userCurrency={userCurrency}
-        userDepositValue={userDepositValue}
-        whatShouldDoPlayWith={whatShouldDoPlayWith}
-      />
+      <ErrorEmpty>
+        <StepperPlayWithButton
+          t={t}
+          userCurrency={userCurrency}
+          userDepositValue={userDepositValue}
+          whatShouldDoPlayWith={whatShouldDoPlayWith}
+        />
+      </ErrorEmpty>
     </div>
   )
 }

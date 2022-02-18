@@ -16,6 +16,7 @@ import {siteID} from "../../../envs/envsForFetching";
 import {annulDeposit, postCryptoPayment} from "../../../redux/actions/depositPayments";
 import {showRegister} from "../../../redux/actions/registerShow";
 import useWindowScroll from "../../../hooks/useWindowScroll";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 
 export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
@@ -95,11 +96,11 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
   }
 
   const whatShouldDoPlayWith = () => {
-      if (errorInputValue) {
-        return
-      } else {
-        setPageStep(2);
-      }
+    if (errorInputValue) {
+      return
+    } else {
+      setPageStep(2);
+    }
   }
 
   const whatShouldDoBackButton = () => {
@@ -131,23 +132,27 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
           />
           {
             pageStep === 1 ?
-              <StepOneEnterAmount
-                userCurrency={userCurrency}
-                userDepositValue={userDepositValue}
-                t={t}
-                valueInputHandler={valueInputHandler}
-                errorInputValue={errorInputValue}
-                currencySwitcherShowHandler={currencySwitcherShowHandler}
-                whatShouldDoPlayWith={whatShouldDoPlayWith}
-                userPayment={userPayment}
-              />
+              <ErrorText>
+                <StepOneEnterAmount
+                  userCurrency={userCurrency}
+                  userDepositValue={userDepositValue}
+                  t={t}
+                  valueInputHandler={valueInputHandler}
+                  errorInputValue={errorInputValue}
+                  currencySwitcherShowHandler={currencySwitcherShowHandler}
+                  whatShouldDoPlayWith={whatShouldDoPlayWith}
+                  userPayment={userPayment}
+                />
+              </ErrorText>
               :
-              <StepTwoPaymentMethod
-                userCurrency={userCurrency}
-                methodClickHandler={methodClickHandler}
-                t={t}
-                userPayment={userPayment}
-              />
+              <ErrorText>
+                <StepTwoPaymentMethod
+                  userCurrency={userCurrency}
+                  methodClickHandler={methodClickHandler}
+                  t={t}
+                  userPayment={userPayment}
+                />
+              </ErrorText>
           }
         </div>
       </div>
