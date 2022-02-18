@@ -6,25 +6,21 @@ import Slider from 'react-slick';
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Link from "next/link";
-// import {promoData} from "./promoData";
 import {useDispatch, useSelector} from "react-redux";
 import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
-// import axios from "axios";
 import {getActiveBonuses, getAllBonuses} from "../../../redux/actions/getBonuses";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const PromotionsBlock = ({t}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
 
-
-  // const promotionsData = useSelector((store) => store.bonuses);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   const promotionsData = useSelector((store) => store.bonuses);
-
 
 
   useEffect(() => {
@@ -139,11 +135,13 @@ export const PromotionsBlock = ({t}) => {
                   let bonusCalculations = bonusesCalculator(el, userCurrency, t);
 
                   return (
-                    <PromotionItem
-                      key={el.id}
-                      bonusInfo={el}
-                      bonusCalculations={bonusCalculations}
-                    />
+                    <ErrorEmpty key={el.id}>
+                      <PromotionItem
+                        key={el.id}
+                        bonusInfo={el}
+                        bonusCalculations={bonusCalculations}
+                      />
+                    </ErrorEmpty>
                   )
                 })}
               </Slider>

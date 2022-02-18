@@ -6,7 +6,6 @@ import {RegisterSignup} from "./RegisterSignup/RegisterSignup";
 import {LogIn} from "./LogIn/LogIn";
 import {useDispatch, useSelector} from "react-redux";
 import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
-import {SelectCurrency} from "../HomePageComponents/SelectCurrency/SelectCurrency";
 import {useRouter} from "next/router";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import {DepositPage} from "./DepositPage/DepositPage";
@@ -202,8 +201,6 @@ const MainLayout = ({children, t, token, emailError}) => {
           t={t}
         />
 
-
-        {/*<SelectCurrency t={t}/>*/}
         {
           isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
             ?

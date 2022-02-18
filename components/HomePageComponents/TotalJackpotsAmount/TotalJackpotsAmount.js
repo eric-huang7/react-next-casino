@@ -6,6 +6,7 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 import {userData} from "../../../redux/actions/userData";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
@@ -98,10 +99,16 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
       <div className={styles.totalJackpotsWrapper}>
         <h1 className={styles.totalMountHeading}>{`${currency} ${totalMount}`}</h1>
         <div className={styles.winnersInfoBlockWrapper}>
-          <WinnersInfoBlock isHidden={isHidden} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
-          <WinnersInfoBlock isHidden={isHidden} heading={headings.topWinn} winnersData={topWinnersArr}/>
+          <ErrorText>
+            <WinnersInfoBlock isHidden={isHidden} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
+          </ErrorText>
+          <ErrorText>
+            <WinnersInfoBlock isHidden={isHidden} heading={headings.topWinn} winnersData={topWinnersArr}/>
+          </ErrorText>
           {/*<WinnersInfoBlock isHidden={isHidden} heading={headings.jackpots} winnersData={jackpotsWinnersArr}/>*/}
-          <JackpotsInfoBlock isHidden={false} heading={headings.jackpots} jackpotsData={jackpotsWinnersArr}/>
+          <ErrorText>
+            <JackpotsInfoBlock isHidden={false} heading={headings.jackpots} jackpotsData={jackpotsWinnersArr}/>
+          </ErrorText>
         </div>
       </div>
     </div>

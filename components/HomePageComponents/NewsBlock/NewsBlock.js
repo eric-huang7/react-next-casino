@@ -5,13 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import Link from "next/link";
-// import {newsData} from "./newsData";
 import {NewsItem} from "./NewsItem";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {news_active_url} from "../../../redux/url/url";
 import {useRouter} from "next/router";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const NewsBlock = ({t, isBackShow}) => {
@@ -126,11 +125,13 @@ export const NewsBlock = ({t, isBackShow}) => {
               <Slider {...sliderSettings}>
                 {newsData.map((el) => {
                   return (
-                    <NewsItem
-                      key={`${el.id} news item`}
-                      newsData={el}
-                      locale={router.locale}
-                    />
+                    <ErrorEmpty key={`${el.id} news item`}>
+                      <NewsItem
+                        key={`${el.id} news item`}
+                        newsData={el}
+                        locale={router.locale}
+                      />
+                    </ErrorEmpty>
                   )
                 })}
               </Slider>

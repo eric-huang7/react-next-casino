@@ -20,7 +20,7 @@ class BalanceItemError extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <h3 className={'errorBoundaryMessage'}>{'Something is wrong. Please contact support.'}</h3>;
+      return <></>;
     }
     return this.props.children;
   }
