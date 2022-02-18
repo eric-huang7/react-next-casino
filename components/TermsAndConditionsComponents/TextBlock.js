@@ -1,9 +1,8 @@
-import styles from '../../styles/TermsAndConditions/TermsTextBlock.module.scss';
-import {useTranslation} from "next-i18next";
+import styles from '../../styles/TermsAndConditions/TermsTextBlock.module.scss'
+import { useTranslation } from 'next-i18next'
 
-export const TextBlock = ({ textData, textHeading}) => {
-const {t} = useTranslation("termsAndConditions")
-
+export const TextBlock = ({ textHeading }) => {
+  const { t } = useTranslation('termsAndConditions')
 
   return (
     <section className={styles.textBlockWrapper}>
@@ -12,7 +11,7 @@ const {t} = useTranslation("termsAndConditions")
           <h2 className={styles.textBlockHeading}>{t(textHeading)}</h2>
           <div className={styles.textInfoBlock}>
 
-            <div dangerouslySetInnerHTML={{__html: t('text')}} />
+            <div dangerouslySetInnerHTML={{ __html: t('text') }}/>
 
           </div>
         </div>

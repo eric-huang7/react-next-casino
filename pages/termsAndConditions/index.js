@@ -3,53 +3,44 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss';
 import {MainBlock} from "../../components/TermsAndConditionsComponents/MainBlock";
-// import {PlayerBlock} from "../../components/TermsAndConditionsComponents/PlayerBlock";
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
-import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
+// import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
 import {useDispatch} from "react-redux";
-import {useRouter} from "next/router";
-import {setLang} from "../../redux/actions/lang";
 import {useEffect} from "react";
-import {allDataTermsAndConditions} from "../../components/TermsAndConditionsComponents/allDatatermsAndConditions";
 import {getCurrency} from "../../redux/actions/currency";
+import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
+import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 
 
-const TermsConditions = (props) => {
-  const { t } = useTranslation('common');
+const TermsConditions = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const locale = router.locale;
+
 
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
     dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
 
   }, []);
 
   return (
     <>
-      <MainLayout t={t}>
+      <MainLayout>
         <MainBlock />
         {/*<PlayerBlock />*/}
         <div className={styles.textWhyslotsBack}>
-          <TextBlock
-            textData={allDataTermsAndConditions.data}
-            textHeading={'heading'}
-          />
-          <WhySlotsIdol t={t} isBackShow={false}/>
+          <ErrorEmpty>
+            <TextBlock
+              textHeading={'heading'}
+            />
+          </ErrorEmpty>
+          <ErrorText>
+          <WhySlotsIdol isBackShow={false}/>
+          </ErrorText>
         </div>
-        <NewsBlock t={t} isBackShow={false}/>
+        <ErrorText>
+          <NewsBlock isBackShow={false}/>
+        </ErrorText>
       </MainLayout>
     </>
   )
