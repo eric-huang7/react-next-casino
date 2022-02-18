@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Slots Idol</title>
         </Head>
         <body>
         <Main />

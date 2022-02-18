@@ -8,7 +8,7 @@ module.exports = {
     localeDetection: true,
 
     backend: {
-      loadPath: `http://t-gpb.slotsidol.com:7000/i18n?ns={{ns}}&lng={{lng}}`
+      loadPath: `${process.env.NEXT_PUBLIC_SERVER_API_URL}${process.env.NEXT_PUBLIC_SERVER_API_PORT}/i18n?ns={{ns}}&lng={{lng}}`
     },
   },
 

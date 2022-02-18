@@ -1,8 +1,6 @@
-export const serverUrl = 'http://localhost:3001/';
+export const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_API_URL}${process.env.NEXT_PUBLIC_SERVER_API_PORT}/`;
 
-export const imagesUrl = 'http://cimagehost1.sos-ch-gva-2.exoscale-cdn.com/';
+export const imagesUrl = process.env.NEXT_PUBLIC_SERVER_IMAGES_CDN;
 
-export const socketUrl = 'ws://t-gpb.slotsidol.com:7700';
+export const socketUrl = `${process.env.NEXT_PUBLIC_SERVER_SOCKET_URL}${process.env.NEXT_PUBLIC_SERVER_SOCKET_PORT}`;
 
-// http://localhost:3001/
-// http://t-gpb.slotsidol.com:7000/

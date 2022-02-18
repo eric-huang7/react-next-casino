@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { NotifyProvider } from '../components/NotifyContext/NotifyContext'
 import nextI18nextConfig from '../next-i18next.config'
 import { GameProvider } from '../components/GamePageComponents/GameProvider'
+import Head  from 'next/head'
 
 const MyApp = ({ Component, pageProps }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['language'])
@@ -40,14 +41,19 @@ const MyApp = ({ Component, pageProps }) => {
   //cookies.language, router.route
 
   return (
-    <Provider store={store}>
-      <iframe style={{ display: 'none' }} id={'currencyIframe'} src={'/assets/sprite.svg'}/>
-      <NotifyProvider store={store}>
-        <GameProvider>
-          <Component {...pageProps} />
-        </GameProvider>
-      </NotifyProvider>
-    </Provider>
+    <>
+      <Head>
+        <title>Slots Idol</title>
+      </Head>
+      <Provider store={store}>
+        <iframe style={{ display: 'none' }} id={'currencyIframe'} src={'/assets/sprite.svg'}/>
+        <NotifyProvider store={store}>
+          <GameProvider>
+            <Component {...pageProps} />
+          </GameProvider>
+        </NotifyProvider>
+      </Provider>
+    </>
   )
 }
 
