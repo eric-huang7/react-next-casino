@@ -1,14 +1,23 @@
 import styles from '../../../styles/ContactUs/ContactsBlocks.module.scss'
 
-
-export const ContactsBlocks = ({t}) => {
+export const ContactsBlocks = ({ t }) => {
   let blocksInfo = [
-    {id: 1, heading: "contactUsPage.contactsBlock.liveChat.heading", text: "contactUsPage.contactsBlock.liveChat.textInfo"},
-    {id: 2, heading: "contactUsPage.contactsBlock.email.heading", text: "contactUsPage.contactsBlock.email.textInfo"},
-    {id: 3, heading: "contactUsPage.contactsBlock.phone.heading", text: "contactUsPage.contactsBlock.phone.textInfo"},
+    {
+      id: 1,
+      heading: 'contactUsPage.contactsBlock.liveChat.heading',
+      text: 'contactUsPage.contactsBlock.liveChat.textInfo'
+    },
+    {
+      id: 2,
+      heading: 'contactUsPage.contactsBlock.email.heading',
+      text: 'contactUsPage.contactsBlock.email.textInfo'
+    },
+    {
+      id: 3,
+      heading: 'contactUsPage.contactsBlock.phone.heading',
+      text: 'contactUsPage.contactsBlock.phone.textInfo'
+    },
   ]
-
-
 
   return (
     <section className={styles.contactsSection}>

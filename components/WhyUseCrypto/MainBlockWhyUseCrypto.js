@@ -1,16 +1,15 @@
-import styles from '../../styles/WhyUsecrypto/MainBlockWhyUseCrypto.module.scss';
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import styles from '../../styles/WhyUsecrypto/MainBlockWhyUseCrypto.module.scss'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 export const MainBlockWhyUseCrypto = () => {
-  const {height, width} = useWindowDimensions();
-   let whyUseCryptoHeading = "/assets/img/whyUseCrypto/whyUseCryptoHeading.png"
+  const { width } = useWindowDimensions()
+  let whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading.png'
 
   if (width > 600) {
-    whyUseCryptoHeading = "/assets/img/whyUseCrypto/whyUseCryptoHeading.png"
+    whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading.png'
   } else {
-    whyUseCryptoHeading = "/assets/img/whyUseCrypto/whyUseCryptoHeading-mobile.png"
+    whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading-mobile.png'
   }
-
 
   return (
     <div className={styles.mainBlockWrapper}>
@@ -18,7 +17,8 @@ export const MainBlockWhyUseCrypto = () => {
         <img src={whyUseCryptoHeading} alt="Why use crypto heading"/>
       </div>
       <div className={styles.mainBlockImg}>
-        <img className={styles.mainBlockImg_bitcoinLightBulb} src="/assets/img/whyUseCrypto/bitcoinLightBulbIcon.png" alt="bitcoin light bulb icon"/>
+        <img className={styles.mainBlockImg_bitcoinLightBulb} src="/assets/img/whyUseCrypto/bitcoinLightBulbIcon.png"
+             alt="bitcoin light bulb icon"/>
       </div>
     </div>
   )

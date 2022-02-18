@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import {HomePageContainer} from "../../components/HomePageComponents/HomePageContainer";
 import {useEffect} from "react";
 import {showChangePasswordPopup} from "../../redux/actions/showPopups";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 
 
@@ -13,10 +13,6 @@ export default function ResetPswd(props) {
   const {t} = useTranslation('common');
   const dispatch = useDispatch();
   const router = useRouter();
-  const locale = router.locale;
-
-  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-
 
   useEffect(() => {
 
@@ -30,15 +26,10 @@ export default function ResetPswd(props) {
 
     <>
       <MainLayout
-        t={t}
         token={props.token}
       >
         <HomePageContainer
           t={t}
-          // games={games}
-          // jackpots={jackpots}
-          // winners={winners}
-
         />
       </MainLayout>
 

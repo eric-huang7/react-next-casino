@@ -11,7 +11,7 @@ import {useRouter} from "next/router";
 
 
 
-const PlayGamePage = (props) => {
+const PlayGamePage = () => {
   const {t} = useTranslation('common');
   const playGames = useSelector((state) => state.playGame);
   const dispatch = useDispatch();

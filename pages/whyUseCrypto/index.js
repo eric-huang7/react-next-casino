@@ -1,46 +1,35 @@
-import {useTranslation} from "next-i18next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from "../../styles/WhyUsecrypto/WhyUseCrypto.module.scss";
-import {MainBlockWhyUseCrypto} from "../../components/WhyUseCrypto/MainBlockWhyUseCrypto";
-import {WhyUseBitcoinBlock} from "../../components/WhyUseCrypto/WhyUseBitcoinBlock";
-import {WhyUseBitcoinItemsContainer} from "../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer";
-import {GetStartedWith} from "../../components/WhyUseCrypto/GetStartedWith";
-import {GetStartedInstructionsContainer} from "../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer";
-import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {useEffect} from "react";
-import {getCurrency} from "../../redux/actions/currency";
-import {useDispatch} from "react-redux";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import MainLayout from '../../components/MainLayout/MainLayout'
+import { MainBlockWhyUseCrypto } from '../../components/WhyUseCrypto/MainBlockWhyUseCrypto'
+import { WhyUseBitcoinBlock } from '../../components/WhyUseCrypto/WhyUseBitcoinBlock'
+import { WhyUseBitcoinItemsContainer } from '../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer'
+import { GetStartedWith } from '../../components/WhyUseCrypto/GetStartedWith'
+import { GetStartedInstructionsContainer } from '../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer'
+import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
+import { useEffect } from 'react'
+import { getCurrency } from '../../redux/actions/currency'
+import { useDispatch } from 'react-redux'
+import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
+const WhyUseCrypto = () => {
+  const { t } = useTranslation('common')
 
-const WhyUseCrypto = (props) => {
-  const { t } = useTranslation('common');
-
-
-const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
-    dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
-
-  }, []);
+    dispatch(getCurrency())
+  }, [])
   return (
     <>
-      <MainLayout t={t}>
-        <MainBlockWhyUseCrypto />
+      <MainLayout>
+        <MainBlockWhyUseCrypto/>
         <WhyUseBitcoinBlock t={t}/>
         <WhyUseBitcoinItemsContainer t={t}/>
-        <GetStartedWith t={t} />
+        <GetStartedWith t={t}/>
         <GetStartedInstructionsContainer t={t}/>
-        <NewsBlock t={t} isBackShow={false}/>
+        <ErrorText>
+          <NewsBlock t={t} isBackShow={false}/>
+        </ErrorText>
       </MainLayout>
     </>
   )
@@ -54,4 +43,4 @@ export const getStaticProps = async ({ locale }) => {
   })
 }
 
-export default  WhyUseCrypto;
+export default WhyUseCrypto

@@ -1,4 +1,3 @@
-import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss';
@@ -6,7 +5,6 @@ import {MainBlock} from "../../components/TermsAndConditionsComponents/MainBlock
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
-// import {termsAndConditions} from "../../components/TermsAndConditionsComponents/textData";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {getCurrency} from "../../redux/actions/currency";

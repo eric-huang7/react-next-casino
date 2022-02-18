@@ -1,51 +1,41 @@
-import {useTranslation} from "next-i18next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from "../../styles/ContactUs.module.scss";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import MainLayout from '../../components/MainLayout/MainLayout'
+import styles from '../../styles/ContactUs.module.scss'
+import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
+import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
+import { MainBlock } from '../../components/ContactUsPageComponents/MainBlock/MainBlock'
+import { HeadersBlock } from '../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock'
+import { ContactsBlocks } from '../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks'
+import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { getCurrency } from '../../redux/actions/currency'
+import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
-import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
-import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {MainBlock} from "../../components/ContactUsPageComponents/MainBlock/MainBlock";
-import {HeadersBlock} from "../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock";
-import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
-import {useRouter} from "next/router";
-import {ContactsBlocks} from "../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks";
-import {Faq} from "../../components/ContactUsPageComponents/FAQ/Faq";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {getCurrency} from "../../redux/actions/currency";
-
-
-const ContactUs = (props) => {
+const ContactUs = () => {
   const { t } = useTranslation('common')
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
-    dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
-
-  }, []);
+    dispatch(getCurrency())
+  }, [])
 
   return (
     <>
-      <MainLayout t={t}>
-        <MainBlock />
+      <MainLayout>
+        <MainBlock/>
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
         <div className={styles.textWhyslotsBack}>
           <Faq t={t}/>
-          <WhySlotsIdol t={t} isBackShow={false}/>
+          <ErrorText>
+            <WhySlotsIdol t={t} isBackShow={false}/>
+          </ErrorText>
         </div>
-        <NewsBlock t={t} isBackShow={false}/>
+        <ErrorText>
+          <NewsBlock t={t} isBackShow={false}/>
+        </ErrorText>
       </MainLayout>
 
     </>
@@ -60,4 +50,4 @@ export const getStaticProps = async ({ locale }) => {
   })
 }
 
-export default  ContactUs;
+export default ContactUs

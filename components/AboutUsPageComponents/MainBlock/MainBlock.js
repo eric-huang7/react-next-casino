@@ -1,6 +1,8 @@
 import styles from '../../../styles/AboutUs/MainBlock.module.scss'
+import { useTranslation } from 'next-i18next'
 
-export const MainBlock = ({t}) => {
+export const MainBlock = () => {
+  const { t } = useTranslation('common')
 
   return (
     <section className={styles.mainSectionWrapper}>

@@ -1,7 +1,8 @@
 import styles from '../../../styles/AboutUs/TextBlocks.module.scss'
+import { useTranslation } from 'next-i18next'
 
-export const TextBlocks = ({t}) => {
-
+export const TextBlocks = () => {
+  const { t } = useTranslation('common')
   return (
     <section className={styles.textBlockWrapper}>
       <div className={styles.textBlockInnerWrapper}>

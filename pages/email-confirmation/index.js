@@ -1,28 +1,23 @@
-import {useTranslation} from "next-i18next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import {useRouter} from "next/router";
-import {HomePageContainer} from "../../components/HomePageComponents/HomePageContainer";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {token_url} from "../../redux/url/url";
-import axios from "axios";
-import {auth, changePasswordLogin} from "../../redux/actions/userData";
+import { HomePageContainer } from '../../components/HomePageComponents/HomePageContainer'
+import { useEffect, useState } from 'react'
+import { useDispatch} from 'react-redux'
+import { token_url } from '../../redux/url/url'
+import axios from 'axios'
+import { changePasswordLogin } from '../../redux/actions/userData'
 import {
   showEmailValidationErrorPopup,
   showEmailValidationSuccessPopup,
   showTwoFaPopup
-} from "../../redux/actions/showPopups";
+} from '../../redux/actions/showPopups'
 
+export default function EmailConfirmation (props) {
+  const { t } = useTranslation('common')
+  const dispatch = useDispatch()
 
-export default function EmailConfirmation(props) {
-  const {t} = useTranslation('common');
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const locale = router.locale;
-
-  // const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-  const [emailError, setEmailError] = useState(null);
+  const [emailError, setEmailError] = useState(null)
 
   useEffect(() => {
 
@@ -37,45 +32,34 @@ export default function EmailConfirmation(props) {
         axios.patch(token_url, sendData)
           .then((data) => {
             if (data.data.success) {
-
-
               if (data.data.user.is_2fa_enabled === 1) {
-
-                setEmailError(null);
-                dispatch(showTwoFaPopup(true));
+                setEmailError(null)
+                dispatch(showTwoFaPopup(true))
               } else {
-                setEmailError(null);
-                dispatch(showEmailValidationSuccessPopup(true));
-                dispatch(changePasswordLogin(data.data));
-                if (typeof window !== "undefined") {
-                  localStorage.setItem("userAuth", 'true');
+                setEmailError(null)
+                dispatch(showEmailValidationSuccessPopup(true))
+                dispatch(changePasswordLogin(data.data))
+                if (typeof window !== 'undefined') {
+                  localStorage.setItem('userAuth', 'true')
                 }
               }
-
             } else if (data.data.extra_error_info === 'Token invalid') {
 
               setEmailError('used_token')
-              dispatch(showEmailValidationErrorPopup(true));
-
+              dispatch(showEmailValidationErrorPopup(true))
             } else {
-
               setEmailError('other_error')
-              dispatch(showEmailValidationErrorPopup(true));
-
+              dispatch(showEmailValidationErrorPopup(true))
             }
           })
           .catch((e) => {
-
             setEmailError('other_error')
-            dispatch(showEmailValidationErrorPopup(true));
-
+            dispatch(showEmailValidationErrorPopup(true))
           })
-
-
-      }, 3000);
+      }, 3000)
 
       return () => {
-        clearTimeout(timer);
+        clearTimeout(timer)
       }
     }
 
@@ -85,16 +69,10 @@ export default function EmailConfirmation(props) {
 
     <>
       <MainLayout
-        t={t}
         emailError={emailError}
-        // token={props.token}
       >
         <HomePageContainer
           t={t}
-          // games={games}
-          // jackpots={jackpots}
-          // winners={winners}
-
         />
       </MainLayout>
 
@@ -104,9 +82,9 @@ export default function EmailConfirmation(props) {
 
 export const getServerSideProps = async (context) => {
 
-  let token = null;
+  let token = null
   if (context.query.token) {
-    token = context.query.token;
+    token = context.query.token
   } else {
 
   }

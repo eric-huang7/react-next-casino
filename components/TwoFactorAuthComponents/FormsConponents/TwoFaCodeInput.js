@@ -1,5 +1,4 @@
 import styles from "../../../styles/TwoFaAuth/TwoFaAuth.module.scss";
-import {useEffect, useRef, useState} from "react";
 import dynamic from 'next/dynamic';
 
 const ReactCodeInput = dynamic(import('react-code-input'));

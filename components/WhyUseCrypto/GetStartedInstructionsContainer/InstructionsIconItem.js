@@ -1,7 +1,6 @@
-import styles from '../../../styles/WhyUsecrypto/GetStartedInstructionsContainer.module.scss';
+import styles from '../../../styles/WhyUsecrypto/GetStartedInstructionsContainer.module.scss'
 
-
-export const InstructionsIconItem = ({t, data}) => {
+export const InstructionsIconItem = ({ t, data }) => {
 
   return (
     <div className={`${styles.iconItemWrapper} ${styles[data.itemClass]}`}>

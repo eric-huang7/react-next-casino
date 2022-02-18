@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
 import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch} from "react-redux";
+import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
 
 const Promotions = () => {
@@ -20,7 +21,9 @@ const Promotions = () => {
     <>
       <MainLayout>
         <PromotionsContainer />
-        <NewsBlock isBackShow={false}/>
+        <ErrorText>
+          <NewsBlock isBackShow={false}/>
+        </ErrorText>
       </MainLayout>
     </>
   )

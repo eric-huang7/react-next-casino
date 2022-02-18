@@ -13,6 +13,7 @@ import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch, useSelector} from "react-redux";
 import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
 import ErrorText from "../ErrorBoundaryComponents/ErrorText";
+import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 
 
 export const HomePageContainer = ({t}) => {
@@ -50,8 +51,11 @@ export const HomePageContainer = ({t}) => {
       {/*API for jackpots will add in future */}
       <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
       {
-        searchGames.length >= 0 && searchRef.current.value ?
-          <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
+        searchGames.length >= 0 && searchRef.current.value
+          ?
+          <ErrorEmpty>
+            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
+          </ErrorEmpty>
           :
           <>
             <ErrorText>

@@ -5,7 +5,7 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 
 export const InstructionsTextItem = ({t, data}) => {
-  const {height, width} = useWindowDimensions();
+  const {width} = useWindowDimensions();
 
   return (
     <div className={styles.textItemWrapper}>
