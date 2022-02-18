@@ -1,19 +1,20 @@
-import styles from '../../../styles/PromotionsPage/MainBlock.module.scss';
-import {showDepositModal} from "../../../redux/actions/showPopups";
-import {useDispatch, useSelector} from "react-redux";
+import styles from '../../../styles/PromotionsPage/MainBlock.module.scss'
+import { showDepositModal } from '../../../redux/actions/showPopups'
+import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'next-i18next'
 
-export const WelcomeBlock = ({t, dataForMainBlock, locale, userData}) => {
-  const dispatch = useDispatch();
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
+export const WelcomeBlock = ({ dataForMainBlock, locale, userData }) => {
+  const { t } = useTranslation('promotionsPage')
+  const dispatch = useDispatch()
+  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal)
 
   const closeDepositModalHandler = () => {
     if (userData.isAuthenticated) {
       if (!isShowDepositModal) {
-        dispatch(showDepositModal(true));
+        dispatch(showDepositModal(true))
       }
     }
   }
-
 
   return (
     <div className={styles.welcomeWrapper}>
@@ -25,7 +26,6 @@ export const WelcomeBlock = ({t, dataForMainBlock, locale, userData}) => {
       </div>
       <div onClick={() => closeDepositModalHandler()} className={styles.depositButton}>
         <span className={styles.welcomeDepositButton}>{t(dataForMainBlock.depositButtonText)}</span>
-        {/*<img className={styles.welcomeDepositButton} src={dataForMainBlock.welcomeDepositButton} alt="deposit button"/>*/}
       </div>
     </div>
   )

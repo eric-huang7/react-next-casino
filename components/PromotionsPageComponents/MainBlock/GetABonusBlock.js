@@ -1,7 +1,8 @@
-import styles from '../../../styles/PromotionsPage/MainBlock.module.scss';
+import styles from '../../../styles/PromotionsPage/MainBlock.module.scss'
+import { useTranslation } from 'next-i18next'
 
-
-export const GetABonusBlock = ({t, dataForMainBlock}) => {
+export const GetABonusBlock = ({ dataForMainBlock }) => {
+  const { t } = useTranslation('promotionsPage')
 
   return (
     <div className={styles.getAbonusWrapper}>

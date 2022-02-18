@@ -1,15 +1,17 @@
-import styles from '../../../styles/PromotionsPage/BonusesContainer.module.scss';
-import {TypeOneBonusContainer} from "./TypeOneBonusContainer/TypeOneBonusContainer";
-import {TypeTwoBonusContainer} from "./TypeTwoBonusContainer/TypeTwoBonusContainer";
-import {bonusesFinder} from "../../../helpers/bonusesFinder";
-import {useRouter} from "next/router";
-import {bonusesCalculator} from "./bonusesCalculator";
+import styles from '../../../styles/PromotionsPage/BonusesContainer.module.scss'
+import { TypeOneBonusContainer } from './TypeOneBonusContainer/TypeOneBonusContainer'
+import { TypeTwoBonusContainer } from './TypeTwoBonusContainer/TypeTwoBonusContainer'
+import { bonusesFinder } from '../../../helpers/bonusesFinder'
+import { useRouter } from 'next/router'
+import { bonusesCalculator } from './bonusesCalculator'
+import { useTranslation } from 'next-i18next'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
-export const BonusesContainer = ({t, activeBonuses, userCurrency, userData}) => {
-  const router = useRouter();
+export const BonusesContainer = ({ activeBonuses, userCurrency, userData }) => {
+  const { t } = useTranslation('promotionsPage')
+  const router = useRouter()
   let locale = router.locale
-  let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency);
-
+  let bonuses = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency)
 
   if (bonuses.length > 0) {
     return (
@@ -17,29 +19,33 @@ export const BonusesContainer = ({t, activeBonuses, userCurrency, userData}) => 
         {
           bonuses.map((bonus, index) => {
             if (index % 2 === 0) {
-              let bonusCalculations = bonusesCalculator(bonus, userCurrency, t);
+              let bonusCalculations = bonusesCalculator(bonus, userCurrency, t)
               return (
                 <div key={bonus.id}>
-                  <TypeOneBonusContainer
-                    bonusCalculations={bonusCalculations}
-                    locale={locale}
-                    bonusInfo={bonus}
-                    t={t}
-                    userData={userData}
-                  />
+                  <ErrorEmpty>
+                    <TypeOneBonusContainer
+                      bonusCalculations={bonusCalculations}
+                      locale={locale}
+                      bonusInfo={bonus}
+                      t={t}
+                      userData={userData}
+                    />
+                  </ErrorEmpty>
                 </div>
               )
             } else {
-              let bonusCalculations = bonusesCalculator(bonus, userCurrency);
+              let bonusCalculations = bonusesCalculator(bonus, userCurrency)
               return (
                 <div key={bonus.id}>
-                  <TypeTwoBonusContainer
-                    bonusCalculations={bonusCalculations}
-                    locale={locale}
-                    bonusInfo={bonus}
-                    t={t}
-                    userData={userData}
-                  />
+                  <ErrorEmpty>
+                    <TypeTwoBonusContainer
+                      bonusCalculations={bonusCalculations}
+                      locale={locale}
+                      bonusInfo={bonus}
+                      t={t}
+                      userData={userData}
+                    />
+                  </ErrorEmpty>
                 </div>
               )
             }

@@ -28,7 +28,6 @@ export const BonusButton = ({bonusInfo, userData}) => {
   let bonusImage = '/assets/img/promotionsPage/bonus2.png'
   return (
     <div onClick={() => openDepositModalHandler()} className={styles.bonusButtonBlock}>
-      {/*<div className={styles.bonusButton}></div>*/}
       <img draggable={false}
            src={bonusButton ? `${imagesUrl}images/${bonusButton}` : bonusImage}
            alt="bonus button icon"/>

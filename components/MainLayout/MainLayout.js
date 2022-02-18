@@ -36,8 +36,10 @@ import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutCo
 import ExitIntentError from '../ExitIntentComponent/ExitIntentError/ExitIntentError'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
+import { useTranslation } from 'next-i18next'
 
-const MainLayout = ({ children, t, token, emailError }) => {
+const MainLayout = ({ children, token, emailError }) => {
+  const { t } = useTranslation('common');
   const dispatch = useDispatch()
   const router = useRouter()
   const { width } = useWindowDimensions()

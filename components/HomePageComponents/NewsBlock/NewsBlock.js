@@ -1,9 +1,7 @@
 import styles from '../../../styles/HomePage/NewsBlock.module.scss'
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {NewsItem} from "./NewsItem";
 import {useEffect, useState} from "react";
@@ -11,10 +9,13 @@ import axios from "axios";
 import {news_active_url} from "../../../redux/url/url";
 import {useRouter} from "next/router";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import { useTranslation } from 'next-i18next'
 
 
-export const NewsBlock = ({t, isBackShow}) => {
-  const {height, width} = useWindowDimensions();
+export const NewsBlock = ({ isBackShow}) => {
+  const { t } = useTranslation('common');
+
+  const {width} = useWindowDimensions();
   const router = useRouter();
 
   const [newsData, setNewsData] = useState([]);
@@ -62,9 +63,6 @@ export const NewsBlock = ({t, isBackShow}) => {
     }
   }
 
-
-
-// let data = newsData();
 
   function SampleNextArrow(props) {
     const { className, onClick } = props;

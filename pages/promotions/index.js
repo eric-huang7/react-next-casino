@@ -1,43 +1,26 @@
-import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from "../../styles/Home.module.scss";
 import {PromotionsContainer} from "../../components/PromotionsPageComponents/PromotionsContainer";
-import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/actions/games";
-import {getJackpots} from "../../redux/actions/latestJackpots";
-import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
 import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch} from "react-redux";
 
 
-const Promotions = (props) => {
+const Promotions = () => {
   const dispatch = useDispatch();
-  const { t } = useTranslation('common');
+
 
   useEffect(() => {
-    // dispatch(setLang(locale));
-    // dispatch(getGames());
-    // dispatch(getNewGames()); //new games
-    // dispatch(getJackpotGames()); // Jackpot Games
-    // dispatch(getTableGames()); // Table Games
-
-    // dispatch(getJackpots());
-    // dispatch(getWinners());
-    // dispatch(getLatestWinners());
     dispatch(getCurrency());
-    // dispatch(getActiveBonuses());
-
   }, []);
 
 
   return (
     <>
-      <MainLayout t={t}>
+      <MainLayout>
         <PromotionsContainer />
-        <NewsBlock t={t} isBackShow={false}/>
+        <NewsBlock isBackShow={false}/>
       </MainLayout>
     </>
   )
