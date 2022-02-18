@@ -1,72 +1,64 @@
-import {Header} from "./Header/Header";
+import { Header } from './Header/Header'
 
 import styles from '../../styles/MainLayout.module.scss'
-import {Footer} from "./Footer/Footer";
-import {RegisterSignup} from "./RegisterSignup/RegisterSignup";
-import {LogIn} from "./LogIn/LogIn";
-import {useDispatch, useSelector} from "react-redux";
-import {MobileSideMenu} from "../MobileSideMenu/MobileSideMenu";
-import {useRouter} from "next/router";
-import LangSwitcher from "../LangSwitcher/LangSwitcher";
-import {DepositPage} from "./DepositPage/DepositPage";
-import {ManageSubscriptions} from "./ManageSubscriptions/ManageSubscriptions";
-import {SearchModalWindowWrapper} from "../SearchGamesModalWindow/SearchModalWindowWrapper";
-import {useEffect, useRef} from "react";
-import {PlaySafeMainWrapper} from "../PlaySafeComponents/PlaySafeMainWrapper";
-import {FooterAreaContainer} from "../FooterArea/FooterAreaContainer";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import {TournamentMainContainer} from "./TournamentSidebar/TournamentMainContainer";
-import {TournamentIcon} from "./TournamentIcon/TournamentIcon";
-import {TournamentModalDetails} from "./TournamentSidebar/TournamentModalDetails/TournamentModalDetails";
-import {getTournaments} from "../../redux/actions/getTournaments";
+import { Footer } from './Footer/Footer'
+import { RegisterSignup } from './RegisterSignup/RegisterSignup'
+import { LogIn } from './LogIn/LogIn'
+import { useDispatch, useSelector } from 'react-redux'
+import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
+import { useRouter } from 'next/router'
+import { DepositPage } from './DepositPage/DepositPage'
+import { ManageSubscriptions } from './ManageSubscriptions/ManageSubscriptions'
+import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
+import { useEffect, useRef } from 'react'
+import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
+import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { TournamentMainContainer } from './TournamentSidebar/TournamentMainContainer'
+import { TournamentIcon } from './TournamentIcon/TournamentIcon'
+import { TournamentModalDetails } from './TournamentSidebar/TournamentModalDetails/TournamentModalDetails'
 import {
   backButtonShouldDo,
   closeAll,
-  setStepDepositModal,
-  showChangePasswordPopup
-} from "../../redux/actions/showPopups";
-import {DepositWidgetMainContainer} from "./DepositWidget/DepositWidgetMainContainer";
-import {PaymentsCardWrapper} from "./PaymentsModals/PaymentsCardWrapper";
-import {PaymentsCryptoWrapper} from "./PaymentsModals/PaymentsCryptoWrapper";
-import {MobilePaymentsStepper} from "./PaymentsModals/MobilePaymentsStepper";
-import Head from "next/head";
-import {ExitIntentPopup} from "../ExitIntentComponent/ExitIntentPopup";
-import {SelectCurrencyWidget} from "./SelectCurrencyWidget/SelectCurrencyWidget";
-import {ForgotPasswordComponent} from "../ForgotPasswordComponents/ForgotPasswordComponent";
-import {ChangePasswordContainer} from "../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer";
-import {showLogin} from "../../redux/actions/loginShow";
-import {showRegister} from "../../redux/actions/registerShow";
-import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer";
-import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
-import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
-import ExitIntentError from "../ExitIntentComponent/ExitIntentError/ExitIntentError";
-import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
-import ErrorHeaderPage from "../ErrorBoundaryComponents/ErrorBoundaryHeader";
+} from '../../redux/actions/showPopups'
+import { DepositWidgetMainContainer } from './DepositWidget/DepositWidgetMainContainer'
+import { PaymentsCardWrapper } from './PaymentsModals/PaymentsCardWrapper'
+import { PaymentsCryptoWrapper } from './PaymentsModals/PaymentsCryptoWrapper'
+import { MobilePaymentsStepper } from './PaymentsModals/MobilePaymentsStepper'
+import Head from 'next/head'
+import { ExitIntentPopup } from '../ExitIntentComponent/ExitIntentPopup'
+import { SelectCurrencyWidget } from './SelectCurrencyWidget/SelectCurrencyWidget'
+import { ForgotPasswordComponent } from '../ForgotPasswordComponents/ForgotPasswordComponent'
+import { ChangePasswordContainer } from '../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer'
+import { showLogin } from '../../redux/actions/loginShow'
+import { showRegister } from '../../redux/actions/registerShow'
+import { EmailValidationContainer } from '../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer'
+import { EmailValidationError } from '../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError'
+import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutContainer'
+import ExitIntentError from '../ExitIntentComponent/ExitIntentError/ExitIntentError'
+import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
+import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 
-
-const MainLayout = ({children, t, token, emailError}) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const {width, height} = useWindowDimensions();
-
+const MainLayout = ({ children, t, token, emailError }) => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const { width } = useWindowDimensions()
 
   useEffect(() => {
-    dispatch(closeAll(false));
-    dispatch(backButtonShouldDo(false));
-    dispatch(showLogin(false));
-    dispatch(showRegister(false));
+    dispatch(closeAll(false))
+    dispatch(backButtonShouldDo(false))
+    dispatch(showLogin(false))
+    dispatch(showRegister(false))
   }, [router])
 
+  const userInfo = useSelector((userInfo) => userInfo.authInfo)
+  const isShowModal = useSelector((store) => store.showPopupsReducer)
+  const paymentsData = useSelector((store) => store.depositData)
 
-  const userInfo = useSelector((userInfo) => userInfo.authInfo);
-  const isShowModal = useSelector((store) => store.showPopupsReducer);
-  const paymentsData = useSelector((store) => store.depositData);
-
-  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
-  let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
-  let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
+  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer)
+  let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
   let toursref = useRef()
-
 
   useEffect(() => {
 
@@ -89,31 +81,25 @@ const MainLayout = ({children, t, token, emailError}) => {
 
       } else {
         if (isShowModal[showModalKey] === true) {
-          document.body.style.overflowY = "hidden";
-          break;
+          document.body.style.overflowY = 'hidden'
+          break
         } else {
-          document.body.style.overflowY = "auto";
+          document.body.style.overflowY = 'auto'
           if (logInShow || registerShow) {
-            document.body.style.overflowY = "hidden";
+            document.body.style.overflowY = 'hidden'
           } else if (showPlayWindow.isFullScreen) {
-            document.body.style.overflowY = "hidden";
+            document.body.style.overflowY = 'hidden'
           } else {
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowY = 'auto'
           }
         }
       }
     }
 
-
   }, [isShowModal, registerShow, logInShow, showPlayWindow])
 
   return (
     <>
-      {/*<iframe style={{display: "none"}} id={'currencyIframe'} src={"/assets/sprite.svg"}/>*/}
-      <Head>
-        <title>Slots Idol</title>
-        <script type="text/javascript" src={"/chatWidget/chatWidget.js"}/>
-      </Head>
       <div className={styles.mainLayoutWrapper}>
         <ErrorHeaderPage>
           <Header t={t}/>
@@ -204,7 +190,7 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           userInfo.isAuthenticated
             ?
-            ""
+            ''
             :
             <ErrorEmpty>
               <RegisterSignup
@@ -242,7 +228,7 @@ const MainLayout = ({children, t, token, emailError}) => {
             />
           </ErrorEmpty>
           :
-          ""
+          ''
         }
         {
           userInfo.isAuthenticated
@@ -253,7 +239,7 @@ const MainLayout = ({children, t, token, emailError}) => {
               />
             </ErrorEmpty>
             :
-            ""
+            ''
         }
         <TournamentIcon
           toursref={toursref}
@@ -286,7 +272,7 @@ const MainLayout = ({children, t, token, emailError}) => {
               />
             </ErrorEmpty>
             :
-            ""
+            ''
         }
         <ErrorEmpty>
           <Footer
@@ -295,7 +281,6 @@ const MainLayout = ({children, t, token, emailError}) => {
             screenWidth={width}
           />
         </ErrorEmpty>
-        {/*<LangSwitcher href={router.route} locale={locale}/>*/}
         {isShowModal.isShowForgotPassword
           ?
           <ErrorEmpty>
@@ -309,21 +294,21 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           isShowModal.isShowChangePassword && token
             ?
-          <ErrorEmpty>
-            <ChangePasswordContainer
-              t={t}
-              token={token}
-            />
-          </ErrorEmpty>
+            <ErrorEmpty>
+              <ChangePasswordContainer
+                t={t}
+                token={token}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
         {
           isShowModal.isShowEmailValidationSuccess
             ?
-          <ErrorEmpty>
-            <EmailValidationContainer t={t}/>
-          </ErrorEmpty>
+            <ErrorEmpty>
+              <EmailValidationContainer t={t}/>
+            </ErrorEmpty>
             :
             <>
             </>
@@ -331,12 +316,12 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           isShowModal.isShowEmailValidationError
             ?
-          <ErrorEmpty>
-            <EmailValidationError
-              t={t}
-              emailError={emailError}
-            />
-          </ErrorEmpty>
+            <ErrorEmpty>
+              <EmailValidationError
+                t={t}
+                emailError={emailError}
+              />
+            </ErrorEmpty>
             :
             <>
             </>
@@ -344,11 +329,11 @@ const MainLayout = ({children, t, token, emailError}) => {
         {
           isShowModal.isShowTwoFaPopup
             ?
-          <ErrorEmpty>
-            <TwoFactorAutContainer
-              t={t}
-            />
-          </ErrorEmpty>
+            <ErrorEmpty>
+              <TwoFactorAutContainer
+                t={t}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
@@ -357,4 +342,4 @@ const MainLayout = ({children, t, token, emailError}) => {
   )
 }
 
-export default MainLayout;
+export default MainLayout

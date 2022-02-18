@@ -10,11 +10,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*/}
+          <title>Slots Idol</title>
         </Head>
         <body>
         <Main />
         <NextScript />
+        <script defer type="text/javascript" src="/chatWidget/chatWidget.js"></script>
         </body>
       </Html>
     )

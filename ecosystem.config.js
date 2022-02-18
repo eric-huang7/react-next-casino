@@ -4,7 +4,6 @@ module.exports = {
       name: "casino",
       mode: "cluster",
       script: "npm run startProd",
-      watch: true,
       env_development: {
         "PORT": 3005,
         "NODE_ENV": "development"

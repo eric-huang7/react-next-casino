@@ -1,24 +1,15 @@
-import {useTranslation} from "next-i18next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../components/MainLayout/MainLayout'
-import {HomePageContainer} from "../components/HomePageComponents/HomePageContainer";
+import { HomePageContainer } from '../components/HomePageComponents/HomePageContainer'
 
-
-
-export default function Home(props) {
-  const {t} = useTranslation('common');
-
+export default function Home () {
+  const { t } = useTranslation('common')
 
   return (
-
-    <>
-      <MainLayout t={t}>
-        <HomePageContainer
-          t={t}
-        />
-      </MainLayout>
-
-    </>
+    <MainLayout t={t}>
+      <HomePageContainer t={t}/>
+    </MainLayout>
   )
 }
 
