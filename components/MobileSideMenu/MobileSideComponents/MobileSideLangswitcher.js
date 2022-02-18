@@ -1,7 +1,7 @@
-import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss'
+import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss'
 import Link from 'next/link'
 import {useRouter} from "next/router";
-import {setLang} from "../../redux/actions/lang";
+import {setLang} from "../../../redux/actions/lang";
 import {useCookies} from "react-cookie";
 import {useDispatch} from "react-redux";
 

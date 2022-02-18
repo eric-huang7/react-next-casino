@@ -4,6 +4,7 @@ import {useState} from "react";
 import {BalanceMenuContainer} from "../../../BalanceMenuContainer/BalanceMenuContainer";
 import {numberTransformer} from "../../../../helpers/numberTransformer";
 import BalanceErrorBoundary from "../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary";
+import { currencyFinder } from '../../../../helpers/currencyFinder'
 
 
 export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
@@ -27,17 +28,8 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
       amount = '';
     }
 
-
     let balance = balanceData.length === 0 ? "0.00" : amount;
-    let currency = balanceData.length === 0
-      ?
-      userCurrency?.currency?.results.find((el) => userInfo.user.user.base_currency_id
-        ?
-        Number(el.id) === Number(userInfo.user.user.base_currency_id)
-        :
-        Number(el.id) === 1).abbreviation
-      :
-      userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
+    let currency = currencyFinder(balanceData, userInfo, userCurrency);
 
     const showLinksMenuHandler = () => {
       setIsShowLinksMenu(true);

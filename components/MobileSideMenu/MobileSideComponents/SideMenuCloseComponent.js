@@ -1,4 +1,4 @@
-import styles from "../../styles/MobileSideMenu/MobileSideMenu.module.scss";
+import styles from "../../../styles/MobileSideMenu/MobileSideMenu.module.scss";
 
 
 export const SideMenuCloseComponent = ({closeClickHandler}) => {

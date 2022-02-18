@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {MobileSideListLinks} from "./MobileSideList";
-import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
+import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import {useState} from "react";
 import {DropMenu} from "./DropMenu";
-import {NotificationCounter} from "../MainLayout/Header/BurgerButton/NotificationCounter";
+import {NotificationCounter} from "../../MainLayout/Header/BurgerButton/NotificationCounter";
 import {useSelector} from "react-redux";
 
 

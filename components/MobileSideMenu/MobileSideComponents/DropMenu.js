@@ -1,11 +1,11 @@
-import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss';
+import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import Link from "next/link";
 import {MobileSideListLinks} from "./MobileSideList";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {MobileSideButtons} from "./MobileSideButtons";
-import {showMobileMenu} from "../../redux/actions/sideMobileMenuShow";
-import {showManageSubscriptions, showPlaySafe} from "../../redux/actions/showPopups";
+import {showMobileMenu} from "../../../redux/actions/sideMobileMenuShow";
+import {showManageSubscriptions, showPlaySafe} from "../../../redux/actions/showPopups";
 
 export const DropMenu = ({t,el, isAuth}) => {
   const dispatch = useDispatch();

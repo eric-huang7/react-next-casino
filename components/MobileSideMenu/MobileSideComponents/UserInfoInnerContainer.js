@@ -1,50 +1,37 @@
-import styles from "../../styles/MobileSideMenu/MobileSideMenu.module.scss";
-import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit";
-import {numberTransformer} from "../../helpers/numberTransformer";
+import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss'
+import { HeaderButtonsDeposit } from '../../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit'
+import { numberTransformer } from '../../../helpers/numberTransformer'
+import { currencyFinder } from '../../../helpers/currencyFinder'
 
-
-export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
+export const UserInfoInnerContainer = ({ t, userInform, userCurrency }) => {
 
   if (userCurrency.currency && userInform.balance) {
-    let userName = userInform.user.user.username;
+    let userName = userInform.user.user.username
 
-    let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default));
+    let balanceData = userInform?.balance?.balances.filter((el) => !!Number(el.is_default))
 
     if (balanceData.length === 0) {
       if (userInform?.balance?.balances?.length > 0) {
-        balanceData = userInform?.balance?.balances;
+        balanceData = userInform?.balance?.balances
       }
     }
 
-    let amount = '';
+    let amount = ''
 
     try {
-      amount = numberTransformer(balanceData[0].current_balance);
+      amount = numberTransformer(balanceData[0].current_balance)
     } catch (e) {
-      amount = '';
+      amount = ''
     }
 
     let balance = balanceData.length === 0
       ?
-      "0.00"
+      '0.00'
       :
-      amount;
+      amount
 
-    let currency = balanceData.length === 0
-      ?
-      userCurrency?.currency?.results.find((el) => userInform.user.user.base_currency_id
-        ?
-        Number(el.id) === Number(userInform.user.user.base_currency_id)
-        :
-        Number(el.id) === 1).abbreviation
-      :
-      userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
+    let currency = currencyFinder(balanceData, userInform, userCurrency);
 
-    // let currency = balanceData.length === 0
-    //   ?
-    //   userCurrency?.currency?.results.find((el) => Number(el.id) === Number(userInform.user.user.base_currency_id)).abbreviation
-    //   :
-    //   userCurrency?.currency?.results.find((el) => Number(el.id) === Number(balanceData[0].currency_id)).abbreviation;
 
     return (
       <div className={styles.userInfoBlock}>
@@ -69,7 +56,7 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
   } else {
     return (
       <div className={styles.userInfoBlock}>
-        <p className={styles.username}>{""}</p>
+        <p className={styles.username}>{''}</p>
         <p className={styles.userMoney}>{``}</p>
         <div className={styles.userInfoDivider}></div>
         <div className={styles.userBonusesInfo}>
@@ -88,5 +75,5 @@ export const UserInfoInnerContainer = ({t, userInform, userCurrency}) => {
       </div>
     )
   }
-
 }
+
