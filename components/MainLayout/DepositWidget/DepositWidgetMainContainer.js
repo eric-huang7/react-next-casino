@@ -19,6 +19,8 @@ import {siteID} from "../../../envs/envsForFetching";
 import {postCryptoPayment} from "../../../redux/actions/depositPayments";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 
 export const DepositWidgetMainContainer = ({t, userAuth}) => {
@@ -173,50 +175,57 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   return (
     <div
-
       className={`${styles.depositWidgetMainContainer} ${userAuth.isAuthenticated ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
-      <CurrencyChooser
-        width={width}
-        currencySwitcherShowHandler={currencySwitcherShowHandler}
-        userCurrency={userCurrency}
-        t={t}
-      />
-      <AmountInputContainer
-        width={width}
-        userDepositValue={userDepositValue}
-        userCurrency={userCurrency}
-        valueInputHandler={valueInputHandler}
-        errorDepositValue={errorDepositValue}
-        t={t}
-      />
+      <ErrorEmpty>
+        <CurrencyChooser
+          width={width}
+          currencySwitcherShowHandler={currencySwitcherShowHandler}
+          userCurrency={userCurrency}
+          t={t}
+        />
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <AmountInputContainer
+          width={width}
+          userDepositValue={userDepositValue}
+          userCurrency={userCurrency}
+          valueInputHandler={valueInputHandler}
+          errorDepositValue={errorDepositValue}
+          t={t}
+        />
+      </ErrorEmpty>
       {
         width > 680 && userAuth.isAuthenticated
           ?
-          <PaymentMethodMainBlock
-            scrollHeight={scrollHeight}
-            paymentMethodChooser={paymentMethodChooser}
-            isActivePayments={isActivePayments}
-            setIsActivePayments={setIsActivePayments}
-            t={t}
-            errorPaymentMethod={errorPaymentMethod}
-            userCurrency={userCurrency}
-            setPaymentMethods={setPaymentMethods}
-            paymentMethods={paymentMethods}
-            setErrorPaymentMethod={setErrorPaymentMethod}
-            userPayment={userPayment}
-          />
+          <ErrorText>
+            <PaymentMethodMainBlock
+              scrollHeight={scrollHeight}
+              paymentMethodChooser={paymentMethodChooser}
+              isActivePayments={isActivePayments}
+              setIsActivePayments={setIsActivePayments}
+              t={t}
+              errorPaymentMethod={errorPaymentMethod}
+              userCurrency={userCurrency}
+              setPaymentMethods={setPaymentMethods}
+              paymentMethods={paymentMethods}
+              setErrorPaymentMethod={setErrorPaymentMethod}
+              userPayment={userPayment}
+            />
+          </ErrorText>
           :
           <>
           </>
       }
+      <ErrorEmpty>
+        <PlayWithButton
+          width={width}
+          userCurrency={userCurrency}
+          userDepositValue={userDepositValue}
+          whatShouldDoPlayWithButton={whatShouldDoPlayWithButton}
+          t={t}
+        />
+      </ErrorEmpty>
 
-      <PlayWithButton
-        width={width}
-        userCurrency={userCurrency}
-        userDepositValue={userDepositValue}
-        whatShouldDoPlayWithButton={whatShouldDoPlayWithButton}
-        t={t}
-      />
       <CloseButton
         userCurrency={userCurrency}
         setActiveWidget={setActiveWidget}

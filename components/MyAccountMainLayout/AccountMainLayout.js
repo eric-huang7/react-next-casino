@@ -23,6 +23,7 @@ import {SelectCurrencyWidget} from "../MainLayout/SelectCurrencyWidget/SelectCur
 import {backButtonShouldDo, closeAll} from "../../redux/actions/showPopups";
 import {PaymentsCardWrapper} from "../MainLayout/PaymentsModals/PaymentsCardWrapper";
 import {PaymentsCryptoWrapper} from "../MainLayout/PaymentsModals/PaymentsCryptoWrapper";
+import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const AccountMainLayout = ({t, children}) => {
@@ -136,7 +137,9 @@ export const AccountMainLayout = ({t, children}) => {
         <div className={styles.accountMainLayoutWrapper}>
           <Header t={t}/>
           {isShowModal.showErrorPopup ? <ErrorMessageContainer errorData={isShowModal} t={t}/> : <></>}
-          <DepositPage t={t}/>
+          <ErrorEmpty>
+            <DepositPage t={t}/>
+          </ErrorEmpty>
           {isShowModal.isShowCreditCardModal ? <PaymentsCardWrapper isShow={isShowModal.isShowCreditCardModal} paymentsData={paymentsData} userInfo={userInfo} t={t}/> : <></>}
           {isShowModal.isShowCryptoModal ? <PaymentsCryptoWrapper isShow={isShowModal.isShowCryptoModal} paymentsData={paymentsData} t={t}/> : <></>}
           <MobileSideMenu t={t} userInform={userInfo}/>

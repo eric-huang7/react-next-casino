@@ -40,6 +40,7 @@ import {EmailValidationContainer} from "../ForgotPasswordComponents/EmailValidat
 import {EmailValidationError} from "../ForgotPasswordComponents/EmailValidationContainer/EmailValidationError";
 import {TwoFactorAutContainer} from "../TwoFactorAuthComponents/TwoFactorAutContainer";
 import ExitIntentError from "../ExitIntentComponent/ExitIntentError/ExitIntentError";
+import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
 
 
 const MainLayout = ({children, t, token, emailError}) => {
@@ -123,10 +124,13 @@ const MainLayout = ({children, t, token, emailError}) => {
           />
         </ExitIntentError>
 
-        <DepositWidgetMainContainer
-          userAuth={userInfo}
-          t={t}
-        />
+        <ErrorEmpty>
+          <DepositWidgetMainContainer
+            userAuth={userInfo}
+            t={t}
+          />
+        </ErrorEmpty>
+
         {
           isShowModal.isShowMobilePaymentsStepper
             ?
@@ -216,9 +220,11 @@ const MainLayout = ({children, t, token, emailError}) => {
 
         {userInfo.isAuthenticated
           ?
-          <DepositPage
-            t={t}
-          />
+          <ErrorEmpty>
+            <DepositPage
+              t={t}
+            />
+          </ErrorEmpty>
           :
           ""
         }

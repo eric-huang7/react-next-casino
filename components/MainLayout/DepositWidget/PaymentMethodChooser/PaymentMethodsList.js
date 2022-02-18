@@ -7,6 +7,7 @@ import {payments_methods_url} from "../../../../redux/url/url";
 import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
 import {useDispatch} from "react-redux";
 import {PaymentItem} from "../../DepositPage/ChoosePaymentMethod/PaymentItem";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const PaymentMethodsList = ({
@@ -50,30 +51,34 @@ export const PaymentMethodsList = ({
         {
           paymentMethods['2'].length !== 0
             ?
-            <PaymentMethodItem
-              method={paymentMethods}
-              paymentMethodChooser={paymentMethodChooser}
-              type={'crypto'}
-              t={t}
-              setErrorPaymentMethod={setErrorPaymentMethod}
-              userCurrency={userCurrency}
-              // paymentData={}
-            />
+            <ErrorEmpty>
+              <PaymentMethodItem
+                method={paymentMethods}
+                paymentMethodChooser={paymentMethodChooser}
+                type={'crypto'}
+                t={t}
+                setErrorPaymentMethod={setErrorPaymentMethod}
+                userCurrency={userCurrency}
+                // paymentData={}
+              />
+            </ErrorEmpty>
             :
             <></>
         }
         {
           userCurrency.userCurrencyData.type !== 3 && paymentMethods['2'].length === 0
             ?
-            <PaymentMethodItem
-              method={paymentMethods}
-              paymentMethodChooser={paymentMethodChooser}
-              type={'crypto'}
-              t={t}
-              setErrorPaymentMethod={setErrorPaymentMethod}
-              userCurrency={userCurrency}
-              // paymentData={}
-            />
+            <ErrorEmpty>
+              <PaymentMethodItem
+                method={paymentMethods}
+                paymentMethodChooser={paymentMethodChooser}
+                type={'crypto'}
+                t={t}
+                setErrorPaymentMethod={setErrorPaymentMethod}
+                userCurrency={userCurrency}
+                // paymentData={}
+              />
+            </ErrorEmpty>
             :
             <>
             </>
@@ -81,15 +86,17 @@ export const PaymentMethodsList = ({
         {
           paymentMethods['3'].length !== 0
             ?
-            <PaymentMethodItem
-              method={paymentMethods}
-              paymentMethodChooser={paymentMethodChooser}
-              type={'card'}
-              t={t}
-              setErrorPaymentMethod={setErrorPaymentMethod}
-              userCurrency={userCurrency}
-              // paymentData={}
-            />
+            <ErrorEmpty>
+              <PaymentMethodItem
+                method={paymentMethods}
+                paymentMethodChooser={paymentMethodChooser}
+                type={'card'}
+                t={t}
+                setErrorPaymentMethod={setErrorPaymentMethod}
+                userCurrency={userCurrency}
+                // paymentData={}
+              />
+            </ErrorEmpty>
             :
             <></>
         }

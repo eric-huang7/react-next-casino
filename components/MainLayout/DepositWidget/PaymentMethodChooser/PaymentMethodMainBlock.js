@@ -4,6 +4,8 @@ import {PaymentMethodsList} from "./PaymentMethodsList";
 import {useEffect, useState} from "react";
 import {ChosenPaymentMethodButton} from "./ChosenPaymentMethodButton";
 import {ErrorMessage} from "../ErrorsMessages/ErrorMessage";
+import ErrorText from "../../../ErrorBoundaryComponents/ErrorText";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 // import {paymentMethodsData} from "../../../../envs/paymetsMethods";
 
 
@@ -13,17 +15,19 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
 
   return (
     <div className={styles.paymentMethodMainBlock}>
-          <PaymentMethodsList
-            // paymentMethodsData={paymentMethodsData}
-            scrollHeight={scrollHeight}
-            isActivePayments={isActivePayments}
-            paymentMethodChooser={paymentMethodChooser}
-            t={t}
-            userCurrency={userCurrency}
-            setPaymentMethods={setPaymentMethods}
-            paymentMethods={paymentMethods}
-            setErrorPaymentMethod={setErrorPaymentMethod}
-          />
+      <ErrorText>
+        <PaymentMethodsList
+          // paymentMethodsData={paymentMethodsData}
+          scrollHeight={scrollHeight}
+          isActivePayments={isActivePayments}
+          paymentMethodChooser={paymentMethodChooser}
+          t={t}
+          userCurrency={userCurrency}
+          setPaymentMethods={setPaymentMethods}
+          paymentMethods={paymentMethods}
+          setErrorPaymentMethod={setErrorPaymentMethod}
+        />
+      </ErrorText>
       {
         !userPayment
         ?
@@ -43,12 +47,14 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
           :
         userPayment.paymentMethodData.paymentType === 'creditCard'
         ?
-        <ChosenPaymentMethodButton
-          t={t}
-          isActivePayments={isActivePayments}
-          setIsActivePayments={setIsActivePayments}
-          paymentData={userPayment}
-        />
+          <ErrorEmpty>
+            <ChosenPaymentMethodButton
+              t={t}
+              isActivePayments={isActivePayments}
+              setIsActivePayments={setIsActivePayments}
+              paymentData={userPayment}
+            />
+          </ErrorEmpty>
         :
         userPayment.paymentMethodData.paymentType === 'cryptoArr'
           ?
@@ -66,12 +72,14 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
               t={t}
             />
             :
-          <ChosenPaymentMethodButton
-            t={t}
-            isActivePayments={isActivePayments}
-            setIsActivePayments={setIsActivePayments}
-            paymentData={userPayment}
-          />
+            <ErrorEmpty>
+              <ChosenPaymentMethodButton
+                t={t}
+                isActivePayments={isActivePayments}
+                setIsActivePayments={setIsActivePayments}
+                paymentData={userPayment}
+              />
+            </ErrorEmpty>
       }
       { errorPaymentMethod ? <ErrorMessage t={t} text={"depositWidget.paymentError"} /> : <></> }
     </div>
