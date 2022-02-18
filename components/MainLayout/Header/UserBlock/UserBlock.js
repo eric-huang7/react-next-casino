@@ -5,7 +5,6 @@ import {HeaderButtonsDeposit} from "../HeaderButtons/HeaderButtonsDeposit";
 import {BurgerButton} from "../BurgerButton/BurgerButton";
 import {HeaderButtonsRegistration} from "../HeaderButtons/HeaderButtonsRegistration";
 import {useSelector} from "react-redux";
-
 import {NotificationContainer} from "./Notification";
 import {UserInformationBlock} from "./UserInformationBlock";
 import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";

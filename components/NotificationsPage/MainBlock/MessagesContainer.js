@@ -1,5 +1,5 @@
-import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
 import {MessageItem} from "./MessageItem";
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const MessagesContainer = ({t, notifyData}) => {
 
@@ -24,16 +24,18 @@ export const MessagesContainer = ({t, notifyData}) => {
         {
           arrOfMessages.map((el) => {
             return (
-              <MessageItem
-                key={`${el.id} message key`}
-                link={el.link}
-                messageType={el.type}
-                icon={el.image}
-                text={el.text}
-                additionalText={el.text_additional}
-                time={el.time_created}
-                read={el.read}
-              />
+              <ErrorEmpty key={`${el.id} message key`}>
+                <MessageItem
+                  key={`${el.id} message key`}
+                  link={el.link}
+                  messageType={el.type}
+                  icon={el.image}
+                  text={el.text}
+                  additionalText={el.text_additional}
+                  time={el.time_created}
+                  read={el.read}
+                />
+              </ErrorEmpty>
             )
           })
         }

@@ -1,13 +1,9 @@
-import styles from "../../../../styles/Header/UserBlock.module.scss";
-import {NotificationPopup} from "./NotificationPopup/NotificationPopup";
 import {useDispatch, useSelector} from "react-redux";
-import {useCallback, useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {BellNotification} from "./BellNotification";
-import {useRouter} from "next/router";
-import useWebsocketNotification from "../../../../hooks/useWebsocketNotification";
 import {setNotifyTypeTwo} from "../../../../redux/actions/setNotify";
 import {NotifyContext} from "../../../NotifyContext/NotifyContext";
-import {notificator} from "../../../../helpers/notificator";
+
 
 
 

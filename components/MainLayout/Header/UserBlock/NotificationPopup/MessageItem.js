@@ -5,31 +5,16 @@ import {formatDistance} from "date-fns";
 import { ru } from 'date-fns/locale'
 import {dateTranslator} from "../../../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
+import { messageStyle } from '../../../../../helpers/messageStyler'
 
 
 export const MessageItem = ({messageType, icon, additionalText, text, link, time}) => {
   const router = useRouter()
   let locale = router.locale
 
-  let messageIcon = '/assets/icons/notifications/sound.svg'
-  let colorOfLink = '#ef9b92'
+  let messageIcon = messageStyle(messageType).messageIcon;
+  let colorOfLink = messageStyle(messageType).colorOfLink;
 
-  if (messageType === 'bonus') {
-    messageIcon = '/assets/icons/notifications/diam.svg';
-    colorOfLink = '#47b14c'
-  } else if (messageType === 'redeem' || messageType === 'deposit' || messageType === 'withdraw') {
-    messageIcon = '/assets/icons/notifications/wallet.svg';
-    colorOfLink = '#ef9b92'
-  } else if (messageType === 'freespins') {
-    messageIcon = '/assets/icons/notifications/arr.svg';
-    colorOfLink = '#ef9b92'
-  } else if (messageType === 'tournaments') {
-    messageIcon = '/assets/icons/notifications/cup.svg';
-    colorOfLink = '#ef9b92'
-  } else {
-    messageIcon = '/assets/icons/notifications/sound.svg';
-    colorOfLink = '#ef9b92'
-  }
 
   return (
     <div className={styles.messageItemWrapper}>

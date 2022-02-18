@@ -1,38 +1,19 @@
-import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
-import {urlGen} from "../../../helpers/imageUrl";
-import Link from "next/link";
-import {formatDistance} from "date-fns";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import {useRouter} from "next/router";
-import {dateTranslator} from "../../../helpers/dateTranslator";
+import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss'
+import { urlGen } from '../../../helpers/imageUrl'
+import Link from 'next/link'
+import useWindowDimensions from '../../../hooks/useWindowDimensions'
+import { useRouter } from 'next/router'
+import { dateTranslator } from '../../../helpers/dateTranslator'
+import { messageStyle } from '../../../helpers/messageStyler'
 
-
-export const MessageItem = ({messageType, icon, additionalText, text, link, time, read}) => {
-  const {height, width} = useWindowDimensions();
+export const MessageItem = ({ messageType, icon, additionalText, text, link, time, read }) => {
+  const { width } = useWindowDimensions()
   const router = useRouter()
   let locale = router.locale
 
-  let messageIcon = '/assets/icons/notifications/sound.svg'
+  let messageIcon = messageStyle(messageType).messageIcon;
 
-  let colorOfLink = '#ef9b92'
-
-  if (messageType === 'bonus') {
-    messageIcon = '/assets/icons/notifications/diam.svg';
-    colorOfLink = '#47b14c'
-  } else if (messageType === 'redeem' || messageType === 'deposit' || messageType === 'withdraw') {
-    messageIcon = '/assets/icons/notifications/wallet.svg';
-    colorOfLink = '#ef9b92'
-  } else if (messageType === 'freespins') {
-    messageIcon = '/assets/icons/notifications/arr.svg';
-    colorOfLink = '#ef9b92'
-  } else if (messageType === 'tournaments') {
-    messageIcon = '/assets/icons/notifications/cup.svg';
-    colorOfLink = '#ef9b92'
-  } else {
-    messageIcon = '/assets/icons/notifications/sound.svg';
-    colorOfLink = '#ef9b92'
-  }
-
+  let colorOfLink = messageStyle(messageType).colorOfLink;
 
   return (
     <div className={styles.messageItemWrapper}>
@@ -42,10 +23,10 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
       <div className={styles.messageData}>
         <p className={styles.messageDescription}>{text}</p>
         {
-          additionalText ? <Link href={link}><a style={{color: colorOfLink}}>{additionalText}</a></Link> : ''
+          additionalText ? <Link href={link}><a style={{ color: colorOfLink }}>{additionalText}</a></Link> : ''
         }
         {
-        width > 570 ? '' : <span className={styles.time}>{dateTranslator(time, locale)}</span>
+          width > 570 ? '' : <span className={styles.time}>{dateTranslator(time, locale)}</span>
         }
       </div>
       {
@@ -54,3 +35,4 @@ export const MessageItem = ({messageType, icon, additionalText, text, link, time
     </div>
   )
 }
+

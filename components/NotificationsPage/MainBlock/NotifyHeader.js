@@ -1,11 +1,12 @@
 import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {NotifyContext} from "../../NotifyContext/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
 import {useDispatch, useSelector} from "react-redux";
 import {browserNotifications} from "../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 import {NotifyIcon} from "./NotifyIcon";
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 
 export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
@@ -62,7 +63,9 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
     <div className={styles.notifyHeader}>
       <h3>{t("notificationsPage.header.heading")}</h3>
       <span onClick={() => markReadClickHandler()}>{t("notificationsPage.header.markAsRead")}</span>
-      <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+      <ErrorEmpty>
+        <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+      </ErrorEmpty>
     </div>
   )
 }

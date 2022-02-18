@@ -2,12 +2,15 @@ import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss'
 
 import { HeaderButtonsRegistration } from '../../MainLayout/Header/HeaderButtons/HeaderButtonsRegistration'
 import { UserInfoInnerContainer } from './UserInfoInnerContainer'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const UserInfoBlock = ({ t, userInform, currency }) => {
 
   if (userInform.isAuthenticated && !currency.loading) {
     return (
-      <UserInfoInnerContainer t={t} userInform={userInform} userCurrency={currency}/>
+      <ErrorEmpty>
+        <UserInfoInnerContainer t={t} userInform={userInform} userCurrency={currency}/>
+      </ErrorEmpty>
     )
   } else {
 

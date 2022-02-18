@@ -9,6 +9,7 @@ import { UserInfoBlock } from './MobileSideComponents/UserInfoBlock'
 import { SideLagSwitcherWrapper } from './MobileSideComponents/SideLagSwitcherWrapper'
 import { SideMenuLogo } from './MobileSideComponents/SideMenuLogo'
 import { SideMenuCloseComponent } from './MobileSideComponents/SideMenuCloseComponent'
+import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 
 const socilaLinks = [
   { key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg' },
@@ -54,11 +55,13 @@ export const MobileSideMenu = ({ t, userInform }) => {
             closeClickHandler={closeClickHandler}
           />
           <SideMenuLogo/>
-          <UserInfoBlock
-            t={t}
-            userInform={userInform}
-            currency={currency}
-          />
+          <ErrorEmpty>
+            <UserInfoBlock
+              t={t}
+              userInform={userInform}
+              currency={currency}
+            />
+          </ErrorEmpty>
           <div className={styles.mobileSideListWrapper}>
             <MobileListContainer
               isAuth={userInform.isAuthenticated}
@@ -85,7 +88,7 @@ export const MobileSideMenu = ({ t, userInform }) => {
                 )
               })}
             </div>
-            <p className={styles.sideFooterRights}>2020 SlotsIdol.com&#169; All Rights Reserved</p>
+            <p className={styles.sideFooterRights}>{"2020 SlotsIdol.com&#169; All Rights Reserved"}</p>
           </div>
         </div>
       </div>
