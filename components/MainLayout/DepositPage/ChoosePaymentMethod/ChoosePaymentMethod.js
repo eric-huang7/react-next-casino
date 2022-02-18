@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import axios from "axios";
 import {payments_methods_url} from "../../../../redux/url/url";
 import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 export const ChoosePaymentMethod = ({
@@ -54,24 +55,28 @@ export const ChoosePaymentMethod = ({
           {
             paymentMethods['2'].length !== 0
               ?
-              <PaymentItem
-                method={paymentMethods}
-                type={'crypto'}
-                userCurrency={userCurrency}
-                userPayment={userPayment}
-              />
+              <ErrorEmpty>
+                <PaymentItem
+                  method={paymentMethods}
+                  type={'crypto'}
+                  userCurrency={userCurrency}
+                  userPayment={userPayment}
+                />
+              </ErrorEmpty>
               :
               <></>
           }
           {
             userCurrency.userCurrencyData.type !== 3 && paymentMethods['2'].length === 0
             ?
-              <PaymentItem
-                method={paymentMethods}
-                type={'crypto'}
-                userCurrency={userCurrency}
-                userPayment={userPayment}
-              />
+              <ErrorEmpty>
+                <PaymentItem
+                  method={paymentMethods}
+                  type={'crypto'}
+                  userCurrency={userCurrency}
+                  userPayment={userPayment}
+                />
+              </ErrorEmpty>
               :
               <>
               </>
@@ -79,12 +84,14 @@ export const ChoosePaymentMethod = ({
           {
             paymentMethods['3'].length !== 0
               ?
-              <PaymentItem
-                method={paymentMethods}
-                type={'creditCard'}
-                userCurrency={userCurrency}
-                userPayment={userPayment}
-              />
+              <ErrorEmpty>
+                <PaymentItem
+                  method={paymentMethods}
+                  type={'creditCard'}
+                  userCurrency={userCurrency}
+                  userPayment={userPayment}
+                />
+              </ErrorEmpty>
               :
               <></>
           }

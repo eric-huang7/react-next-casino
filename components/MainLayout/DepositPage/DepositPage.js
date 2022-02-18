@@ -1,5 +1,4 @@
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
-import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {
@@ -14,11 +13,8 @@ import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../redux/ac
 import {setUserBonus} from "../../../redux/actions/setUserBonus";
 import {bonusesFinder} from "../../../helpers/bonusesFinder";
 import {bonusesCalculator} from "../../../helpers/bonusesCalculator";
-import axios from "axios";
-import {payments_methods_url} from "../../../redux/url/url";
-import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
-import {DepositHeading} from "./DepositHeading";
 import {useRouter} from "next/router";
+import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 
 export const DepositPage = ({t}) => {
@@ -175,39 +171,40 @@ export const DepositPage = ({t}) => {
 
   return (
     <div className={`${styles.depositPageWrapper} ${isShowDepositModal.isShowDepositModal ? "" : styles.hide}`}>
-      {/*<Header t={t}/>*/}
       <div className={styles.depositsMainBlock}>
         <h2 className={`${router.locale === 'ru' ? styles.ru : ""}`}>{t("depositPage.mainHeading")}</h2>
-            <DepositPageStepper
-              currencyData={currencyData}
-              step={isShowDepositModal.depositModalStep}
-              t={t}
-              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-              isActiveBonusInput={isActiveBonusInput}
-              checkedInputHandler={checkedInputHandler}
-              currencySwitcherShowHandler={currencySwitcherShowHandler}
-              closeDepositModalHandler={closeDepositModalHandler}
-              isChecked={isChecked}
-              userCurrency={userCurrency}
-              stepHandler={stepHandler}
-              submitHandler={submitHandler}
-              userDepositValue={userDepositValue}
-              depositValueInputHandler={depositValueInputHandler}
-              userDepositValueError={userDepositValueError}
-              userPayment={userPayment}
-              userInfo={userInfo}
-              showAllBonuses={showAllBonuses}
-              showAllBonusesHandler={showAllBonusesHandler}
-              chosenBonus={chosenBonus}
-              chooseBonusClickHandler={chooseBonusClickHandler}
-              setDepositButtonText={setDepositButtonText}
-              buttonText={buttonText}
-              userSelectedBonus={userSelectedBonus}
-              isShowDepositModal={isShowDepositModal.isShowDepositModal}
-              bonusesArr={bonusesArr}
-              paymentMethods={paymentMethods}
-              setPaymentMethods={setPaymentMethods}
-            />
+        <ErrorText>
+          <DepositPageStepper
+            currencyData={currencyData}
+            step={isShowDepositModal.depositModalStep}
+            t={t}
+            bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
+            isActiveBonusInput={isActiveBonusInput}
+            checkedInputHandler={checkedInputHandler}
+            currencySwitcherShowHandler={currencySwitcherShowHandler}
+            closeDepositModalHandler={closeDepositModalHandler}
+            isChecked={isChecked}
+            userCurrency={userCurrency}
+            stepHandler={stepHandler}
+            submitHandler={submitHandler}
+            userDepositValue={userDepositValue}
+            depositValueInputHandler={depositValueInputHandler}
+            userDepositValueError={userDepositValueError}
+            userPayment={userPayment}
+            userInfo={userInfo}
+            showAllBonuses={showAllBonuses}
+            showAllBonusesHandler={showAllBonusesHandler}
+            chosenBonus={chosenBonus}
+            chooseBonusClickHandler={chooseBonusClickHandler}
+            setDepositButtonText={setDepositButtonText}
+            buttonText={buttonText}
+            userSelectedBonus={userSelectedBonus}
+            isShowDepositModal={isShowDepositModal.isShowDepositModal}
+            bonusesArr={bonusesArr}
+            paymentMethods={paymentMethods}
+            setPaymentMethods={setPaymentMethods}
+          />
+        </ErrorText>
       </div>
     </div>
   )

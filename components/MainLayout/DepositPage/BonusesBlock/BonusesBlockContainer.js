@@ -6,6 +6,7 @@ import {bonusesFinder} from "../../../../helpers/bonusesFinder";
 import {bonusesCalculator} from "../../../../helpers/bonusesCalculator";
 import {BonusesDropdown} from "./BonusesDropdown";
 import {setUserBonus} from "../../../../redux/actions/setUserBonus";
+import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
@@ -29,6 +30,7 @@ export const BonusesBlockContainer = (props) => {
       // let buttonText = bonusesCalculator(activeBonus, userCurrency, userDepositValue, t);
       // setDepositButtonText(buttonText);
       return (
+        <ErrorEmpty>
           <BonusesDropdown
             t={t}
             bonusImage={'/assets/icons/home/bonus_info_icon.svg'}
@@ -42,6 +44,7 @@ export const BonusesBlockContainer = (props) => {
             userSelectedBonus={userSelectedBonus}
             userCurrency={userCurrency}
           />
+        </ErrorEmpty>
       )
     } else {
       // chooseBonusClickHandler(0)

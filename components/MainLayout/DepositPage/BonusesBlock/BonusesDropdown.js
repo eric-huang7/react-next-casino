@@ -3,6 +3,7 @@ import {BonusesBlock} from "./BonusesBlock";
 import {useSelector} from "react-redux";
 import {iconsUrl} from "../../../../helpers/imageUrl";
 import {bonusInfoCalculator} from "../../../../helpers/bonusInfoCalculator";
+import ErrorText from "../../../ErrorBoundaryComponents/ErrorText";
 
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
@@ -25,19 +26,21 @@ export const BonusesDropdown = ({t, allBonuses, isUseBonus, showAllBonuses,
             let bonusDescription = bonusInfoCalculator(el, userCurrency.userCurrencyData, t);
 
             return(
-              <BonusesBlock
-                key={`${el.id} bonus`}
-                t={t}
-                bonusId={el.id}
-                bonusImage={iconsUrl(el.icon)}
-                bonusHeading={`bonuses.bonus_${el.id}.deposit_bonus.heading`}
-                bonusDescription={`${bonusDescription.max_bonus}${bonusDescription.free_spins_amount ? ` + ${bonusDescription.free_spins_amount} ${t('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}
-                isUseBonus={isUseBonus}
-                chooseBonusClickHandler={chooseBonusClickHandler}
-                bonusData={el}
-                userCurrency={userCurrency}
-                canShowInfo={true}
-              />
+              <ErrorText key={`${el.id} bonus`}>
+                <BonusesBlock
+                  key={`${el.id} bonus`}
+                  t={t}
+                  bonusId={el.id}
+                  bonusImage={iconsUrl(el.icon)}
+                  bonusHeading={`bonuses.bonus_${el.id}.deposit_bonus.heading`}
+                  bonusDescription={`${bonusDescription.max_bonus}${bonusDescription.free_spins_amount ? ` + ${bonusDescription.free_spins_amount} ${t('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}
+                  isUseBonus={isUseBonus}
+                  chooseBonusClickHandler={chooseBonusClickHandler}
+                  bonusData={el}
+                  userCurrency={userCurrency}
+                  canShowInfo={true}
+                />
+              </ErrorText>
             )
           })
         }
