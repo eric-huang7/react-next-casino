@@ -1,6 +1,6 @@
-import styles from "../../../styles/TournamentSidebar/TournamentSidebar.module.scss";
+import styles from "../../../../styles/TournamentSidebar/TournamentSidebar.module.scss";
 import {useEffect, useState} from "react";
-import {dateTimer} from "../../../helpers/timer";
+import {dateTimer} from "../../../../helpers/timer";
 
 
 export const Timer = ({t, router, time}) => {

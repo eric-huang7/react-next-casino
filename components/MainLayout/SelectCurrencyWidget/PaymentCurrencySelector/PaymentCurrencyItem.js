@@ -1,13 +1,14 @@
 import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
 import {useEffect} from "react";
-import {useSelector} from "react-redux";
+// import {useSelector} from "react-redux";
 
 
 export const PaymentCurrencyItem = ({paymentMethod, chosePaymentClickHandler}) => {
-  const currencyData = useSelector((store) => store.getCurrency.currency.results);
+  // const currencyData = useSelector((store) => store.getCurrency.currency.results);
 
-// paymentMethod.currency_from.currency
+
   useEffect(() => {
+    // paymentMethod.currency_from.currency
     // let currencyForPayment = paymentMethod;
     // console.log(currencyData, 'currencyData.getCurrency.currency.results')
 

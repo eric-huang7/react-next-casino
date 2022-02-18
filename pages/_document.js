@@ -23,5 +23,3 @@ class MyDocument extends Document {
 }
 
 export default MyDocument
-
-// TODO: add for all pages /*<script type="text/javascript" src="/chatWidget/chatWidget.js"></script>*/

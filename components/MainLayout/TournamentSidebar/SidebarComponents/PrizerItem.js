@@ -1,4 +1,4 @@
-import styles from '../../../styles/TournamentSidebar/TournamentSidebar.module.scss';
+import styles from '../../../../styles/TournamentSidebar/TournamentSidebar.module.scss';
 
 
 export const PrizerItem = ({t, nickName, points, moneyAward, currency, index}) => {
