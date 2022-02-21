@@ -1,66 +1,63 @@
-import styles from "../../../styles/MyAccount/UserInfoPage/ChangePasswordPage.module.scss";
-import Link from "next/link";
-import {EmailBlock} from "./EmailBlock";
-import {PasswordBlock} from "./PasswordBlock";
-import {ConfirmPasswordBlock} from "./ConfirmPasswordBlock";
-import {CurrentPasswordBlock} from "./CurrentPasswordBlock";
-import {ButtonsBlock} from "./ButtonsBlock";
-import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {schemaChangePassword} from "../../../schemasForms/changePasswordForm";
-import {auth, patchUserData} from "../../../redux/actions/userData";
-import axios from "axios";
-import {user_url} from "../../../redux/url/url";
+import styles from '../../../styles/MyAccount/UserInfoPage/ChangePasswordPage.module.scss'
+import { EmailBlock } from './EmailBlock'
+import { PasswordBlock } from './PasswordBlock'
+import { ConfirmPasswordBlock } from './ConfirmPasswordBlock'
+import { CurrentPasswordBlock } from './CurrentPasswordBlock'
+import { ButtonsBlock } from './ButtonsBlock'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { schemaChangePassword } from '../../../schemasForms/changePasswordForm'
+import { auth } from '../../../redux/actions/userData'
+import axios from 'axios'
+import { user_url } from '../../../redux/url/url'
 
-
-export const ChangePasswordForm = ({t, userInfo}) => {
-  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+export const ChangePasswordForm = ({ t, userInfo }) => {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schemaChangePassword),
-  });
-  const dispatch = useDispatch();
+  })
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setPasswordValue("");
-    setPasswordConfirmValue("");
-    setCurrenPasswordValue("");
-    setPasswordConfirmError("");
-    setPasswordError("");
-    setCurrenPasswordError("");
-    setSuccessMessage('');
+    setPasswordValue('')
+    setPasswordConfirmValue('')
+    setCurrenPasswordValue('')
+    setPasswordConfirmError('')
+    setPasswordError('')
+    setCurrenPasswordError('')
+    setSuccessMessage('')
   }, [errors])
 
-  const [passwordValue, setPasswordValue] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [passwordConfirmValue, setPasswordConfirmValue] = useState('');
-  const [passwordConfirmError, setPasswordConfirmError] = useState('');
-  const [currenPasswordValue, setCurrenPasswordValue] = useState('');
-  const [currenPasswordError, setCurrenPasswordError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [passwordValue, setPasswordValue] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [passwordConfirmValue, setPasswordConfirmValue] = useState('')
+  const [passwordConfirmError, setPasswordConfirmError] = useState('')
+  const [currenPasswordValue, setCurrenPasswordValue] = useState('')
+  const [currenPasswordError, setCurrenPasswordError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
   const passwordInputHandler = (value) => {
-    setPasswordValue(value);
+    setPasswordValue(value)
   }
   const confirmPasswordInputHandler = (value) => {
-    setPasswordConfirmValue(value);
+    setPasswordConfirmValue(value)
   }
   const currentPasswordInputHandler = (value) => {
-    setCurrenPasswordValue(value);
+    setCurrenPasswordValue(value)
   }
 
   const onSubmitHandler = (data) => {
-    setSuccessMessage('');
-    setPasswordValue("");
-    setPasswordError("");
-    setPasswordConfirmValue("");
-    setCurrenPasswordValue("");
-    setPasswordConfirmError("");
-    setCurrenPasswordError('');
+    setSuccessMessage('')
+    setPasswordValue('')
+    setPasswordError('')
+    setPasswordConfirmValue('')
+    setCurrenPasswordValue('')
+    setPasswordConfirmError('')
+    setCurrenPasswordError('')
 
-    submitHelper(data);
+    submitHelper(data)
   }
   const submitHelper = (data) => {
-
 
     if (data.password === passwordConfirmValue) {
 
@@ -80,33 +77,31 @@ export const ChangePasswordForm = ({t, userInfo}) => {
 
       axios.patch(user_url, body, config)
         .then((data) => {
-          setPasswordConfirmError("");
-          setPasswordError("");
-          setPasswordConfirmValue("");
-          setPasswordValue("");
-          setCurrenPasswordValue("");
-          setCurrenPasswordError('');
-          // Пароль успешно изменен!
-          setSuccessMessage(t("myAccount.changePasswordPage.successMessage"));
-          dispatch(auth());
+          setPasswordConfirmError('')
+          setPasswordError('')
+          setPasswordConfirmValue('')
+          setPasswordValue('')
+          setCurrenPasswordValue('')
+          setCurrenPasswordError('')
+          setSuccessMessage(t('myAccount.changePasswordPage.successMessage'))
+          dispatch(auth())
         })
         .catch((error) => {
-          setSuccessMessage('');
-          setPasswordValue("");
-          setPasswordConfirmValue("");
-          setCurrenPasswordValue("");
+          setSuccessMessage('')
+          setPasswordValue('')
+          setPasswordConfirmValue('')
+          setCurrenPasswordValue('')
 
           if (error.response.data.error_code === 'PASSWORD_COMPLEXITY_ERROR') {
-            setPasswordError(t("myAccount.changePasswordPage.complexityError"));
+            setPasswordError(t('myAccount.changePasswordPage.complexityError'))
           } else {
             //
-            setCurrenPasswordError(t("myAccount.changePasswordPage.wrongCurrentPassword"));
+            setCurrenPasswordError(t('myAccount.changePasswordPage.wrongCurrentPassword'))
           }
         })
 
     } else {
-      //Пароль не совпадает!
-      setPasswordConfirmError(t("myAccount.changePasswordPage.passwordNotMatch"));
+      setPasswordConfirmError(t('myAccount.changePasswordPage.passwordNotMatch'))
     }
 
   }
