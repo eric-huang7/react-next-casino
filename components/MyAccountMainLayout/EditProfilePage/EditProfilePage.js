@@ -3,6 +3,7 @@ import {Heading} from "../ComponentsForPages/Heading";
 import {EditProfileMainContainer} from "./EditProfileComponents/EditProfileMainContainer";
 import {useSelector} from "react-redux";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 
 
@@ -22,7 +23,9 @@ export const EditProfilePage = ({t}) => {
     return (
       <div className={styles.editProfileMainContainer}>
         <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
-        <EditProfileMainContainer currencyJurisdiction={currencyJurisdiction} userInfo={userInfo.user.user} t={t}/>
+        <ErrorText>
+          <EditProfileMainContainer currencyJurisdiction={currencyJurisdiction} userInfo={userInfo.user.user} t={t}/>
+        </ErrorText>
       </div>
     )
   }
