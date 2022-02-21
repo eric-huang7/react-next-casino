@@ -1,16 +1,15 @@
-import styles from "../../../styles/MyAccount/BalancePage/BalancePage.module.scss";
-import {TableContainer} from "./TableContainer";
-import {useDispatch, useSelector} from "react-redux";
-import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
-import {showCurrencySwitcher} from "../../../redux/actions/showPopups";
-import {setCurrencySelectorType} from "../../../redux/actions/setSelectedCurrency";
+import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
+import { TableContainer } from './TableContainer'
+import { useDispatch } from 'react-redux'
+import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
+import { showCurrencySwitcher } from '../../../redux/actions/showPopups'
+import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
 
-
-export const BalanceInfoContainer = ({t, balanceInfo, currency}) => {
+export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   const dispatch = useDispatch()
   const addCurrencyClickHandler = () => {
-    dispatch(showCurrencySwitcher(true));
-    dispatch(setCurrencySelectorType(false));
+    dispatch(showCurrencySwitcher(true))
+    dispatch(setCurrencySelectorType(false))
   }
 
   if (balanceInfo?.balance?.success && !currency.loading) {
@@ -20,7 +19,7 @@ export const BalanceInfoContainer = ({t, balanceInfo, currency}) => {
           <TableContainer currency={currency} balanceInfo={balanceInfo} t={t}/>
         </div>
         <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
-          {t("myAccount.balance.buttons.addCurrency")}
+          {t('myAccount.balance.buttons.addCurrency')}
         </button>
       </>
     )
@@ -29,6 +28,5 @@ export const BalanceInfoContainer = ({t, balanceInfo, currency}) => {
       <LoadingComponent t={t}/>
     )
   }
-
 
 }

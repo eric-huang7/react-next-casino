@@ -1,20 +1,18 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss';
-import {useDispatch} from "react-redux";
-import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
-import {showDepositModal} from "../../../redux/actions/showPopups";
+import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
+import { useDispatch } from 'react-redux'
+import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
+import { showDepositModal } from '../../../redux/actions/showPopups'
 
-
-
-export const DepositButton = ({t, currency}) => {
+export const DepositButton = ({ t, currency }) => {
   const dispatch = useDispatch()
-
 
   const currencyButtonHandler = () => {
     dispatch(setUserCurrencySwitcher(currency))
-    dispatch(showDepositModal(true));
+    dispatch(showDepositModal(true))
   }
 
   return (
-    <button onClick={() => currencyButtonHandler()} className={styles.depositButton}>{t("myAccount.balance.buttons.deposit")}</button>
+    <button onClick={() => currencyButtonHandler()}
+            className={styles.depositButton}>{t('myAccount.balance.buttons.deposit')}</button>
   )
 }
