@@ -1,16 +1,16 @@
-import styles from '../../../../styles/MyAccount/BetsHistory/BetsHistory.module.scss';
-import {dateFormatter} from "../../../../helpers/dateTranslator";
-import {useRouter} from "next/router";
+import styles from '../../../../styles/MyAccount/BetsHistory/BetsHistory.module.scss'
+import { dateFormatter } from '../../../../helpers/dateTranslator'
+import { useRouter } from 'next/router'
 
-export const BetsHistoryRow = ({t, betData}) => {
+export const BetsHistoryRow = ({ betData }) => {
 
-  const router = useRouter();
+  const router = useRouter()
 
-  let currency = betData.currency_abrv;
-  let game = gameItem(betData.game);
-  let bet = `${Number(betData.bet_amount)} ${currency ? currency : ""}`;
-  let win = `${Number(betData.win_amount)} ${currency ? currency : ""}`;
-  let date = dateFormatter(betData.time_created, router.locale);
+  let currency = betData.currency_abrv
+  let game = gameItem(betData.game)
+  let bet = `${Number(betData.bet_amount)} ${currency ? currency : ''}`
+  let win = `${Number(betData.win_amount)} ${currency ? currency : ''}`
+  let date = dateFormatter(betData.time_created, router.locale)
 
   return (
     <tr className={styles.betTableRow}>
@@ -30,12 +30,12 @@ export const BetsHistoryRow = ({t, betData}) => {
   )
 }
 
-function gameItem (game){
+function gameItem (game) {
 
   if (game.indexOf('&amp;amp;') === -1) {
-    return game;
+    return game
   } else {
-    return game.replace("&amp;amp;", "&")
+    return game.replace('&amp;amp;', '&')
   }
 
 }
