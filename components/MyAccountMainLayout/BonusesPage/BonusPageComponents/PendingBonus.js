@@ -1,8 +1,18 @@
-import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
+import styles from '../../../../styles/MyAccount/BonusPage/BonusPage.module.scss'
 
-
-export const PendingBonus = ({t, title, stage, amountName, amount, wagerOrFreeSpins, wagerOrFreeSpinsAmount, dateReceived, expiryDate, activateBonusClickHandler, bonusData}) => {
-
+export const PendingBonus = ({
+  t,
+  title,
+  stage,
+  amountName,
+  amount,
+  wagerOrFreeSpins,
+  wagerOrFreeSpinsAmount,
+  dateReceived,
+  expiryDate,
+  activateBonusClickHandler,
+  bonusData
+}) => {
 
   return (
     <div className={styles.bonusItemContainer}>
@@ -20,19 +30,24 @@ export const PendingBonus = ({t, title, stage, amountName, amount, wagerOrFreeSp
           <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{" "}</div>
-          <div className={styles.wagerPercentValue}>{""}</div>
+          <div className={styles.wagerPercent}>{' '}</div>
+          <div className={styles.wagerPercentValue}>{''}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.dateReceived}>{t("myAccount.bonusPage.bonusItems.dateReceived")}</div>
+          <div className={styles.dateReceived}>{t('myAccount.bonusPage.bonusItems.dateReceived')}</div>
           <div className={styles.dateReceivedValue}>{dateReceived}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.expiryDate}>{t("myAccount.bonusPage.bonusItems.activateUntil")}</div>
+          <div className={styles.expiryDate}>{t('myAccount.bonusPage.bonusItems.activateUntil')}</div>
           <div className={styles.expiryDate}>{expiryDate}</div>
         </li>
       </ul>
-      <button onClick={() => activateBonusClickHandler(bonusData)} className={styles.activateBonus}>{t("myAccount.bonusPage.bonusItems.activateBonus")}</button>
+      <button
+        onClick={() => activateBonusClickHandler(bonusData)}
+        className={styles.activateBonus}
+      >
+        {t('myAccount.bonusPage.bonusItems.activateBonus')}
+      </button>
     </div>
   )
 }
