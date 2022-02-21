@@ -1,17 +1,13 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss';
-import {useRouter} from "next/router";
-import {dateFormatter} from "../../../../helpers/dateTranslator";
+import { useRouter } from 'next/router'
+import { dateFormatter } from '../../../../helpers/dateTranslator'
 
+export const TableRow = ({ t, sessionData }) => {
+  const router = useRouter()
 
-export const TableRow = ({t, sessionData}) => {
-  const router = useRouter();
-
-
-  let date = dateFormatter(sessionData.time_created, router.locale);
-  let ip = sessionData.ip_address.replace("::ffff:", "");
-  let country = sessionData.ip_country;
-  let device = sessionData.device;
-
+  let date = dateFormatter(sessionData.time_created, router.locale)
+  let ip = sessionData.ip_address.replace('::ffff:', '')
+  let country = sessionData.ip_country
+  let device = sessionData.device
 
   return (
     <tr>

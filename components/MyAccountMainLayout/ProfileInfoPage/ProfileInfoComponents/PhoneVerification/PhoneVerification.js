@@ -1,31 +1,31 @@
-import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss';
-import {PhoneInputContainer} from "./PhoneInputContainer";
-import {VerifyCodeInputContainer} from "./VerifyCodeInputContainer";
-import {useDispatch} from "react-redux";
-import {useState} from "react";
-import axios from "axios";
-import {phone_number_url, user_url} from "../../../../../redux/url/url";
-import {auth, patchUserData} from "../../../../../redux/actions/userData";
-import {PhoneAlreadyVerified} from "./PhoneAlreadyVerified";
+import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
+import { PhoneInputContainer } from './PhoneInputContainer'
+import { VerifyCodeInputContainer } from './VerifyCodeInputContainer'
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import axios from 'axios'
+import { phone_number_url } from '../../../../../redux/url/url'
+import { auth, patchUserData } from '../../../../../redux/actions/userData'
+import { PhoneAlreadyVerified } from './PhoneAlreadyVerified'
+import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
 
-
-export const PhoneVerification = ({t, userInfo}) => {
+export const PhoneVerification = ({ t, userInfo }) => {
   const dispatch = useDispatch()
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [verifyCode, setVerifyCode] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phoneError, setPhoneError] = useState('')
+  const [verifyCode, setVerifyCode] = useState('')
 
   const phoneInputValue = (value) => {
-    setPhoneNumber(value);
+    setPhoneNumber(value)
   }
   const verifyCodeInputHandler = (value) => {
-    setVerifyCode(value);
+    setVerifyCode(value)
   }
 
   const sendVerifyCodeHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (verifyCode === '') {
-      setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
+      setPhoneError(t('myAccount.profilePage.phoneVerification.errors.invalidCode'))
     } else {
       let userData = {
         type: 5,
@@ -40,23 +40,20 @@ export const PhoneVerification = ({t, userInfo}) => {
       const body = JSON.stringify(userData)
       axios.patch(phone_number_url, body, config).then((data) => {
         if (data.data.extra_error_info) {
-          //Введен неверный код. Пожалуйста попробуйте еще раз.
-          setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
+          setPhoneError(t('myAccount.profilePage.phoneVerification.errors.invalidCode'))
         } else {
-          setPhoneError('');
+          setPhoneError('')
         }
 
-        dispatch(auth());
+        dispatch(auth())
       }).catch((e) => {
-        //Введен неверный код. Пожалуйста попробуйте еще раз.
-        setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidCode"));
-
+        setPhoneError(t('myAccount.profilePage.phoneVerification.errors.invalidCode'))
       })
     }
   }
 
   const sendPhoneNumberHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     let userData = {
       id: userInfo.user.user.id,
@@ -74,13 +71,11 @@ export const PhoneVerification = ({t, userInfo}) => {
     }
     axios.get(phone_number_url, config).then((data) => {
 
-      setPhoneError("");
-      dispatch(auth());
+      setPhoneError('')
+      dispatch(auth())
       // dispatch(patchUserData(userData));
     }).catch((e) => {
-
-      // Не удалось добавить телефон. Номер телефона недействителен.
-      setPhoneError(t("myAccount.profilePage.phoneVerification.errors.invalidPhone"));
+      setPhoneError(t('myAccount.profilePage.phoneVerification.errors.invalidPhone'))
     })
   }
   const sendAgainVerifyCode = () => {
@@ -97,12 +92,10 @@ export const PhoneVerification = ({t, userInfo}) => {
       }
       axios.get(phone_number_url, config).then((data) => {
 
-        setPhoneError("");
+        setPhoneError('')
         // dispatch(patchUserData(userData));
       }).catch((e) => {
-
-        // Ошибка при отправке кода. Пожалуйста свяжитесь с службой поддержки.
-        setPhoneError(t("myAccount.profilePage.phoneVerification.errors.errorSendingCode"));
+        setPhoneError(t('myAccount.profilePage.phoneVerification.errors.errorSendingCode'))
       })
     }
   }
@@ -113,49 +106,60 @@ export const PhoneVerification = ({t, userInfo}) => {
       phone_number: '',
       unconfirmed_phone: ''
     }
-    setPhoneError("");
-    dispatch(patchUserData(userData));
+    setPhoneError('')
+    dispatch(patchUserData(userData))
   }
 
-  let status = userInfo.user.user.phone_number ? t("myAccount.profilePage.phoneVerification.status.verified") : t("myAccount.profilePage.phoneVerification.status.notVerified");
+  let status =
+    userInfo.user.user.phone_number
+      ?
+      t('myAccount.profilePage.phoneVerification.status.verified')
+      :
+      t('myAccount.profilePage.phoneVerification.status.notVerified')
 
   if (userInfo.user.user.unconfirmed_phone && !userInfo.user.user.phone_number) {
     return (
       <div className={styles.phoneVerificationContainer}>
-        <VerifyCodeInputContainer
-          status={status}
-          t={t}
-          userInfo={userInfo.user.user}
-          sendAgainVerifyCode={sendAgainVerifyCode}
-          phoneError={phoneError}
-          removePhoneNumberHandler={removePhoneNumberHandler}
-          verifyCodeInputHandler={verifyCodeInputHandler}
-          verifyCode={verifyCode}
-          sendVerifyCodeHandler={sendVerifyCodeHandler}
-        />
+        <ErrorText>
+          <VerifyCodeInputContainer
+            status={status}
+            t={t}
+            userInfo={userInfo.user.user}
+            sendAgainVerifyCode={sendAgainVerifyCode}
+            phoneError={phoneError}
+            removePhoneNumberHandler={removePhoneNumberHandler}
+            verifyCodeInputHandler={verifyCodeInputHandler}
+            verifyCode={verifyCode}
+            sendVerifyCodeHandler={sendVerifyCodeHandler}
+          />
+        </ErrorText>
       </div>
     )
   } else if (!userInfo.user.user.unconfirmed_phone) {
     return (
       <div className={styles.phoneVerificationContainer}>
-        <PhoneInputContainer
-          t={t}
-          phoneInputValue={phoneInputValue}
-          phoneError={phoneError}
-          phoneNumber={phoneNumber}
-          sendPhoneNumberHandler={sendPhoneNumberHandler}
-        />
+        <ErrorText>
+          <PhoneInputContainer
+            t={t}
+            phoneInputValue={phoneInputValue}
+            phoneError={phoneError}
+            phoneNumber={phoneNumber}
+            sendPhoneNumberHandler={sendPhoneNumberHandler}
+          />
+        </ErrorText>
       </div>
     )
   } else if (userInfo.user.user.phone_number && (!userInfo.user.user.unconfirmed_phone || userInfo.user.user.unconfirmed_phone)) {
     return (
       <div className={styles.phoneVerificationContainer}>
-        <PhoneAlreadyVerified
-          t={t}
-          userInfo={userInfo.user.user}
-          removePhoneNumberHandler={removePhoneNumberHandler}
-          status={status}
-        />
+        <ErrorText>
+          <PhoneAlreadyVerified
+            t={t}
+            userInfo={userInfo.user.user}
+            removePhoneNumberHandler={removePhoneNumberHandler}
+            status={status}
+          />
+        </ErrorText>
       </div>
     )
   }

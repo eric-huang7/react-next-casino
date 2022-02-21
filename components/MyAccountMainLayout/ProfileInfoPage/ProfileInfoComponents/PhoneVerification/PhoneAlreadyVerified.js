@@ -1,22 +1,24 @@
-import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss';
-import {VerifyPhoneUserInfoTable} from "./VerifyPhoneUserInfoTable";
+import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
+import { VerifyPhoneUserInfoTable } from './VerifyPhoneUserInfoTable'
+import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
 
-
-export const PhoneAlreadyVerified = ({t, userInfo, status, removePhoneNumberHandler}) => {
+export const PhoneAlreadyVerified = ({ t, userInfo, status, removePhoneNumberHandler }) => {
   let phoneNumber = userInfo.phone_number ? userInfo.phone_number.replaceAll('-', '').split('').map((el, ind) => {
     if (ind === 5 || ind === 6 || ind === 7) {
-      return "*";
+      return '*'
     } else {
-      return el;
+      return el
     }
-  }) : "";
+  }) : ''
 
   return (
     <div className={styles.verifyCodeContainer}>
-      <VerifyPhoneUserInfoTable phoneNumber={phoneNumber} t={t} status={status}/>
+      <ErrorText>
+        <VerifyPhoneUserInfoTable phoneNumber={phoneNumber} t={t} status={status}/>
+      </ErrorText>
       <div className={styles.buttonsContainer}>
         <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>
-          {t("myAccount.profilePage.phoneVerification.buttons.remove")}
+          {t('myAccount.profilePage.phoneVerification.buttons.remove')}
         </button>
       </div>
     </div>

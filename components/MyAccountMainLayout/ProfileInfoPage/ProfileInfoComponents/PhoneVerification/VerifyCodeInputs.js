@@ -1,8 +1,6 @@
-import styles from "../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss";
+import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
 
-
-export const VerifyCodeInputs = ({t, verifyCodeInputHandler, verifyCode, sendVerifyCodeHandler}) => {
-
+export const VerifyCodeInputs = ({ t, verifyCodeInputHandler, verifyCode, sendVerifyCodeHandler }) => {
 
   return (
     <form onSubmit={(e) => sendVerifyCodeHandler(e)}>
@@ -17,10 +15,9 @@ export const VerifyCodeInputs = ({t, verifyCodeInputHandler, verifyCode, sendVer
           onClick={(e) => sendVerifyCodeHandler(e)}
           className={styles.verifyCodeButton}
         >
-          {t("myAccount.profilePage.phoneVerification.buttons.confirm")}
+          {t('myAccount.profilePage.phoneVerification.buttons.confirm')}
         </button>
       </div>
     </form>
-
   )
 }

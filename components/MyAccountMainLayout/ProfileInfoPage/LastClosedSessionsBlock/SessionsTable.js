@@ -1,12 +1,9 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss';
-import {TableHead} from "./TableHead";
-import {TableRow} from "./TableRow";
+import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
+import { TableHead } from './TableHead'
+import { TableRow } from './TableRow'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-
-export const SessionsTable = ({t, sessionsInfo}) => {
-
-
+export const SessionsTable = ({ t, sessionsInfo }) => {
 
   return (
     <div className={styles.sessionsTableWrapper}>
@@ -18,7 +15,9 @@ export const SessionsTable = ({t, sessionsInfo}) => {
         {
           sessionsInfo.sessions.map((session) => {
             return (
-              <TableRow key={`session ${session.id}`} t={t} sessionData={session}/>
+              <ErrorEmpty key={`session ${session.id}`}>
+                <TableRow key={`session ${session.id}`} t={t} sessionData={session}/>
+              </ErrorEmpty>
             )
           })
         }

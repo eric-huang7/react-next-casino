@@ -1,25 +1,38 @@
-import styles from '../../../styles/MyAccount/UserInfoPage/UserInfoBlock.module.scss';
+import styles from '../../../styles/MyAccount/UserInfoPage/UserInfoBlock.module.scss'
+import { UserInfoBlock } from './ProfileInfoComponents/UserInfoBlock'
+import { PhoneVerification } from './ProfileInfoComponents/PhoneVerification/PhoneVerification'
+import { ChangePasswordBlock } from './ChangePasswordBlock/ChangePasswordBlock'
+import { SocialNetworkBlock } from './SocialNetworkBlock/SocialNetworkBlock'
+import { ActiveSessionsBlock } from './ActiveSessionsBlock/ActiveSessionsBlock'
+import { LastClosedSessionsBlock } from './LastClosedSessionsBlock/LastClosedSessionsBlock'
+import { GoogleAuthBlock } from './GoogleAuthBlock/GoogleAuthBlock'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
-import {UserInfoBlock} from "./ProfileInfoComponents/UserInfoBlock";
-import {PhoneVerification} from "./ProfileInfoComponents/PhoneVerification/PhoneVerification";
-import {ChangePasswordBlock} from "./ChangePasswordBlock/ChangePasswordBlock";
-import {SocialNetworkBlock} from "./SocialNetworkBlock/SocialNetworkBlock";
-import {ActiveSessionsBlock} from "./ActiveSessionsBlock/ActiveSessionsBlock";
-import {LastClosedSessionsBlock} from "./LastClosedSessionsBlock/LastClosedSessionsBlock";
-import {GoogleAuthBlock} from "./GoogleAuthBlock/GoogleAuthBlock";
-
-
-export const UserInfoContainer = ({t, userInfo, currencyJurisdiction}) => {
+export const UserInfoContainer = ({ t, userInfo, currencyJurisdiction }) => {
 
   return (
     <div className={styles.mainContaainer}>
-      <UserInfoBlock userInfo={userInfo} t={t} currencyJurisdiction={currencyJurisdiction}/>
-      <PhoneVerification t={t} userInfo={userInfo}/>
-      <ChangePasswordBlock t={t} userInfo={userInfo}/>
-      <SocialNetworkBlock t={t} userInfo={userInfo}/>
-      <ActiveSessionsBlock t={t} userInfo={userInfo} />
-      <LastClosedSessionsBlock t={t} userInfo={userInfo} />
-      <GoogleAuthBlock t={t} />
+      <ErrorEmpty>
+        <UserInfoBlock userInfo={userInfo} t={t} currencyJurisdiction={currencyJurisdiction}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <PhoneVerification t={t} userInfo={userInfo}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <ChangePasswordBlock t={t} userInfo={userInfo}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <SocialNetworkBlock t={t} userInfo={userInfo}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <ActiveSessionsBlock t={t} userInfo={userInfo}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <LastClosedSessionsBlock t={t} userInfo={userInfo}/>
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <GoogleAuthBlock t={t}/>
+      </ErrorEmpty>
     </div>
   )
 }
