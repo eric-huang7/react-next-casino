@@ -1,18 +1,17 @@
-import styles from "../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss";
+import styles from '../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
 
-
-export const AddressInput = ({t, addressInputHandler, addressValue, addressError}) => {
-
+export const AddressInput = ({ t, addressInputHandler, addressValue, addressError }) => {
 
   return (
-    <div  className={styles.addressInputContainer}>
-      <label htmlFor="addressInputContainer" className={styles.addressLabel}>{t("myAccount.cashoutPage.selectPaymentContainer.accountNumberIban")}</label>
+    <div className={styles.addressInputContainer}>
+      <label htmlFor="addressInputContainer"
+             className={styles.addressLabel}>{t('myAccount.cashoutPage.selectPaymentContainer.accountNumberIban')}</label>
       <input
         onChange={(e) => addressInputHandler(e.target.value)}
         value={addressValue}
         type="text"
         className={styles.addressInput}
-        id={"addressInputContainer"}
+        id={'addressInputContainer'}
       />
       <span className={styles.formErrorMessage}>{addressError}</span>
     </div>
