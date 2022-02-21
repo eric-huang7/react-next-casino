@@ -1,19 +1,18 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss';
-import QRCode from 'qrcode';
-import {useEffect, useState} from "react";
+import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
+import QRCode from 'qrcode'
+import { useEffect, useState } from 'react'
 
-
-export const QrGenerator = ({qrData}) => {
+export const QrGenerator = ({ qrData }) => {
   const [src, setSrc] = useState('')
 
   useEffect(() => {
     QRCode.toDataURL(qrData).then((data) => {
-      setSrc(data);
+      setSrc(data)
     })
     return () => {
 
     }
-  },[qrData])
+  }, [qrData])
 
   return (
     <div className={styles.qrImageContainer}>

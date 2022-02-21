@@ -1,26 +1,25 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss';
-import {TextBlock} from "./TextBlock";
-import {TwoFactorCompleteInputsBlock} from "./TwoFactorCompleteInputsBlock";
-import {useState} from "react";
-import axios from "axios";
-import {qr_auth_url} from "../../../../redux/url/url";
-import {auth, mayYwoFactorAuth} from "../../../../redux/actions/userData";
-import {useDispatch} from "react-redux";
-import {useRouter} from "next/router";
+import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
+import { TextBlock } from './TextBlock'
+import { TwoFactorCompleteInputsBlock } from './TwoFactorCompleteInputsBlock'
+import { useState } from 'react'
+import axios from 'axios'
+import { qr_auth_url } from '../../../../redux/url/url'
+import { mayYwoFactorAuth } from '../../../../redux/actions/userData'
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 
-
-export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const [deactivateCodeValue, setDeactivateCodeValue] = useState('');
+export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const [deactivateCodeValue, setDeactivateCodeValue] = useState('')
   const [deactivateError, setDeactivateError] = useState('')
   const deactivateInputHandler = (value) => {
-    setDeactivateCodeValue(value);
+    setDeactivateCodeValue(value)
   }
 
   const deactivateButtonClickHandler = (e) => {
-    e.preventDefault();
-
+    e.preventDefault()
 
     let googleAuthData = {
       // key: authData.qrAuth.key,
@@ -33,34 +32,33 @@ export const TwoFactorAuthCompleteBlock = ({t, authData}) => {
         'Content-Type': 'application/json',
       },
     }
-    const body = JSON.stringify(googleAuthData);
+    const body = JSON.stringify(googleAuthData)
 
     axios.post(qr_auth_url, body, config)
       .then((data) => {
 
-        dispatch(mayYwoFactorAuth(false));
+        dispatch(mayYwoFactorAuth(false))
         // dispatch(auth());
-        setDeactivateError("");
-        router.push('/accounts/profile-info');
+        setDeactivateError('')
+        router.push('/accounts/profile-info')
       })
       .catch((error) => {
-
-        // Не удалось отключить двухфакторную аутентификацию. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.
-        setDeactivateError(t("myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable"))
+        setDeactivateError(t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable'))
       })
   }
 
-
   return (
     <div className={styles.googleAuthContainer}>
-      <TextBlock t={t} />
-      <TwoFactorCompleteInputsBlock
-        deactivateCodeValue={deactivateCodeValue}
-        deactivateInputHandler={deactivateInputHandler}
-        deactivateButtonClickHandler={deactivateButtonClickHandler}
-        deactivateError={deactivateError}
-        t={t}
-      />
+      <TextBlock t={t}/>
+      <ErrorText>
+        <TwoFactorCompleteInputsBlock
+          deactivateCodeValue={deactivateCodeValue}
+          deactivateInputHandler={deactivateInputHandler}
+          deactivateButtonClickHandler={deactivateButtonClickHandler}
+          deactivateError={deactivateError}
+          t={t}
+        />
+      </ErrorText>
     </div>
   )
 }
