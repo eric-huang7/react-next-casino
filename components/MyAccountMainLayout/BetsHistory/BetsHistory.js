@@ -5,6 +5,7 @@ import { BetsHistoryTextContainer } from './BetsHistoryTextContainer'
 import { BetsHistoryTableContainer } from './BetsHistoryTableContainer'
 import { useSelector } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const BetsHistory = ({ t, router }) => {
   const userInfo = useSelector((store) => store.authInfo)
@@ -15,8 +16,9 @@ export const BetsHistory = ({ t, router }) => {
         <Heading t={t} heading={'myAccount.pageHeadings.betHistory'}/>
         <TrxHistoryLinksContainer t={t} router={router}/>
         <BetsHistoryTextContainer t={t}/>
-        <BetsHistoryTableContainer betsData={userInfo.userBetsData} t={t}/>
-
+        <ErrorText>
+          <BetsHistoryTableContainer betsData={userInfo.userBetsData} t={t}/>
+        </ErrorText>
       </div>
     )
   } else {
