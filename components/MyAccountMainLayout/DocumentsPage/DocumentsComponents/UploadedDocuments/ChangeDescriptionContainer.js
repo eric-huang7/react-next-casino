@@ -1,12 +1,17 @@
-import styles from "../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss";
+import styles from '../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 
-
-export const ChangeDescriptionContainer = ({t, showChangeFormHandler, document, showChangeForm, newDescription, newDescriptionInputHandler, updateDocumentHandler}) => {
-
-
+export const ChangeDescriptionContainer = ({
+  t,
+  showChangeFormHandler,
+  document,
+  showChangeForm,
+  newDescription,
+  newDescriptionInputHandler,
+  updateDocumentHandler
+}) => {
 
   return (
-    <div className={`${styles.documentChangeContainer} ${showChangeForm ? "" : styles.hideForm}`}>
+    <div className={`${styles.documentChangeContainer} ${showChangeForm ? '' : styles.hideForm}`}>
       <form id={`${'changeDocumentForm'}${document.id}`}>
             <textarea
               name={`${'changeDocumentDescription'}${document.id}`}
@@ -16,17 +21,17 @@ export const ChangeDescriptionContainer = ({t, showChangeFormHandler, document, 
             />
       </form>
       <button
-        type={"submit"}
+        type={'submit'}
         className={styles.updateButton}
         onClick={() => updateDocumentHandler(document)}
       >
-        {t("myAccount.documentsPage.uploadedDocumentsBlock.updateDocument")}
+        {t('myAccount.documentsPage.uploadedDocumentsBlock.updateDocument')}
       </button>
       <button
         className={styles.cancelButton}
         onClick={() => showChangeFormHandler(false)}
       >
-        {t("myAccount.documentsPage.uploadedDocumentsBlock.cancel")}
+        {t('myAccount.documentsPage.uploadedDocumentsBlock.cancel')}
       </button>
     </div>
   )

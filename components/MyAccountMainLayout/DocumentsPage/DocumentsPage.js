@@ -1,21 +1,20 @@
 import styles from '../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
-import {Heading} from "../ComponentsForPages/Heading";
-import {FirstTextBlock} from "./DocumentsComponents/FirstTextBlock";
-import {SecondTextBlock} from "./DocumentsComponents/SecondTextBlock";
-import {UploadDocumentsBlock} from "./DocumentsComponents/UploadDocumentsBlock";
-import {useSelector} from "react-redux";
-import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
-import {UploadedDocumentsContainer} from "./DocumentsComponents/UploadedDocuments/UploadedDocumentsContainer";
+import { Heading } from '../ComponentsForPages/Heading'
+import { FirstTextBlock } from './DocumentsComponents/FirstTextBlock'
+import { SecondTextBlock } from './DocumentsComponents/SecondTextBlock'
+import { UploadDocumentsBlock } from './DocumentsComponents/UploadDocumentsBlock'
+import { useSelector } from 'react-redux'
+import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
+import { UploadedDocumentsContainer } from './DocumentsComponents/UploadedDocuments/UploadedDocumentsContainer'
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
-
-export const DocumentsPage = ({t}) => {
-  const documentsData = useSelector((store) => store.authInfo);
-
+export const DocumentsPage = ({ t }) => {
+  const documentsData = useSelector((store) => store.authInfo)
 
   if (documentsData.loadingDocuments) {
     return (
       <div className={styles.mainContainer}>
-        <Heading t={t} heading={"myAccount.pageHeadings.documents"}/>
+        <Heading t={t} heading={'myAccount.pageHeadings.documents'}/>
         <LoadingComponent t={t}/>
       </div>
     )
@@ -24,22 +23,26 @@ export const DocumentsPage = ({t}) => {
       <div className={styles.mainContainer}>
         <Heading
           t={t}
-          heading={"myAccount.pageHeadings.documents"}
+          heading={'myAccount.pageHeadings.documents'}
         />
         <FirstTextBlock t={t}/>
         <SecondTextBlock t={t}/>
         {
           documentsData.userDocuments.results.filter((el) => !el.time_removed).length > 0
             ?
-            <UploadedDocumentsContainer
-              documentsData={documentsData.userDocuments.results.filter((el) => !el.time_removed)}
-              t={t}
-            />
+            <ErrorText>
+              <UploadedDocumentsContainer
+                documentsData={documentsData.userDocuments.results.filter((el) => !el.time_removed)}
+                t={t}
+              />
+            </ErrorText>
             :
             <></>
         }
-        <UploadDocumentsBlock
-          t={t}/>
+        <ErrorText>
+          <UploadDocumentsBlock
+            t={t}/>
+        </ErrorText>
       </div>
     )
   }
