@@ -1,27 +1,25 @@
-import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
-import {CurrencyItem} from "./CurrencyItem";
-import {useDispatch} from "react-redux";
-import {setUserCurrencySwitcher} from "../../../../redux/actions/setSelectedCurrency";
-import {addCurrencyToUserList} from "../../../../redux/actions/userData";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
+import { CurrencyItem } from './CurrencyItem'
+import { useDispatch } from 'react-redux'
+import { setUserCurrencySwitcher } from '../../../../redux/actions/setSelectedCurrency'
+import { addCurrencyToUserList } from '../../../../redux/actions/userData'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, userAuth}) => {
-  const dispatch = useDispatch();
+export const CurrencyList = ({ t, type, currenciesData, backButtonClickHandler, userAuth }) => {
+  const dispatch = useDispatch()
 
   const currencySelectorHandler = (currencyData) => {
-      dispatch(setUserCurrencySwitcher(currencyData));
+    dispatch(setUserCurrencySwitcher(currencyData))
 
-      if (userAuth) {
-        let currency = {
-          currency_id: currencyData.id
-        }
-        dispatch(addCurrencyToUserList(currency));
+    if (userAuth) {
+      let currency = {
+        currency_id: currencyData.id
       }
+      dispatch(addCurrencyToUserList(currency))
+    }
 
-    backButtonClickHandler();
+    backButtonClickHandler()
   }
-
 
   return (
     <ul className={styles.currenciesList}>
@@ -29,7 +27,7 @@ export const CurrencyList = ({t, type, currenciesData, backButtonClickHandler, u
       {
         currenciesData.map((currency) => {
 
-          return(
+          return (
             <ErrorEmpty key={`${currency.id} currency`}>
               <CurrencyItem
                 t={t}

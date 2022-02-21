@@ -71,7 +71,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       dispatch(showCreditCardModal(true));
 
     } else if (type === 'crypto' || type === 'crypto chosen type') {
-      let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === userPayment.paymentMethodData.methodData.currency_from.currency);
+      let currencyInfo = currencyData?.results.find((currency) => currency.id === userPayment.paymentMethodData.methodData.currency_from.currency_id);
 
       let paymentData = {
         senderCurrency_id: currencyInfo.id,

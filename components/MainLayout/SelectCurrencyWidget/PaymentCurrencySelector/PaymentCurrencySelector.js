@@ -1,58 +1,57 @@
-import styles from "../../../../styles/CurrencySelector/CurrencySelector.module.scss";
-import {InputContainer} from "../CurrencySelector/InputContainer";
-import {useState} from "react";
-import {log} from "qrcode/lib/core/galois-field";
-import {PaymentCurrencyItem} from "./PaymentCurrencyItem";
-import {useDispatch} from "react-redux";
-import {setErrorUserPaymentMethod, setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
-import {siteID} from "../../../../envs/envsForFetching";
-import {annulDeposit, postCryptoPayment} from "../../../../redux/actions/depositPayments";
+import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
+import { InputContainer } from '../CurrencySelector/InputContainer'
+import { useState } from 'react'
+import { PaymentCurrencyItem } from './PaymentCurrencyItem'
+import { useDispatch } from 'react-redux'
+import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { siteID } from '../../../../envs/envsForFetching'
+import { annulDeposit, postCryptoPayment } from '../../../../redux/actions/depositPayments'
 import {
-  showCryptoModal, showCurrencySwitcher,
-  showDepositModal,
-  showMobileCryptoPayments, showMobilePaymentsStepper,
+  showCryptoModal,
+  showCurrencySwitcher,
+  showMobileCryptoPayments,
+  showMobilePaymentsStepper,
   showPaymentCurrencySwitcher
-} from "../../../../redux/actions/showPopups";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
-
+} from '../../../../redux/actions/showPopups'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentCurrencySelector = ({
-                                          t,
-                                          backButtonClickHandler,
-                                          userPayment,
-                                          isShowMobileCryptoPayments,
-                                          currencyData,
-                                          userDepositValue,
-                                          userInfo,
-                                          userCurrency
-                                        }) => {
-  const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState('');
+  t,
+  backButtonClickHandler,
+  userPayment,
+  isShowMobileCryptoPayments,
+  currencyData,
+  userDepositValue,
+  userInfo,
+  userCurrency
+}) => {
+  const dispatch = useDispatch()
+  const [searchValue, setSearchValue] = useState('')
 
-  const [cryptoFindArr, setCryptoFindArr] = useState(userPayment.paymentMethodData?.methodData);
+  const [cryptoFindArr, setCryptoFindArr] = useState(userPayment.paymentMethodData?.methodData)
 
   const searchInputHandler = (value) => {
-    setSearchValue(value);
+    setSearchValue(value)
 
-    cryptoFinder(value);
+    cryptoFinder(value)
   }
 
   const cryptoFinder = (value) => {
-    let searchReg = new RegExp(value.toLowerCase().trim());
+    let searchReg = new RegExp(value.toLowerCase().trim())
 
     const cryptoFindArr = userPayment.paymentMethodData?.methodData.filter((currency) => {
       if (searchReg.test(currency.currency_from.currency.toLowerCase())) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
-    setCryptoFindArr(cryptoFindArr);
+    setCryptoFindArr(cryptoFindArr)
   }
 
   const chosePaymentClickHandler = (paymentData) => {
     if (isShowMobileCryptoPayments) {
-      let currencyInfo = currencyData?.results.find((currency) => currency.abbreviation === paymentData.currency_from.currency);
+      let currencyInfo = currencyData?.results.find((currency) => currency.id === paymentData.currency_from.currency_id)
 
       if (userCurrency.userCurrencyData.type === 3) {
 
@@ -64,21 +63,21 @@ export const PaymentCurrencySelector = ({
           receiverCurrency_id: userCurrency.userCurrencyData.id
         }
         let userPaymentCurrent = {
-          paymentError: "",
+          paymentError: '',
           paymentMethodData: {
             methodData: paymentData,
-            paymentImg: "/assets/img/depositPage/visa-2.svg",
-            paymentSecImg: "",
-            paymentType: "crypto"
+            paymentImg: '/assets/img/depositPage/visa-2.svg',
+            paymentSecImg: '',
+            paymentType: 'crypto'
           }
         }
-        dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent));
-        dispatch(showCryptoModal(true));
-        dispatch(showPaymentCurrencySwitcher(false));
-        dispatch(showMobileCryptoPayments(false));
-        dispatch(showCurrencySwitcher(false));
-        dispatch(showMobilePaymentsStepper(false));
-        dispatch(annulDeposit());
+        dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent))
+        dispatch(showCryptoModal(true))
+        dispatch(showPaymentCurrencySwitcher(false))
+        dispatch(showMobileCryptoPayments(false))
+        dispatch(showCurrencySwitcher(false))
+        dispatch(showMobilePaymentsStepper(false))
+        dispatch(annulDeposit())
         // dispatch(showDepositModal(false));
       } else {
 
@@ -90,34 +89,34 @@ export const PaymentCurrencySelector = ({
           receiverCurrency_id: userCurrency.userCurrencyData.id
         }
         let userPaymentCurrent = {
-          paymentError: "",
+          paymentError: '',
           paymentMethodData: {
             methodData: paymentData,
-            paymentImg: "/assets/img/depositPage/visa-2.svg",
-            paymentSecImg: "",
-            paymentType: "crypto"
+            paymentImg: '/assets/img/depositPage/visa-2.svg',
+            paymentSecImg: '',
+            paymentType: 'crypto'
           }
         }
 
-        dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent));
-        dispatch(showCryptoModal(true));
-        dispatch(showPaymentCurrencySwitcher(false));
-        dispatch(showMobileCryptoPayments(false));
-        dispatch(showCurrencySwitcher(false));
-        dispatch(showMobilePaymentsStepper(false));
-        dispatch(annulDeposit());
+        dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent))
+        dispatch(showCryptoModal(true))
+        dispatch(showPaymentCurrencySwitcher(false))
+        dispatch(showMobileCryptoPayments(false))
+        dispatch(showCurrencySwitcher(false))
+        dispatch(showMobilePaymentsStepper(false))
+        dispatch(annulDeposit())
         // dispatch(showDepositModal(false));
       }
     } else {
 
-      backButtonClickHandler();
+      backButtonClickHandler()
       dispatch(setUserPaymentMethod({
         methodData: paymentData,
         paymentImg: '/assets/img/depositPage/visa-2.svg',
         paymentSecImg: '',
         paymentType: 'crypto',
       }))
-      dispatch(setErrorUserPaymentMethod(''));
+      dispatch(setErrorUserPaymentMethod(''))
     }
   }
 
@@ -142,7 +141,7 @@ export const PaymentCurrencySelector = ({
                   )
                 })
                 :
-                <p className={styles.nothingFoundText}>{t("selectCurrency.nothingFound")}</p>
+                <p className={styles.nothingFoundText}>{t('selectCurrency.nothingFound')}</p>
             }
           </ul>
         </div>

@@ -1,14 +1,14 @@
-import styles from "../../../styles/DepositPage/DepositPage.module.scss";
-import {DepositHeading} from "./DepositHeading";
-import {DepositInputsContainer} from "./DepositInputs/DepositInputsContainer";
-import {BonusesBlockMainContainer} from "./BonusesBlock/BonusesBlockMainContainer";
-import {DepositImages} from "./DepositPaymentsImages";
-import {BonusCodeActivator} from "./BonusCodeActivator";
-import {DepositButtonSubmit} from "./DepositButtonSubmit";
-import {ChoosePaymentMethod} from "./ChoosePaymentMethod/ChoosePaymentMethod";
-import {DepositLastPage} from "./DepositLastPage/DepositLastPage";
-import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
-import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../styles/DepositPage/DepositPage.module.scss'
+import { DepositHeading } from './DepositHeading'
+import { DepositInputsContainer } from './DepositInputs/DepositInputsContainer'
+import { BonusesBlockMainContainer } from './BonusesBlock/BonusesBlockMainContainer'
+import { DepositImages } from './DepositPaymentsImages'
+import { BonusCodeActivator } from './BonusCodeActivator'
+import { DepositButtonSubmit } from './DepositButtonSubmit'
+import { ChoosePaymentMethod } from './ChoosePaymentMethod/ChoosePaymentMethod'
+import { DepositLastPage } from './DepositLastPage/DepositLastPage'
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const DepositPageStepper = (props) => {
   let {
@@ -39,8 +39,7 @@ export const DepositPageStepper = (props) => {
     bonusesArr,
     paymentMethods,
     setPaymentMethods
-  } = props;
-
+  } = props
 
   switch (step) {
     case  1:
@@ -195,7 +194,7 @@ export const DepositPageStepper = (props) => {
               stepHandler={stepHandler}
               step={step}
               t={t}
-              buttonText={"Submit"}
+              buttonText={'Submit'}
               userCurrency={userCurrency}
               userInfo={userInfo}
               currencyData={currencyData}

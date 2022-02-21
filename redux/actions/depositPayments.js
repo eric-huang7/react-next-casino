@@ -5,12 +5,8 @@ import {
   POST_CREDIT_CARD_PAYMENT,
   POST_CRYPTO_PAYMENT
 } from "./types";
-import {login_url, post_credit_card_deposit_payment, post_deposit_payment} from "../url/url";
+import {post_credit_card_deposit_payment, post_deposit_payment} from "../url/url";
 
-
-// POST_CRYPTO_PAYMENT
-// POST_CREDIT_CARD_PAYMENT
-// post_deposit_payment
 
 axios.defaults.withCredentials = true;
 

@@ -1,15 +1,8 @@
-import {BonusesBlock} from "./BonusesBlock";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {getActiveBonuses} from "../../../../redux/actions/getBonuses";
-import {bonusesFinder} from "../../../../helpers/bonusesFinder";
-import {bonusesCalculator} from "../../../../helpers/bonusesCalculator";
-import {BonusesDropdown} from "./BonusesDropdown";
-import {setUserBonus} from "../../../../redux/actions/setUserBonus";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
+import { BonusesBlock } from './BonusesBlock'
+import { BonusesDropdown } from './BonusesDropdown'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = { id: 1, heading: 'bonuses.bonusBlockInfoNotBonus', info: '', icon: '/assets/icons/stop.png' }
 
 export const BonusesBlockContainer = (props) => {
   let {
@@ -22,7 +15,7 @@ export const BonusesBlockContainer = (props) => {
     userDepositValue,
     userSelectedBonus,
     bonusesArr
-  } = props;
+  } = props
 
   if (isUseBonus) {
     if (bonusesArr.length > 0) {

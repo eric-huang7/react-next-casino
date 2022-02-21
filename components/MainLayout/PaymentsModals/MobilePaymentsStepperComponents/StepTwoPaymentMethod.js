@@ -1,18 +1,13 @@
-import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
-import {PaymentMethodItem} from "./PaymentMethodItem";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import {payments_methods_url} from "../../../../redux/url/url";
-import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
-import {useDispatch} from "react-redux";
-import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
+import { PaymentMethodItem } from './PaymentMethodItem'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { payments_methods_url } from '../../../../redux/url/url'
+import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userPayment}) => {
-  const dispatch = useDispatch();
-  const [paymentMethods, setPaymentMethods] = useState(null);
-
+export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, userPayment }) => {
+  const [paymentMethods, setPaymentMethods] = useState(null)
 
   useEffect(() => {
 
@@ -21,13 +16,12 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
         currency_id: userCurrency.userCurrencyData.id,
       }
     }
-    // payments_methods_url
     axios.get(payments_methods_url, config)
       .then((data) => {
-        setPaymentMethods(data.data.results);
+        setPaymentMethods(data.data.results)
       })
       .catch((err) => {
-        setPaymentMethods(null);
+        setPaymentMethods(null)
       })
 
   }, [])
@@ -42,7 +36,6 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
               <PaymentMethodItem
                 methodClickHandler={methodClickHandler}
                 t={t}
-                // paymentData={el}
                 method={paymentMethods}
                 type={'crypto'}
                 userCurrency={userCurrency}
@@ -59,7 +52,6 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
               <PaymentMethodItem
                 methodClickHandler={methodClickHandler}
                 t={t}
-                // paymentData={el}
                 method={paymentMethods}
                 type={'crypto'}
                 userCurrency={userCurrency}
@@ -77,7 +69,6 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
               <PaymentMethodItem
                 methodClickHandler={methodClickHandler}
                 t={t}
-                // paymentData={el}
                 method={paymentMethods}
                 type={'creditCard'}
                 userCurrency={userCurrency}
@@ -92,9 +83,9 @@ export const StepTwoPaymentMethod = ({t, methodClickHandler, userCurrency, userP
   } else {
     return (
       <div className={styles.stepTwoWrapper}>
-        <LoadingComponent t={t} />
+        <LoadingComponent t={t}/>
       </div>
-      )
+    )
   }
 }
 

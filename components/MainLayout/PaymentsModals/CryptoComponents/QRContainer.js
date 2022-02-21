@@ -1,16 +1,16 @@
-import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss';
+import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss'
 
 import QRCode from 'qrcode'
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react'
 
-export const QRContainer = ({qrData}) => {
+export const QRContainer = ({ qrData }) => {
   const [src, setSrc] = useState('')
 
   useEffect(() => {
     QRCode.toDataURL(qrData).then((data) => {
-      setSrc(data);
+      setSrc(data)
     })
-  },[qrData])
+  }, [qrData])
 
   return (
     <div className={styles.qrImageContainer}>

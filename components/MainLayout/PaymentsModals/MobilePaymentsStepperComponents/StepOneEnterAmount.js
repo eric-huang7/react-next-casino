@@ -1,25 +1,31 @@
-import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
-import {StepperPlayWithButton} from "./StepperPlayWithButton";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
+import { StepperPlayWithButton } from './StepperPlayWithButton'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-export const StepOneEnterAmount = ({t, userCurrency, userDepositValue, valueInputHandler, errorInputValue, currencySwitcherShowHandler, whatShouldDoPlayWith}) => {
-
-
+export const StepOneEnterAmount = ({
+  t,
+  userCurrency,
+  userDepositValue,
+  valueInputHandler,
+  errorInputValue,
+  currencySwitcherShowHandler,
+  whatShouldDoPlayWith
+}) => {
 
   return (
     <div className={styles.stepOneWrapper}>
       <div className={styles.stepperAmountContainer}>
-        <label className={styles.stepperAmountLabel} htmlFor="stepperAmount">{t("paymentsStepper.headingOne")}</label>
+        <label className={styles.stepperAmountLabel} htmlFor="stepperAmount">{t('paymentsStepper.headingOne')}</label>
         <input
           type="number"
           className={styles.stepperAmountInput}
-          id={"stepperAmount"}
+          id={'stepperAmount'}
           placeholder={`${userCurrency.userCurrencyData.symbol} ${userDepositValue}`}
           onChange={(e) => valueInputHandler(e)}
         />
         <span className={styles.errorMessage}>{errorInputValue}</span>
-        <button onClick={() => currencySwitcherShowHandler()} className={styles.stepperCurrencyButton}>{userCurrency.userCurrencyData.abbreviation}</button>
+        <button onClick={() => currencySwitcherShowHandler()}
+                className={styles.stepperCurrencyButton}>{userCurrency.userCurrencyData.abbreviation}</button>
       </div>
       <ErrorEmpty>
         <StepperPlayWithButton

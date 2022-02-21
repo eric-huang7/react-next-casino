@@ -1,72 +1,57 @@
-import styles from '../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
-import {PaymentHeading} from "./CreditCardComponents/Heading";
-import {StepOneEnterAmount} from "./MobilePaymentsStepperComponents/StepOneEnterAmount";
-import {StepTwoPaymentMethod} from "./MobilePaymentsStepperComponents/StepTwoPaymentMethod";
-import {useDispatch, useSelector} from "react-redux";
-import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
-import {useEffect, useState} from "react";
+import styles from '../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
+import { PaymentHeading } from './CreditCardComponents/Heading'
+import { StepOneEnterAmount } from './MobilePaymentsStepperComponents/StepOneEnterAmount'
+import { StepTwoPaymentMethod } from './MobilePaymentsStepperComponents/StepTwoPaymentMethod'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserDepositValue } from '../../../redux/actions/setUserDepositValue'
+import { useEffect, useState } from 'react'
 import {
-  backButtonShouldDo,
   showCreditCardModal,
   showCryptoModal,
   showCurrencySwitcher,
   showMobilePaymentsStepper
-} from "../../../redux/actions/showPopups";
-import {siteID} from "../../../envs/envsForFetching";
-import {annulDeposit, postCryptoPayment} from "../../../redux/actions/depositPayments";
-import {showRegister} from "../../../redux/actions/registerShow";
-import useWindowScroll from "../../../hooks/useWindowScroll";
-import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+} from '../../../redux/actions/showPopups'
+import { siteID } from '../../../envs/envsForFetching'
+import { annulDeposit, postCryptoPayment } from '../../../redux/actions/depositPayments'
+import { showRegister } from '../../../redux/actions/registerShow'
+import useWindowScroll from '../../../hooks/useWindowScroll'
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
+export const MobilePaymentsStepper = ({ t, userAuth }) => {
+  const [pageStep, setPageStep] = useState(1)
+  let scrollHeight = useWindowScroll()
 
-export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
-  const [pageStep, setPageStep] = useState(1);
-  let scrollHeight = useWindowScroll();
-
-  const dispatch = useDispatch();
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
-  const userDepositValue = useSelector((state) => state.userDepositValue.value);
-  const userPayment = useSelector((state) => state.userPaymentMethod);
-
-  useEffect(() => {
-    if (isShow) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-
-    return () => {
-      document.body.style.overflowY = "auto"
-    }
-  }, [])
+  const dispatch = useDispatch()
+  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userDepositValue = useSelector((state) => state.userDepositValue.value)
+  const userPayment = useSelector((state) => state.userPaymentMethod)
 
   const currencySwitcherShowHandler = () => {
-    dispatch(showCurrencySwitcher(true));
+    dispatch(showCurrencySwitcher(true))
   }
 
-  const [errorInputValue, setErrorInputValue] = useState();
+  const [errorInputValue, setErrorInputValue] = useState()
   const valueInputHandler = (e) => {
     if (e.target.value > 9999999999) {
-      e.target.value = userDepositValue;
-      return false;
+      e.target.value = userDepositValue
+      return false
     } else if (!Number(e.target.value)) {
-      setErrorInputValue('Enter deposit amount');
-      dispatch(setUserDepositValue(0));
+      setErrorInputValue('Enter deposit amount')
+      dispatch(setUserDepositValue(0))
     } else {
-      setErrorInputValue('');
-      dispatch(setUserDepositValue(Number(e.target.value)));
+      setErrorInputValue('')
+      dispatch(setUserDepositValue(Number(e.target.value)))
     }
   }
   const openPaymentMethods = () => {
-    dispatch(showMobilePaymentsStepper(true));
-    setPageStep(2);
+    dispatch(showMobilePaymentsStepper(true))
+    setPageStep(2)
 
   }
 
-
   const openWindow = (type, method = null) => {
     if (!userAuth.isAuthenticated) {
-      dispatch(showRegister(true));
+      dispatch(showRegister(true))
     } else if (type === 'crypto') {
       let paymentData = {
         senderCurrency_id: userCurrency.userCurrencyData.id,
@@ -75,9 +60,9 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
         award_amount: `${userDepositValue}`,
         receiverCurrency_id: userCurrency.userCurrencyData.id
       }
-      dispatch(postCryptoPayment(paymentData, null));
-      dispatch(showCryptoModal(true));
-      dispatch(showMobilePaymentsStepper(false));
+      dispatch(postCryptoPayment(paymentData, null))
+      dispatch(showCryptoModal(true))
+      dispatch(showMobilePaymentsStepper(false))
     } else if (type === 'crypto chosen type') {
       let paymentData = {
         senderCurrency_id: method.currency_id,
@@ -86,12 +71,12 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
         award_amount: `${userDepositValue}`,
         receiverCurrency_id: userCurrency.userCurrencyData.id
       }
-      dispatch(postCryptoPayment(paymentData, method));
-      dispatch(showCryptoModal(true));
-      dispatch(showMobilePaymentsStepper(false));
+      dispatch(postCryptoPayment(paymentData, method))
+      dispatch(showCryptoModal(true))
+      dispatch(showMobilePaymentsStepper(false))
     } else if (type === 'card') {
-      dispatch(showCreditCardModal(true));
-      dispatch(showMobilePaymentsStepper(false));
+      dispatch(showCreditCardModal(true))
+      dispatch(showMobilePaymentsStepper(false))
     }
   }
 
@@ -99,24 +84,23 @@ export const MobilePaymentsStepper = ({t, paymentsData, userAuth, isShow}) => {
     if (errorInputValue) {
       return
     } else {
-      setPageStep(2);
+      setPageStep(2)
     }
   }
 
   const whatShouldDoBackButton = () => {
-    setPageStep(1);
+    setPageStep(1)
   }
 
-
   const closeMobilePayments = () => {
-    dispatch(showMobilePaymentsStepper(false));
-    dispatch(annulDeposit());
+    dispatch(showMobilePaymentsStepper(false))
+    dispatch(annulDeposit())
   }
   const methodClickHandler = (method) => {
     if (method === 'crypto') {
-      openWindow('crypto chosen type', method);
+      openWindow('crypto chosen type', method)
     } else {
-      openWindow('card');
+      openWindow('card')
     }
   }
 

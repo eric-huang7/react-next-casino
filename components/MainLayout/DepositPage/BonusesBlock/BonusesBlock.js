@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useTranslation} from "next-i18next";
 import {BonusInfoContainer} from "../../../BonusInfoComponents/BonusInfoContainer";

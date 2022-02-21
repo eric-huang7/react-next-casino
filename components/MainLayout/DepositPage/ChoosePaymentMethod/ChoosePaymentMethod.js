@@ -1,23 +1,22 @@
-import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
-import {useDispatch} from "react-redux";
-import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
-import {PaymentItem} from "./PaymentItem";
-import {useEffect} from "react";
-import axios from "axios";
-import {payments_methods_url} from "../../../../redux/url/url";
-import {LoadingComponent} from "../../../LoadingComponent/LoadingComponent";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
-
+import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
+import { useDispatch } from 'react-redux'
+import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { PaymentItem } from './PaymentItem'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { payments_methods_url } from '../../../../redux/url/url'
+import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const ChoosePaymentMethod = ({
-                                      isShowDepositModal,
-                                      setPaymentMethods,
-                                      t,
-                                      userPayment,
-                                      paymentMethods,
-                                      userCurrency
-                                    }) => {
-  const dispatch = useDispatch();
+  isShowDepositModal,
+  setPaymentMethods,
+  t,
+  userPayment,
+  paymentMethods,
+  userCurrency
+}) => {
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isShowDepositModal) {
@@ -29,27 +28,26 @@ export const ChoosePaymentMethod = ({
 
       axios.get(payments_methods_url, config)
         .then((data) => {
-          setPaymentMethods(data.data.results);
+          setPaymentMethods(data.data.results)
         })
         .catch((err) => {
-          setPaymentMethods(null);
+          setPaymentMethods(null)
         })
     } else {
-      setPaymentMethods(null);
+      setPaymentMethods(null)
     }
     return () => {
 
-      setPaymentMethods(null);
-      dispatch(setUserPaymentMethod(null));
+      setPaymentMethods(null)
+      dispatch(setUserPaymentMethod(null))
     }
   }, [userCurrency])
-
 
   if (paymentMethods) {
     return (
       <div className={styles.depositsChoosePaymentWrapper}>
         <h3 className={styles.choosePaymentHeading}>
-          {t("depositPage.choosePaymentMethod")}
+          {t('depositPage.choosePaymentMethod')}
         </h3>
         <div className={styles.paymentMethodsBlock}>
           {
@@ -68,7 +66,7 @@ export const ChoosePaymentMethod = ({
           }
           {
             userCurrency.userCurrencyData.type !== 3 && paymentMethods['2'].length === 0
-            ?
+              ?
               <ErrorEmpty>
                 <PaymentItem
                   method={paymentMethods}
@@ -104,7 +102,7 @@ export const ChoosePaymentMethod = ({
     return (
       <div className={styles.depositsChoosePaymentWrapper}>
         <h3 className={styles.choosePaymentHeading}>
-          {t("depositPage.choosePaymentMethod")}
+          {t('depositPage.choosePaymentMethod')}
         </h3>
         <div className={styles.paymentLoading}>
           <LoadingComponent t={t}/>

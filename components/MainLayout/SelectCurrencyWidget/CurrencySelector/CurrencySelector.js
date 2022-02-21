@@ -1,79 +1,85 @@
-import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss';
-import {InputContainer} from "./InputContainer";
-import {CurrencyItem} from "./CurrencyItem";
-import {CurrencyList} from "./CurrencyList";
-import {useState} from "react";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
+import { InputContainer } from './InputContainer'
+import { CurrencyList } from './CurrencyList'
+import { useState } from 'react'
+import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurrency, fiatCurrency, backButtonClickHandler, userAuth}) => {
-  const [searchValue, setSearchValue] = useState('');
+export const CurrencySelector = ({
+  t,
+  cryptoCurrency,
+  popularCurrency,
+  stableCurrency,
+  fiatCurrency,
+  backButtonClickHandler,
+  userAuth
+}) => {
+  const [searchValue, setSearchValue] = useState('')
 
-  const [cryptoFindArr, setCryptoFindArr] = useState(cryptoCurrency);
-  const [popularFindArr, setPopularFindArr] = useState(popularCurrency);
-  const [stableFindArr, setStableFindArr] = useState(stableCurrency);
-  const [fiatFindArr, setFiatFindArr] = useState(fiatCurrency);
-
+  const [cryptoFindArr, setCryptoFindArr] = useState(cryptoCurrency)
+  const [popularFindArr, setPopularFindArr] = useState(popularCurrency)
+  const [stableFindArr, setStableFindArr] = useState(stableCurrency)
+  const [fiatFindArr, setFiatFindArr] = useState(fiatCurrency)
 
   const searchInputHandler = (value) => {
-    setSearchValue(value);
+    setSearchValue(value)
 
-    cryptoFinder(value);
+    cryptoFinder(value)
   }
 
   const cryptoFinder = (value) => {
-    let searchReg = new RegExp(value.toLowerCase().trim());
+    let searchReg = new RegExp(value.toLowerCase().trim())
 
     const cryptoFindArr = cryptoCurrency.filter((currency) => {
       if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
-    setCryptoFindArr(cryptoFindArr);
+    setCryptoFindArr(cryptoFindArr)
     const popularFindArr = popularCurrency.filter((currency) => {
       if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
-    setPopularFindArr(popularFindArr);
+    setPopularFindArr(popularFindArr)
     const stableFindArr = stableCurrency.filter((currency) => {
       if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
-    setStableFindArr(stableFindArr);
+    setStableFindArr(stableFindArr)
     const fiatFindArr = fiatCurrency.filter((currency) => {
       if (searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
-    setFiatFindArr(fiatFindArr);
+    setFiatFindArr(fiatFindArr)
 
   }
 
   return (
-    <div  className={styles.currencySelectorContainerWrapper}>
+    <div className={styles.currencySelectorContainerWrapper}>
       <div className={styles.currencySelectorContainer}>
-        <InputContainer searchValue={searchValue} searchInputHandler={searchInputHandler} t={t} />
-        <div  className={styles.currenciesListsContainer}>
+        <InputContainer searchValue={searchValue} searchInputHandler={searchInputHandler} t={t}/>
+        <div className={styles.currenciesListsContainer}>
           {
             popularFindArr.length === 0
-            ?
-            <></>
-            :
+              ?
+              <></>
+              :
               <ErrorEmpty>
                 <CurrencyList
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
                   t={t}
-                  type={t("selectCurrency.popularCrypto")}
+                  type={t('selectCurrency.popularCrypto')}
                   currenciesData={popularFindArr}
                 />
               </ErrorEmpty>
@@ -88,7 +94,7 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
                   t={t}
-                  type={t("selectCurrency.stableCoins")}
+                  type={t('selectCurrency.stableCoins')}
                   currenciesData={stableFindArr}
                 />
               </ErrorEmpty>
@@ -103,7 +109,7 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
                   t={t}
-                  type={t("selectCurrency.fiat")}
+                  type={t('selectCurrency.fiat')}
                   currenciesData={fiatFindArr}
                 />
               </ErrorEmpty>
@@ -118,7 +124,7 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
                   t={t}
-                  type={t("selectCurrency.cryptoCurrencies")}
+                  type={t('selectCurrency.cryptoCurrencies')}
                   currenciesData={cryptoFindArr}
                 />
               </ErrorEmpty>
@@ -128,7 +134,7 @@ export const CurrencySelector = ({t, cryptoCurrency, popularCurrency, stableCurr
               ?
               <></>
               :
-              <p className={styles.nothingFoundText}>{t("selectCurrency.nothingFound")}</p>
+              <p className={styles.nothingFoundText}>{t('selectCurrency.nothingFound')}</p>
           }
         </div>
       </div>

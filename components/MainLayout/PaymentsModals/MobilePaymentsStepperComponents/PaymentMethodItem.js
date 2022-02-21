@@ -1,24 +1,21 @@
-import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss';
-import Image from "next/image";
-import {useDispatch} from "react-redux";
-import {setUserPaymentMethod} from "../../../../redux/actions/setUserPaymentMethod";
+import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
+import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
 import {
-  backButtonShouldDo,
-  showDepositModal,
   showMobileCryptoPayments,
   showPaymentCurrencySwitcher
-} from "../../../../redux/actions/showPopups";
+} from '../../../../redux/actions/showPopups'
 
-
-export const PaymentMethodItem = ({t, methodClickHandler, type, method, userCurrency, userPayment}) => {
-const dispatch = useDispatch();
+export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCurrency, userPayment }) => {
+  const dispatch = useDispatch()
 
   const fiatClickHandler = () => {
     let chosenMethod = method[3].filter((method) => {
       if (method.currency_from.currency === userCurrency.userCurrencyData.abbreviation && method.currency_to.currency === userCurrency.userCurrencyData.abbreviation) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     })
     if (chosenMethod[0]) {
@@ -36,45 +33,45 @@ const dispatch = useDispatch();
         paymentType: 'creditCard',
       }))
     }
-    methodClickHandler('card');
+    methodClickHandler('card')
   }
 
   const cryptoClickHandler = () => {
-    let paymentMethods = [];
+    let paymentMethods = []
     if (userCurrency.userCurrencyData.type === 3) {
-      method[1].forEach((methodItem) => paymentMethods.push(methodItem));
+      method[1].forEach((methodItem) => paymentMethods.push(methodItem))
 
       method[2].forEach((methodItem) => {
         if (method[1].length > 0) {
-          let universalItem = universalizer(method[1], methodItem);
+          let universalItem = universalizer(method[1], methodItem)
           if (universalItem) {
-            paymentMethods.push(methodItem);
+            paymentMethods.push(methodItem)
           } else {
-            return methodItem;
+            return methodItem
           }
         } else {
-          paymentMethods.push(methodItem);
+          paymentMethods.push(methodItem)
         }
-      });
+      })
 
     } else {
-      method[3].forEach((methodItem) => paymentMethods.push(methodItem));
+      method[3].forEach((methodItem) => paymentMethods.push(methodItem))
 
-      method[1].forEach((methodItem) => paymentMethods.push(methodItem));
+      method[1].forEach((methodItem) => paymentMethods.push(methodItem))
 
       method[2].forEach((methodItem) => {
         if (method[1].length > 0) {
-          let universalItem = universalizer(method[1], methodItem);
+          let universalItem = universalizer(method[1], methodItem)
           if (universalItem) {
-            paymentMethods.push(methodItem);
+            paymentMethods.push(methodItem)
           } else {
-            return methodItem;
+            return methodItem
           }
         } else {
-          paymentMethods.push(methodItem);
+          paymentMethods.push(methodItem)
         }
 
-      });
+      })
     }
 
     dispatch(setUserPaymentMethod({
@@ -83,17 +80,16 @@ const dispatch = useDispatch();
       paymentSecImg: '',
       paymentType: 'cryptoArr',
     }))
-    dispatch(showPaymentCurrencySwitcher(true));
-    dispatch(showMobileCryptoPayments(true));
+    dispatch(showPaymentCurrencySwitcher(true))
+    dispatch(showMobileCryptoPayments(true))
     // dispatch(showDepositModal(false));
     // dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal));
   }
 
-
   if (type === 'creditCard') {
     return (
       <div onClick={() => fiatClickHandler()} className={styles.paymentMethodItem}>
-        <div  className={`${styles.methodIconWrapper} ${styles.cardsWrapper}`}>
+        <div className={`${styles.methodIconWrapper} ${styles.cardsWrapper}`}>
           <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
           <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
         </div>
@@ -103,8 +99,9 @@ const dispatch = useDispatch();
   } else {
     return (
       <div onClick={() => cryptoClickHandler()} className={styles.paymentMethodItem}>
-        <div  className={`${styles.methodIconWrapper} ${styles.cryptoWrapper}`}>
-          <Image src={'/assets/img/depositPage/payments/crypto.png'} alt={`crypto currency icon`} layout={'fixed'} width={50} height={50}/>
+        <div className={`${styles.methodIconWrapper} ${styles.cryptoWrapper}`}>
+          <Image src={'/assets/img/depositPage/payments/crypto.png'} alt={`crypto currency icon`} layout={'fixed'}
+                 width={50} height={50}/>
         </div>
         <p className={styles.methodName}>{t('depositWidget.cryptoPayment')}</p>
       </div>
@@ -113,17 +110,17 @@ const dispatch = useDispatch();
 
 }
 
-  function universalizer (arrVerify, checkItem) {
-    let sameItem = arrVerify.find((methodOne) => {
-      if (methodOne.currency_from.currency === checkItem.currency_from.currency) {
-        return true
-      } else {
-        return false
-      }
-    })
-    if (!sameItem) {
-      return true;
+function universalizer (arrVerify, checkItem) {
+  let sameItem = arrVerify.find((methodOne) => {
+    if (methodOne.currency_from.currency_id === checkItem.currency_from.currency_id) {
+      return true
     } else {
-      return false;
+      return false
     }
+  })
+  if (!sameItem) {
+    return true
+  } else {
+    return false
   }
+}
