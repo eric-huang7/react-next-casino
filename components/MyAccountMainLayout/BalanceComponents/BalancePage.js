@@ -2,6 +2,7 @@ import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scs
 import { Heading } from '../ComponentsForPages/Heading'
 import { useSelector } from 'react-redux'
 import { BalanceInfoContainer } from './BalanceInfoContainer'
+import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const BalancePage = ({ t }) => {
 
@@ -11,7 +12,9 @@ export const BalancePage = ({ t }) => {
   return (
     <div className={styles.mainContainer}>
       <Heading t={t} heading={'myAccount.pageHeadings.balance'}/>
-      <BalanceInfoContainer balanceInfo={balanceInfo} currency={currency} t={t}/>
+      <ErrorText>
+        <BalanceInfoContainer balanceInfo={balanceInfo} currency={currency} t={t}/>
+      </ErrorText>
     </div>
 
   )

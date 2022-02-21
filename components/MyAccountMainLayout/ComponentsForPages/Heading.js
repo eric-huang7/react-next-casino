@@ -1,7 +1,6 @@
 import styles from '../../../styles/MyAccount/MyAccount.module.scss'
 
-
-export const Heading = ({t, heading}) => {
+export const Heading = ({ t, heading }) => {
 
   return (
     <div className={styles.headingWrapper}>
