@@ -1,61 +1,64 @@
-import styles from '../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss';
-import {currencyInfo} from "../../../helpers/currencyInfo";
-import {CurrencySelector} from "./Selectors/CurrencySelector";
-import {ActionSelector} from "./Selectors/ActionSelector";
-import {StatusSelector} from "./Selectors/StatusSelector";
-import {FilterButton} from "./Selectors/FilterButton";
-import {useState} from "react";
-import {useDispatch} from "react-redux";
-import {getUserPayments} from "../../../redux/actions/userData";
+import styles from '../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
+import { CurrencySelector } from './Selectors/CurrencySelector'
+import { ActionSelector } from './Selectors/ActionSelector'
+import { StatusSelector } from './Selectors/StatusSelector'
+import { FilterButton } from './Selectors/FilterButton'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getUserPayments } from '../../../redux/actions/userData'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
-
-export const TrxHistoryInputsContainer = ({t, userInfo, currencyData, setWasFiltering}) => {
+export const TrxHistoryInputsContainer = ({ t, userInfo, currencyData, setWasFiltering }) => {
 
   const dispatch = useDispatch()
-  const [currencyFilter, setCurrencyFilter] = useState(null);
-  const [actionFilter, setActionFilter] = useState(null);
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [currencyFilter, setCurrencyFilter] = useState(null)
+  const [actionFilter, setActionFilter] = useState(null)
+  const [statusFilter, setStatusFilter] = useState(null)
 
   const filterButtonClickHandler = () => {
-    // 14 for test more data
-    let params = {user_id: Number(userInfo?.user?.user?.id)};
+    let params = { user_id: Number(userInfo?.user?.user?.id) }
     let arrRequest = [
-      {status: statusFilter, type: "status"},
-      {status: actionFilter, type: "action"},
-      {status: currencyFilter, type: "currency_id"}
+      { status: statusFilter, type: 'status' },
+      { status: actionFilter, type: 'action' },
+      { status: currencyFilter, type: 'currency_id' }
     ].map((el) => {
       if (el.status !== null && el.status !== '') {
-        params[el.type] = Number(el.status) ? Number(el.status) : el.status;
+        params[el.type] = Number(el.status) ? Number(el.status) : el.status
         return el
       }
       return el
-    });
-    setWasFiltering(true);
-    dispatch(getUserPayments(params));
+    })
+    setWasFiltering(true)
+    dispatch(getUserPayments(params))
   }
 
   return (
     <div className={styles.inputsContainer}>
-      <CurrencySelector
-        setCurrencyFilter={setCurrencyFilter}
-        t={t}
-        currencyData={currencyData}
-        userInfo={userInfo}
-      />
-      <ActionSelector
-        setActionFilter={setActionFilter}
-        t={t}
-      />
-      <div className={styles.lastSelectorButtonWrapper}>
-        <StatusSelector
-          setStatusFilter={setStatusFilter}
+      <ErrorEmpty>
+        <CurrencySelector
+          setCurrencyFilter={setCurrencyFilter}
+          t={t}
+          currencyData={currencyData}
+          userInfo={userInfo}
+        />
+      </ErrorEmpty>
+      <ErrorEmpty>
+        <ActionSelector
+          setActionFilter={setActionFilter}
           t={t}
         />
+      </ErrorEmpty>
+
+      <div className={styles.lastSelectorButtonWrapper}>
+        <ErrorEmpty>
+          <StatusSelector
+            setStatusFilter={setStatusFilter}
+            t={t}
+          />
+        </ErrorEmpty>
+
         <FilterButton
           filterButtonClickHandler={filterButtonClickHandler}
-          statusFilter={statusFilter}
-          actionFilter={actionFilter}
-          currencyFilter={currencyFilter}
           t={t}
         />
       </div>

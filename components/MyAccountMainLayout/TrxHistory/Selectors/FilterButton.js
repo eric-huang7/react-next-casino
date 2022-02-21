@@ -1,14 +1,10 @@
-import styles from "../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss";
-import {useDispatch} from "react-redux";
-import {getUserPayments} from "../../../../redux/actions/userData";
+import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 
-
-export const FilterButton = ({t, filterButtonClickHandler}) => {
-
+export const FilterButton = ({ t, filterButtonClickHandler }) => {
 
   return (
     <button onClick={() => filterButtonClickHandler()} className={styles.filterButton}>
-      {t("myAccount.history.transactions.inputsItems.filterButton")}
+      {t('myAccount.history.transactions.inputsItems.filterButton')}
     </button>
   )
 }
