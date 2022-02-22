@@ -15,7 +15,6 @@ import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
 
-
   let scrollHeight = useWindowScroll()
   const userCurrency = useSelector((state) => state.userSelectedCurrency)
   const userDepositValue = useSelector((state) => state.userDepositValue.value)
@@ -45,7 +44,8 @@ export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
               paymentsData.isCryptoPaymentError ?
                 <>
                   <h2 style={{ color: '#ff0000', textTransform: 'uppercase' }}>{t('cryptoPayment.error')}</h2>
-                  <p style={{ color: '#ff0000' }}>{paymentsData.isCryptoPaymentError.data.extra_error_info.message}</p>
+                  <p
+                    style={{ color: '#ff0000' }}>{paymentsData.isCryptoPaymentError?.data?.extra_error_info?.message}</p>
                 </>
                 :
                 <>

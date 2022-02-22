@@ -21,7 +21,7 @@ export const TrxTableRow = ({
   const recallClickHandler = () => {
 
     let params = { user_id: Number(userInfo?.user?.user?.id) }
-
+    axios.defaults.withCredentials = true
     axios.delete(post_withdraw_url + `/${paymentData.id}`)
       .then((data) => {
         dispatch(getUserPayments(params))
