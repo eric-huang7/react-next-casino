@@ -37,7 +37,7 @@ export const TrxTableRow = ({
         {date}
       </td>
       <td
-        style={paymentData.status === 3 ? { color: 'red' } : paymentData.status === 2 ? { color: 'green' } : { color: '#595656' }}>
+        style={paymentData.status === 3 || paymentData.status === 4 ? { color: 'red' } : paymentData.status === 2 ? { color: 'green' } : { color: '#595656' }}>
         {t(status)}
         {
           paymentData.status === 1 && <RecallButton recallClickHandler={recallClickHandler} t={t}/>
