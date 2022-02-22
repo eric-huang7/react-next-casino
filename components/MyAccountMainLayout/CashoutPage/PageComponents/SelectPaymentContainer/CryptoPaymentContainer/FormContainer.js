@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPayments, userBalance } from '../../../../../../redux/actions/userData'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
+import { errorPopupActivate } from '../../../../../../redux/actions/showPopups'
 
 export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) => {
   const dispatch = useDispatch()
@@ -82,11 +83,21 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
           .catch((e) => {
 
             setSuccessMessage('')
-            let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS'
-            if (responseErrorCode) {
+
+            if (e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS') {
+              // Due to security reasons the address never used before needs to be confirmed by email. confirmation link was sent to your email, please check mailbox.
+              dispatch(errorPopupActivate("myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation"));
               dispatch(getUserPayments(params))
+              dispatch(userBalance())
+              setErrorMessage('')
+            } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
+              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needAccountReview'))
+            } else if (e.response.data.error_code === 'WITHDRAW_NEED_PLAYTHROUGH') {
+              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needPlaythrough'))
+            } else {
+              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
             }
-            setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
+
           })
       }
     } catch (e) {

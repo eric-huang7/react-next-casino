@@ -9,8 +9,6 @@ import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 export const TrxHistoryTableContainer = ({ t, userInfo, currencyData, wasFiltering }) => {
   const router = useRouter()
 
-  console.log(userInfo?.userPayments?.payments, 'userInfo?.userPayments?.payments?')
-
   if (wasFiltering && userInfo?.userPayments?.payments?.length === 0) {
 
     return (
