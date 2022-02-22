@@ -15,7 +15,7 @@ import {
   GET_STABLE_CURRENCY
 } from "./types";
 import {siteID} from "../../envs/envsForFetching";
-
+axios.defaults.withCredentials = true;
 
 export const getCurrency = () => async dispatch => {
   const config = {

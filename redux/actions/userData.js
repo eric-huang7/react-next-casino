@@ -117,7 +117,7 @@ export const deleteDocuments = (docId) => async dispatch => {
 
 export const changeDocuments = (documentData) => async dispatch => {
   const config = {
-    withCredentials: true,
+
     headers: {
       'Content-Type': 'application/json',
     },
@@ -172,7 +172,6 @@ export const userData = (sendData) => async dispatch => {
 
 export const userBalance = () => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -192,7 +191,6 @@ export const userBalance = () => async dispatch => {
 
 export const getUserPayments = (params) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -214,7 +212,6 @@ export const getUserPayments = (params) => async dispatch => {
 
 export const getUserBonuses = (params) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -236,7 +233,6 @@ export const getUserBonuses = (params) => async dispatch => {
 
 export const getUserActivePendingBonuses = (params) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -257,7 +253,6 @@ export const getUserActivePendingBonuses = (params) => async dispatch => {
 
 export const getActiveUserSessions = () => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -280,7 +275,6 @@ export const getActiveUserSessions = () => async dispatch => {
 }
 export const getClosedUserSessions = () => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -304,7 +298,6 @@ export const getClosedUserSessions = () => async dispatch => {
 
 export const deleteUserSession = (params) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -327,7 +320,6 @@ export const deleteUserSession = (params) => async dispatch => {
 
 export const getUserBets = () => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -347,7 +339,6 @@ export const getUserBets = () => async dispatch => {
 
 export const addCurrencyToUserList = (currency_id) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -369,7 +360,6 @@ export const addCurrencyToUserList = (currency_id) => async dispatch => {
 
 export const activateBonus = (bonusData) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -395,7 +385,6 @@ export const activateBonus = (bonusData) => async dispatch => {
 
 export const cancelBonus = (bonusData) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -420,7 +409,6 @@ export const cancelBonus = (bonusData) => async dispatch => {
 
 export const patchUserData = (userData) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -437,7 +425,6 @@ export const patchUserData = (userData) => async dispatch => {
 
 export const getQrAuth = () => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -466,7 +453,6 @@ export const mayYwoFactorAuth = (isMay) => {
 
 export const postSavedKeys = (googleTokenData) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -486,7 +472,6 @@ export const postSavedKeys = (googleTokenData) => async dispatch => {
 
 export const getTokenUserPhone = (params) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -507,7 +492,6 @@ export const getTokenUserPhone = (params) => async dispatch => {
 
 export const patchUserActiveCurrency = (userData) => async dispatch => {
   const config = {
-    // withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -530,7 +514,7 @@ export const patchUserActiveCurrency = (userData) => async dispatch => {
 
 export const signUp = (signUpData) => async dispatch => {
   const config = {
-    withCredentials: true,
+
     headers: {
       'Content-Type': 'application/json',
     },
@@ -544,9 +528,6 @@ export const signUp = (signUpData) => async dispatch => {
       payload: res.data
     })
     dispatch(auth());
-    // if (typeof window !== "undefined") {
-    //   localStorage.setItem("userAuth", 'true');
-    // }
   } catch (e) {
 
     dispatch({
@@ -558,7 +539,7 @@ export const signUp = (signUpData) => async dispatch => {
 
 export const logout = () => async dispatch => {
   const config = {
-    withCredentials: true,
+
     headers: {
       'Content-Type': 'application/json',
     },

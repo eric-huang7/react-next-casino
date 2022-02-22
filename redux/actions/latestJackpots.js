@@ -2,6 +2,8 @@ import axios from "axios";
 import {jackpots_url} from "../url/url";
 import {GET_JACKPOTS} from "./types";
 
+axios.defaults.withCredentials = true;
+
 export const getJackpots = () => async dispatch => {
   const config = {
     headers: {

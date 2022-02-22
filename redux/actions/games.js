@@ -12,6 +12,8 @@ import {
 
 import {games_url, jackpotGames_url, latest_games, newGames_url, tableGames_url, topGames_url} from '../url/url';
 
+axios.defaults.withCredentials = true;
+
 export const setGames = (gamesData) => {
   return {
     type: SET_GAMES,

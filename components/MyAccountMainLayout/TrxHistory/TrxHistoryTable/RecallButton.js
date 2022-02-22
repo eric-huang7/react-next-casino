@@ -1,8 +1,6 @@
-import styles from "../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss";
+import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 
-
-export const RecallButton = ({t, recallClickHandler}) => {
-
+export const RecallButton = ({ t, recallClickHandler }) => {
 
   return (
     <button

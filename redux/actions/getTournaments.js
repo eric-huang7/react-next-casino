@@ -2,6 +2,8 @@ import axios from "axios";
 import {get_tournaments_url} from "../url/url";
 import {GET_TOURNAMENTS, SET_ACTIVE_TOURNAMENT} from "./types";
 
+axios.defaults.withCredentials = true;
+
 export const getTournaments = () => async dispatch => {
   const config = {
     headers: {

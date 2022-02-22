@@ -2,11 +2,11 @@ import {freeGame_url, payGame_url} from "../url/url";
 import {DELETE_GAME_LINK, PLAY_FREE_GAME, PLAY_GAME} from "./types";
 
 import axios from "axios";
+
 axios.defaults.withCredentials = true;
 
 export const freeGame = (gameData) => async dispatch => {
   const config = {
-    withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -30,7 +30,6 @@ export const freeGame = (gameData) => async dispatch => {
 
 export const playPayGame = (gameData) => async dispatch => {
   const config = {
-    withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
     },
