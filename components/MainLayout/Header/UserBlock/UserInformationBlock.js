@@ -1,54 +1,53 @@
-import styles from "../../../../styles/Header/UserBlock.module.scss";
-import {DesktopMenuContainer} from "../../../DesktopMenuComponents/DesktopMenuContainer";
-import {useState} from "react";
-import {BalanceMenuContainer} from "../../../BalanceMenuContainer/BalanceMenuContainer";
-import {numberTransformer} from "../../../../helpers/numberTransformer";
-import BalanceErrorBoundary from "../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary";
+import styles from '../../../../styles/Header/UserBlock.module.scss'
+import { DesktopMenuContainer } from '../../../DesktopMenuComponents/DesktopMenuContainer'
+import { useState } from 'react'
+import { BalanceMenuContainer } from '../../../BalanceMenuContainer/BalanceMenuContainer'
+import { numberTransformer } from '../../../../helpers/numberTransformer'
+import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
 import { currencyFinder } from '../../../../helpers/currencyFinder'
 
+export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
-export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
-  const [isShowLinksMenu, setIsShowLinksMenu] = useState(false);
-  const [isShowBalanceList, setIsShowBalanceList] = useState(false);
+  const [isShowLinksMenu, setIsShowLinksMenu] = useState(false)
+  const [isShowBalanceList, setIsShowBalanceList] = useState(false)
 
   if (userCurrency.currency && userInfo.balance) {
-    let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default));
+    let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default))
 
     if (balanceData.length === 0) {
       if (userInfo?.balance?.balances?.length > 0) {
-        balanceData = userInfo?.balance?.balances;
+        balanceData = userInfo?.balance?.balances
       }
     }
 
-    let amount = '';
+    let amount = ''
 
     try {
-      amount = numberTransformer(`${balanceData[0].current_balance}`);
+      amount = numberTransformer(`${balanceData[0].current_balance}`)
     } catch (e) {
-      amount = '';
+      amount = ''
     }
 
-    let balance = balanceData.length === 0 ? "0.00" : amount;
-    let currency = currencyFinder(balanceData, userInfo, userCurrency);
+    let balance = balanceData.length === 0 ? '0.00' : amount
+    let currency = currencyFinder(balanceData, userInfo, userCurrency)
 
     const showLinksMenuHandler = () => {
-      setIsShowLinksMenu(true);
+      setIsShowLinksMenu(true)
     }
     const hideLinksMenuHandler = () => {
-      setIsShowLinksMenu(false);
+      setIsShowLinksMenu(false)
     }
     const showBalanceListHandler = () => {
-      setIsShowBalanceList(true);
+      setIsShowBalanceList(true)
     }
     const hideBalanceListHandler = () => {
-      setIsShowBalanceList(false);
+      setIsShowBalanceList(false)
     }
-
 
     return (
       <div className={styles.userMainBlockUserInfoBlock}>
         <div
-          className={`${styles.userTextContainer} ${isShowLinksMenu ? styles.active : ""}`}
+          className={`${styles.userTextContainer} ${isShowLinksMenu ? styles.active : ''}`}
           onMouseEnter={() => showLinksMenuHandler()}
           onMouseLeave={() => hideLinksMenuHandler()}
         >
@@ -56,11 +55,11 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
             {userInfo.user.user.username}
           </span>
           {
-            isShowLinksMenu ? <DesktopMenuContainer t={t}/> : <></>
+            isShowLinksMenu ? <DesktopMenuContainer/> : <></>
           }
         </div>
         <div
-          className={`${styles.userTextContainer} ${isShowBalanceList ? styles.active : ""} ${userInfo?.balance?.balances.length === 1 ? styles.indicatorOff : ""}`}
+          className={`${styles.userTextContainer} ${isShowBalanceList ? styles.active : ''} ${userInfo?.balance?.balances.length === 1 ? styles.indicatorOff : ''}`}
           onMouseEnter={() => showBalanceListHandler()}
           onMouseLeave={() => hideBalanceListHandler()}
         >
@@ -72,7 +71,6 @@ export const UserInformationBlock = ({t, userInfo, userCurrency}) => {
               ?
               <BalanceErrorBoundary>
                 <BalanceMenuContainer
-                  t={t}
                   balanceData={userInfo}
                   activeBalance={balanceData}
                   currencyData={userCurrency}

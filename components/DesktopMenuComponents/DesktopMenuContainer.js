@@ -2,8 +2,7 @@ import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss';
 import {LinkItem} from "./LinkItem";
 import {SignOutItem} from "./SignOutItem";
 
-
-export const DesktopMenuContainer = ({t}) => {
+export const DesktopMenuContainer = () => {
   const linksData = [
     {id: 1, name: 'header.userDesktopMenu.myAccount', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/myAccount.png'},
     {id: 1, name: 'header.userDesktopMenu.bonuses', path: '/accounts/bonuses', icon: '/assets/icons/desktopMenu/bonuses.png'},
@@ -17,12 +16,11 @@ export const DesktopMenuContainer = ({t}) => {
         {
           linksData.map((link) => {
             return (
-              <LinkItem t={t} name={link.name} icon={link.icon} path={link.path} key={`${link.id} ${link.name} link item`}/>
+              <LinkItem name={link.name} icon={link.icon} path={link.path} key={`${link.id} ${link.name} link item`}/>
             )
-
           })
         }
-        <SignOutItem t={t} />
+        <SignOutItem />
       </ul>
     </div>
   )

@@ -1,42 +1,47 @@
-import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss';
-import {MessagesContainer} from "./MessagesContainer";
-import {MoreButton} from "./MoreButton";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {browserNotifications} from "../../../../../helpers/browserNotifications";
-import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../../../redux/actions/userSubscriptionData";
-import {NotifyIcon} from "./NotifyIcon";
-import ErrorEmpty from "../../../../ErrorBoundaryComponents/ErrorEmpty";
+import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss'
+import { MessagesContainer } from './MessagesContainer'
+import { MoreButton } from './MoreButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { browserNotifications } from '../../../../../helpers/browserNotifications'
+import {
+  changeLocalUserSubscriptions,
+  changeUserSubscriptions
+} from '../../../../../redux/actions/userSubscriptionData'
+import { NotifyIcon } from './NotifyIcon'
+import ErrorEmpty from '../../../../ErrorBoundaryComponents/ErrorEmpty'
+import { useTranslation } from 'next-i18next'
 
+export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo }) => {
+  const { t } = useTranslation('common')
 
-export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo, t, hideBellHandler}) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  let timerCount = 0;
+  let timerCount = 0
   useEffect(() => {
     let timerShow = setInterval(() => {
-      timerCount = timerCount + 1;
+      timerCount = timerCount + 1
 
     }, 1000)
     return () => {
       if (timerCount >= 5) {
-        checkReadMessages();
+        checkReadMessages()
       } else {
 
       }
-      clearInterval(timerShow);
+      clearInterval(timerShow)
     }
-  },[])
+  }, [])
 
-  const userInfo = useSelector((state) => state.authInfo.user.user);
+  const userInfo = useSelector((state) => state.authInfo.user.user)
 
-  const [emailSubscript, setEmailSubscript] = useState(userInfo.transactional_email_opt_in);
-  const [smsSubscript, setSmsSubscript] = useState(userInfo.transactional_sms_opt_in);
-  const [notifySubscript, setNotifySubscript] = useState(userInfo.browser_opt_in);
+  const [emailSubscript, setEmailSubscript] = useState(userInfo.transactional_email_opt_in)
+  const [smsSubscript, setSmsSubscript] = useState(userInfo.transactional_sms_opt_in)
+  const [notifySubscript, setNotifySubscript] = useState(userInfo.browser_opt_in)
 
   const soundClickHandler = () => {
-    browserNotifications();
-    let userData;
+    browserNotifications()
+    let userData
     if (notifySubscript === 1) {
       userData = {
         id: userInfo.id,
@@ -54,23 +59,23 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
       }
       setNotifySubscript(1)
     }
-    dispatch(changeUserSubscriptions(userData));
-    dispatch(changeLocalUserSubscriptions(userData));
+    dispatch(changeUserSubscriptions(userData))
+    dispatch(changeLocalUserSubscriptions(userData))
   }
-    return (
-      <div className={`${styles.notificationPopupWrapper}`}>
-        <div className={styles.notificationHeading}>
-          <span>{t("notificationPopup.header.heading")}</span>
-          <ErrorEmpty>
-            <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
-          </ErrorEmpty>
-        </div>
-        <div className={styles.messagesBlock}>
-          <ErrorEmpty>
-            <MessagesContainer t={t} notifyData={notifyData}/>
-          </ErrorEmpty>
-        </div>
-        <MoreButton t={t}/>
+  return (
+    <div className={`${styles.notificationPopupWrapper}`}>
+      <div className={styles.notificationHeading}>
+        <span>{t('notificationPopup.header.heading')}</span>
+        <ErrorEmpty>
+          <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+        </ErrorEmpty>
       </div>
-    )
+      <div className={styles.messagesBlock}>
+        <ErrorEmpty>
+          <MessagesContainer notifyData={notifyData}/>
+        </ErrorEmpty>
+      </div>
+      <MoreButton />
+    </div>
+  )
 }

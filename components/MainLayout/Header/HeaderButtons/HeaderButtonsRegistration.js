@@ -1,31 +1,31 @@
 import styles from '../../../../styles/Header/HeaderButtons.module.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {showRegister} from "../../../../redux/actions/registerShow";
-import {showLogin} from "../../../../redux/actions/loginShow";
+import { useDispatch, useSelector } from 'react-redux'
+import { showRegister } from '../../../../redux/actions/registerShow'
+import { showLogin } from '../../../../redux/actions/loginShow'
+import { useTranslation } from 'next-i18next'
 
+export const HeaderButtonsRegistration = ({ isUserLogined }) => {
+  const { t } = useTranslation('common')
+  const dispatch = useDispatch()
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
 
-export const HeaderButtonsRegistration = ({t, isUserLogined}) => {
-
-
-  const dispatch = useDispatch();
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow);
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
-
-  function registerButtonHandler() {
+  function registerButtonHandler () {
     if (isShowRegister) {
       dispatch(showRegister(false))
     } else {
-      dispatch(showRegister(true));
-      dispatch(showLogin(false));
+      dispatch(showRegister(true))
+      dispatch(showLogin(false))
     }
   }
-  function loginButtonHandler() {
+
+  function loginButtonHandler () {
     if (isShowLogin) {
-      dispatch(showLogin(false));
+      dispatch(showLogin(false))
 
     } else {
-      dispatch(showLogin(true));
-      dispatch(showRegister(false));
+      dispatch(showLogin(true))
+      dispatch(showRegister(false))
     }
   }
 

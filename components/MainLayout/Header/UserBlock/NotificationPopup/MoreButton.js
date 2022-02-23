@@ -1,7 +1,9 @@
 import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss';
 import Link from "next/link";
+import { useTranslation } from 'next-i18next'
 
-export const MoreButton = ({t}) => {
+export const MoreButton = () => {
+  const { t } = useTranslation('common')
 
   return (
     <div className={styles.moreButtonBlock}>
@@ -9,4 +11,3 @@ export const MoreButton = ({t}) => {
     </div>
   )
 }
-// TODO: need add logic when mobile or desktop

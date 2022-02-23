@@ -1,61 +1,57 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useContext, useState} from "react";
-import {BellNotification} from "./BellNotification";
-import {setNotifyTypeTwo} from "../../../../redux/actions/setNotify";
-import {NotifyContext} from "../../../NotifyContext/NotifyContext";
+import { useDispatch, useSelector } from 'react-redux'
+import { useContext, useState } from 'react'
+import { BellNotification } from './BellNotification'
+import { setNotifyTypeTwo } from '../../../../redux/actions/setNotify'
+import { NotifyContext } from '../../../NotifyContext/NotifyContext'
 
+export const NotificationContainer = ({ messagesData }) => {
+  const dispatch = useDispatch()
+  const notifySocket = useContext(NotifyContext)
+  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe)
 
-
-
-export const NotificationContainer = ({messagesData, t}) => {
-  const dispatch = useDispatch();
-  const notifySocket = useContext(NotifyContext);
-  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe);
-
-  let allMessages = messagesData.messagesData.slice();
+  let allMessages = messagesData.messagesData.slice()
   let unreadMessages = messagesData.messagesData.slice().filter((el) => {
     if (el.read === '0' || el.read === undefined) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
-  });
-  let showMessages = allMessages.slice(0, 4);
+  })
+  let showMessages = allMessages.slice(0, 4)
 
   const checkReadMessages = () => {
 
-    let arrNotRead = [];
+    let arrNotRead = []
     let newListMessages = allMessages.map((el) => {
       let check = showMessages.find((showEl) => {
-        if ((showEl.id === el.id) && (el.read === "0" || el.read === undefined)) {
-          arrNotRead.push(showEl.id);
-          return true;
+        if ((showEl.id === el.id) && (el.read === '0' || el.read === undefined)) {
+          arrNotRead.push(showEl.id)
+          return true
         } else {
-          return false;
+          return false
         }
       })
       if (check) {
-        return Object.defineProperty(el, 'read', {value: '1'});
+        return Object.defineProperty(el, 'read', { value: '1' })
       } else {
-        return el;
+        return el
       }
     })
     if (arrNotRead.length > 0) {
 
-      dispatch(setNotifyTypeTwo({type: 2, msg: newListMessages}));
-      let sendObj = {type: 1, ids: arrNotRead}
-      notifySocket.socket.current.send(JSON.stringify(sendObj));
+      dispatch(setNotifyTypeTwo({ type: 2, msg: newListMessages }))
+      let sendObj = { type: 1, ids: arrNotRead }
+      notifySocket.socket.current.send(JSON.stringify(sendObj))
     }
   }
-
 
   const [isShowNotifications, setisShowNotifications] = useState(false)
 
   const showBellHandler = () => {
-    setisShowNotifications(true);
+    setisShowNotifications(true)
   }
   const hideBellHandler = () => {
-    setisShowNotifications(false);
+    setisShowNotifications(false)
   }
 
   return (
@@ -63,7 +59,6 @@ export const NotificationContainer = ({messagesData, t}) => {
       <BellNotification
         showBellHandler={showBellHandler}
         messageCount={unreadMessages.length}
-        t={t}
         hideBellHandler={hideBellHandler}
         checkReadMessages={checkReadMessages}
         isShowNotifications={isShowNotifications}

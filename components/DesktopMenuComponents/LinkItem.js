@@ -1,7 +1,9 @@
-import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss';
-import Link from "next/link";
+import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss'
+import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
-export const LinkItem = ({t, path, name, icon}) => {
+export const LinkItem = ({ path, name, icon }) => {
+  const { t } = useTranslation('common')
 
   return (
     <li className={styles.linkItem}>
