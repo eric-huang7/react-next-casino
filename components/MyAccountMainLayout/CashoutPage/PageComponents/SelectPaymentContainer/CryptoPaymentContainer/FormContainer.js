@@ -86,8 +86,12 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
             dispatch(userBalance())
             dispatch(getUserPayments(params))
             if (e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS') {
-              dispatch(errorPopupActivate("myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation"));
               setErrorMessage('')
+              router.push('/accounts/history').then(() => {
+                setTimeout(() => {
+                  dispatch(errorPopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation'))
+                }, 1000)
+              })
             } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
               setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needAccountReview'))
             } else if (e.response.data.error_code === 'WITHDRAW_NEED_PLAYTHROUGH') {
@@ -95,7 +99,6 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
             } else {
               setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
             }
-
           })
       }
     } catch (e) {

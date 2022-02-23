@@ -4,8 +4,8 @@ export const CloseButton = ({ closeMessagePopup }) => {
 
   return (
     <button onClick={() => closeMessagePopup()} className={styles.closeButton}>
-      <span className={styles.closeOne}></span>
-      <span className={styles.closeTwo}></span>
+      <span className={styles.closeOne}/>
+      <span className={styles.closeTwo}/>
     </button>
   )
 }
