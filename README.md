@@ -2,20 +2,20 @@
 Repo to hold DevIT's work on casino frontend
 
 ## Running locally in development mode
-To get started, just clone the repository and run `yarn install && yarn dev`:
+To get started, just clone the repository and run `npm install && npm run dev`:
 
     git clone git@github.com:coredataeu/casino-devit.git
-    yarn install
-    yarn dev
+    npm install
+    npm run dev
 
 ## Building and deploying in production
-If you wanted to run this site in production, you should install modules then build the site with `yarn build` and run it with `yarn start`:
+If you wanted to run this site in production, you should install modules then build the site with `npm run build` and run it with `npm run start`:
 
-    yarn install
-    yarn build
-    yarn start
+    npm install
+    npm run build
+    npm run start
 
-You should run `yarn build` again any time you make changes to the site.
+You should run `npm run build` again any time you make changes to the site.
 
 ## Configuring
 

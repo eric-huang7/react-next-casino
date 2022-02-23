@@ -1,4 +1,4 @@
-import styles from '../../../styles/MessageContainer/Messagecontainer.module.scss'
+import styles from '../../styles/MessageContainer/Messagecontainer.module.scss'
 
 export const CloseButton = ({ closeMessagePopup }) => {
 
