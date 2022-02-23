@@ -139,6 +139,8 @@ function showPopupsReducer(state = initialState, action) {
         actionForBackButtonPayments: false,
         showErrorPopup: false,
         errorPopupData: null,
+        showMessagePopup: false,
+        messagePopupData: null,
         depositModalStep: 1,
         isShowPaymentCurrencySwitcher: false,
         isShowMobileCryptoPayments: false,
