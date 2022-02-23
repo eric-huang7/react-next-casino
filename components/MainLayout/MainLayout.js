@@ -37,8 +37,9 @@ import ExitIntentError from '../ExitIntentComponent/ExitIntentError/ExitIntentEr
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
+import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
 
-const MainLayout = ({ children, token, emailError }) => {
+const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch()
   const router = useRouter()
@@ -77,6 +78,10 @@ const MainLayout = ({ children, token, emailError }) => {
         showModalKey === 'showErrorPopup'
         ||
         showModalKey === 'isShowExitIntentPopup'
+        ||
+        showModalKey === 'showMessagePopup'
+        ||
+        showModalKey === 'errorPopupData'
       ) {
 
       } else {
@@ -100,6 +105,11 @@ const MainLayout = ({ children, token, emailError }) => {
 
   return (
     <>
+      <ModalsContainer
+        token={token}
+        emailError={emailError}
+        withdrawConfirmError={withdrawConfirmError}
+      />
       <div className={styles.mainLayoutWrapper}>
         <ErrorHeaderPage>
           <Header t={t}/>

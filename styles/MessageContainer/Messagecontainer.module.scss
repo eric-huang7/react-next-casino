@@ -1,0 +1,66 @@
+@import '../colors.module';
+
+.messageContainer {
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  min-width: 350px;
+  max-width: 400px;
+
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+
+  z-index: 30;
+
+  background-color: $red-color;
+
+  border-radius: 10px;
+
+  & p {
+    width: 100%;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-family: "Verdana", Arial, sans-serif;
+    word-break: break-word;
+
+    padding: 0 10px;
+  }
+
+  & button {
+    position: relative;
+
+    height: 20px;
+    width: 20px;
+
+    cursor: pointer;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    & span {
+      width: 20px;
+      height: 3px;
+
+      background-color: #ffffff;
+
+      border-radius: 10px;
+
+      position: absolute;
+      top: 10px;
+      left: -5px;
+    }
+    & .closeOne {
+      transform: rotateZ(45deg);
+    }
+    & .closeTwo {
+      transform: rotateZ(-45deg);
+    }
+  }
+}

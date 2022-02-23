@@ -8,6 +8,7 @@ import { token_url } from '../../redux/url/url'
 import axios from 'axios'
 import { changePasswordLogin } from '../../redux/actions/userData'
 import {
+  messagePopupActivate,
   showEmailValidationErrorPopup,
   showEmailValidationSuccessPopup,
   showTwoFaPopup
@@ -33,20 +34,22 @@ export default function EmailConfirmation (props) {
           .then((data) => {
             console.log(data, 'successs data!!!!!!!!!');
             if (data.data.success) {
-
-              setWithdrawConfirmError(null)
+              // Your cash out request has been successfully received. We will process it as fast as we can. View Transaction History.
+              dispatch(messagePopupActivate('Your cash out request has been successfully received. We will process it as fast as we can. View Transaction History.'))
+              // setWithdrawConfirmError(null)
 
             } else if (data.data.extra_error_info === 'Token invalid') {
-
+              dispatch(messagePopupActivate('Ups, seems like you have already used this link before.'))
               setWithdrawConfirmError('used_token')
 
             } else {
               setWithdrawConfirmError('other_error')
-
+              dispatch(messagePopupActivate('Token invalid or expired. Try to resend confirmation instructions.'))
             }
           })
           .catch((e) => {
             console.log(e, 'error data!!!!!!!!!');
+            dispatch(messagePopupActivate('Token invalid or expired. Try to resend confirmation instructions.'))
             setWithdrawConfirmError('other_error')
           })
       }, 3000)
@@ -61,9 +64,7 @@ export default function EmailConfirmation (props) {
   return (
 
     <>
-      <MainLayout
-        emailError={withdrawConfirmError}
-      >
+      <MainLayout>
         <HomePageContainer
           t={t}
         />

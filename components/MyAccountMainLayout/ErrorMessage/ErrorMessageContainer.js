@@ -6,7 +6,6 @@ export const ErrorMessageContainer = ({ t, errorData }) => {
   const dispatch = useDispatch()
   const closeErrorPopup = () => {
     dispatch(errorPopupDeactivate())
-
   }
 
   return (

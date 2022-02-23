@@ -1,8 +1,8 @@
 import {
-  ACTIVATE_ERROR_POPUP,
+  ACTIVATE_ERROR_POPUP, ACTIVATE_MESSAGE_POPUP,
   BACK_BUTTON_SHOULD_DO,
   CLOSE_All,
-  DEACTIVATE_ERROR_POPUP, SET_DEPOSIT_STEP, SHOW_CHANGE_PASSWORD_WINDOW,
+  DEACTIVATE_ERROR_POPUP, DEACTIVATE_MESSAGE_POPUP, SET_DEPOSIT_STEP, SHOW_CHANGE_PASSWORD_WINDOW,
   SHOW_CREDIT_CARD_MODAL,
   SHOW_CRYPTO_MODAL,
   SHOW_CURRENCY_SWITCHER,
@@ -16,7 +16,7 @@ import {
   SHOW_SEARCH_MODAL,
   SHOW_TOURNAMENTS,
   SHOW_TOURNAMENTS_DETAILS, SHOW_TWO_FA_WINDOW
-} from "../actions/types";
+} from '../actions/types'
 import {showMobileCryptoPayments} from "../actions/showPopups";
 
 const initialState = {
@@ -36,6 +36,8 @@ const initialState = {
   actionForBackButtonPayments: false,
   showErrorPopup: false,
   errorPopupData: null,
+  showMessagePopup: false,
+  messagePopupData: null,
   isShowExitIntentPopup: true,
   depositModalStep: 1,
   isShowMobileCryptoPayments: false,
@@ -81,16 +83,28 @@ function showPopupsReducer(state = initialState, action) {
         showErrorPopup: true,
         errorPopupData: payload,
       }
-    case SET_DEPOSIT_STEP :
-      return {
-        ...state,
-        depositModalStep: payload,
-      }
     case DEACTIVATE_ERROR_POPUP :
       return {
         ...state,
         showErrorPopup: false,
         errorPopupData: payload,
+      }
+    case ACTIVATE_MESSAGE_POPUP :
+      return {
+        ...state,
+        showMessagePopup: true,
+        messagePopupData: payload,
+      }
+    case DEACTIVATE_MESSAGE_POPUP :
+      return {
+        ...state,
+        showMessagePopup: false,
+        messagePopupData: null,
+      }
+    case SET_DEPOSIT_STEP :
+      return {
+        ...state,
+        depositModalStep: payload,
       }
     case SHOW_EXIT_INTENT_POPUP :
       return {

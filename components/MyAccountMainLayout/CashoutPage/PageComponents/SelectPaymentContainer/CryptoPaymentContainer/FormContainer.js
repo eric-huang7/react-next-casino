@@ -83,12 +83,10 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
           .catch((e) => {
 
             setSuccessMessage('')
-
+            dispatch(userBalance())
+            dispatch(getUserPayments(params))
             if (e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS') {
-              // Due to security reasons the address never used before needs to be confirmed by email. confirmation link was sent to your email, please check mailbox.
               dispatch(errorPopupActivate("myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation"));
-              dispatch(getUserPayments(params))
-              dispatch(userBalance())
               setErrorMessage('')
             } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
               setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needAccountReview'))

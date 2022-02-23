@@ -1,8 +1,8 @@
 import {
-  ACTIVATE_ERROR_POPUP,
+  ACTIVATE_ERROR_POPUP, ACTIVATE_MESSAGE_POPUP,
   BACK_BUTTON_SHOULD_DO,
   CLOSE_All,
-  DEACTIVATE_ERROR_POPUP,
+  DEACTIVATE_ERROR_POPUP, DEACTIVATE_MESSAGE_POPUP,
   SET_DEPOSIT_STEP,
   SHOW_CHANGE_PASSWORD_WINDOW,
   SHOW_CREDIT_CARD_MODAL,
@@ -22,7 +22,7 @@ import {
   SHOW_SEARCH_MODAL,
   SHOW_TOURNAMENTS,
   SHOW_TOURNAMENTS_DETAILS, SHOW_TWO_FA_WINDOW,
-} from "./types";
+} from './types'
 import {log} from "qrcode/lib/core/galois-field";
 
 
@@ -101,6 +101,20 @@ export const errorPopupActivate = (errorData) => async dispatch => {
 export const errorPopupDeactivate = () => {
   return {
     type: DEACTIVATE_ERROR_POPUP,
+    payload: null
+  }
+}
+
+export const messagePopupActivate = (messageData) => {
+  return {
+    type: ACTIVATE_MESSAGE_POPUP,
+    payload: messageData
+  }
+}
+
+export const messagePopupDeactivate = () => {
+  return {
+    type: DEACTIVATE_MESSAGE_POPUP,
     payload: null
   }
 }
