@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "casino",
+            "script": "npm run startProd",
+        }
+    ]
+}
+
