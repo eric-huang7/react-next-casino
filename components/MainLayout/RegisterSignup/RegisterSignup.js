@@ -1,13 +1,9 @@
 import styles from '../../../styles/RegisterSignup.module.scss'
 
 import {useEffect, useState} from "react";
-import Link from "next/link";
-
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-
-
 import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
@@ -15,23 +11,22 @@ import {signUp} from "../../../redux/actions/userData";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
 import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";
+import {TopHeading} from "./SignupContainerComponents/TopHeading";
+import {LowHeading} from "./SignupContainerComponents/LowHeading";
+import {EmailInput} from "./SignupContainerComponents/EmailInput";
+import {UserNameInput} from "./SignupContainerComponents/UserNameInput";
+import {PasswordContainer} from "./SignupContainerComponents/PasswordContainer";
+import {CurrencyInput} from "./SignupContainerComponents/CurrencyInput";
+import {BonusCodeInput} from "./SignupContainerComponents/BonusCodeInput";
+import {TermsCheckContainer} from "./SignupContainerComponents/TermsCheckContainer";
+import {LoginButton} from "./SignupContainerComponents/LoginButton";
+import {SubmitButton} from "./SignupContainerComponents/SubmitButton";
 
 
 export const RegisterSignup = ({t, isShow}) => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
     resolver: yupResolver(schemaRegister),
   });
-
-  useEffect(() => {
-    if (isShow) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-    return () => {
-      document.body.style.overflowY = "auto"
-    }
-  }, [isShow])
 
   const dispatch = useDispatch();
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
@@ -43,16 +38,10 @@ export const RegisterSignup = ({t, isShow}) => {
   const [activeBonus, setActiveBonus] = useState(false);
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
-
-  // const [isShowCurrency, setIsShowCurrency] = useState(false);
-
-  // const [activeCurrency, setActiveCurrency] = useState(userCurrency.abbreviation); // default need change
-
   const [usernameData, setUsernameData] = useState('');
   const [passwordData, setPasswordData] = useState('');
   const [userEmailData, setUserEmailData] = useState('');
   const [bonusCodeData, setBonusCodedata] = useState('');
-  // const [currencyChoose, setCurrencyChoose] = useState(userCurrency.id); // default need change
   const [youAgree, setYouAgree] = useState(false);
   const [youAgreeError, setYouAgreeError] = useState('');
   const [registerError, setRegisterError] = useState('');
@@ -102,16 +91,7 @@ export const RegisterSignup = ({t, isShow}) => {
     dispatch(hideRegister(true));
     dispatch(backButtonShouldDo(hideCurrencyShowRegisterModal));
 
-    // if (isShowCurrency) {
-    //   setIsShowCurrency(false);
-    // } else {
-    //   setIsShowCurrency(true);
-    // }
   }
-
-  // useEffect(() => {
-
-  // }, [activeCurrency])
 
   function showPass() {
     if (isPassShow) {
@@ -131,13 +111,6 @@ export const RegisterSignup = ({t, isShow}) => {
     }
   }
 
-
-  // 100% First Deposit Bonus
-  // let site_id = siteID;
-  // let auth_type_id = auth_type_id;
-  // let isAdmin = false;
-  // let userId = 100000;
-//currency, user_id, site_id, auth_type_id, username, email, password
   function registerUser(userNameInfo, userPasswordInfo, userEmailInfo) {
     let body = {
       base_currency_id: userCurrency.id,
@@ -150,10 +123,6 @@ export const RegisterSignup = ({t, isShow}) => {
     }
 
     dispatch(signUp(body));
-    //   .then((data) => {
-    //   setBonusCodedata('');
-    //   dispatch(setUserRegisterBonusCode(null));
-    // });
   }
 
   const onSubmitHandler = (data) => {
@@ -183,27 +152,7 @@ export const RegisterSignup = ({t, isShow}) => {
 
   useEffect(() => {
     if (userInfo.registerError) {
-
-      if (userInfo.registerError.data.error_code === "DUPLICATE_USER_NAME") {
-        reset();
-        // The provided username has already been used
-        setRegisterError(t("registrationForm.errors.duplicateUsername"));
-      } else if (userInfo.registerError.data.error_code === "BONUS_INVALID_OFFER_CODE") {
-
-        // Invalid Promo Code:
-        setRegisterError(t("registrationForm.errors.invalidPromo") + " " + bonusCodeData);
-      } else if (userInfo.registerError.data.error_code === "BONUS_REDEMPTION_CURRENCY_SPECIFICATION_NOT_FOUND") {
-
-        // Бонус код не подходит для выбраной вами валюты.
-        setRegisterError(t("registrationForm.errors.invalidPromoCurrency"));
-        } else if (userInfo.registerError.data.error_code === "DUPLICATE_EMAIL_ADDRESS") {
-        reset();
-        // The provided email address has already been used to sign up
-        setRegisterError(t("registrationForm.errors.duplicateEmail"));
-      } else {
-        setRegisterError(userInfo.registerError.data.extra_error_info.message);
-      }
-
+      setErrorHelper(userInfo, setRegisterError, reset, t, bonusCodeData);
     }
   }, [userInfo.registerError])
 
@@ -211,124 +160,80 @@ export const RegisterSignup = ({t, isShow}) => {
     setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
   }, [userRegisterBonusCode])
 
-
-  // useEffect(() => {
-  //
-  //   setBonusCodedata('');
-  //   dispatch(setUserRegisterBonusCode(null));
-  //
-  // }, [userCurrency.id])
-
-
   return (
     <div
       className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
-      {/*<Header t={t}/>*/}
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
-        <div className={styles.registerHeading}>
-          <h2>{t('registrationForm.mainHeading')}</h2>
-        </div>
+        <TopHeading />
         <div className={styles.registerInnerBlock}>
-          <div className={styles.registerInnerBlockHead}>
-            <h3>{t('registrationForm.innerHeading')}</h3>
-            <div onClick={() => registerCloseButtonHandler()} className={styles.registerInnerCloseButton}>
-              <span className={styles.closeOne}></span>
-              <span className={styles.closeTwo}></span>
-            </div>
-          </div>
+          <LowHeading registerCloseButtonHandler={registerCloseButtonHandler}/>
           <div className={styles.registerInnerBlockForms}>
             <form
               id={'register_form'}
               onSubmit={handleSubmit(onSubmitHandler)}
             >
-              <label htmlFor={'emailIn'}>{t('registrationForm.emailInput')}</label>
-              <input
-                onChange={(e) => setUserEmailData(e.target.value)}
-                {...register("email")}
-                id={'emailIn'}
-                type="text"
+              <EmailInput
+                  errors={errors}
+                  register={register}
+                  setUserEmailData={setUsernameData}
               />
-              <span className={styles.errorMessage}>{t(errors.email?.message)}</span>
 
-              <label htmlFor={'usernameIn'}>
-                {t('registrationForm.usernameInput')}
-              </label>
-              <input
-                onChange={(e) => setUsernameData(e.target.value)}
-                {...register("username")}
-                id={'usernameIn'}
-                type="text"
+              <UserNameInput
+                  register={register}
+                  errors={errors}
+                  setUsernameData={setUsernameData}
               />
-              <span className={styles.errorMessage}>{t(errors.username?.message)}</span>
 
-              <label htmlFor={'passwordIn'}>
-                {t('registrationForm.passwordInput')}
-              </label>
-              <label className={styles.passwordEye} htmlFor={'passwordIn'}>
-                <img onClick={() => showPass()} src={'/assets/img/registerSignup/eye.svg'} alt="show pass icon"/>
-                <input
-                  onChange={(e) => setPasswordData(e.target.value)}
-                  id={'passwordIn'}
-                  type={passwordInputType}
-                  {...register("password")}
-                />
-              </label>
-              <span className={styles.errorMessage}>{t(errors.password?.message)}</span>
+              <PasswordContainer
+                  errors={errors}
+                  register={register}
+                  showPass={showPass}
+                  passwordInputType={passwordInputType}
+                  setPasswordData={setPasswordData}
+              />
 
+              <CurrencyInput
+                  showCurrencyBlock={showCurrencyBlock}
+                  userCurrency={userCurrency} />
 
-              <label htmlFor={'currencyIn'}>
-                {t('registrationForm.currencyInput')}
-              </label>
-              <input
-                readOnly={true}
-                // ref={currencyRef}
-                className={styles.currencyInput}
-                onClick={() => showCurrencyBlock()}
-                value={userCurrency.abbreviation}
-                id={'currencyIn'}
-                type="text"/>
+              <BonusCodeInput
+                  activeBonus={activeBonus}
+                  bonusCodeData={bonusCodeData}
+                  setBonusCodedata={setBonusCodedata}
+                  showBonusInput={showBonusInput}
+              />
 
-              <div className={`${styles.iHaveBonus} ${activeBonus || !!bonusCodeData ? styles.showBonusInput : ''}`}>
-                <p onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</p>
-                {bonusCodeData ? <label className={styles.labelForBonusInput}
-                                        htmlFor="bonusIn">{t('registrationForm.bonusCodeInput')}</label> : <></>}
-                <input
-                  onChange={(e) => setBonusCodedata(e.target.value)}
-                  value={bonusCodeData}
-                  className={styles.bonusInput}
-                  id={'bonusIn'}
-                  type="text"
-                  placeholder={t('registrationForm.bonusCodeInput')}/>
-              </div>
-
-              <div className={styles.agreeTermsWrapper}>
-                <input onChange={(e) => youAgreeHandler(e)} className={styles.agreeTermsCheckbox} id={"agreeTerms"}
-                       type="checkbox"/>
-                <label htmlFor={"agreeTerms"} className={styles.iReadAndAgreeLabel}>
-                  {t('registrationForm.iReadAndAgree')}
-                </label>
-                <Link href={'/termsAndConditions'}><a
-                  onClick={() => registerCloseButtonHandler()}>{t('registrationForm.termsOfUseLink')}</a></Link>
-              </div>
+              <TermsCheckContainer
+                  registerCloseButtonHandler={registerCloseButtonHandler}
+                  youAgreeHandler={youAgreeHandler}
+              />
               <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
               <span className={styles.errorMessageRegister}>{registerError}</span>
             </form>
-            <div className={styles.alredyRegistered}>
-              <p className={styles.alredyText}>{t('registrationForm.alreadyRegistered')}</p>
-              <p onClick={() => openLogin()} className={styles.LogInText}>{t('registrationForm.logInLink')}</p>
-            </div>
+            <LoginButton openLogin={openLogin} />
           </div>
         </div>
-        <div className={styles.submitButtonWrapper}>
-          <button
-            type={"submit"}
-            form={'register_form'}
-            className={styles.submitButton}>
-            {t('registrationForm.signUpButton')}
-          </button>
-        </div>
+        <SubmitButton />
       </div>
     </div>
   )
+}
+
+const setErrorHelper = (userInfo, setRegisterError, reset, t, bonusCodeData) => {
+
+  if (userInfo.registerError.data.error_code === "DUPLICATE_USER_NAME") {
+    reset();
+    setRegisterError(t("registrationForm.errors.duplicateUsername"));
+  } else if (userInfo.registerError.data.error_code === "BONUS_INVALID_OFFER_CODE") {
+    setRegisterError(t("registrationForm.errors.invalidPromo") + " " + bonusCodeData);
+  } else if (userInfo.registerError.data.error_code === "BONUS_REDEMPTION_CURRENCY_SPECIFICATION_NOT_FOUND") {
+    setRegisterError(t("registrationForm.errors.invalidPromoCurrency"));
+  } else if (userInfo.registerError.data.error_code === "DUPLICATE_EMAIL_ADDRESS") {
+    reset();
+    setRegisterError(t("registrationForm.errors.duplicateEmail"));
+  } else {
+    setRegisterError(userInfo.registerError.data.extra_error_info.message);
+  }
+
 }

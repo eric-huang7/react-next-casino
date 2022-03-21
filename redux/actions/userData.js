@@ -43,6 +43,7 @@ import {siteID} from "../../envs/envsForFetching";
 import {errorPopupActivate, errorPopupDeactivate, showTwoFaPopup} from "./showPopups";
 import {annulActiveBonuses} from "./getBonuses";
 import {showLogin} from "./loginShow";
+import {showRegister} from "./registerShow";
 
 axios.defaults.withCredentials = true;
 
@@ -528,6 +529,7 @@ export const signUp = (signUpData) => async dispatch => {
       payload: res.data
     })
     dispatch(auth());
+    dispatch(showRegister(false));
   } catch (e) {
 
     dispatch({
