@@ -105,10 +105,10 @@ export const errorPopupDeactivate = () => {
   }
 }
 
-export const messagePopupActivate = (messageData) => {
+export const messagePopupActivate = (messageData, messageColor = 'red') => {
   return {
     type: ACTIVATE_MESSAGE_POPUP,
-    payload: messageData
+    payload: {data: messageData, color: messageColor}
   }
 }
 

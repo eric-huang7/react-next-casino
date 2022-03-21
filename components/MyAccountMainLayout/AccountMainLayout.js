@@ -22,6 +22,7 @@ import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWr
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
+import {MessageContainer} from "../MessageContainer/MessageContainer";
 
 export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()
@@ -134,6 +135,9 @@ export const AccountMainLayout = ({ t, children }) => {
                 />
               </ErrorEmpty>
               : <></>
+          }
+          {
+              isShowModal.showMessagePopup && <MessageContainer />
           }
           <ErrorEmpty>
             <DepositPage t={t}/>

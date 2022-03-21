@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPayments, userBalance } from '../../../../../../redux/actions/userData'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
-import { errorPopupActivate } from '../../../../../../redux/actions/showPopups'
+import {errorPopupActivate, messagePopupActivate} from '../../../../../../redux/actions/showPopups'
 
 export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) => {
   const dispatch = useDispatch()
@@ -89,7 +89,7 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
               setErrorMessage('')
               router.push('/accounts/history').then(() => {
                 setTimeout(() => {
-                  dispatch(errorPopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation'))
+                  dispatch(messagePopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation', 'green'))
                 }, 1000)
               })
             } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
