@@ -1,6 +1,6 @@
 import { MessageContainer } from '../MessageContainer/MessageContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useMemo } from 'react'
+import {useCallback, useEffect, useMemo} from 'react'
 import { backButtonShouldDo, closeAll } from '../../redux/actions/showPopups'
 import { showLogin } from '../../redux/actions/loginShow'
 import { showRegister } from '../../redux/actions/registerShow'
@@ -50,7 +50,8 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
     dispatch(showRegister(false))
   }, [router, dispatch])
 
-  useCallback(() => {
+  useEffect(() => {
+
     for (let showModalKey in isShowModal) {
       if (
         showModalKey === 'actionForBackButton'
