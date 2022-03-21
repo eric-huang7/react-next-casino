@@ -83,23 +83,7 @@ export const LogIn = ({isShow}) => {
 
   useEffect(() => {
     if (userInfo.error) {
-
-      if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
-
-        let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
-        let timeExclude = dateFormatter(timeAll, router.locale);
-
-        setPasswordData('');
-        setErrorMessage(`${t('errors.selfExcluded')} ${timeExclude}`)
-      } else if (userInfo.error.data.error_code === "ACCOUNT_LOCKED") {
-
-        setPasswordData('');
-        setErrorMessage(t('errors.wrongPasswordOrEmail'));
-      } else {
-
-        setPasswordData('');
-        setErrorMessage(t('errors.wrongPasswordOrEmail'));
-      }
+      errorHelper(userInfo, router, setPasswordData, setErrorMessage, t);
     }
     if (userInfo.isAuthenticated) {
       dispatch(showLogin(false));
@@ -170,3 +154,24 @@ export const LogIn = ({isShow}) => {
   )
 }
 
+
+const errorHelper = (userInfo, router, setPasswordData, setErrorMessage, t) => {
+
+  if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
+
+    let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
+    let timeExclude = dateFormatter(timeAll, router.locale);
+
+    setPasswordData('');
+    setErrorMessage(`${t('errors.selfExcluded')} ${timeExclude}`)
+  } else if (userInfo.error.data.error_code === "ACCOUNT_LOCKED") {
+
+    setPasswordData('');
+    setErrorMessage(t('errors.wrongPasswordOrEmail'));
+  } else {
+
+    setPasswordData('');
+    setErrorMessage(t('errors.wrongPasswordOrEmail'));
+  }
+
+}
