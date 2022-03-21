@@ -43,7 +43,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const showPlayWindow = useSelector((store) => store.showPlayWindowReducer)
   const paymentsData = useSelector((store) => store.depositData)
 
-  useMemo(() => {
+  useEffect(() => {
     dispatch(closeAll(false))
     dispatch(backButtonShouldDo(false))
     dispatch(showLogin(false))
