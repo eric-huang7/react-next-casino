@@ -38,13 +38,15 @@ export const AccountMainLayout = ({ t, children }) => {
   }, [router])
 
   useEffect(() => {
-
+    let userLogLocal = localStorage.getItem('userAuth')
     if (!userInfo.userAuthLoading && !userInfo.isAuthenticated) {
-
       router.replace('/').then((data) => {
         dispatch(showLogin(true))
       })
-
+    } else if (!JSON.parse(userLogLocal)) {
+      router.replace('/').then((data) => {
+        dispatch(showLogin(true))
+      })
     }
   }, [userInfo.userAuthLoading, userInfo.isAuthenticated])
 

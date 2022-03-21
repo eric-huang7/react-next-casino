@@ -10,7 +10,7 @@ export const MessageTextContainer = ({ messageType }) => {
         <p>
           {t('messageContainer.messagesText.succes')}
           <span>&ensp;</span>
-          <Link href={'/accounts/history'}><a>{'View Transaction History.'}</a></Link>
+          <Link href={'/accounts/history'}><a>{t('messageContainer.messagesText.historyLink')}</a></Link>
         </p>
       )
     case 'token_invalid':

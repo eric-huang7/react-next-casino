@@ -9,8 +9,6 @@ export const MessageContainer = () => {
   const dispatch = useDispatch()
   const popupData = useSelector((store) => store.showPopupsReducer)
 
-    console.log(popupData.messagePopupData,popupData.messagePopupData.color,  '@@@@@@@@@@@@@@')
-
   const closeMessagePopup = () => {
     dispatch(messagePopupDeactivate())
   }
