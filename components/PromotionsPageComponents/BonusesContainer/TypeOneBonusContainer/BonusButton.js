@@ -30,7 +30,7 @@ export const BonusButton = ({bonusInfo, userData}) => {
     <div onClick={() => openDepositModalHandler()} className={styles.bonusButtonBlock}>
       <img draggable={false}
            src={bonusButton ? `${imagesUrl}images/${bonusButton}` : bonusImage}
-           alt="bonus button icon"/>
+           alt=""/>
     </div>
   )
 }
