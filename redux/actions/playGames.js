@@ -46,9 +46,14 @@ export const playPayGame = (gameData) => async dispatch => {
         gameName: gameData.gameName
       }
     })
-
   } catch (e) {
-
+    dispatch({
+      type: PLAY_GAME,
+      payload: {
+        data: {},
+        gameName: gameData.gameName
+      }
+    })
   }
 }
 
