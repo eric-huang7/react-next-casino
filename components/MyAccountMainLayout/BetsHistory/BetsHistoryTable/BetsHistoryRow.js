@@ -1,15 +1,15 @@
 import styles from '../../../../styles/MyAccount/BetsHistory/BetsHistory.module.scss'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
-
+import * as math from 'mathjs'
 export const BetsHistoryRow = ({ betData }) => {
 
   const router = useRouter()
 
   let currency = betData.currency_abrv
   let game = gameItem(betData.game)
-  let bet = `${Number(betData.bet_amount)} ${currency ? currency : ''}`
-  let win = `${Number(betData.win_amount)} ${currency ? currency : ''}`
+  let bet = `${math.format(math.bignumber(betData.bet_amount), {notation:"fixed"})} ${currency ? currency : ''}`
+  let win = `${math.format(math.bignumber(betData.win_amount), {notation:"fixed"})} ${currency ? currency : ''}`
   let date = dateFormatter(betData.time_created, router.locale)
 
   return (
