@@ -53,3 +53,5 @@ yarn-error.log*
 
 .idea
 
+# locales
+/public/locales/
