@@ -57,7 +57,7 @@ export const HomePageContainer = ({t}) => {
             <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
           </ErrorEmpty>
           :
-          <>
+          <div style={{ paddingTop: 35 }}>
             <ErrorText>
               <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
             </ErrorText>
@@ -77,7 +77,7 @@ export const HomePageContainer = ({t}) => {
             <ErrorText>
               <WhySlotsIdol t={t} isBackShow={true}/>
             </ErrorText>
-          </>
+          </div>
       }
     </>
   )
