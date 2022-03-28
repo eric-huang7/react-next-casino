@@ -167,7 +167,7 @@ const errorHelper = (userInfo, router, setPasswordData, setErrorMessage, t) => {
   } else if (userInfo.error.data.error_code === "ACCOUNT_LOCKED") {
 
     setPasswordData('');
-    setErrorMessage(t('errors.wrongPasswordOrEmail'));
+    setErrorMessage(t('errors.accountLocked'));
   } else {
 
     setPasswordData('');
