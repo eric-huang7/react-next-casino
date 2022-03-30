@@ -6,6 +6,8 @@ import { patchUserActiveCurrency } from '../../../redux/actions/userData'
 import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {useEffect} from "react";
+import {svgSetter} from "../../../helpers/iconNameFinder";
 
 export const TableRow = ({ t, balanceData, currencyData }) => {
   const dispatch = useDispatch()
@@ -24,6 +26,12 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
 
   }
 
+  useEffect(() => {
+    const returnAbbr = true
+    svgSetter(currency, returnAbbr)
+  }, [])
+
+  console.log('currency', currency)
   return (
     <tr className={styles.tableRow}>
       {
@@ -41,7 +49,13 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
           </td>
       }
       <td className={styles.tableCurrency}>
-        {currency.abbreviation}
+        <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
+        <div className={styles.currencyInfoContainer}>
+          <div className={styles.currencyAbbrBaseWrapper}>
+            <span className={styles.abbreviation}>{currency.abbreviation}</span>
+          </div>
+          <div className={styles.name}>{currency.name}</div>
+        </div>
       </td>
       <td className={styles.tableAmount}>
         {`${amount} ${currency.abbreviation}`}

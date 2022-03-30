@@ -2,6 +2,8 @@ import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss'
 import { numberTransformer } from '../../helpers/numberTransformer'
 import { patchUserActiveCurrency } from '../../redux/actions/userData'
 import { useDispatch } from 'react-redux'
+import {useEffect} from "react";
+import {svgSetter} from "../../helpers/iconNameFinder";
 
 export const BalanceItem = ({ balanceData, currencyData }) => {
   const dispatch = useDispatch()
@@ -18,10 +20,17 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id))
   let amount = numberTransformer(balanceData.current_balance)
 
+  useEffect(() => {
+    const returnAbbr = true
+    svgSetter(currency, returnAbbr)
+  }, [])
+
   return (
     <li onClick={() => chooseClickHandler()} className={styles.balanceItem}>
       <span>{amount}</span>
-      <span>{currency.abbreviation}</span>
+      <span>
+        <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>{currency.abbreviation}
+      </span>
     </li>
   )
 }
