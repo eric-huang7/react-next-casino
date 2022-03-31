@@ -3,7 +3,7 @@ import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.
 import { useEffect } from 'react'
 import { svgSetter } from '../../../../helpers/iconNameFinder'
 
-export const CurrencyItem = ({ t, currencyData, currencySelectorHandler }) => {
+export const CurrencyItem = ({ t, currencyData, currencySelectorHandler = () => {} }) => {
 
   const abbr = currencyData.abbreviation
   const name = currencyData.name

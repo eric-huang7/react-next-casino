@@ -8,7 +8,7 @@ export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
   let currency = currencyData.find((el) => Number(el.id) === Number(balanceData.currency_id))
 
   useEffect(() => {
-    const returnAbbr = true
+    const returnAbbr = false
     svgSetter(currency, returnAbbr)
   }, [])
 

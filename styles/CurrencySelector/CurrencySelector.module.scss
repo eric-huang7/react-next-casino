@@ -325,14 +325,11 @@
 .currencyInfoContainer {
   display: flex;
   flex-direction: column;
-
   width: 100%;
-
   border-bottom: 1px solid #cbcbcb;
-
   position: relative;
-
   padding: 10px 3px;
+  align-items: flex-start;
 }
 
 .currencyAbbrBaseWrapper {
@@ -346,11 +343,9 @@
   line-height: 20px;
   color: #2d2d2d;
   font-family: "Segoe UI", sans-serif;
-
   display: block;
-
   min-width: 45px;
-
+  text-align: left;
 }
 
 .name {

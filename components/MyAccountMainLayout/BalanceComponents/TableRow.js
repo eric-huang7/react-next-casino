@@ -8,6 +8,7 @@ import { numberTransformer } from '../../../helpers/numberTransformer'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {useEffect} from "react";
 import {svgSetter} from "../../../helpers/iconNameFinder";
+import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
 
 export const TableRow = ({ t, balanceData, currencyData }) => {
   const dispatch = useDispatch()
@@ -49,13 +50,7 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
           </td>
       }
       <td className={styles.tableCurrency}>
-        <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
-        <div className={styles.currencyInfoContainer}>
-          <div className={styles.currencyAbbrBaseWrapper}>
-            <span className={styles.abbreviation}>{currency.abbreviation}</span>
-          </div>
-          <div className={styles.name}>{currency.name}</div>
-        </div>
+        <CurrencyItem t={t} currencyData={currency} />
       </td>
       <td className={styles.tableAmount}>
         {`${amount} ${currency.abbreviation}`}
