@@ -13,8 +13,10 @@ import {getCurrency} from "../../redux/actions/currency";
 import {useDispatch, useSelector} from "react-redux";
 import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
 import ErrorText from "../ErrorBoundaryComponents/ErrorText";
-import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
-
+import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
+import {FaCertificate} from "react-icons/fa";
+import {GiCardJackHearts, GiStarsStack} from "react-icons/gi";
+// import NewGamesTitleImage from "/assets/img/gamesSlider/new_games_head.svg";
 
 export const HomePageContainer = ({t}) => {
   const dispatch = useDispatch();
@@ -57,22 +59,46 @@ export const HomePageContainer = ({t}) => {
             <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
           </ErrorEmpty>
           :
-          <div style={{ paddingTop: 35 }}>
+          <div>
             <ErrorText>
-              <GamesSliderBlock t={t} type={'NEW_GAMES'} games={games}/>
+              <GamesSliderBlock
+                t={t}
+                titleImage={"/assets/img/gamesSlider/new_games_head.svg"}
+                title={t('gamesPage.headings.newGames')}
+                titleIcon={<FaCertificate />}
+                slides={games?.newGames?.results?.slice()}
+                loading={games.loadingNewGames}
+                linkPath="/games-page/new-games"
+              />
             </ErrorText>
             <ErrorText>
-              <GamesSliderBlock t={t} type={'JACKPOT_GAMES'} games={games}/>
+              <GamesSliderBlock
+                t={t}
+                titleImage={"/assets/img/gamesSlider/jackpot_head.svg"}
+                title={t('gamesPage.headings.jackpotGames')}
+                titleIcon={<GiStarsStack />}
+                slides={games?.jackpotGames?.results?.slice()}
+                loading={games.loadingJackpotGames}
+                linkPath="/games-page/jackpot-games"
+              />
             </ErrorText>
-            <PromotionsBlock t={t}/>
+            <PromotionsBlock t={t} titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}/>
             <ErrorText>
-              <GamesSliderBlock t={t} type={'TABLE_GAMES'} games={games}/>
+              <GamesSliderBlock
+                t={t}
+                titleImage={"/assets/img/gamesSlider/table_head.svg"}
+                title={t('gamesPage.headings.tableGames')}
+                titleIcon={<GiCardJackHearts />}
+                slides={games?.tableGames?.results?.slice()}
+                loading={games.loadingTableGames}
+                linkPath="/games-page/table-games"
+              />
             </ErrorText>
             <ErrorText>
               <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
             </ErrorText>
             <ErrorText>
-              <NewsBlock t={t} isBackShow={true}/>
+              <NewsBlock t={t} isBackShow={true} titleImage={"/assets/img/newsSlider/news_heading.svg"}/>
             </ErrorText>
             <ErrorText>
               <WhySlotsIdol t={t} isBackShow={true}/>

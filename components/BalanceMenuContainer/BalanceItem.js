@@ -21,7 +21,7 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
   let amount = numberTransformer(balanceData.current_balance)
 
   useEffect(() => {
-    const returnAbbr = false
+    const returnAbbr = true
     svgSetter(currency, returnAbbr)
   }, [])
 
@@ -30,7 +30,6 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
       <span>{amount}</span>
       <span>
         <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>{currency.abbreviation}
-        {currency.base?.length > 0 && <div className={styles.baseContainer}>{currency.base}</div>}
       </span>
     </li>
   )

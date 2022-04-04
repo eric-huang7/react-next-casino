@@ -15,9 +15,10 @@ import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
 import {showGameWindow} from "../../../redux/actions/showGameWindow";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
 
-export const GamesSliderBlock = ({t, type, games}) => {
+export const GamesSliderBlock = ({t, title, titleIcon, slides = [], loading, linkPath, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
   const playGames = useSelector((state) => state.playGame);
@@ -112,10 +113,6 @@ export const GamesSliderBlock = ({t, type, games}) => {
     }
   }
 
-
-  let load = games.loading;
-
-
   let itemsCount = 5;
   if (width <= 1165) {
     itemsCount = 3;
@@ -123,66 +120,26 @@ export const GamesSliderBlock = ({t, type, games}) => {
     itemsCount = 5;
   }
 
-  let slides = [];
-  let linkPath = '/';
-
-  if (type === 'NEW_GAMES') {
-    if (games.loadingNewGames) {
-
-      return <h1>Loading...</h1>
-    } else {
-      // if (games.isSearchEmpty) {
-      let newGamesSlicedArr = games.newGames.results.slice();
-      slides = newGamesSlicedArr;
-
-      linkPath = '/games-page/new-games';
-
-
-
-    }
-  } else if (type === 'JACKPOT_GAMES') {
-    if (games.loadingJackpotGames) {
-
-      return <h1>Loading...</h1>
-    } else {
-
-      let jackpotSlicedArr = games.jackpotGames.results.slice();
-      slides = jackpotSlicedArr;
-
-      linkPath = '/games-page/jackpot-games';
-    }
-  } else if (type === 'TABLE_GAMES') {
-    if (games.loadingTableGames) {
-
-      return <h1>Loading...</h1>
-    } else {
-      // filter by type 2
-      let tableSlicedGames = games.tableGames.results.slice();
-      slides = tableSlicedGames;
-      linkPath = '/games-page/table-games';
-
-    }
-  }
-
-
   function SampleNextArrow(props) {
-    const {className, onClick} = props;
-    return (
+    const { currentSlide, onClick } = props;
+
+    return itemsCount * (currentSlide + 1) < slides?.length ? (
       <div
         className={styles.nextArr}
         onClick={onClick}
       />
-    );
+    ) : null;
   };
 
   function SamplePrevArrow(props) {
-    const {className, onClick} = props;
-    return (
+    const { onClick, currentSlide } = props;
+
+    return currentSlide > 0 ? (
       <div
         className={styles.prevArr}
         onClick={onClick}
       />
-    );
+    ) : null;
   };
 
   const sliderSettings = {
@@ -190,23 +147,25 @@ export const GamesSliderBlock = ({t, type, games}) => {
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    rows: 2,
+    rows: 1,
     slidesPerRow: itemsCount,
-
-    // slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: width > 590 ? '50px' : '16px',
     nextArrow: <SampleNextArrow/>,
     prevArrow: <SamplePrevArrow/>
   }
-  return (
+
+  return loading ? <h1>Loading...</h1> : (
     <section className={styles.sliderMainWrapper}>
-      <div className={`${type === 'NEW_GAMES'
-        ? styles.sliderHeadingNewGames : type === 'JACKPOT_GAMES'
-          ? styles.sliderHeadingJackpotGames : type === 'TABLE_GAMES'
-            ? styles.sliderHeadingTableGames : styles.sliderHeadingTableGames
-      } ${styles.sliderHeading}`}></div>
+      <div className={styles.sliderHeadingWrapper}>
+        <div className={styles.sliderHeading}>
+          <div className={styles.sliderTitle}><img src={titleImage} /> ({slides?.length})</div>
+          <Link href={linkPath}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
+        </div>
+      </div>
       <div className={styles.gamesWrapper}>
         <Slider {...sliderSettings}>
-          {slides.map((el, ind) => {
+          {slides?.map((el, ind) => {
             return (
               <div className={styles.slideItemsWrapperDesc} key={ind}>
                 <ErrorEmpty>
@@ -223,10 +182,6 @@ export const GamesSliderBlock = ({t, type, games}) => {
             )
           })}
         </Slider>
-
-        <div className={styles.controlPanel}>
-          <Link href={linkPath}><a>{t(`homePage.moreButton`)}</a></Link>
-        </div>
       </div>
     </section>
   )
