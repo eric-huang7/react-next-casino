@@ -4,13 +4,14 @@ import { Footer } from './Footer/Footer'
 import { useSelector } from 'react-redux'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { TournamentMainContainer } from './TournamentSidebar/TournamentMainContainer'
 import { TournamentIcon } from './TournamentIcon/TournamentIcon'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
+import MenuModal from "./MenuModal/MenuModal";
 
 const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');

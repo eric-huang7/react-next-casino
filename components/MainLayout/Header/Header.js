@@ -3,16 +3,19 @@ import { Navigation } from './Navigation/Navigation'
 import { UserBlockNavigation } from './UserBlock/UserBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, userBalance } from '../../../redux/actions/userData'
-import { useEffect } from 'react'
+import {useEffect, useState} from 'react'
 import LangSwitcher from '../../LangSwitcher/LangSwitcher'
 import { getActiveBonuses } from '../../../redux/actions/getBonuses'
 import { changeLocalUserSubscriptions } from '../../../redux/actions/userSubscriptionData'
 import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
 import Link from 'next/link'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {AiOutlineMenu} from "react-icons/ai";
+import MenuModal from "../MenuModal/MenuModal";
 
 export const Header = () => {
   const dispatch = useDispatch()
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo)
   let userLogined = userLogin.isAuthenticated
@@ -70,9 +73,19 @@ export const Header = () => {
 
   }, [userLogin.balance, currencyData, userLogin.isAuthenticated])
 
+  const showMenu = () => {
+    console.log('showMenu')
+    setIsMenuActive(true);
+  }
+  const onCloseMenu = () => {
+    console.log('onCloseMenu')
+    setIsMenuActive(false);
+  }
 
   return (
+    <>
     <header className={styles.mainHeader}>
+      <AiOutlineMenu className={styles.hamburger} onClick={showMenu} color="white" size={30} />
       <Link href={'/'} passHref>
         <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'}
              alt="logo"/>
@@ -82,6 +95,10 @@ export const Header = () => {
         <LangSwitcher/>
       </ErrorEmpty>
       <UserBlockNavigation userInfo={userLogin}/>
+
     </header>
+      {/*<div className={styles.test} onClick={onCloseMenu}/>*/}
+      <MenuModal open={isMenuActive} onClose={onCloseMenu}/>
+    </>
   )
 }
