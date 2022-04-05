@@ -22,7 +22,7 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
   let amount = numberTransformer(balanceData.current_balance)
 
   useEffect(() => {
-    const returnAbbr = true
+    const returnAbbr = false
     svgSetter(currency, returnAbbr)
   }, [])
 

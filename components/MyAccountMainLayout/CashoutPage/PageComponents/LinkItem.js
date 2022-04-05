@@ -21,8 +21,11 @@ export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
         }}
       >
         <a>
-          <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
-          {currency.abbreviation}
+          <div className={styles.currencyContainer}>
+            <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
+            {currency.abbreviation}
+          </div>
+          <div className={styles.baseContainer}>{currency.base}</div>
         </a>
       </Link>
     </li>
