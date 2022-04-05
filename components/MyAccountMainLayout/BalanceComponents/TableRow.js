@@ -32,7 +32,6 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
     svgSetter(currency, returnAbbr)
   }, [])
 
-  console.log('currency', currency)
   return (
     <tr className={styles.tableRow}>
       {

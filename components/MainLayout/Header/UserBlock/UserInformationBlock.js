@@ -6,6 +6,8 @@ import { numberTransformer } from '../../../../helpers/numberTransformer'
 import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
 import { currencyFinder } from '../../../../helpers/currencyFinder'
 import {svgSetter} from "../../../../helpers/iconNameFinder";
+import {CurrencyItem} from "../../SelectCurrencyWidget/CurrencySelector/CurrencyItem";
+import {CurrencyItemShort} from "./CurrencyItemShort";
 
 export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
@@ -48,8 +50,6 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
       const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
       setActiveCurrency(activeCurrency)
-      console.log('activeCurrency', activeCurrency)
-
     }
   }, [])
 
@@ -86,7 +86,8 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
         onMouseLeave={() => hideBalanceListHandler()}
       >
         <span>
-          {balance} <div id={`currencyImageContainer${activeCurrency.id}`} className={styles.iconContainer}></div> {currency}
+          {balance}
+          <CurrencyItemShort currencyData={activeCurrency} />
         </span>
         {
           isShowBalanceList && balanceData.length > 0
