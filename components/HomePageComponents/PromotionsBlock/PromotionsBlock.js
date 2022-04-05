@@ -12,9 +12,9 @@ import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer
 import {useEffect} from "react";
 import {getActiveBonuses, getAllBonuses} from "../../../redux/actions/getBonuses";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
-
-export const PromotionsBlock = ({t}) => {
+export const PromotionsBlock = ({t, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
 
@@ -103,57 +103,42 @@ export const PromotionsBlock = ({t}) => {
     prevArrow: <SamplePrevArrow/>,
   }
 
-  if (promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses) {
-    return (
-      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
-        <div className={styles.promotionsHeading}></div>
+  return (
+    <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
+      <div className={styles.headingWrapper}>
+        <div className={styles.heading}>
+          <div className={styles.title}><img src={titleImage} /> ({promotionsData?.activeBonuses?.offers?.length})</div>
+          <Link href={'/promotions'}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
+        </div>
+      </div>
+      {promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses ? (
         <h2 className={styles.loadingEmptyPromotions}>{t('homePage.loading')}</h2>
-        <div className={styles.controlPanel}>
-          <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
-        </div>
-      </section>
-    )
-  } else if (promotionsData.activeBonuses.offers.length === 0) {
-    return (
-      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
-        <div className={styles.promotionsHeading}></div>
-        <h2 className={styles.loadingEmptyPromotions}>{t('homePage.checkLater')}</h2>
-        <div className={styles.controlPanel}>
-          <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
-        </div>
-      </section>
-    )
-  } else {
-    return (
-      <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
-        <div className={styles.promotionsHeading}></div>
-        <div className={styles.promotionsBackground}>
-          <div className={styles.promotionsSliderWrapper}>
-            <>
-              <Slider {...sliderSettings}>
-                {promotionsData.activeBonuses.offers.map((el) => {
-                  let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+      ) : (promotionsData.activeBonuses.offers.length === 0 ? (
+          <h2 className={styles.loadingEmptyPromotions}>{t('homePage.checkLater')}</h2>
+        ) : (
+          <div className={styles.promotionsBackground}>
+            <div className={styles.promotionsSliderWrapper}>
+              <>
+                <Slider {...sliderSettings}>
+                  {promotionsData.activeBonuses.offers.map((el) => {
+                    let bonusCalculations = bonusesCalculator(el, userCurrency, t);
 
-                  return (
-                    <ErrorEmpty key={el.id}>
-                      <PromotionItem
-                        key={el.id}
-                        bonusInfo={el}
-                        bonusCalculations={bonusCalculations}
-                      />
-                    </ErrorEmpty>
-                  )
-                })}
-              </Slider>
-              <div className={styles.controlPanel}>
-                <Link href={'/promotions'}><a>{t(`homePage.moreButton`)}</a></Link>
-              </div>
-            </>
+                    return (
+                      <ErrorEmpty key={el.id}>
+                        <PromotionItem
+                          key={el.id}
+                          bonusInfo={el}
+                          bonusCalculations={bonusCalculations}
+                        />
+                      </ErrorEmpty>
+                    )
+                  })}
+                </Slider>
+              </>
+            </div>
           </div>
-        </div>
-      </section>
-    )
-  }
-
-
+        )
+      )}
+    </section>
+  )
 }

@@ -10,9 +10,11 @@ import {news_active_url} from "../../../redux/url/url";
 import {useRouter} from "next/router";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import { useTranslation } from 'next-i18next'
+import Link from "next/link";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
 
-export const NewsBlock = ({ isBackShow}) => {
+export const NewsBlock = ({ isBackShow, titleImage }) => {
   const { t } = useTranslation('common');
 
   const {width} = useWindowDimensions();
@@ -65,82 +67,82 @@ export const NewsBlock = ({ isBackShow}) => {
 
 
   function SampleNextArrow(props) {
-    const { className, onClick } = props;
-    return (
+    const { currentSlide, onClick } = props;
+
+    return itemsCount * (currentSlide + 1) < newsData?.length ? (
       <div
         className={styles.nextArr}
         onClick={onClick}
       />
-    );
+    ) : null;
   };
+
   function SamplePrevArrow(props) {
-    const { className, onClick } = props;
-    return (
+    const { onClick, currentSlide } = props;
+
+    return currentSlide > 0 ? (
       <div
         className={styles.prevArr}
         onClick={onClick}
       />
-    );
+    ) : null;
   };
+
   const sliderSettings = {
-    className: 'center',
     dots: false,
-    infinite: true,
+    // infinite: false,
     speed: 500,
     slidesToShow: itemsCount,
     centerMode: true,
-    centerPadding: "0px",
-    slidesToScroll: 1,
+    centerPadding: width > 860 ? '50px' : 0,
+    // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   }
 
-  if (newsError) {
-    return (
-      <section className={styles.newsMainWrapper}>
-        <div className={styles.newsHeading}></div>
+  return (
+    <section className={styles.newsMainWrapper}>
+      <div className={styles.newsHeadingWrapper}>
+        <div className={styles.newsHeading}>
+          <div className={styles.newsTitle}>
+            <img src={titleImage} /> ({newsData?.length})
+          </div>
+        </div>
+      </div>
+      {newsError ? (
         <div className={`${styles.newsBackground}`}>
           <h3 className={styles.errorMessage}>{t(newsError)}</h3>
         </div>
-      </section>
-    )
-  } else if (newsData.length === 0) {
-    return (
-      <section className={styles.newsMainWrapper}>
-        <div className={styles.newsHeading}></div>
-        <div className={`${styles.newsBackground}`}>
-          <h3 className={styles.errorMessage}>{t('homePage.checkLater')}</h3>
-        </div>
-      </section>
-    )
-  } else {
-    return (
-      <section className={styles.newsMainWrapper}>
-        <div className={styles.newsHeading}></div>
-        <div className={`${styles.newsBackground} ${isBackShow ? styles.backShow : ''}`}>
-          <div className={styles.darkBackground}>
-            <div className={styles.newsSliderWrapper}>
-              <Slider {...sliderSettings}>
-                {newsData.map((el) => {
-                  return (
-                    <ErrorEmpty key={`${el.id} news item`}>
-                      <NewsItem
-                        key={`${el.id} news item`}
-                        newsData={el}
-                        locale={router.locale}
-                      />
-                    </ErrorEmpty>
-                  )
-                })}
-              </Slider>
-              <div className={styles.controlPanel}>
-                <span>{""}</span>
+      ) : (newsData.length === 0 ? (
+          <div className={`${styles.newsBackground}`}>
+            <h3 className={styles.errorMessage}>{t('homePage.checkLater')}</h3>
+          </div>
+        ) : (
+          <div className={`${styles.newsBackground} ${isBackShow ? styles.backShow : ''}`}>
+            <div className={styles.darkBackground}>
+              <div className={styles.newsSliderWrapper}>
+                <Slider {...sliderSettings}>
+                  {newsData.map((el) => {
+                    return (
+                      <ErrorEmpty key={`${el.id} news item`}>
+                        <NewsItem
+                          key={`${el.id} news item`}
+                          newsData={el}
+                          locale={router.locale}
+                        />
+                      </ErrorEmpty>
+                    )
+                  })}
+                </Slider>
+                <div className={styles.controlPanel}>
+                  <span>{""}</span>
+                </div>
               </div>
             </div>
-          </div>
 
-        </div>
-      </section>
-    )
-  }
+          </div>
+        )
+      )}
+    </section>
+  )
 }

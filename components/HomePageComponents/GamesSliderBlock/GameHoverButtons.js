@@ -14,10 +14,10 @@ export const GameHoverButtons = ({t, gameData, playFunClickHandler, playGameClic
       <div
         onClick={playPaidClickHandler}
         className={`${styles.playButton} ${user.isAuthenticated ? "" : styles.playButtonInactive}`}>
-          <span>{t('gameButtons.play')}</span>
+        <span>{t('gameButtons.play')}</span>
       </div>
       <div onClick={playFreeClickHandler} className={styles.playForFunButton}>
-          <span>{t('gameButtons.playForFun')}</span>
+        <span>{t('gameButtons.playForFun')}</span>
       </div>
     </div>
   )

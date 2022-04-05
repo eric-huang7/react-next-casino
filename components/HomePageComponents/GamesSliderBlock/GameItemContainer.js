@@ -9,22 +9,22 @@ export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGa
 
   return (
 
-      <div className={styles.gameItemWrapper}>
-        <GameHoverButtons
-          playGameClickHAndler={playGameClickHAndler}
-          playFunClickHandler={playFunClickHandler}
-          t={t}
-          gameData={gameData}
-          user={user}
-        />
-        <Image
-          // placeholder={"blur"}
-          // blurDataURL={'/assets/img/empty.webp'}
-          layout={"fill"}
-          key={gameData.id}
-          src={gameUrl(gameData.id)}
-          alt={`Game ${gameData.name}`}/>
-      </div>
+    <div className={styles.gameItemWrapper}>
+      <GameHoverButtons
+        playGameClickHAndler={playGameClickHAndler}
+        playFunClickHandler={playFunClickHandler}
+        t={t}
+        gameData={gameData}
+        user={user}
+      />
+      <Image
+        // placeholder={"blur"}
+        // blurDataURL={'/assets/img/empty.webp'}
+        layout={"fill"}
+        key={gameData.id}
+        src={gameUrl(gameData.id)}
+        alt={`Game ${gameData.name}`}/>
+    </div>
 
   )
 }

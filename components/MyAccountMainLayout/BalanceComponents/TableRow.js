@@ -28,7 +28,7 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
   }
 
   useEffect(() => {
-    const returnAbbr = false
+    const returnAbbr = true
     svgSetter(currency, returnAbbr)
   }, [])
 

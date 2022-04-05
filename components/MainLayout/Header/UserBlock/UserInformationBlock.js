@@ -20,7 +20,7 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
   useEffect(() => {
     if (activeCurrency) {
-      const returnAbbr = false
+      const returnAbbr = true
       svgSetter(activeCurrency, returnAbbr)
     }
   }, [activeCurrency])

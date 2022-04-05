@@ -3,7 +3,7 @@
 .promotionsMainWrapper {
   width: 100%;
 
-  margin-bottom: 110px;
+  margin-bottom: 50px;
 }
 
 .loadingEmptyPromotions {
@@ -19,17 +19,41 @@
   font-family: "Neon", Arial, sans-serif;
 }
 
-.promotionsHeading {
-  width: 44%;
-  height: 90px;
+.headingWrapper {
+  padding-left: 54px;
+  padding-right: 54px;
+  .heading {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0;
+    padding-bottom: 0.25rem;
+    justify-content: space-between;
+    font-family: "Verdana"; // Neon
 
-  margin-top: 35px;
-  margin-bottom: 16px;
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.38;
 
-  background-image: url("/assets/img/promotionsSlider/promotions_heading.svg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+    .title {
+      color: #ffffff;
+      font-weight: 400;
+      line-height: 1.38;
+      font-size: 3rem;
+      font-style: italic;
+      font-family: "Neon";
+      & img {
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    }
+    .moreLink {
+      color: #ffdf00;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
 }
 
 .promotionsBackground {
@@ -321,10 +345,6 @@
   .promotionsSliderWrapper {
     width: 660px;
   }
-  .promotionsHeading {
-    margin-left: auto;
-    margin-right: auto;
-  }
   .prevArr {
     left: 32%;
   }
@@ -334,15 +354,26 @@
 }
 
 @media screen and (max-width: 860px) {
+  .headingWrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 25%;
+    .heading {
+      .title {
+        font-size: 1.5rem;
+
+        & img {
+          width: 50%;
+        }
+      }
+      .moreLink {
+        white-space: nowrap;
+      }
+    }
+  }
   .promotionsSliderWrapper {
     width: 660px;
   }
-  .promotionsHeading {
-    width: 50%;
-    margin-top: 19px;
-    margin-bottom: -25px;
-  }
-
   .prevArr {
     left: 32%;
   }
