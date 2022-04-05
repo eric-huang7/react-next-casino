@@ -4,6 +4,7 @@ import { patchUserActiveCurrency } from '../../redux/actions/userData'
 import { useDispatch } from 'react-redux'
 import {useEffect} from "react";
 import {svgSetter} from "../../helpers/iconNameFinder";
+import {CurrencyItemShort} from "../MainLayout/Header/UserBlock/CurrencyItemShort";
 
 export const BalanceItem = ({ balanceData, currencyData }) => {
   const dispatch = useDispatch()
@@ -29,8 +30,7 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
     <li onClick={() => chooseClickHandler()} className={styles.balanceItem}>
       <span>{amount}</span>
       <span>
-        <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>{currency.abbreviation}
-        {currency.base?.length > 0 && <div className={styles.baseContainer}>{currency.base}</div>}
+        <CurrencyItemShort currencyData={currency} />
       </span>
     </li>
   )

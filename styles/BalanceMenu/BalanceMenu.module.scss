@@ -31,35 +31,6 @@
 
     cursor: pointer;
 
-    & .iconContainer {
-      width: 23px;
-      height: 23px;
-      margin-right: 5px;
-      flex-shrink: 0;
-      display: inline-block;
-      vertical-align: text-bottom;
-      & svg {
-        width: 100%;
-        height: 100%;
-      }
-
-    }
-
-    & .baseContainer {
-      height: 16px;
-      font-size: 12px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      float: right;
-      color: white;
-      padding-left: 3px;
-      padding-right: 3px;
-      width: fit-content;
-      border-radius: 3px;
-      background: $red-color;
-    }
-
     & span {
       margin: 0;
 
@@ -71,8 +42,11 @@
       word-break: keep-all;
     }
     & span:last-child {
+      width: 50%;
       margin-left: 20px;
       white-space: nowrap;
+      display: flex;
+      flex-wrap: nowrap;
     }
   }
   & li.balanceItem:hover {
