@@ -50,8 +50,6 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
       const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
       setActiveCurrency(activeCurrency)
-      console.log('activeCurrency', activeCurrency)
-
     }
   }, [])
 
