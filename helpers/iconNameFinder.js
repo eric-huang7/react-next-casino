@@ -3,7 +3,7 @@ export const findIconName = (currencyData) => {
   let iconName = '';
 
   if (!currencyData.icon_name) {
-    iconName = currencyData.abbreviation.toLowerCase();
+    iconName = currencyData?.abbreviation?.toLowerCase();
   } else if (currencyData.icon_name === 'missing') {
     iconName = '';
   } else {
