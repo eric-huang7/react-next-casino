@@ -16,7 +16,7 @@ import {
   get_fiat_currency,
   get_popular_currency,
   get_stable_currency
-} from '../../../redux/actions/currency'
+} from '../../../redux/currency/action'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { hideRegister } from '../../../redux/actions/registerShow'
 import { PaymentCurrencySelector } from './PaymentCurrencySelector/PaymentCurrencySelector'
@@ -33,7 +33,7 @@ export const SelectCurrencyWidget = ({
   const dispatch = useDispatch()
 
   const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton)
-  const currencies = useSelector((store) => store.getCurrency)
+  const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
   const userPayment = useSelector((state) => state.userPaymentMethod)
   const userDepositValue = useSelector((state) => state.userDepositValue.value)

@@ -10,7 +10,7 @@ import {
   getUserBonuses,
   getUserPayments,
 } from '../../redux/actions/userData'
-import { getCurrency, getCurrencyJurisdiction } from '../../redux/actions/currency'
+import { getCurrency, getCurrencyJurisdiction } from '../../redux/currency/action'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
@@ -28,8 +28,8 @@ export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()
   const isShowModal = useSelector((store) => store.showPopupsReducer)
   const userInfo = useSelector((userInfo) => userInfo.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
-  const paymentsData = useSelector((store) => store.depositData)
+  const currency = useSelector((store) => store.currency)
+  const paymentsData = useSelector((store) => store.deposits)
   const router = useRouter()
 
   useEffect(() => {

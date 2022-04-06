@@ -31,6 +31,7 @@
     "react-player": "^2.9.0",
     "react-redux": "^7.2.5",
     "react-slick": "^0.28.1",
+    "redux-actions": "^2.6.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.41.1",
     "sharp": "0.30.1",
