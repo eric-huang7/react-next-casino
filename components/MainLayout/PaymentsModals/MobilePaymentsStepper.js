@@ -12,7 +12,7 @@ import {
   showMobilePaymentsStepper
 } from '../../../redux/actions/showPopups'
 import { siteID } from '../../../envs/envsForFetching'
-import { annulDeposit, postCryptoPayment } from '../../../redux/actions/depositPayments'
+import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
 import { showRegister } from '../../../redux/actions/registerShow'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'

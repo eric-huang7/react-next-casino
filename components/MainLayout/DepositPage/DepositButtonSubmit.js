@@ -4,7 +4,7 @@ import { setErrorUserDepositValue } from '../../../redux/actions/setUserDepositV
 import { setErrorUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
 import { siteID } from '../../../envs/envsForFetching'
 import { showCreditCardModal, showCryptoModal, showDepositModal } from '../../../redux/actions/showPopups'
-import { postCryptoPayment } from '../../../redux/actions/depositPayments'
+import { postCryptoPayment } from '../../../redux/deposits/action'
 
 export const DepositButtonSubmit = ({
   t,

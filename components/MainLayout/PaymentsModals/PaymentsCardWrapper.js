@@ -11,7 +11,7 @@ import {
   showCryptoModal,
   showDepositModal
 } from "../../../redux/actions/showPopups";
-import {annulDeposit, postCreditCardPayment} from "../../../redux/actions/depositPayments";
+import {annulDeposit, postCreditCardPayment} from "../../../redux/deposits/action";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useEffect, useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";

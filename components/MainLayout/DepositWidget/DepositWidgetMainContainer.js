@@ -16,7 +16,7 @@ import {
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {siteID} from "../../../envs/envsForFetching";
-import {postCryptoPayment} from "../../../redux/actions/depositPayments";
+import {postCryptoPayment} from "../../../redux/deposits/action";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
@@ -30,7 +30,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
   const userDepositValue = useSelector((state) => state.userDepositValue.value);
   const userPayment = useSelector((state) => state.userPaymentMethod);
-  const currencyData = useSelector((store) => store.getCurrency.currency);
+  const currencyData = useSelector((store) => store.currency.currency);
 
 
   let scrollHeight = useWindowScroll();
