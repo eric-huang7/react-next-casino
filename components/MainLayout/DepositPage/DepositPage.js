@@ -29,7 +29,7 @@ export const DepositPage = ({ t }) => {
   const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage)
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
-  const currencyData = useSelector((store) => store.getCurrency.currency)
+  const currencyData = useSelector((store) => store.currency.currency)
 
 
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)

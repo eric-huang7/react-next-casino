@@ -41,7 +41,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
   let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
   const showPlayWindow = useSelector((store) => store.showPlayWindowReducer)
-  const paymentsData = useSelector((store) => store.depositData)
+  const paymentsData = useSelector((store) => store.deposits)
 
   useEffect(() => {
     dispatch(closeAll(false))

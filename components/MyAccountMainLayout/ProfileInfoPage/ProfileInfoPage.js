@@ -6,7 +6,7 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const ProfileInfoPage = ({ t }) => {
   const userInfo = useSelector((store) => store.authInfo)
-  const currencyJurisdiction = useSelector((store) => store.getCurrency)
+  const currencyJurisdiction = useSelector((store) => store.currency)
 
   if (!userInfo.isAuthenticated || userInfo.loadingActiveSessions || userInfo.loadingClosedSessions || currencyJurisdiction.loading_currency_jurisdiction) {
     return (

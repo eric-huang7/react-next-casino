@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth, userBalance } from '../../../redux/actions/userData'
 import {useEffect, useState} from 'react'
 import LangSwitcher from '../../LangSwitcher/LangSwitcher'
-import { getActiveBonuses } from '../../../redux/actions/getBonuses'
+import { getActiveBonuses } from '../../../redux/bonuses/action'
 import { changeLocalUserSubscriptions } from '../../../redux/actions/userSubscriptionData'
 import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
 import Link from 'next/link'
@@ -20,7 +20,7 @@ export const Header = () => {
   const userLogin = useSelector((userInfo) => userInfo.authInfo)
   let userLogined = userLogin.isAuthenticated
   let bonusesData = useSelector((store) => store.bonuses)
-  let currencyData = useSelector((store) => store.getCurrency.currency)
+  let currencyData = useSelector((store) => store.currency.currency)
   const userCurrency = useSelector((state) => state.userSelectedCurrency)
 
   useEffect(() => {

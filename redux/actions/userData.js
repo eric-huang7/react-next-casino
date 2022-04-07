@@ -41,7 +41,7 @@ import {
 
 import {siteID} from "../../envs/envsForFetching";
 import {errorPopupActivate, errorPopupDeactivate, showTwoFaPopup} from "./showPopups";
-import {annulActiveBonuses} from "./getBonuses";
+import {annulActiveBonuses} from "../bonuses/action";
 import {showLogin} from "./loginShow";
 import {showRegister} from "./registerShow";
 

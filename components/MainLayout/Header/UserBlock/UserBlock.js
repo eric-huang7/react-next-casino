@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 
 export const UserBlockNavigation = ({ userInfo }) => {
   const { t } = useTranslation('common')
-  const currency = useSelector((state) => state.getCurrency)
+  const currency = useSelector((state) => state.currency)
   const messagesData = useSelector((store) => store.notifications)
 
   return (
