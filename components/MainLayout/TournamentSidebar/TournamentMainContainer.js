@@ -1,7 +1,7 @@
 import styles from '../../../styles/TournamentSidebar/TournamentSidebar.module.scss'
 import { TournamentHeading } from './SidebarComponents/TournamentHeading'
 import { useDispatch } from 'react-redux'
-import { getTournaments } from '../../../redux/actions/getTournaments'
+import { getTournaments } from '../../../redux//tournaments/action'
 import { TournamentInfoContainer } from './SidebarComponents/TournamentInfoContainer'
 import { showTournaments, showTournamentsDetails } from '../../../redux/actions/showPopups'
 import { useEffect, useRef } from 'react'
