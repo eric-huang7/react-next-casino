@@ -3,7 +3,7 @@ import {ImgContainer} from "./ImgContainer";
 import {useEffect, useRef, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
 import {useDispatch} from "react-redux";
-import {getLatestGames, getTopGames} from "../../redux/actions/games";
+import {getLatestGames, getTopGames} from "../../redux/games/action";
 
 
 export const FooterAreaContainer = ({t, userData}) => {

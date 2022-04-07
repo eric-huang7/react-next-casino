@@ -13,7 +13,7 @@ import {
   searchGames_url,
 } from '../../../helpers/gamesURL'
 import { useDispatch } from 'react-redux'
-import { setSearchGames } from '../../../redux/actions/games'
+import { setSearchGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
 
 export const SearchBar = ({ t, searchRef }) => {
