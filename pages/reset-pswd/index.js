@@ -4,7 +4,7 @@ import MainLayout from '../../components/MainLayout/MainLayout'
 import {useRouter} from "next/router";
 import {HomePageContainer} from "../../components/HomePageComponents/HomePageContainer";
 import {useEffect} from "react";
-import {showChangePasswordPopup} from "../../redux/actions/showPopups";
+import {showChangePasswordPopup} from "../../redux/popups/action";
 import {useDispatch} from "react-redux";
 
 

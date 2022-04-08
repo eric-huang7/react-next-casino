@@ -20,7 +20,7 @@ import {
 } from "../url/url";
 
 import {siteID} from "../../envs/envsForFetching";
-import {errorPopupActivate, showTwoFaPopup} from "../actions/showPopups";
+import {errorPopupActivate, showTwoFaPopup} from "../popups/action";
 import {annulActiveBonuses} from "../bonuses/action";
 import {showLogin} from "../actions/loginShow";
 import {showRegister} from "../actions/registerShow";

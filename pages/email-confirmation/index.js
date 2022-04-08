@@ -11,7 +11,7 @@ import {
   showEmailValidationErrorPopup,
   showEmailValidationSuccessPopup,
   showTwoFaPopup
-} from '../../redux/actions/showPopups'
+} from '../../redux/popups/action'
 
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')
