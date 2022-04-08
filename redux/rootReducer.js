@@ -15,7 +15,7 @@ import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
 import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
 import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
 import bonusesReducer from "./bonuses/reducer";
-import setUserBonusReducer from "./reducers/userBonuseReduser";
+import userBonusReducer from "./userBonus/reducer";
 import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
 import notifyReducer from "./notify/reducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
@@ -41,7 +41,7 @@ export const rootReducer = combineReducers({
   userSelectedCurrency: setUserCurrencyReducer,
   userPaymentMethod: setUserPaymentMethodReducer,
   bonuses: bonusesReducer,
-  userBonus: setUserBonusReducer,
+  userBonus: userBonusReducer,
   userSubscriptionsData: userSubscriptionsDataReducer,
   notifications: notifyReducer,
   mayBrowserNotify: mayBrowserNotifyReducer,
