@@ -17,7 +17,7 @@ import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
 import bonusesReducer from "./bonuses/reducer";
 import setUserBonusReducer from "./reducers/userBonuseReduser";
 import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
-import notifyReducer from "./reducers/notifyReducer";
+import notifyReducer from "./notify/reducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./tournaments/reducer";
 import depositsReducer from "./deposits/reducer";
