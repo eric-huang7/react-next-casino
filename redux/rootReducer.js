@@ -7,7 +7,7 @@ import jackpotsReducer from "./reducers/jackpotsReducer";
 import showRegisterReducer from "./reducers/showRegisterReducer";
 import showLoginReducer from "./reducers/showLoginReducer";
 import userReducer from "./user/reducer";
-import playGameReducer from "./reducers/playGameReducer";
+import playGameReducer from "./playGame/reducer";
 import currencyReducer from "./currency/reducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
 import popupsReducer from './popups/reducer';

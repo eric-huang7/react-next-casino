@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {GamesSlider} from "./GamesSlider";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
-import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGames";
+import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {showGameWindow} from "../../redux/actions/showGameWindow";
 import GameSliderErrorHandler from "./ErrorHandler/GameSliderErrorHandler";

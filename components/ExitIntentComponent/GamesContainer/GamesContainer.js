@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {GameItemContainer} from "./GameItemContainer";
 import {useRouter} from "next/router";
-import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
+import {deleteGameLink, freeGame, playPayGame} from "../../../redux/playGame/action";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showExitIntentPopup} from "../../../redux/popups/action";
 import {showGameWindow} from "../../../redux/actions/showGameWindow";

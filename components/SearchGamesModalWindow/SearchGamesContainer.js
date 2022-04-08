@@ -3,7 +3,7 @@ import {GamesItem} from "../GamesPageComponents/GamesItem";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGames";
+import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {TextForEmpty} from "./TextForEmpty";
 import {GamesPageHeading} from "../GamesPageComponents/GamesPageHeading";
 import {showGameWindow} from "../../redux/actions/showGameWindow";

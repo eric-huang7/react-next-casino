@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import {useEffect, useRef, useState} from "react";
 import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/actions/showGameWindow";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
-import {deleteGameLink} from "../../redux/actions/playGames";
+import {deleteGameLink} from "../../redux/playGame/action";
 
 
 export const GameProvider = ({children}) => {
