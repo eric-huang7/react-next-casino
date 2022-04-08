@@ -1,6 +1,6 @@
 import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss'
 import { numberTransformer } from '../../helpers/numberTransformer'
-import { patchUserActiveCurrency } from '../../redux/actions/userData'
+import { patchUserActiveCurrency } from '../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import {useEffect} from "react";
 import {svgSetter} from "../../helpers/iconNameFinder";

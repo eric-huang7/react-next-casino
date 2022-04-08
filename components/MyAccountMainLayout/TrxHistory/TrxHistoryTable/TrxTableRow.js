@@ -2,7 +2,7 @@ import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.sc
 import { RecallButton } from './RecallButton'
 import { post_withdraw_url } from '../../../../redux/url/url'
 import axios from 'axios'
-import { getUserPayments } from '../../../../redux/actions/userData'
+import { getUserPayments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { currencyInfo } from '../../../../helpers/currencyInfo'

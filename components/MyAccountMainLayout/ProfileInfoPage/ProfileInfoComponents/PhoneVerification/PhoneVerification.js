@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import axios from 'axios'
 import { phone_number_url } from '../../../../../redux/url/url'
-import { auth, patchUserData } from '../../../../../redux/actions/userData'
+import { auth, patchUserData } from '../../../../../redux/user/action'
 import { PhoneAlreadyVerified } from './PhoneAlreadyVerified'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
 

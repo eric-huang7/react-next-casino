@@ -1,6 +1,6 @@
 import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import {useDispatch} from "react-redux";
-import {logout} from "../../../redux/actions/userData";
+import {logout} from "../../../redux/user/action";
 import {showMobileMenu} from "../../../redux/actions/sideMobileMenuShow";
 
 export const LogoutButtonMobileMenu = ({t, isLogined}) => {

@@ -9,7 +9,7 @@ import {
   getUserBets,
   getUserBonuses,
   getUserPayments,
-} from '../../redux/actions/userData'
+} from '../../redux/user/action'
 import { getCurrency, getCurrencyJurisdiction } from '../../redux/currency/action'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'

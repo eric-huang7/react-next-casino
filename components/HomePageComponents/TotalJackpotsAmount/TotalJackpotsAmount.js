@@ -5,7 +5,7 @@ import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
-import {userData} from "../../../redux/actions/userData";
+import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {

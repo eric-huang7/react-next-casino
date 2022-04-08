@@ -6,7 +6,7 @@ import winnersReducer from "./reducers/winnersReducer";
 import jackpotsReducer from "./reducers/jackpotsReducer";
 import showRegisterReducer from "./reducers/showRegisterReducer";
 import showLoginReducer from "./reducers/showLoginReducer";
-import userDataReducer from "./reducers/userDataReducer";
+import userReducer from "./user/reducer";
 import playGameReducer from "./reducers/playGameReducer";
 import currencyReducer from "./currency/reducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
@@ -33,7 +33,7 @@ export const rootReducer = combineReducers({
   jackpots: jackpotsReducer,
   showRegister: showRegisterReducer,
   showLogin: showLoginReducer,
-  authInfo: userDataReducer,
+  authInfo: userReducer,
   playGame: playGameReducer,
   currency : currencyReducer,
   showMobileMenu: showMobileMenuReducer,

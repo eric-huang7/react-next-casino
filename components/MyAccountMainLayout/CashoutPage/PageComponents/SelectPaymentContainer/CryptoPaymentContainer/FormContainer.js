@@ -7,7 +7,7 @@ import { post_withdraw_url } from '../../../../../../redux/url/url'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserPayments, userBalance } from '../../../../../../redux/actions/userData'
+import { getUserPayments, userBalance } from '../../../../../../redux/user/action'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
 import {errorPopupActivate, messagePopupActivate} from '../../../../../../redux/actions/showPopups'
 

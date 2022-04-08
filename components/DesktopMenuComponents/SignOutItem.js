@@ -1,6 +1,6 @@
 import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss'
 import { useDispatch } from 'react-redux'
-import { logout } from '../../redux/actions/userData'
+import { logout } from '../../redux/user/action'
 import { useTranslation } from 'next-i18next'
 
 export const SignOutItem = () => {

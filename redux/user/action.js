@@ -20,10 +20,10 @@ import {
 } from "../url/url";
 
 import {siteID} from "../../envs/envsForFetching";
-import {errorPopupActivate, showTwoFaPopup} from "./showPopups";
+import {errorPopupActivate, showTwoFaPopup} from "../actions/showPopups";
 import {annulActiveBonuses} from "../bonuses/action";
-import {showLogin} from "./loginShow";
-import {showRegister} from "./registerShow";
+import {showLogin} from "../actions/loginShow";
+import {showRegister} from "../actions/registerShow";
 
 export const activateBonusAction = createAction("ACTIVATE_BONUS");
 export const addCurrencyToUser = createAction("ADD_CURRENCY_TO_USER");
@@ -45,7 +45,6 @@ export const loginFail = createAction("LOGIN_FAIL");
 export const loginSuccess = createAction("LOGIN_SUCCESS");
 export const logoutSuccess = createAction("LOGOUT_SUCCESS");
 export const logoutFail = createAction("LOGOUT_FAIL");
-export const mayYwoFactorAuth = createAction("MAY_TWO_FACTOR_AUTH");
 export const mayYwoFactorAuth = createAction("MAY_TWO_FACTOR_AUTH");
 export const patchChangeCurrency = createAction("PATCH_CHANGE_CURRENCY");
 export const qrAuthAction = createAction("QR_AUTH");

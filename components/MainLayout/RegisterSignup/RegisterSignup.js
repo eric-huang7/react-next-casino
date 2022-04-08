@@ -7,7 +7,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
 import {schemaRegister} from "../../../schemasForms/registerForm";
-import {signUp} from "../../../redux/actions/userData";
+import {signUp} from "../../../redux/user/action";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
 import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
 import {setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";

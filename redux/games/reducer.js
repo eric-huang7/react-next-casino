@@ -83,7 +83,7 @@ const handlers = {
       ...state,
       searchGames: payload,
       searchGamesLoading: false,
-      isSearchEmpty: payload.length > 0 ? false : true,
+      isSearchEmpty: payload && payload?.length > 0 ? false : true,
     }
   },
 }

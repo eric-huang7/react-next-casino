@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { SavedKeysBlock } from './GoogleAuthComponents/SavedKeysBlock'
 import { TwoFactorAuthCompleteBlock } from './GoogleAuthComponents/TwoFactorAuthCompleteBlock'
-import { getQrAuth } from '../../../redux/actions/userData'
+import { getQrAuth } from '../../../redux/user/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const TwoFactorAuthPage = ({ t }) => {

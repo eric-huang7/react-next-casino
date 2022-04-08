@@ -3,7 +3,7 @@ import { SelectPeriodContainer } from './InputsConponents/SelectPeriodContainer'
 import { ButtonsContainer } from './InputsConponents/ButtonsContainer'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { patchUserData } from '../../../redux/actions/userData'
+import { patchUserData } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const InputsBlock = ({ t, userInfo }) => {

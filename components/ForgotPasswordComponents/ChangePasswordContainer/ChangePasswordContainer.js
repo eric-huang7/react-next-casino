@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { schemaChangePasswordWindow } from '../../../schemasForms/changePasswordWindowForm'
 import { token_url } from '../../../redux/url/url'
 import axios from 'axios'
-import { changePasswordLogin } from '../../../redux/actions/userData'
+import { changePasswordLogin } from '../../../redux/user/action'
 import { InstructionsSendContainer } from '../InstructionsSendContainer/InstructionsSendContainer'
 
 export const ChangePasswordContainer = ({ t, token }) => {

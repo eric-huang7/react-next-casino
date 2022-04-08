@@ -7,7 +7,7 @@ import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { useState } from 'react'
 import axios from 'axios'
 import { qr_auth_url } from '../../../redux/url/url'
-import { mayYwoFactorAuth } from '../../../redux/actions/userData'
+import { mayYwoFactorAuth } from '../../../redux/user/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedKeys }) => {

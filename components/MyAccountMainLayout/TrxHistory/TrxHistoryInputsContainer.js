@@ -5,7 +5,7 @@ import { StatusSelector } from './Selectors/StatusSelector'
 import { FilterButton } from './Selectors/FilterButton'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getUserPayments } from '../../../redux/actions/userData'
+import { getUserPayments } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const TrxHistoryInputsContainer = ({ t, userInfo, currencyData, setWasFiltering }) => {

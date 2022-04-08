@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {showLogin} from "../../../redux/actions/loginShow";
-import {userData} from "../../../redux/actions/userData";
+import {userData} from "../../../redux/user/action";
 import {schemaLogin} from '../../../schemasForms/loginForm'
 import {dateFormatter} from "../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
