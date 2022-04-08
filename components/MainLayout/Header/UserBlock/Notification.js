@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useContext, useState } from 'react'
 import { BellNotification } from './BellNotification'
-import { setNotifyTypeTwo } from '../../../../redux/actions/setNotify'
+import { setNotifyTypeTwo } from '../../../../redux/notify/action'
 import { NotifyContext } from '../../../NotifyContext/NotifyContext'
 
 export const NotificationContainer = ({ messagesData }) => {

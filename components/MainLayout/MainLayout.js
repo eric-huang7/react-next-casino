@@ -18,7 +18,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const router = useRouter()
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo)
-  const isShowModal = useSelector((store) => store.showPopupsReducer)
+  const isShowModal = useSelector((store) => store.popups)
 
   let toursref = useRef()
 

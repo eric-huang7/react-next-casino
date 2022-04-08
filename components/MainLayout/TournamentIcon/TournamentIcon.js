@@ -1,7 +1,7 @@
 import styles from '../../../styles/TournamentSidebar/TournamentSidebar.module.scss';
 import Image from "next/image";
 import {useDispatch} from "react-redux";
-import {showTournaments} from "../../../redux/actions/showPopups";
+import {showTournaments} from "../../../redux/popups/action";
 
 export const TournamentIcon = ({toursref}) => {
   const dispatch = useDispatch();

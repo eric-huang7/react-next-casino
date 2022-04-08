@@ -10,7 +10,7 @@ import {
   showCryptoModal,
   showCurrencySwitcher,
   showMobilePaymentsStepper
-} from '../../../redux/actions/showPopups'
+} from '../../../redux/popups/action'
 import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
 import { showRegister } from '../../../redux/actions/registerShow'

@@ -6,7 +6,7 @@ import {
   setStepDepositModal,
   showCurrencySwitcher, showMobileCryptoPayments,
   showPaymentCurrencySwitcher
-} from '../../../redux/actions/showPopups'
+} from '../../../redux/popups/action'
 import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
 import { SelectorHeading } from './SelectorHeading'
 import { CurrencySelector } from './CurrencySelector/CurrencySelector'
@@ -32,7 +32,7 @@ export const SelectCurrencyWidget = ({
   let scrollHeight = useWindowScroll()
   const dispatch = useDispatch()
 
-  const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton)
+  const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
   const userPayment = useSelector((state) => state.userPaymentMethod)

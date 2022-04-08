@@ -1,13 +1,13 @@
 import styles from '../../../../styles/Header/HeaderButtons.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { showDepositModal } from '../../../../redux/actions/showPopups'
+import { showDepositModal } from '../../../../redux/popups/action'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 export const HeaderButtonsDeposit = ({ isUserLogined }) => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal)
+  const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal)
 
   const closeDepositModalHandler = () => {
     if (!isShowDepositModal) {

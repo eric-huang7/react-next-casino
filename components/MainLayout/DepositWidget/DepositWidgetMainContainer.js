@@ -12,7 +12,7 @@ import {
   showCryptoModal,
   showCurrencySwitcher,
   showMobilePaymentsStepper
-} from "../../../redux/actions/showPopups";
+} from "../../../redux/popups/action";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
 import {showRegister} from "../../../redux/actions/registerShow";
 import {siteID} from "../../../envs/envsForFetching";

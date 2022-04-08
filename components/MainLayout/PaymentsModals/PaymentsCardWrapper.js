@@ -10,7 +10,7 @@ import {
   showCreditCardModal,
   showCryptoModal,
   showDepositModal
-} from "../../../redux/actions/showPopups";
+} from "../../../redux/popups/action";
 import {annulDeposit, postCreditCardPayment} from "../../../redux/deposits/action";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useEffect, useState} from "react";

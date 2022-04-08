@@ -10,7 +10,7 @@ import userReducer from "./user/reducer";
 import playGameReducer from "./reducers/playGameReducer";
 import currencyReducer from "./currency/reducer";
 import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
-import showPopupsReducer from './reducers/showPopupsReducer';
+import popupsReducer from './popups/reducer';
 import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
 import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
 import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
@@ -37,7 +37,7 @@ export const rootReducer = combineReducers({
   playGame: playGameReducer,
   currency : currencyReducer,
   showMobileMenu: showMobileMenuReducer,
-  showPopupsReducer : showPopupsReducer,
+  popups : popupsReducer,
   userSelectedCurrency: setUserCurrencyReducer,
   userPaymentMethod: setUserPaymentMethodReducer,
   bonuses: bonusesReducer,

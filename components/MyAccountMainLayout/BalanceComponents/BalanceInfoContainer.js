@@ -2,7 +2,7 @@ import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scs
 import { TableContainer } from './TableContainer'
 import { useDispatch } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { showCurrencySwitcher } from '../../../redux/actions/showPopups'
+import { showCurrencySwitcher } from '../../../redux/popups/action'
 import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
 
 export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {

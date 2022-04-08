@@ -6,11 +6,11 @@ import {
   showCurrencySwitcher,
   showDepositModal,
   showPaymentCurrencySwitcher
-} from '../../../redux/actions/showPopups'
+} from '../../../redux/popups/action'
 import { DepositPageStepper } from './DepositPageStepper'
 import { setErrorUserDepositValue, setUserDepositValue } from '../../../redux/actions/setUserDepositValue'
 import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
-import { setUserBonus } from '../../../redux/actions/setUserBonus'
+import { setUserBonus } from '../../../redux/userBonus/action'
 import { bonusesFinder } from '../../../helpers/bonusesFinder'
 import { bonusesCalculator } from '../../../helpers/bonusesCalculator'
 import { useRouter } from 'next/router'
@@ -22,7 +22,7 @@ export const DepositPage = ({ t }) => {
 
   const userInfo = useSelector((state) => state.authInfo.user)
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer)
+  const isShowDepositModal = useSelector((state) => state.popups)
   const userCurrency = useSelector((state) => state.userSelectedCurrency)
   const userPayment = useSelector((state) => state.userPaymentMethod)
   const userDepositValue = useSelector((state) => state.userDepositValue.value)

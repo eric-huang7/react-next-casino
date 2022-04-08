@@ -11,7 +11,7 @@ import {schemaLogin} from '../../../schemasForms/loginForm'
 import {dateFormatter} from "../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
 import {auth_type_id, is_admin, siteID} from "../../../envs/envsForFetching";
-import {showForgotPasswordPopup} from "../../../redux/actions/showPopups";
+import {showForgotPasswordPopup} from "../../../redux/popups/action";
 import {TopHeading} from "./LoginComponents/TopHeading";
 import {useTranslation} from "next-i18next";
 import {LowHeading} from "./LoginComponents/LowHeading";

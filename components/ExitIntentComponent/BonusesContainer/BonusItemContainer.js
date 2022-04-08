@@ -9,8 +9,8 @@ import {useTranslation} from "next-i18next";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {user_url} from "../../../redux/url/url";
-import {setUserBonus, setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";
-import {showDepositModal} from "../../../redux/actions/showPopups";
+import {setUserBonus, setUserRegisterBonusCode} from "../../../redux/userBonus/action";
+import {showDepositModal} from "../../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {showRegister} from "../../../redux/actions/registerShow";
 

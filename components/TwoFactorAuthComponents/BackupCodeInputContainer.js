@@ -5,7 +5,7 @@ import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {qr_auth_url} from "../../redux/url/url";
 import {auth} from "../../redux/user/action";
-import {showTwoFaPopup} from "../../redux/actions/showPopups";
+import {showTwoFaPopup} from "../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 

@@ -1,19 +1,19 @@
 import styles from '../../../../../styles/HomePage/SumInputs.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {showCurrencySwitcher} from "../../../../../redux/actions/showPopups";
+import {showCurrencySwitcher} from "../../../../../redux/popups/action";
 import {setUserDepositValue} from "../../../../../redux/actions/setUserDepositValue";
 import {bonusesFinder} from "../../../../../helpers/bonusesFinder";
 import {CurrencyButton} from "./CurrencyButton";
 import {DepositValueInput} from "./DepositValueInput";
-import {setUserBonus} from "../../../../../redux/actions/setUserBonus";
+import {setUserBonus} from "../../../../../redux/userBonus/action";
 import {BonusesContainer} from "../BonusBlock/BonusesContainer";
 
 export const SumInputs = ({userLogin}) => {
   const dispatch = useDispatch();
 
   const sumInputVal = useSelector(({userDepositValue}) => userDepositValue.value);
-  const isShowCurrencySwitcher = useSelector(({showPopupsReducer}) => showPopupsReducer.isShowCurrencySwitcher);
+  const isShowCurrencySwitcher = useSelector(({popups}) => popups.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 
   const activeBonuses = useSelector((state) => state.bonuses);

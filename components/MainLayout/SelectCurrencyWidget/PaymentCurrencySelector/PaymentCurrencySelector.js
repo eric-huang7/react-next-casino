@@ -12,7 +12,7 @@ import {
   showMobileCryptoPayments,
   showMobilePaymentsStepper,
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentCurrencySelector = ({

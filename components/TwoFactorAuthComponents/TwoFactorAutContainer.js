@@ -5,7 +5,7 @@ import {ChangeWindowButton} from "./ChangeWindowButton";
 import {TwoFaCodeInputContainer} from "./TwoFaCodeInputContainer";
 import {BackupCodeInputContainer} from "./BackupCodeInputContainer";
 import {useDispatch} from "react-redux";
-import {showTwoFaPopup} from "../../redux/actions/showPopups";
+import {showTwoFaPopup} from "../../redux/popups/action";
 
 
 

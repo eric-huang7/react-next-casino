@@ -1,5 +1,5 @@
 import {handleActions} from "redux-actions";
-import {setNotifyTypeFour, setNotifyTypeOne, setNotifyTypeThree, setNotifyTypeTwo} from "./notify";
+import {setNotifyTypeFour, setNotifyTypeOne, setNotifyTypeThree, setNotifyTypeTwo} from "./action";
 
 const initialState = {
   loading: true,

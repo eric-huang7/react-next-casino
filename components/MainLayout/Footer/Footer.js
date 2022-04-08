@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ChooseLangDropdown } from './ChooseLangDropdown'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
-import { showManageSubscriptions, showPlaySafe } from '../../../redux/actions/showPopups'
+import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
 import { useTranslation } from 'next-i18next'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 

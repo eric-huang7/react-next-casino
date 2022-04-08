@@ -2,7 +2,7 @@ import styles from '../../../styles/ManageSubscriptions/ManageSubscriptions.modu
 import {SubscriptionsInputsContainer} from "./SubscriptionsInputsContainer";
 import {SubscriptionsSubmitButton} from "./SubscriptionsSubmitButton";
 import {useDispatch, useSelector} from "react-redux";
-import {showManageSubscriptions} from "../../../redux/actions/showPopups";
+import {showManageSubscriptions} from "../../../redux/popups/action";
 import {useEffect, useState} from "react";
 import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
 
@@ -10,7 +10,7 @@ import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscript
 export const ManageSubscriptions = ({t}) => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state)
-  const isShowSubscriptions = useSelector((state) => state.showPopupsReducer.isShowManageSubscriptions);
+  const isShowSubscriptions = useSelector((state) => state.popups.isShowManageSubscriptions);
 
   const closeButtonHandler = () => {
     dispatch(showManageSubscriptions(false));

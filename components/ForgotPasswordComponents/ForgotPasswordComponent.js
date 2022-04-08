@@ -7,7 +7,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaEmail} from "../../schemasForms/emailForm";
 import {InstructionsSendContainer} from "./InstructionsSendContainer/InstructionsSendContainer";
 import {useEffect, useRef, useState} from "react";
-import {showForgotPasswordPopup} from "../../redux/actions/showPopups";
+import {showForgotPasswordPopup} from "../../redux/popups/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../redux/actions/loginShow";
 import axios from "axios";

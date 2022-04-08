@@ -5,7 +5,7 @@ import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMe
 import {
   showMobileCryptoPayments,
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 
 export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCurrency, userPayment }) => {
   const dispatch = useDispatch()

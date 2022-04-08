@@ -1,6 +1,6 @@
 import styles from '../../../styles/MyAccount/MyAccount.module.scss'
 import { useDispatch } from 'react-redux'
-import { errorPopupDeactivate } from '../../../redux/actions/showPopups'
+import { errorPopupDeactivate } from '../../../redux/popups/action'
 
 export const ErrorMessageContainer = ({ t, errorData }) => {
   const dispatch = useDispatch()

@@ -4,7 +4,7 @@ import {
   backButtonShouldDo,
   showDepositModal,
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
 
 export const PaymentItem = ({ method, type, userCurrency, userPayment }) => {

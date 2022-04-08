@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import {
 
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
 
 export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paymentMethodChooser, type, method }) => {

@@ -1,7 +1,7 @@
 import {useTranslation} from "next-i18next";
 import {useDispatch} from "react-redux";
 import {useEffect, useRef} from "react";
-import {showEmailValidationErrorPopup, showForgotPasswordPopup} from "../../../redux/actions/showPopups";
+import {showEmailValidationErrorPopup, showForgotPasswordPopup} from "../../../redux/popups/action";
 import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
 import {HeadingBlock} from "../HeadingBlock";
 import {InstructionsSendContainer} from "../InstructionsSendContainer/InstructionsSendContainer";

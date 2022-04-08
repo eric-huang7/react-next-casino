@@ -1,7 +1,7 @@
 import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
 import {useContext, useState} from "react";
 import {NotifyContext} from "../../NotifyContext/NotifyContext";
-import {setNotifyTypeTwo} from "../../../redux/actions/setNotify";
+import {setNotifyTypeTwo} from "../../../redux/notify/action";
 import {useDispatch, useSelector} from "react-redux";
 import {browserNotifications} from "../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/actions/userSubscriptionData";

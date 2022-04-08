@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
 import {numberTransformer} from "../../helpers/numberTransformer";
 import {useDispatch, useSelector} from "react-redux";
-import {showExitIntentPopup} from "../../redux/actions/showPopups";
+import {showExitIntentPopup} from "../../redux/popups/action";
 import {getActiveBonuses} from "../../redux/bonuses/action";
 import {getTopGames} from "../../redux/games/action";
 import {bonusesFinder} from "../../helpers/bonusesFinder";

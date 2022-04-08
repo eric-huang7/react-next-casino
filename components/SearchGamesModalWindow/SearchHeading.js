@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {setSearchGames} from "../../redux/games/action";
 import {searchGames_url} from "../../helpers/gamesURL";
-import {showSearchModal} from "../../redux/actions/showPopups";
+import {showSearchModal} from "../../redux/popups/action";
 
 
 export const SearchHeading = ({t, searchBar}) => {

@@ -3,7 +3,7 @@ import { TournamentHeading } from './SidebarComponents/TournamentHeading'
 import { useDispatch } from 'react-redux'
 import { getTournaments } from '../../../redux//tournaments/action'
 import { TournamentInfoContainer } from './SidebarComponents/TournamentInfoContainer'
-import { showTournaments, showTournamentsDetails } from '../../../redux/actions/showPopups'
+import { showTournaments, showTournamentsDetails } from '../../../redux/popups/action'
 import { useEffect, useRef } from 'react'
 
 export const TournamentMainContainer = ({ t, userInfo, isShowModal, router, toursref }) => {

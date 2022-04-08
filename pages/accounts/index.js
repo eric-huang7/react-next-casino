@@ -14,7 +14,7 @@ import {LoadingComponent} from "../../components/LoadingComponent/LoadingCompone
 const Accounts = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
-  const currency = useSelector((store) => store.getCurrency);
+  const currency = useSelector((store) => store.currency);
   let bonusesData = useSelector((store) => store.bonuses);
   const userCurrency = useSelector((state) => state.userSelectedCurrency);
 

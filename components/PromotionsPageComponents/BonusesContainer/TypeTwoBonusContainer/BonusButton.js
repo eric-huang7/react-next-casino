@@ -1,7 +1,7 @@
 import styles from "../../../../styles/PromotionsPage/TypeTwoBonusContainer.module.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {showDepositModal} from "../../../../redux/actions/showPopups";
-import {setUserBonus} from "../../../../redux/actions/setUserBonus";
+import {showDepositModal} from "../../../../redux/popups/action";
+import {setUserBonus} from "../../../../redux/userBonus/action";
 import {useRouter} from "next/router";
 import {imagesUrl} from "../../../../envs/url";
 
@@ -9,7 +9,7 @@ import {imagesUrl} from "../../../../envs/url";
 export const BonusButton = ({bonusInfo, userData}) => {
   const router = useRouter()
   const dispatch = useDispatch();
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal);
+  const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal);
 
   const openDepositModalHandler = () => {
     if (userData.isAuthenticated) {
