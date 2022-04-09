@@ -18,7 +18,7 @@ import {
   get_stable_currency
 } from '../../../redux/currency/action'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { hideRegister } from '../../../redux/actions/registerShow'
+import { hideRegister } from '../../../redux/ui/action'
 import { PaymentCurrencySelector } from './PaymentCurrencySelector/PaymentCurrencySelector'
 import { setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'

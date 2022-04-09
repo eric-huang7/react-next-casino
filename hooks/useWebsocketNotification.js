@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setNotifyTypeFour, setNotifyTypeOne, setNotifyTypeThree, setNotifyTypeTwo} from "../redux/notify/action";
 import {notificator} from "../helpers/notificator";
-import {changeLocalUserSubscriptions} from "../redux/actions/userSubscriptionData";
+import {changeLocalUserSubscriptions} from "../redux/ui/action";
 import {socketUrl} from "../envs/url";
 
 

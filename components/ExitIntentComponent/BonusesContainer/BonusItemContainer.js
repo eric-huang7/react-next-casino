@@ -12,7 +12,7 @@ import {user_url} from "../../../redux/url/url";
 import {setUserBonus, setUserRegisterBonusCode} from "../../../redux/userBonus/action";
 import {showDepositModal} from "../../../redux/popups/action";
 import {useDispatch} from "react-redux";
-import {showRegister} from "../../../redux/actions/registerShow";
+import {showRegister} from "../../../redux/ui/action";
 
 
 export const BonusItemContainer = ({bonusData, userData, exit}) => {

@@ -4,8 +4,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
-import {showLogin} from "../../../redux/actions/loginShow";
+import {hideRegister, showRegister} from "../../../redux/ui/action";
+import {showLogin} from "../../../redux/ui/action";
 import {schemaRegister} from "../../../schemasForms/registerForm";
 import {signUp} from "../../../redux/user/action";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
@@ -29,7 +29,7 @@ export const RegisterSignup = ({t, isShow}) => {
   });
 
   const dispatch = useDispatch();
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.ui)
   const userData = useSelector((userData) => userData.authInfo);
   const userCurrency = useSelector((store) => store.userSelectedCurrency.userCurrencyData);
   const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);

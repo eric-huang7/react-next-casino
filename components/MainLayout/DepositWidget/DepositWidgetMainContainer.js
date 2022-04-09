@@ -14,7 +14,7 @@ import {
   showMobilePaymentsStepper
 } from "../../../redux/popups/action";
 import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
-import {showRegister} from "../../../redux/actions/registerShow";
+import {showRegister} from "../../../redux/ui/action";
 import {siteID} from "../../../envs/envsForFetching";
 import {postCryptoPayment} from "../../../redux/deposits/action";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";

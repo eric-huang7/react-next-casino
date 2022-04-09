@@ -13,7 +13,7 @@ import {
 } from '../../../redux/popups/action'
 import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
-import { showRegister } from '../../../redux/actions/registerShow'
+import { showRegister } from '../../../redux/ui/action'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 

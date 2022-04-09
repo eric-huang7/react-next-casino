@@ -9,7 +9,7 @@ import {InstructionsSendContainer} from "./InstructionsSendContainer/Instruction
 import {useEffect, useRef, useState} from "react";
 import {showForgotPasswordPopup} from "../../redux/popups/action";
 import {useDispatch, useSelector} from "react-redux";
-import {showLogin} from "../../redux/actions/loginShow";
+import {showLogin} from "../../redux/ui/action";
 import axios from "axios";
 import {token_url} from "../../redux/url/url";
 import {InputContainer} from "./EmailEnteringContainer/InputContainer";

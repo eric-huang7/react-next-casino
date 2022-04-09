@@ -23,7 +23,7 @@ export const MobileSideMenu = ({ t, userInform }) => {
 
   const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow)
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.ui.isShowRegister)
   const currency = useSelector((state) => state.currency)
 
   const closeClickHandler = () => {

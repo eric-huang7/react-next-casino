@@ -1,8 +1,10 @@
 import {handleActions} from "redux-actions";
-import {hideLogin, showLogin} from "./action";
+import {hideLogin, hideRegister, showLogin, showRegister} from "./action";
 
 const initialState = {
   isShowLogin: false,
+  isShowRegister: false,
+  hideForCurrency: false,
 }
 
 const handlers = {
@@ -16,6 +18,18 @@ const handlers = {
     return {
       ...state,
       isShowLogin: payload,
+    }
+  },
+  [showRegister]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowRegister: payload,
+    }
+  },
+  [hideRegister]: (state, {payload}) => {
+    return {
+      ...state,
+      hideForCurrency: payload,
     }
   },
 }

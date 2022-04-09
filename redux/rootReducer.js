@@ -4,7 +4,6 @@ import langReducer from './actions/lang';
 import gameReducer from "./games/reducer";
 import winnersReducer from "./reducers/winnersReducer";
 import jackpotsReducer from "./reducers/jackpotsReducer";
-import showRegisterReducer from "./reducers/showRegisterReducer";
 import uiReducer from "./ui/reducer";
 import userReducer from "./user/reducer";
 import playGameReducer from "./playGame/reducer";
@@ -31,7 +30,6 @@ export const rootReducer = combineReducers({
   games: gameReducer,
   winners: winnersReducer,
   jackpots: jackpotsReducer,
-  showRegister: showRegisterReducer,
   ui: uiReducer,
   authInfo: userReducer,
   playGame: playGameReducer,

@@ -22,8 +22,8 @@ import {
 import {siteID} from "../../envs/envsForFetching";
 import {errorPopupActivate, showTwoFaPopup} from "../popups/action";
 import {annulActiveBonuses} from "../bonuses/action";
-import {showLogin} from "../actions/loginShow";
-import {showRegister} from "../actions/registerShow";
+import {showLogin} from "../ui/action";
+import {showRegister} from "../ui/action";
 
 export const activateBonusAction = createAction("ACTIVATE_BONUS");
 export const addCurrencyToUser = createAction("ADD_CURRENCY_TO_USER");

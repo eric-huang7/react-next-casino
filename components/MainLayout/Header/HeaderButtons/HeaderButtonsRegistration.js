@@ -1,13 +1,13 @@
 import styles from '../../../../styles/Header/HeaderButtons.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { showRegister } from '../../../../redux/actions/registerShow'
-import { showLogin } from '../../../../redux/actions/loginShow'
+import { showRegister } from '../../../../redux/ui/action'
+import { showLogin } from '../../../../redux/ui/action'
 import { useTranslation } from 'next-i18next'
 
 export const HeaderButtonsRegistration = ({ isUserLogined }) => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.ui.isShowRegister)
   const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
 
   function registerButtonHandler () {

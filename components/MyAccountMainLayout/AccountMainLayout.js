@@ -14,7 +14,7 @@ import { getCurrency, getCurrencyJurisdiction } from '../../redux/currency/actio
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
-import { showLogin } from '../../redux/actions/loginShow'
+import { showLogin } from '../../redux/ui/action'
 import { ErrorMessageContainer } from './ErrorMessage/ErrorMessageContainer'
 import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
 import { backButtonShouldDo, closeAll } from '../../redux/popups/action'

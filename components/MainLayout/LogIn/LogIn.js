@@ -4,8 +4,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {showRegister} from "../../../redux/actions/registerShow";
-import {showLogin} from "../../../redux/actions/loginShow";
+import {showRegister} from "../../../redux/ui/action";
+import {showLogin} from "../../../redux/ui/action";
 import {userData} from "../../../redux/user/action";
 import {schemaLogin} from '../../../schemasForms/loginForm'
 import {dateFormatter} from "../../../helpers/dateTranslator";
