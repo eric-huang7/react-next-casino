@@ -4,7 +4,7 @@ import {SubscriptionsSubmitButton} from "./SubscriptionsSubmitButton";
 import {useDispatch, useSelector} from "react-redux";
 import {showManageSubscriptions} from "../../../redux/popups/action";
 import {useEffect, useState} from "react";
-import {changeLocalUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
+import {changeLocalUserSubscriptions} from "../../../redux/userSubscriptions/action";
 
 
 export const ManageSubscriptions = ({t}) => {

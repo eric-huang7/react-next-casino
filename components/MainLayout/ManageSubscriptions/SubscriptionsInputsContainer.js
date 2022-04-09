@@ -11,7 +11,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
       <div className={styles.inputItemWrapper}>
         <input
           onChange={(e) => inputsCheckedHandler(e)}
-          defaultChecked={userInfo.userSubscriptionsData.emailSubscribe}
+          defaultChecked={userInfo.userSubscriptions.emailSubscribe}
           type="checkbox"
           id='emailSubscript'
           name='emailSubscript'
@@ -22,7 +22,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
       <div className={styles.inputItemWrapper}>
         <input
           onChange={(e) => inputsCheckedHandler(e)}
-          defaultChecked={userInfo.userSubscriptionsData.smsSubscribe}
+          defaultChecked={userInfo.userSubscriptions.smsSubscribe}
           type="checkbox"
           id='smsSubscript'
           name='smsSubscript'
@@ -33,7 +33,7 @@ export const SubscriptionsInputsContainer = ({t, userInfo, emailSubscript, smsSu
       <div className={styles.inputItemWrapper}>
         <input
           onChange={(e) => inputsCheckedHandler(e)}
-          defaultChecked={userInfo.userSubscriptionsData.notifySubscribe}
+          defaultChecked={userInfo.userSubscriptions.notifySubscribe}
           type="checkbox"
           id='notifySubscript'
           name='notifySubscript'

@@ -7,7 +7,7 @@ import { browserNotifications } from '../../../../../helpers/browserNotification
 import {
   changeLocalUserSubscriptions,
   changeUserSubscriptions
-} from '../../../../../redux/actions/userSubscriptionData'
+} from '../../../../../redux/userSubscriptions/action'
 import { NotifyIcon } from './NotifyIcon'
 import ErrorEmpty from '../../../../ErrorBoundaryComponents/ErrorEmpty'
 import { useTranslation } from 'next-i18next'

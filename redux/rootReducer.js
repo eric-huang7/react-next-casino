@@ -16,7 +16,7 @@ import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
 import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
 import bonusesReducer from "./bonuses/reducer";
 import userBonusReducer from "./userBonus/reducer";
-import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
+import userSubscriptionsReducer from "./userSubscriptions/reducer";
 import notifyReducer from "./notify/reducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./tournaments/reducer";
@@ -42,7 +42,7 @@ export const rootReducer = combineReducers({
   userPaymentMethod: setUserPaymentMethodReducer,
   bonuses: bonusesReducer,
   userBonus: userBonusReducer,
-  userSubscriptionsData: userSubscriptionsDataReducer,
+  userSubscriptions: userSubscriptionsReducer,
   notifications: notifyReducer,
   mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
