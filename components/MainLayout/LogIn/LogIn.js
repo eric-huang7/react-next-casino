@@ -34,7 +34,7 @@ export const LogIn = ({isShow}) => {
 
 
   const dispatch = useDispatch();
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin);
 
   const forgotPasswordClickHandler = () => {
     dispatch(showForgotPasswordPopup(true));

@@ -22,7 +22,7 @@ export const MobileSideMenu = ({ t, userInform }) => {
   const dispatch = useDispatch()
 
   const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow)
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
   const currency = useSelector((state) => state.currency)
 

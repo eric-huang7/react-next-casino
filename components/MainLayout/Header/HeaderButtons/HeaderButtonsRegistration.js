@@ -8,7 +8,7 @@ export const HeaderButtonsRegistration = ({ isUserLogined }) => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
   const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
 
   function registerButtonHandler () {
     if (isShowRegister) {
