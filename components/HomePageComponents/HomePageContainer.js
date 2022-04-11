@@ -7,8 +7,8 @@ import {NewsBlock} from "./NewsBlock/NewsBlock";
 import {WhySlotsIdol} from "./WhySlotsIdol/WhySlotsIdol";
 import {useEffect, useRef} from "react";
 import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/games/action";
-import {getJackpots} from "../../redux/actions/latestJackpots";
-import {getLatestWinners, getWinners} from "../../redux/actions/latestWinners";
+import {getJackpots} from "../../redux/gameData/action";
+import {getLatestWinners, getWinners} from "../../redux/gameData/action";
 import {getCurrency} from "../../redux/currency/action";
 import {useDispatch, useSelector} from "react-redux";
 import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
@@ -38,9 +38,8 @@ export const HomePageContainer = ({t}) => {
   }, []);
 
 
-  const games = useSelector((games) => games.games);
-  const winners = useSelector((winners) => winners.winners);
-  const jackpots = useSelector((jackpots) => jackpots.jackpots);
+  const games = useSelector((state) => state.games);
+  const gameData = useSelector((state) => state.gameData);
 
 
   return (
@@ -95,7 +94,7 @@ export const HomePageContainer = ({t}) => {
               />
             </ErrorText>
             <ErrorText>
-              <TotalJackpotsAmount t={t} winners={winners} jackpots={jackpots}/>
+              <TotalJackpotsAmount t={t} winners={gameData} jackpots={gameData}/>
             </ErrorText>
             <ErrorText>
               <NewsBlock t={t} isBackShow={true} titleImage={"/assets/img/newsSlider/news_heading.svg"}/>

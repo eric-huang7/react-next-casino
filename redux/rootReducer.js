@@ -2,8 +2,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 import langReducer from './lang/reducer';
 import gameReducer from "./games/reducer";
-import winnersReducer from "./reducers/winnersReducer";
-import jackpotsReducer from "./reducers/jackpotsReducer";
+import gameDataReducer from "./gameData/reducer";
 import uiReducer from "./ui/reducer";
 import userReducer from "./user/reducer";
 import playGameReducer from "./playGame/reducer";
@@ -21,8 +20,7 @@ export const rootReducer = combineReducers({
   lang: langReducer,
   userFinance: userFinanceReducer,
   games: gameReducer,
-  winners: winnersReducer,
-  jackpots: jackpotsReducer,
+  gameData: gameDataReducer,
   ui: uiReducer,
   authInfo: userReducer,
   playGame: playGameReducer,
