@@ -1,11 +1,11 @@
 import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import {
   showMobileCryptoPayments,
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 
 export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCurrency, userPayment }) => {
   const dispatch = useDispatch()

@@ -2,12 +2,12 @@ import styles from '../../../styles/Header/Header.module.scss'
 import { Navigation } from './Navigation/Navigation'
 import { UserBlockNavigation } from './UserBlock/UserBlock'
 import { useDispatch, useSelector } from 'react-redux'
-import { auth, userBalance } from '../../../redux/actions/userData'
+import { auth, userBalance } from '../../../redux/user/action'
 import {useEffect, useState} from 'react'
 import LangSwitcher from '../../LangSwitcher/LangSwitcher'
-import { getActiveBonuses } from '../../../redux/actions/getBonuses'
-import { changeLocalUserSubscriptions } from '../../../redux/actions/userSubscriptionData'
-import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
+import { getActiveBonuses } from '../../../redux/bonuses/action'
+import { changeLocalUserSubscriptions } from '../../../redux/userSubscriptions/action'
+import { setUserCurrencySwitcher } from '../../../redux/userFinance/action'
 import Link from 'next/link'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {AiOutlineMenu} from "react-icons/ai";
@@ -20,8 +20,8 @@ export const Header = () => {
   const userLogin = useSelector((userInfo) => userInfo.authInfo)
   let userLogined = userLogin.isAuthenticated
   let bonusesData = useSelector((store) => store.bonuses)
-  let currencyData = useSelector((store) => store.getCurrency.currency)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  let currencyData = useSelector((store) => store.currency.currency)
+  const userCurrency = useSelector((state) => state.userFinance)
 
   useEffect(() => {
     let userLogLocal = localStorage.getItem('userAuth')

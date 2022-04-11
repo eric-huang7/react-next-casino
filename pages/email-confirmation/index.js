@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react'
 import { useDispatch} from 'react-redux'
 import { token_url } from '../../redux/url/url'
 import axios from 'axios'
-import { changePasswordLogin } from '../../redux/actions/userData'
+import { changePasswordLogin } from '../../redux/user/action'
 import {
   showEmailValidationErrorPopup,
   showEmailValidationSuccessPopup,
   showTwoFaPopup
-} from '../../redux/actions/showPopups'
+} from '../../redux/popups/action'
 
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')

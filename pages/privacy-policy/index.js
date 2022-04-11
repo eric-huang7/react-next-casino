@@ -6,7 +6,7 @@ import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/W
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { getCurrency } from '../../redux/actions/currency'
+import { getCurrency } from '../../redux/currency/action'
 import { MainBlock } from '../../components/PrivacyPolicyPageComponents/MainBlock'
 import { TextBlock } from '../../components/PrivacyPolicyPageComponents/TextBlock'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'

@@ -5,8 +5,8 @@ import {GamesPageHeading} from "./GamesPageHeading";
 import {MoreButton} from "./MoreButton";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {deleteGameLink, freeGame, playPayGame} from "../../redux/actions/playGames";
-import {showGameWindow} from "../../redux/actions/showGameWindow";
+import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
+import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
 
 

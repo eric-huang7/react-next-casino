@@ -9,15 +9,15 @@ import {
   getUserBets,
   getUserBonuses,
   getUserPayments,
-} from '../../redux/actions/userData'
-import { getCurrency, getCurrencyJurisdiction } from '../../redux/actions/currency'
+} from '../../redux/user/action'
+import { getCurrency, getCurrencyJurisdiction } from '../../redux/currency/action'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
-import { showLogin } from '../../redux/actions/loginShow'
+import { showLogin } from '../../redux/ui/action'
 import { ErrorMessageContainer } from './ErrorMessage/ErrorMessageContainer'
 import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
-import { backButtonShouldDo, closeAll } from '../../redux/actions/showPopups'
+import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
 import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
@@ -26,10 +26,10 @@ import {MessageContainer} from "../MessageContainer/MessageContainer";
 
 export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()
-  const isShowModal = useSelector((store) => store.showPopupsReducer)
+  const isShowModal = useSelector((store) => store.popups)
   const userInfo = useSelector((userInfo) => userInfo.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
-  const paymentsData = useSelector((store) => store.depositData)
+  const currency = useSelector((store) => store.currency)
+  const paymentsData = useSelector((store) => store.deposits)
   const router = useRouter()
 
   useEffect(() => {

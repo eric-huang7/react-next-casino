@@ -4,7 +4,7 @@ import { auth_type_id, is_admin, siteID } from '../../../../envs/envsForFetching
 import axios from 'axios'
 import { delete_user_session_url } from '../../../../redux/url/url'
 import { useDispatch } from 'react-redux'
-import { getActiveUserSessions, getClosedUserSessions } from '../../../../redux/actions/userData'
+import { getActiveUserSessions, getClosedUserSessions } from '../../../../redux/user/action'
 
 export const ActiveSessionsBlock = ({ t, userInfo }) => {
   const dispatch = useDispatch()

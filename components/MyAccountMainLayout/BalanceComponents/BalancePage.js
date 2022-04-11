@@ -7,7 +7,7 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 export const BalancePage = ({ t }) => {
 
   const balanceInfo = useSelector((store) => store.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
+  const currency = useSelector((store) => store.currency)
 
   return (
     <div className={styles.mainContainer}>

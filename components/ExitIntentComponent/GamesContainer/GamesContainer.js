@@ -4,10 +4,10 @@ import {useEffect} from "react";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import {GameItemContainer} from "./GameItemContainer";
 import {useRouter} from "next/router";
-import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
-import {showRegister} from "../../../redux/actions/registerShow";
-import {showExitIntentPopup} from "../../../redux/actions/showPopups";
-import {showGameWindow} from "../../../redux/actions/showGameWindow";
+import {deleteGameLink, freeGame, playPayGame} from "../../../redux/playGame/action";
+import {showRegister} from "../../../redux/ui/action";
+import {showExitIntentPopup} from "../../../redux/popups/action";
+import {showGameWindow} from "../../../redux/ui/action";
 
 
 export const GamesContainer = ({t, exit}) => {

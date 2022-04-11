@@ -3,9 +3,9 @@ import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect, useRef, useState} from "react";
-import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/actions/showGameWindow";
+import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/ui/action";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
-import {deleteGameLink} from "../../redux/actions/playGames";
+import {deleteGameLink} from "../../redux/playGame/action";
 
 
 export const GameProvider = ({children}) => {
@@ -13,7 +13,7 @@ export const GameProvider = ({children}) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer);
+  const showPlayWindow = useSelector((store) => store.ui);
   const playGames = useSelector((state) => state.playGame);
 
   const fullscreenClickHandler = () => {

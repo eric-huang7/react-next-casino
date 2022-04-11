@@ -1,7 +1,7 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentSidebar.module.scss'
 import { useDispatch } from 'react-redux'
-import { showRegister } from '../../../../redux/actions/registerShow'
-import { showDepositModal, showTournaments } from '../../../../redux/actions/showPopups'
+import { showRegister } from '../../../../redux/ui/action'
+import { showDepositModal, showTournaments } from '../../../../redux/popups/action'
 
 export const DepositRegistrationButton = ({ t, userInfo, router }) => {
   const dispatch = useDispatch()

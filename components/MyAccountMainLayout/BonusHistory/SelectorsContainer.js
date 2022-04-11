@@ -6,7 +6,7 @@ import { FromDateSelector } from './Selectors/FromDateSelector'
 import { FilterButton } from './FilterButton'
 import { CurrencyBonusSelector } from './Selectors/CurrencyBonusSelector'
 import { useDispatch } from 'react-redux'
-import { getUserBonuses } from '../../../redux/actions/userData'
+import { getUserBonuses } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const SelectorsContainer = ({ t, userInfo, currencyData }) => {

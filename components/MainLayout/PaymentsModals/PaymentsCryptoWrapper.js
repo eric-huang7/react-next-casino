@@ -5,20 +5,20 @@ import { QRContainer } from './CryptoComponents/QRContainer'
 import { ValueContainer } from './CryptoComponents/ValueContainer'
 import { DepositAddressInput } from './CryptoComponents/DepositAddressInput'
 import { useDispatch, useSelector } from 'react-redux'
-import { setStepDepositModal, showCryptoModal } from '../../../redux/actions/showPopups'
-import { annulDeposit } from '../../../redux/actions/depositPayments'
+import { setStepDepositModal, showCryptoModal } from '../../../redux/popups/action'
+import { annulDeposit } from '../../../redux/deposits/action'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../redux/userFinance/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
 
   let scrollHeight = useWindowScroll()
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
-  const currenciesList = useSelector((store) => store.getCurrency)
+  const userCurrency = useSelector((state) => state.userFinance)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const currenciesList = useSelector((store) => store.currency)
 
   const dispatch = useDispatch()
   const closeCrypto = () => {

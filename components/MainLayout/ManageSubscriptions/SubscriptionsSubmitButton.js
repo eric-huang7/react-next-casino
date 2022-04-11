@@ -1,6 +1,6 @@
 import styles from '../../../styles/ManageSubscriptions/ManageSubscriptions.module.scss';
 import {useDispatch} from "react-redux";
-import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/actions/userSubscriptionData";
+import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/userSubscriptions/action";
 
 
 export const SubscriptionsSubmitButton = ({t, emailSubscript, smsSubscript, notifySubscript, userInfo}) => {

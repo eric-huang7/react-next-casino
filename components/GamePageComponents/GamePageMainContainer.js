@@ -3,7 +3,7 @@ import {Background} from "./Background";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {minimizeGameWindow} from "../../redux/actions/showGameWindow";
+import {minimizeGameWindow} from "../../redux/ui/action";
 import {Header} from "../MainLayout/Header/Header";
 
 

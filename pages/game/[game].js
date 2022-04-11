@@ -4,9 +4,9 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {GamePageMainContainer} from "../../components/GamePageComponents/GamePageMainContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {freeGame} from "../../redux/actions/playGames";
-import {showGameWindow} from "../../redux/actions/showGameWindow";
-import {getCurrency} from "../../redux/actions/currency";
+import {freeGame} from "../../redux/playGame/action";
+import {showGameWindow} from "../../redux/ui/action";
+import {getCurrency} from "../../redux/currency/action";
 import {useRouter} from "next/router";
 
 

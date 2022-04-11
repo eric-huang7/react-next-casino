@@ -5,7 +5,7 @@ import { SubmitButton } from './SubmitButton'
 import { useState } from 'react'
 import axios from 'axios'
 import { document_url } from '../../../../redux/url/url'
-import { getDocuments } from '../../../../redux/actions/userData'
+import { getDocuments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 
 const fileTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'application/pdf', 'image/webp']

@@ -8,7 +8,7 @@ import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const MainBlockContainer = ({ t,notifyData }) => {
 
-  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe)
+  const subscriptInfo = useSelector((store) => store.userSubscriptions.notifySubscribe)
 
   return (
     <div className={styles.notifyContainer}>

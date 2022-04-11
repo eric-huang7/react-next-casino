@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import { useRouter } from 'next/router';
 
 import styles from '../../../styles/Footer/Footer.module.scss'
-import {setLang} from "../../../redux/actions/lang";
+import {setLang} from "../../../redux/lang/action";
 import {useCookies} from "react-cookie";
 
 export const ChooseLangDropdown = ({t, isVis}) => {

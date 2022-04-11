@@ -1,9 +1,9 @@
 import { MessageContainer } from '../MessageContainer/MessageContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import {useCallback, useEffect, useMemo} from 'react'
-import { backButtonShouldDo, closeAll } from '../../redux/actions/showPopups'
-import { showLogin } from '../../redux/actions/loginShow'
-import { showRegister } from '../../redux/actions/registerShow'
+import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
+import { showLogin } from '../../redux/ui/action'
+import { showRegister } from '../../redux/ui/action'
 import { useRouter } from 'next/router'
 import ExitIntentError from '../ExitIntentComponent/ExitIntentError/ExitIntentError'
 import { ExitIntentPopup } from '../ExitIntentComponent/ExitIntentPopup'
@@ -37,11 +37,11 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const { width } = useWindowDimensions()
 
   const userInfo = useSelector((userInfo) => userInfo.authInfo)
-  const isShowModal = useSelector((store) => store.showPopupsReducer)
-  let registerShow = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
-  let logInShow = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
-  const showPlayWindow = useSelector((store) => store.showPlayWindowReducer)
-  const paymentsData = useSelector((store) => store.depositData)
+  const isShowModal = useSelector((store) => store.popups)
+  let registerShow = useSelector((isShowRegister) => isShowRegister.ui.isShowRegister)
+  let logInShow = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
+  const showPlayWindow = useSelector((store) => store.ui)
+  const paymentsData = useSelector((store) => store.deposits)
 
   useEffect(() => {
     dispatch(closeAll(false))

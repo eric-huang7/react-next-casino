@@ -1,9 +1,9 @@
 import styles from '../../../../styles/HomePage/SlotMachineInterfase.module.scss'
 import {useState} from "react";
-import {showDepositModal} from "../../../../redux/actions/showPopups";
+import {showDepositModal} from "../../../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "next-i18next";
-import {showRegister} from "../../../../redux/actions/registerShow";
+import {showRegister} from "../../../../redux/ui/action";
 
 
 export const SubmitButton = ({width, userLogin}) => {

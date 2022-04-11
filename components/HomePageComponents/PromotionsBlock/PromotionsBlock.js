@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
-import {getActiveBonuses, getAllBonuses} from "../../../redux/actions/getBonuses";
+import {getActiveBonuses, getAllBonuses} from "../../../redux/bonuses/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {IoChevronForwardOutline} from "react-icons/io5";
 
@@ -18,7 +18,7 @@ export const PromotionsBlock = ({t, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
 
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
 
   const promotionsData = useSelector((store) => store.bonuses);
 

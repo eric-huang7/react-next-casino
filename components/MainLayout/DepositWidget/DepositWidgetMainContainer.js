@@ -12,13 +12,13 @@ import {
   showCryptoModal,
   showCurrencySwitcher,
   showMobilePaymentsStepper
-} from "../../../redux/actions/showPopups";
-import {setUserDepositValue} from "../../../redux/actions/setUserDepositValue";
-import {showRegister} from "../../../redux/actions/registerShow";
+} from "../../../redux/popups/action";
+import {setUserDepositValue} from "../../../redux/userFinance/action";
+import {showRegister} from "../../../redux/ui/action";
 import {siteID} from "../../../envs/envsForFetching";
-import {postCryptoPayment} from "../../../redux/actions/depositPayments";
+import {postCryptoPayment} from "../../../redux/deposits/action";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import {setUserPaymentMethod} from "../../../redux/userFinance/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
@@ -27,10 +27,10 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const dispatch = useDispatch();
   const {width, height} = useWindowDimensions();
 
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
-  const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userCurrency = useSelector((state) => state.userFinance);
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue);
   const userPayment = useSelector((state) => state.userPaymentMethod);
-  const currencyData = useSelector((store) => store.getCurrency.currency);
+  const currencyData = useSelector((store) => store.currency.currency);
 
 
   let scrollHeight = useWindowScroll();

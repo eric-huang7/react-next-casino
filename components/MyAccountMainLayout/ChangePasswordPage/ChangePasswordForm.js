@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaChangePassword } from '../../../schemasForms/changePasswordForm'
-import { auth } from '../../../redux/actions/userData'
+import { auth } from '../../../redux/user/action'
 import axios from 'axios'
 import { user_url } from '../../../redux/url/url'
 

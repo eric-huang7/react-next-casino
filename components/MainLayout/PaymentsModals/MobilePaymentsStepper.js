@@ -3,17 +3,17 @@ import { PaymentHeading } from './CreditCardComponents/Heading'
 import { StepOneEnterAmount } from './MobilePaymentsStepperComponents/StepOneEnterAmount'
 import { StepTwoPaymentMethod } from './MobilePaymentsStepperComponents/StepTwoPaymentMethod'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUserDepositValue } from '../../../redux/actions/setUserDepositValue'
+import { setUserDepositValue } from '../../../redux/userFinance/action'
 import { useEffect, useState } from 'react'
 import {
   showCreditCardModal,
   showCryptoModal,
   showCurrencySwitcher,
   showMobilePaymentsStepper
-} from '../../../redux/actions/showPopups'
+} from '../../../redux/popups/action'
 import { siteID } from '../../../envs/envsForFetching'
-import { annulDeposit, postCryptoPayment } from '../../../redux/actions/depositPayments'
-import { showRegister } from '../../../redux/actions/registerShow'
+import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
+import { showRegister } from '../../../redux/ui/action'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
@@ -22,8 +22,8 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
   let scrollHeight = useWindowScroll()
 
   const dispatch = useDispatch()
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
+  const userCurrency = useSelector((state) => state.userFinance)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
   const userPayment = useSelector((state) => state.userPaymentMethod)
 
   const currencySwitcherShowHandler = () => {

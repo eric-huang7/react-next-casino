@@ -3,16 +3,16 @@ import { InputContainer } from '../CurrencySelector/InputContainer'
 import { useState } from 'react'
 import { PaymentCurrencyItem } from './PaymentCurrencyItem'
 import { useDispatch } from 'react-redux'
-import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { siteID } from '../../../../envs/envsForFetching'
-import { annulDeposit, postCryptoPayment } from '../../../../redux/actions/depositPayments'
+import { annulDeposit, postCryptoPayment } from '../../../../redux/deposits/action'
 import {
   showCryptoModal,
   showCurrencySwitcher,
   showMobileCryptoPayments,
   showMobilePaymentsStepper,
   showPaymentCurrencySwitcher
-} from '../../../../redux/actions/showPopups'
+} from '../../../../redux/popups/action'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentCurrencySelector = ({

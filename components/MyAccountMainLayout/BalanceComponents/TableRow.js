@@ -1,7 +1,7 @@
 import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import { DepositButton } from './DepositButton'
 import { useDispatch } from 'react-redux'
-import { patchUserActiveCurrency } from '../../../redux/actions/userData'
+import { patchUserActiveCurrency } from '../../../redux/user/action'
 
 import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'

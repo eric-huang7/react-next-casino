@@ -4,9 +4,9 @@ import {TwoFaCodeInput} from "./FormsConponents/TwoFaCodeInput";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {qr_auth_url} from "../../redux/url/url";
-import {auth} from "../../redux/actions/userData";
+import {auth} from "../../redux/user/action";
 import {useDispatch} from "react-redux";
-import {showTwoFaPopup} from "../../redux/actions/showPopups";
+import {showTwoFaPopup} from "../../redux/popups/action";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 
 

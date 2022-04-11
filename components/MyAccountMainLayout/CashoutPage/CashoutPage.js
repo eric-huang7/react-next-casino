@@ -12,7 +12,7 @@ import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
   const balanceInfo = useSelector((store) => store.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
+  const currency = useSelector((store) => store.currency)
 
   if (balanceInfo.balance && currency.currency) {
 

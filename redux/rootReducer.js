@@ -1,52 +1,35 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import langReducer from './actions/lang';
-import gameReducer from "./reducers/gamesReducer";
-import winnersReducer from "./reducers/winnersReducer";
-import jackpotsReducer from "./reducers/jackpotsReducer";
-import showRegisterReducer from "./reducers/showRegisterReducer";
-import showLoginReducer from "./reducers/showLoginReducer";
-import userDataReducer from "./reducers/userDataReducer";
-import playGameReducer from "./reducers/playGameReducer";
-import getCurrency from "./reducers/currencyReducer";
-import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
-import showPopupsReducer from './reducers/showPopupsReducer';
-import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
-import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
-import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
-import getBonuses from "./reducers/getBonuses";
-import setUserBonusReducer from "./reducers/userBonuseReduser";
-import userSubscriptionsDataReducer from "./reducers/userSubscriptionsDataReduser";
-import notifyReducer from "./reducers/notifyReducer";
-import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
-import tournamentsReducer from "./reducers/tournaments";
-import depositReducer from "./reducers/depositPaymentsReducer";
-import currencySelectorTypeReducer from "./reducers/currencySelectorTypeReducer";
-import showPlayWindowReducer from "./reducers/showPlayWindowReducer";
-
+import langReducer from './lang/reducer';
+import gameReducer from "./games/reducer";
+import gameDataReducer from "./gameData/reducer";
+import uiReducer from "./ui/reducer";
+import userReducer from "./user/reducer";
+import playGameReducer from "./playGame/reducer";
+import currencyReducer from "./currency/reducer";
+import popupsReducer from './popups/reducer';
+import userFinanceReducer from "./userFinance/reducer";
+import bonusesReducer from "./bonuses/reducer";
+import userBonusReducer from "./userBonus/reducer";
+import userSubscriptionsReducer from "./userSubscriptions/reducer";
+import notifyReducer from "./notify/reducer";
+import tournamentsReducer from "./tournaments/reducer";
+import depositsReducer from "./deposits/reducer";
 
 export const rootReducer = combineReducers({
   lang: langReducer,
-  userDepositValue: setUserDepositValueReducer,
+  userFinance: userFinanceReducer,
   games: gameReducer,
-  winners: winnersReducer,
-  jackpots: jackpotsReducer,
-  showRegister: showRegisterReducer,
-  showLogin: showLoginReducer,
-  authInfo: userDataReducer,
+  gameData: gameDataReducer,
+  ui: uiReducer,
+  authInfo: userReducer,
   playGame: playGameReducer,
-  getCurrency : getCurrency,
-  showMobileMenu: showMobileMenuReducer,
-  showPopupsReducer : showPopupsReducer,
-  userSelectedCurrency: setUserCurrencyReducer,
-  userPaymentMethod: setUserPaymentMethodReducer,
-  bonuses: getBonuses,
-  userBonus: setUserBonusReducer,
-  userSubscriptionsData: userSubscriptionsDataReducer,
+  currency : currencyReducer,
+  popups : popupsReducer,
+  bonuses: bonusesReducer,
+  userBonus: userBonusReducer,
+  userSubscriptions: userSubscriptionsReducer,
   notifications: notifyReducer,
-  mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
-  depositData: depositReducer,
-  currencySelectorType: currencySelectorTypeReducer,
-  showPlayWindowReducer: showPlayWindowReducer
+  deposits: depositsReducer,
 })

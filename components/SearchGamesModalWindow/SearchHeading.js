@@ -2,9 +2,9 @@ import styles from "../../styles/SearchModalWindow/SearchModalWindow.module.scss
 import {useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import {setSearchGames} from "../../redux/actions/games";
+import {setSearchGames} from "../../redux/games/action";
 import {searchGames_url} from "../../helpers/gamesURL";
-import {showSearchModal} from "../../redux/actions/showPopups";
+import {showSearchModal} from "../../redux/popups/action";
 
 
 export const SearchHeading = ({t, searchBar}) => {

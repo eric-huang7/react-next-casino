@@ -4,7 +4,7 @@ import { Timer } from './Timer'
 import { DepositRegistrationButton } from './DepositRegistrationButton'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setActiveTournaments } from '../../../../redux/actions/getTournaments'
+import { setActiveTournaments } from '../../../../redux//tournaments/action'
 import { DetailsButton } from './DetailsButton'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 

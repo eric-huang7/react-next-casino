@@ -9,7 +9,7 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const BonusHistory = ({ t, router }) => {
   const userInfo = useSelector((store) => store.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
+  const currency = useSelector((store) => store.currency)
 
   if (userInfo?.balance?.success && !currency.loading) {
     return (

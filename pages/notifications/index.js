@@ -6,8 +6,8 @@ import { MainBlockContainer } from '../../components/NotificationsPage/MainBlock
 import { useDispatch, useSelector } from 'react-redux'
 import { SideGamesContainer } from '../../components/NotificationsPage/SideBlock/SideGamesContainer'
 import { useEffect } from 'react'
-import { getGames } from '../../redux/actions/games'
-import { getCurrency } from '../../redux/actions/currency'
+import { getGames } from '../../redux/games/action'
+import { getCurrency } from '../../redux/currency/action'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 

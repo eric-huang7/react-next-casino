@@ -4,13 +4,13 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {hideRegister, showRegister} from "../../../redux/actions/registerShow";
-import {showLogin} from "../../../redux/actions/loginShow";
+import {hideRegister, showRegister} from "../../../redux/ui/action";
+import {showLogin} from "../../../redux/ui/action";
 import {schemaRegister} from "../../../schemasForms/registerForm";
-import {signUp} from "../../../redux/actions/userData";
+import {signUp} from "../../../redux/user/action";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
-import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/actions/showPopups";
-import {setUserRegisterBonusCode} from "../../../redux/actions/setUserBonus";
+import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/popups/action";
+import {setUserRegisterBonusCode} from "../../../redux/userBonus/action";
 import {TopHeading} from "./SignupContainerComponents/TopHeading";
 import {LowHeading} from "./SignupContainerComponents/LowHeading";
 import {EmailInput} from "./SignupContainerComponents/EmailInput";
@@ -29,9 +29,9 @@ export const RegisterSignup = ({t, isShow}) => {
   });
 
   const dispatch = useDispatch();
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister)
+  const ui = useSelector((state) => state.ui)
   const userData = useSelector((userData) => userData.authInfo);
-  const userCurrency = useSelector((store) => store.userSelectedCurrency.userCurrencyData);
+  const userCurrency = useSelector((store) => store.userFinance.userCurrencyData);
   const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
 
 
@@ -55,7 +55,7 @@ export const RegisterSignup = ({t, isShow}) => {
   }
 
   function registerCloseButtonHandler() {
-    if (isShowRegister.isShow) {
+    if (ui.isShowRegister) {
       dispatch(showRegister(false));
     } else {
       dispatch(showRegister(true))
@@ -142,13 +142,13 @@ export const RegisterSignup = ({t, isShow}) => {
     setYouAgreeError('');
     setRegisterError('');
     setActiveBonus(false);
-    if (isShowRegister.isShow) {
+    if (ui.isShowRegister) {
       setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
     } else {
       setBonusCodedata('');
       dispatch(setUserRegisterBonusCode(null));
     }
-  }, [isShowRegister.isShow]);
+  }, [ui.isShowRegister]);
 
   useEffect(() => {
     if (userInfo.registerError) {
@@ -162,7 +162,7 @@ export const RegisterSignup = ({t, isShow}) => {
 
   return (
     <div
-      className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${isShowRegister.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
+      className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${ui.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
       <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
       <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
         <TopHeading />

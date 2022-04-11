@@ -1,7 +1,7 @@
 import styles from '../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss';
 import {useDispatch} from "react-redux";
-import {setUserCurrencySwitcher} from "../../../../redux/actions/setSelectedCurrency";
-import {showDepositModal} from "../../../../redux/actions/showPopups";
+import {setUserCurrencySwitcher} from "../../../../redux/userFinance/action";
+import {showDepositModal} from "../../../../redux/popups/action";
 
 
 export const TryBitcoinContainer = ({t, btcCurrency}) => {

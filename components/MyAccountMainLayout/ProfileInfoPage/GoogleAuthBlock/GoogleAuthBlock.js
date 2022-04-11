@@ -1,7 +1,7 @@
 import styles from '../../../../styles/MyAccount/UserInfoPage/GoogleAuth.module.scss'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
-import { auth } from '../../../../redux/actions/userData'
+import { auth } from '../../../../redux/user/action'
 import { useRouter } from 'next/router'
 
 export const GoogleAuthBlock = ({ t }) => {

@@ -3,23 +3,20 @@ import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {getCurrency} from "../../redux/actions/currency";
+import {getCurrency} from "../../redux/currency/action";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import {getActiveBonuses} from "../../redux/actions/getBonuses";
+import {getActiveBonuses} from "../../redux/bonuses/action";
 
 import styles from '../../styles/MyAccount/MyAccount.module.scss'
 import {AccountMainLayout} from "../../components/MyAccountMainLayout/AccountMainLayout";
 import {LoadingComponent} from "../../components/LoadingComponent/LoadingComponent";
 
-
-
-
 const Accounts = (props) => {
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
-  const currency = useSelector((store) => store.getCurrency);
+  const currency = useSelector((store) => store.currency);
   let bonusesData = useSelector((store) => store.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
 
   useEffect(() => {
 

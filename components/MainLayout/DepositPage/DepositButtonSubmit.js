@@ -1,10 +1,10 @@
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import { useDispatch } from 'react-redux'
-import { setErrorUserDepositValue } from '../../../redux/actions/setUserDepositValue'
-import { setErrorUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setErrorUserDepositValue } from '../../../redux/userFinance/action'
+import { setErrorUserPaymentMethod } from '../../../redux/userFinance/action'
 import { siteID } from '../../../envs/envsForFetching'
-import { showCreditCardModal, showCryptoModal, showDepositModal } from '../../../redux/actions/showPopups'
-import { postCryptoPayment } from '../../../redux/actions/depositPayments'
+import { showCreditCardModal, showCryptoModal, showDepositModal } from '../../../redux/popups/action'
+import { postCryptoPayment } from '../../../redux/deposits/action'
 
 export const DepositButtonSubmit = ({
   t,

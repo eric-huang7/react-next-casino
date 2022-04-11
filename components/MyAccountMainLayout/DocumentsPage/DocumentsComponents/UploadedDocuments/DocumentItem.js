@@ -5,7 +5,7 @@ import { DocumentDescriptionContainer } from './DocumentDescriptionContainer'
 import { DocumentNameContainer } from './DocumentNameContainer'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { changeDocuments, deleteDocuments, getDocuments } from '../../../../../redux/actions/userData'
+import { changeDocuments, deleteDocuments, getDocuments } from '../../../../../redux/user/action'
 import ErrorEmpty from '../../../../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
 

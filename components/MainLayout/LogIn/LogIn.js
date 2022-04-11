@@ -4,14 +4,14 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {showRegister} from "../../../redux/actions/registerShow";
-import {showLogin} from "../../../redux/actions/loginShow";
-import {userData} from "../../../redux/actions/userData";
+import {showRegister} from "../../../redux/ui/action";
+import {showLogin} from "../../../redux/ui/action";
+import {userData} from "../../../redux/user/action";
 import {schemaLogin} from '../../../schemasForms/loginForm'
 import {dateFormatter} from "../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
 import {auth_type_id, is_admin, siteID} from "../../../envs/envsForFetching";
-import {showForgotPasswordPopup} from "../../../redux/actions/showPopups";
+import {showForgotPasswordPopup} from "../../../redux/popups/action";
 import {TopHeading} from "./LoginComponents/TopHeading";
 import {useTranslation} from "next-i18next";
 import {LowHeading} from "./LoginComponents/LowHeading";
@@ -34,7 +34,7 @@ export const LogIn = ({isShow}) => {
 
 
   const dispatch = useDispatch();
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow);
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin);
 
   const forgotPasswordClickHandler = () => {
     dispatch(showForgotPasswordPopup(true));

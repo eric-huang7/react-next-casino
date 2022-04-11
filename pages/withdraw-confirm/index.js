@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { token_url } from '../../redux/url/url'
 import axios from 'axios'
-import { messagePopupActivate } from '../../redux/actions/showPopups'
+import { messagePopupActivate } from '../../redux/popups/action'
 
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')

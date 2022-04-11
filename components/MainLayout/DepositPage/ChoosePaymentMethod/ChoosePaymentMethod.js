@@ -1,6 +1,6 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
 import { useDispatch } from 'react-redux'
-import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { PaymentItem } from './PaymentItem'
 import { useEffect } from 'react'
 import axios from 'axios'

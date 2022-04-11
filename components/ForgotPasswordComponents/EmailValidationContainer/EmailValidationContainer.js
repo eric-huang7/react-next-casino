@@ -3,7 +3,7 @@ import { HeadingBlock } from '../HeadingBlock'
 import { InstructionsSendContainer } from '../InstructionsSendContainer/InstructionsSendContainer'
 import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { showEmailValidationSuccessPopup } from '../../../redux/actions/showPopups'
+import { showEmailValidationSuccessPopup } from '../../../redux/popups/action'
 
 export const EmailValidationContainer = ({ t }) => {
   const dispatch = useDispatch()

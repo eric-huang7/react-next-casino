@@ -2,10 +2,10 @@ import styles from '../../../styles/NotificationsPage/SideBlockNotifyPage.module
 import { GameItem } from './GameItem'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getLatestGames } from '../../../redux/actions/games'
+import { getLatestGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
-import { deleteGameLink, freeGame, playPayGame } from '../../../redux/actions/playGames'
-import { showGameWindow } from '../../../redux/actions/showGameWindow'
+import { deleteGameLink, freeGame, playPayGame } from '../../../redux/playGame/action'
+import { showGameWindow } from '../../../redux/ui/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const SideGamesContainer = ({ t }) => {

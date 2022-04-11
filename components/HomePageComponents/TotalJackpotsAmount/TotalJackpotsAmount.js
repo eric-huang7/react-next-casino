@@ -5,7 +5,7 @@ import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
-import {userData} from "../../../redux/actions/userData";
+import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
@@ -42,7 +42,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     // ########### TOTAL JACKPOT MOUNT
     let allNumber = 0
 
-    let allMount = jackpots.jackpots.results.map((el) => {
+    let allMount = jackpots.jackpots?.results.map((el) => {
       currency = el.jackpot_amounts[0].currency;
       if (currency === 'EUR') {
         currency = '€';
@@ -54,16 +54,16 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     totalMount = Number(allNumber.toFixed(0)).toLocaleString('de');
 
     // ########## TOP WINNERS
-    let slicedTopWinners = winners.winners.results.slice();
+    let slicedTopWinners = winners.winners?.results?.slice() || [];
     let sortedWinners = slicedTopWinners.sort((a,b) => Number(b.winnings) - Number(a.winnings));
     topWinnersArr = sortedWinners.slice(0, 4); // no filter
 
     // ######### LATEST WINNERS
-    let slicedLatestWinners = winners.latestWinners.results.slice();
+    let slicedLatestWinners = winners.latestWinners?.results?.slice() || [];
     latestWinnersArr = slicedLatestWinners.slice(0, 4) // latest winner came empty data
 
     // ######### JACKPOTS
-    let jackpotSlicedArr = jackpots.jackpots.results.slice();
+    let jackpotSlicedArr = jackpots.jackpots?.results?.slice() || [];
     jackpotsFilteredArr = jackpotSlicedArr.filter((item) => {
       if (item.games.length > 0) {
         return true;

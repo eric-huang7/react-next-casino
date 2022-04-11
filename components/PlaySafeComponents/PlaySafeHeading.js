@@ -1,6 +1,6 @@
 import styles from '../../styles/PlaySafe/PlaySafe.module.scss';
 import {useDispatch} from "react-redux";
-import {showPlaySafe} from "../../redux/actions/showPopups";
+import {showPlaySafe} from "../../redux/popups/action";
 
 
 export const PlaySafeHeading = ({t}) => {

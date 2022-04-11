@@ -1,12 +1,12 @@
 import styles from '../../../styles/PromotionsPage/MainBlock.module.scss'
-import { showDepositModal } from '../../../redux/actions/showPopups'
+import { showDepositModal } from '../../../redux/popups/action'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'next-i18next'
 
 export const WelcomeBlock = ({ dataForMainBlock, locale, userData }) => {
   const { t } = useTranslation('promotionsPage')
   const dispatch = useDispatch()
-  const isShowDepositModal = useSelector((state) => state.showPopupsReducer.isShowDepositModal)
+  const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal)
 
   const closeDepositModalHandler = () => {
     if (userData.isAuthenticated) {

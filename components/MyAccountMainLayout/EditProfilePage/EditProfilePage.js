@@ -9,7 +9,7 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const EditProfilePage = ({t}) => {
   const userInfo = useSelector((store) => store.authInfo);
-  const currencyJurisdiction = useSelector((store) => store.getCurrency);
+  const currencyJurisdiction = useSelector((store) => store.currency);
 
 
   if (currencyJurisdiction.loading_currency_jurisdiction || !userInfo.isAuthenticated) {

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { showMobileMenu } from '../../redux/actions/sideMobileMenuShow'
+import { showMobileMenu } from '../../redux/ui/action'
 import { MobileListContainer } from './MobileSideComponents/MobileListContainer'
 import { LogoutButtonMobileMenu } from './MobileSideComponents/LogoutButtonMobileMenu'
 import { UserInfoBlock } from './MobileSideComponents/UserInfoBlock'
@@ -21,10 +21,10 @@ const socilaLinks = [
 export const MobileSideMenu = ({ t, userInform }) => {
   const dispatch = useDispatch()
 
-  const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow)
-  const isShowLogin = useSelector((isShowLogin) => isShowLogin.showLogin.isShow)
-  const isShowRegister = useSelector((isShowRegister) => isShowRegister.showRegister.isShow)
-  const currency = useSelector((state) => state.getCurrency)
+  const isShowMobileMenu = useSelector((state) => state.ui.isShowMobileMenu)
+  const isShowLogin = useSelector((isShowLogin) => isShowLogin.ui.isShowLogin)
+  const isShowRegister = useSelector((isShowRegister) => isShowRegister.ui.isShowRegister)
+  const currency = useSelector((state) => state.currency)
 
   const closeClickHandler = () => {
     if (isShowMobileMenu) {

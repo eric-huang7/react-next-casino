@@ -11,7 +11,7 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const TrxHistory = ({ t }) => {
   const userInfo = useSelector((store) => store.authInfo)
-  const currency = useSelector((store) => store.getCurrency)
+  const currency = useSelector((store) => store.currency)
 
   const [wasFiltering, setWasFiltering] = useState(false)
 

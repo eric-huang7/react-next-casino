@@ -1,9 +1,9 @@
 import styles from '../../../styles/HomePage/SelectCurrency.module.scss';
 import {useDispatch} from "react-redux";
-import {setUserCurrencySwitcher} from "../../../redux/actions/setSelectedCurrency";
-import {showCurrencySwitcher} from "../../../redux/actions/showPopups";
+import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
+import {showCurrencySwitcher} from "../../../redux/popups/action";
 import {CurrencyItem} from "./CurrencyItem";
-import {addCurrencyToUserList} from "../../../redux/actions/userData";
+import {addCurrencyToUserList} from "../../../redux/user/action";
 
 export const CurrencySelector = ({t, heading, currenciesList, actionCurrencySelector}) => {
   const dispatch = useDispatch();

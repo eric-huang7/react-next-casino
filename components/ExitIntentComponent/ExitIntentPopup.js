@@ -2,20 +2,20 @@ import {useEffect, useState} from "react";
 import {ExitIntentMainComponent} from "./ExitIntentMainComponent";
 import {numberTransformer} from "../../helpers/numberTransformer";
 import {useDispatch, useSelector} from "react-redux";
-import {showExitIntentPopup} from "../../redux/actions/showPopups";
-import {getActiveBonuses} from "../../redux/actions/getBonuses";
-import {getTopGames} from "../../redux/actions/games";
+import {showExitIntentPopup} from "../../redux/popups/action";
+import {getActiveBonuses} from "../../redux/bonuses/action";
+import {getTopGames} from "../../redux/games/action";
 import {bonusesFinder} from "../../helpers/bonusesFinder";
 
 
 
 export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   const dispatch = useDispatch();
-  
+
   // const isShowExitIntent = true;
 
   const activeBonuses = useSelector((state) => state.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
   const gamesList = useSelector((store) => store.games);
 
 

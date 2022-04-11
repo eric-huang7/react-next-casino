@@ -4,13 +4,13 @@ import {MobileSideListLinks} from "./MobileSideList";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {MobileSideButtons} from "./MobileSideButtons";
-import {showMobileMenu} from "../../../redux/actions/sideMobileMenuShow";
-import {showManageSubscriptions, showPlaySafe} from "../../../redux/actions/showPopups";
+import {showMobileMenu} from "../../../redux/ui/action";
+import {showManageSubscriptions, showPlaySafe} from "../../../redux/popups/action";
 
 export const DropMenu = ({t,el, isAuth}) => {
   const dispatch = useDispatch();
 
-  const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow);
+  const isShowMobileMenu = useSelector((state) => state.ui.isShowMobileMenu);
   const [isDropActive, setIsDropActive] = useState(false);
 
   function handleDropActive() {

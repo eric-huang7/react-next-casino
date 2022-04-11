@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from '../../../../styles/Header/BurgerButton.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {showMobileMenu} from "../../../../redux/actions/sideMobileMenuShow";
+import {showMobileMenu} from "../../../../redux/ui/action";
 import {NotificationCounter} from "./NotificationCounter";
 import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
@@ -9,7 +9,7 @@ import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
 
 export const BurgerButton = ({userLogined}) => {
   const dispatch = useDispatch();
-  const isShowMobileMenu = useSelector((state) => state.showMobileMenu.isShow);
+  const isShowMobileMenu = useSelector((state) => state.ui.isShowMobileMenu);
   const messages = useSelector((store) => store.notifications.messagesData);
 
   let unreadMessages = messages.slice().filter((el) => {

@@ -1,6 +1,6 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentModaldetails.module.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {showTournamentsDetails} from "../../../../redux/actions/showPopups";
+import {showTournamentsDetails} from "../../../../redux/popups/action";
 import {useEffect, useRef} from "react";
 import {useRouter} from "next/router";
 

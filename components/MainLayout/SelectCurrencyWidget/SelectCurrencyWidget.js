@@ -6,8 +6,8 @@ import {
   setStepDepositModal,
   showCurrencySwitcher, showMobileCryptoPayments,
   showPaymentCurrencySwitcher
-} from '../../../redux/actions/showPopups'
-import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
+} from '../../../redux/popups/action'
+import { setCurrencySelectorType } from '../../../redux/userFinance/action'
 import { SelectorHeading } from './SelectorHeading'
 import { CurrencySelector } from './CurrencySelector/CurrencySelector'
 import { useEffect } from 'react'
@@ -16,11 +16,11 @@ import {
   get_fiat_currency,
   get_popular_currency,
   get_stable_currency
-} from '../../../redux/actions/currency'
+} from '../../../redux/currency/action'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { hideRegister } from '../../../redux/actions/registerShow'
+import { hideRegister } from '../../../redux/ui/action'
 import { PaymentCurrencySelector } from './PaymentCurrencySelector/PaymentCurrencySelector'
-import { setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../redux/userFinance/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const SelectCurrencyWidget = ({
@@ -32,12 +32,12 @@ export const SelectCurrencyWidget = ({
   let scrollHeight = useWindowScroll()
   const dispatch = useDispatch()
 
-  const backButtonShouldDoState = useSelector((state) => state.showPopupsReducer.actionForBackButton)
-  const currencies = useSelector((store) => store.getCurrency)
+  const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
+  const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
   const userPayment = useSelector((state) => state.userPaymentMethod)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userCurrency = useSelector((state) => state.userFinance)
 
 
   useEffect(() => {

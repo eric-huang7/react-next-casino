@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useContext, useState } from 'react'
 import { BellNotification } from './BellNotification'
-import { setNotifyTypeTwo } from '../../../../redux/actions/setNotify'
+import { setNotifyTypeTwo } from '../../../../redux/notify/action'
 import { NotifyContext } from '../../../NotifyContext/NotifyContext'
 
 export const NotificationContainer = ({ messagesData }) => {
   const dispatch = useDispatch()
   const notifySocket = useContext(NotifyContext)
-  const subscriptInfo = useSelector((store) => store.userSubscriptionsData.notifySubscribe)
+  const subscriptInfo = useSelector((store) => store.userSubscriptions.notifySubscribe)
 
   let allMessages = messagesData.messagesData.slice()
   let unreadMessages = messagesData.messagesData.slice().filter((el) => {

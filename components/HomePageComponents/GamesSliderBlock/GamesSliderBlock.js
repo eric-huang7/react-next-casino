@@ -12,8 +12,8 @@ import {GameItemContainer} from "./GameItemContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {deleteGameLink, freeGame, playPayGame} from "../../../redux/actions/playGames";
-import {showGameWindow} from "../../../redux/actions/showGameWindow";
+import {deleteGameLink, freeGame, playPayGame} from "../../../redux/playGame/action";
+import {showGameWindow} from "../../../redux/ui/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {IoChevronForwardOutline} from "react-icons/io5";
 
