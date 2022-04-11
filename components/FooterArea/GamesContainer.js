@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import {showGameWindow} from "../../redux/actions/showGameWindow";
+import {showGameWindow} from "../../redux/ui/action";
 import GameSliderErrorHandler from "./ErrorHandler/GameSliderErrorHandler";
 
 export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime, footerArea}) => {

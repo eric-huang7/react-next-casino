@@ -1,7 +1,7 @@
 import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import Link from "next/link";
 import {useDispatch} from "react-redux";
-import {showMobileMenu} from "../../../redux/actions/sideMobileMenuShow";
+import {showMobileMenu} from "../../../redux/ui/action";
 
 
 export const MobileSideListLinks = ({t, dataList, messages}) => {

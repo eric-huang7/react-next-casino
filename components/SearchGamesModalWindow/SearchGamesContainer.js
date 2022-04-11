@@ -6,7 +6,7 @@ import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {TextForEmpty} from "./TextForEmpty";
 import {GamesPageHeading} from "../GamesPageComponents/GamesPageHeading";
-import {showGameWindow} from "../../redux/actions/showGameWindow";
+import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from '../GamesPageComponents/GamesPageErrorHandler/GameItemErrorHandler'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 

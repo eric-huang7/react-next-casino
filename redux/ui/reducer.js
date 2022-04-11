@@ -1,10 +1,23 @@
 import {handleActions} from "redux-actions";
-import {hideLogin, hideRegister, showLogin, showRegister} from "./action";
+import {
+  fullScreenGameWindow,
+  hideLogin,
+  hideRegister,
+  minimizeGameWindow,
+  showGameWindow,
+  showLogin,
+  showMobileMenu,
+  showRegister
+} from "./action";
 
 const initialState = {
   isShowLogin: false,
   isShowRegister: false,
   hideForCurrency: false,
+  isShowMobileMenu: false,
+  isShowPlayWindow: false,
+  isMinimizePlayWindow: false,
+  isFullScreen: false,
 }
 
 const handlers = {
@@ -30,6 +43,30 @@ const handlers = {
     return {
       ...state,
       hideForCurrency: payload,
+    }
+  },
+  [showMobileMenu]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowMobileMenu: payload,
+    }
+  },
+  [showGameWindow]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowPlayWindow: payload
+    }
+  },
+  [minimizeGameWindow]: (state, {payload}) => {
+    return {
+      ...state,
+      isMinimizePlayWindow: payload
+    }
+  },
+  [fullScreenGameWindow]: (state, {payload}) => {
+    return {
+      ...state,
+      isFullScreen: payload
     }
   },
 }

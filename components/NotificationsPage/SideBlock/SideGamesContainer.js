@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getLatestGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
 import { deleteGameLink, freeGame, playPayGame } from '../../../redux/playGame/action'
-import { showGameWindow } from '../../../redux/actions/showGameWindow'
+import { showGameWindow } from '../../../redux/ui/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const SideGamesContainer = ({ t }) => {

@@ -5,7 +5,7 @@ import {GamePageMainContainer} from "../../components/GamePageComponents/GamePag
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {freeGame} from "../../redux/playGame/action";
-import {showGameWindow} from "../../redux/actions/showGameWindow";
+import {showGameWindow} from "../../redux/ui/action";
 import {getCurrency} from "../../redux/actions/currency";
 import {useRouter} from "next/router";
 

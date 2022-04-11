@@ -8,7 +8,6 @@ import uiReducer from "./ui/reducer";
 import userReducer from "./user/reducer";
 import playGameReducer from "./playGame/reducer";
 import currencyReducer from "./currency/reducer";
-import showMobileMenuReducer from "./reducers/showMobileMenuReducer";
 import popupsReducer from './popups/reducer';
 import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
 import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
@@ -21,8 +20,6 @@ import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./tournaments/reducer";
 import depositsReducer from "./deposits/reducer";
 import currencySelectorTypeReducer from "./reducers/currencySelectorTypeReducer";
-import showPlayWindowReducer from "./reducers/showPlayWindowReducer";
-
 
 export const rootReducer = combineReducers({
   lang: langReducer,
@@ -34,7 +31,6 @@ export const rootReducer = combineReducers({
   authInfo: userReducer,
   playGame: playGameReducer,
   currency : currencyReducer,
-  showMobileMenu: showMobileMenuReducer,
   popups : popupsReducer,
   userSelectedCurrency: setUserCurrencyReducer,
   userPaymentMethod: setUserPaymentMethodReducer,
@@ -46,5 +42,4 @@ export const rootReducer = combineReducers({
   tournaments: tournamentsReducer,
   deposits: depositsReducer,
   currencySelectorType: currencySelectorTypeReducer,
-  showPlayWindowReducer: showPlayWindowReducer
 })
