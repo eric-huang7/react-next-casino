@@ -10,7 +10,7 @@ import {bonusesFinder} from "../../../helpers/bonusesFinder";
 export const BonusesContainer = ({t, exit}) => {
 
   const activeBonuses = useSelector((state) => state.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
   const userData = useSelector((store) => store.authInfo);
 
 

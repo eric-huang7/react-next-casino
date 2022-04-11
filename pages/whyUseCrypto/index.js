@@ -8,7 +8,7 @@ import { GetStartedWith } from '../../components/WhyUseCrypto/GetStartedWith'
 import { GetStartedInstructionsContainer } from '../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import { useEffect } from 'react'
-import { getCurrency } from '../../redux/actions/currency'
+import { getCurrency } from '../../redux/currency/action'
 import { useDispatch } from 'react-redux'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 

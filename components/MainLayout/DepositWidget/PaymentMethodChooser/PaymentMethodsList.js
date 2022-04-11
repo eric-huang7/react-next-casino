@@ -4,7 +4,7 @@ import { PaymentMethodItem } from './PaymentMethodItem'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { payments_methods_url } from '../../../../redux/url/url'
-import { setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { useDispatch } from 'react-redux'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 

@@ -9,9 +9,7 @@ import userReducer from "./user/reducer";
 import playGameReducer from "./playGame/reducer";
 import currencyReducer from "./currency/reducer";
 import popupsReducer from './popups/reducer';
-import setUserCurrencyReducer from './reducers/setUserCurrencySwitcherReducer';
-import setUserPaymentMethodReducer from "./reducers/userPaymentMethodReducer";
-import setUserDepositValueReducer from "./reducers/userDepositValueReduser";
+import userFinanceReducer from "./userFinance/reducer";
 import bonusesReducer from "./bonuses/reducer";
 import userBonusReducer from "./userBonus/reducer";
 import userSubscriptionsReducer from "./userSubscriptions/reducer";
@@ -19,11 +17,10 @@ import notifyReducer from "./notify/reducer";
 import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./tournaments/reducer";
 import depositsReducer from "./deposits/reducer";
-import currencySelectorTypeReducer from "./reducers/currencySelectorTypeReducer";
 
 export const rootReducer = combineReducers({
   lang: langReducer,
-  userDepositValue: setUserDepositValueReducer,
+  userFinance: userFinanceReducer,
   games: gameReducer,
   winners: winnersReducer,
   jackpots: jackpotsReducer,
@@ -32,8 +29,6 @@ export const rootReducer = combineReducers({
   playGame: playGameReducer,
   currency : currencyReducer,
   popups : popupsReducer,
-  userSelectedCurrency: setUserCurrencyReducer,
-  userPaymentMethod: setUserPaymentMethodReducer,
   bonuses: bonusesReducer,
   userBonus: userBonusReducer,
   userSubscriptions: userSubscriptionsReducer,
@@ -41,5 +36,4 @@ export const rootReducer = combineReducers({
   mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
   deposits: depositsReducer,
-  currencySelectorType: currencySelectorTypeReducer,
 })

@@ -9,15 +9,15 @@ import { setStepDepositModal, showCryptoModal } from '../../../redux/popups/acti
 import { annulDeposit } from '../../../redux/deposits/action'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../redux/userFinance/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
 
   let scrollHeight = useWindowScroll()
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
+  const userCurrency = useSelector((state) => state.userFinance)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
   const currenciesList = useSelector((store) => store.currency)
 
   const dispatch = useDispatch()

@@ -31,7 +31,7 @@ export const RegisterSignup = ({t, isShow}) => {
   const dispatch = useDispatch();
   const ui = useSelector((state) => state.ui)
   const userData = useSelector((userData) => userData.authInfo);
-  const userCurrency = useSelector((store) => store.userSelectedCurrency.userCurrencyData);
+  const userCurrency = useSelector((store) => store.userFinance.userCurrencyData);
   const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
 
 

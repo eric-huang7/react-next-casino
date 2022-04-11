@@ -3,7 +3,7 @@ import { TableContainer } from './TableContainer'
 import { useDispatch } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { showCurrencySwitcher } from '../../../redux/popups/action'
-import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
+import { setCurrencySelectorType } from '../../../redux/userFinance/action'
 
 export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   const dispatch = useDispatch()

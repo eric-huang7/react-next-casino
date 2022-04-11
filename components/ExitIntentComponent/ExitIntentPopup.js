@@ -15,7 +15,7 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   // const isShowExitIntent = true;
 
   const activeBonuses = useSelector((state) => state.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
   const gamesList = useSelector((store) => store.games);
 
 

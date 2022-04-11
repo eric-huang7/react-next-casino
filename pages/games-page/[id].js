@@ -5,7 +5,7 @@ import { MainBlock } from '../../components/HomePageComponents/MainBlock'
 import MainLayout from '../../components/MainLayout/MainLayout'
 import { ChooseCategoryBlock } from '../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock'
 import { useEffect, useRef, useState } from 'react'
-import { getCurrency } from '../../redux/actions/currency'
+import { getCurrency } from '../../redux/currency/action'
 import { useDispatch, useSelector } from 'react-redux'
 import { GamesContainer } from '../../components/GamesPageComponents/GamesContainer'
 import {
@@ -19,7 +19,7 @@ import {
   newGames_url,
   tableGames_url, topGames_url
 } from '../../helpers/gamesURL'
-import { setGames } from '../../redux/actions/games'
+import { setGames } from '../../redux/games/action'
 import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
 import axios from 'axios'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'

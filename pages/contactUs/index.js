@@ -10,7 +10,7 @@ import { ContactsBlocks } from '../../components/ContactUsPageComponents/Contact
 import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { getCurrency } from '../../redux/actions/currency'
+import { getCurrency } from '../../redux/currency/action'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
 const ContactUs = () => {

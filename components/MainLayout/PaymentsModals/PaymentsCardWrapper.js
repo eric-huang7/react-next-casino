@@ -15,7 +15,7 @@ import {annulDeposit, postCreditCardPayment} from "../../../redux/deposits/actio
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useEffect, useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";
-import {setUserPaymentMethod} from "../../../redux/actions/setUserPaymentMethod";
+import {setUserPaymentMethod} from "../../../redux/userFinance/action";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
@@ -38,8 +38,8 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
   }, [])
 
   let scrollHeight = useWindowScroll();
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
-  const userDepositValue = useSelector((state) => state.userDepositValue.value);
+  const userCurrency = useSelector((state) => state.userFinance);
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue);
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
 

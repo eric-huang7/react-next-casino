@@ -1,7 +1,7 @@
 import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
 import { CurrencyItem } from './CurrencyItem'
 import { useDispatch } from 'react-redux'
-import { setUserCurrencySwitcher } from '../../../../redux/actions/setSelectedCurrency'
+import { setUserCurrencySwitcher } from '../../../../redux/userFinance/action'
 import { addCurrencyToUserList } from '../../../../redux/user/action'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 

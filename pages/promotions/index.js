@@ -3,7 +3,7 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import {PromotionsContainer} from "../../components/PromotionsPageComponents/PromotionsContainer";
 import {useEffect} from "react";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {getCurrency} from "../../redux/actions/currency";
+import {getCurrency} from "../../redux/currency/action";
 import {useDispatch} from "react-redux";
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 

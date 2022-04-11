@@ -1,6 +1,6 @@
 import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import { useDispatch } from 'react-redux'
-import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
+import { setUserCurrencySwitcher } from '../../../redux/userFinance/action'
 import { showDepositModal } from '../../../redux/popups/action'
 
 export const DepositButton = ({ t, currency }) => {

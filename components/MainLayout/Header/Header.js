@@ -7,7 +7,7 @@ import {useEffect, useState} from 'react'
 import LangSwitcher from '../../LangSwitcher/LangSwitcher'
 import { getActiveBonuses } from '../../../redux/bonuses/action'
 import { changeLocalUserSubscriptions } from '../../../redux/userSubscriptions/action'
-import { setUserCurrencySwitcher } from '../../../redux/actions/setSelectedCurrency'
+import { setUserCurrencySwitcher } from '../../../redux/userFinance/action'
 import Link from 'next/link'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {AiOutlineMenu} from "react-icons/ai";
@@ -21,7 +21,7 @@ export const Header = () => {
   let userLogined = userLogin.isAuthenticated
   let bonusesData = useSelector((store) => store.bonuses)
   let currencyData = useSelector((store) => store.currency.currency)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userCurrency = useSelector((state) => state.userFinance)
 
   useEffect(() => {
     let userLogLocal = localStorage.getItem('userAuth')

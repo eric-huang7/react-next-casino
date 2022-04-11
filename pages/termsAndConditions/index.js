@@ -7,7 +7,7 @@ import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock
 import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {getCurrency} from "../../redux/actions/currency";
+import {getCurrency} from "../../redux/currency/action";
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 

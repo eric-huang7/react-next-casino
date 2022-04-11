@@ -1,6 +1,6 @@
 import styles from '../../../../styles/HomePage/SlotMachineInterfase.module.scss'
 import {SumInputs} from "./InputsElements/SumInputs";
-import {setUserDepositValue} from "../../../../redux/actions/setUserDepositValue";
+import {setUserDepositValue} from "../../../../redux/userFinance/action";
 import {useDispatch, useSelector} from "react-redux";
 
 export const SlotMachineInterface = ({userLogin}) => {

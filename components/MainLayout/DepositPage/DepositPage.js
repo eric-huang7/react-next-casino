@@ -8,8 +8,8 @@ import {
   showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
 import { DepositPageStepper } from './DepositPageStepper'
-import { setErrorUserDepositValue, setUserDepositValue } from '../../../redux/actions/setUserDepositValue'
-import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setErrorUserDepositValue, setUserDepositValue } from '../../../redux/userFinance/action'
+import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../redux/userFinance/action'
 import { setUserBonus } from '../../../redux/userBonus/action'
 import { bonusesFinder } from '../../../helpers/bonusesFinder'
 import { bonusesCalculator } from '../../../helpers/bonusesCalculator'
@@ -23,10 +23,10 @@ export const DepositPage = ({ t }) => {
   const userInfo = useSelector((state) => state.authInfo.user)
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
   const isShowDepositModal = useSelector((state) => state.popups)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userCurrency = useSelector((state) => state.userFinance)
   const userPayment = useSelector((state) => state.userPaymentMethod)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
-  const userDepositValueError = useSelector((state) => state.userDepositValue.errorMessage)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
   const currencyData = useSelector((store) => store.currency.currency)

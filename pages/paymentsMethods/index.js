@@ -6,7 +6,7 @@ import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlo
 import { PaymentsInformationBlock } from '../../components/PaymentsMethodsComponents/PaymentsInformationBlock'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { getCurrency } from '../../redux/actions/currency'
+import { getCurrency } from '../../redux/currency/action'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
 const PaymentsMethods = () => {

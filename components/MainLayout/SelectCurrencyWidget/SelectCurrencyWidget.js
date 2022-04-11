@@ -7,7 +7,7 @@ import {
   showCurrencySwitcher, showMobileCryptoPayments,
   showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
-import { setCurrencySelectorType } from '../../../redux/actions/setSelectedCurrency'
+import { setCurrencySelectorType } from '../../../redux/userFinance/action'
 import { SelectorHeading } from './SelectorHeading'
 import { CurrencySelector } from './CurrencySelector/CurrencySelector'
 import { useEffect } from 'react'
@@ -20,7 +20,7 @@ import {
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { hideRegister } from '../../../redux/ui/action'
 import { PaymentCurrencySelector } from './PaymentCurrencySelector/PaymentCurrencySelector'
-import { setUserPaymentMethod } from '../../../redux/actions/setUserPaymentMethod'
+import { setUserPaymentMethod } from '../../../redux/userFinance/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 
 export const SelectCurrencyWidget = ({
@@ -36,8 +36,8 @@ export const SelectCurrencyWidget = ({
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
   const userPayment = useSelector((state) => state.userPaymentMethod)
-  const userDepositValue = useSelector((state) => state.userDepositValue.value)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userCurrency = useSelector((state) => state.userFinance)
 
 
   useEffect(() => {

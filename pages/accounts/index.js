@@ -16,7 +16,7 @@ const Accounts = (props) => {
   const dispatch = useDispatch();
   const currency = useSelector((store) => store.currency);
   let bonusesData = useSelector((store) => store.bonuses);
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
 
   useEffect(() => {
 

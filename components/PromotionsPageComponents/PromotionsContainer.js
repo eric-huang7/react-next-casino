@@ -27,7 +27,7 @@ const dataForMainBlock = {
 export const PromotionsContainer = () => {
 
   const activeBonuses = useSelector((state) => state.bonuses)
-  const userCurrency = useSelector((state) => state.userSelectedCurrency)
+  const userCurrency = useSelector((state) => state.userFinance)
   const userData = useSelector((store) => store.authInfo)
 
   return (

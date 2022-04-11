@@ -18,7 +18,7 @@ export const PromotionsBlock = ({t, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
 
-  const userCurrency = useSelector((state) => state.userSelectedCurrency);
+  const userCurrency = useSelector((state) => state.userFinance);
 
   const promotionsData = useSelector((store) => store.bonuses);
 

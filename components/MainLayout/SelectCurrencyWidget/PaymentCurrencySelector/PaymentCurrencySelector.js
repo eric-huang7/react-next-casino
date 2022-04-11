@@ -3,7 +3,7 @@ import { InputContainer } from '../CurrencySelector/InputContainer'
 import { useState } from 'react'
 import { PaymentCurrencyItem } from './PaymentCurrencyItem'
 import { useDispatch } from 'react-redux'
-import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/actions/setUserPaymentMethod'
+import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { siteID } from '../../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../../redux/deposits/action'
 import {

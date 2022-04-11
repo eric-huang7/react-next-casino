@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {freeGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
-import {getCurrency} from "../../redux/actions/currency";
+import {getCurrency} from "../../redux/currency/action";
 import {useRouter} from "next/router";
 
 
