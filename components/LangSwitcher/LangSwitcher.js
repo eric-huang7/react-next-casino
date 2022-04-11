@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import styles from '../../styles/LangSwitcher.module.scss'
 
 import {useRouter} from 'next/router'
-import {setLang} from "../../redux/actions/lang";
+import {setLang} from "../../redux/lang/action";
 import {useCookies} from "react-cookie";
 import {LangSwitcherPopup} from "./LangSwitcherPopup";
 

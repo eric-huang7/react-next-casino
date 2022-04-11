@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import langReducer from './actions/lang';
+import langReducer from './lang/reducer';
 import gameReducer from "./games/reducer";
 import winnersReducer from "./reducers/winnersReducer";
 import jackpotsReducer from "./reducers/jackpotsReducer";
@@ -14,7 +14,6 @@ import bonusesReducer from "./bonuses/reducer";
 import userBonusReducer from "./userBonus/reducer";
 import userSubscriptionsReducer from "./userSubscriptions/reducer";
 import notifyReducer from "./notify/reducer";
-import mayBrowserNotifyReducer from "./reducers/mayBrowserNotifyReducer";
 import tournamentsReducer from "./tournaments/reducer";
 import depositsReducer from "./deposits/reducer";
 
@@ -33,7 +32,6 @@ export const rootReducer = combineReducers({
   userBonus: userBonusReducer,
   userSubscriptions: userSubscriptionsReducer,
   notifications: notifyReducer,
-  mayBrowserNotify: mayBrowserNotifyReducer,
   tournaments: tournamentsReducer,
   deposits: depositsReducer,
 })

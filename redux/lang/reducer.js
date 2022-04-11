@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {handleActions} from "redux-actions";
+import {setLang, setLangArr} from "./action";
 
 const initialState = {
   activeLang: "en",
@@ -16,18 +17,19 @@ const initialState = {
   ]
 };
 
-const langSlice = createSlice({
-  name: 'Lang',
-  initialState,
-  reducers: {
-    setLang: (state, action) => {
-      state.activeLang = action.payload;
-    },
-    setLangArr: (state, action) => {
-      state.languages = action.payload;
-    },
+const handlers = {
+  [setLang]: (state, {payload}) => {
+    return {
+      ...state,
+      activeLang: {...payload},
+    }
   },
-})
+  [setLangArr]: (state, {payload}) => {
+    return {
+      ...state,
+      languages: {...payload},
+    }
+  },
+}
 
-export const { setLang } = langSlice.actions;
-export default langSlice.reducer;
+export default handleActions(handlers, initialState);

@@ -2,7 +2,7 @@ import {handleActions} from "redux-actions";
 import {
   fullScreenGameWindow,
   hideLogin,
-  hideRegister,
+  hideRegister, mayBrowserNotify,
   minimizeGameWindow,
   showGameWindow,
   showLogin,
@@ -18,6 +18,7 @@ const initialState = {
   isShowPlayWindow: false,
   isMinimizePlayWindow: false,
   isFullScreen: false,
+  isShowBrowserNotify: false,
 }
 
 const handlers = {
@@ -67,6 +68,12 @@ const handlers = {
     return {
       ...state,
       isFullScreen: payload
+    }
+  },
+  [mayBrowserNotify]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowBrowserNotify: payload,
     }
   },
 }
