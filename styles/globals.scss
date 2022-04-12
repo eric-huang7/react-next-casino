@@ -88,6 +88,18 @@
   src: url("/fonts/monoton/monoton.ttf");
   font-style: normal;
 }
+@font-face {
+  font-family: 'Lithograph';
+  src: url("/fonts/lithograph/Lithograph.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Lithograph';
+  src: url("/fonts/lithograph/LithographBold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
 
 //html,
 body {

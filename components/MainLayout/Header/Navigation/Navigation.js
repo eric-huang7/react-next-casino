@@ -7,8 +7,6 @@ export const Navigation = () => {
   const linksKey = [
     { key: 'home', route: '/' },
     { key: 'promotions', route: '/promotions' },
-    { key: 'contactUs', route: '/contactUs' },
-    { key: 'termsAndConditions', route: '/termsAndConditions' },
     { key: 'aboutUs', route: '/aboutUs' },
   ]
 

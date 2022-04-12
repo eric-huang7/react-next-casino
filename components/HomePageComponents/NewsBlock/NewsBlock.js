@@ -14,7 +14,7 @@ import Link from "next/link";
 import {IoChevronForwardOutline} from "react-icons/io5";
 
 
-export const NewsBlock = ({ isBackShow, titleImage }) => {
+export const NewsBlock = ({ title, isBackShow, titleImage }) => {
   const { t } = useTranslation('common');
 
   const {width} = useWindowDimensions();
@@ -105,7 +105,7 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
       <div className={styles.newsHeadingWrapper}>
         <div className={styles.newsHeading}>
           <div className={styles.newsTitle}>
-            <img src={titleImage} /> ({newsData?.length})
+            {title} ({newsData?.length})
           </div>
         </div>
       </div>

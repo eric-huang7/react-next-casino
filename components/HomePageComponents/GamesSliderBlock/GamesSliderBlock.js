@@ -159,7 +159,7 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], loading, lin
     <section className={styles.sliderMainWrapper}>
       <div className={styles.sliderHeadingWrapper}>
         <div className={styles.sliderHeading}>
-          <div className={styles.sliderTitle}><img src={titleImage} /> ({slides?.length})</div>
+          <div className={styles.sliderTitle}>{title} ({slides?.length})</div>
           <Link href={linkPath}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
         </div>
       </div>

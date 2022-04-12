@@ -14,10 +14,9 @@
 
 .activeLangBlock {
   width: 111px;
-  height: 31px;
+  height: 51px;
   //padding: 8px;
   background-color: $gray-back-color;
-  border-radius: 10px 10px 10px 10px;
 
   text-align: center;
 
@@ -36,7 +35,7 @@
 }
 
 .langSwitcherBlock:hover .activeLangBlock {
-  border-radius: 10px 10px 0px 0px;
+  height: 51px;
 }
 
 .langSwitcherBlock:hover .langSwitcherBlockList {
@@ -56,9 +55,8 @@
   outline: none;
 
   position: absolute;
-  top: 0;
+  top: 10px;
 
-  border-radius: 10px;
 }
 
 .langSwitcherBlockList {

@@ -14,7 +14,7 @@ import {getActiveBonuses, getAllBonuses} from "../../../redux/bonuses/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {IoChevronForwardOutline} from "react-icons/io5";
 
-export const PromotionsBlock = ({t, titleImage}) => {
+export const PromotionsBlock = ({t, title, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
 
@@ -107,7 +107,7 @@ export const PromotionsBlock = ({t, titleImage}) => {
     <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
       <div className={styles.headingWrapper}>
         <div className={styles.heading}>
-          <div className={styles.title}><img src={titleImage} /> ({promotionsData?.activeBonuses?.offers?.length})</div>
+          <div className={styles.title}>{title} ({promotionsData?.activeBonuses?.offers?.length})</div>
           <Link href={'/promotions'}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
         </div>
       </div>

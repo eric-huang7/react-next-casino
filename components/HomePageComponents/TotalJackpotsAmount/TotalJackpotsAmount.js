@@ -7,8 +7,10 @@ import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+import Link from "next/link";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
-export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
+export const TotalJackpotsAmount = ({t, title, winners, jackpots}) => {
   const {height, width} = useWindowDimensions();
 
 
@@ -93,8 +95,10 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
       <div className={styles.moveLeaf}></div>
       <div className={styles.moveCherry}></div>
 
-      <div className={styles.totalJackpotsHeading}>
-        <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.png'} alt="total jackpot heading"/>
+      <div className={styles.headingWrapper}>
+        <div className={styles.heading}>
+          <div className={styles.title}>{title}</div>
+        </div>
       </div>
       <div className={styles.totalJackpotsWrapper}>
         <h1 className={styles.totalMountHeading}>{`${currency} ${totalMount}`}</h1>

@@ -38,8 +38,9 @@ export const HomePageContainer = ({t}) => {
   }, []);
 
 
-  const games = useSelector((state) => state.games);
-  const gameData = useSelector((state) => state.gameData);
+  const games = useSelector((games) => games.games);
+  const winners = useSelector((winners) => winners.winners);
+  const jackpots = useSelector((jackpots) => jackpots.jackpots);
 
 
   return (
@@ -81,7 +82,11 @@ export const HomePageContainer = ({t}) => {
                 linkPath="/games-page/jackpot-games"
               />
             </ErrorText>
-            <PromotionsBlock t={t} titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}/>
+            <PromotionsBlock
+              t={t}
+              title={t('header.navbarLinks.promotions')}
+              titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}
+            />
             <ErrorText>
               <GamesSliderBlock
                 t={t}
@@ -94,13 +99,18 @@ export const HomePageContainer = ({t}) => {
               />
             </ErrorText>
             <ErrorText>
-              <TotalJackpotsAmount t={t} winners={gameData} jackpots={gameData}/>
+              <TotalJackpotsAmount t={t} title={t('homePage.totalJackpotHeading')} winners={winners} jackpots={jackpots}/>
             </ErrorText>
             <ErrorText>
-              <NewsBlock t={t} isBackShow={true} titleImage={"/assets/img/newsSlider/news_heading.svg"}/>
+              <NewsBlock
+                t={t}
+                title={t('homePage.news')}
+                isBackShow={true}
+                titleImage={"/assets/img/newsSlider/news_heading.svg"}
+              />
             </ErrorText>
             <ErrorText>
-              <WhySlotsIdol t={t} isBackShow={true}/>
+              <WhySlotsIdol t={t} title={t('homePage.whySlotsIdol')} isBackShow={true}/>
             </ErrorText>
           </div>
       }
