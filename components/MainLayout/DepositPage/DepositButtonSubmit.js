@@ -59,7 +59,7 @@ export const DepositButtonSubmit = ({
               user_id: `${userInfo.user.id}`,
               site_id: siteID,
               award_amount: `${userDepositValue}`,
-              receiverCurrency_id: userCurrency.userCurrencyData.id
+              receiverCurrency_id: userCurrency?.userCurrencyData?.id
             }
 
             dispatch(postCryptoPayment(paymentData, userPayment))
@@ -72,7 +72,7 @@ export const DepositButtonSubmit = ({
               user_id: `${userInfo.user.id}`,
               site_id: siteID,
               award_amount: `${userDepositValue}`,
-              receiverCurrency_id: userCurrency.userCurrencyData.id
+              receiverCurrency_id: userCurrency?.userCurrencyData?.id
             }
 
             dispatch(postCryptoPayment(paymentData, userPayment))

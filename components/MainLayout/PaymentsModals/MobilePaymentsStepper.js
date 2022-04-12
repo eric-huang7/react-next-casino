@@ -23,7 +23,7 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
 
   const dispatch = useDispatch()
   const userCurrency = useSelector((state) => state.userFinance)
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userPayment = useSelector((state) => state.userPaymentMethod)
 
   const currencySwitcherShowHandler = () => {
@@ -54,11 +54,11 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
       dispatch(showRegister(true))
     } else if (type === 'crypto') {
       let paymentData = {
-        senderCurrency_id: userCurrency.userCurrencyData.id,
+        senderCurrency_id: userCurrency?.userCurrencyData?.id,
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.userCurrencyData.id
+        receiverCurrency_id: userCurrency?.userCurrencyData?.id
       }
       dispatch(postCryptoPayment(paymentData, null))
       dispatch(showCryptoModal(true))
@@ -69,7 +69,7 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.userCurrencyData.id
+        receiverCurrency_id: userCurrency?.userCurrencyData?.id
       }
       dispatch(postCryptoPayment(paymentData, method))
       dispatch(showCryptoModal(true))

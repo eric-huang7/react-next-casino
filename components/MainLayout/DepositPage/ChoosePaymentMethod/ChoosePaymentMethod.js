@@ -22,7 +22,7 @@ export const ChoosePaymentMethod = ({
     if (isShowDepositModal) {
       const config = {
         params: {
-          currency_id: userCurrency.userCurrencyData.id,
+          currency_id: userCurrency?.userCurrencyData?.id,
         }
       }
 

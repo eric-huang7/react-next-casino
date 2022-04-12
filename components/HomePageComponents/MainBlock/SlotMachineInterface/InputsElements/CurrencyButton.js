@@ -9,7 +9,7 @@ export const CurrencyButton = ({userCurrency, currencyButtonClickHAndler}) => {
       className={styles.currencyButton}
       onClick={() => currencyButtonClickHAndler()}
     >
-      <span className={styles.currencyButtonValue}>{userCurrency.userCurrencyData.abbreviation}</span>
+      <span className={styles.currencyButtonValue}>{userCurrency?.userCurrencyData?.abbreviation}</span>
     </div>
   )
 }

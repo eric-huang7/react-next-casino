@@ -20,12 +20,12 @@ export const StepOneEnterAmount = ({
           type="number"
           className={styles.stepperAmountInput}
           id={'stepperAmount'}
-          placeholder={`${userCurrency.userCurrencyData.symbol} ${userDepositValue}`}
+          placeholder={`${userCurrency?.userCurrencyData?.symbol} ${userDepositValue}`}
           onChange={(e) => valueInputHandler(e)}
         />
         <span className={styles.errorMessage}>{errorInputValue}</span>
         <button onClick={() => currencySwitcherShowHandler()}
-                className={styles.stepperCurrencyButton}>{userCurrency.userCurrencyData.abbreviation}</button>
+                className={styles.stepperCurrencyButton}>{userCurrency?.userCurrencyData?.abbreviation}</button>
       </div>
       <ErrorEmpty>
         <StepperPlayWithButton

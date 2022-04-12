@@ -23,7 +23,7 @@ export const PaymentMethodsList = ({
 
     const config = {
       params: {
-        currency_id: userCurrency.userCurrencyData.id,
+        currency_id: userCurrency?.userCurrencyData?.id,
       }
     }
     // payments_methods_url

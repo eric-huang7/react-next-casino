@@ -13,7 +13,7 @@ export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, user
 
     const config = {
       params: {
-        currency_id: userCurrency.userCurrencyData.id,
+        currency_id: userCurrency?.userCurrencyData?.id,
       }
     }
     axios.get(payments_methods_url, config)

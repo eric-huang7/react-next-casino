@@ -154,7 +154,7 @@ const cardNameInputHandler = (e) => {
       <div className={styles.amountValue}>
         <p>{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</p>
         <input id={"amountValueModal"} onChange={(e) => amountValueInputHandler(e)} defaultValue={`${userDepositValue}`} type="number" className={styles.amountValueInput}/>
-        <label htmlFor="amountValueModal" className={styles.amountValueLabel}>{userCurrency.userCurrencyData.symbol}</label>
+        <label htmlFor="amountValueModal" className={styles.amountValueLabel}>{userCurrency?.userCurrencyData?.symbol}</label>
         <span className={styles.errorText}>{amountError}</span>
       </div>
       <div className={styles.secureBlock}>

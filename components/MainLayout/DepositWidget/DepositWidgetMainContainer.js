@@ -28,9 +28,9 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const {width, height} = useWindowDimensions();
 
   const userCurrency = useSelector((state) => state.userFinance);
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue);
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
   const userPayment = useSelector((state) => state.userPaymentMethod);
-  const currencyData = useSelector((store) => store.currency.currency);
+  const currencyData = useSelector((store) => store.currency?.currency);
 
 
   let scrollHeight = useWindowScroll();
@@ -78,7 +78,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         user_id: `${userAuth.user.user.id}`,
         site_id: siteID,
         award_amount: `${userDepositValue}`,
-        receiverCurrency_id: userCurrency.userCurrencyData.id
+        receiverCurrency_id: userCurrency?.userCurrencyData?.id
       }
 
       dispatch(postCryptoPayment(paymentData, userPayment));

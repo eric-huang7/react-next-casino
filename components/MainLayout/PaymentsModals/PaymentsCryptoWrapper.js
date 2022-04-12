@@ -17,7 +17,7 @@ export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
 
   let scrollHeight = useWindowScroll()
   const userCurrency = useSelector((state) => state.userFinance)
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const currenciesList = useSelector((store) => store.currency)
 
   const dispatch = useDispatch()

@@ -81,9 +81,9 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
 
 
   useEffect(() => {
-    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
+    dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
     dispatch(getTopGames());
-  }, [showPopup, userCurrency.userCurrencyData.id])
+  }, [showPopup, userCurrency?.userCurrencyData?.id])
 
 
 

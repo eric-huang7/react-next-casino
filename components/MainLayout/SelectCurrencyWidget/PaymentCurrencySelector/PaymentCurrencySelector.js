@@ -60,7 +60,7 @@ export const PaymentCurrencySelector = ({
           user_id: `${userInfo.user.id}`,
           site_id: siteID,
           award_amount: `${userDepositValue}`,
-          receiverCurrency_id: userCurrency.userCurrencyData.id
+          receiverCurrency_id: userCurrency?.userCurrencyData?.id
         }
         let userPaymentCurrent = {
           paymentError: '',
@@ -86,7 +86,7 @@ export const PaymentCurrencySelector = ({
           user_id: `${userInfo.user.id}`,
           site_id: siteID,
           award_amount: `${userDepositValue}`,
-          receiverCurrency_id: userCurrency.userCurrencyData.id
+          receiverCurrency_id: userCurrency?.userCurrencyData?.id
         }
         let userPaymentCurrent = {
           paymentError: '',

@@ -12,8 +12,8 @@ import {BonusesContainer} from "../BonusBlock/BonusesContainer";
 export const SumInputs = ({userLogin}) => {
   const dispatch = useDispatch();
 
-  const sumInputVal = useSelector((state) => state.userFinance.depositValue);
-  const isShowCurrencySwitcher = useSelector(({popups}) => popups.isShowCurrencySwitcher);
+  const sumInputVal = useSelector((state) => state.userFinance?.depositValue);
+  const isShowCurrencySwitcher = useSelector(({popups}) => popups?.isShowCurrencySwitcher);
   const userCurrency = useSelector((state) => state.userFinance);
 
   const activeBonuses = useSelector((state) => state.bonuses);

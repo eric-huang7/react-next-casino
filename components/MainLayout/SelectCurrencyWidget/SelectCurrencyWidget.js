@@ -36,7 +36,7 @@ export const SelectCurrencyWidget = ({
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
   const userPayment = useSelector((state) => state.userPaymentMethod)
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userCurrency = useSelector((state) => state.userFinance)
 
 

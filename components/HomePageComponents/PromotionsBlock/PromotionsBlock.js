@@ -24,8 +24,8 @@ export const PromotionsBlock = ({t, titleImage}) => {
 
 
   useEffect(() => {
-    dispatch(getActiveBonuses(userCurrency.userCurrencyData.id));
-  }, [userCurrency.userCurrencyData.id])
+    dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
+  }, [userCurrency?.userCurrencyData?.id])
 
 
   let itemsCount = 4;

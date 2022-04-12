@@ -11,9 +11,9 @@ export const AmountInputContainer = ({t, userCurrency, userDepositValue, valueIn
         className={styles.widgetAmountInput}
         type="number"
         id={'widgetAmountInput'}
-        placeholder={`${userCurrency.userCurrencyData.symbol} ${userDepositValue}`}
+        placeholder={`${userCurrency?.userCurrencyData?.symbol} ${userDepositValue}`}
       />
-      {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency.userCurrencyData.symbol}</label>*/}
+      {/*<label className={styles.currencyLabel} htmlFor="widgetAmountInput">{userCurrency?.userCurrencyData?.symbol}</label>*/}
       <label className={styles.amountInputLabel} htmlFor="widgetAmountInput">{width <= 680 ? t("depositWidget.enterDeposit") : t("depositWidget.amount")}</label>
       {errorDepositValue ? <ErrorMessage t={t} text={"depositWidget.valueError"} /> : <></> }
     </div>

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import { svgSetter } from '../../../../helpers/iconNameFinder'
 
 export const PaymentCurrencyItem = ({ paymentMethod, chosePaymentClickHandler }) => {
-  const currencyData = useSelector((store) => store.currency.currency.results);
+  const currencyData = useSelector((store) => store.currency?.currency.results);
 
   useEffect(() => {
     let currencyForPayment = currencyData.filter((currency) => currency.id === paymentMethod.currency_from.currency_id);

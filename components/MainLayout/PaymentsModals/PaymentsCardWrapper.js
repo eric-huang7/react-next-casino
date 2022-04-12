@@ -39,7 +39,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
 
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userFinance);
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue);
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
   const userPayment = useSelector((state) => state.userPaymentMethod);
 
 
@@ -71,7 +71,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
     if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
       let date = dateInput.split('/').join('')
       let paymentData = {
-        senderCurrency_id: userCurrency.userCurrencyData.id,
+        senderCurrency_id: userCurrency?.userCurrencyData?.id,
         user_id: `${userInfo.user.user.id}`,
         site_id: siteID,
         number: `${cardNumber}`,

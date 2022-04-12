@@ -13,7 +13,7 @@ export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paym
   const fiatClickHandler = () => {
 
     let chosenMethod = method[3].filter((method) => {
-      if (method.currency_from.currency === userCurrency.userCurrencyData.abbreviation && method.currency_to.currency === userCurrency.userCurrencyData.abbreviation) {
+      if (method.currency_from.currency === userCurrency?.userCurrencyData?.abbreviation && method.currency_to.currency === userCurrency?.userCurrencyData?.abbreviation) {
         return true
       } else {
         return false

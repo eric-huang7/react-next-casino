@@ -25,11 +25,11 @@ export const DepositPage = ({ t }) => {
   const isShowDepositModal = useSelector((state) => state.popups)
   const userCurrency = useSelector((state) => state.userFinance)
   const userPayment = useSelector((state) => state.userPaymentMethod)
-  const userDepositValue = useSelector((state) => state.userFinance.depositValue)
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
-  const currencyData = useSelector((store) => store.currency.currency)
+  const currencyData = useSelector((store) => store.currency?.currency)
 
 
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
@@ -38,7 +38,7 @@ export const DepositPage = ({ t }) => {
   const [bonusesArr, setBonusesArr] = useState([])
   const [paymentMethods, setPaymentMethods] = useState(null)
 
-  let newButtonText = `${t('depositPage.bonusInfo.playWith')} ${(userDepositValue < 0) ? '0' : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`
+  let newButtonText = `${t('depositPage.bonusInfo.playWith')} ${(userDepositValue < 0) ? '0' : Number(userDepositValue)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`
   const [buttonText, setNewButtonText] = useState(newButtonText)
   const setDepositButtonText = (newButtonText) => {
     setNewButtonText(newButtonText)
@@ -126,7 +126,7 @@ export const DepositPage = ({ t }) => {
   }
   const depositValueInputHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value))
-    setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(e.target.value < 0) ? '0' : Number(e.target.value)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`)
+    setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(e.target.value < 0) ? '0' : Number(e.target.value)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`)
   }
 
   const submitHandler = () => {

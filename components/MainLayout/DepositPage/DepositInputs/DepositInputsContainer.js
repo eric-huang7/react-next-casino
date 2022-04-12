@@ -9,7 +9,7 @@ export const DepositInputsContainer = ({t, userCurrency, currencySwitcherShowHan
       <div className={styles.depositInputCurrencyBlock}>
         <ErrorText>
           <DepositInputCount
-            currencySymbol={userCurrency.userCurrencyData.symbol}
+            currencySymbol={userCurrency?.userCurrencyData?.symbol}
             userDepositValue={userDepositValue}
             depositValueInputHandler={depositValueInputHandler}
             userDepositValueError={userDepositValueError}
@@ -20,7 +20,7 @@ export const DepositInputsContainer = ({t, userCurrency, currencySwitcherShowHan
           onClick={() => currencySwitcherShowHandler()}
           className={styles.depositCurrencyButton}
         >
-          {userCurrency.userCurrencyData.abbreviation}
+          {userCurrency?.userCurrencyData?.abbreviation}
           <div className={styles.depositCurrencyButtonArrow}>
           </div>
         </div>

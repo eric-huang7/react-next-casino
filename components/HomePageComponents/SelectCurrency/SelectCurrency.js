@@ -12,7 +12,7 @@ import {setCurrencySelectorType} from "../../../redux/userFinance/action";
 export const SelectCurrency = ({t}) => {
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
-  const isShowCurrencySwitcher = useSelector(({popups}) => popups.isShowCurrencySwitcher);
+  const isShowCurrencySwitcher = useSelector(({popups}) => popups?.isShowCurrencySwitcher);
   const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton);
   const actionCurrencySelector = useSelector((store) => store.userFinance);
 
