@@ -76,6 +76,21 @@ export const Footer = ({ userAuth }) => {
 
   return (
     <footer className={styles.mainFooter}>
+      <section className={styles.footerLogoWrapper}>
+        <div className={styles.footerLogo}>
+        </div>
+      </section>
+      <section className={styles.footerMiddleBlock}>
+        <div className={styles.footerMiddleInnerWrapper}>
+          {coinsImg.map((el) => {
+            return (
+              <div className={styles.coinImgWrapper} key={el.key}>
+                <Image src={el.src} width={110} height={33} alt={el.key}/>
+              </div>
+            )
+          })}
+        </div>
+      </section>
       <section className={styles.footerUpperBlock}>
         <ul className={styles.linksFirst}>
           {linkKeyFirs.map((el) => {
@@ -119,19 +134,7 @@ export const Footer = ({ userAuth }) => {
 
         </ul>
       </section>
-      <section className={styles.footerMiddleBlock}>
-        <div className={styles.footerMiddleInnerWrapper}>
-          {coinsImg.map((el) => {
-            return (
-              <div className={styles.coinImgWrapper} key={el.key}>
-                <Image src={el.src} width={110} height={33} alt={el.key}/>
-              </div>
-            )
-          })}
-        </div>
-      </section>
       <section className={`${styles.footerLowerBlock} ${userAuth && width > 1239 ? styles.paddingEnable : ''}`}>
-        <div className={styles.divider}></div>
         <div className={styles.lowerFooter}>
           <div className={styles.socialBlock}>
             {socilaLinks.map((el) => {

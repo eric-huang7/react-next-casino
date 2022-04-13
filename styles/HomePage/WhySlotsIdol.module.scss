@@ -2,14 +2,10 @@
 
 .whySlotsMainwrapper {
   width: 100%;
-
-  padding: 162px 0 35px 0;
+  background-image: url("/assets/img/mainLayoutImg/section-bg-2.jpg");
+  padding: 62px 0 35px 0;
 }
 .backShow {
-  background-image: url("/assets/img/whySlotsIdol/whySlotsIdol_back.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .headingWrapper {
@@ -18,10 +14,9 @@
   .heading {
     display: flex;
     align-items: center;
-    padding-top: 30px;
-    margin-bottom: 0.5rem;
+    padding-top: 0;
+    padding-bottom: 30px;
     letter-spacing: 0;
-    padding-bottom: 0.25rem;
     justify-content: center;
     font-family: "Verdana"; // Neon
 
