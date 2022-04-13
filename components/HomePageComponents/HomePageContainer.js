@@ -39,9 +39,7 @@ export const HomePageContainer = ({t}) => {
 
 
   const games = useSelector((games) => games.games);
-  const winners = useSelector((winners) => winners.winners);
-  const jackpots = useSelector((jackpots) => jackpots.jackpots);
-
+  const gameData = useSelector((state) => state.gameData);
 
   return (
     <>
@@ -99,7 +97,11 @@ export const HomePageContainer = ({t}) => {
               />
             </ErrorText>
             <ErrorText>
-              <TotalJackpotsAmount t={t} title={t('homePage.totalJackpotHeading')} winners={winners} jackpots={jackpots}/>
+              <TotalJackpotsAmount
+                t={t}
+                title={t('homePage.totalJackpotHeading')}
+                gameData={gameData}
+              />
             </ErrorText>
             <ErrorText>
               <NewsBlock

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ChooseLangDropdown } from './ChooseLangDropdown'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
 import { useTranslation } from 'next-i18next'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
@@ -49,7 +49,6 @@ export const Footer = ({ userAuth }) => {
 
   const languages = useSelector(({ lang }) => lang.languages)
   const copyLanguages = [...languages]
-  const [chooseLangArr, setChooseLangArr] = useState(copyLanguages)
   const activeLang = useSelector(({ lang }) => lang.activeLang)
   const [activeChooseLangBlock, setActiveChooseLangBlock] = useState(false)
 
@@ -68,11 +67,7 @@ export const Footer = ({ userAuth }) => {
     liveChatButton.click()
   }
 
-  chooseLangArr.sort((item) => {
-    let res = item.lang === activeLang ? -1 : 1
-    return res
-  })
-  let language = chooseLangArr[0].language.toUpperCase()
+  let language = copyLanguages.find(item => item.lang === activeLang)?.language?.toUpperCase()
 
   return (
     <footer className={styles.mainFooter}>

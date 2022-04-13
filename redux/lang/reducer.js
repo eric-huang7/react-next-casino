@@ -1,33 +1,36 @@
 import {handleActions} from "redux-actions";
-import {setLang, setLangArr} from "./action";
+import {setLangAction} from "./action";
 
 const initialState = {
   activeLang: "en",
   languages: [
-    {name: "eng", lang: "en", language: "English"},
-    {name: "rus", lang: "ru", language: "Русский"},
-    {name: "chn", lang: "cn", language: "中国人"},
-    {name: "jpn", lang: "ja", language: "日本"},
-    {name: "prt", lang: "pt", language: "Português"},
-    {name: "esp", lang: "es", language: "Español"},
-    {name: "deu", lang: "de", language: "Deutsch"},
-    {name: "fra", lang: "fr", language: "Français"},
-    {name: "swe", lang: "sv", language: "Svenska"},
-    {name: "ita", lang: "it", language: "Italiano"},
+    {name: "eng", lang: "en", language: "English", icon: "/assets/icons/roundFlags/United-Kingdom.png"},
+    {name: "rus", lang: "ru", language: "Русский", icon: "/assets/icons/roundFlags/Russia.png"},
+    {name: "chn", lang: "cn", language: "中国人", icon: "/assets/icons/roundFlags/China.png"},
+    {name: "jpn", lang: "ja", language: "日本", icon: "/assets/icons/roundFlags/Japan.png"},
+    {name: "prt", lang: "pt", language: "Português", icon: "/assets/icons/roundFlags/Portugal.png"},
+    {name: "esp", lang: "es", language: "Español", icon: "/assets/icons/roundFlags/Spain.png"},
+    {name: "deu", lang: "de", language: "Deutsch", icon: "/assets/icons/roundFlags/Germany.png"},
+    {name: "fra", lang: "fr", language: "Français", icon: "/assets/icons/roundFlags/France.png"},
+    {name: "swe", lang: "sv", language: "Svenska", icon: "/assets/icons/roundFlags/Sweden.png"},
+    {name: "ita", lang: "it", language: "Italiano", icon: "/assets/icons/roundFlags/Italy.png"},
   ]
 };
 
 const handlers = {
-  [setLang]: (state, {payload}) => {
+  [setLangAction]: (state, {payload}) => {
+    const languages = [...state.languages];
+    const activeLang = payload || 'en';
+
+    languages.sort((item) => {
+      let res = item.lang === activeLang ? -1 : 1
+      return res;
+    })
+    console.log('languages', payload, languages)
     return {
       ...state,
-      activeLang: {...payload},
-    }
-  },
-  [setLangArr]: (state, {payload}) => {
-    return {
-      ...state,
-      languages: {...payload},
+      activeLang,
+      languages: [...languages]
     }
   },
 }
