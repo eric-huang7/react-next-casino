@@ -37,6 +37,8 @@
 }
 .linksFirst, .linksSecond {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .linksFirst li, .linksSecond li {
   white-space: nowrap;
@@ -274,7 +276,16 @@ p.rightInfoText {
 
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
+  .footerMiddleBlock {
+    width: 100%;
+
+    .footerMiddleInnerWrapper {
+      //flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
   .footerUpperBlock {
     padding: 5.2% 0 0% 7.6%;
   }

@@ -91,7 +91,7 @@ export const Header = () => {
           <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'}
                alt="logo"/>
         </Link>
-        <Navigation/>
+        <Navigation isAuthenticated={userLogin.isAuthenticated}/>
       </div>
       <ErrorEmpty>
         <LangSwitcher/>

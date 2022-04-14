@@ -10,10 +10,12 @@
 .userMainBlockButtons button, .userMainBlockButtons a  {
     //display: block;
 
-    width: 125px;
+    width: auto;
+    padding-left: 16px;
+    padding-right: 16px;
     height: 51px;
     border-radius: 0;
-    background-color: #fda3a2;
+    background-color: #d7a33c;
 
     border: none;
     outline: none;
@@ -37,7 +39,7 @@
 .userMainBlockButtons button {
     margin-left: 17px;
     color: #ffffff;
-    background-color: #47b14c;
+    background-color: $red-color;
 }
 
 .registrationButtons button {

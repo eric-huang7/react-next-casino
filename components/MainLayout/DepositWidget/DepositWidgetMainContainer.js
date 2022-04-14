@@ -155,7 +155,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
 
   useEffect(() => {
-    if (scrollHeight < 900) {
+    if (scrollHeight < 900 && (isActivePayments || errorPaymentMethod || errorDepositValue)) {
       setIsActivePayments(false);
       setErrorPaymentMethod(false);
       setErrorDepositValue(false);
@@ -169,9 +169,6 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       setIsActivePayments(false)
     }
   }, [width])
-
-
-
 
   return (
     <div

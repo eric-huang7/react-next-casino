@@ -68,6 +68,8 @@
 
 @media screen and (max-width: 1900px) {
   .slotsDancer {
+    padding-left: 0;
+
   }
 }
 
@@ -85,8 +87,6 @@
   .mainBlockWrapper {
   }
   .slotsDancer {
-    top: -16px;
-
   }
   .slotMachineIng > img{
   }
@@ -111,11 +111,6 @@
     overflow: hidden;
   }
   .welcomeBonusSection {
-    background-image: url("/assets/img/homeImg/home_header_bckgr-mobile.jpg");
-    background-size: 250%;
-    background-position: 48% 30%;
-    background-repeat: no-repeat;
-
     overflow: hidden;
   }
   .welcomeBonusImg{
@@ -126,9 +121,6 @@
   }
 
   .slotsDancer {
-    flex-direction: column;
-    top: -11px;
-    left: 12px;
   }
 
   .slotMachineIng > img{
@@ -150,8 +142,7 @@
   .mainBlockWrapper {
   }
   .welcomeBonusSection {
-    background-size: 250%;
-    background-position: 48% 30%;
+    height: 500px;
   }
 
   .welcomeBonusImg{
@@ -162,12 +153,14 @@
   }
 
   .slotsDancer {
-    flex-direction: column;
-    top: -11px;
-    left: 12px;
+    height: auto;
   }
 
+  .slotMachineIng {
+    text-align: center;
+  }
   .slotMachineIng > img{
+    width: 80%;
   }
   .dancingGirlImg {
     left: 75px;

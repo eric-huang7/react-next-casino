@@ -3,8 +3,8 @@ import axios from 'axios';
 class Connect {
   constructor() {
     let service = axios.create({
+      withCredentials: true
     });
-    service.defaults.withCredentials = true;
     service.defaults.headers = {
       'Content-Type': 'application/json'
     }
