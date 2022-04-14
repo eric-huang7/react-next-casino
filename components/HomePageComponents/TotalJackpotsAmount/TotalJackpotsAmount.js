@@ -7,8 +7,10 @@ import {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+import Link from "next/link";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
-export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
+export const TotalJackpotsAmount = ({t, title, gameData}) => {
   const {height, width} = useWindowDimensions();
 
 
@@ -34,7 +36,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     jackpots: t('totalJackpots.jackpots')
   }
 
-  if (winners?.loading || jackpots?.loading || winners?.loadingLatestWinners) {
+  if (gameData?.loading || gameData?.loading || gameData?.loadingLatestWinners) {
     return (
       <h1 className={'loadingHeader'}>LOADING...</h1>
     )
@@ -42,7 +44,7 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     // ########### TOTAL JACKPOT MOUNT
     let allNumber = 0
 
-    let allMount = jackpots?.jackpots?.results.map((el) => {
+    let allMount = gameData?.jackpots?.results.map((el) => {
       currency = el.jackpot_amounts[0].currency;
       if (currency === 'EUR') {
         currency = '€';
@@ -54,16 +56,16 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
     totalMount = Number(allNumber.toFixed(0)).toLocaleString('de');
 
     // ########## TOP WINNERS
-    let slicedTopWinners = winners?.winners?.results?.slice() || [];
+    let slicedTopWinners = gameData?.winners?.results?.slice() || [];
     let sortedWinners = slicedTopWinners.sort((a,b) => Number(b.winnings) - Number(a.winnings));
     topWinnersArr = sortedWinners.slice(0, 4); // no filter
 
     // ######### LATEST WINNERS
-    let slicedLatestWinners = winners?.latestWinners?.results?.slice() || [];
+    let slicedLatestWinners = gameData?.latestWinners?.results?.slice() || [];
     latestWinnersArr = slicedLatestWinners.slice(0, 4) // latest winner came empty data
 
     // ######### JACKPOTS
-    let jackpotSlicedArr = jackpots?.jackpots?.results?.slice() || [];
+    let jackpotSlicedArr = gameData?.jackpots?.results?.slice() || [];
     jackpotsFilteredArr = jackpotSlicedArr.filter((item) => {
       if (item.games.length > 0) {
         return true;
@@ -93,8 +95,10 @@ export const TotalJackpotsAmount = ({t, winners, jackpots}) => {
       <div className={styles.moveLeaf}></div>
       <div className={styles.moveCherry}></div>
 
-      <div className={styles.totalJackpotsHeading}>
-        <Image width={598} height={113} className={styles.totalJackpotsHeading} src={'/assets/img/totalJackpot/total_jackpot_heading.png'} alt="total jackpot heading"/>
+      <div className={styles.headingWrapper}>
+        <div className={styles.heading}>
+          <div className={styles.title}>{title}</div>
+        </div>
       </div>
       <div className={styles.totalJackpotsWrapper}>
         <h1 className={styles.totalMountHeading}>{`${currency} ${totalMount}`}</h1>

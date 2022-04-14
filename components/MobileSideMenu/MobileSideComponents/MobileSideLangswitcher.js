@@ -24,12 +24,7 @@ export const MobileSideLangSwitcher = ({isOpenLanguages}) => {
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
 
   const langChooser = (e) => {
-    let today = new Date();
-    let nextYear = new Date();
-    nextYear.setFullYear(today.getFullYear() + 1);
-    setCookie('language', e.target.dataset.lang, {path: '/', expires: nextYear});
-
-    dispatch(setLang(e.target.dataset.lang));
+    dispatch(setLang({lang: e.target.dataset.lang, setCookie}));
   }
 
   return (

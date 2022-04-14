@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ChooseLangDropdown } from './ChooseLangDropdown'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
 import { useTranslation } from 'next-i18next'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
@@ -49,7 +49,6 @@ export const Footer = ({ userAuth }) => {
 
   const languages = useSelector(({ lang }) => lang.languages)
   const copyLanguages = [...languages]
-  const [chooseLangArr, setChooseLangArr] = useState(copyLanguages)
   const activeLang = useSelector(({ lang }) => lang.activeLang)
   const [activeChooseLangBlock, setActiveChooseLangBlock] = useState(false)
 
@@ -68,14 +67,25 @@ export const Footer = ({ userAuth }) => {
     liveChatButton.click()
   }
 
-  chooseLangArr.sort((item) => {
-    let res = item.lang === activeLang ? -1 : 1
-    return res
-  })
-  let language = chooseLangArr[0].language.toUpperCase()
+  let language = copyLanguages.find(item => item.lang === activeLang)?.language?.toUpperCase()
 
   return (
     <footer className={styles.mainFooter}>
+      <section className={styles.footerLogoWrapper}>
+        <div className={styles.footerLogo}>
+        </div>
+      </section>
+      <section className={styles.footerMiddleBlock}>
+        <div className={styles.footerMiddleInnerWrapper}>
+          {coinsImg.map((el) => {
+            return (
+              <div className={styles.coinImgWrapper} key={el.key}>
+                <Image src={el.src} width={110} height={33} alt={el.key}/>
+              </div>
+            )
+          })}
+        </div>
+      </section>
       <section className={styles.footerUpperBlock}>
         <ul className={styles.linksFirst}>
           {linkKeyFirs.map((el) => {
@@ -119,19 +129,7 @@ export const Footer = ({ userAuth }) => {
 
         </ul>
       </section>
-      <section className={styles.footerMiddleBlock}>
-        <div className={styles.footerMiddleInnerWrapper}>
-          {coinsImg.map((el) => {
-            return (
-              <div className={styles.coinImgWrapper} key={el.key}>
-                <Image src={el.src} width={110} height={33} alt={el.key}/>
-              </div>
-            )
-          })}
-        </div>
-      </section>
       <section className={`${styles.footerLowerBlock} ${userAuth && width > 1239 ? styles.paddingEnable : ''}`}>
-        <div className={styles.divider}></div>
         <div className={styles.lowerFooter}>
           <div className={styles.socialBlock}>
             {socilaLinks.map((el) => {

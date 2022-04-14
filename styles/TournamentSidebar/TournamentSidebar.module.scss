@@ -382,11 +382,11 @@ padding: 0;
 
 
 .tournamentIconWrapper {
-  width: 55px;
-  height: 60px;
-  background-color: $red-color;
+  width: 107px;
+  height: 100px;
+  background-color: #d7a33c;
 
-  border-radius: 15px 0 0 15px;
+  border-radius: 50px 0 0 50px;
 
 
   position: fixed;
@@ -397,14 +397,14 @@ padding: 0;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 
   cursor: pointer;
 
   z-index: 10;
 
   & .tournamentImage {
-    width: 34px;
-    height: 37px;
+    width: 100px;
+    height: 100px;
   }
 }

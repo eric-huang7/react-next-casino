@@ -1,12 +1,16 @@
 import styles from '../../../styles/HomePage/WhySlotsIdol.module.scss'
 import { useTranslation } from 'next-i18next'
 
-export const WhySlotsIdol = ({ isBackShow }) => {
+export const WhySlotsIdol = ({ isBackShow, title }) => {
   const { t } = useTranslation('common')
   return (
     <div className={`${styles.whySlotsMainwrapper} ${isBackShow ? styles.backShow : ''}`}>
-      <div className={styles.whySlotsHeading}>
-        <img src={'/assets/img/whySlotsIdol/why_slots_heading.png'} alt="why slots idol heading"/>
+      <div className={styles.headingWrapper}>
+        <div className={styles.heading}>
+          <div className={styles.title}>
+            {title}
+          </div>
+        </div>
       </div>
       <div className={styles.whySlotsItems}>
         <div className={`${styles.minuteBlock} ${styles.whySlotsInnerItem}`}>

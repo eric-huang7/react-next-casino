@@ -85,12 +85,14 @@ export const Header = () => {
   return (
     <>
     <header className={styles.mainHeader}>
-      <AiOutlineMenu className={styles.hamburger} onClick={showMenu} color="white" size={30} />
-      <Link href={'/'} passHref>
-        <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'}
-             alt="logo"/>
-      </Link>
-      <Navigation/>
+      <div className={styles.tooltip}>
+        <AiOutlineMenu className={styles.hamburger} onClick={showMenu} color="white" size={30} />
+        <Link href={'/'} passHref>
+          <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'}
+               alt="logo"/>
+        </Link>
+        <Navigation isAuthenticated={userLogin.isAuthenticated}/>
+      </div>
       <ErrorEmpty>
         <LangSwitcher/>
       </ErrorEmpty>

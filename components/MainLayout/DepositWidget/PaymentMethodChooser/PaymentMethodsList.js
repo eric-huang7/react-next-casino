@@ -32,14 +32,14 @@ export const PaymentMethodsList = ({
         setPaymentMethods(data.data.results)
       })
       .catch((err) => {
-        setPaymentMethods(null)
+        // setPaymentMethods(null)
       })
 
     return () => {
       setPaymentMethods(null)
       dispatch(setUserPaymentMethod(null))
     }
-  }, [userCurrency])
+  }, [userCurrency?.userCurrencyData?.id])
 
   if (paymentMethods) {
     // styles.activePaymentsListSingle

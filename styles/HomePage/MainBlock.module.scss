@@ -1,7 +1,6 @@
 .mainBlockWrapper {
   width: 100%;
-  height: 38.1vw;
-
+  height: auto;
   //overflow: hidden;
 }
 
@@ -13,10 +12,9 @@
   flex-wrap: nowrap;
 
   width: 100%;
+  height: 600px;
 
-
-  background-image: url("/assets/img/homeImg/home_header_bckgr.webp");
-  background-size: cover;
+  background-image: url("/assets/img/homeImg/home_header_bckgr.jpg");
 }
 
 .welcomeBonusImg {
@@ -26,11 +24,13 @@
 }
 
 .welcomeBonusImg img {
-  width: 53vw;
+  width: auto;
+  height: 80%;
 }
 
 .slotsDancerWrapper {
   width: 100%;
+  height: 100%;
   position: relative;
   display: flex;
 
@@ -40,24 +40,26 @@
 
 .slotsDancer {
   display: flex;
-
+  padding-left: 180px;
   position: relative;
+  align-items: center;
 
-  left: 13vw;
-  top: -22px;
-
+  height: 100%;
 }
 .slotsMachineIng:after {
   content: '';
 }
+.slotMachineIng {
+  height: 80%;
+}
 .slotMachineIng > img{
-  width: 34vw;
+  height: 100%;
 }
 
 .dancingGirlImg {
   position: relative;
 
-  left: 40px;
+  left: -180px;
   top: -15px;
 }
 .dancingGirlImg img {
@@ -66,17 +68,15 @@
 
 @media screen and (max-width: 1900px) {
   .slotsDancer {
-    top: -16px;
+    padding-left: 0;
 
   }
 }
 
 @media screen and (max-width: 1570px) {
   .mainBlockWrapper {
-    height: 40.9vw;
   }
   .slotMachineIng > img{
-    width: 36vw;
   }
   .dancingGirlImg {
     top: 22px;
@@ -85,14 +85,10 @@
 
 @media screen and (max-width: 1380px) {
   .mainBlockWrapper {
-    height: 38.9vw;
   }
   .slotsDancer {
-    top: -16px;
-
   }
   .slotMachineIng > img{
-    width: 34vw;
   }
   .dancingGirlImg {
     top: -8px;
@@ -101,10 +97,8 @@
 
 @media screen and (max-width: 1280px) {
   .mainBlockWrapper {
-    height: 40.9vw;
   }
   .slotMachineIng > img{
-    width: 36vw;
   }
   .dancingGirlImg {
     top: 8px;
@@ -113,16 +107,10 @@
 
 @media screen and (max-width: 1065px) {
   .mainBlockWrapper {
-    height: 158.9vw;
 
     overflow: hidden;
   }
   .welcomeBonusSection {
-    background-image: url("/assets/img/homeImg/home_header_bckgr-mobile.jpg");
-    background-size: 250%;
-    background-position: 48% 30%;
-    background-repeat: no-repeat;
-
     overflow: hidden;
   }
   .welcomeBonusImg{
@@ -130,17 +118,12 @@
     margin-left: 0px;
   }
   .welcomeBonusImg img {
-    width: 70vw;
   }
 
   .slotsDancer {
-    flex-direction: column;
-    top: -11px;
-    left: 12px;
   }
 
   .slotMachineIng > img{
-    width: 80vw;
   }
   .dancingGirlImg {
     left: -20px;
@@ -148,22 +131,18 @@
 
   }
   .dancingGirlImg img {
-    width: 82vw;
   }
 
 }
 @media screen and (max-width: 860px) {
   .mainBlockWrapper {
-    height: 156.9vw;
   }
 }
 @media screen and (max-width: 780px) {
   .mainBlockWrapper {
-    height: 191.9vw;
   }
   .welcomeBonusSection {
-    background-size: 250%;
-    background-position: 48% 30%;
+    height: 500px;
   }
 
   .welcomeBonusImg{
@@ -171,17 +150,17 @@
     margin-left: 0px;
   }
   .welcomeBonusImg img {
-    width: 87vw;
   }
 
   .slotsDancer {
-    flex-direction: column;
-    top: -11px;
-    left: 12px;
+    height: auto;
   }
 
+  .slotMachineIng {
+    text-align: center;
+  }
   .slotMachineIng > img{
-    width: 104vw;
+    width: 80%;
   }
   .dancingGirlImg {
     left: 75px;
@@ -189,23 +168,19 @@
 
   }
   .dancingGirlImg img {
-    width: 82vw;
   }
 
 }
 
 @media screen and (max-width: 640px) {
   .mainBlockWrapper {
-    height: 189.9vw;
   }
 }
 @media screen and (max-width: 570px) {
   .mainBlockWrapper {
-    height: 187.9vw;
   }
 }
 @media screen and (max-width: 495px) {
   .mainBlockWrapper {
-    height: 184.8vw;
   }
 }

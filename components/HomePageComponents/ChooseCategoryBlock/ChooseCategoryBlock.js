@@ -27,7 +27,6 @@ export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
           linksData.map((el) => {
             return (
               <li key={el.name} className={styles.categoryListItem }>
-                <img className={styles.linkIcon} src={`${router.asPath === el.href ? el.activeIcon : el.icon}`} alt={`${el.name} link icon`}/>
                 <Link href={el.href}>
                   <a>{t(`homePage.${el.name}`)}</a>
                 </Link>

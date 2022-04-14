@@ -24,7 +24,7 @@ export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, user
         setPaymentMethods(null)
       })
 
-  }, [])
+  }, [userCurrency?.userCurrencyData?.id])
 
   if (paymentMethods) {
     return (

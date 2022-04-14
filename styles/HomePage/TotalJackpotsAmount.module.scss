@@ -4,7 +4,7 @@
   margin-top: 100px;
 
   position: relative;
-
+  background-image: url("/assets/img/mainLayoutImg/section-bg-2.jpg");
 }
 .totalJackpotsWrapper {
   position: relative;
@@ -13,15 +13,43 @@
 
   width: 100%;
 
-  background-color: rgba(20, 75, 136, 0.5);
-
-  padding-top: 57px;
   padding-bottom: 30px;
 }
-.totalJackpotsHeading {
-  margin: 0 auto;
+.headingWrapper {
+  padding-left: 54px;
+  padding-right: 54px;
+  .heading {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0;
+    padding-bottom: 0.25rem;
+    justify-content: center;
+    font-family: "Verdana"; // Neon
 
-  width: 32%;
+    font-size: 1rem;
+    line-height: 1.38;
+
+    .title {
+      color: #ffffff;
+      line-height: 1.38;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0px;
+      font-family: "Lithograph";
+      text-align: center;
+      & img {
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    }
+    .moreLink {
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
 }
 
 .totalMountHeading {
@@ -396,6 +424,9 @@
 @media screen and (max-width: 700px) {
   .totalJackpotsHeading {
     width: 72%;
+  }
+  .title {
+    font-size: 20px;
   }
   .totalMountHeading {
     font-size: 40px;

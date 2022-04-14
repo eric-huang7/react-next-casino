@@ -1,5 +1,5 @@
 import {handleActions} from "redux-actions";
-import {getJackpots, getLatestWinnersAction, getWinnersAction} from "./action";
+import {getJackpotsAction, getLatestWinnersAction, getWinnersAction} from "./action";
 
 const initialState = {
   jackpots: null,
@@ -10,7 +10,7 @@ const initialState = {
 }
 
 const handlers = {
-  [getJackpots]: (state, {payload}) => {
+  [getJackpotsAction]: (state, {payload}) => {
     return {
       ...state,
       jackpots: {...payload},

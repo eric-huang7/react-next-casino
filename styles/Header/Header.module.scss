@@ -1,26 +1,25 @@
-.test {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: blue;
-    z-index: 199;
-}
 .mainHeader{
     position: relative;
-    height: 75px;
+    height: 85px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background-color: black;
+    background-color: #772300;
+    background-image: url("/assets/img/mainLayoutImg/header_bg.jpg");
 
     z-index: 19;
 
     position: relative;
+}
+
+.tooltip {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .hamburger {
@@ -29,42 +28,37 @@
 }
 
 .logo {
-    width: 132px;
-    height: 71px;
+    width: 250px;
+    height: auto;
 
-    margin: 2px 0px 2px 100px;
+    margin: 2px 16px 2px 16px;
 }
 
 
 @media screen and (max-width: 1690px) {
     .logo {
-        margin: 2px 0px 2px 20px;
     }
 }
 @media screen and (max-width: 1525px) {
     .logo {
-        margin: 2px 0px 2px 50px;
     }
 }
 @media screen and (max-width: 1455px) {
     .logo {
-        margin: 2px 0px 2px 30px;
     }
 }
 
 @media screen and (max-width: 1325px) {
     .mainHeader{
-        height: 63px;
+        height: 53px;
 
     }
     .logo {
         width: 100px;
-        height: 54px;
-        margin: 2px 0px 2px 17px;
+        height: auto;
     }
 }
 @media screen and (max-width: 1071px) {
     .logo {
-        margin: 2px 0px 2px 5px;
     }
 }

@@ -25,7 +25,6 @@ export const ChoosePaymentMethod = ({
           currency_id: userCurrency?.userCurrencyData?.id,
         }
       }
-
       axios.get(payments_methods_url, config)
         .then((data) => {
           setPaymentMethods(data.data.results)
@@ -41,7 +40,7 @@ export const ChoosePaymentMethod = ({
       setPaymentMethods(null)
       dispatch(setUserPaymentMethod(null))
     }
-  }, [userCurrency])
+  }, [userCurrency?.userCurrencyData?.id])
 
   if (paymentMethods) {
     return (

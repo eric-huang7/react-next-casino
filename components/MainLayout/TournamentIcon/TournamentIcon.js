@@ -14,7 +14,7 @@ export const TournamentIcon = ({toursref}) => {
   return (
     <div ref={toursref} onClick={() => showTournamentsHandler()} className={styles.tournamentIconWrapper}>
       <div className={styles.tournamentImage}>
-        <Image src={'/assets/img/tournaments/tournament.png'} layout={'fixed'} width={34} height={37} alt={'tournament icon'}/>
+        <Image src={'/assets/img/tournaments/sidebar-icon.png'} layout={'fixed'} width={100} height={100} alt={'tournament icon'}/>
       </div>
     </div>
   )

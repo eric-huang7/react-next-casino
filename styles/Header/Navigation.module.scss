@@ -23,11 +23,12 @@
 .headerNavbarListItem > a {
     text-decoration: none;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 21px;
     letter-spacing: 0px;
     line-height: 60px;
-    color: #fea0ae;
-    font-family: "Verdana";
+    color: #fefefe;
+    font-weight: bold;
+    font-family: "Lithograph";
     text-transform: uppercase;
 
     position: relative;
@@ -50,14 +51,12 @@
     display: block;
 
     content: '';
-    border-left: 1px solid #fea0ae;
 
     position: absolute;
 
     height: 15px;
 
     top: 2px;
-    right: -10px;
 }
 .headerNavbarListItem:nth-last-child(1) a:after{
     display: none;
@@ -86,7 +85,7 @@
         font-size: 14px;
         letter-spacing: 0px;
         color: #ffffff;
-        font-family: "Verdana";
+        font-family: "Lithograph";
 
         margin-bottom: 15px;
         padding: 0;
@@ -103,7 +102,6 @@
 
 @media screen and (max-width: 1770px) {
     .headerNavbarListItem a {
-        font-size: 14px;
 
     }
     .headerNavbarListItem a:after {
@@ -118,8 +116,6 @@
         right: -6px;
     }
     .headerNavbarListItem a {
-        font-size: 14px;
-        margin-right: 10px;
     }
 }
 
