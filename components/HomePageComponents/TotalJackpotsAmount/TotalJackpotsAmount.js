@@ -88,13 +88,6 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
 
   return (
     <div className={styles.totalJackpotsMainWrapper}>
-      <div className={styles.flamingo}></div>
-      <div className={styles.leaf}></div>
-      <div className={styles.cherry}></div>
-      <div className={styles.moveFlamingo}></div>
-      <div className={styles.moveLeaf}></div>
-      <div className={styles.moveCherry}></div>
-
       <div className={styles.headingWrapper}>
         <div className={styles.heading}>
           <div className={styles.title}>{title}</div>
