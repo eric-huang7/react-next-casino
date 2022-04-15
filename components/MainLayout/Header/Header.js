@@ -27,9 +27,6 @@ export const Header = () => {
     let userLogLocal = localStorage.getItem('userAuth')
 
     if (userLogined) {
-      if (!userLogin.balance) {
-        dispatch(userBalance())
-      }
       if (!bonusesData.activeBonuses) {
         dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id))
       }
@@ -54,10 +51,15 @@ export const Header = () => {
   }, [userCurrency?.userCurrencyData?.id])
 
   useEffect(() => {
+    if (userLogined && !userLogin.balance) {
+      console.log('3')
+      dispatch(userBalance())
+    }
+  }, [userLogin.balance, userLogin.isAuthenticated])
+
+  useEffect(() => {
     if (userLogin.isAuthenticated) {
-      if (!userLogin.balance) {
-        dispatch(userBalance())
-      }
+      console.log('2')
       if (userLogin.balance && currencyData) {
         let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default))
         let userCurrency = ''
