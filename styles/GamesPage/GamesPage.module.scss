@@ -15,8 +15,8 @@
   font-size: 30px;
   letter-spacing: 1px;
   color: #ffffff;
-  font-family: "Franklin Gothic", sans-serif;
-  font-weight: normal;
+  font-family: "Lithograph", sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
 
   margin: 0 0 45px 40px;
@@ -134,10 +134,11 @@
 
 
 .moreWrapper {
-  background-color: rgba(0,0,0, 0.3);
+  background-color: #772300;
+  background-image: url("/assets/img/mainLayoutImg/header_bg.jpg");
 
   width: 100%;
-  height: 90px;
+  height: 85px;
 
   margin-bottom: 150px;
 
@@ -150,15 +151,16 @@
     height: 50px;
 
     background-color: transparent;
-
-    border: 1px solid #6a6d71;
-
-    color: #cccccc;
+    border: none;
+    font-family: Lithograph;
+    font-weight: 600;
+    font-size: 30px;
+    color: #ffffff;
 
     cursor: pointer;
   }
   & .moreButton:hover {
-    background-color: rgba(0,0,0, 0.31);
+    color: #99cc33;
   }
 }
 
