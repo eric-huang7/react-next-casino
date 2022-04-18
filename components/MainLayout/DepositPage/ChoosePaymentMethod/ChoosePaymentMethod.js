@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { PaymentItem } from './PaymentItem'
 import { useEffect } from 'react'
-import axios from 'axios'
 import {activeBonuses_url, payments_methods_url} from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
@@ -33,7 +32,6 @@ export const ChoosePaymentMethod = ({
       setPaymentMethods(null)
     }
     return () => {
-
       setPaymentMethods(null)
       dispatch(setUserPaymentMethod(null))
     }

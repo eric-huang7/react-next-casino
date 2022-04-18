@@ -2,11 +2,11 @@ import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.m
 
 import { PaymentMethodItem } from './PaymentMethodItem'
 import { useEffect } from 'react'
-import axios from 'axios'
 import { payments_methods_url } from '../../../../redux/url/url'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { useDispatch } from 'react-redux'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../../helpers/connect";
 
 export const PaymentMethodsList = ({
   t,
@@ -20,20 +20,14 @@ export const PaymentMethodsList = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-
     const config = {
       params: {
         currency_id: userCurrency?.userCurrencyData?.id,
       }
     }
-    // payments_methods_url
-    axios.get(payments_methods_url, config)
-      .then((data) => {
-        setPaymentMethods(data.data.results)
-      })
-      .catch((err) => {
-        // setPaymentMethods(null)
-      })
+    Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.results)).catch((err) => {
+      setPaymentMethods(null);
+    })
 
     return () => {
       setPaymentMethods(null)
