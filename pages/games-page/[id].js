@@ -45,146 +45,68 @@ const GamesPage = (props) => {
 
   useEffect(() => {
     let res
-    let heading
+    let heading = props.query.id
+    let url
     let whatSearch
     setPageCounter(1)
     searchRef.current.value = ''
 
     setGamesError('')
 
-    if (props.query.id === 'all-games') {
+    switch (props.query.id) {
+      case 'all-games':
+        url = allProvidersURL(100)
+        break
+      case 'new-games':
+        url = newGames_url(100)
+        break
+      case 'btc-games':
+        url = topGames_url(100)
+        break
+      case 'top-games':
+        url = topGames_url(100)
+        break
+      case 'jackpot-games':
+        url = jackpotGames_url(100)
+        break
+      case 'table-games':
+        url = tableGames_url(100)
+        break
+      case 'tournaments':
+        whatSearch = JSON.parse(props.query.tournamentData)
 
-      heading = props.query.id
-      Connect.get(allProvidersURL(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'new-games') {
-
-      heading = props.query.id
-      Connect.get(newGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'btc-games') {
-
-      heading = props.query.id
-      Connect.get(topGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'top-games') {
-
-      heading = props.query.id
-      Connect.get(topGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'jackpot-games') {
-
-      heading = props.query.id
-      Connect.get(jackpotGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'table-games') {
-
-      heading = props.query.id
-      Connect.get(tableGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-
-    } else if (props.query.id === 'tournaments') {
-
-      whatSearch = JSON.parse(props.query.tournamentData)
-      heading = props.query.id
-      if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-        let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-        let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
-        Connect.get(game_provider_category_ids(provider, categoryId), {}, (status, data) => {
-          dispatch(setGames(data.results))
-          setRequestGamesData(data.results)
-          setTotal_rows(data.total_rows)
-        }).catch((err) => {
-          setGamesError('gamesPage.error')
-        })
-      } else if (whatSearch.game_category_ids) {
-        let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
-
-        Connect.get(game_category_ids(categoryId), {}, (status, data) => {
-          dispatch(setGames(data.results))
-          setRequestGamesData(data.results)
-          setTotal_rows(data.total_rows)
-        }).catch((err) => {
-          setGamesError('gamesPage.error')
-        })
-      } else if (whatSearch.game_provider_ids) {
-        let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-
-        Connect.get(game_provider_ids(provider), {}, (status, data) => {
-          dispatch(setGames(data.results))
-          setRequestGamesData(data.results)
-          setTotal_rows(data.total_rows)
-        }).catch((err) => {
-          setGamesError('gamesPage.error')
-        })
-      } else {
-        let gamesId = whatSearch.game_ids.split('|').filter((el) => el !== '').join(',')
-        Connect.get(game_ids(gamesId), {}, (status, data) => {
-          dispatch(setGames(data.results))
-          setRequestGamesData(data.results)
-          setTotal_rows(data.total_rows)
-        }).catch((err) => {
-          setGamesError('gamesPage.error')
-        })
-      }
-
-    } else if (props.query.id === 'bonus-games') {
-      heading = props.query.active_bonus
-      Connect.get(topGames_url(100), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
-    } else {
-
-      heading = props.query.id
-      Connect.get(chosenProviderURL(props.query.id), {}, (status, data) => {
-        dispatch(setGames(data.results))
-        setRequestGamesData(data.results)
-        setTotal_rows(data.total_rows)
-      }).catch((err) => {
-        setGamesError('gamesPage.error')
-      })
+        if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+          let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
+          let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
+          url = game_provider_category_ids(provider, categoryId)
+        } else if (whatSearch.game_category_ids) {
+          let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
+          url = game_category_ids(categoryId)
+        } else if (whatSearch.game_provider_ids) {
+          let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
+          url = game_provider_ids(provider)
+        } else {
+          let gamesId = whatSearch.game_ids.split('|').filter((el) => el !== '').join(',')
+          url = game_ids(gamesId)
+        }
+        break
+      case 'bonus-games':
+        heading = props.query.active_bonus
+        url = topGames_url(100)
+        break
+      default:
+        url = chosenProviderURL(props.query.id)
     }
+
+    Connect.get(url, {}, (status, data) => {
+      dispatch(setGames(data.results))
+      setRequestGamesData(data.results)
+      setTotal_rows(data.total_rows)
+    }).catch((err) => {
+      setGamesError('gamesPage.error')
+    })
     setHeading(heading)
-  }, [props.query])
+  }, [props?.query?.id])
 
   const allGames = useSelector((store) => store.games)
   let searchGames = useSelector((store) => store.games.searchGames)
