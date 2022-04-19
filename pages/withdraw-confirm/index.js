@@ -5,8 +5,8 @@ import { HomePageContainer } from '../../components/HomePageComponents/HomePageC
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { token_url } from '../../redux/url/url'
-import axios from 'axios'
 import { messagePopupActivate } from '../../redux/popups/action'
+import Connect from "../../helpers/connect";
 
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')
@@ -21,21 +21,18 @@ export default function EmailConfirmation (props) {
       }
 
       const timer = setTimeout(() => {
-
-        axios.patch(token_url, sendData)
-          .then((data) => {
-            if (data.data.success) {
-              dispatch(messagePopupActivate('success'))
-            } else if (data.data.extra_error_info === 'Token invalid') {
-              dispatch(messagePopupActivate('token_invalid'))
-            } else {
-              dispatch(messagePopupActivate('other_error'))
-            }
-          })
-          .catch((e) => {
-            console.log(e, 'error data!!!!!!!!!')
+        Connect.patch(token_url, sendData, {}, (status, data) => {
+          if (data.success) {
+            dispatch(messagePopupActivate('success'))
+          } else if (data.extra_error_info === 'Token invalid') {
+            dispatch(messagePopupActivate('token_invalid'))
+          } else {
             dispatch(messagePopupActivate('other_error'))
-          })
+          }
+        }).catch((e) => {
+          console.log(e, 'error data!!!!!!!!!')
+          dispatch(messagePopupActivate('other_error'))
+        })
       }, 3000)
 
       return () => {

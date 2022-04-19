@@ -21,8 +21,8 @@ import {
 } from '../../helpers/gamesURL'
 import { setGames } from '../../redux/games/action'
 import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
-import axios from 'axios'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../helpers/connect";
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
@@ -55,81 +55,68 @@ const GamesPage = (props) => {
     if (props.query.id === 'all-games') {
 
       heading = props.query.id
-      axios.get(allProvidersURL(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(allProvidersURL(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'new-games') {
 
       heading = props.query.id
-      axios.get(newGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(newGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'btc-games') {
 
       heading = props.query.id
-      axios.get(topGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(topGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'top-games') {
 
       heading = props.query.id
-      axios.get(topGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(topGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'jackpot-games') {
 
       heading = props.query.id
-      axios.get(jackpotGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(jackpotGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'table-games') {
 
       heading = props.query.id
-      axios.get(tableGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(tableGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
 
     } else if (props.query.id === 'tournaments') {
 
@@ -138,79 +125,63 @@ const GamesPage = (props) => {
       if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
         let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
         let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
-        axios.get(game_provider_category_ids(provider, categoryId))
-          .then((data) => {
-            dispatch(setGames(data.data.results))
-            setRequestGamesData(data.data.results)
-            setTotal_rows(data.data.total_rows)
-          })
-          .catch((err) => {
-            setGamesError('gamesPage.error')
-          })
+        Connect.get(game_provider_category_ids(provider, categoryId), {}, (status, data) => {
+          dispatch(setGames(data.results))
+          setRequestGamesData(data.results)
+          setTotal_rows(data.total_rows)
+        }).catch((err) => {
+          setGamesError('gamesPage.error')
+        })
       } else if (whatSearch.game_category_ids) {
         let categoryId = whatSearch.game_category_ids.split('|').filter((el) => el !== '').join(',')
 
-        axios.get(game_category_ids(categoryId))
-          .then((data) => {
-
-            dispatch(setGames(data.data.results))
-            setRequestGamesData(data.data.results)
-            setTotal_rows(data.data.total_rows)
-          })
-          .catch((err) => {
-
-            setGamesError('gamesPage.error')
-          })
+        Connect.get(game_category_ids(categoryId), {}, (status, data) => {
+          dispatch(setGames(data.results))
+          setRequestGamesData(data.results)
+          setTotal_rows(data.total_rows)
+        }).catch((err) => {
+          setGamesError('gamesPage.error')
+        })
       } else if (whatSearch.game_provider_ids) {
         let provider = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
 
-        // axios.get(game_provider_ids(provider))
-        axios.get(game_provider_ids(provider))
-          .then((data) => {
-            dispatch(setGames(data.data.results))
-            setRequestGamesData(data.data.results)
-            setTotal_rows(data.data.total_rows)
-          })
-          .catch((err) => {
-            setGamesError('gamesPage.error')
-          })
+        Connect.get(game_provider_ids(provider), {}, (status, data) => {
+          dispatch(setGames(data.results))
+          setRequestGamesData(data.results)
+          setTotal_rows(data.total_rows)
+        }).catch((err) => {
+          setGamesError('gamesPage.error')
+        })
       } else {
         let gamesId = whatSearch.game_ids.split('|').filter((el) => el !== '').join(',')
-        axios.get(game_ids(gamesId))
-          .then((data) => {
-            dispatch(setGames(data.data.results))
-            setRequestGamesData(data.data.results)
-            setTotal_rows(data.data.total_rows)
-          })
-          .catch((err) => {
-            setGamesError('gamesPage.error')
-          })
+        Connect.get(game_ids(gamesId), {}, (status, data) => {
+          dispatch(setGames(data.results))
+          setRequestGamesData(data.results)
+          setTotal_rows(data.total_rows)
+        }).catch((err) => {
+          setGamesError('gamesPage.error')
+        })
       }
 
     } else if (props.query.id === 'bonus-games') {
       heading = props.query.active_bonus
-      axios.get(topGames_url(100))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(topGames_url(100), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
     } else {
 
       heading = props.query.id
-      axios.get(chosenProviderURL(props.query.id))
-        .then((data) => {
-          dispatch(setGames(data.data.results))
-          setRequestGamesData(data.data.results)
-          setTotal_rows(data.data.total_rows)
-
-        })
-        .catch((err) => {
-          setGamesError('gamesPage.error')
-        })
+      Connect.get(chosenProviderURL(props.query.id), {}, (status, data) => {
+        dispatch(setGames(data.results))
+        setRequestGamesData(data.results)
+        setTotal_rows(data.total_rows)
+      }).catch((err) => {
+        setGamesError('gamesPage.error')
+      })
     }
     setHeading(heading)
   }, [props.query])
