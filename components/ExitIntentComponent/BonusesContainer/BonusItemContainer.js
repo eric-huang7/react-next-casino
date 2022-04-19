@@ -7,13 +7,12 @@ import {BonusDescription} from "./BonusDescription";
 import {BonusSubmitButton} from "./BonusSubmitButton";
 import {useTranslation} from "next-i18next";
 import {useRouter} from "next/router";
-import axios from "axios";
 import {user_url} from "../../../redux/url/url";
 import {setUserBonus, setUserRegisterBonusCode} from "../../../redux/userBonus/action";
 import {showDepositModal} from "../../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {showRegister} from "../../../redux/ui/action";
-
+import Connect from "../../../helpers/connect";
 
 export const BonusItemContainer = ({bonusData, userData, exit}) => {
   const dispatch = useDispatch()
@@ -26,14 +25,7 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
         id : userData.user.user.id,
         current_bonus_code: bonusData.redemption_code,
       }
-      const config = {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      const body = JSON.stringify(sendData);
-      axios.patch(user_url, body, config).then((data) => {
+      Connect.patch(user_url, JSON.stringify(sendData), {}, (status, data) => {
         if (data.data.bonus_offer) {
           dispatch(setUserBonus(bonusData.id));
           dispatch(showDepositModal(true));
@@ -56,7 +48,6 @@ export const BonusItemContainer = ({bonusData, userData, exit}) => {
       exit();
       dispatch(showRegister(true));
       dispatch(setUserRegisterBonusCode(bonusData.redemption_code));
-
     }
   }
 

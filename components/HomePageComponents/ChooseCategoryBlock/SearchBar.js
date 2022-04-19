@@ -1,5 +1,5 @@
 import styles from '../../../styles/HomePage/ChooseCategoryBlock.module.scss'
-import axios from 'axios'
+import Connect from "../../../helpers/connect";
 import {
   game_category_ids_search,
   game_ids_search,
@@ -25,44 +25,46 @@ export const SearchBar = ({ t, searchRef }) => {
     if (e.keyCode === 13 && searchRef.current.value) {
       searchRef.current.blur()
 
-      let res
+      let url
       try {
         if (router.query.id === 'all-games' || !router.query.id) {
-          res = await axios.get(searchGames_url(searchRef.current.value))
+          url = searchGames_url(searchRef.current.value)
         } else if (router.query.id === 'new-games') {
-          res = await axios.get(search_newGames_url(searchRef.current.value))
+          url = search_newGames_url(searchRef.current.value)
         } else if (router.query.id === 'btc-games') {
-          res = await axios.get(search_topGames_url(searchRef.current.value))
+          url = search_topGames_url(searchRef.current.value)
         } else if (router.query.id === 'top-games') {
-          res = await axios.get(search_topGames_url(searchRef.current.value))
+          url = search_topGames_url(searchRef.current.value)
         } else if (router.query.id === 'jackpot-games') {
-          res = await axios.get(search_jackpotGames_url(searchRef.current.value))
+          url = search_jackpotGames_url(searchRef.current.value)
         } else if (router.query.id === 'table-games') {
-          res = await axios.get(search_tableGames_url(searchRef.current.value))
+          url = search_tableGames_url(searchRef.current.value)
         } else if (router.query.id === 'tournaments') {
 
           let whatSearch = JSON.parse(router.query.tournamentData)
           if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
             let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            res = await axios.get(game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value))
+            url = game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value)
 
           } else if (whatSearch.game_category_ids) {
-            res = await axios.get(game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value))
+            url = game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value)
 
           } else if (whatSearch.game_provider_ids) {
             let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            res = await axios.get(game_provider_ids_search(providers, searchRef.current.value))
+            url = game_provider_ids_search(providers, searchRef.current.value)
 
           } else {
-            res = await axios.get(game_ids_search(whatSearch.game_ids, searchRef.current.value))
+            url = game_ids_search(whatSearch.game_ids, searchRef.current.value)
 
           }
 
         } else {
-          res = await axios.get(search_chosenProviderGames_url(router.query.id, searchRef.current.value))
+          url = search_chosenProviderGames_url(router.query.id, searchRef.current.value)
         }
 
-        dispatch(setSearchGames(res.data.results))
+        Connect.get(url, {}, (status, data) => {
+          dispatch(setSearchGames(data.results))
+        })
       } catch (e) {
         dispatch(setSearchGames([]))
       }

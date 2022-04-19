@@ -3,12 +3,12 @@ import { AmountInput } from './AmountInput'
 import { AddressInput } from './AddressInput'
 import { ButtonContainer } from './ButtonContainer'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { post_withdraw_url } from '../../../../../../redux/url/url'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPayments, userBalance } from '../../../../../../redux/user/action'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../../../../helpers/connect";
 
 export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
   const dispatch = useDispatch()
@@ -41,12 +41,6 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
       address: addressValue,
       amount: amountValue
     }
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    const body = JSON.stringify(sendData)
 
     try {
       let permittedСashoutValue = balanceInfo.balance.balances.find((el) => el.currency_id === (`${typeOfCurrency.id}`)).cash_amount
@@ -62,24 +56,22 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
       } else {
         setValueError('')
         setAddressError('')
-        axios.post(post_withdraw_url, body, config)
-          .then((data) => {
-            setSuccessMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.successMessage'))
-            setErrorMessage('')
+        Connect.post(post_withdraw_url, JSON.stringify(sendData), {}, (status, data) => {
+          setSuccessMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.successMessage'))
+          setErrorMessage('')
 
+          dispatch(getUserPayments(params))
+          dispatch(userBalance())
+        }).catch((e) => {
+          setSuccessMessage('')
+
+          let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS'
+          if (responseErrorCode) {
             dispatch(getUserPayments(params))
-            dispatch(userBalance())
-          })
-          .catch((e) => {
-            setSuccessMessage('')
+          }
 
-            let responseErrorCode = e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS'
-            if (responseErrorCode) {
-              dispatch(getUserPayments(params))
-            }
-
-            setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
-          })
+          setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
+        })
       }
     } catch (e) {
       setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))

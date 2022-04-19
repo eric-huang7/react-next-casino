@@ -2,12 +2,12 @@ import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 import {InstructionsTextContainer} from "./InstructionsTextContainer";
 import {TwoFaCodeInput} from "./FormsConponents/TwoFaCodeInput";
 import {useEffect, useRef, useState} from "react";
-import axios from "axios";
 import {qr_auth_url} from "../../redux/url/url";
 import {auth} from "../../redux/user/action";
 import {useDispatch} from "react-redux";
 import {showTwoFaPopup} from "../../redux/popups/action";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
+import Connect from "../../helpers/connect";
 
 
 export const TwoFaCodeInputContainer = ({t,}) => {
@@ -33,22 +33,19 @@ export const TwoFaCodeInputContainer = ({t,}) => {
       }
 
       setIsLoading(true);
-      axios.post(qr_auth_url, googleAuthData)
-        .then((data) => {
-          setIsLoading(false);
-          dispatch(auth());
-          setAuthError('');
-          codeRef.current.retry();
-          setValue('');
-          dispatch(showTwoFaPopup(false));
-
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
-          setValue('');
-          codeRef.current.retry();
-        })
+      Connect.post(qr_auth_url, googleAuthData, {}, (status, data) => {
+        setIsLoading(false);
+        dispatch(auth());
+        setAuthError('');
+        codeRef.current.retry();
+        setValue('');
+        dispatch(showTwoFaPopup(false));
+      }).catch((err) => {
+        setIsLoading(false);
+        setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
+        setValue('');
+        codeRef.current.retry();
+      })
       setValue('');
     }
   }, [value])

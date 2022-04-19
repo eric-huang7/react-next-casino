@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { PaymentItem } from './PaymentItem'
 import { useEffect } from 'react'
-import {activeBonuses_url, payments_methods_url} from '../../../../redux/url/url'
+import {payments_methods_url} from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";

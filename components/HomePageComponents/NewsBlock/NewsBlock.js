@@ -5,13 +5,11 @@ import Slider from 'react-slick';
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {NewsItem} from "./NewsItem";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {news_active_url} from "../../../redux/url/url";
 import {useRouter} from "next/router";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import { useTranslation } from 'next-i18next'
-import Link from "next/link";
-import {IoChevronForwardOutline} from "react-icons/io5";
+import Connect from "../../../helpers/connect";
 
 
 export const NewsBlock = ({ title, isBackShow, titleImage }) => {
@@ -25,15 +23,13 @@ export const NewsBlock = ({ title, isBackShow, titleImage }) => {
   const [loadingNews, setLoadingNews] = useState(true);
 
   useEffect(() => {
-    axios.get(news_active_url)
-      .then((data) => {
-        setNewsData(data.data.results);
-        setLoadingNews(false);
-      })
-      .catch((data) => {
-        setLoadingNews(false);
-        setNewsError('errors.errorMessage');
-      })
+    Connect.get(news_active_url, {}, {}, (status, data) => {
+      setNewsData(data.results);
+      setLoadingNews(false);
+    }).catch((data) => {
+      setLoadingNews(false);
+      setNewsError('errors.errorMessage');
+    })
   }, [])
 
   let itemsCount = 4;

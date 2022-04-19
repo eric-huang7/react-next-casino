@@ -52,14 +52,12 @@ export const Header = () => {
 
   useEffect(() => {
     if (userLogined && !userLogin.balance) {
-      console.log('3')
       dispatch(userBalance())
     }
   }, [userLogin.balance, userLogin.isAuthenticated])
 
   useEffect(() => {
     if (userLogin.isAuthenticated) {
-      console.log('2')
       if (userLogin.balance && currencyData) {
         let userActiveCurrency = userLogin.balance?.balances.find((balance) => !!Number(balance.is_default))
         let userCurrency = ''
