@@ -7,10 +7,14 @@ export const LinkItem = ({ path, name, icon }) => {
 
   return (
     <li className={styles.linkItem}>
-      <div className={styles.iconContainer}>
-        <img src={icon} alt={`${name} link icon`}/>
-      </div>
-      <Link href={path}><a>{t(name)}</a></Link>
+      <Link href={path}>
+        <a>
+          <div className={styles.iconContainer}>
+            <img src={icon} alt=''/>
+          </div>
+          {t(name)}
+        </a>
+      </Link>
     </li>
   )
 }

@@ -1,36 +1,42 @@
 .desktopMenuContainer {
-
-  background-color: transparent;
-
+  background-image: url("/assets/img/homeImg/popup_menu_bg.jpg");
+  box-shadow: -6px 11px 21px 7px rgba(0,0,0,0.5);
   position: absolute;
 
   left: -10px;
-
+  padding: 20px 20px;
+  //min-width: 400px;
   top: 47px;
 }
 
 .menuList {
   list-style-type: none;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  width: 100%;
   padding: 0;
-  margin: 20px 0 0 0;
+  margin: 0;
 
   & li {
     min-height: 50px;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
-
+    justify-content: flex-start;
     padding: 0 10px;
 
-    width: 224px;
+    width: 100px;
 
-    border-bottom: 2px solid #484848;
+    //border-bottom: 2px solid #484848;
 
     & .iconContainer {
-      flex-shrink: 0;
-
-      width: 50px;
+      cursor: pointer;
+      img {
+        width: 70px;
+      }
     }
 
     & .signoutButton {
@@ -42,24 +48,23 @@
     }
 
     & a, button {
-      font-size: 15px;
+      font-size: 12px;
       letter-spacing: 0px;
-      line-height: 48px;
-      color: #ffffff;
-      font-family: "Franklin Gothic";
+      color: #361712;
+      font-weight: 600;
+      font-family: "Lithograph";
+      text-align: center;
 
       cursor: pointer;
     }
     & a:hover, button:hover {
-      color: #fda3a2;
+      //color: #fda3a2;
     }
   }
 
   & li:nth-child(even) {
-    background-color: #2d2b2b;
   }
   & li:nth-child(odd) {
-    background-color: #393939;
   }
 }
 
