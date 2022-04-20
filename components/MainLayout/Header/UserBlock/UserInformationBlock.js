@@ -77,7 +77,7 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
           {userInfo.user.user.username}
         </span>
         {
-          isShowLinksMenu ? <DesktopMenuContainer/> : <></>
+          isShowLinksMenu ? <DesktopMenuContainer onClose={hideLinksMenuHandler}/> : <></>
         }
       </div>
       <div
