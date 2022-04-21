@@ -6,7 +6,7 @@ import {TotalJackpotsAmount} from "./TotalJackpotsAmount/TotalJackpotsAmount";
 import {NewsBlock} from "./NewsBlock/NewsBlock";
 import {WhySlotsIdol} from "./WhySlotsIdol/WhySlotsIdol";
 import {useEffect, useRef} from "react";
-import {getGames, getJackpotGames, getNewGames, getTableGames} from "../../redux/games/action";
+import {getGames, getGamesLobby, getJackpotGames, getNewGames, getTableGames} from "../../redux/games/action";
 import {getJackpots} from "../../redux/gameData/action";
 import {getLatestWinners, getWinners} from "../../redux/gameData/action";
 import {getCurrency} from "../../redux/currency/action";
@@ -25,10 +25,7 @@ export const HomePageContainer = ({t}) => {
 
   useEffect(() => {
 
-    dispatch(getGames());
-    dispatch(getNewGames());
-    dispatch(getJackpotGames());
-    dispatch(getTableGames());
+    dispatch(getGamesLobby());
 
     dispatch(getJackpots());
     dispatch(getWinners());

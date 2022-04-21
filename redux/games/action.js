@@ -2,6 +2,7 @@ import { createAction } from "redux-actions";
 import Connect from "../../helpers/connect";
 
 import {
+  games_lobby,
   games_url,
   jackpotGames_url,
   latest_games,
@@ -21,6 +22,18 @@ export const setSearchGames = createAction("SET_SEARCH_GAMES");
 
 export const getGames = () => dispatch =>
   Connect.get(games_url, {}, (status, data) => dispatch(getGamesAction(data)));
+
+export const getGamesLobby = (quantity = 100) => dispatch =>
+  Connect.get(games_lobby(quantity), {}, (status, data) => {
+    const liveGames = data?.results?.find(item => item.category === 3);
+    liveGames && dispatch(getGamesAction({results: liveGames.games}));
+    const newGames = data?.results?.find(item => item.category === 6);
+    newGames && dispatch(getNewGamesAction({results: newGames.games}));
+    const jackpotGames = data?.results?.find(item => item.category === 4);
+    jackpotGames && dispatch(getJackpotGamesAction({results: jackpotGames.games}));
+    const tableGames = data?.results?.find(item => item.category === 2);
+    tableGames && dispatch(getTableGamesAction({results: tableGames.games}));
+  });
 
 export const getNewGames = () => dispatch =>
   Connect.get(newGames_url, {}, (status, data) => dispatch(getNewGamesAction(data)));

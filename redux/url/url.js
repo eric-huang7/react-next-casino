@@ -9,6 +9,7 @@ export const freeGame_url = serverUrl + 'free_game';
 export const payGame_url = serverUrl + 'start_game';
 export const latest_games = (userId) => `${serverUrl}recent_games?user_id=${userId}`;
 export const topGames_url = `${serverUrl}games?ordering=times_played-DESC`;
+export const games_lobby = (quantity) => `${serverUrl}games_lobby?quantity=${quantity}`;
 
 // ########## Winners && Jackpots url
 
