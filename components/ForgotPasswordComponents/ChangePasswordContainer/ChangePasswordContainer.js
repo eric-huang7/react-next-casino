@@ -8,10 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { PasswordInputsContainer } from './PasswordInputsContainer'
 import { useState } from 'react'
 import { schemaChangePasswordWindow } from '../../../schemasForms/changePasswordWindowForm'
-import { token_url } from '../../../redux/url/url'
-import axios from 'axios'
+import {token_url} from '../../../redux/url/url'
 import { changePasswordLogin } from '../../../redux/user/action'
 import { InstructionsSendContainer } from '../InstructionsSendContainer/InstructionsSendContainer'
+import Connect from "../../../helpers/connect";
 
 export const ChangePasswordContainer = ({ t, token }) => {
   const dispatch = useDispatch()
@@ -38,39 +38,37 @@ export const ChangePasswordContainer = ({ t, token }) => {
       token: token
     }
 
-    axios.patch(token_url, userData)
-      .then((data) => {
-        if (data.data.success) {
+    Connect.patch(token_url, userData, {}, (status, data) => {
+      if (data.success) {
 
-          if (data.data.user.is_2fa_enabled === 1) {
+        if (data.user.is_2fa_enabled === 1) {
 
-            dispatch(showChangePasswordPopup(false))
-            dispatch(showTwoFaPopup(true))
+          dispatch(showChangePasswordPopup(false))
+          dispatch(showTwoFaPopup(true))
 
-          } else {
-            setRequestError('')
-            setRequestSuccess(true)
-            dispatch(changePasswordLogin(data.data))
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('userAuth', 'true')
-            }
-          }
-
-        } else if (data.data.extra_error_info === 'Token invalid') {
-          reset()
-          setRequestSuccess(false)
-          setRequestError('forgotPasswordForm.errors.responseErrorToken')
         } else {
-          reset()
-          setRequestSuccess(false)
-          setRequestError('forgotPasswordForm.errors.responseError')
+          setRequestError('')
+          setRequestSuccess(true)
+          dispatch(changePasswordLogin(data))
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('userAuth', 'true')
+          }
         }
-      })
-      .catch((err) => {
+
+      } else if (data.extra_error_info === 'Token invalid') {
+        reset()
+        setRequestSuccess(false)
+        setRequestError('forgotPasswordForm.errors.responseErrorToken')
+      } else {
         reset()
         setRequestSuccess(false)
         setRequestError('forgotPasswordForm.errors.responseError')
-      })
+      }
+    }).catch((err) => {
+      reset()
+      setRequestSuccess(false)
+      setRequestError('forgotPasswordForm.errors.responseError')
+    })
   }
 
   if (requestSuccess) {

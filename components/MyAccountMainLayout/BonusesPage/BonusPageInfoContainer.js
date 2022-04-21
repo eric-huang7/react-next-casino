@@ -7,10 +7,10 @@ import { AddPromoCodeContainer } from './BonusPageComponents/AddPromoCodeContain
 import { useDispatch } from 'react-redux'
 import { activateBonus, cancelBonus, getUserActivePendingBonuses } from '../../../redux/user/action'
 import { useState } from 'react'
-import axios from 'axios'
-import { user_url } from '../../../redux/url/url'
+import {user_url} from '../../../redux/url/url'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import Connect from "../../../helpers/connect";
 
 export const BonusPageInfoContainer = ({ t, bonusInfo, currency }) => {
   const dispatch = useDispatch()
@@ -48,16 +48,8 @@ export const BonusPageInfoContainer = ({ t, bonusInfo, currency }) => {
       id: bonusInfo.user.user.id,
       current_bonus_code: promoCodeValue,
     }
-    const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    const body = JSON.stringify(userData)
-    axios.patch(user_url, body, config).then((data) => {
-      // bonus_offer.deposit_cnt_requirements
-      if (!data.data.bonus_spec) {
+    Connect.patch(user_url, JSON.stringify(userData), {}, (status, data) => {
+      if (!data.bonus_spec) {
         dispatch(getUserActivePendingBonuses({ status: '1,5' }))
         setPromoDepositText('')
       } else {
@@ -65,13 +57,11 @@ export const BonusPageInfoContainer = ({ t, bonusInfo, currency }) => {
       }
       setPromoCodeValue('')
       setPromoErrorValue('')
-
     }).catch((errorData) => {
       setPromoCodeValue('')
       setPromoDepositText('')
       setPromoErrorValue(t(errorText) + ' ' + promoCodeValue)
     })
-
     // dispatch(patchUserBonusCode(userData))
 
   }

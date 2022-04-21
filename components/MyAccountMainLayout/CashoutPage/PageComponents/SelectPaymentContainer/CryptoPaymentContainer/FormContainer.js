@@ -3,13 +3,13 @@ import { AmountInput } from './AmountInput'
 import { AddressInput } from './AddressInput'
 import { ButtonContainer } from './ButtonContainer'
 import { useEffect, useRef, useState } from 'react'
-import { post_withdraw_url } from '../../../../../../redux/url/url'
-import axios from 'axios'
+import {post_withdraw_url} from '../../../../../../redux/url/url'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPayments, userBalance } from '../../../../../../redux/user/action'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
 import {errorPopupActivate, messagePopupActivate} from '../../../../../../redux/popups/action'
+import Connect from "../../../../../../helpers/connect";
 
 export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) => {
   const dispatch = useDispatch()
@@ -52,12 +52,6 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
       delete sendData.currency_to
     }
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    const body = JSON.stringify(sendData)
     try {
       let permittedСashoutValue = balanceInfo.balance.balances.find((el) => el.currency_id === (chosenPayment ? `${chosenPayment.id}` : `${typeOfCurrency.id}`)).cash_amount
 
@@ -72,34 +66,30 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
       } else {
         setValueError('')
         setAddressError('')
-        axios.post(post_withdraw_url, body, config)
-          .then((data) => {
-
-            setSuccessMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.successMessage'))
+        Connect.post(post_withdraw_url, JSON.stringify(sendData), {}, (status, data) => {
+          setSuccessMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.successMessage'))
+          setErrorMessage('')
+          dispatch(getUserPayments(params))
+          dispatch(userBalance())
+        }).catch((e) => {
+          setSuccessMessage('')
+          dispatch(userBalance())
+          dispatch(getUserPayments(params))
+          if (e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS') {
             setErrorMessage('')
-            dispatch(getUserPayments(params))
-            dispatch(userBalance())
-          })
-          .catch((e) => {
-
-            setSuccessMessage('')
-            dispatch(userBalance())
-            dispatch(getUserPayments(params))
-            if (e.response.data.error_code === 'WITHDRAW_NEED_TO_CONFIRM_ADDRESS') {
-              setErrorMessage('')
-              router.push('/accounts/history').then(() => {
-                setTimeout(() => {
-                  dispatch(messagePopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation', 'green'))
-                }, 1000)
-              })
-            } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
-              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needAccountReview'))
-            } else if (e.response.data.error_code === 'WITHDRAW_NEED_PLAYTHROUGH') {
-              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needPlaythrough'))
-            } else {
-              setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
-            }
-          })
+            router.push('/accounts/history').then(() => {
+              setTimeout(() => {
+                dispatch(messagePopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation', 'green'))
+              }, 1000)
+            })
+          } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
+            setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needAccountReview'))
+          } else if (e.response.data.error_code === 'WITHDRAW_NEED_PLAYTHROUGH') {
+            setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.needPlaythrough'))
+          } else {
+            setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))
+          }
+        })
       }
     } catch (e) {
       setErrorMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.errorMessage'))

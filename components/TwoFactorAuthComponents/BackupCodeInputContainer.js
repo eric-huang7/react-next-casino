@@ -2,18 +2,16 @@ import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 import {InstructionsTextContainer} from "./InstructionsTextContainer";
 import {BackupCodeInput} from "./FormsConponents/BackupCodeInput";
 import {useEffect, useRef, useState} from "react";
-import axios from "axios";
 import {qr_auth_url} from "../../redux/url/url";
 import {auth} from "../../redux/user/action";
 import {showTwoFaPopup} from "../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
+import Connect from "../../helpers/connect";
 
 
 export const BackupCodeInputContainer = ({t}) => {
   const dispatch = useDispatch();
-
-
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [authError, setAuthError] = useState('');
@@ -30,19 +28,17 @@ export const BackupCodeInputContainer = ({t}) => {
       }
 
       setIsLoading(true);
-      axios.post(qr_auth_url, googleAuthData)
-        .then((data) => {
-          setIsLoading(false);
-          dispatch(auth());
-          setAuthError('');
-          setValue('');
-          dispatch(showTwoFaPopup(false));
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
-          setValue('');
-        })
+      Connect.post(qr_auth_url, googleAuthData, {}, (status, data) => {
+        setIsLoading(false);
+        dispatch(auth());
+        setAuthError('');
+        setValue('');
+        dispatch(showTwoFaPopup(false));
+      }).catch((err) => {
+        setIsLoading(false);
+        setAuthError('twoFactorAuthPopup.errorMessage.wrongCode');
+        setValue('');
+      })
       setValue('');
     }
   }, [value])

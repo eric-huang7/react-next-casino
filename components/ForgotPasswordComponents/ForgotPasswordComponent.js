@@ -10,9 +10,9 @@ import {useEffect, useRef, useState} from "react";
 import {showForgotPasswordPopup} from "../../redux/popups/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../redux/ui/action";
-import axios from "axios";
 import {token_url} from "../../redux/url/url";
 import {InputContainer} from "./EmailEnteringContainer/InputContainer";
+import Connect from "../../helpers/connect";
 
 
 export const ForgotPasswordComponent = ({t}) => {
@@ -29,7 +29,6 @@ export const ForgotPasswordComponent = ({t}) => {
   const [showResendContainer, setShowResendContainer] = useState(false);
   const [requestError, setRequestError] = useState('');
 
-
   const onSubmitEmailPswdHandler = (data) => {
     const config = {
       params: {
@@ -38,19 +37,16 @@ export const ForgotPasswordComponent = ({t}) => {
       }
     }
     // setIsLoading(true);
-    axios.get(token_url, config)
-      .then((res) => {
-        if (res.data.success) {
-          // setIsLoading(false);
-          setSuccessSendPswd(true);
-          setRequestError('');
-        }
-      })
-      .catch((err) => {
+    Connect.get(token_url, config, (status, data) => {
+      if (data.success) {
         // setIsLoading(false);
-
-        setRequestError('forgotPasswordForm.errors.responseError');
-      })
+        setSuccessSendPswd(true);
+        setRequestError('');
+      }
+    }).catch((err) => {
+      // setIsLoading(false);
+      setRequestError('forgotPasswordForm.errors.responseError');
+    })
   }
   const onSubmitEmailResendHandler = (data) => {
     const config = {
@@ -60,18 +56,16 @@ export const ForgotPasswordComponent = ({t}) => {
       }
     }
     // setIsLoading(true);
-    axios.get(token_url, config)
-      .then((res) => {
-        if (res.data.success) {
-          // setIsLoading(false);
-          setSuccessSendEmail(true);
-          setRequestError('');
-        }
-      })
-      .catch((err) => {
+    Connect.get(token_url, config, (status, data) => {
+      if (data.success) {
         // setIsLoading(false);
-        setRequestError('forgotPasswordForm.errors.responseError');
-      })
+        setSuccessSendEmail(true);
+        setRequestError('');
+      }
+    }).catch((err) => {
+      // setIsLoading(false);
+      setRequestError('forgotPasswordForm.errors.responseError');
+    })
   }
 
   const forgotPswdWrapperRef = useRef();

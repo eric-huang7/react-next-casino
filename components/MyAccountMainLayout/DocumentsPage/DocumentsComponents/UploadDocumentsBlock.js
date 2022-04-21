@@ -3,10 +3,10 @@ import { ChooseFileContainer } from './ChooseFileContainer'
 import { FileDescriptionContainer } from './FileDescriptionContainer'
 import { SubmitButton } from './SubmitButton'
 import { useState } from 'react'
-import axios from 'axios'
 import { document_url } from '../../../../redux/url/url'
 import { getDocuments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
+import Connect from "../../../../helpers/connect";
 
 const fileTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'application/pdf', 'image/webp']
 
@@ -40,20 +40,17 @@ export const UploadDocumentsBlock = ({ t }) => {
             formData.append('description', description)
             formData.append('type', '1')
 
-            axios.post(document_url, formData)
-              .then((res) => {
-
-                setDescriptionError('')
-                setDescription('')
-                setSelectedFile('')
-                setFileError('')
-                dispatch(getDocuments())
-                setIsUploading(false)
-              })
-              .catch((e) => {
-                setIsUploading(false)
-                setDescriptionError(t('myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload'))
-              })
+            Connect.post(document_url, formData, {}, (status, data) => {
+              setDescriptionError('')
+              setDescription('')
+              setSelectedFile('')
+              setFileError('')
+              dispatch(getDocuments())
+              setIsUploading(false)
+            }).catch((e) => {
+              setIsUploading(false)
+              setDescriptionError(t('myAccount.documentsPage.uploadDocumentBlock.errors.fileNotUpload'))
+            })
           } else {
             setFileError(t('myAccount.documentsPage.uploadDocumentBlock.errors.bigFile'))
           }

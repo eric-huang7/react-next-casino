@@ -10,8 +10,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaChangePassword } from '../../../schemasForms/changePasswordForm'
 import { auth } from '../../../redux/user/action'
-import axios from 'axios'
-import { user_url } from '../../../redux/url/url'
+import {user_url} from '../../../redux/url/url'
+import Connect from "../../../helpers/connect";
 
 export const ChangePasswordForm = ({ t, userInfo }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -67,39 +67,28 @@ export const ChangePasswordForm = ({ t, userInfo }) => {
         current_password: currenPasswordValue,
       }
       // dispatch(patchUserData(userData));
-      const config = {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      const body = JSON.stringify(userData)
+      Connect.patch(user_url, JSON.stringify(userData), {}, (status, data) => {
+        setPasswordConfirmError('')
+        setPasswordError('')
+        setPasswordConfirmValue('')
+        setPasswordValue('')
+        setCurrenPasswordValue('')
+        setCurrenPasswordError('')
+        setSuccessMessage(t('myAccount.changePasswordPage.successMessage'))
+        dispatch(auth())
+      }).catch((error) => {
+        setSuccessMessage('')
+        setPasswordValue('')
+        setPasswordConfirmValue('')
+        setCurrenPasswordValue('')
 
-      axios.patch(user_url, body, config)
-        .then((data) => {
-          setPasswordConfirmError('')
-          setPasswordError('')
-          setPasswordConfirmValue('')
-          setPasswordValue('')
-          setCurrenPasswordValue('')
-          setCurrenPasswordError('')
-          setSuccessMessage(t('myAccount.changePasswordPage.successMessage'))
-          dispatch(auth())
-        })
-        .catch((error) => {
-          setSuccessMessage('')
-          setPasswordValue('')
-          setPasswordConfirmValue('')
-          setCurrenPasswordValue('')
-
-          if (error.response.data.error_code === 'PASSWORD_COMPLEXITY_ERROR') {
-            setPasswordError(t('myAccount.changePasswordPage.complexityError'))
-          } else {
-            //
-            setCurrenPasswordError(t('myAccount.changePasswordPage.wrongCurrentPassword'))
-          }
-        })
-
+        if (error.response.data.error_code === 'PASSWORD_COMPLEXITY_ERROR') {
+          setPasswordError(t('myAccount.changePasswordPage.complexityError'))
+        } else {
+          //
+          setCurrenPasswordError(t('myAccount.changePasswordPage.wrongCurrentPassword'))
+        }
+      })
     } else {
       setPasswordConfirmError(t('myAccount.changePasswordPage.passwordNotMatch'))
     }

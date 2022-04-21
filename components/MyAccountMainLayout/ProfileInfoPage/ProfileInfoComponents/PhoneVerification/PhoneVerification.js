@@ -3,11 +3,11 @@ import { PhoneInputContainer } from './PhoneInputContainer'
 import { VerifyCodeInputContainer } from './VerifyCodeInputContainer'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
-import axios from 'axios'
-import { phone_number_url } from '../../../../../redux/url/url'
+import {phone_number_url} from '../../../../../redux/url/url'
 import { auth, patchUserData } from '../../../../../redux/user/action'
 import { PhoneAlreadyVerified } from './PhoneAlreadyVerified'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
+import Connect from "../../../../../helpers/connect";
 
 export const PhoneVerification = ({ t, userInfo }) => {
   const dispatch = useDispatch()
@@ -31,15 +31,8 @@ export const PhoneVerification = ({ t, userInfo }) => {
         type: 5,
         token: verifyCode,
       }
-      const config = {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      const body = JSON.stringify(userData)
-      axios.patch(phone_number_url, body, config).then((data) => {
-        if (data.data.extra_error_info) {
+      Connect.patch(phone_number_url, JSON.stringify(userData), {}, (status, data) => {
+        if (data.extra_error_info) {
           setPhoneError(t('myAccount.profilePage.phoneVerification.errors.invalidCode'))
         } else {
           setPhoneError('')
@@ -60,17 +53,12 @@ export const PhoneVerification = ({ t, userInfo }) => {
       phone_number: phoneNumber,
     }
     const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       params: {
         type: 5,
         phone: phoneNumber
       }
     }
-    axios.get(phone_number_url, config).then((data) => {
-
+    Connect.get(phone_number_url, config, (status, data) => {
       setPhoneError('')
       dispatch(auth())
       // dispatch(patchUserData(userData));
@@ -81,17 +69,12 @@ export const PhoneVerification = ({ t, userInfo }) => {
   const sendAgainVerifyCode = () => {
     if (userInfo.user.user.unconfirmed_phone) {
       const config = {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
         params: {
           type: 5,
           phone: userInfo.user.user.unconfirmed_phone
         }
       }
-      axios.get(phone_number_url, config).then((data) => {
-
+      Connect.get(phone_number_url, config, (status, data) => {
         setPhoneError('')
         // dispatch(patchUserData(userData));
       }).catch((e) => {

@@ -1,12 +1,12 @@
 import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 import { RecallButton } from './RecallButton'
 import { post_withdraw_url } from '../../../../redux/url/url'
-import axios from 'axios'
 import { getUserPayments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { currencyInfo } from '../../../../helpers/currencyInfo'
 import { useRouter } from 'next/router'
+import Connect from "../../../../helpers/connect";
 
 export const TrxTableRow = ({
   t,
@@ -27,16 +27,12 @@ export const TrxTableRow = ({
 
 
   const recallClickHandler = () => {
-
     let params = { user_id: Number(userInfo?.user?.user?.id) }
-    axios.defaults.withCredentials = true
-    axios.delete(post_withdraw_url + `/${paymentData.id}`)
-      .then((data) => {
-        dispatch(getUserPayments(params))
-      })
-      .catch((e) => {
-        dispatch(getUserPayments(params))
-      })
+    Connect.delete(`${post_withdraw_url}/${paymentData.id}`,  {}, (status, data) => {
+      dispatch(getUserPayments(params))
+    }).catch((e) => {
+      dispatch(getUserPayments(params))
+    })
   }
 
   return (

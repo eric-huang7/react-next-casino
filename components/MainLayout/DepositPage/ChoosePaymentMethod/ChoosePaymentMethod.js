@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { PaymentItem } from './PaymentItem'
 import { useEffect } from 'react'
-import axios from 'axios'
-import { payments_methods_url } from '../../../../redux/url/url'
+import {payments_methods_url} from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../../helpers/connect";
+import {getAllBonusesAction} from "../../../../redux/bonuses/action";
 
 export const ChoosePaymentMethod = ({
   isShowDepositModal,
@@ -25,18 +26,12 @@ export const ChoosePaymentMethod = ({
           currency_id: userCurrency?.userCurrencyData?.id,
         }
       }
-      axios.get(payments_methods_url, config)
-        .then((data) => {
-          setPaymentMethods(data.data.results)
-        })
-        .catch((err) => {
-          setPaymentMethods(null)
-        })
+      Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.data.results))
+        .catch((err) => {setPaymentMethods(null)});
     } else {
       setPaymentMethods(null)
     }
     return () => {
-
       setPaymentMethods(null)
       dispatch(setUserPaymentMethod(null))
     }

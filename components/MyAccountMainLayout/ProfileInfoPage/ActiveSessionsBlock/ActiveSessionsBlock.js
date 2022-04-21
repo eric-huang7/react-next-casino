@@ -1,10 +1,10 @@
 import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { SessionsTable } from './SessionsTable'
 import { auth_type_id, is_admin, siteID } from '../../../../envs/envsForFetching'
-import axios from 'axios'
-import { delete_user_session_url } from '../../../../redux/url/url'
+import {delete_user_session_url} from '../../../../redux/url/url'
 import { useDispatch } from 'react-redux'
 import { getActiveUserSessions, getClosedUserSessions } from '../../../../redux/user/action'
+import Connect from "../../../../helpers/connect";
 
 export const ActiveSessionsBlock = ({ t, userInfo }) => {
   const dispatch = useDispatch()
@@ -19,15 +19,10 @@ export const ActiveSessionsBlock = ({ t, userInfo }) => {
     }
 
     let body = JSON.stringify(body1)
-    axios.delete(delete_user_session_url(session.id))
-      .then((data) => {
-
-        dispatch(getActiveUserSessions())
-        dispatch(getClosedUserSessions())
-      })
-      .catch((error) => {
-
-      })
+    Connect.delete(delete_user_session_url(session.id), {}, (status, data) => {
+      dispatch(getActiveUserSessions())
+      dispatch(getClosedUserSessions())
+    })
   }
 
   return (

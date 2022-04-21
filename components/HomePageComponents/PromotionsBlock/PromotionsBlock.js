@@ -24,7 +24,7 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
 
 
   useEffect(() => {
-    dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
+    // dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
   }, [userCurrency?.userCurrencyData?.id])
 
 

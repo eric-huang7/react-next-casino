@@ -2,12 +2,12 @@ import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.
 import { TextBlock } from './TextBlock'
 import { TwoFactorCompleteInputsBlock } from './TwoFactorCompleteInputsBlock'
 import { useState } from 'react'
-import axios from 'axios'
-import { qr_auth_url } from '../../../../redux/url/url'
+import {qr_auth_url} from '../../../../redux/url/url'
 import { mayYwoFactorAuth } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
+import Connect from "../../../../helpers/connect";
 
 export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
   const router = useRouter()
@@ -26,25 +26,14 @@ export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
       token: deactivateCodeValue,
       active: false,
     }
-    const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    const body = JSON.stringify(googleAuthData)
-
-    axios.post(qr_auth_url, body, config)
-      .then((data) => {
-
-        dispatch(mayYwoFactorAuth(false))
-        // dispatch(auth());
-        setDeactivateError('')
-        router.push('/accounts/profile-info')
-      })
-      .catch((error) => {
-        setDeactivateError(t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable'))
-      })
+    Connect.post(qr_auth_url, JSON.stringify(googleAuthData), {}, (status, data) => {
+      dispatch(mayYwoFactorAuth(false))
+      // dispatch(auth());
+      setDeactivateError('')
+      router.push('/accounts/profile-info')
+    }).catch((error) => {
+      setDeactivateError(t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.errors.failedToDisable'))
+    })
   }
 
   return (

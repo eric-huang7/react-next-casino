@@ -1,29 +1,23 @@
 import styles from '../../../../styles/PaymentsModals/MobilePaymentsStepper.module.scss'
 import { PaymentMethodItem } from './PaymentMethodItem'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { payments_methods_url } from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../../helpers/connect";
 
 export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, userPayment }) => {
   const [paymentMethods, setPaymentMethods] = useState(null)
 
   useEffect(() => {
-
     const config = {
       params: {
         currency_id: userCurrency?.userCurrencyData?.id,
       }
     }
-    axios.get(payments_methods_url, config)
-      .then((data) => {
-        setPaymentMethods(data.data.results)
-      })
-      .catch((err) => {
-        setPaymentMethods(null)
-      })
-
+    Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.results)).catch((err) => {
+      setPaymentMethods(null);
+    })
   }, [userCurrency?.userCurrencyData?.id])
 
   if (paymentMethods) {

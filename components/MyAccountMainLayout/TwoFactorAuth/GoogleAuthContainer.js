@@ -5,10 +5,10 @@ import { AuthCodeInputBlock } from './GoogleAuthComponents/AuthCodeInputBlock'
 import { useDispatch } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { useState } from 'react'
-import axios from 'axios'
 import { qr_auth_url } from '../../../redux/url/url'
 import { mayYwoFactorAuth } from '../../../redux/user/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import Connect from "../../../helpers/connect";
 
 export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedKeys }) => {
   const dispatch = useDispatch()
@@ -26,24 +26,14 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
       token: googleKeyValue,
       active: true,
     }
-    const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    const body = JSON.stringify(googleAuthData)
-
-    axios.post(qr_auth_url, body, config).then((data) => {
-
-      setSavedKeys(data.data.backup_codes)
+    Connect.post(qr_auth_url, JSON.stringify(googleAuthData), {}, (status, data) => {
+      setSavedKeys(data.backup_codes)
       setIsShowSavedKeys(true)
       dispatch(mayYwoFactorAuth(true))
       setGoogleAuthError('')
     }).catch((error) => {
       setGoogleAuthError(t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.errors.invalidCode'))
     })
-
   }
 
   if (authData.qrAuthLoading) {

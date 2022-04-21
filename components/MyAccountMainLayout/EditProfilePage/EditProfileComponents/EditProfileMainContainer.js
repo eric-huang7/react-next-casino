@@ -11,10 +11,10 @@ import { birthdayFormatter } from '../../../../helpers/dateTranslator'
 import { patchUserData } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
-import axios from 'axios'
-import { phone_number_url } from '../../../../redux/url/url'
+import {phone_number_url} from '../../../../redux/url/url'
 import { SecurityQuestionSelector } from './SecurityQuestionSelector'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../../helpers/connect";
 
 export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) => {
 
@@ -161,24 +161,18 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
     //   phone_number: mobile,
     // }
     const config = {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       params: {
         type: 5,
         phone: mobile
       }
     }
-    axios.get(phone_number_url, config)
-      .then((data) => {
-        setPhoneError('')
-        dispatch(patchUserData(sendData))
-        router.push('/accounts/profile-info')
-      })
-      .catch((e) => {
-        setPhoneError(t('myAccount.editProfilePage.fieldAlreadySpec'))
-      })
+    Connect.get(phone_number_url, config,(status, data) => {
+      setPhoneError('')
+      dispatch(patchUserData(sendData))
+      router.push('/accounts/profile-info')
+    }).catch((e) => {
+      setPhoneError(t('myAccount.editProfilePage.fieldAlreadySpec'))
+    })
   }
 
   return (

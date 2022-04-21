@@ -3,15 +3,15 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
 import { HomePageContainer } from '../../components/HomePageComponents/HomePageContainer'
 import { useEffect, useState } from 'react'
-import { useDispatch} from 'react-redux'
-import { token_url } from '../../redux/url/url'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import {token_url} from '../../redux/url/url'
 import { changePasswordLogin } from '../../redux/user/action'
 import {
   showEmailValidationErrorPopup,
   showEmailValidationSuccessPopup,
   showTwoFaPopup
 } from '../../redux/popups/action'
+import Connect from "../../helpers/connect";
 
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')
@@ -28,34 +28,31 @@ export default function EmailConfirmation (props) {
       }
 
       const timer = setTimeout(() => {
-
-        axios.patch(token_url, sendData)
-          .then((data) => {
-            if (data.data.success) {
-              if (data.data.user.is_2fa_enabled === 1) {
-                setEmailError(null)
-                dispatch(showTwoFaPopup(true))
-              } else {
-                setEmailError(null)
-                dispatch(showEmailValidationSuccessPopup(true))
-                dispatch(changePasswordLogin(data.data))
-                if (typeof window !== 'undefined') {
-                  localStorage.setItem('userAuth', 'true')
-                }
-              }
-            } else if (data.data.extra_error_info === 'Token invalid') {
-
-              setEmailError('used_token')
-              dispatch(showEmailValidationErrorPopup(true))
+        Connect.patch(token_url, sendData, {}, (status, data) => {
+          if (data.success) {
+            if (data.user.is_2fa_enabled === 1) {
+              setEmailError(null)
+              dispatch(showTwoFaPopup(true))
             } else {
-              setEmailError('other_error')
-              dispatch(showEmailValidationErrorPopup(true))
+              setEmailError(null)
+              dispatch(showEmailValidationSuccessPopup(true))
+              dispatch(changePasswordLogin(data))
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('userAuth', 'true')
+              }
             }
-          })
-          .catch((e) => {
+          } else if (data.extra_error_info === 'Token invalid') {
+
+            setEmailError('used_token')
+            dispatch(showEmailValidationErrorPopup(true))
+          } else {
             setEmailError('other_error')
             dispatch(showEmailValidationErrorPopup(true))
-          })
+          }
+        }).catch((e) => {
+          setEmailError('other_error')
+          dispatch(showEmailValidationErrorPopup(true))
+        })
       }, 3000)
 
       return () => {
