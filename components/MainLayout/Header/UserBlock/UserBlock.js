@@ -36,7 +36,7 @@ export const UserBlockNavigation = ({ userInfo }) => {
         }
       </div>
       {
-        userInfo.isAuthenticated ? <HeaderButtonsDeposit isUserLogined={userInfo.isAuthenticated}/> :
+        userInfo.isAuthenticated ? null :
           <HeaderButtonsRegistration isUserLogined={userInfo.isAuthenticated}/>
       }
       <ErrorEmpty>

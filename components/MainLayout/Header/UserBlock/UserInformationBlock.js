@@ -1,69 +1,16 @@
 import styles from '../../../../styles/Header/UserBlock.module.scss'
 import { DesktopMenuContainer } from '../../../DesktopMenuComponents/DesktopMenuContainer'
-import {useEffect, useState} from 'react'
-import { BalanceMenuContainer } from '../../../BalanceMenuContainer/BalanceMenuContainer'
-import { numberTransformer } from '../../../../helpers/numberTransformer'
-import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
-import { currencyFinder } from '../../../../helpers/currencyFinder'
-import {svgSetter} from "../../../../helpers/iconNameFinder";
-import {CurrencyItem} from "../../SelectCurrencyWidget/CurrencySelector/CurrencyItem";
-import {CurrencyItemShort} from "./CurrencyItemShort";
+import {useState} from 'react'
 
 export const UserInformationBlock = ({ userInfo, userCurrency }) => {
 
   const [isShowLinksMenu, setIsShowLinksMenu] = useState(false)
-  const [isShowBalanceList, setIsShowBalanceList] = useState(false)
-  const [balanceData, setBalanceData] = useState(false)
-  const [currency, setCurrency] = useState(false)
-  const [activeCurrency, setActiveCurrency] = useState(false)
-  const [balance, setBalance] = useState(false)
-
-  useEffect(() => {
-    if (activeCurrency) {
-      const returnAbbr = false
-      svgSetter(activeCurrency, returnAbbr)
-    }
-  }, [activeCurrency])
-
-  useEffect(() => {
-    if (userCurrency.currency && userInfo.balance) {
-      let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default))
-
-      if (balanceData.length === 0) {
-        if (userInfo?.balance?.balances?.length > 0) {
-          balanceData = userInfo?.balance?.balances
-        }
-      }
-      setBalanceData(balanceData)
-      let amount = ''
-
-      try {
-        amount = numberTransformer(`${balanceData[0].current_balance}`)
-      } catch (e) {
-        amount = ''
-      }
-
-      let balance = balanceData.length === 0 ? '0.00' : amount
-      setBalance(balance)
-      const currency = currencyFinder(balanceData, userInfo, userCurrency)
-      setCurrency(currency)
-
-      const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
-      setActiveCurrency(activeCurrency)
-    }
-  }, [userInfo, userCurrency])
 
   const showLinksMenuHandler = () => {
     setIsShowLinksMenu(true)
   }
   const hideLinksMenuHandler = () => {
     setIsShowLinksMenu(false)
-  }
-  const showBalanceListHandler = () => {
-    setIsShowBalanceList(true)
-  }
-  const hideBalanceListHandler = () => {
-    setIsShowBalanceList(false)
   }
 
   return userCurrency.currency && userInfo.balance ? (
@@ -77,30 +24,9 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
           {userInfo.user.user.username}
         </span>
         {
-          isShowLinksMenu ? <DesktopMenuContainer/> : <></>
-        }
-      </div>
-      <div
-        className={`${styles.userTextContainer} ${isShowBalanceList ? styles.active : ''} ${userInfo?.balance?.balances.length === 1 ? styles.indicatorOff : ''}`}
-        onMouseEnter={() => showBalanceListHandler()}
-        onMouseLeave={() => hideBalanceListHandler()}
-      >
-        <span>
-          {balance}
-          <CurrencyItemShort currencyData={activeCurrency} />
-        </span>
-        {
-          isShowBalanceList && balanceData.length > 0
-            ?
-            <BalanceErrorBoundary>
-              <BalanceMenuContainer
-                balanceData={userInfo}
-                activeBalance={balanceData}
-                currencyData={userCurrency}
-              />
-            </BalanceErrorBoundary>
-            :
-            <></>
+          isShowLinksMenu
+            ? <DesktopMenuContainer onClose={hideLinksMenuHandler} userInfo={userInfo} userCurrency={userCurrency}/>
+            : null
         }
       </div>
     </div>

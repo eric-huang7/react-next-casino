@@ -13,11 +13,8 @@ export const SignOutItem = () => {
 
   return (
     <li className={styles.linkItem}>
-      <div className={styles.iconContainer}>
-        <img src={'/assets/icons/desktopMenu/signOut.png'} alt={`sign out link icon`}/>
-      </div>
-      <button onClick={() => logoutButtonHandler()}
-              className={styles.signoutButton}>{t('header.userDesktopMenu.signOut')}</button>
+      <div onClick={() => logoutButtonHandler()}
+              className={styles.signoutButton}>{t('header.userDesktopMenu.signOut')}</div>
     </li>
   )
 }
