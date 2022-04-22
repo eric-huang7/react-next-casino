@@ -2,7 +2,7 @@
   box-shadow: -6px 11px 21px 7px rgba(0,0,0,0.5);
   position: absolute;
 
-  right: -10px;
+  right: 10px;
   top: 47px;
 }
 .menuContainer {
@@ -92,7 +92,7 @@
     }
 
     & a, button {
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 0px;
       color: #361712;
       font-weight: 600;
@@ -154,25 +154,21 @@
 
       padding: 0 10px;
 
-      width: 180px;
-
-
       & .iconContainer {
         flex-shrink: 0;
 
-        width: 45px;
+        width: 70px;
       }
 
       & a, span {
         font-size: 13px;
       }
       & a:hover, span:hover {
-        color: #fda3a2;
+        color: #fff;
       }
     }
 
     & li:nth-child(even) {
-      background-color: #2d2b2b;
     }
   }
 }
