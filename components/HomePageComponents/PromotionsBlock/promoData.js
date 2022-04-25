@@ -10,7 +10,7 @@ export const promoData = () => {
       id: 2,
       mainText: "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Pink Lady Casino and make your first real money deposit",
       addText: "Maximum bonus amount is $4550 Minimum deposit to qualify $25 35X playthrough",
-      image: "/assets/img/promotionsSlider/promotions_slide2.png",
+      image: "/assets/img/promotionsSlider/promotions_slide2.webp",
     },
     {
       id: 3,
@@ -22,7 +22,7 @@ export const promoData = () => {
       id: 4,
       mainText: "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Pink Lady Casino and make your first real money deposit",
       addText: "Maximum bonus amount is $4550 Minimum deposit to qualify $25 35X playthrough",
-      image: "/assets/img/promotionsSlider/promotions_slide2.png",
+      image: "/assets/img/promotionsSlider/promotions_slide2.webp",
     },
     {
       id: 5,
@@ -34,7 +34,7 @@ export const promoData = () => {
       id: 6,
       mainText: "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Pink Lady Casino and make your first real money deposit",
       addText: "Maximum bonus amount is $4550 Minimum deposit to qualify $25 35X playthrough",
-      image: "/assets/img/promotionsSlider/promotions_slide2.png",
+      image: "/assets/img/promotionsSlider/promotions_slide2.webp",
     },
     {
       id: 7,
@@ -46,7 +46,7 @@ export const promoData = () => {
       id: 8,
       mainText: "We honestly don't think you'll be able to find a more generous first deposit bonus anywhere. When you sign up with the Pink Lady Casino and make your first real money deposit",
       addText: "Maximum bonus amount is $4550 Minimum deposit to qualify $25 35X playthrough",
-      image: "/assets/img/promotionsSlider/promotions_slide2.png",
+      image: "/assets/img/promotionsSlider/promotions_slide2.webp",
     }
   ]
 

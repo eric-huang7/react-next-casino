@@ -6,7 +6,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 const depositInfo = {
   depositId: 1,
   paymentId: 1,
-  paymentImage: '/assets/img/paymentsIcons/skrill.png',
+  paymentImage: '/assets/img/paymentsIcons/skrill.webp',
   paymentName: "Skrill",
   depositType: "Munch Better",
   depositFee: "0%",
