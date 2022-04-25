@@ -4,7 +4,7 @@ import MainLayout from '../../components/MainLayout/MainLayout'
 import styles from '../../styles/ContactUs.module.scss'
 import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
-import { MainBlock } from '../../components/ContactUsPageComponents/MainBlock/MainBlock'
+import { MainBlock } from '../../components/MainLayout/MainBlock'
 import { HeadersBlock } from '../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock'
 import { ContactsBlocks } from '../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks'
 import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
@@ -24,7 +24,7 @@ const ContactUs = () => {
   return (
     <>
       <MainLayout>
-        <MainBlock/>
+        <MainBlock title={t('contactUsPage.contactsBlock.heading')}/>
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
         <div className={styles.textWhyslotsBack}>

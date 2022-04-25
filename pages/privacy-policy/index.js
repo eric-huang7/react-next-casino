@@ -7,12 +7,13 @@ import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlo
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getCurrency } from '../../redux/currency/action'
-import { MainBlock } from '../../components/PrivacyPolicyPageComponents/MainBlock'
+import { MainBlock } from '../../components/MainLayout/MainBlock'
 import { TextBlock } from '../../components/PrivacyPolicyPageComponents/TextBlock'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
 const PrivacyPolicy = (props) => {
   const { t } = useTranslation('common')
+  const privacyT = useTranslation('privacyPolicy');
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const PrivacyPolicy = (props) => {
   return (
     <>
       <MainLayout t={t}>
-        <MainBlock/>
+        <MainBlock title={privacyT.t('heading')} />
         <div className={styles.textWhyslotsBack}>
           <ErrorText>
             <TextBlock
