@@ -28,23 +28,23 @@ export const Footer = ({ userAuth }) => {
     { key: 'termsAndConditions', route: '/termsAndConditions', name: `TermsAndConditions` },
   ]
   const coinsImg = [
-    { key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.png' },
+    { key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.webp' },
     { key: 'binance', src: '/assets/img/footer/binance.png' },
-    { key: 'cardano', src: '/assets/img/footer/cardano.png' },
-    { key: 'chainlink', src: '/assets/img/footer/chainlink.png' },
-    { key: 'ethereum', src: '/assets/img/footer/ethereum.png' },
-    { key: 'litecoin', src: '/assets/img/footer/litecoin.png' },
-    { key: 'monero', src: '/assets/img/footer/monero.png' },
-    { key: 'polkadot', src: '/assets/img/footer/polkadot.png' },
+    { key: 'cardano', src: '/assets/img/footer/cardano.webp' },
+    { key: 'chainlink', src: '/assets/img/footer/chainlink.webp' },
+    { key: 'ethereum', src: '/assets/img/footer/ethereum.webp' },
+    { key: 'litecoin', src: '/assets/img/footer/litecoin.webp' },
+    { key: 'monero', src: '/assets/img/footer/monero.webp' },
+    { key: 'polkadot', src: '/assets/img/footer/polkadot.webp' },
     { key: 'stellar', src: '/assets/img/footer/stellar.png' },
   ]
 
   const socilaLinks = [
-    { key: 'facebook', href: '/#facebook', img: '/assets/img/footer/facebook.png' },
-    { key: 'twitter', href: '/#twitter', img: '/assets/img/footer/twitter.png' },
-    { key: 'youtube', href: '/#youtube', img: '/assets/img/footer/youtube.png' },
-    { key: 'instagram', href: '/#instagram', img: '/assets/img/footer/instagram.png' },
-    { key: 'linkedin', href: '/#linkedin', img: '/assets/img/footer/linkedin.png' },
+    { key: 'facebook', href: '/#facebook', img: '/assets/img/footer/facebook.webp' },
+    { key: 'twitter', href: '/#twitter', img: '/assets/img/footer/twitter.webp' },
+    { key: 'youtube', href: '/#youtube', img: '/assets/img/footer/youtube.webp' },
+    { key: 'instagram', href: '/#instagram', img: '/assets/img/footer/instagram.webp' },
+    { key: 'linkedin', href: '/#linkedin', img: '/assets/img/footer/linkedin.webp' },
   ]
 
   const languages = useSelector(({ lang }) => lang.languages)

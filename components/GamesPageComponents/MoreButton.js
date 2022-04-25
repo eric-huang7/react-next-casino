@@ -37,9 +37,9 @@ export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, ga
   if (isShowMoreButton) {
     return (
       <div className={styles.moreWrapper}>
-        <img src={'/assets/img/moreButton/more-arrow-left.png'} alt=""/>
+        <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
         <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
-        <img src={'/assets/img/moreButton/more-arrow-right.png'} alt=""/>
+        <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
       </div>
     )
   } else {

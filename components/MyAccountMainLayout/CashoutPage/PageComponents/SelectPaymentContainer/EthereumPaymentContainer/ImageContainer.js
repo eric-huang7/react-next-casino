@@ -6,7 +6,7 @@ export const ImageContainer = ({t}) => {
 
   return (
     <div  className={styles.methodImageContainer}>
-      <img src="/assets/img/myAccount/cashoutPage/ETH.png" alt="ethereum icon"/>
+      <img src="/assets/img/myAccount/cashoutPage/ETH.webp" alt="ethereum icon"/>
     </div>
   )
 }

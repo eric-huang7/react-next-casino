@@ -3,8 +3,8 @@ import Image from "next/image";
 
 
 export const ChosenPaymentMethodButton = ({t, paymentData, isActivePayments, setIsActivePayments}) => {
-  
-  
+
+
   return (
     <div onClick={() => setIsActivePayments(!isActivePayments)} className={styles.paymentMethodContainer}>
       <div className={styles.chosenPaymentMetodButton} id={'chosenPaymentButton'}>
@@ -18,7 +18,7 @@ export const ChosenPaymentMethodButton = ({t, paymentData, isActivePayments, set
         <div className={styles.paymentCardIconBlock}>
           {paymentData.paymentMethodData.paymentType === 'creditCard' ?
             <>
-              <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'} src={"/assets/img/depositWidget/cards.png"}/>
+              <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'} src={"/assets/img/depositWidget/cards.webp"}/>
               {/*<Image layout={'fixed'} width={55} height={25} alt={'mastercard payment'} src={paymentData.icon_two}/>*/}
             </>
             :

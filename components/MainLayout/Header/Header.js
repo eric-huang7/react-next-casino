@@ -88,7 +88,7 @@ export const Header = () => {
       <div className={styles.tooltip}>
         <AiOutlineMenu className={styles.hamburger} onClick={showMenu} color="white" size={30} />
         <Link href={'/'} passHref>
-          <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'}
+          <img style={{ cursor: 'pointer' }} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.webp'}
                alt="logo"/>
         </Link>
         <Navigation isAuthenticated={userLogin.isAuthenticated}/>

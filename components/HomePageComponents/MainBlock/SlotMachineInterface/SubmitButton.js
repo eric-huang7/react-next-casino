@@ -33,7 +33,7 @@ export const SubmitButton = ({width, userLogin}) => {
           :
           <img
             onDragStart={(e) => e.preventDefault()}
-            src={'/assets/img/homeImg/buttonSlot.png'}
+            src={'/assets/img/homeImg/buttonSlot.webp'}
             alt="slot-machine button image"
           />
       }

@@ -23,7 +23,7 @@ export const data = [
       {id: 33, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 4, heading: "faq.bonuses.heading", child: false, img: "/assets/img/contactUs/icons/bonuses.png",
+  {id: 4, heading: "faq.bonuses.heading", child: false, img: "/assets/img/contactUs/icons/bonuses.webp",
     innerInfo: [
       {id: 40, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 41, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},

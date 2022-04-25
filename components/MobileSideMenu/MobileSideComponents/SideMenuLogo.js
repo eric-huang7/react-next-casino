@@ -6,7 +6,7 @@ export const SideMenuLogo = () => {
 
   return (
     <div className={styles.sideMenuLogo}>
-      <Image src={'/assets/img/mainLayoutImg/logo.png'} width={102} height={55} alt={'logo'}/>
+      <Image src={'/assets/img/mainLayoutImg/logo.webp'} width={102} height={55} alt={'logo'}/>
     </div>
   )
 }

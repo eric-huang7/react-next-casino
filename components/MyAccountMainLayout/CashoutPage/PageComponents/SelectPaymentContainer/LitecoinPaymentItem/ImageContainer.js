@@ -6,7 +6,7 @@ export const ImageContainer = ({t}) => {
 
   return (
     <div  className={styles.methodImageContainer}>
-      <img src="/assets/img/myAccount/cashoutPage/LTC.png" alt="litecoin icon"/>
+      <img src="/assets/img/myAccount/cashoutPage/LTC.webp" alt="litecoin icon"/>
     </div>
   )
 }

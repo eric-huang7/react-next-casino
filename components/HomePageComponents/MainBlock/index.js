@@ -16,14 +16,14 @@ export const MainBlock = () => {
             <div className={styles.slotMachineIng}>
               <img
                 onDragStart={(e) => e.preventDefault()}
-                src={`/assets/img/homeImg/slot_machine${width <= 1065 ? '-mobile' : ''}.png`}
+                src={`/assets/img/homeImg/slot_machine${width <= 1065 ? '-mobile' : ''}.webp`}
                 alt="slot machine"
               />
             </div>
             {width > 1065 && <div className={styles.dancingGirlImg}>
               <img
                 onDragStart={(e) => e.preventDefault()}
-                src={`/assets/img/homeImg/home-banner-title.png`}
+                src={`/assets/img/homeImg/home-banner-title.webp`}
                 alt="dancing girl"
               />
             </div>}
