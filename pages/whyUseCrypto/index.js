@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import { MainBlockWhyUseCrypto } from '../../components/WhyUseCrypto/MainBlockWhyUseCrypto'
+// import { MainBlockWhyUseCrypto } from '../../components/WhyUseCrypto/MainBlockWhyUseCrypto'
 import { WhyUseBitcoinBlock } from '../../components/WhyUseCrypto/WhyUseBitcoinBlock'
 import { WhyUseBitcoinItemsContainer } from '../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer'
 import { GetStartedWith } from '../../components/WhyUseCrypto/GetStartedWith'
@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { getCurrency } from '../../redux/currency/action'
 import { useDispatch } from 'react-redux'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
+import {MainBlock} from "../../components/MainLayout/MainBlock";
 
 const WhyUseCrypto = () => {
   const { t } = useTranslation('common')
@@ -22,7 +23,8 @@ const WhyUseCrypto = () => {
   return (
     <>
       <MainLayout>
-        <MainBlockWhyUseCrypto/>
+        {/*<MainBlockWhyUseCrypto/>*/}
+        <MainBlock title={t('footer.whyUseCrypto')}/>
         <WhyUseBitcoinBlock t={t}/>
         <WhyUseBitcoinItemsContainer t={t}/>
         <GetStartedWith t={t}/>

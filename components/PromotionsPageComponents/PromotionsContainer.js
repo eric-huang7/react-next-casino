@@ -1,7 +1,8 @@
 import styles from '../../styles/PromotionsPage/PromotionsPage.module.scss'
-import { MainBlock } from './MainBlock/MainBlock'
+import { MainBlock } from '../../components/MainLayout/MainBlock'
 import { BonusesContainer } from './BonusesContainer/BonusesContainer'
 import { useSelector } from 'react-redux'
+import {useTranslation} from "next-i18next";
 
 const dataForMainBlock = {
   getAddBonus: {
@@ -25,14 +26,15 @@ const dataForMainBlock = {
 }
 
 export const PromotionsContainer = () => {
-
+  const { t } = useTranslation('promotionsPage')
   const activeBonuses = useSelector((state) => state.bonuses)
   const userCurrency = useSelector((state) => state.userFinance)
   const userData = useSelector((store) => store.authInfo)
 
   return (
     <div className={styles.promotionsWrapper}>
-      <MainBlock dataForMainBlock={dataForMainBlock} userData={userData}/>
+      {/*<MainBlock dataForMainBlock={dataForMainBlock} userData={userData}/>*/}
+      <MainBlock title={t('heading')}/>
       <BonusesContainer userData={userData} userCurrency={userCurrency} activeBonuses={activeBonuses}/>
     </div>
   )
