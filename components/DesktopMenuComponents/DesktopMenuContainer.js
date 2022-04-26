@@ -11,14 +11,14 @@ import {BalanceBlock} from "../MainLayout/Header/UserBlock/BalanceBlock";
 export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
   const linksData = [
-    {id: 1, name: 'header.userDesktopMenu.bank', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/bank-icon.png'},
-    {id: 2, name: 'header.userDesktopMenu.messages', path: '/notifications', icon: '/assets/icons/desktopMenu/email-icon.png'},
-    {id: 3, name: 'header.userDesktopMenu.myAccount', path: '/accounts/profile-info', icon: '/assets/icons/desktopMenu/account-icon.png'},
-    {id: 4, name: 'header.userDesktopMenu.bonuses', path: '/accounts/bonuses', icon: '/assets/icons/desktopMenu/bonus-icon.png'},
-    {id: 5, name: 'header.userDesktopMenu.myActivity', path: '/accounts/history/history/bets', icon: '/assets/icons/desktopMenu/activity-icon.png'},
-    {id: 6, name: 'header.userDesktopMenu.takeBreak', path: '/accounts/gambling-limits', icon: '/assets/icons/desktopMenu/take-break-icon.png'},
-    {id: 7, name: 'header.userDesktopMenu.history', path: '/accounts/history', icon: '/assets/icons/desktopMenu/history-icon.png'},
-    {id: 8, name: 'header.userDesktopMenu.2fa', path: '/accounts/two_factor', icon: '/assets/icons/desktopMenu/2fa-icon.png'},
+    {id: 1, name: 'header.userDesktopMenu.bank', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/bank-icon.webp'},
+    {id: 2, name: 'header.userDesktopMenu.messages', path: '/notifications', icon: '/assets/icons/desktopMenu/email-icon.webp'},
+    {id: 3, name: 'header.userDesktopMenu.myAccount', path: '/accounts/profile-info', icon: '/assets/icons/desktopMenu/account-icon.webp'},
+    {id: 4, name: 'header.userDesktopMenu.bonuses', path: '/accounts/bonuses', icon: '/assets/icons/desktopMenu/bonus-icon.webp'},
+    {id: 5, name: 'header.userDesktopMenu.myActivity', path: '/accounts/history/history/bets', icon: '/assets/icons/desktopMenu/activity-icon.webp'},
+    {id: 6, name: 'header.userDesktopMenu.takeBreak', path: '/accounts/gambling-limits', icon: '/assets/icons/desktopMenu/take-break-icon.webp'},
+    {id: 7, name: 'header.userDesktopMenu.history', path: '/accounts/history', icon: '/assets/icons/desktopMenu/history-icon.webp'},
+    {id: 8, name: 'header.userDesktopMenu.2fa', path: '/accounts/two_factor', icon: '/assets/icons/desktopMenu/2fa-icon.webp'},
   ]
 
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
         <div className={styles.buttons}>
           <div>
             <button onClick={closeDepositModalHandler}>
-              <img className={styles.logo} src={'/assets/icons/desktopMenu/deposit-icon.png'} alt=""/>
+              <img className={styles.logo} src={'/assets/icons/desktopMenu/deposit-icon.webp'} alt=""/>
               {t('header.navbarButtons.deposit')}
             </button>
           </div>
@@ -49,7 +49,7 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
             <Link href={'/accounts/cashout'}>
               <a>
                 <button onClick={onClose}>
-                  <img className={styles.logo} src={'/assets/icons/desktopMenu/withdraw-icon.png'} alt=""/>
+                  <img className={styles.logo} src={'/assets/icons/desktopMenu/withdraw-icon.webp'} alt=""/>
                   {t('header.navbarButtons.cashOut')}
                 </button>
               </a>

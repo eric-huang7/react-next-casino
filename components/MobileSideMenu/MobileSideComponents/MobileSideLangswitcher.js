@@ -6,16 +6,16 @@ import {useCookies} from "react-cookie";
 import {useDispatch} from "react-redux";
 
 let arrLanguages = [
-  {name: "eng", lang: "en", language: "English", icon: "/assets/icons/roundFlags/United-Kingdom.png"},
-  {name: "rus", lang: "ru", language: "Russian", icon: "/assets/icons/roundFlags/Russia.png"},
-  {name: "ita", lang: "it", language: "Italian", icon: "/assets/icons/roundFlags/Italy.png"},
-  {name: "chn", lang: "cn", language: "Chinese", icon: "/assets/icons/roundFlags/China.png"},
-  {name: "jpn", lang: "ja", language: "Japanese", icon: "/assets/icons/roundFlags/Japan.png"},
-  {name: "prt", lang: "pt", language: "Portuguese", icon: "/assets/icons/roundFlags/Portugal.png"},
-  {name: "esp", lang: "es", language: "Spanish", icon: "/assets/icons/roundFlags/Spain.png"},
-  {name: "deu", lang: "de", language: "German", icon: "/assets/icons/roundFlags/Germany.png"},
-  {name: "fra", lang: "fr", language: "French", icon: "/assets/icons/roundFlags/France.png"},
-  {name: "swe", lang: "sv", language: "Swedish", icon: "/assets/icons/roundFlags/Sweden.png"},
+  {name: "eng", lang: "en", language: "English", icon: "/assets/icons/roundFlags/United-Kingdom.webp"},
+  {name: "rus", lang: "ru", language: "Russian", icon: "/assets/icons/roundFlags/Russia.webp"},
+  {name: "ita", lang: "it", language: "Italian", icon: "/assets/icons/roundFlags/Italy.webp"},
+  {name: "chn", lang: "cn", language: "Chinese", icon: "/assets/icons/roundFlags/China.webp"},
+  {name: "jpn", lang: "ja", language: "Japanese", icon: "/assets/icons/roundFlags/Japan.webp"},
+  {name: "prt", lang: "pt", language: "Portuguese", icon: "/assets/icons/roundFlags/Portugal.webp"},
+  {name: "esp", lang: "es", language: "Spanish", icon: "/assets/icons/roundFlags/Spain.webp"},
+  {name: "deu", lang: "de", language: "German", icon: "/assets/icons/roundFlags/Germany.webp"},
+  {name: "fra", lang: "fr", language: "French", icon: "/assets/icons/roundFlags/France.webp"},
+  {name: "swe", lang: "sv", language: "Swedish", icon: "/assets/icons/roundFlags/Sweden.webp"},
 ];
 
 export const MobileSideLangSwitcher = ({isOpenLanguages}) => {
