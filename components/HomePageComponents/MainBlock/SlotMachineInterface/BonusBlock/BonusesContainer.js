@@ -3,7 +3,7 @@ import {BonusDropdown} from "./BonusDropdown";
 import ErrorEmpty from "../../../../ErrorBoundaryComponents/ErrorEmpty";
 
 
-const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.webp'};
 export const BonusesContainer = ({isChecked, checkedInputHandler, bonusesArr, userSelectedBonus, userCurrency, selectedBonus, chooseBonusClickHandler}) => {
 
   if (isChecked) {
