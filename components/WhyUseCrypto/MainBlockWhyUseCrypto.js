@@ -8,7 +8,7 @@ export const MainBlockWhyUseCrypto = () => {
   if (width > 600) {
     whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading.png'
   } else {
-    whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading-mobile.png'
+    whyUseCryptoHeading = '/assets/img/whyUseCrypto/whyUseCryptoHeading-mobile.webp'
   }
 
   return (

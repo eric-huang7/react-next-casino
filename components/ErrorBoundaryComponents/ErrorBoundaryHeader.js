@@ -27,7 +27,7 @@ class ErrorHeaderPage extends React.Component {
       return (
         <header className={styles.mainHeader}>
           <Link href={'/'} passHref>
-            <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.png'} alt="logo"/>
+            <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.webp'} alt="logo"/>
           </Link>
           <LangSwitcher />
         </header>

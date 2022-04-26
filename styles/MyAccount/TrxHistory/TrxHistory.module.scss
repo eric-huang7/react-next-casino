@@ -54,22 +54,22 @@
     background-position: center;
   }
   & .linkTransactionsItem:before {
-    background-image: url("/assets/img/myAccount/history/trx-history.png");
+    background-image: url("/assets/img/myAccount/history/trx-history.webp");
   }
   & .linkTransactionsItem.activeLink:before {
-    background-image: url("/assets/img/myAccount/history/trx-history-active.png");
+    background-image: url("/assets/img/myAccount/history/trx-history-active.webp");
   }
   & .linkBetsItem:before {
-    background-image: url("/assets/img/myAccount/history/bets-history.png");
+    background-image: url("/assets/img/myAccount/history/bets-history.webp");
   }
   & .linkBetsItem.activeLink:before {
-    background-image: url("/assets/img/myAccount/history/bets-history-active.png");
+    background-image: url("/assets/img/myAccount/history/bets-history-active.webp");
   }
   & .linkBonusItem:before {
-    background-image: url("/assets/img/myAccount/history/bonus-history.png");
+    background-image: url("/assets/img/myAccount/history/bonus-history.webp");
   }
   & .linkBonusItem.activeLink:before {
-    background-image: url("/assets/img/myAccount/history/bonus-history-active.png");
+    background-image: url("/assets/img/myAccount/history/bonus-history-active.webp");
   }
 }
 

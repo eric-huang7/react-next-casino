@@ -9,7 +9,7 @@ export const MainBlock = () => {
   if (width > 620) {
     backImg = '/assets/img/termsAndConditions/termsBg.jpg'
   } else {
-    backImg = '/assets/img/termsAndConditions/termsBgMobile.jpg'
+    backImg = '/assets/img/termsAndConditions/termsBgMobile.webp'
   }
 
   return (

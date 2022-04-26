@@ -7,7 +7,7 @@ import {useTranslation} from "next-i18next";
 import BonusErrorHandler from "../../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
 import ErrorText from "../../../../ErrorBoundaryComponents/ErrorText";
 
-const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
+const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.webp'};
 export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userSelectedBonus, userCurrency, chooseBonusClickHandler}) => {
 
   const {t} = useTranslation('common');
@@ -63,7 +63,6 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
   };
 
 
-
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
     return () => {
@@ -110,8 +109,8 @@ export const BonusDropdown = ({bonusesArr, checkedInputHandler, isChecked, userS
                 userCurrency={userCurrency}
               />
             </BonusErrorHandler>
-              :
-              <></>
+            :
+            <></>
         }
         <BonusDropdownContainer
           chooseBonusClickHandler={chooseBonusClickHandler}

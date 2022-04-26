@@ -25,7 +25,7 @@ export const BonusButton = ({bonusInfo, userData}) => {
     bonusButton = bonusInfo.button.split('.').join(`_${router.locale}.`);
   }
 
-  let bonusImage = '/assets/img/promotionsPage/bonus2.png'
+  let bonusImage = '/assets/img/promotionsPage/bonus2.webp'
   return (
     <div onClick={() => openDepositModalHandler()} className={styles.bonusButtonBlock}>
       <img draggable={false}

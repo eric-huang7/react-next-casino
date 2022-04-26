@@ -16,10 +16,10 @@ export const ImgContainer = ({activeSlots, setActiveSlots, activeTime, setActive
   return (
     <div className={styles.imgContainer}>
       <div ref={slotRef} onClick={() => slotsClickHandler()} className={styles.slotsImg}>
-        <Image layout='fixed' src={`/assets/img/footerArea/slot_${activeSlots ? 'active' : 'dis'}.png`} width={34} height={23} alt={'icon of popular games'}/>
+        <Image layout='fixed' src={`/assets/img/footerArea/slot_${activeSlots ? 'active' : 'dis'}.webp`} width={34} height={23} alt={'icon of popular games'}/>
       </div>
       <div ref={timeref} onClick={() => timeClickHandler()} className={styles.timeImg}>
-        <Image layout='fixed' src={`/assets/img/footerArea/time_${activeTime ? 'active' : 'dis'}.png`} width={20} height={19} alt={'icon of last games'}/>
+        <Image layout='fixed' src={`/assets/img/footerArea/time_${activeTime ? 'active' : 'dis'}.webp`} width={20} height={19} alt={'icon of last games'}/>
       </div>
     </div>
   )

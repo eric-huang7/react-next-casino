@@ -158,7 +158,7 @@ const cardNameInputHandler = (e) => {
         <span className={styles.errorText}>{amountError}</span>
       </div>
       <div className={styles.secureBlock}>
-        <Image src={'/assets/img/paymentsModals/lock.png'} layout={'fixed'} width={20} height={28} alt={'lock icon'} />
+        <Image src={'/assets/img/paymentsModals/lock.webp'} layout={'fixed'} width={20} height={28} alt={'lock icon'} />
         <p className={styles.secureText}>{t("creditCardPayment.secureText")}</p>
       </div>
     </div>

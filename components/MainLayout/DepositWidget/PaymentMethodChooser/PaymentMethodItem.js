@@ -95,7 +95,7 @@ export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paym
         <p>{t('depositWidget.card')}</p>
         <div className={styles.paymentCardIconBlock}>
           <Image layout={'fixed'} width={60} height={25} alt={'visa/mastercard payment'}
-                 src={'/assets/img/depositWidget/cards.png'}/>
+                 src={'/assets/img/depositWidget/cards.webp'}/>
         </div>
       </li>
     )

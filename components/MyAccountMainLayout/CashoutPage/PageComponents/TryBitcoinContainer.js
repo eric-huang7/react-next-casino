@@ -22,7 +22,7 @@ export const TryBitcoinContainer = ({t, btcCurrency}) => {
         onClick={() => tryBitcoinButtonHandler()}
       >
         <span>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.button.playWith")}</span>
-        <img src="/assets/img/myAccount/cashoutPage/bitcoinIcon.png" alt="bincoin icon"/>
+        <img src="/assets/img/myAccount/cashoutPage/bitcoinIcon.webp" alt="bincoin icon"/>
         <span>{t("myAccount.cashoutPage.selectPaymentContainer.tryBitcoinBlock.button.bitcoin")}</span>
       </button>
     </div>

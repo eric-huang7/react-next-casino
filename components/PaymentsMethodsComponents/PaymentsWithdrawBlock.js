@@ -5,7 +5,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 const withdrawInfo = {
   depositId: 1,
   paymentId: 1,
-  paymentImage: '/assets/img/withdrawIcons/bitcoin.png',
+  paymentImage: '/assets/img/withdrawIcons/bitcoin.webp',
   paymentName: "Bitcoin",
   depositType: "Munch Better",
   depositFee: "0%",

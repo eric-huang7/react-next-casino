@@ -15,25 +15,25 @@ export const WhySlotsIdol = ({ isBackShow, title }) => {
       <div className={styles.whySlotsItems}>
         <div className={`${styles.minuteBlock} ${styles.whySlotsInnerItem}`}>
           <div className={styles.minuteImg}>
-            <img src={'/assets/img/whySlotsIdol/minute.png'} alt="minute"/>
+            <img src={'/assets/img/whySlotsIdol/minute.webp'} alt="minute"/>
           </div>
           <p className={styles.minuteDescr}>{t(`whySlotsIdol.minuteRegistration`)}</p>
         </div>
         <div className={`${styles.depositsBlock} ${styles.whySlotsInnerItem}`}>
           <div className={styles.depositsImg}>
-            <img src={'/assets/img/whySlotsIdol/deposits.png'} alt="deposits"/>
+            <img src={'/assets/img/whySlotsIdol/deposits.webp'} alt="deposits"/>
           </div>
           <p className={styles.depositsDescr}>{t(`whySlotsIdol.InstantDeposits`)}</p>
         </div>
         <div className={`${styles.payoutsBlock} ${styles.whySlotsInnerItem}`}>
           <div className={styles.payoutsImg}>
-            <img src={'/assets/img/whySlotsIdol/payouts.png'} alt="payouts"/>
+            <img src={'/assets/img/whySlotsIdol/payouts.webp'} alt="payouts"/>
           </div>
           <p className={styles.payoutsDescr}>{t(`whySlotsIdol.FastPayouts`)}</p>
         </div>
         <div className={`${styles.licensedBlock} ${styles.whySlotsInnerItem}`}>
           <div className={styles.licensedImg}>
-            <img src={'/assets/img/whySlotsIdol/licensed.png'} alt="licensed"/>
+            <img src={'/assets/img/whySlotsIdol/licensed.webp'} alt="licensed"/>
           </div>
           <p className={styles.licensedDescr}>{t(`whySlotsIdol.LicensedAndRegulated`)}</p>
         </div>

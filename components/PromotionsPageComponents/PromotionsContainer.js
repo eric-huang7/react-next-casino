@@ -20,7 +20,7 @@ const dataForMainBlock = {
     welcomeValue: 'mainBlock.welcomeBonusBlock.welcomeValue',
     welcomeAddText: 'mainBlock.welcomeBonusBlock.welcomeAddText',
     depositButtonText: 'mainBlock.welcomeBonusBlock.depositButtonText',
-    welcomeMainImg: '/assets/img/promotionsPage/welcomeImage.png',
+    welcomeMainImg: '/assets/img/promotionsPage/welcomeImage.webp',
     welcomeDepositButton: '/assets/img/promotionsPage/welcomeDepositButton.png',
   }
 }
