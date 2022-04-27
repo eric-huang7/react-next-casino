@@ -15,73 +15,27 @@ import {
 import { useDispatch } from 'react-redux'
 import { setSearchGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
+import {useEffect, useRef} from "react";
 
-export const SearchBar = ({ t, searchRef, onSearch, searchQuery }) => {
-  const dispatch = useDispatch()
+export const SearchBar = ({ t, onSearch }) => {
   const router = useRouter()
+  const searchRef = useRef('')
 
-  const searchButtonClickHandler = async (e) => {
+  useEffect(() => {
+    searchRef.current.value = '';
+    onSearch('');
+  },[router.query.id])
 
-    if (searchRef.current.value) {
-      searchRef.current.blur()
-
-      let url
-      try {
-        if (router.query.id === 'all-games' || !router.query.id) {
-          url = searchGames_url(searchRef.current.value)
-        } else if (router.query.id === 'new-games') {
-          url = search_newGames_url(searchRef.current.value)
-        } else if (router.query.id === 'btc-games') {
-          url = search_topGames_url(searchRef.current.value)
-        } else if (router.query.id === 'top-games') {
-          url = search_topGames_url(searchRef.current.value)
-        } else if (router.query.id === 'jackpot-games') {
-          url = search_jackpotGames_url(searchRef.current.value)
-        } else if (router.query.id === 'table-games') {
-          url = search_tableGames_url(searchRef.current.value)
-        } else if (router.query.id === 'tournaments') {
-
-          let whatSearch = JSON.parse(router.query.tournamentData)
-          if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
-            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            url = game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value)
-
-          } else if (whatSearch.game_category_ids) {
-            url = game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value)
-
-          } else if (whatSearch.game_provider_ids) {
-            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            url = game_provider_ids_search(providers, searchRef.current.value)
-
-          } else {
-            url = game_ids_search(whatSearch.game_ids, searchRef.current.value)
-
-          }
-
-        } else {
-          url = search_chosenProviderGames_url(router.query.id, searchRef.current.value)
-        }
-
-        // Connect.get(url, {}, (status, data) => {
-        //   dispatch(setSearchGames(data.results))
-        // })
-      } catch (e) {
-        // dispatch(setSearchGames([]))
-      }
-    }
-    if (!searchRef.current.value || searchRef.current.value.trim() === '') {
-      // dispatch(setSearchGames([]))
-    }
+  const searchButtonClickHandler = async (event) => {
     onSearch(searchRef.current.value);
   }
 
   return (
     <label className={styles.searchInputLabel}>
       <input
-        // ref={searchRef}
+        ref={searchRef}
         type={'text'}
-        value={searchQuery}
-        onKeyUp={(e) => searchButtonClickHandler(e)}
+        onKeyUp={searchButtonClickHandler}
         placeholder={t('homePage.searchBar')}
         className={styles.searchInput}
       />

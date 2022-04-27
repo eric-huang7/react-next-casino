@@ -9,7 +9,7 @@ import {useSelector} from "react-redux";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 
 
-export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
+export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
   const router = useRouter();
 
   const linksData = [
@@ -41,9 +41,6 @@ export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
             <a>{t('homePage.providers')}</a>
           </Link>
         </div>
-        {/*<ErrorText>*/}
-        {/*  <SearchBar searchRef={searchRef} t={t}/>*/}
-        {/*</ErrorText>*/}
       </div>
       <div className={styles.divider}></div>
     </div>

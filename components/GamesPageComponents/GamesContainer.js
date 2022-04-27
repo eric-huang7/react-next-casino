@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {GamesPageHeading} from "./GamesPageHeading";
 import {MoreButton} from "./MoreButton";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
@@ -26,11 +26,9 @@ export const GamesContainer = (props) => {
     setTotal_rows,
     gamesError
   } = props;
-  const [searchQuery, setSearchQuery] = useState();
+  const [searchQuery, setSearchQuery] = useState('');
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
-
-
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -127,9 +125,7 @@ export const GamesContainer = (props) => {
     }
   }
 
-
-
-  let games = gamesData.map((el, ind) => {
+  let games = gamesData.filter(game => searchQuery ? game.name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 : true).map((el, ind) => {
     return (
       <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
         <GamesItem
@@ -159,13 +155,14 @@ export const GamesContainer = (props) => {
   ) : (
     <>
       <div className={styles.gamesMainContainer}>
+        <SearchBar onSearch={handleSearch} t={t}/>
         <GamesPageHeading heading={heading} t={t} />
-        <SearchBar onSearch={handleSearch} searchQuery={searchQuery} t={t}/>
         <div className={styles.gamesItemsContainer}>
           {games}
         </div>
       </div>
       <MoreButton
+
         heading={heading}
         setRequestGamesData={setRequestGamesData}
         gamesData={gamesData}

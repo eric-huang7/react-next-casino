@@ -20,10 +20,8 @@ import {
   tableGames_url, topGames_url
 } from '../../helpers/gamesURL'
 import { setGames } from '../../redux/games/action'
-import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
-import {SearchBar} from "../../components/HomePageComponents/ChooseCategoryBlock/SearchBar";
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
@@ -31,7 +29,7 @@ const GamesPage = (props) => {
   const router = useRouter()
   const { id } = router.query
 
-  const searchRef = useRef('')
+  // const searchRef = useRef('')
 
   useEffect(() => {
     dispatch(getCurrency())
@@ -129,32 +127,23 @@ const GamesPage = (props) => {
         <MainBlock/>
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
-        <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
+        <ChooseCategoryBlock isProvidersPage={false} t={t}/>
 
-        {/*{*/}
-        {/*  searchGames.length >= 0 && searchRef.current.value*/}
-        {/*    ?*/}
-        {/*    <ErrorEmpty>*/}
-        {/*      <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={heading}/>*/}
-        {/*    </ErrorEmpty>*/}
-        {/*    :*/}
-
-            <ErrorEmpty>
-              <GamesContainer
-                heading={heading}
-                gamesData={requestGamesData}
-                setRequestGamesData={setRequestGamesData}
-                pageCounter={pageCounter}
-                setPageCounter={setPageCounter}
-                isShowMoreButton={isShowMoreButton}
-                setIsShowMoreButton={setIsShowMoreButton}
-                totalRows={total_rows}
-                setTotal_rows={setTotal_rows}
-                t={t}
-                gamesError={gamesError}
-              />
-            </ErrorEmpty>
-        {/*}*/}
+        <ErrorEmpty>
+          <GamesContainer
+            heading={heading}
+            gamesData={requestGamesData}
+            setRequestGamesData={setRequestGamesData}
+            pageCounter={pageCounter}
+            setPageCounter={setPageCounter}
+            isShowMoreButton={isShowMoreButton}
+            setIsShowMoreButton={setIsShowMoreButton}
+            totalRows={total_rows}
+            setTotal_rows={setTotal_rows}
+            t={t}
+            gamesError={gamesError}
+          />
+        </ErrorEmpty>
       </MainLayout>
     </>
   )

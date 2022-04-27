@@ -106,9 +106,13 @@
   position: relative;
   padding: 20px 50px 20px 20px;
   margin-left: 30px;
-  width: 280px;
-  border: 0.53px solid #ffffff;
+  width: 350px;
+  background: #d7a33c;
+  border: 1px solid #772300;
   border-radius: 0.25rem;
+  &:focus-within {
+    border-color: white;
+  }
   &:after {
     content: '';
 
@@ -128,11 +132,14 @@
 .searchInput {
   outline: none;
   background: transparent;
-  color: #ffffff;
+  color: #772300;
   text-align: left;
   font-size: 1rem;
   line-height: 1.3;
   border: none;
+  &:focus {
+    color: #ffffff;
+  }
 }
 
 @media screen and (max-width: 1065px) {
