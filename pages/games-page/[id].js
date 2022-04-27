@@ -23,6 +23,7 @@ import { setGames } from '../../redux/games/action'
 import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
+import {SearchBar} from "../../components/HomePageComponents/ChooseCategoryBlock/SearchBar";
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
@@ -49,7 +50,7 @@ const GamesPage = (props) => {
     let url
     let whatSearch
     setPageCounter(1)
-    searchRef.current.value = ''
+    // searchRef?.current?.value = ''
 
     setGamesError('')
 
@@ -129,13 +130,15 @@ const GamesPage = (props) => {
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
-        {
-          searchGames.length >= 0 && searchRef.current.value
-            ?
-            <ErrorEmpty>
-              <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={heading}/>
-            </ErrorEmpty>
-            :
+
+        {/*{*/}
+        {/*  searchGames.length >= 0 && searchRef.current.value*/}
+        {/*    ?*/}
+        {/*    <ErrorEmpty>*/}
+        {/*      <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={heading}/>*/}
+        {/*    </ErrorEmpty>*/}
+        {/*    :*/}
+
             <ErrorEmpty>
               <GamesContainer
                 heading={heading}
@@ -151,7 +154,7 @@ const GamesPage = (props) => {
                 gamesError={gamesError}
               />
             </ErrorEmpty>
-        }
+        {/*}*/}
       </MainLayout>
     </>
   )

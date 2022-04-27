@@ -41,9 +41,9 @@ export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
             <a>{t('homePage.providers')}</a>
           </Link>
         </div>
-        <ErrorText>
-          <SearchBar searchRef={searchRef} t={t}/>
-        </ErrorText>
+        {/*<ErrorText>*/}
+        {/*  <SearchBar searchRef={searchRef} t={t}/>*/}
+        {/*</ErrorText>*/}
       </div>
       <div className={styles.divider}></div>
     </div>

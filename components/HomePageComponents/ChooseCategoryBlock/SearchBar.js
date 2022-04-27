@@ -16,13 +16,13 @@ import { useDispatch } from 'react-redux'
 import { setSearchGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
 
-export const SearchBar = ({ t, searchRef }) => {
+export const SearchBar = ({ t, searchRef, onSearch, searchQuery }) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
   const searchButtonClickHandler = async (e) => {
 
-    if (e.keyCode === 13 && searchRef.current.value) {
+    if (searchRef.current.value) {
       searchRef.current.blur()
 
       let url
@@ -62,23 +62,25 @@ export const SearchBar = ({ t, searchRef }) => {
           url = search_chosenProviderGames_url(router.query.id, searchRef.current.value)
         }
 
-        Connect.get(url, {}, (status, data) => {
-          dispatch(setSearchGames(data.results))
-        })
+        // Connect.get(url, {}, (status, data) => {
+        //   dispatch(setSearchGames(data.results))
+        // })
       } catch (e) {
-        dispatch(setSearchGames([]))
+        // dispatch(setSearchGames([]))
       }
     }
     if (!searchRef.current.value || searchRef.current.value.trim() === '') {
-      dispatch(setSearchGames([]))
+      // dispatch(setSearchGames([]))
     }
+    onSearch(searchRef.current.value);
   }
 
   return (
     <label className={styles.searchInputLabel}>
       <input
-        ref={searchRef}
+        // ref={searchRef}
         type={'text'}
+        value={searchQuery}
         onKeyUp={(e) => searchButtonClickHandler(e)}
         placeholder={t('homePage.searchBar')}
         className={styles.searchInput}
