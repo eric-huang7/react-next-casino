@@ -36,7 +36,7 @@ export const ChooseCategoryBlock = ({t, isProvidersPage, searchRef}) => {
         }
       </ul>
       <div className={styles.categoryInputsWrapper}>
-        <div className={`${styles.providersButton} ${isProvidersPage ? styles.isProviders : ''}`}>
+        <div className={`${styles.providersButton}`}>
           <Link href={'/providers-page'}>
             <a>{t('homePage.providers')}</a>
           </Link>
