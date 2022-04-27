@@ -82,45 +82,16 @@
   align-items: center;
 }
 
-.providersButton {
-  width: 197px;
-  height: 35px;
-  background-color: transparent;
-  border: 0.53px solid #7d7d7d;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0 0 0 12px;
-
-  position: relative;
-
-  outline: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-
-}
-.providersButton:after {
-  content: '';
-
-  background-image: url("/assets/icons/home/arr_select.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  width: 13px;
-  height: 10px;
-
-  position: absolute;
-  top: 11px;
-  right: 10px;
-}
 .providersButton a {
   font-size: 16px;
   letter-spacing: 0px;
+  padding: 10px 15px;
+  background: #d7a33c;
   //line-height: 58px;
   color: #ffffff;
   text-transform: uppercase;
+  font-family: "Lithograph";
+  font-weight: 600;
 
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
