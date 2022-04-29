@@ -52,24 +52,25 @@ const GamesPage = (props) => {
 
     setGamesError('')
 
+    const quantity = 100;
     switch (props.query.id) {
       case 'all-games':
-        url = allProvidersURL(100)
+        url = allProvidersURL(quantity)
         break
       case 'new-games':
-        url = newGames_url(100)
+        url = newGames_url(quantity)
         break
       case 'btc-games':
-        url = topGames_url(100)
+        url = topGames_url(quantity)
         break
       case 'top-games':
-        url = topGames_url(100)
+        url = topGames_url(quantity)
         break
       case 'jackpot-games':
-        url = jackpotGames_url(100)
+        url = jackpotGames_url(quantity)
         break
       case 'table-games':
-        url = tableGames_url(100)
+        url = tableGames_url(quantity)
         break
       case 'tournaments':
         whatSearch = JSON.parse(props.query.tournamentData)

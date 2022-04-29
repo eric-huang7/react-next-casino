@@ -32,13 +32,13 @@
 .gamesItemsContainer {
   width: 100%;
 
-  background-color: rgba(255,255,255, 0.1);
+  //background-color: rgba(255,255,255, 0.1);
 
   padding: 12px 6px 6px 6px;
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .errorMessage {
@@ -235,5 +235,69 @@
   }
 }
 
+.MuiSkeletonRoot {
+  height: 1.2em;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.21);
+}
+.MuiSkeletonRectangular {
+  border-radius: 0.25rem;
+  display: block;
+  height: 180px;
+  width: calc(20% - 8px);
+  margin: 0 4px;
+}
+.placeholder {
 
-
+  //-webkit-animation: animation-c7515d 1.5s ease-in-out 0.5s infinite;
+  //animation: animation-c7515d 1.5s ease-in-out 0.5s infinite;
+}
+.MuiSkeletonPulse {
+  animation: MuiSkeleton-keyframes-pulse 1.5s ease-in-out 0.5s infinite;
+}
+@-webkit-keyframes MuiSkeleton-keyframes-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.MuiSkeletonWave {
+  overflow: hidden;
+  position: relative;
+}
+.MuiSkeletonWave::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  animation: MuiSkeleton-keyframes-wave 1.6s linear 0.5s infinite;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.04), transparent);
+}
+@-webkit-keyframes MuiSkeleton-keyframes-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.MuiSkeleton-withChildren > * {
+  visibility: hidden;
+}
+.MuiSkeleton-fitContent {
+  max-width: fit-content;
+}
+.MuiSkeleton-heightAuto {
+  height: auto;
+}

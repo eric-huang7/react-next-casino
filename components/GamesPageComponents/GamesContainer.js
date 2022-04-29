@@ -11,8 +11,6 @@ import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler"
 import {SearchBar} from "../HomePageComponents/ChooseCategoryBlock/SearchBar";
 import {gameUrl} from "../../helpers/imageUrl";
 
-
-
 export const GamesContainer = (props) => {
   const {
     t,
@@ -225,7 +223,13 @@ export const GamesContainer = (props) => {
       <div className={styles.gamesMainContainer}>
         <SearchBar onSearch={handleSearch} t={t}/>
         <GamesPageHeading heading={heading} t={t} />
-        {!isLoaded ? <div>Loading</div> : (
+        {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+          </div>: (
           <div className={styles.gamesItemsContainer}>
             {games}
           </div>
