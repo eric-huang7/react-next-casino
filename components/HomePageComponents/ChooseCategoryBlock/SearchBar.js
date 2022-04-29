@@ -17,7 +17,7 @@ import { setSearchGames } from '../../../redux/games/action'
 import { useRouter } from 'next/router'
 import {useEffect, useRef} from "react";
 
-export const SearchBar = ({ t, onSearch }) => {
+export const SearchBar = ({ t, onSearch, type }) => {
   const router = useRouter()
   const searchRef = useRef('')
 
@@ -30,13 +30,34 @@ export const SearchBar = ({ t, onSearch }) => {
     onSearch(searchRef.current.value);
   }
 
+  const getTitle = () => {
+    switch (type) {
+      case 'all-games':
+        return t('gamesPage.headings.allGames');
+      case 'new-games':
+        return t('gamesPage.headings.newGames');
+      case 'btc-games':
+        return t('gamesPage.headings.btcGames');
+      case 'top-games':
+        return t('gamesPage.headings.topGames');
+      case 'jackpot-games':
+        return t('gamesPage.headings.jackpotGames');
+      case 'table-games':
+        return t('gamesPage.headings.tableGames');
+      case 'tournaments':
+        return t('gamesPage.headings.tournaments');
+      default:
+        return type;
+    }
+  }
+
   return (
     <label className={styles.searchInputLabel}>
       <input
         ref={searchRef}
         type={'text'}
         onKeyUp={searchButtonClickHandler}
-        placeholder={t('homePage.searchBar')}
+        placeholder={t('homePage.searchBar') + ' ' + getTitle()}
         className={styles.searchInput}
       />
     </label>
