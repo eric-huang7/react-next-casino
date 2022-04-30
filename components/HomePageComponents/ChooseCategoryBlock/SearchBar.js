@@ -13,21 +13,90 @@ import {
   searchGames_url,
 } from '../../../helpers/gamesURL'
 import { useDispatch } from 'react-redux'
-import { setSearchGames } from '../../../redux/games/action'
-import { useRouter } from 'next/router'
+import {setLoaded, setSearchGames} from '../../../redux/games/action'
+import { useRouter } from 'next/router';
 import {useEffect, useRef} from "react";
 
-export const SearchBar = ({ t, onSearch, type }) => {
-  const router = useRouter()
-  const searchRef = useRef('')
+const minQueryLength = 1
+export const SearchBar = ({ t, onSearch }) => {
+  const router = useRouter();
+  const type = router.query.id;
+  const dispatch = useDispatch()
+  const searchRef = useRef('');
 
   useEffect(() => {
     searchRef.current.value = '';
-    onSearch('');
-  },[router.query.id])
+    clearSearch();
+  },[type])
 
   const searchButtonClickHandler = async (event) => {
-    onSearch(searchRef.current.value);
+    if (searchRef.current.value?.length >= minQueryLength) {
+      onSearch(searchRef.current.value, true);
+      dispatch(setLoaded(false))
+      fetchSearch();
+    } else {
+      clearSearch();
+    }
+  }
+
+  const clearSearch = () => {
+    console.log('clearSearch')
+    onSearch('');
+    dispatch(setSearchGames([]))
+  }
+
+  const fetchSearch = async (e) => {
+
+    if (searchRef.current.value) {
+      // searchRef.current.blur()
+
+      let url
+      try {
+        if (type === 'all-games' || !type) {
+          url = searchGames_url(searchRef.current.value)
+        } else if (type === 'new-games') {
+          url = search_newGames_url(searchRef.current.value)
+        } else if (type === 'btc-games') {
+          url = search_topGames_url(searchRef.current.value)
+        } else if (type === 'top-games') {
+          url = search_topGames_url(searchRef.current.value)
+        } else if (type === 'jackpot-games') {
+          url = search_jackpotGames_url(searchRef.current.value)
+        } else if (type === 'table-games') {
+          url = search_tableGames_url(searchRef.current.value)
+        } else if (type === 'tournaments') {
+
+          let whatSearch = JSON.parse(router.query.tournamentData)
+          if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
+            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
+            url = game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value)
+
+          } else if (whatSearch.game_category_ids) {
+            url = game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value)
+
+          } else if (whatSearch.game_provider_ids) {
+            let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
+            url = game_provider_ids_search(providers, searchRef.current.value)
+
+          } else {
+            url = game_ids_search(whatSearch.game_ids, searchRef.current.value)
+
+          }
+
+        } else {
+          url = search_chosenProviderGames_url(type, searchRef.current.value)
+        }
+
+        Connect.get(url, {}, (status, data) => {
+          dispatch(setSearchGames(data.results))
+        })
+      } catch (e) {
+        dispatch(setSearchGames([]))
+      }
+    }
+    if (!searchRef.current.value || searchRef.current.value.trim() === '') {
+      dispatch(setSearchGames([]))
+    }
   }
 
   const getTitle = () => {

@@ -10,26 +10,30 @@ import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
 import {SearchBar} from "../HomePageComponents/ChooseCategoryBlock/SearchBar";
 import {gameUrl} from "../../helpers/imageUrl";
+import preloadImages from "../../helpers/preloadImages";
+import {setLoaded} from "../../redux/games/action";
 
 export const GamesContainer = (props) => {
   const {
     t,
-    gamesData,
     heading,
     setRequestGamesData,
     pageCounter,
     setPageCounter,
     isShowMoreButton,
     setIsShowMoreButton,
-    totalRows,
     setTotal_rows,
     gamesError
   } = props;
   const [searchQuery, setSearchQuery] = useState('');
-  const [loadedImages, setLoadedImages] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  const [gamesData, setGamesData] = useState([]);
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
+  const searchGames = useSelector((store) => store.games.searchGames)
+  const allGames = useSelector((store) => store.games.allGames)
+  const isLoaded = useSelector((store) => store.games.isLoaded)
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -39,6 +43,11 @@ export const GamesContainer = (props) => {
       setIsShowMoreButton(true);
     }
   },[])
+
+  useEffect(() => {
+    console.log('searchQuery', searchQuery, isLoaded)
+    setGamesData(searchQuery ? searchGames : allGames);
+  },[searchQuery, searchGames, allGames])
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
@@ -126,71 +135,33 @@ export const GamesContainer = (props) => {
     }
   }
 
-  const onLoadingComplete = () => {
-    console.log('onLoadingComplete', loadedImages)
-    if (!isLoaded) {
-      setLoadedImages(loadedImages + 1);
-    }
-  }
-
-  useEffect(() => {
-    console.log('loadedImages', isLoaded, loadedImages, filteredGames().length)
-    if (!isLoaded && gamesData.length > 0 && loadedImages >= filteredGames().length) {
-      setIsLoaded(true)
-    }
-  }, [loadedImages, isLoaded, gamesData])
-
-  function preloadImage (src) {
-    return new Promise((resolve, reject) => {
-      const img = new Image()
-      img.onload = function() {
-        resolve(img)
-      }
-      img.onerror = img.onabort = function() {
-        resolve(src)
-      }
-      img.src = src
-    })
-  }
+  // useEffect(() => {
+  //   console.log('loadedImages', isLoaded, loadedImages, filteredGames().length)
+  //   if (!isLoaded && gamesData.length > 0 && loadedImages >= gamesData.length) {
+  //     setIsLoaded(true)
+  //   }
+  // }, [loadedImages, isLoaded, gamesData])
 
   useEffect(() => {
     // Images preload
-  // ==================
     let isCancelled = false
 
-    async function effect() {
-      if (isCancelled) {
-        return
-      }
-
-      const imagesPromiseList = []
-      for (const game of gamesData) {
-        imagesPromiseList.push(preloadImage(gameUrl(game.id)))
-      }
-
-      await Promise.all(imagesPromiseList)
-      console.log('loaded isCancelled', isCancelled)
-      if (isCancelled) {
-        return
-      }
-
-      setIsLoaded(true)
-    }
-
+    console.log('preloadImages',isLoaded, gamesData, gamesData.length)
     if (gamesData.length > 0) {
-      effect()
+      (async () => await preloadImages(gamesData, isCancelled, () => {
+        console.log('callback');
+        // setIsLoaded(true)
+        dispatch(setLoaded(true))
+      }))();
     }
 
     return () => {
-      console.log('isCancelled')
+      // console.log('isCancelled')
       isCancelled = true
     }
   }, [isLoaded, gamesData])
 
-  const filteredGames = () =>
-    gamesData.filter(game => searchQuery ? game.name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 : true)
-
-  let games = filteredGames().map((el, ind) => {
+  let games = gamesData.map((el, ind) => {
     return (
       <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
         <GamesItem
@@ -201,16 +172,22 @@ export const GamesContainer = (props) => {
           userInfo={userInfo}
           t={t}
           gameData={el}
-          onLoadingComplete={onLoadingComplete}
         />
       </GamesItemErrorHandler>
     )
   })
 
-  const handleSearch = (value) => {
+  const handleSearch = (value, refresh = false) => {
+    console.log('handleSearch', refresh)
     setSearchQuery(value);
+
+    if (refresh) {
+      // setIsLoaded(false);
+      dispatch(setLoaded(false))
+    }
   }
 
+  console.log('IsLoaded', isLoaded)
   return gamesError ? (
     <div className={styles.gamesMainContainer}>
       <GamesPageHeading heading={heading} t={t} />
@@ -221,7 +198,7 @@ export const GamesContainer = (props) => {
   ) : (
     <>
       <div className={styles.gamesMainContainer}>
-        <SearchBar onSearch={handleSearch} type={heading} t={t}/>
+        <SearchBar onSearch={handleSearch} t={t}/>
         <GamesPageHeading heading={heading} t={t} />
         {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
             <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
@@ -235,16 +212,13 @@ export const GamesContainer = (props) => {
           </div>
         )}
       </div>
-      {isLoaded && <MoreButton
-
+      {isLoaded && !searchQuery && <MoreButton
         heading={heading}
-        setRequestGamesData={setRequestGamesData}
         gamesData={gamesData}
         isShowMoreButton={isShowMoreButton}
         pageCounter={pageCounter}
         setPageCounter={setPageCounter}
         t={t}
-        setTotal_rows={setTotal_rows}
       />}
     </>
   )

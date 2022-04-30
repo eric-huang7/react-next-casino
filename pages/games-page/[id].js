@@ -19,7 +19,7 @@ import {
   newGames_url,
   tableGames_url, topGames_url
 } from '../../helpers/gamesURL'
-import { setGames } from '../../redux/games/action'
+import {setGames, setTotalRows} from '../../redux/games/action'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
 
@@ -36,11 +36,12 @@ const GamesPage = (props) => {
   }, [])
 
   const [isShowMoreButton, setIsShowMoreButton] = useState(true)
-  const [requestGamesData, setRequestGamesData] = useState([])
   const [pageCounter, setPageCounter] = useState(0)
-  const [total_rows, setTotal_rows] = useState(0)
   const [heading, setHeading] = useState('all-games')
   const [gamesError, setGamesError] = useState('')
+
+  const totalRows = useSelector((store) => store.games.totalRows)
+  const requestGamesData = useSelector((store) => store.games.allGames)
 
   useEffect(() => {
     let res
@@ -100,8 +101,7 @@ const GamesPage = (props) => {
 
     Connect.get(url, {}, (status, data) => {
       dispatch(setGames(data.results))
-      setRequestGamesData(data.results)
-      setTotal_rows(data.total_rows)
+      dispatch(setTotalRows(data.total_rows))
     }).catch((err) => {
       setGamesError('gamesPage.error')
     })
@@ -112,7 +112,7 @@ const GamesPage = (props) => {
   let searchGames = useSelector((store) => store.games.searchGames)
 
   useEffect(() => {
-    if (requestGamesData.length === total_rows) {
+    if (requestGamesData.length === totalRows) {
       setIsShowMoreButton(false)
     } else {
 
@@ -120,7 +120,7 @@ const GamesPage = (props) => {
     return () => {
       setIsShowMoreButton(true)
     }
-  }, [props.query, total_rows, requestGamesData])
+  }, [props.query, totalRows, requestGamesData])
 
   return (
     <>
@@ -134,13 +134,10 @@ const GamesPage = (props) => {
           <GamesContainer
             heading={heading}
             gamesData={requestGamesData}
-            setRequestGamesData={setRequestGamesData}
             pageCounter={pageCounter}
             setPageCounter={setPageCounter}
             isShowMoreButton={isShowMoreButton}
             setIsShowMoreButton={setIsShowMoreButton}
-            totalRows={total_rows}
-            setTotal_rows={setTotal_rows}
             t={t}
             gamesError={gamesError}
           />
