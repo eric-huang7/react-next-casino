@@ -8,9 +8,11 @@ import {
   topGames_url
 } from "../../helpers/gamesURL";
 import {setGames, setTotalRows} from "../../redux/games/action";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading}) => {
+  const dispatch = useDispatch();
+  
   const moreButtonClickHAndler = async () => {
     let res;
     let url;
