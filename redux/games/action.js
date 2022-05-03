@@ -19,6 +19,9 @@ export const getTableGamesAction = createAction("GET_TABLE_GAMES");
 export const getTopGamesAction = createAction("GET_TOP_GAMES");
 export const setGames = createAction("SET_GAMES");
 export const setSearchGames = createAction("SET_SEARCH_GAMES");
+export const setTotalRows = createAction("SET_TOTAL_ROW");
+export const setLoaded = createAction("SET_IS_LOADED");
+export const setSearch = createAction("SET_IS_SEARCH");
 
 export const getGames = () => dispatch =>
   Connect.get(games_url, {}, (status, data) => dispatch(getGamesAction(data)));

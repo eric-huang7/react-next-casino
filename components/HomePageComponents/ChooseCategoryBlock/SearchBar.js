@@ -13,33 +13,60 @@ import {
   searchGames_url,
 } from '../../../helpers/gamesURL'
 import { useDispatch } from 'react-redux'
-import { setSearchGames } from '../../../redux/games/action'
-import { useRouter } from 'next/router'
+import {setLoaded, setSearch, setSearchGames} from '../../../redux/games/action'
+import { useRouter } from 'next/router';
+import {useEffect, useRef} from "react";
+import {delay} from "../../../helpers/timer";
 
-export const SearchBar = ({ t, searchRef }) => {
+const minQueryLength = 2
+const inputDelay = 500
+
+export const SearchBar = ({ t }) => {
+  const router = useRouter();
+  const type = router.query.id;
   const dispatch = useDispatch()
-  const router = useRouter()
+  const searchRef = useRef('');
 
-  const searchButtonClickHandler = async (e) => {
+  useEffect(() => {
+    searchRef.current.value = '';
+    clearSearch();
+  },[type])
 
-    if (e.keyCode === 13 && searchRef.current.value) {
-      searchRef.current.blur()
+  const searchButtonClickHandler = async (event) => {
+
+    if (searchRef.current.value?.length >= minQueryLength) {
+      dispatch(setSearch(true))
+      dispatch(setLoaded(false))
+      fetchSearch();
+    } else {
+      clearSearch();
+    }
+  }
+
+  const clearSearch = () => {
+    dispatch(setSearch(false))
+    dispatch(setSearchGames([]))
+  }
+
+  const fetchSearch = async (e) => {
+    if (searchRef.current.value) {
+      // searchRef.current.blur()
 
       let url
       try {
-        if (router.query.id === 'all-games' || !router.query.id) {
+        if (type === 'all-games' || !type) {
           url = searchGames_url(searchRef.current.value)
-        } else if (router.query.id === 'new-games') {
+        } else if (type === 'new-games') {
           url = search_newGames_url(searchRef.current.value)
-        } else if (router.query.id === 'btc-games') {
+        } else if (type === 'btc-games') {
           url = search_topGames_url(searchRef.current.value)
-        } else if (router.query.id === 'top-games') {
+        } else if (type === 'top-games') {
           url = search_topGames_url(searchRef.current.value)
-        } else if (router.query.id === 'jackpot-games') {
+        } else if (type === 'jackpot-games') {
           url = search_jackpotGames_url(searchRef.current.value)
-        } else if (router.query.id === 'table-games') {
+        } else if (type === 'table-games') {
           url = search_tableGames_url(searchRef.current.value)
-        } else if (router.query.id === 'tournaments') {
+        } else if (type === 'tournaments') {
 
           let whatSearch = JSON.parse(router.query.tournamentData)
           if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
@@ -59,7 +86,7 @@ export const SearchBar = ({ t, searchRef }) => {
           }
 
         } else {
-          url = search_chosenProviderGames_url(router.query.id, searchRef.current.value)
+          url = search_chosenProviderGames_url(type, searchRef.current.value)
         }
 
         Connect.get(url, {}, (status, data) => {
@@ -71,6 +98,28 @@ export const SearchBar = ({ t, searchRef }) => {
     }
     if (!searchRef.current.value || searchRef.current.value.trim() === '') {
       dispatch(setSearchGames([]))
+      clearSearch()
+    }
+  }
+
+  const getTitle = () => {
+    switch (type) {
+      case 'all-games':
+        return t('gamesPage.headings.allGames');
+      case 'new-games':
+        return t('gamesPage.headings.newGames');
+      case 'btc-games':
+        return t('gamesPage.headings.btcGames');
+      case 'top-games':
+        return t('gamesPage.headings.topGames');
+      case 'jackpot-games':
+        return t('gamesPage.headings.jackpotGames');
+      case 'table-games':
+        return t('gamesPage.headings.tableGames');
+      case 'tournaments':
+        return t('gamesPage.headings.tournaments');
+      default:
+        return type;
     }
   }
 
@@ -79,8 +128,8 @@ export const SearchBar = ({ t, searchRef }) => {
       <input
         ref={searchRef}
         type={'text'}
-        onKeyUp={(e) => searchButtonClickHandler(e)}
-        placeholder={t('homePage.searchBar')}
+        onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
+        placeholder={t('homePage.searchBar') + ' ' + getTitle()}
         className={styles.searchInput}
       />
     </label>

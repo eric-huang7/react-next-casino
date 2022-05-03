@@ -19,10 +19,10 @@ import {
   newGames_url,
   tableGames_url, topGames_url
 } from '../../helpers/gamesURL'
-import { setGames } from '../../redux/games/action'
-import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
+import {setGames, setLoaded, setSearch, setTotalRows} from '../../redux/games/action'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
+import {MoreButton} from "../../components/GamesPageComponents/MoreButton";
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
@@ -30,47 +30,54 @@ const GamesPage = (props) => {
   const router = useRouter()
   const { id } = router.query
 
-  const searchRef = useRef('')
+  // const searchRef = useRef('')
 
   useEffect(() => {
     dispatch(getCurrency())
   }, [])
 
   const [isShowMoreButton, setIsShowMoreButton] = useState(true)
-  const [requestGamesData, setRequestGamesData] = useState([])
   const [pageCounter, setPageCounter] = useState(0)
-  const [total_rows, setTotal_rows] = useState(0)
   const [heading, setHeading] = useState('all-games')
   const [gamesError, setGamesError] = useState('')
 
+  const totalRows = useSelector((store) => store.games.totalRows)
+  const allGames = useSelector((store) => store.games.allGames)
+  const searchGames = useSelector((store) => store.games.searchGames)
+  const isLoaded = useSelector((store) => store.games.isLoaded)
+  const isSearch = useSelector((store) => store.games.isSearch)
+
+
   useEffect(() => {
-    let res
     let heading = props.query.id
     let url
     let whatSearch
     setPageCounter(1)
-    searchRef.current.value = ''
+    // searchRef?.current?.value = ''
+    dispatch(setLoaded(false));
+    dispatch(setSearch(false));
 
     setGamesError('')
 
+    const quantity = 100;
     switch (props.query.id) {
       case 'all-games':
-        url = allProvidersURL(100)
+        url = allProvidersURL(quantity)
         break
       case 'new-games':
-        url = newGames_url(100)
+        url = newGames_url(quantity)
         break
       case 'btc-games':
-        url = topGames_url(100)
+        url = topGames_url(quantity)
         break
       case 'top-games':
-        url = topGames_url(100)
+        url = topGames_url(quantity)
         break
       case 'jackpot-games':
-        url = jackpotGames_url(100)
+        url = jackpotGames_url(quantity)
         break
       case 'table-games':
-        url = tableGames_url(100)
+        url = tableGames_url(quantity)
         break
       case 'tournaments':
         whatSearch = JSON.parse(props.query.tournamentData)
@@ -100,19 +107,16 @@ const GamesPage = (props) => {
 
     Connect.get(url, {}, (status, data) => {
       dispatch(setGames(data.results))
-      setRequestGamesData(data.results)
-      setTotal_rows(data.total_rows)
+      dispatch(setTotalRows(data.total_rows))
     }).catch((err) => {
       setGamesError('gamesPage.error')
+      dispatch(setLoaded(true));
     })
     setHeading(heading)
   }, [props?.query?.id])
 
-  const allGames = useSelector((store) => store.games)
-  let searchGames = useSelector((store) => store.games.searchGames)
-
   useEffect(() => {
-    if (requestGamesData.length === total_rows) {
+    if (allGames.length === totalRows) {
       setIsShowMoreButton(false)
     } else {
 
@@ -120,7 +124,7 @@ const GamesPage = (props) => {
     return () => {
       setIsShowMoreButton(true)
     }
-  }, [props.query, total_rows, requestGamesData])
+  }, [props.query, totalRows, allGames])
 
   return (
     <>
@@ -128,30 +132,28 @@ const GamesPage = (props) => {
         <MainBlock/>
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
-        <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
-        {
-          searchGames.length >= 0 && searchRef.current.value
-            ?
-            <ErrorEmpty>
-              <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={heading}/>
-            </ErrorEmpty>
-            :
-            <ErrorEmpty>
-              <GamesContainer
-                heading={heading}
-                gamesData={requestGamesData}
-                setRequestGamesData={setRequestGamesData}
-                pageCounter={pageCounter}
-                setPageCounter={setPageCounter}
-                isShowMoreButton={isShowMoreButton}
-                setIsShowMoreButton={setIsShowMoreButton}
-                totalRows={total_rows}
-                setTotal_rows={setTotal_rows}
-                t={t}
-                gamesError={gamesError}
-              />
-            </ErrorEmpty>
-        }
+        <ChooseCategoryBlock isProvidersPage={false} t={t}/>
+
+        <ErrorEmpty>
+          <GamesContainer
+            heading={heading}
+            gamesData={isSearch ? searchGames : allGames}
+            pageCounter={pageCounter}
+            setPageCounter={setPageCounter}
+            isShowMoreButton={isShowMoreButton}
+            setIsShowMoreButton={setIsShowMoreButton}
+            t={t}
+            gamesError={gamesError}
+          />
+        </ErrorEmpty>
+
+        {isLoaded && !isSearch && <MoreButton
+          heading={heading}
+          gamesData={allGames}
+          pageCounter={pageCounter}
+          setPageCounter={setPageCounter}
+          t={t}
+        />}
       </MainLayout>
     </>
   )

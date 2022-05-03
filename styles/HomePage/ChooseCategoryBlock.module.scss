@@ -104,7 +104,15 @@
 
 .searchInputLabel {
   position: relative;
+  padding: 20px 50px 20px 20px;
   margin-left: 30px;
+  width: 350px;
+  background: #d7a33c;
+  border: 1px solid #772300;
+  border-radius: 0.25rem;
+  &:focus-within {
+    border-color: white;
+  }
   &:after {
     content: '';
 
@@ -112,7 +120,7 @@
     height: 25px;
 
     position: absolute;
-    top: 5px;
+    top: 20px;
     right: 15px;
 
     background-image: url("/assets/icons/home/searchIcon.svg");
@@ -123,18 +131,18 @@
 }
 .searchInput {
   outline: none;
-  padding: 0 40px 0 10px;
-
   background: transparent;
-
-  color: #7d7d7d;
+  color: #772300;
   text-align: left;
-
-  width: 197px;
-  height: 35px;
-
-  border: 0.53px solid #7d7d7d;
-
+  font-size: 20px;
+  line-height: 1;
+  border: none;
+  &:focus {
+    color: #ffffff;
+  }
+  &::placeholder {
+    text-transform: capitalize;
+  }
 }
 
 @media screen and (max-width: 1065px) {

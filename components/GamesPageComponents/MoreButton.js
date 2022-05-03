@@ -7,44 +7,43 @@ import {
   tableGames_url,
   topGames_url
 } from "../../helpers/gamesURL";
+import {setGames, setTotalRows} from "../../redux/games/action";
+import {useDispatch, useSelector} from "react-redux";
 
-export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, gamesData, setRequestGamesData, heading, setTotal_rows}) => {
-
+export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading}) => {
+  const dispatch = useDispatch();
+  
   const moreButtonClickHAndler = async () => {
     let res;
+    let url;
+
     if (heading === 'all-games') {
-      res = await fetch(allProvidersURL(100, pageCounter * 100));
+      url = allProvidersURL(100, pageCounter * 100);
     } else if (heading === 'new-games') {
-      res = await fetch(newGames_url(100, pageCounter * 100));
+      url = newGames_url(100, pageCounter * 100);
     } else if (heading === 'btc-games') {
-      res = await fetch(topGames_url(100, pageCounter * 100));
+      url = topGames_url(100, pageCounter * 100);
     } else if (heading === 'top-games') {
-      res = await fetch(topGames_url(100, pageCounter * 100));
+      url = topGames_url(100, pageCounter * 100);
     } else if (heading === 'jackpot-games') {
-      res = await fetch(jackpotGames_url(100, pageCounter * 100));
+      url = jackpotGames_url(100, pageCounter * 100);
     } else if (heading === 'table-games') {
-      res = await fetch(tableGames_url(100, pageCounter * 100));
+      url = tableGames_url(100, pageCounter * 100);
     } else {
-      res = await fetch(chosenProviderURL(heading, 100, pageCounter * 100));
+      url = chosenProviderURL(heading, 100, pageCounter * 100);
     }
+    res = await fetch(url);
     let newGamesData = await res.json();
-    // dispatch(setGames(newGamesData.results));
-    setTotal_rows(newGamesData.total_rows);
+    dispatch(setTotalRows(newGamesData.total_rows))
     setPageCounter(pageCounter + 1);
-    setRequestGamesData([...gamesData, ...newGamesData.results]);
+    dispatch(setGames([...gamesData, ...newGamesData.results]))
   }
 
-  if (isShowMoreButton) {
-    return (
-      <div className={styles.moreWrapper}>
-        <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
-        <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
-        <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
-      </div>
-    )
-  } else {
-    return <></>
-  }
-
-
+  return (
+    <div className={styles.moreWrapper}>
+      <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
+      <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
+      <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
+    </div>
+  )
 }

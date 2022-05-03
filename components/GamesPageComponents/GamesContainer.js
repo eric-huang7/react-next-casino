@@ -2,33 +2,26 @@ import styles from '../../styles/GamesPage/GamesPage.module.scss';
 import {GamesItem} from "./GamesItem";
 import {useDispatch, useSelector} from "react-redux";
 import {GamesPageHeading} from "./GamesPageHeading";
-import {MoreButton} from "./MoreButton";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
-
-
+import {SearchBar} from "../HomePageComponents/ChooseCategoryBlock/SearchBar";
+import preloadImages from "../../helpers/preloadImages";
+import {setLoaded} from "../../redux/games/action";
 
 export const GamesContainer = (props) => {
   const {
     t,
-    gamesData,
     heading,
-    setRequestGamesData,
-    pageCounter,
+    gamesData,
     setPageCounter,
-    isShowMoreButton,
-    setIsShowMoreButton,
-    totalRows,
-    setTotal_rows,
     gamesError
   } = props;
-
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
-
+  const isLoaded = useSelector((store) => store.games.isLoaded)
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -36,7 +29,6 @@ export const GamesContainer = (props) => {
   useEffect(() => {
     return () => {
       setPageCounter(0);
-      setIsShowMoreButton(true);
     }
   },[])
 
@@ -126,7 +118,20 @@ export const GamesContainer = (props) => {
     }
   }
 
+  useEffect(() => {
+    // Images preload
+    let isCancelled = false
 
+    if (gamesData.length > 0) {
+      (async () => await preloadImages(gamesData, isCancelled, () => {
+        dispatch(setLoaded(true))
+      }))();
+    }
+
+    return () => {
+      isCancelled = true
+    }
+  }, [isLoaded, gamesData])
 
   let games = gamesData.map((el, ind) => {
     return (
@@ -144,37 +149,31 @@ export const GamesContainer = (props) => {
     )
   })
 
-if (gamesError) {
-  return (
-      <div className={styles.gamesMainContainer}>
-        <GamesPageHeading heading={heading} t={t} />
-        <div className={styles.gamesItemsContainer}>
-          <h2 className={styles.errorMessage}>{t(gamesError)}</h2>
-        </div>
+  return gamesError ? (
+    <div className={styles.gamesMainContainer}>
+      <GamesPageHeading heading={heading} t={t} />
+      <div className={styles.gamesItemsContainer}>
+        <h2 className={styles.errorMessage}>{t(gamesError)}</h2>
       </div>
-  )
-} else {
-  return (
+    </div>
+  ) : (
     <>
       <div className={styles.gamesMainContainer}>
+        <SearchBar t={t}/>
         <GamesPageHeading heading={heading} t={t} />
-        <div className={styles.gamesItemsContainer}>
-          {games}
-        </div>
+        {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
+          </div>: (
+          <div className={styles.gamesItemsContainer}>
+            {games}
+          </div>
+        )}
       </div>
-      <MoreButton
-        heading={heading}
-        setRequestGamesData={setRequestGamesData}
-        gamesData={gamesData}
-        isShowMoreButton={isShowMoreButton}
-        pageCounter={pageCounter}
-        setPageCounter={setPageCounter}
-        t={t}
-        setTotal_rows={setTotal_rows}
-      />
     </>
   )
-}
-
 }
 
