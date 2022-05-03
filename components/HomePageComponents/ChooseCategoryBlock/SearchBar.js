@@ -13,12 +13,15 @@ import {
   searchGames_url,
 } from '../../../helpers/gamesURL'
 import { useDispatch } from 'react-redux'
-import {setLoaded, setSearchGames} from '../../../redux/games/action'
+import {setLoaded, setSearch, setSearchGames} from '../../../redux/games/action'
 import { useRouter } from 'next/router';
 import {useEffect, useRef} from "react";
+import {delay} from "../../../helpers/timer";
 
-const minQueryLength = 1
-export const SearchBar = ({ t, onSearch }) => {
+const minQueryLength = 2
+const inputDelay = 500
+
+export const SearchBar = ({ t }) => {
   const router = useRouter();
   const type = router.query.id;
   const dispatch = useDispatch()
@@ -30,8 +33,9 @@ export const SearchBar = ({ t, onSearch }) => {
   },[type])
 
   const searchButtonClickHandler = async (event) => {
+
     if (searchRef.current.value?.length >= minQueryLength) {
-      onSearch(searchRef.current.value, true);
+      dispatch(setSearch(true))
       dispatch(setLoaded(false))
       fetchSearch();
     } else {
@@ -40,13 +44,11 @@ export const SearchBar = ({ t, onSearch }) => {
   }
 
   const clearSearch = () => {
-    console.log('clearSearch')
-    onSearch('');
+    dispatch(setSearch(false))
     dispatch(setSearchGames([]))
   }
 
   const fetchSearch = async (e) => {
-
     if (searchRef.current.value) {
       // searchRef.current.blur()
 
@@ -96,6 +98,7 @@ export const SearchBar = ({ t, onSearch }) => {
     }
     if (!searchRef.current.value || searchRef.current.value.trim() === '') {
       dispatch(setSearchGames([]))
+      clearSearch()
     }
   }
 
@@ -125,7 +128,7 @@ export const SearchBar = ({ t, onSearch }) => {
       <input
         ref={searchRef}
         type={'text'}
-        onKeyUp={searchButtonClickHandler}
+        onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
         placeholder={t('homePage.searchBar') + ' ' + getTitle()}
         className={styles.searchInput}
       />

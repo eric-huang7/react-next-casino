@@ -10,7 +10,7 @@ import {
 import {setGames, setTotalRows} from "../../redux/games/action";
 import {useSelector} from "react-redux";
 
-export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, gamesData, setRequestGamesData, heading}) => {
+export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading}) => {
   const moreButtonClickHAndler = async () => {
     let res;
     let url;
@@ -32,21 +32,16 @@ export const MoreButton = ({t, setPageCounter, pageCounter, isShowMoreButton, ga
     }
     res = await fetch(url);
     let newGamesData = await res.json();
-    // dispatch(setGames(newGamesData.results));
     dispatch(setTotalRows(newGamesData.total_rows))
     setPageCounter(pageCounter + 1);
     dispatch(setGames([...gamesData, ...newGamesData.results]))
   }
 
-  if (isShowMoreButton) {
-    return (
-      <div className={styles.moreWrapper}>
-        <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
-        <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
-        <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
-      </div>
-    )
-  } else {
-    return null
-  }
+  return (
+    <div className={styles.moreWrapper}>
+      <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
+      <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
+      <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
+    </div>
+  )
 }

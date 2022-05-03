@@ -4,7 +4,7 @@ import {
   getJackpotGamesAction,
   getLatestGamesAction,
   getNewGamesAction,
-  getTableGamesAction, getTopGamesAction, setGames, setLoaded, setSearchGames, setTotalRows
+  getTableGamesAction, getTopGamesAction, setGames, setLoaded, setSearch, setSearchGames, setTotalRows
 } from "./action";
 
 const initialState = {
@@ -26,7 +26,8 @@ const initialState = {
   topGames: null,
   loadingTopGames: true,
   totalRows: 0,
-  isLoaded: false
+  isLoaded: false,
+  isSearch: false
 }
 
 const handlers = {
@@ -85,6 +86,7 @@ const handlers = {
       searchGames: payload,
       searchGamesLoading: false,
       isSearchEmpty: payload && payload?.length > 0 ? false : true,
+      isLoaded: payload && payload?.length > 0 ? state.isLoaded : true
     }
   },
   [setTotalRows]: (state, {payload}) => {
@@ -97,6 +99,12 @@ const handlers = {
     return {
       ...state,
       isLoaded: payload
+    }
+  },
+  [setSearch]: (state, {payload}) => {
+    return {
+      ...state,
+      isSearch: payload
     }
   }
 }

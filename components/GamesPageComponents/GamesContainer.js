@@ -2,14 +2,12 @@ import styles from '../../styles/GamesPage/GamesPage.module.scss';
 import {GamesItem} from "./GamesItem";
 import {useDispatch, useSelector} from "react-redux";
 import {GamesPageHeading} from "./GamesPageHeading";
-import {MoreButton} from "./MoreButton";
 import {useRouter} from "next/router";
-import {useEffect, useRef, useState} from "react";
+import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
 import {SearchBar} from "../HomePageComponents/ChooseCategoryBlock/SearchBar";
-import {gameUrl} from "../../helpers/imageUrl";
 import preloadImages from "../../helpers/preloadImages";
 import {setLoaded} from "../../redux/games/action";
 
@@ -17,21 +15,12 @@ export const GamesContainer = (props) => {
   const {
     t,
     heading,
-    setRequestGamesData,
-    pageCounter,
+    gamesData,
     setPageCounter,
-    isShowMoreButton,
-    setIsShowMoreButton,
-    setTotal_rows,
     gamesError
   } = props;
-  const [searchQuery, setSearchQuery] = useState('');
-  // const [isLoaded, setIsLoaded] = useState(false);
-  const [gamesData, setGamesData] = useState([]);
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
-  const searchGames = useSelector((store) => store.games.searchGames)
-  const allGames = useSelector((store) => store.games.allGames)
   const isLoaded = useSelector((store) => store.games.isLoaded)
 
   const dispatch = useDispatch();
@@ -40,14 +29,8 @@ export const GamesContainer = (props) => {
   useEffect(() => {
     return () => {
       setPageCounter(0);
-      setIsShowMoreButton(true);
     }
   },[])
-
-  useEffect(() => {
-    console.log('searchQuery', searchQuery, isLoaded)
-    setGamesData(searchQuery ? searchGames : allGames);
-  },[searchQuery, searchGames, allGames])
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
@@ -135,28 +118,17 @@ export const GamesContainer = (props) => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log('loadedImages', isLoaded, loadedImages, filteredGames().length)
-  //   if (!isLoaded && gamesData.length > 0 && loadedImages >= gamesData.length) {
-  //     setIsLoaded(true)
-  //   }
-  // }, [loadedImages, isLoaded, gamesData])
-
   useEffect(() => {
     // Images preload
     let isCancelled = false
 
-    console.log('preloadImages',isLoaded, gamesData, gamesData.length)
     if (gamesData.length > 0) {
       (async () => await preloadImages(gamesData, isCancelled, () => {
-        console.log('callback');
-        // setIsLoaded(true)
         dispatch(setLoaded(true))
       }))();
     }
 
     return () => {
-      // console.log('isCancelled')
       isCancelled = true
     }
   }, [isLoaded, gamesData])
@@ -177,17 +149,6 @@ export const GamesContainer = (props) => {
     )
   })
 
-  const handleSearch = (value, refresh = false) => {
-    console.log('handleSearch', refresh)
-    setSearchQuery(value);
-
-    if (refresh) {
-      // setIsLoaded(false);
-      dispatch(setLoaded(false))
-    }
-  }
-
-  console.log('IsLoaded', isLoaded)
   return gamesError ? (
     <div className={styles.gamesMainContainer}>
       <GamesPageHeading heading={heading} t={t} />
@@ -198,7 +159,7 @@ export const GamesContainer = (props) => {
   ) : (
     <>
       <div className={styles.gamesMainContainer}>
-        <SearchBar onSearch={handleSearch} t={t}/>
+        <SearchBar t={t}/>
         <GamesPageHeading heading={heading} t={t} />
         {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
             <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
@@ -212,14 +173,6 @@ export const GamesContainer = (props) => {
           </div>
         )}
       </div>
-      {isLoaded && !searchQuery && <MoreButton
-        heading={heading}
-        gamesData={gamesData}
-        isShowMoreButton={isShowMoreButton}
-        pageCounter={pageCounter}
-        setPageCounter={setPageCounter}
-        t={t}
-      />}
     </>
   )
 }

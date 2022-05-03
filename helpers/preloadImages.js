@@ -14,7 +14,6 @@ function preloadImage (src) {
 }
 
 export default async function preloadImages(gamesData, isCancelled, callback) {
-  console.log('preloadImages func')
   if (isCancelled) {
     return
   }

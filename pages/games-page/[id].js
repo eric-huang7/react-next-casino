@@ -19,9 +19,10 @@ import {
   newGames_url,
   tableGames_url, topGames_url
 } from '../../helpers/gamesURL'
-import {setGames, setTotalRows} from '../../redux/games/action'
+import {setGames, setLoaded, setSearch, setTotalRows} from '../../redux/games/action'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
+import {MoreButton} from "../../components/GamesPageComponents/MoreButton";
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
@@ -41,15 +42,20 @@ const GamesPage = (props) => {
   const [gamesError, setGamesError] = useState('')
 
   const totalRows = useSelector((store) => store.games.totalRows)
-  const requestGamesData = useSelector((store) => store.games.allGames)
+  const allGames = useSelector((store) => store.games.allGames)
+  const searchGames = useSelector((store) => store.games.searchGames)
+  const isLoaded = useSelector((store) => store.games.isLoaded)
+  const isSearch = useSelector((store) => store.games.isSearch)
+
 
   useEffect(() => {
-    let res
     let heading = props.query.id
     let url
     let whatSearch
     setPageCounter(1)
     // searchRef?.current?.value = ''
+    dispatch(setLoaded(false));
+    dispatch(setSearch(false));
 
     setGamesError('')
 
@@ -104,15 +110,13 @@ const GamesPage = (props) => {
       dispatch(setTotalRows(data.total_rows))
     }).catch((err) => {
       setGamesError('gamesPage.error')
+      dispatch(setLoaded(true));
     })
     setHeading(heading)
   }, [props?.query?.id])
 
-  const allGames = useSelector((store) => store.games)
-  let searchGames = useSelector((store) => store.games.searchGames)
-
   useEffect(() => {
-    if (requestGamesData.length === totalRows) {
+    if (allGames.length === totalRows) {
       setIsShowMoreButton(false)
     } else {
 
@@ -120,7 +124,7 @@ const GamesPage = (props) => {
     return () => {
       setIsShowMoreButton(true)
     }
-  }, [props.query, totalRows, requestGamesData])
+  }, [props.query, totalRows, allGames])
 
   return (
     <>
@@ -133,7 +137,7 @@ const GamesPage = (props) => {
         <ErrorEmpty>
           <GamesContainer
             heading={heading}
-            gamesData={requestGamesData}
+            gamesData={isSearch ? searchGames : allGames}
             pageCounter={pageCounter}
             setPageCounter={setPageCounter}
             isShowMoreButton={isShowMoreButton}
@@ -142,6 +146,14 @@ const GamesPage = (props) => {
             gamesError={gamesError}
           />
         </ErrorEmpty>
+
+        {isLoaded && !isSearch && <MoreButton
+          heading={heading}
+          gamesData={allGames}
+          pageCounter={pageCounter}
+          setPageCounter={setPageCounter}
+          t={t}
+        />}
       </MainLayout>
     </>
   )
