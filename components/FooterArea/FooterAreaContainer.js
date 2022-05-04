@@ -4,13 +4,18 @@ import {useEffect, useRef, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
 import {useDispatch} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/games/action";
+import {useRouter} from "next/router";
 
 
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  console.log('router', router.pathname)
   useEffect(() => {
-    dispatch(getLatestGames(userData.user.user.id));
-    dispatch(getTopGames());
+    if (router.pathname !== '/') {
+      dispatch(getLatestGames(userData.user.user.id));
+      dispatch(getTopGames());
+    }
   }, [])
 
   const [activeSlots, setActiveSlots] = useState(false);

@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading}) => {
   const dispatch = useDispatch();
-  
+
   const moreButtonClickHAndler = async () => {
     let res;
     let url;

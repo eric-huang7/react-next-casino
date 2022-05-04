@@ -36,6 +36,10 @@ export const getGamesLobby = (quantity = 100) => dispatch =>
     jackpotGames && dispatch(getJackpotGamesAction({results: jackpotGames.games}));
     const tableGames = data?.results?.find(item => item.category === 2);
     tableGames && dispatch(getTableGamesAction({results: tableGames.games}));
+    const recentGames = data?.results?.find(item => item.category === 9);
+    recentGames && dispatch(getLatestGamesAction({results: recentGames.games}));
+    const topGames = data?.results?.find(item => item.category === 5);
+    topGames && dispatch(getTopGamesAction({results: topGames.games}));
   });
 
 export const getNewGames = () => dispatch =>
