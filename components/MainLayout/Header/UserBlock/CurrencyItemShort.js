@@ -7,7 +7,7 @@ import {baseVariants} from "../../../../envs/currency";
 export const CurrencyItemShort = ({ currencyData }) => {
 
   const abbr = currencyData?.abbreviation
-  const base = currencyData.base
+  const base = currencyData?.base
   let colorBase = '#4fadcf'
 
   if (base) {
@@ -23,7 +23,7 @@ export const CurrencyItemShort = ({ currencyData }) => {
 
   return (
     <div className={styles.currencyItem}>
-      <div id={`currencyImageContainer${currencyData.id}`} className={styles.iconContainer}></div>
+      <div id={`currencyImageContainer${currencyData?.id}`} className={styles.iconContainer}></div>
       <div className={styles.abbreviation}>
         <div>{abbr}</div>
         {!!base && <div className={styles.baseContainer} style={{ backgroundColor: `${colorBase}` }}>{base}</div>}
