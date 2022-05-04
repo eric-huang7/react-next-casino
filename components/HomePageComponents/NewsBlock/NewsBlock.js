@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import Connect from "../../../helpers/connect";
 
 
-export const NewsBlock = ({ title, isBackShow, titleImage }) => {
+export const NewsBlock = ({ isBackShow, titleImage }) => {
   const { t } = useTranslation('common');
 
   const {width} = useWindowDimensions();
@@ -23,7 +23,7 @@ export const NewsBlock = ({ title, isBackShow, titleImage }) => {
   const [loadingNews, setLoadingNews] = useState(true);
 
   useEffect(() => {
-    Connect.get(news_active_url, {}, {}, (status, data) => {
+    Connect.get(news_active_url, {}, (status, data) => {
       setNewsData(data.results);
       setLoadingNews(false);
     }).catch((data) => {
@@ -101,7 +101,7 @@ export const NewsBlock = ({ title, isBackShow, titleImage }) => {
       <div className={styles.newsHeadingWrapper}>
         <div className={styles.newsHeading}>
           <div className={styles.newsTitle}>
-            {title} ({newsData?.length})
+            {t('homePage.news')} ({newsData?.length})
           </div>
         </div>
       </div>
