@@ -103,7 +103,6 @@ export const HomePageContainer = ({t}) => {
             <ErrorText>
               <NewsBlock
                 t={t}
-                title={t('homePage.news')}
                 isBackShow={true}
                 titleImage={"/assets/img/newsSlider/news_heading.svg"}
               />

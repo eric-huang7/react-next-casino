@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 export const FooterAreaContainer = ({t, userData}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log('router', router.pathname)
+
   useEffect(() => {
     if (router.pathname !== '/') {
       dispatch(getLatestGames(userData.user.user.id));
