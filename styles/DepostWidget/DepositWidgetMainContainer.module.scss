@@ -14,7 +14,7 @@
   //width: 653px;
   height: 70px;
   border-radius: 8px;
-  background-color: #f7f8f9;
+  background-color: #d7a33c;
 
   left: 50%;
   margin-left: -327px;
@@ -46,7 +46,8 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-weight: 600;
+  font-family: "Lithograph";
 
   cursor: pointer;
 }
@@ -58,8 +59,9 @@
 
   font-size: 14px;
   letter-spacing: 0px;
-  color: rgba(0, 0, 0, 0.5);
-  font-family: "Verdana";
+  color: #772300;
+  font-weight: 600;
+  font-family: "Lithograph";
 }
 
 .amountInputWrapper {
@@ -76,7 +78,8 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-weight: 600;
+  font-family: "Lithograph";
 
   padding: 0 5px 0 5px;
 
@@ -87,7 +90,8 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-weight: 400;
+  font-family: "Lithograph";
 }
 
 .widgetAmountInput::-webkit-outer-spin-button,
@@ -120,7 +124,7 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-family: "Lithograph";
 }
 
 .amountInputLabel {
@@ -131,8 +135,9 @@
 
   font-size: 14px;
   letter-spacing: 0px;
-  color: rgba(0, 0, 0, 0.5);
-  font-family: "Verdana";
+  color: #772300;
+  font-weight: 600;
+  font-family: "Lithograph";
 
   white-space: nowrap;
 }
@@ -159,7 +164,8 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-weight: 600;
+  font-family: "Lithograph";
 
   cursor: pointer;
 }
@@ -295,7 +301,7 @@
   font-size: 14px;
   letter-spacing: 0px;
   color: #1e1f21;
-  font-family: "Verdana";
+  font-family: "Lithograph";
 
   cursor: pointer;
 
@@ -309,15 +315,16 @@
   width: 138px;
   height: 42px;
   border-radius: 8px;
-  background-color: #e64b3b;
+  background-color: #99cc33;
 
   border: none;
 
   font-size: 14px;
   letter-spacing: 0px;
   color: #ffffff;
+  font-weight: 600;
   text-transform: uppercase;
-  font-family: "Verdana";
+  font-family: "Lithograph";
 
   margin-right: 14px;
 
@@ -435,6 +442,7 @@
     border-radius: 10px;
     background-color: #f5f5f5;
     border: 1px solid #d1d1d1;
+    font-weight: 600;
 
     cursor: pointer;
 

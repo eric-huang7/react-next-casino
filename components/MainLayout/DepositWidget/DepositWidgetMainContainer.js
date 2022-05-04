@@ -192,7 +192,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         />
       </ErrorEmpty>
       {
-        width > 680 && userAuth.isAuthenticated
+        width > 680 && userAuth.isAuthenticated && true
           ?
           <ErrorText>
             <PaymentMethodMainBlock
