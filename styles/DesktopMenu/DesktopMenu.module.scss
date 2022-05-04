@@ -4,6 +4,7 @@
 
   right: 10px;
   top: 47px;
+  width: max-content;
 }
 .menuContainer {
   background-image: url("/assets/img/homeImg/popup_menu_bg.webp");
@@ -14,16 +15,19 @@
   //flex-direction: column;
   //background: red;
   //height: 70px;
+  min-width: 100%;
+  width: max-content;
   padding: 10px 15px;
   background: #663605;
   //background-image: url("/assets/img/homeImg/popup_menu_header_bg.webp");
   //background-size: cover;
   //background-position: center center;
   .balance {
-    width: 55%;
+    min-width: 55%;
+    width: max-content;
   }
   .buttons {
-    width: 45%;
+    width: max-content;
     & > div {
       margin: 5px 0;
       button {

@@ -15,6 +15,7 @@ export const findIconName = (currencyData) => {
 
 
 export const svgSetter = (currencyData, returnAbbr = false) => {
+  if (!currencyData) return;
   let svg = document.getElementById("currencyIframe");
   let container = document.getElementById(`currencyImageContainer${currencyData.id}`);
   if (svg) {
