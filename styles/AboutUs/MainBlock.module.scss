@@ -1,11 +1,5 @@
 .mainSectionWrapper {
-
-
-  background-image: url("/assets/img/aboutUs/aboutUsMainBack.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
+  background-image: url(/assets/img/homeImg/home_header_bckgr.jpg);
   min-height: 420px;
 }
 
@@ -39,10 +33,10 @@
 
 .providerImg p, .gamesImg p, .flexibleSystemImg p, .instantCashoutsImg p, .bigSpan {
   text-align: center;
-  font-size: 35px;
+  font-size: 32px;
   color: #ff7d7d;
   font-weight: 900;
-  font-family: "Swiss721 BT";
+  font-family: "Lithograph";
   text-transform: uppercase;
   line-height: 36px;
   word-wrap: break-word;
