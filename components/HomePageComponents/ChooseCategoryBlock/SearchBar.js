@@ -119,7 +119,7 @@ export const SearchBar = ({ t }) => {
       case 'tournaments':
         return t('gamesPage.headings.tournaments');
       default:
-        return type;
+        return type || '';
     }
   }
 

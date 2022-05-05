@@ -35,6 +35,7 @@ export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
           })
         }
       </ul>
+
       <div className={styles.categoryInputsWrapper}>
         <div className={`${styles.providersButton}`}>
           <Link href={'/providers-page'}>
@@ -42,6 +43,11 @@ export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
           </Link>
         </div>
       </div>
+
+      <ErrorText>
+        <SearchBar t={t}/>
+      </ErrorText>
+
       <div className={styles.divider}></div>
     </div>
   )
