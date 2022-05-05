@@ -288,6 +288,16 @@ padding: 0;
   margin: 3px;
 }
 
+.checkLaterWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #2a2a31;
+  height: 100px;
+  padding-bottom: 16px;
+  font-family: Lithograph;
+}
 .buttonsWrapper {
   flex-shrink: 0;
 
