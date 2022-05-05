@@ -26,7 +26,7 @@
   padding: 0;
   margin: 0;
 
-  width: 929px;
+  //width: 929px;
 }
 
 .categoryListItem {
@@ -104,24 +104,24 @@
 
 .searchInputLabel {
   position: relative;
-  padding: 20px 50px 20px 20px;
-  margin-left: 30px;
-  width: 350px;
+  padding: 7px 50px 8px 12px;
+  margin-left: 0px;
+  width: 190px;
   background: #d7a33c;
-  border: 1px solid #772300;
-  border-radius: 0.25rem;
+  border: 1px solid #d7a33c;
+  //border-radius: 0.25rem;
   &:focus-within {
     border-color: white;
   }
   &:after {
     content: '';
 
-    width: 24px;
-    height: 25px;
+    width: 18px;
+    height: 19px;
 
     position: absolute;
-    top: 20px;
-    right: 15px;
+    top: 10px;
+    right: 8px;
 
     background-image: url("/assets/icons/home/searchIcon.svg");
     background-position: center;
@@ -134,7 +134,7 @@
   background: transparent;
   color: #772300;
   text-align: left;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1;
   border: none;
   &:focus {
@@ -194,7 +194,7 @@
   }
   .searchInputLabel {
     position: relative;
-    margin-left: 70px;
+    margin-left: 0px;
     &:after {
 
       width: 23px;

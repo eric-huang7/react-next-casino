@@ -159,7 +159,6 @@ export const GamesContainer = (props) => {
   ) : (
     <>
       <div className={styles.gamesMainContainer}>
-        <SearchBar t={t}/>
         <GamesPageHeading heading={heading} t={t} />
         {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
             <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>

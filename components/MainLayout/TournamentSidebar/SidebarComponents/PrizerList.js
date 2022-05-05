@@ -3,7 +3,7 @@ import { PrizerItem } from './PrizerItem'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PrizerList = ({ t, sliderPosition, tournaments }) => {
-
+  const tournament = tournaments?.tournaments?.results[sliderPosition]
   if (tournaments.loadingTournaments) {
     return <></>
   } else {
@@ -11,18 +11,18 @@ export const PrizerList = ({ t, sliderPosition, tournaments }) => {
       <div className={styles.prizerListWrapper}>
         <ol className={styles.prizerList}>
           {
-            tournaments.tournaments.results[sliderPosition].prizes.map((el, index) => {
-              let nickName = tournaments.tournaments.results[sliderPosition].players[index]
-                ? tournaments.tournaments.results[sliderPosition].players[index].nickname
+            tournaments.tournaments?.results[sliderPosition]?.prizes?.map((el, index) => {
+              let nickName = tournament?.players[index]
+                ? tournament?.players[index].nickname
                 : '-'
-              let points = tournaments.tournaments.results[sliderPosition].players[index]
-                ? Number(tournaments.tournaments.results[sliderPosition].players[index].points).toFixed(2)
+              let points = tournament?.players[index]
+                ? Number(tournament?.players[index].points).toFixed(2)
                 : '-'
               let moneyAward = el.freespins_count === 0
                 ? Number(el.money_award)
                 : el.freespins_count
               let currency = el.freespins_count === 0
-                ? tournaments.tournaments.results[sliderPosition].currency
+                ? tournament?.currency
                 : 'fs'
               return (
                 <ErrorEmpty key={`${el.id} prizes list`}>

@@ -12,8 +12,8 @@ export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo,
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (tournaments.tournaments) {
-      dispatch(setActiveTournaments(tournaments.tournaments.results[sliderPosition]))
+    if (tournaments.tournaments && tournaments?.tournaments?.results) {
+      dispatch(setActiveTournaments(tournaments?.tournaments?.results[sliderPosition]))
     }
 
   }, [sliderPosition, tournaments.tournaments])
@@ -21,13 +21,13 @@ export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo,
   if (tournaments.loadingTournaments) {
     return <></>
   } else {
-    return (
+    return tournaments?.tournaments?.results?.length > 0 ? (
       <div className={styles.buttonsWrapper}>
         <div className={styles.timeDetails}>
           <ErrorEmpty>
             <Timer
               t={t}
-              time={Number(tournaments.tournaments.results[sliderPosition].time_finished)}
+              time={Number(tournaments?.tournaments?.results[sliderPosition]?.time_finished)}
               router={router}
             />
           </ErrorEmpty>
@@ -44,7 +44,7 @@ export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo,
           />
         </div>
       </div>
-    )
+    ) : <div className={styles.checkLaterWrapper}>{t('homePage.checkLater')}</div>
   }
 
 }
