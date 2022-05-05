@@ -110,6 +110,20 @@
 
   display: flex;
   flex-wrap: nowrap;
+
+  a {
+    background: rgba(0,0,0,.3);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 40px;
+    }
+  }
 }
 
 .languageRightInfo {
