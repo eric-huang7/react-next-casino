@@ -84,12 +84,13 @@ export const GamesContainer = (props) => {
       let is_bonus = false; // default val
       let bonus_id = null; // default val
       let userBalance = user.balance.balances.filter((el) => el.is_default !== "0");
+
       let sendData = {
         game_provider_id: gameData.game_provider_id,
         game_id: gameData.game_provided_id,
         user_id: user.user.user.id,
         is_bonus: is_bonus,
-        balance_id: `${userBalance[0].id}`
+        balance_id: `${userBalance[0]?.id || user.balance.balances[0]?.id}`
       }
       if (typeof window !== "undefined") {
         let saveData = JSON.stringify({
