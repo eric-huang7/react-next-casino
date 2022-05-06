@@ -13,7 +13,7 @@ import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelect
 export const TableRow = ({ t, balanceData, currencyData }) => {
   const dispatch = useDispatch()
 
-  let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id))
+  let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
 
   let amount = numberTransformer(balanceData.current_balance)
   let cashOut = numberTransformer(balanceData.cash_amount)
@@ -32,7 +32,7 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
     svgSetter(currency, returnAbbr)
   }, [])
 
-  return (
+  return currency ? (
     <tr className={styles.tableRow}>
       {
         Number(balanceData.is_default) === 0 ?
@@ -52,10 +52,10 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
         <CurrencyItem t={t} currencyData={currency} />
       </td>
       <td className={styles.tableAmount}>
-        {`${amount} ${currency.abbreviation}`}
+        {`${amount} ${currency?.abbreviation}`}
       </td>
       <td className={styles.tableCashOut}>
-        {`${cashOut} ${currency.abbreviation}`}
+        {`${cashOut} ${currency?.abbreviation}`}
       </td>
       <td className={styles.tableActions}>
         <div>
@@ -64,8 +64,8 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
           </ErrorEmpty>
           <Link
             href={{
-              pathname: `/accounts/cashout/${currency.abbreviation}`,
-              query: { currency_id: `${currency.id}` }
+              pathname: `/accounts/cashout/${currency?.abbreviation}`,
+              query: { currency_id: `${currency?.id}` }
             }}
           >
             <a className={styles.cashoutLink}>
@@ -75,5 +75,5 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
         </div>
       </td>
     </tr>
-  )
+  ) : null
 }

@@ -26,12 +26,12 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
     svgSetter(currency, returnAbbr)
   }, [])
 
-  return (
+  return currency ? (
     <li onClick={() => chooseClickHandler()} className={styles.balanceItem}>
       <span>{amount}</span>
       <span>
         <CurrencyItemShort currencyData={currency} />
       </span>
     </li>
-  )
+  ) : null
 }
