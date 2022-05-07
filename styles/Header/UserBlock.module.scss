@@ -20,7 +20,7 @@
     width: 38px;
     height: 45px;
 
-    margin-right: 23px;
+    margin-right: 16px;
 
     background-image: url('/assets/icons/bell_icon.svg');
     background-position: center;
@@ -65,7 +65,8 @@
     font-family: "Verdana";
     word-break: break-word;
 
-    cursor: pointer;
+    //cursor: pointer;
+
 
     display: block;
 
@@ -76,7 +77,6 @@
 
     /*margin-right: 25px;*/
 }
-
 
 .userMainBlockUserInfoBlock div.userTextContainer {
     position: relative;
@@ -98,37 +98,49 @@
     }
 }
 
-.userMainBlockUserInfoBlock div.userTextContainer:after {
-    position: absolute;
-    top: 45%;
-    right: 15px;
-
-    content: '';
-
+.userMainBlockUserInfoBlock span.userName {
     display: block;
-
-    border-top: 1px solid #9e9e9e;
-    border-right: 1px solid #9e9e9e;
-
-    width: 7px;
-    height: 7px;
-
-    transform: rotateZ(45deg);
-
-    transition: transform 0.2s linear;
 }
-
-.userMainBlockUserInfoBlock div.userTextContainer.active:after {
-
-    transform: rotateZ(135deg);
+.depositButton {
+    cursor: pointer;
+    color: #99cc33;
 }
-
-.userMainBlockUserInfoBlock div.userTextContainer.indicatorOff:after {
-    display: none;
+.balance {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
+//.userMainBlockUserInfoBlock div.userTextContainer:after {
+//    position: absolute;
+//    top: 45%;
+//    right: 15px;
+//
+//    content: '';
+//
+//    display: block;
+//
+//    border-top: 1px solid #9e9e9e;
+//    border-right: 1px solid #9e9e9e;
+//
+//    width: 7px;
+//    height: 7px;
+//
+//    transform: rotateZ(45deg);
+//
+//    transition: transform 0.2s linear;
+//}
+
+//.userMainBlockUserInfoBlock div.userTextContainer.active:after {
+//
+//    transform: rotateZ(135deg);
+//}
+
+//.userMainBlockUserInfoBlock div.userTextContainer.indicatorOff:after {
+//    display: none;
+//}
 
 .userMainBlockUserInfoBlock span:nth-child(1) {
-    margin-right: 32px;
+    margin-left: 16px;
 }
 
 

@@ -46,6 +46,7 @@
     & span:last-child {
       white-space: nowrap;
       display: table-cell;
+      vertical-align: middle !important;
     }
   }
   & li.balanceItem:hover {
