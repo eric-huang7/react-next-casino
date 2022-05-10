@@ -17,6 +17,7 @@ export const Footer = ({ userAuth }) => {
   const linkKeyFirs = [
     { key: 'liveChat', route: '/#livechat', name: `LiveChat` },
     { key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487` },
+    { key: 'aboutUs', route: '/aboutUs', name: `aboutUs` },
     { key: 'faqs', route: '/contactUs#faq', name: `FAQs` },
     { key: 'contactUs', route: '/contactUs', name: `ContactUs` },
     { key: 'privacyPolicy', route: '/privacy-policy', name: `privacyPolicy` },
@@ -29,22 +30,21 @@ export const Footer = ({ userAuth }) => {
   ]
   const coinsImg = [
     { key: 'bitcoincash', src: '/assets/img/footer/bitcoincash.webp' },
-    { key: 'binance', src: '/assets/img/footer/binance.png' },
+    { key: 'binance', src: '/assets/img/footer/binance.webp' },
     { key: 'cardano', src: '/assets/img/footer/cardano.webp' },
     { key: 'chainlink', src: '/assets/img/footer/chainlink.webp' },
     { key: 'ethereum', src: '/assets/img/footer/ethereum.webp' },
     { key: 'litecoin', src: '/assets/img/footer/litecoin.webp' },
     { key: 'monero', src: '/assets/img/footer/monero.webp' },
     { key: 'polkadot', src: '/assets/img/footer/polkadot.webp' },
-    { key: 'stellar', src: '/assets/img/footer/stellar.png' },
+    { key: 'stellar', src: '/assets/img/footer/stellar.webp' },
   ]
 
   const socilaLinks = [
-    { key: 'facebook', href: '/#facebook', img: '/assets/img/footer/facebook.webp' },
-    { key: 'twitter', href: '/#twitter', img: '/assets/img/footer/twitter.webp' },
-    { key: 'youtube', href: '/#youtube', img: '/assets/img/footer/youtube.webp' },
-    { key: 'instagram', href: '/#instagram', img: '/assets/img/footer/instagram.webp' },
-    { key: 'linkedin', href: '/#linkedin', img: '/assets/img/footer/linkedin.webp' },
+    { key: 'facebook', href: '/#facebook', img: '/assets/img/footer/facebook.svg' },
+    { key: 'twitter', href: '/#twitter', img: '/assets/img/footer/twitter.svg' },
+    { key: 'youtube', href: '/#youtube', img: '/assets/img/footer/youtube.svg' },
+    { key: 'instagram', href: '/#instagram', img: '/assets/img/footer/instagram.svg' },
   ]
 
   const languages = useSelector(({ lang }) => lang.languages)
@@ -80,7 +80,7 @@ export const Footer = ({ userAuth }) => {
           {coinsImg.map((el) => {
             return (
               <div className={styles.coinImgWrapper} key={el.key}>
-                <Image src={el.src} width={110} height={33} alt={el.key}/>
+                <Image src={el.src} width={189} height={64} alt={el.key}/>
               </div>
             )
           })}
