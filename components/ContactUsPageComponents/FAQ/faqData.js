@@ -1,5 +1,5 @@
 export const data = [
-  {id: 1, heading: "faq.mostPopular.heading", child: false, img: "/assets/img/contactUs/icons/mostPopular.png",
+  {id: 1, heading: "faq.mostPopular.heading", child: false, img: "/assets/img/contactUs/icons/mostPopular.svg",
     innerInfo: [
       {id: 10, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 11, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -7,7 +7,7 @@ export const data = [
       {id: 13, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 2, heading: "faq.account.heading", child: false, img: "/assets/img/contactUs/icons/myAccount.png",
+  {id: 2, heading: "faq.account.heading", child: false, img: "/assets/img/contactUs/icons/myAccount.svg",
     innerInfo: [
       {id: 20, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 21, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -15,7 +15,7 @@ export const data = [
       {id: 23, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 3, heading: "faq.depositsWithdrawals.heading", child: false, img: "/assets/img/contactUs/icons/deposits.png",
+  {id: 3, heading: "faq.depositsWithdrawals.heading", child: false, img: "/assets/img/contactUs/icons/deposits.svg",
     innerInfo: [
       {id: 30, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 31, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -23,7 +23,7 @@ export const data = [
       {id: 33, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 4, heading: "faq.bonuses.heading", child: false, img: "/assets/img/contactUs/icons/bonuses.png",
+  {id: 4, heading: "faq.bonuses.heading", child: false, img: "/assets/img/contactUs/icons/bonuses.svg",
     innerInfo: [
       {id: 40, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 41, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -31,7 +31,7 @@ export const data = [
       {id: 43, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 5, heading: "faq.theCasino.heading", child: false, img: "/assets/img/contactUs/icons/casino.png",
+  {id: 5, heading: "faq.theCasino.heading", child: false, img: "/assets/img/contactUs/icons/casino.svg",
     innerInfo: [
       {id: 50, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 51, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -39,7 +39,7 @@ export const data = [
       {id: 53, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 6, heading: "faq.security.heading", child: false, img: "/assets/img/contactUs/icons/security.png",
+  {id: 6, heading: "faq.security.heading", child: false, img: "/assets/img/contactUs/icons/security.svg",
     innerInfo: [
       {id: 60, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 61, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -47,7 +47,7 @@ export const data = [
       {id: 63, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 7, heading: "faq.responsibleGaming.heading", child: false, img: "/assets/img/contactUs/icons/responsGaming.png",
+  {id: 7, heading: "faq.responsibleGaming.heading", child: false, img: "/assets/img/contactUs/icons/responsGaming.svg",
     innerInfo: [
       {id: 70, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 71, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},
@@ -55,7 +55,7 @@ export const data = [
       {id: 73, child: true, heading: "faq.mostPopular.question4.question", text: "faq.mostPopular.question4.text"},
     ]
   },
-  {id: 8, heading: "faq.affiliate.heading", child: false, img: "/assets/img/contactUs/icons/affiliate.png",
+  {id: 8, heading: "faq.affiliate.heading", child: false, img: "/assets/img/contactUs/icons/affiliate.svg",
     innerInfo: [
       {id: 80, child: true, heading: "faq.mostPopular.question1.question", text: "faq.mostPopular.question1.text"},
       {id: 81, child: true, heading: "faq.mostPopular.question2.question", text: "faq.mostPopular.question2.text"},

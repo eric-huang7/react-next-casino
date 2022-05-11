@@ -13,7 +13,7 @@
 }
 
 .contactItem {
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgba(58, 25, 18, 0.7);
 
   padding: 10px;
   margin: 0 auto 35px;
@@ -23,7 +23,7 @@
 }
 
 .contactFrame {
-  border: 1px solid #65686b;
+  border: 1px solid #E39735;
 
   padding: 10px 11% 10px 150px;
 
@@ -56,19 +56,19 @@
 .contactItem:nth-child(1) .contactFrame:before {
   width: 12%;
   height: 40%;
-  background-image: url("/assets/img/contactUs/icons/liveChat.png");
+  background-image: url("/assets/img/contactUs/icons/liveChat.svg");
 
 }
 .contactItem:nth-child(2) .contactFrame:before {
   width: 20%;
   height: 30%;
-  background-image: url("/assets/img/contactUs/icons/email.png");
+  background-image: url("/assets/img/contactUs/icons/email.svg");
 
 }
 .contactItem:nth-child(3) .contactFrame:before {
   width: 20%;
   height: 40%;
-  background-image: url("/assets/img/contactUs/icons/phone.png");
+  background-image: url("/assets/img/contactUs/icons/phone.svg");
 
 }
 
@@ -76,7 +76,7 @@
   & > h3 {
     font-size: 18px;
     line-height: 30px;
-    color: $red-color;
+    color: #FFFFFF;
     font-family: "Verdana";
     text-transform: uppercase;
 
