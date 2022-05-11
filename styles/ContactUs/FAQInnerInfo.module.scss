@@ -4,7 +4,12 @@
 
 }
 .faqItemInnerInfoHeading{
-  color: $red-color;
+  color: #A93618;
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
   position: relative;
 
   user-select: none;
@@ -41,18 +46,16 @@
 
 .itemInnerInfoText{
   font-size: 0;
-  color: #7b7b7b;
-
+  color: #7E7E7E;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
   transition: font-size 0.2s ease-in-out;
 }
 .activeText {
-  font-size: 12px;
 }
 
 @media screen and (max-width: 500px) {
   .faqItemInnerInfoHeading {
-    font-size: 14px;
-
-    color: $red-color;
   }
 }
