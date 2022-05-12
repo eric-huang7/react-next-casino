@@ -29,17 +29,17 @@ export const getGames = () => dispatch =>
 export const getGamesLobby = (quantity = 100) => dispatch =>
   Connect.get(games_lobby(quantity), {}, (status, data) => {
     const liveGames = data?.results?.find(item => item.category === 3);
-    liveGames && dispatch(getGamesAction({results: liveGames.games}));
+    liveGames && dispatch(getGamesAction({results: liveGames.games, rows: liveGames.rows}));
     const newGames = data?.results?.find(item => item.category === 6);
-    newGames && dispatch(getNewGamesAction({results: newGames.games}));
+    newGames && dispatch(getNewGamesAction({results: newGames.games, rows: newGames.rows}));
     const jackpotGames = data?.results?.find(item => item.category === 4);
-    jackpotGames && dispatch(getJackpotGamesAction({results: jackpotGames.games}));
+    jackpotGames && dispatch(getJackpotGamesAction({results: jackpotGames.games, rows: jackpotGames.rows}));
     const tableGames = data?.results?.find(item => item.category === 2);
-    tableGames && dispatch(getTableGamesAction({results: tableGames.games}));
+    tableGames && dispatch(getTableGamesAction({results: tableGames.games, rows: tableGames.rows}));
     const recentGames = data?.results?.find(item => item.category === 9);
-    recentGames && dispatch(getLatestGamesAction({results: recentGames.games}));
+    recentGames && dispatch(getLatestGamesAction({results: recentGames.games, rows: recentGames.rows}));
     const topGames = data?.results?.find(item => item.category === 5);
-    topGames && dispatch(getTopGamesAction({results: topGames.games}));
+    topGames && dispatch(getTopGamesAction({results: topGames.games, rows: topGames.rows}));
   });
 
 export const getNewGames = () => dispatch =>
