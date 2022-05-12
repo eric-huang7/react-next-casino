@@ -18,7 +18,7 @@ import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {IoChevronForwardOutline} from "react-icons/io5";
 
 
-export const GamesSliderBlock = ({t, title, titleIcon, slides = [], loading, linkPath, titleImage}) => {
+export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loading, linkPath, titleImage}) => {
   const {height, width} = useWindowDimensions();
   const dispatch = useDispatch();
   const playGames = useSelector((state) => state.playGame);
@@ -159,7 +159,7 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], loading, lin
     <section className={styles.sliderMainWrapper}>
       <div className={styles.sliderHeadingWrapper}>
         <div className={styles.sliderHeading}>
-          <div className={styles.sliderTitle}>{title} ({slides?.length})</div>
+          <div className={styles.sliderTitle}>{title} {count && `(${count})`}</div>
           <Link href={linkPath}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
         </div>
       </div>

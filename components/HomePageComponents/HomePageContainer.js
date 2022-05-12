@@ -62,6 +62,7 @@ export const HomePageContainer = ({t}) => {
                 title={t('gamesPage.headings.newGames')}
                 titleIcon={<FaCertificate />}
                 slides={games?.newGames?.results?.slice()}
+                count={games?.newGames?.rows}
                 loading={games.loadingNewGames}
                 linkPath="/games-page/new-games"
               />
@@ -73,6 +74,7 @@ export const HomePageContainer = ({t}) => {
                 title={t('gamesPage.headings.jackpotGames')}
                 titleIcon={<GiStarsStack />}
                 slides={games?.jackpotGames?.results?.slice()}
+                count={games?.jackpotGames?.rows}
                 loading={games.loadingJackpotGames}
                 linkPath="/games-page/jackpot-games"
               />
@@ -89,6 +91,7 @@ export const HomePageContainer = ({t}) => {
                 title={t('gamesPage.headings.tableGames')}
                 titleIcon={<GiCardJackHearts />}
                 slides={games?.tableGames?.results?.slice()}
+                count={games?.tableGames?.rows}
                 loading={games.loadingTableGames}
                 linkPath="/games-page/table-games"
               />
