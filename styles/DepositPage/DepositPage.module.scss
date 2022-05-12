@@ -33,7 +33,7 @@
     font-size: 40px;
     letter-spacing: 1px;
     color: $red-color;
-    font-family: "Gobold";
+    font-family: "Lithograph";
     text-transform: uppercase;
     //white-space: nowrap;
 
@@ -76,7 +76,8 @@
     font-size: 24px;
     letter-spacing: 1px;
     color: #ffffff;
-    font-family: "Myriad Pro";
+    font-weight: 600;
+    font-family: "Lithograph";
     text-transform: uppercase;
 
   }
@@ -148,7 +149,8 @@
 
         font-size: 36px;
         color: #3a3a3a;
-        font-family: "Source Sans Roman", sans-serif;
+        font-weight: 600;
+        font-family: "Lithograph", sans-serif;
 
         outline: none;
 
@@ -473,8 +475,9 @@
   cursor: pointer;
   & > p {
     font-size: 15px;
+    font-weight: 600;
     color: $red-color;
-    font-family: "Verdana";
+    font-family: "Lithograph";
 
     text-align: center;
   }
@@ -501,7 +504,7 @@
     font-weight: bold;
     letter-spacing: 0px;
     color: #ffffff;
-    font-family: "Myriad Pro";
+    font-family: "Lithograph";
     text-transform: uppercase;
     text-align: center;
   }
