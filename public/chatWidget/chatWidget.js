@@ -19,9 +19,9 @@ LHCChatOptions.attr_prefill.push({'name':'username','value':'tbd auth user'});
 LHCChatOptions.attr_prefill.push({'name':'server','value':'http://t-gpb.slotsidol.com:7000'});
 
 var LHC_API = LHC_API||{};
-LHC_API.args = {mode:'widget',lhc_base_url:'//cas_faa68_deskpro.coredata.eu:82/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,theme:1,check_messages:false};
+LHC_API.args = {mode:'widget',lhc_base_url:'//cas-faa68-deskpro.slotsidol.com:8443/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,theme:1,check_messages:false};
 (function() {
   var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
-  var date = new Date();po.src = '//cas_faa68_deskpro.coredata.eu:82/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+  var date = new Date();po.src = '//cas-faa68-deskpro.slotsidol.com:8443/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
