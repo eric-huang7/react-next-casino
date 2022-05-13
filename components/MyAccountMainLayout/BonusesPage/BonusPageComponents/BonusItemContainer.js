@@ -25,8 +25,16 @@ export const BonusItemContainer = ({
   let expiryDate = dateFormatter(bonusData.time_expires, router.locale)
 
   if (bonusData.status === '1') {
-    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
-    let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
+    let wagerOrFreeSpins, wagerOrFreeSpinsAmount
+    if (Number(bonusData.free_spins_awarded) > 0) {
+      // fs bonus
+      wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpinsRemaining'
+      wagerOrFreeSpinsAmount = Number(bonusData.free_spins_remaining)
+    } else {
+      // cash bonus
+      wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
+      wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
+    }
 
     return (
       <ErrorText>
