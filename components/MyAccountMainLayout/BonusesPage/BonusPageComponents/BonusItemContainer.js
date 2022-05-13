@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { ActiveBonus } from './ActiveBonus'
 import { PendingBonus } from './PendingBonus'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
+import {BonusItem} from "./BonusItem";
 
 export const BonusItemContainer = ({
   t,
@@ -17,66 +18,47 @@ export const BonusItemContainer = ({
   let title = bonusData.title ? bonusData.title : '-'
   let stage = statusValue(bonusData.status)
   let currency = currencyInfo(currencyData.currency.results, bonusData.currency_id)[0].abbreviation
-  let amountName = bonusData.status === '1' ? 'myAccount.bonusPage.bonusItems.amount' : 'myAccount.bonusPage.bonusItems.games'
-  let amount = bonusData.status === '1' ? `${Number(bonusData.max_cashout_amount)} ${currency}` : bonusData.game_names
-  let wagerPercent = wagerPercentCalculator(bonusData.rollover_achieved, bonusData.wager_requirements, bonusData.award_amount)
-
   let dateReceived = dateFormatter(bonusData.time_redeemed, router.locale)
   let expiryDate = dateFormatter(bonusData.time_expires, router.locale)
+  let wagerOrFreeSpins,
+    wagerOrFreeSpinsAmount,
+    amount,
+    wagerPercent,
+    amountName
 
-  if (bonusData.status === '1') {
-    let wagerOrFreeSpins, wagerOrFreeSpinsAmount
-    if (Number(bonusData.free_spins_awarded) > 0) {
-      // fs bonus
-      wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpinsRemaining'
-      wagerOrFreeSpinsAmount = Number(bonusData.free_spins_remaining)
-    } else {
-      // cash bonus
-      wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
-      wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
-    }
-
-    return (
-      <ErrorText>
-        <ActiveBonus
-          t={t}
-          title={title}
-          amount={amount}
-          amountName={amountName}
-          expiryDate={expiryDate}
-          dateReceived={dateReceived}
-          stage={stage}
-          wagerOrFreeSpins={wagerOrFreeSpins}
-          wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
-          wagerPercent={wagerPercent}
-          cancelBonusClickHandler={cancelBonusClickHandler}
-          bonusData={bonusData}
-        />
-      </ErrorText>
-    )
+  if (Number(bonusData.free_spins_awarded) > 0) {
+    wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpins'
+    wagerOrFreeSpinsAmount = Number(bonusData.free_spins_awarded)
+    amount = bonusData.game_names
+    amountName = 'myAccount.bonusPage.bonusItems.games'
   } else {
-    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpins'
-    let wagerOrFreeSpinsAmount = Number(bonusData.free_spins_awarded)
-
-    return (
-      <ErrorText>
-        <PendingBonus
-          t={t}
-          title={title}
-          amount={amount}
-          amountName={amountName}
-          expiryDate={expiryDate}
-          dateReceived={dateReceived}
-          stage={stage}
-          wagerOrFreeSpins={wagerOrFreeSpins}
-          wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
-          activateBonusClickHandler={activateBonusClickHandler}
-          bonusData={bonusData}
-        />
-      </ErrorText>
-    )
+    wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
+    wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
+    amount = `${Number(bonusData.max_cashout_amount)} ${currency}`
+    amountName = 'myAccount.bonusPage.bonusItems.amount'
+    wagerPercent = wagerPercentCalculator(bonusData.rollover_achieved, bonusData.wager_requirements, bonusData.award_amount)
   }
-
+  
+  return (
+    <ErrorText>
+      <BonusItem
+        t={t}
+        title={title}
+        amount={amount}
+        amountName={amountName}
+        expiryDate={expiryDate}
+        dateReceived={dateReceived}
+        stage={stage}
+        wagerPercent={wagerPercent}
+        wagerOrFreeSpins={wagerOrFreeSpins}
+        wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
+        activateBonusClickHandler={activateBonusClickHandler}
+        cancelBonusClickHandler={cancelBonusClickHandler}
+        bonusData={bonusData}
+        status={bonusData.status}
+      />
+    </ErrorText>
+  )
 }
 
 function wagerPercentCalculator (rollover_achieved, wager_requirements) {
