@@ -73,7 +73,8 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 12px;
 
   & a {
     font-size: 14px;
