@@ -18,10 +18,10 @@ export const PrizerList = ({ t, sliderPosition, tournaments }) => {
               let points = tournament?.players[index]
                 ? Number(tournament?.players[index].points).toFixed(2)
                 : '-'
-              let moneyAward = el.freespins_count === 0
+              let moneyAward = el.money_award > 0
                 ? Number(el.money_award)
                 : el.freespins_count
-              let currency = el.freespins_count === 0
+              let currency = el.money_award > 0
                 ? tournament?.currency
                 : 'fs'
               return (
