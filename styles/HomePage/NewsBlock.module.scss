@@ -87,12 +87,12 @@
 .newItemWrapper {
   height: 465px;
 
-  background-color: #2163ab;
+  background-color: #FFF;
 
   position: relative;
 
-  outline: 1px solid rgba(255,255,255,0.5);
-  outline-offset: -5px;
+  outline: 1px solid #FFBF69;
+  outline-offset: -10px;
   margin: 0 4px;
 }
 
@@ -111,7 +111,8 @@
 }
 
 .newTextBlock {
-  background-color: #2163ab;
+  background-color: #FFF;
+  color: #000;
 
   width: 100%;
 
@@ -136,11 +137,11 @@
     margin: 0;
   }
   & > div > .newMainText {
-    color: #fdfdfe;
+    color: #000;
     margin-bottom: 15px;
   }
   & > div > .newDateText {
-    color: #a4a4a4;
+    color: #944639;
     align-self: flex-end;
   }
 }

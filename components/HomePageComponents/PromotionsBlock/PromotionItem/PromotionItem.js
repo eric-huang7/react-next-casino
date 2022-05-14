@@ -10,15 +10,16 @@ export const PromotionItem = ({bonusInfo, bonusCalculations}) => {
     <div className={styles.promotionMainItemWrapper}>
       <div className={styles.promotionItemWrapper}>
         <div className={styles.promotionFrame}>
+          <div className={styles.promoImage}>
+            <img src={urlGen(bonusInfo.image)} alt={`promotion image ${bonusInfo.id}`}/>
+          </div>
           <div className={`${styles.promoHeading} __promoHeading`}>
             <h3>
               <span>{t(`bonuses.bonus_${bonusInfo?.id}.description_short.line_one`)} </span>
               <span>{t(`bonuses.bonus_${bonusInfo?.id}.description_short.line_two`)}</span>
             </h3>
           </div>
-          <div className={styles.promoImage}>
-            <img src={urlGen(bonusInfo.image)} alt={`promotion image ${bonusInfo.id}`}/>
-          </div>
+
         </div>
         <div className={styles.promotionTextBlock}>
           <div className={styles.frameTextBlock}>
@@ -37,6 +38,10 @@ export const PromotionItem = ({bonusInfo, bonusCalculations}) => {
                 {t(`bonuses.bonus_${bonusInfo?.id}.bonus_amount_info.playthrough_value`, {wagner_require_key: bonusCalculations.wagner_require_key})}
               </li>
             </ul>
+            <div style={{flex: 1}}></div>
+            <div className={styles.knowMoreBtn}>
+              <button>{t('bonuses.knowMore')}</button>
+            </div>
           </div>
         </div>
       </div>
