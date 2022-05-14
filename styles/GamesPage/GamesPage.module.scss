@@ -106,7 +106,7 @@
   }
 }
 .playButton {
-  background-color: #00e3ff;
+  background-color: #99CC33;
 }
 .playButtonInactive {
   & > span {
@@ -117,7 +117,7 @@
   cursor: not-allowed;
 }
 .playForFunButton {
-  background-color: #15171b;
+  background-color: #333333;
   border: 1px solid #909091;
   & > span {
     color: #ffffff;
@@ -128,7 +128,7 @@
   & .hoverWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
   }
 }
 
