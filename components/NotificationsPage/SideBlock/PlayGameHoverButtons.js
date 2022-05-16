@@ -9,11 +9,15 @@ export const PlayGameHoverButtons = ({t, user, gameData, playFunClickHandler, pl
     playGameClickHandler(gameData, user);
   }
 
+  const canPlay = () => {
+    return user.isAuthenticated && process.env.NODE_ENV === 'production'
+  }
+
   return (
     <div className={styles.hoverWrapper}>
       <div
         onClick={playPaidClickHandler}
-        className={`${styles.playButton}`}>
+        className={`${styles.playButton} ${canPlay() ? "" : styles.playButtonInactive}`}>
         <span>{t('gameButtons.play')}</span>
       </div>
       <div
