@@ -13,6 +13,7 @@ const initialState = {
     {name: "jpn", lang: "ja", language: "日本", icon: "/assets/icons/roundFlags/Japan.webp"},
     {name: "prt", lang: "pt", language: "Português", icon: "/assets/icons/roundFlags/Portugal.webp"},
     {name: "fra", lang: "fr", language: "Français", icon: "/assets/icons/roundFlags/France.webp"},
+    {name: "vie", lang: "vi", language: "Viatnamese", icon: "/assets/icons/roundFlags/Vietnam.webp"},
     {name: "nld", lang: "nl", language: "Dutch", icon: "/assets/icons/roundFlags/Netherlands.webp"},
     {name: "ita", lang: "it", language: "Italiano", icon: "/assets/icons/roundFlags/Italy.webp"},
     {name: "idn", lang: "id", language: "Indonesian", icon: "/assets/icons/roundFlags/Indonesia.webp"},
