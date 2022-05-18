@@ -42,6 +42,7 @@ export const PlayWindowWrapper = ({t, isFullScreen, fullscreenClickHandler, isMi
           <LoadingComponent t={t} />
           :
           <GameWindow
+            closeGameHandler={closeGameHandler}
             gameUrl={playGames.freeGame ? playGames.freeGame.game_link : playGames.startGame ? playGames.startGame.game_link : null}
           />
       }
