@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/ui/action";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {deleteGameLink} from "../../redux/playGame/action";
+import {userBalance} from "../../redux/user/action";
 
 
 export const GameProvider = ({children}) => {
@@ -34,7 +35,7 @@ export const GameProvider = ({children}) => {
     if (router.pathname.slice(1).split('/')[0] === 'game') {
       router.back();
     }
-
+    dispatch(userBalance());
     dispatch(showGameWindow(false));
     dispatch(minimizeGameWindow(false));
     dispatch(deleteGameLink());

@@ -1,7 +1,6 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
 import {useEffect} from "react";
 
-
 export const GameWindow = ({gameUrl, closeGameHandler}) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -16,8 +15,8 @@ export const GameWindow = ({gameUrl, closeGameHandler}) => {
   const handleMessage = (event) => {
     const message = event.data
 
-    if (message === "closeInnerFrame") {
-      closeGameHandler()
+    if (message === "closeGame") {
+      closeGameHandler();
     }
   }
 
