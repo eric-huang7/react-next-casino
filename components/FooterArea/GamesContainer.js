@@ -96,12 +96,13 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
       dispatch(playPayGame({
         data : sendData,
         gameName: gameData.name ? gameData.name : "..."
-      }));
-      if (window.innerWidth > 1065) {
-        router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
-          dispatch(showGameWindow(true));
-        });
-      }
+      })).then(() => {
+        if (window.innerWidth > 1065) {
+          router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+            dispatch(showGameWindow(true));
+          });
+        }
+      });
     } else {
 
     }
