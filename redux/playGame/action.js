@@ -12,7 +12,13 @@ export const freeGame = (gameData) => dispatch =>
       data: {...data},
       gameName: gameData.gameName
     }))
-  );
+  ).catch(e => {
+    dispatch(playFreeGame({
+      data: {},
+      gameName: gameData.gameName
+    }))
+    return {error: true, message: e.message}
+  });
 
 export const playPayGame = (gameData) => dispatch =>
   Connect.post(payGame_url, JSON.stringify(gameData.data),{}, (status, data) =>
@@ -20,7 +26,10 @@ export const playPayGame = (gameData) => dispatch =>
       data: {...data},
       gameName: gameData.gameName
     }))
-  ).catch(e => dispatch(playGame({
-    data: {},
-    gameName: gameData.gameName
-  })));
+  ).catch(e => {
+    dispatch(playGame({
+      data: {},
+      gameName: gameData.gameName
+    }))
+    return {error: true, message: e.message}
+  });

@@ -69,14 +69,15 @@ export const GamesContainer = (props) => {
     dispatch(freeGame({
       data: sendData,
       gameName: gameData.name ? gameData.name : "..."
-    }))
-
-    if (window.innerWidth > 1065) {
-      router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
-        dispatch(showGameWindow(true));
-      });
-    }
-
+    })).then((res) => {
+      if (res?.error) {
+        // TODO show notification
+      } else if (window.innerWidth > 1065) {
+        router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+          dispatch(showGameWindow(true));
+        });
+      }
+    });
   }
 
   const playGameClickHandler = (gameData, user) => {
@@ -108,8 +109,10 @@ export const GamesContainer = (props) => {
       dispatch(playPayGame({
         data : sendData,
         gameName: gameData.name ? gameData.name : "..."
-      })).then(() => {
-        if (window.innerWidth > 1065) {
+      })).then((res) => {
+        if (res?.error) {
+          // TODO show notification
+        } else if ( window.innerWidth > 1065) {
           router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
             dispatch(showGameWindow(true));
           });

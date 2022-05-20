@@ -55,13 +55,15 @@ export const GamesContainer = ({t, exit}) => {
     dispatch(freeGame({
       data: sendData,
       gameName: gameData.name ? gameData.name : "..."
-    }))
-
-    if (window.innerWidth > 1065) {
-      router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
-        dispatch(showGameWindow(true));
-      });
-    }
+    })).then((res) => {
+      if (res?.error) {
+        // TODO show notification
+      } else if (window.innerWidth > 1065) {
+        router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
+          dispatch(showGameWindow(true));
+        });
+      }
+    });
   }
   const playGameClickHandler = (gameData) => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {
@@ -91,8 +93,10 @@ export const GamesContainer = ({t, exit}) => {
       dispatch(playPayGame({
         data : sendData,
         gameName: gameData.name ? gameData.name : "..."
-      })).then(() => {
-        if (window.innerWidth > 1065) {
+      })).then((res) => {
+        if (res?.error) {
+          // TODO show notification
+        } else if (window.innerWidth > 1065) {
           router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
             dispatch(showGameWindow(true));
           });
