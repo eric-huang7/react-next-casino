@@ -1,6 +1,7 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
 import {useEffect} from "react";
 
+
 export const GameWindow = ({gameUrl, closeGameHandler}) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -14,9 +15,12 @@ export const GameWindow = ({gameUrl, closeGameHandler}) => {
 
   const handleMessage = (event) => {
     const message = event.data
-
-    if (message === "closeGame") {
-      closeGameHandler();
+    if (
+      message === "closeInnerFrame" ||
+      message === "closeGame" || // endorphina
+      message?.exi_fMessageType_str === "exi_onHomeUserAction" // nucleus
+    ) {
+      closeGameHandler()
     }
   }
 
