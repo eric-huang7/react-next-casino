@@ -34,7 +34,7 @@ export const BonusesContainer = ({ activeBonuses, userCurrency, userData }) => {
                 </div>
               )
             } else {
-              let bonusCalculations = bonusesCalculator(bonus, userCurrency)
+              let bonusCalculations = bonusesCalculator(bonus, userCurrency, t)
               return (
                 <div key={bonus.id}>
                   <ErrorEmpty>
