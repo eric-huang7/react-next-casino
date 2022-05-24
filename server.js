@@ -2,6 +2,7 @@
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
+const fs = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = '127.0.0.1'
