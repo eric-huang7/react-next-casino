@@ -24,7 +24,7 @@ const AboutUS = () => {
         <div className={styles.textWhyslotsBack}>
           <TextBlocks/>
           <ErrorText>
-            <WhySlotsIdol isBackShow={false}/>
+            <WhySlotsIdol isBackShow={false} title="WHY SLOTS IDOL"/>
           </ErrorText>
         </div>
         <ErrorText>

@@ -7,24 +7,23 @@ export const MainBlock = () => {
   return (
     <section className={styles.mainSectionWrapper}>
       <div className={styles.mainItemsWrapper}>
-        <div className={styles.arrProvider}></div>
-        <div className={styles.arrGames}></div>
-        <div className={styles.arrFlexible}></div>
-        <div className={styles.providerImg}>
-          <p>{t("aboutUsPage.mainBlock.providers")}</p>
-        </div>
-        <div className={styles.gamesImg}>
-          <p>{t("aboutUsPage.mainBlock.games")}</p>
-        </div>
-        <div className={styles.flexibleSystemImg}>
-          <p>
-            <span className={styles.bigSpan}>{t("aboutUsPage.mainBlock.flexibleSystem.flexible")} </span>
-            <span className={styles.smallSpan}>{t("aboutUsPage.mainBlock.flexibleSystem.cryptocurrency")} </span>
-            <span className={styles.bigSpan}>{t("aboutUsPage.mainBlock.flexibleSystem.system")} </span>
-          </p>
-        </div>
-        <div className={styles.instantCashoutsImg}>
-          <p>{t("aboutUsPage.mainBlock.cashouts")}</p>
+        <div className={styles.aboutItems}>
+          <div className={`${styles.minuteBlock} ${styles.aboutInnerItem}`}>
+            <div>{t("aboutUsPage.mainBlock.providers")}</div>
+          </div>
+          <div className={`${styles.depositsBlock} ${styles.aboutInnerItem}`}>
+            <div>{t("aboutUsPage.mainBlock.games")}</div>
+          </div>
+          <div className={`${styles.payoutsBlock} ${styles.aboutInnerItem}`}>
+            <div>
+              {t("aboutUsPage.mainBlock.flexibleSystem.flexible")}
+              <span className={styles.smallSpan}>{t("aboutUsPage.mainBlock.flexibleSystem.cryptocurrency")}</span>
+              {t("aboutUsPage.mainBlock.flexibleSystem.system")}
+            </div>
+          </div>
+          <div className={`${styles.licensedBlock} ${styles.aboutInnerItem}`}>
+            <div>{t("aboutUsPage.mainBlock.cashouts")}</div>
+          </div>
         </div>
       </div>
     </section>
