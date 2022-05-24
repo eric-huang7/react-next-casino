@@ -1,14 +1,13 @@
 // server.js
-const { createServer } = require('http')
+const { createServer } = require('https')
 const { parse } = require('url')
 const next = require('next')
 const fs = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = '127.0.0.1'
 const port = 3005
 
-const app = next({ dev, hostname, port })
+const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {
@@ -27,6 +26,6 @@ app.prepare().then(() => {
     }
   }).listen(port, (err) => {
     if (err) throw err
-    console.log(`> Ready on http://${hostname}:${port}`)
+    console.log(`> Ready on http://localhost:${port}`)
   })
 })
