@@ -1,36 +1,32 @@
 @import '../colors.module';
 
 .textBlockWrapper {
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-
-  padding: 110px 30px 0px 30px;
+  padding: 115px 30px 170px 30px;
 }
 
 .textBlockInnerWrapper {
-  max-width: 1300px;
-  min-height: 770px;
+  max-width: 100%;
+  min-height: 700px;
 
   margin: 0 auto;
 
   display: flex;
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 
 
 }
 
 .textBlockInnerWrapper > div {
-  width: 32.3%;
+  width: 22.3%;
   min-height: inherit;
 
 
   padding: 5px;
-  margin-bottom: 10px;
+  margin: 14px;
 
-  background-color: $light-black-back;
+  background-color: rgba(58, 25, 18, 0.7);
 }
 
 .frame {
@@ -38,7 +34,7 @@
   height: 100%;
   //min-height: 770px;
 
-  border: 1px solid #6f6c65;
+  border: 1px solid #E39735;
 
   padding: 35px 17px 0px 17px;
 }
