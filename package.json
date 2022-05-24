@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "startProd": "next start -p 3006"
+    "startProd": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.2",
