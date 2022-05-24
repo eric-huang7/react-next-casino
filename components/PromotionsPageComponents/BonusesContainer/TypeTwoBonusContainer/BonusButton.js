@@ -26,9 +26,9 @@ export const BonusButton = ({bonusInfo, userData}) => {
   }
 
   let bonusImage = '/assets/img/promotionsPage/bonus2.webp'
-  return (
+  return bonusButton ? (
     <div onClick={() => openDepositModalHandler()} className={styles.bonusButtonBlock}>
       <img draggable={false} src={bonusButton ? `${imagesUrl}images/${bonusButton}` : bonusImage} alt="bonus button icon"/>
     </div>
-  )
+  ) : null
 }
