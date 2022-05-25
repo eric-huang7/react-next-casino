@@ -33,8 +33,8 @@ export const BonusItem = ({
           <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
         </li>
         <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{' '}</div>
-          <div className={styles.wagerPercentValue}>{''}</div>
+          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.wagerPercent')}</div>
+          <div className={styles.wagerPercentValue}>{wagerPercent}%</div>
         </li>
         <li className={styles.bonusInfoListItem}>
           <div className={styles.dateReceived}>{t('myAccount.bonusPage.bonusItems.dateReceived')}</div>
