@@ -19,6 +19,7 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
     {id: 6, name: 'header.userDesktopMenu.takeBreak', path: '/accounts/gambling-limits', icon: '/assets/icons/desktopMenu/take-break-icon.webp'},
     {id: 7, name: 'header.userDesktopMenu.history', path: '/accounts/history', icon: '/assets/icons/desktopMenu/history-icon.webp'},
     {id: 8, name: 'header.userDesktopMenu.2fa', path: '/accounts/two_factor', icon: '/assets/icons/desktopMenu/2fa-icon.webp'},
+    {id: 8, name: 'header.userDesktopMenu.redeem', func: redeem, icon: '/assets/icons/desktopMenu/redeem-icon.webp'},
   ]
 
   const dispatch = useDispatch()
@@ -29,6 +30,10 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
       dispatch(showDepositModal(true))
     }
     onClose();
+  }
+
+  const redeem = () => {
+    console.log('redeem')
   }
 
   return (
