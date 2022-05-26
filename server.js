@@ -11,8 +11,8 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {
-  key: fs.readFileSync("/etc/letsencrypt/live/tst-si-site.slotsidol.com/privkey.pem"),
-  cert: fs.readFileSync("/etc/letsencrypt/live/tst-si-site.slotsidol.com/fullchain.pem"),
+  key: fs.readFileSync(process.env.HTTPS_KEY_PATH),
+  cert: fs.readFileSync(process.env.HTTPS_CERT_PATH),
 }
 
 app.prepare().then(() => {
