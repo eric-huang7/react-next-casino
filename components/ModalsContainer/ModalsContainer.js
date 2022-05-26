@@ -28,6 +28,7 @@ import { EmailValidationError } from '../ForgotPasswordComponents/EmailValidatio
 import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutContainer'
 import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
+import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -302,6 +303,16 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           </ErrorEmpty>
           :
           ''
+      }
+      {userInfo.isAuthenticated
+        ?
+        <ErrorEmpty>
+          <RedeemPage
+            t={t}
+          />
+        </ErrorEmpty>
+        :
+        ''
       }
     </>
   )

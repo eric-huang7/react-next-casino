@@ -14,7 +14,7 @@ import {
   showMobilePaymentsStepper,
   showNotifications,
   showPaymentCurrencySwitcher,
-  showPlaySafe,
+  showPlaySafe, showRedeemModal,
   showSearchModal,
   showTournaments,
   showTournamentsDetails, showTwoFaPopup
@@ -46,7 +46,8 @@ const initialState = {
   isShowChangePassword: false,
   isShowEmailValidationSuccess: false,
   isShowEmailValidationError: false,
-  isShowTwoFaPopup: false
+  isShowTwoFaPopup: false,
+  isShowRedeemModal: true
 }
 
 const handlers = {
@@ -159,7 +160,8 @@ const handlers = {
       isShowChangePassword: false,
       isShowEmailValidationSuccess: false,
       isShowEmailValidationError: false,
-      isShowTwoFaPopup: false
+      isShowTwoFaPopup: false,
+      isShowRedeemModal: false
     }
   },
   [showMobileCryptoPayments]: (state, {payload}) => {
@@ -232,6 +234,12 @@ const handlers = {
     return {
       ...state,
       isShowPlaySafe: payload
+    }
+  },
+  [showRedeemModal]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowRedeemModal: payload,
     }
   },
 }

@@ -1,0 +1,104 @@
+@import '../colors.module';
+
+.redeemMainWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  //right: 0;
+  //bottom: 0;
+
+  background-color: $black-back-modals;
+
+  padding: 0 20px;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 18;
+
+  overflow-y: scroll;
+}
+.hidden {
+  display: none;
+}
+
+.redeemMainContainer {
+  max-width: 500px;
+  min-width: 340px;
+  background: url("/assets/img/redeemPage/redeem-bg.jpg");
+  align-self: center;
+  min-height: 500px;
+  margin: 130px auto;
+  //margin: 24px 30px 24px;
+  padding: 5px;
+
+}
+.marginNull {
+  margin: 50px auto;
+}
+
+.redeemHeadingBlock {
+
+  position: relative;
+  & .redeemBackButton {
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    transform: rotateZ(-45deg);
+  }
+  & .redeemHeading {
+    margin: 0;
+
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 25px;
+    line-height: 60px;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: "Lithograph";
+
+  }
+
+  & .redeemCloseButton {
+    position: absolute;
+    top: 13px;
+    right: 0px;
+
+    cursor: pointer;
+
+    width: 35px;
+    height: 35px;
+
+
+    & .closeOne, .closeTwo{
+      display: block;
+
+      position: relative;
+
+      background-color: #ffffff;
+      width: 26px;
+      height: 2px;
+    }
+    & .closeOne {
+      transform: rotateZ(-45deg);
+      top: 15px;
+    }
+    & .closeTwo {
+      transform: rotateZ(45deg);
+      top: 13px;
+    }
+  }
+}
+.redeemFooter {
+
+}
+@media screen and (max-width: 524px) {
+  .redeemMainWrapper {
+    overflow: scroll;
+  }
+}
