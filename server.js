@@ -11,8 +11,8 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {
-  key: fs.readFileSync(process.env.HTTPS_KEY_PATH),
-  cert: fs.readFileSync(process.env.HTTPS_CERT_PATH),
+  key: fs.readFileSync(process.env.NEXT_PUBLIC_HTTPS_KEY_PATH),
+  cert: fs.readFileSync(process.env.NEXT_PUBLIC_HTTPS_CERT_PATH),
 }
 
 app.prepare().then(() => {
