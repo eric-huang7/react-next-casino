@@ -30,14 +30,17 @@
   min-height: 500px;
   margin: 130px auto;
   //margin: 24px 30px 24px;
-  padding: 5px;
-
+  display: flex;
+  flex-direction: column;
 }
 .marginNull {
   margin: 50px auto;
 }
 
 .redeemHeadingBlock {
+  background: url("/assets/img/redeemPage/redeem-header-bg.jpg");
+  background-repeat: repeat-x;
+  height: 79px;
 
   position: relative;
   & .redeemBackButton {
@@ -53,15 +56,15 @@
   }
   & .redeemHeading {
     margin: 0;
-
     text-transform: uppercase;
     text-align: center;
-    font-size: 25px;
-    line-height: 60px;
+    font-size: 28px;
+    line-height: 79px;
     font-weight: 600;
-    color: #ffffff;
+    color: #481500;
     font-family: "Lithograph";
-
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
   }
 
   & .redeemCloseButton {
@@ -80,22 +83,80 @@
 
       position: relative;
 
-      background-color: #ffffff;
+      background-color: #000;
       width: 26px;
       height: 2px;
     }
     & .closeOne {
       transform: rotateZ(-45deg);
-      top: 15px;
+      top: 25px;
     }
     & .closeTwo {
       transform: rotateZ(45deg);
-      top: 13px;
+      top: 23px;
     }
   }
 }
-.redeemFooter {
+.redeemBody {
+  flex: 1;
+  text-align: center;
+  color: white;
+  padding: 63px 16px 35px;
+  font-family: "Lithograph";
+  text-transform: uppercase;
 
+  .redeemTitle {
+    font-size: 13px;
+    margin-bottom: 17px;
+  }
+  .redeemTitle1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 27px;
+  }
+  .redeemTitle2 {
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #FFC353;
+  }
+  .redeemTitle3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .redeemTitle4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .divider {
+    width: 298px;
+    border: 2px solid #C06313;
+    margin: auto;
+  }
+  .redeemTitle5 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .button {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Lithograph";
+    text-transform: uppercase;
+    color: #481500;
+    line-height: 20px;
+    padding: 10px 22px;
+    margin-top: 30px;
+    background: linear-gradient(0deg, #FCDC8F, #FCDC8F), #FCDC8F;
+    border: 6px solid #996533;
+    border-top: 6px solid #FFFFCB;
+  }
+}
+.redeemFooter {
+  background: url("/assets/img/redeemPage/redeem-footer-bg.jpg");
+  background-repeat: repeat-x;
+  height: 36px;
 }
 @media screen and (max-width: 524px) {
   .redeemMainWrapper {

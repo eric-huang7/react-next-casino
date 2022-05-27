@@ -1,0 +1,33 @@
+@import '../colors.module';
+
+.redeemInputWrapper {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+
+  input {
+    border-radius: 0;
+    margin: 0;
+    border: none;
+    width: 170px;
+  }
+}
+.arrowUp {
+  background: url("/assets/img/redeemPage/up-icon.svg") #FFC353;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 34px;
+  height: 34px;
+}
+.arrowDown {
+  background: url("/assets/img/redeemPage/down-icon.svg") #FFC353;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (max-width: 524px) {
+  .redeemInputWrapper {
+  }
+}
