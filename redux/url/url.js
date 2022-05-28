@@ -103,3 +103,7 @@ export const activeBonuses_url = serverUrl + 'bonus_offer?active=1';
 
 // NEWS DATA
 export const news_active_url = serverUrl + 'news?active=1';
+
+// REDEEM
+export const reward_point_url = serverUrl + 'reward_point';
+export const get_reward_point_url = serverUrl + 'reward_point?quantity=1';

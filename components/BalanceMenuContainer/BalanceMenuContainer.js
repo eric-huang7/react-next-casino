@@ -3,7 +3,7 @@ import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss'
 import { BalanceItem } from './BalanceItem'
 import BalanceItemError from './BalanceErrorBoundary/BalansItemError'
 
-export const BalanceMenuContainer = ({ balanceData, currencyData, activeBalance }) => {
+export const BalanceMenuContainer = ({ balanceData, currencyData, activeBalance, onSelect }) => {
 
   let balanceArr = []
 
@@ -25,6 +25,7 @@ export const BalanceMenuContainer = ({ balanceData, currencyData, activeBalance 
                   key={`${el.id} balance item`}
                   balanceData={el}
                   currencyData={currencyData}
+                  onSelect={onSelect}
                 />
               </BalanceItemError>
             )
