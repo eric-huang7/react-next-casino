@@ -35,7 +35,7 @@
   min-width: 340px;
   background: url("/assets/img/redeemPage/notification-bg.jpg");
   align-self: center;
-  min-height: 200px;
+  min-height: 100px;
   margin: 130px auto;
   //margin: 24px 30px 24px;
   display: flex;
@@ -44,6 +44,7 @@
   .redeemNotificationHeading {
     background: #471500;
     height: 72px;
+    position: relative;
 
     & .redeemHeading {
       margin: 0;
@@ -63,6 +64,7 @@
     padding: 10px 16px 16px;
     font-family: "Lithograph";
     text-transform: uppercase;
+    position: relative;
 
     .redeemNotificationTitle1 {
       font-size: 22px;
@@ -87,7 +89,23 @@
     .redeemNotificationTitle3 {
       color: #FFC353;
     }
+    .redeemError {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 11px;
+      text-align: center;
+    }
   }
+}
+.redeemCloseButton {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+
+  cursor: pointer;
+
+  width: 20px;
+  height: 20px;
 }
 .marginNull {
   margin: 50px auto;
@@ -96,8 +114,8 @@
   background: url("/assets/img/redeemPage/redeem-header-bg.jpg");
   background-repeat: repeat-x;
   height: 79px;
-
   position: relative;
+
   & .redeemBackButton {
     cursor: pointer;
 

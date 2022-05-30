@@ -14,45 +14,49 @@ export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
   const isShowRedeemModal = useSelector(({popups}) => popups?.isShowRedeemModal);
-  const [totalPercent, setTotalPercent] = useState(100)
+  const userData = useSelector((store) => store.authInfo);
   const [pointBalance, setPointBalance] = useState()
   const [activeCurrency, setActiveCurrency] = useState()
   const [rewardPoint, setRewardPoint] = useState()
   const [isShowBalanceList, setIsShowBalanceList] = useState()
   const [balanceData, setBalanceData] = useState(false)
-  const [showNotification, setShowNotification] = useState(true)
+  const [showNotification, setShowNotification] = useState(false)
+  const [error, setError] = useState(false)
 
   const userCurrency = useSelector((state) => state.currency)
   const userInfo = useSelector((state) => state.authInfo)
 
   const getPointBalance = () => {
     Connect.get(get_reward_point_url, {}, (status, data) => {
-      setPointBalance(data?.result?.total || 0)
+      setPointBalance(Math.floor(data?.result?.total || 0))
     }).catch((error) => {
-      // setNewsError('errors.errorMessage');
-      console.log('error', error.message);
+      console.log('error', error?.message);
     })
   }
 
   const getRewardPoint = () => {
     const payload = {
-      is_preivew:true,
-      points_to_redeem: parseFloat(pointBalance) * totalPercent / 100,
-      currency_id_to_redeem_in: activeCurrency?.id
+      is_preview:true,
+      points_to_redeem: pointBalance,
+      currency_id_to_redeem_in: activeCurrency?.id,
+      user_id: userData.user.user.id
     }
 
     Connect.put(reward_point_url, JSON.stringify(payload), {}, (status, data) => {
-      console.log('getRewardPoint', data);
-      // setRewardPoint(data?.result?.total || 0)
+      setRewardPoint(data?.award_amount || 0)
     }).catch((error) => {
-      // setNewsError('errors.errorMessage');
-      console.log('error', error.message);
+      setError(true);
+      setShowNotification(false);
     })
   }
 
   useEffect(() => {
-    getPointBalance();
-  }, [])
+    if (isShowRedeemModal) {
+      setShowNotification(false)
+      setError(false)
+      getPointBalance();
+    }
+  }, [isShowRedeemModal])
 
   useEffect(() => {
     if (pointBalance && activeCurrency?.id) {
@@ -69,6 +73,7 @@ export const RedeemPage = ({t}) => {
       setActiveCurrency(activeCurrency)
     }
   }, [userCurrency, userInfo, isShowRedeemModal])
+
   const closeModal = () => {
     dispatch(showRedeemModal(false));
   }
@@ -78,52 +83,79 @@ export const RedeemPage = ({t}) => {
     setIsShowBalanceList(false)
   }
 
+  const onChangePoints = (e) => {
+    setPointBalance(Math.floor(parseFloat(e.target.value)))
+  }
+
   const submit = () => {
     const payload = {
-      is_preivew:false,
-      points_to_redeem: parseFloat(pointBalance) * totalPercent / 100,
-      currency_id_to_redeem_in: activeCurrency?.id
+      is_preview:false,
+      points_to_redeem: pointBalance,
+      currency_id_to_redeem_in: activeCurrency?.id,
+      user_id: userData.user.user.id
     }
 
     Connect.put(reward_point_url, JSON.stringify(payload), {}, (status, data) => {
-      console.log('submit', data);
+      setShowNotification(true);
     }).catch((error) => {
-      // setNewsError('errors.errorMessage');
-      console.log('error', error.message);
-    }).finally(() => {
-      dispatch(showRedeemModal(false))
+      setError(true);
+      setShowNotification(false);
     })
   }
 
-  return isShowRedeemModal ? (
+  const getCloseButton = () => <div
+    className={styles.redeemCloseButton}
+    onClick={closeModal}
+  >
+    <img src={'/assets/icons/close-icon.svg'} alt="close"/>
+  </div>
+
+  if (!isShowRedeemModal) return null
+
+  return (
     <div className={`${styles.redeemMainWrapper}`}>
-      {showNotification ? (
+      {error && (
+        <div className={styles.redeemNotificationContainer}>
+          <div className={styles.redeemNotificationBody}>
+            {getCloseButton()}
+            <div className={styles.redeemNotificationPoints}>
+              {t("redeemPage.notificationSorry")}
+            </div>
+            <div className={styles.redeemError}>
+              {t("redeemPage.notificationError")}
+            </div>
+          </div>
+        </div>
+      )}
+      {showNotification && (
         <div className={styles.redeemNotificationContainer}>
           <div className={styles.redeemNotificationHeading}>
             <div className={styles.redeemHeading}>
               {t("redeemPage.congratulation")}
             </div>
+            {getCloseButton()}
           </div>
           <div className={styles.redeemNotificationBody}>
             <div className={styles.redeemNotificationTitle1}>
               {t("redeemPage.notificationTitle1")}
             </div>
             <div className={styles.redeemNotificationPoints}>
-              15,000{" "}{t("redeemPage.points")}
+              {pointBalance}{" "}{t("redeemPage.points")}
             </div>
             <div className={styles.redeemNotificationFor}>
-              {t("redeemPage.for")}{" "}0.003ETH
+              {t("redeemPage.for")}{" "}{rewardPoint || 0}{activeCurrency?.abbreviation}
             </div>
 
             <div className={styles.redeemNotificationTitle2}>
               {t("redeemPage.notificationTitle2")}
             </div>
             <div className={styles.redeemNotificationTitle3}>
-              criptodude75
+              {userData?.user?.user?.username}
             </div>
           </div>
         </div>
-      ) : (
+      )}
+      {!showNotification && !error && (
         <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.redeemHeadingBlock}>
             <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
@@ -143,7 +175,7 @@ export const RedeemPage = ({t}) => {
               {t('redeemPage.title2')}
             </div>
             <div className={styles.redeemTitle2}>
-              15,000 {t('redeemPage.points')}
+              {pointBalance?.toLocaleString()} {t('redeemPage.points')}
             </div>
             <div className={styles.redeemTitle3}>
               {t('redeemPage.title3')}
@@ -181,17 +213,19 @@ export const RedeemPage = ({t}) => {
             </div>
             <div className={styles.redeemTotalButtons}>
               {[25, 50, 75, 100].map((item, index) => (
-                <div key={index} onClick={() => setTotalPercent(item)}>{item}%</div>
+                <div key={index} onClick={() => setPointBalance(Math.round(item * pointBalance / 100))}>
+                  {item}%
+                </div>
               ))}
             </div>
 
-            <RedeemInput mb="30px" value={pointBalance * totalPercent / 100}/>
+            <RedeemInput mb="30px" value={pointBalance}  onChange={onChangePoints}/>
 
             <div className={styles.redeemTitle5}>
               {t('redeemPage.title6')}
             </div>
 
-            <RedeemInput mb="30px" value={rewardPoint}/>
+            <RedeemInput mb="30px" value={rewardPoint} readOnly/>
 
             <button className={styles.button} onClick={submit}>
               {t('redeemPage.button')}
@@ -201,5 +235,5 @@ export const RedeemPage = ({t}) => {
         </div>
       )}
     </div>
-  ) : null
+  )
 }

@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next'
 export const LinkItem = ({ path, name, icon, onClick }) => {
   const { t } = useTranslation('common')
 
-  console.log('LinkItem', name, path, onClick)
   const item = (<>
     <div className={styles.iconContainer}>
       <img src={icon} alt=''/>

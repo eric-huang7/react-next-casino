@@ -15,7 +15,6 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
   const isShowRedeemModal = useSelector((state) => state.popups.isShowDepositModal)
 
   const redeem = () => {
-    console.log('redeem')
     if (!isShowRedeemModal) {
       dispatch(showRedeemModal(true))
     }
