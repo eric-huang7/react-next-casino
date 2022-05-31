@@ -103,11 +103,11 @@ export const RedeemPage = ({t}) => {
     })
   }
 
-  const getCloseButton = () => <div
+  const getCloseButton = (dark = false) => <div
     className={styles.redeemCloseButton}
     onClick={closeModal}
   >
-    <img src={'/assets/icons/close-icon.svg'} alt="close"/>
+    <img src={`/assets/icons/close-icon${dark && '-dark'}.svg`} alt="close"/>
   </div>
 
   if (!isShowRedeemModal) return null
@@ -159,13 +159,7 @@ export const RedeemPage = ({t}) => {
         <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.redeemHeadingBlock}>
             <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
-            <div
-              className={styles.redeemCloseButton}
-              onClick={() => closeModal()}
-            >
-              <span className={styles.closeOne}></span>
-              <span className={styles.closeTwo}></span>
-            </div>
+            {getCloseButton(true)}
           </div>
           <div className={styles.redeemBody}>
             <div className={styles.redeemTitle}>

@@ -55,6 +55,7 @@
       font-weight: 600;
       color: #FFC353;
       font-family: "Lithograph";
+
     }
   }
   .redeemNotificationBody {
@@ -142,32 +143,7 @@
 
   & .redeemCloseButton {
     position: absolute;
-    top: 13px;
-    right: 0px;
-
-    cursor: pointer;
-
-    width: 35px;
-    height: 35px;
-
-
-    & .closeOne, .closeTwo{
-      display: block;
-
-      position: relative;
-
-      background-color: #000;
-      width: 26px;
-      height: 2px;
-    }
-    & .closeOne {
-      transform: rotateZ(-45deg);
-      top: 25px;
-    }
-    & .closeTwo {
-      transform: rotateZ(45deg);
-      top: 23px;
-    }
+    top: 30px;
   }
 }
 .redeemBody {
