@@ -3,13 +3,23 @@ import {LinkItem} from "./LinkItem";
 import {SignOutItem} from "./SignOutItem";
 import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit";
 import {useDispatch, useSelector} from "react-redux";
-import {showDepositModal, showPlaySafe} from "../../redux/popups/action";
+import {showDepositModal, showPlaySafe, showRedeemModal} from "../../redux/popups/action";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
 import {BalanceBlock} from "../MainLayout/Header/UserBlock/BalanceBlock";
 
 export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
+  const dispatch = useDispatch()
+  const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal)
+  const isShowRedeemModal = useSelector((state) => state.popups.isShowDepositModal)
+
+  const redeem = () => {
+    if (!isShowRedeemModal) {
+      dispatch(showRedeemModal(true))
+    }
+  }
+
   const linksData = [
     {id: 1, name: 'header.userDesktopMenu.bank', path: '/accounts/balance', icon: '/assets/icons/desktopMenu/bank-icon.webp'},
     {id: 2, name: 'header.userDesktopMenu.messages', path: '/notifications', icon: '/assets/icons/desktopMenu/email-icon.webp'},
@@ -19,10 +29,8 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
     {id: 6, name: 'header.userDesktopMenu.takeBreak', path: '/accounts/gambling-limits', icon: '/assets/icons/desktopMenu/take-break-icon.webp'},
     {id: 7, name: 'header.userDesktopMenu.history', path: '/accounts/history', icon: '/assets/icons/desktopMenu/history-icon.webp'},
     {id: 8, name: 'header.userDesktopMenu.2fa', path: '/accounts/two_factor', icon: '/assets/icons/desktopMenu/2fa-icon.webp'},
+    {id: 8, name: 'header.userDesktopMenu.redeem', onClick: redeem, icon: '/assets/icons/desktopMenu/redeem-icon.webp'},
   ]
-
-  const dispatch = useDispatch()
-  const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal)
 
   const closeDepositModalHandler = () => {
     if (!isShowDepositModal) {
@@ -30,6 +38,8 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
     }
     onClose();
   }
+
+
 
   return (
     <div className={styles.desktopMenuContainer}>
@@ -60,11 +70,15 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
       <div className={styles.menuContainer}>
         <ul className={styles.menuList}>
           {
-            linksData.map((link) => {
-              return (
-                <LinkItem name={link.name} icon={link.icon} path={link.path} key={`${link.id} ${link.name} link item`}/>
-              )
-            })
+            linksData.map((link) => (
+              <LinkItem
+                name={link.name}
+                icon={link.icon}
+                path={link.path}
+                onClick={link.onClick}
+                key={`${link.id} ${link.name} link item`}
+              />
+            ))
           }
         </ul>
       </div>

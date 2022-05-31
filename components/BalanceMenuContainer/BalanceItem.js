@@ -6,7 +6,7 @@ import {useEffect} from "react";
 import {svgSetter} from "../../helpers/iconNameFinder";
 import {CurrencyItemShort} from "../MainLayout/Header/UserBlock/CurrencyItemShort";
 
-export const BalanceItem = ({ balanceData, currencyData }) => {
+export const BalanceItem = ({ balanceData, currencyData, onSelect }) => {
   const dispatch = useDispatch()
 
   const chooseClickHandler = () => {
@@ -16,6 +16,16 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
     }
     dispatch(patchUserActiveCurrency(userData))
 
+  }
+  const onSelectHandler = () => {
+    console.log('balanceData', balanceData, currency)
+    let userData = {
+      id: balanceData.user_id,
+      base_currency_id: balanceData.currency_id,
+      abbreviation: currency?.abbreviation,
+      name: currency?.name
+    }
+    onSelect(userData)
   }
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id))
@@ -27,7 +37,7 @@ export const BalanceItem = ({ balanceData, currencyData }) => {
   }, [])
 
   return currency ? (
-    <li onClick={() => chooseClickHandler()} className={styles.balanceItem}>
+    <li onClick={() => onSelect ? onSelectHandler() : chooseClickHandler()} className={styles.balanceItem}>
       <span>{amount}</span>
       <span>
         <CurrencyItemShort currencyData={currency} />
