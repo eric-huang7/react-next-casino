@@ -4,6 +4,12 @@
   overflow-x: auto;
 }
 
+.balanceHeader {
+  display: flex;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
 .balanceTable {
   min-width: 500px;
   width: 100%;

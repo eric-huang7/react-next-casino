@@ -15,6 +15,20 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   if (balanceInfo?.balance?.success && !currency.loading) {
     return (
       <>
+        <div className={styles.balanceHeader}>
+          <div>
+            <div>{t('myAccount.balance.fiatAndSpotBalance')}</div>
+            <div></div>
+          </div>
+          <div>
+            <div>{t('myAccount.balance.spotBalance')}</div>
+            <div></div>
+          </div>
+          <div>
+            <div>{t('myAccount.balance.fiatBalance')}</div>
+            <div></div>
+          </div>
+        </div>
         <div className={styles.tableContainerWrapper}>
           <TableContainer currency={currency} balanceInfo={balanceInfo} t={t}/>
         </div>
