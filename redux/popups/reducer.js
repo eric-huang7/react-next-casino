@@ -16,6 +16,7 @@ import {
   showPaymentCurrencySwitcher,
   showPlaySafe, showRedeemModal,
   showSearchModal,
+  showTournamentAwardModal,
   showTournaments,
   showTournamentsDetails, showTwoFaPopup
 } from "./action";
@@ -47,7 +48,8 @@ const initialState = {
   isShowEmailValidationSuccess: false,
   isShowEmailValidationError: false,
   isShowTwoFaPopup: false,
-  isShowRedeemModal: true
+  isShowRedeemModal: false,
+  isTournamentAwardModal: false
 }
 
 const handlers = {
@@ -161,7 +163,8 @@ const handlers = {
       isShowEmailValidationSuccess: false,
       isShowEmailValidationError: false,
       isShowTwoFaPopup: false,
-      isShowRedeemModal: false
+      isShowRedeemModal: false,
+      isTournamentAwardModal: false
     }
   },
   [showMobileCryptoPayments]: (state, {payload}) => {
@@ -240,6 +243,12 @@ const handlers = {
     return {
       ...state,
       isShowRedeemModal: payload,
+    }
+  },
+  [showTournamentAwardModal]: (state, {payload}) => {
+    return {
+      ...state,
+      isTournamentAwardModal: payload,
     }
   },
 }

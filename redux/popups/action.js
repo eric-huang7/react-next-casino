@@ -27,6 +27,7 @@ export const backButtonShouldDo = createAction("BACK_BUTTON_SHOULD_DO");
 export const showManageSubscriptions = createAction("SHOW_MANAGE_SUBSCRIPTIONS");
 export const showNotifications = createAction("SHOW_NOTIFICATIONS_POPUP");
 export const showRedeemModal = createAction("SHOW_REDEEM_POPUP");
+export const showTournamentAwardModal = createAction("SHOW_TOURNAMENT_AWARD_POPUP");
 
 export const errorPopupActivate = (errorData) => dispatch => {
   setTimeout(() => {
