@@ -20,7 +20,7 @@ import {
 } from "../url/url";
 
 import {siteID} from "../../envs/envsForFetching";
-import {errorPopupActivate, showTwoFaPopup} from "../popups/action";
+import {errorPopupActivate, showTournamentAwardModal, showTwoFaPopup} from "../popups/action";
 import {annulActiveBonuses} from "../bonuses/action";
 import {showLogin} from "../ui/action";
 import {showRegister} from "../ui/action";
@@ -82,6 +82,11 @@ export const userData = (sendData) => dispatch => {
       dispatch(showTwoFaPopup(true));
     } else {
       dispatch(loginSuccess(data));
+
+      if  (data?.user?.is_tour_award === 1) {
+        dispatch(showTournamentAwardModal(true))
+      }
+
       // dispatch(auth());
       if (typeof window !== "undefined") {
         localStorage.setItem("userAuth", 'true');

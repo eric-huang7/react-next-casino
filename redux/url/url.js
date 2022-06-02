@@ -71,6 +71,7 @@ export const fiat_currency_url = serverUrl + 'currencies?types=3&isDepositEnable
 // ######## get tournaments
 
 export const get_tournaments_url = serverUrl + 'tournament';
+export const tournament_award_url = serverUrl + 'tournament/award';
 
 // ####### POST DEPOSIT PAYMENT
 export const post_add_user_currency = serverUrl + 'deposit/add';

@@ -29,6 +29,7 @@ import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutCo
 import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
+import {TournamentAwardModal} from "../MainLayout/TournamentAwardModal/TournamentAwardModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -308,6 +309,16 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         ?
         <ErrorEmpty>
           <RedeemPage
+            t={t}
+          />
+        </ErrorEmpty>
+        :
+        ''
+      }
+      {userInfo.isAuthenticated
+        ?
+        <ErrorEmpty>
+          <TournamentAwardModal
             t={t}
           />
         </ErrorEmpty>
