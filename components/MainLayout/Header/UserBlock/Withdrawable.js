@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import {svgSetterById} from '../../../../helpers/iconNameFinder'
 import {baseVariants} from "../../../../envs/currency";
 
-export const Withdrawable = ({ currencyData }) => {
+export const Withdrawable = ({ currencyData, isMilli }) => {
 
   const abbr = currencyData?.abbreviation
   const base = currencyData.base
@@ -25,7 +25,7 @@ export const Withdrawable = ({ currencyData }) => {
     <div className={styles.currencyItem}>
       <div id={`withrawableImageContainer${currencyData.id}`} className={styles.iconContainer}></div>
       <div className={styles.abbreviation}>
-        <div>{abbr}</div>
+        <div>{isMilli && 'm'}{abbr}</div>
         {!!base && <div className={styles.baseContainer} style={{ backgroundColor: `${colorBase}` }}>{base}</div>}
       </div>
     </div>

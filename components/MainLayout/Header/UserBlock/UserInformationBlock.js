@@ -7,6 +7,7 @@ import {showDepositModal} from "../../../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "react-i18next";
 import {HeaderBalance} from "./HeaderBalance";
+import {milliCurrencies, milliLimit} from "../../../../envs/currency";
 
 export const UserInformationBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
@@ -16,6 +17,7 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
   const [isShowLinksMenu, setIsShowLinksMenu] = useState(false)
   const [activeCurrency, setActiveCurrency] = useState(false)
   const [currency, setCurrency] = useState(false)
+  const [isMilli, setIsMilli] = useState(false)
 
   useEffect(() => {
     if (userCurrency.currency && userInfo.balance) {
@@ -27,21 +29,39 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
         }
       }
       setBalanceData(balanceData)
+
+      const currency = currencyFinder(balanceData, userInfo, userCurrency)
+      setCurrency(currency)
+
+      const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
+      setActiveCurrency(activeCurrency)
+
+      let isMilli = false
+
+      if (
+        activeCurrency?.abbreviation &&
+        milliCurrencies.includes(activeCurrency?.abbreviation) &&
+        parseFloat(balanceData[0]?.current_balance) < milliLimit
+      ) {
+        isMilli = true
+      }
+
+      setIsMilli(isMilli)
+
       let amount = ''
 
       try {
-        amount = numberTransformer(`${balanceData[0].current_balance}`)
+        const milliBalance = isMilli
+          ? parseFloat(balanceData[0]?.current_balance) * 1000
+          : parseFloat(balanceData[0]?.current_balance)
+
+        amount = numberTransformer(`${milliBalance?.toFixed(activeCurrency.decimal)}`)
       } catch (e) {
         amount = ''
       }
 
       let balance = balanceData.length === 0 ? '0.00' : amount
       setBalance(balance)
-      const currency = currencyFinder(balanceData, userInfo, userCurrency)
-      setCurrency(currency)
-
-      const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
-      setActiveCurrency(activeCurrency)
     }
   }, [userInfo, userCurrency])
 
@@ -60,7 +80,9 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
       <div className={`${styles.userTextContainer}`}>
         <span className={styles.userName}>
           <div>
-            <div className={styles.balance}>{balance} <HeaderBalance currencyData={activeCurrency} /></div>
+            <div className={styles.balance}>
+              {balance} <HeaderBalance currencyData={activeCurrency} isMilli={isMilli} />
+            </div>
             <div className={styles.depositButton} onClick={closeDepositModalHandler}>
               {t('tournaments.buttons.deposit')}
             </div>

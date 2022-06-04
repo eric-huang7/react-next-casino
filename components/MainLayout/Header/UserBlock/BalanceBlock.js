@@ -8,6 +8,7 @@ import {svgSetter} from "../../../../helpers/iconNameFinder";
 import {CurrencyItemShort} from "./CurrencyItemShort";
 import {useTranslation} from "next-i18next";
 import {Withdrawable} from "./Withdrawable";
+import {milliCurrencies, milliLimit} from "../../../../envs/currency";
 
 export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
@@ -16,6 +17,7 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const [currency, setCurrency] = useState(false)
   const [activeCurrency, setActiveCurrency] = useState(false)
   const [balance, setBalance] = useState(false)
+  const [isMilli, setIsMilli] = useState(false)
 
   useEffect(() => {
     if (activeCurrency) {
@@ -34,21 +36,39 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
         }
       }
       setBalanceData(balanceData)
+
+      const currency = currencyFinder(balanceData, userInfo, userCurrency)
+      setCurrency(currency)
+
+      const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
+      setActiveCurrency(activeCurrency)
+
+      let isMilli = false
+
+      if (
+        activeCurrency?.abbreviation &&
+        milliCurrencies.includes(activeCurrency?.abbreviation) &&
+        parseFloat(balanceData[0]?.current_balance) < milliLimit // TODO set to 1
+      ) {
+        isMilli = true
+      }
+
+      setIsMilli(isMilli)
+
       let amount = ''
 
       try {
-        amount = numberTransformer(`${balanceData[0].current_balance}`)
+        const milliBalance = isMilli
+          ? parseFloat(balanceData[0]?.current_balance) * 1000
+          : parseFloat(balanceData[0]?.current_balance)
+
+        amount = numberTransformer(`${milliBalance?.toFixed(activeCurrency.decimal)}`)
       } catch (e) {
         amount = ''
       }
 
       let balance = balanceData.length === 0 ? '0.00' : amount
       setBalance(balance)
-      const currency = currencyFinder(balanceData, userInfo, userCurrency)
-      setCurrency(currency)
-
-      const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
-      setActiveCurrency(activeCurrency)
     }
   }, [userInfo, userCurrency])
 
@@ -71,7 +91,7 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
       >
         <span>
           {balance}
-          <CurrencyItemShort currencyData={activeCurrency} />
+          <CurrencyItemShort currencyData={activeCurrency} isMilli={isMilli} />
         </span>
         {
           isShowBalanceList && balanceData.length > 0
@@ -95,7 +115,7 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
       >
         <span>
           {balance}
-          <Withdrawable currencyData={activeCurrency} />
+          <Withdrawable currencyData={activeCurrency} isMilli={isMilli} />
         </span>
       </div>
     </div>

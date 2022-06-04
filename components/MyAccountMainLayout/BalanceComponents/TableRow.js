@@ -15,8 +15,8 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
 
   let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
 
-  let amount = numberTransformer(balanceData.current_balance)
-  let cashOut = numberTransformer(balanceData.cash_amount)
+  let amount = numberTransformer(parseFloat(balanceData.current_balance)?.toFixed(currency.decimal))
+  let cashOut = numberTransformer(parseFloat(balanceData.cash_amount)?.toFixed(currency.decimal))
 
   const chooseClickHandler = () => {
     let userData = {

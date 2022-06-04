@@ -28,3 +28,11 @@ export const baseVariants = {
   'ADA': '#1c3a9d',
   'BSC': '#ffc241'
 }
+
+export const milliLimit = 1
+
+export const milliCurrencies = [
+  'BTC', 'LTC', 'ETH', 'ZEC', 'BCH'
+]
+
+
