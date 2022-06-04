@@ -29,7 +29,7 @@ export const BalanceItem = ({ balanceData, currencyData, onSelect }) => {
   }
 
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id))
-  let amount = numberTransformer(balanceData.current_balance)
+  let amount = numberTransformer(parseFloat(balanceData.current_balance).toFixed(currency.decimal))
 
   useEffect(() => {
     const returnAbbr = false
