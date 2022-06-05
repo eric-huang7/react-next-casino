@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import {numberTransformer} from "../../../../helpers/numberTransformer";
 import {currencyFinder} from "../../../../helpers/currencyFinder";
 import {showDepositModal} from "../../../../redux/popups/action";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import {HeaderBalance} from "./HeaderBalance";
 import {milliCurrencies, milliLimit} from "../../../../envs/currency";
@@ -18,6 +18,18 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
   const [activeCurrency, setActiveCurrency] = useState(false)
   const [currency, setCurrency] = useState(false)
   const [isMilli, setIsMilli] = useState(false)
+  const [isRealGame, setIsRealGame] = useState(false)
+
+  const showPlayWindow = useSelector((store) => store.ui);
+  const playGames = useSelector((state) => state.playGame);
+
+  useEffect(() => {
+    if (showPlayWindow.isShowPlayWindow && !playGames.freeGame) {
+      setIsRealGame(true)
+    } else {
+      setIsRealGame(false)
+    }
+  }, [showPlayWindow.isShowPlayWindow, playGames.freeGame])
 
   useEffect(() => {
     if (userCurrency.currency && userInfo.balance) {
@@ -79,15 +91,18 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
     <div className={styles.userMainBlockUserInfoBlock}>
       <div className={`${styles.userTextContainer}`}>
         <span className={styles.userName}>
-          <div>
-            <div className={styles.balance}>
-              {balance} <HeaderBalance currencyData={activeCurrency} isMilli={isMilli} />
+          {isRealGame ? (
+            <div className={styles.balance}>{t('header.realGame')} <HeaderBalance currencyData={activeCurrency}/></div>
+          ) : (
+            <div>
+              <div className={styles.balance}>
+                {balance} <HeaderBalance currencyData={activeCurrency} isMilli={isMilli}/>
+              </div>
+              <div className={styles.depositButton} onClick={closeDepositModalHandler}>
+                {t('tournaments.buttons.deposit')}
+              </div>
             </div>
-            <div className={styles.depositButton} onClick={closeDepositModalHandler}>
-              {t('tournaments.buttons.deposit')}
-            </div>
-          </div>
-
+          )}
         </span>
       </div>
       <div
