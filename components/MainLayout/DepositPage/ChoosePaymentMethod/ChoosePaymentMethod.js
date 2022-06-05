@@ -26,7 +26,7 @@ export const ChoosePaymentMethod = ({
           currency_id: userCurrency?.userCurrencyData?.id,
         }
       }
-      Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.data.results))
+      Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.results))
         .catch((err) => {setPaymentMethods(null)});
     } else {
       setPaymentMethods(null)
@@ -88,7 +88,7 @@ export const ChoosePaymentMethod = ({
               <></>
           }
         </div>
-        <span className={styles.errorMessage}>{t(userPayment.paymentError)}</span>
+        <span className={styles.errorMessage}>{t(userPayment?.paymentError)}</span>
       </div>
     )
   } else {

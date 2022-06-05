@@ -95,7 +95,7 @@ export const PaymentItem = ({ method, type, userCurrency, userPayment }) => {
     return (
       <div
         onClick={() => fiatClickHandler()}
-        className={`${styles.paymentItem} ${styles.paymentItemFiat} ${userPayment.paymentMethodData?.paymentType === 'creditCard' ? styles.active : ''}`}
+        className={`${styles.paymentItem} ${styles.paymentItemFiat} ${userPayment?.paymentMethodData?.paymentType === 'creditCard' ? styles.active : ''}`}
       >
         <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
         <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
@@ -105,7 +105,7 @@ export const PaymentItem = ({ method, type, userCurrency, userPayment }) => {
     return (
       <div
         onClick={() => cryptoClickHandler()}
-        className={`${styles.paymentItem} ${styles.cryptoPaymentImage} ${userPayment.paymentMethodData?.paymentType === 'crypto' ? styles.active : ''}`}
+        className={`${styles.paymentItem} ${styles.cryptoPaymentImage} ${userPayment?.paymentMethodData?.paymentType === 'crypto' ? styles.active : ''}`}
       >
         <img src={'/assets/img/depositPage/payments/crypto.png'} alt={`payment method icon crypto`}/>
       </div>
