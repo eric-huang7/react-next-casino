@@ -22,7 +22,8 @@ const handlers = {
       ...state,
       startGame: {...payload.data},
       loading: false,
-      gameName: payload.gameName
+      gameName: payload.gameName,
+      freeGame: null
     }
   },
   [deleteGameLink]: (state, {payload}) => {
