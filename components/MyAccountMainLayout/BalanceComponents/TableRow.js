@@ -59,10 +59,10 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
       </td>
       <td className={styles.tableActions}>
         <div>
-          <ErrorEmpty>
+          {currency.isDepositEnabled === 1 && <ErrorEmpty>
             <DepositButton currency={currency} t={t}/>
-          </ErrorEmpty>
-          <Link
+          </ErrorEmpty>}
+          {currency.isWithdrawEnabled === 1 && (<Link
             href={{
               pathname: `/accounts/cashout/${currency?.abbreviation}`,
               query: { currency_id: `${currency?.id}` }
@@ -71,7 +71,7 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
             <a className={styles.cashoutLink}>
               {t('myAccount.balance.buttons.cashout')}
             </a>
-          </Link>
+          </Link>)}
         </div>
       </td>
     </tr>
