@@ -1,0 +1,48 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(/assets/img/homeImg/home_header_bckgr.jpg);
+  font-family: Lithograph;
+  color: #fff;
+  padding: 24px;
+
+  h1 {
+    font-size: 56px;
+    text-align: center;
+  }
+
+  .title2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .title3 {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    h1 {
+      font-size: 40px;
+    }
+
+    .title2 {
+      font-size: 24px;
+    }
+
+    .title3 {
+      font-size: 18px;
+    }
+  }
+
+}
+
