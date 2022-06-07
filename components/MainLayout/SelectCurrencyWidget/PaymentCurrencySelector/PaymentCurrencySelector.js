@@ -28,7 +28,7 @@ export const PaymentCurrencySelector = ({
   const dispatch = useDispatch()
   const [searchValue, setSearchValue] = useState('')
 
-  const [cryptoFindArr, setCryptoFindArr] = useState(userPayment.paymentMethodData?.methodData)
+  const [cryptoFindArr, setCryptoFindArr] = useState(userPayment?.paymentMethodData?.methodData)
 
   const searchInputHandler = (value) => {
     setSearchValue(value)
@@ -39,7 +39,7 @@ export const PaymentCurrencySelector = ({
   const cryptoFinder = (value) => {
     let searchReg = new RegExp(value.toLowerCase().trim())
 
-    const cryptoFindArr = userPayment.paymentMethodData?.methodData.filter((currency) => {
+    const cryptoFindArr = userPayment?.paymentMethodData?.methodData.filter((currency) => {
       if (searchReg.test(currency.currency_from.currency.toLowerCase())) {
         return true
       } else {
@@ -127,9 +127,9 @@ export const PaymentCurrencySelector = ({
         <div className={styles.currenciesListsContainer}>
           <ul className={styles.currenciesList}>
             {
-              cryptoFindArr.length > 0
+              cryptoFindArr?.length > 0
                 ?
-                cryptoFindArr.map((paymentMethod) => {
+                cryptoFindArr?.map((paymentMethod) => {
                   return (
                     <ErrorEmpty key={`payment method ${paymentMethod.currency_from.currency}`}>
                       <PaymentCurrencyItem
