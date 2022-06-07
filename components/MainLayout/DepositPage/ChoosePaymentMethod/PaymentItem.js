@@ -6,9 +6,12 @@ import {
   showPaymentCurrencySwitcher
 } from '../../../../redux/popups/action'
 import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/userFinance/action'
+import {useTransition} from "react";
+import {useTranslation} from "next-i18next";
 
 export const PaymentItem = ({ method, type, userCurrency, userPayment }) => {
   const dispatch = useDispatch()
+  const { t } = useTranslation('common')
 
   const hidePaymentCurrencyShowDepositModal = () => {
     dispatch(showDepositModal(true))
@@ -93,21 +96,26 @@ export const PaymentItem = ({ method, type, userCurrency, userPayment }) => {
 
   if (type === 'creditCard') {
     return (
-      <div
-        onClick={() => fiatClickHandler()}
-        className={`${styles.paymentItem} ${styles.paymentItemFiat} ${userPayment?.paymentMethodData?.paymentType === 'creditCard' ? styles.active : ''}`}
-      >
-        <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
-        <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
+      <div className={styles.paymentItemWrapper} >
+        <div
+          onClick={() => fiatClickHandler()}
+          className={`${styles.paymentItem} ${styles.paymentItemFiat} ${userPayment?.paymentMethodData?.paymentType === 'creditCard' ? styles.active : ''}`}
+        >
+          <img src={'/assets/img/depositPage/card.svg'} alt={`payment method icon master-card`}/>
+        </div>
+        <div className={styles.itemTitle}>{t('myAccount.history.transactions.table.paymentSystem.creditCard')}</div>
       </div>
     )
   } else {
     return (
-      <div
-        onClick={() => cryptoClickHandler()}
-        className={`${styles.paymentItem} ${styles.cryptoPaymentImage} ${userPayment?.paymentMethodData?.paymentType === 'crypto' ? styles.active : ''}`}
-      >
-        <img src={'/assets/img/depositPage/payments/crypto.png'} alt={`payment method icon crypto`}/>
+      <div className={styles.paymentItemWrapper} >
+        <div
+          onClick={() => cryptoClickHandler()}
+          className={`${styles.paymentItem} ${styles.cryptoPaymentImage} ${userPayment?.paymentMethodData?.paymentType === 'crypto' ? styles.active : ''}`}
+        >
+          <img src={'/assets/img/depositPage/payments/crypto.png'} alt={`payment method icon crypto`}/>
+        </div>
+        <div className={styles.itemTitle}>{t('selectCurrency.cryptoCurrencies')}</div>
       </div>
     )
   }

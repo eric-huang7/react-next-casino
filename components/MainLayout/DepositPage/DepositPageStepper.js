@@ -41,6 +41,7 @@ export const DepositPageStepper = (props) => {
     setPaymentMethods
   } = props
 
+  console.log('userPayment ', userPayment )
   switch (step) {
     case  1:
       return (
@@ -96,7 +97,7 @@ export const DepositPageStepper = (props) => {
               userCurrency={userCurrency}
               userInfo={userInfo}
               currencyData={currencyData}
-            />
+            />1
           </ErrorEmpty>
 
         </>
@@ -107,35 +108,9 @@ export const DepositPageStepper = (props) => {
           <div className={styles.depositInnerBlockWrapper}>
             <DepositHeading
               t={t}
+              title={''}
               closeDepositModalHandler={closeDepositModalHandler}
             />
-            <ErrorText>
-              <DepositInputsContainer
-                userCurrency={userCurrency}
-                t={t}
-                userDepositValue={userDepositValue}
-                depositValueInputHandler={depositValueInputHandler}
-                currencySwitcherShowHandler={currencySwitcherShowHandler}
-                userDepositValueError={userDepositValueError}
-              />
-            </ErrorText>
-            <ErrorText>
-              <BonusesBlockMainContainer
-                t={t}
-                isChecked={isChecked}
-                checkedInputHandler={checkedInputHandler}
-                isActiveBonusInput={isActiveBonusInput}
-                userCurrency={userCurrency}
-                showAllBonuses={showAllBonuses}
-                showAllBonusesHandler={showAllBonusesHandler}
-                chooseBonusClickHandler={chooseBonusClickHandler}
-                setDepositButtonText={setDepositButtonText}
-                userDepositValue={userDepositValue}
-                userSelectedBonus={userSelectedBonus}
-                isShowDepositModal={isShowDepositModal}
-                bonusesArr={bonusesArr}
-              />
-            </ErrorText>
             <ErrorText>
               <ChoosePaymentMethod
                 t={t}
@@ -146,25 +121,7 @@ export const DepositPageStepper = (props) => {
                 setPaymentMethods={setPaymentMethods}
               />
             </ErrorText>
-            <BonusCodeActivator
-              t={t}
-              isActiveBonusInput={isActiveBonusInput}
-              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-            />
           </div>
-          <ErrorEmpty>
-            <DepositButtonSubmit
-              userPayment={userPayment}
-              userDepositValue={userDepositValue}
-              stepHandler={stepHandler}
-              step={step}
-              t={t}
-              buttonText={buttonText}
-              userCurrency={userCurrency}
-              userInfo={userInfo}
-              currencyData={currencyData}
-            />
-          </ErrorEmpty>
         </>
       )
     case 3:
