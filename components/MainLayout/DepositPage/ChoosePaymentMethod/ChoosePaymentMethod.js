@@ -130,7 +130,8 @@ export const ChoosePaymentMethod = ({
       methods.push({
         ...methodItem.currency_from,
         currencyData: currency,
-        title: currency?.name || methodItem.currency_from.currency
+        title: currency?.name || methodItem.currency_from.currency,
+        image: `/assets/img/depositPage/${methodItem.currency_from?.currency?.toLowerCase()}.svg`
       })
     })
     paymentMethods[3].forEach((methodItem) => methods.push({

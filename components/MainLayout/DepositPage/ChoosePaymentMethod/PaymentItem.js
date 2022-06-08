@@ -12,7 +12,7 @@ import {svgSetterById} from "../../../../helpers/iconNameFinder";
 
 export const PaymentItem = ({ onClick, isActive, image, title, currencyData }) => {
   useEffect(() => {
-    if (currencyData) {
+    if (currencyData && !image) {
       const returnAbbr = false
       svgSetterById(currencyData, `currency${currencyData.id}`, returnAbbr);
     }
@@ -25,7 +25,7 @@ export const PaymentItem = ({ onClick, isActive, image, title, currencyData }) =
         className={`${styles.paymentItem} ${styles.paymentItemFiat} ${isActive ? styles.active : ''}`}
       >
         {image && <img src={image} alt=""/>}
-        {currencyData && <div id={`currency${currencyData.id}`} className={styles.iconContainer}></div>}
+        {!image && currencyData && <div id={`currency${currencyData.id}`} className={styles.iconContainer}></div>}
       </div>
       <div className={styles.itemTitle}>{title}</div>
     </div>
