@@ -41,7 +41,6 @@ export const DepositPageStepper = (props) => {
     setPaymentMethods
   } = props
 
-  console.log('userPayment ', userPayment )
   switch (step) {
     case  1:
       return (
@@ -119,6 +118,7 @@ export const DepositPageStepper = (props) => {
                 userCurrency={userCurrency}
                 isShowDepositModal={isShowDepositModal}
                 setPaymentMethods={setPaymentMethods}
+                stepHandler={() => stepHandler(step)}
               />
             </ErrorText>
           </div>

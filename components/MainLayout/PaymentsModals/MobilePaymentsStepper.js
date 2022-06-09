@@ -24,7 +24,7 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
   const dispatch = useDispatch()
   const userCurrency = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
-  const userPayment = useSelector((state) => state.userPaymentMethod)
+  const userPayment = useSelector((state) => state.userFinance)
 
   const currencySwitcherShowHandler = () => {
     dispatch(showCurrencySwitcher(true))

@@ -35,7 +35,7 @@ export const SelectCurrencyWidget = ({
   const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
-  const userPayment = useSelector((state) => state.userPaymentMethod)
+  const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userCurrency = useSelector((state) => state.userFinance)
 

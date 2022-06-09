@@ -24,13 +24,12 @@ export const DepositPage = ({ t }) => {
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
   const isShowDepositModal = useSelector((state) => state.popups)
   const userCurrency = useSelector((state) => state.userFinance)
-  const userPayment = useSelector((state) => state.userPaymentMethod)
+  const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
   const currencyData = useSelector((store) => store.currency?.currency)
-
 
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
   const [showAllBonuses, setShowAllBonuses] = useState(false)

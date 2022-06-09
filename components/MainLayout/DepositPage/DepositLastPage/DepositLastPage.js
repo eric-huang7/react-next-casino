@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 
 export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler, userDepositValueError, userInfo, userCurrency}) => {
-  const chosenPayment = useSelector((state) => state.userPaymentMethod)
+  const chosenPayment = useSelector((state) => state.userFinance)
 
   return (
     <div className={styles.depositLastWrapper}>
@@ -13,7 +13,7 @@ export const DepositLastPage = ({t, userDepositValue, depositValueInputHandler, 
       <div className={styles.inputsWrapper}>
         <div className={styles.emailInputContainer}>
           <label htmlFor="paymentEmail">{t("depositPage.depositLastPage.emailLabel")}</label>
-          <input id='paymentEmail' type="text" defaultValue={userInfo.user.email}/>
+          <input id='paymentEmail' type="text" defaultValue={userInfo?.user?.email}/>
         </div>
         <div className={styles.amountPaymentContainer}>
           <label className={styles.amountPaymentInfo} htmlFor="">{t("depositPage.depositLastPage.amountPayment")}</label>

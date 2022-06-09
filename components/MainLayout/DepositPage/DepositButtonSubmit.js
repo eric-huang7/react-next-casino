@@ -39,53 +39,7 @@ export const DepositButtonSubmit = ({
       }
     } else if (step === 2) {
 
-      if (!!userPayment.paymentMethodData) {
-        // stepHandler(step);
-        dispatch(setErrorUserPaymentMethod(''))
-        if (userPayment.paymentMethodData.paymentType === 'creditCard') {
-          dispatch(showCreditCardModal(true))
-          dispatch(showDepositModal(false))
-        } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
 
-          dispatch(setErrorUserPaymentMethod('depositPage.errors.choosePaymentMethod'))
-        } else if (userPayment.paymentMethodData.paymentType === 'crypto') {
-
-          let currencyInfo = currencyData?.results.find((currency) => currency.id === userPayment.paymentMethodData.methodData.currency_from.currency_id)
-
-          if (userCurrency.userCurrencyData.type === 3) {
-
-            let paymentData = {
-              senderCurrency_id: currencyInfo.id,
-              user_id: `${userInfo.user.id}`,
-              site_id: siteID,
-              award_amount: `${userDepositValue}`,
-              receiverCurrency_id: userCurrency?.userCurrencyData?.id
-            }
-
-            dispatch(postCryptoPayment(paymentData, userPayment))
-            dispatch(showCryptoModal(true))
-            dispatch(showDepositModal(false))
-          } else {
-
-            let paymentData = {
-              senderCurrency_id: currencyInfo.id,
-              user_id: `${userInfo.user.id}`,
-              site_id: siteID,
-              award_amount: `${userDepositValue}`,
-              receiverCurrency_id: userCurrency?.userCurrencyData?.id
-            }
-
-            dispatch(postCryptoPayment(paymentData, userPayment))
-            dispatch(showCryptoModal(true))
-            dispatch(showDepositModal(false))
-          }
-
-        }
-
-      } else {
-
-        dispatch(setErrorUserPaymentMethod('depositPage.errors.choosePaymentMethod'))
-      }
     }
 
   }

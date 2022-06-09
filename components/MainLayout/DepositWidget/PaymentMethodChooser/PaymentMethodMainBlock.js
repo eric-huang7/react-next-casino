@@ -37,7 +37,7 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
             t={t}
           />
           :
-        !userPayment.paymentMethodData
+        !userPayment?.paymentMethodData
           ?
           <PaymentMethodButton
             setIsActivePayments={setIsActivePayments}
@@ -45,7 +45,7 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
             t={t}
           />
           :
-        userPayment.paymentMethodData.paymentType === 'creditCard'
+        userPayment?.paymentMethodData.paymentType === 'creditCard'
         ?
           <ErrorEmpty>
             <ChosenPaymentMethodButton
@@ -56,7 +56,7 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
             />
           </ErrorEmpty>
         :
-        userPayment.paymentMethodData.paymentType === 'cryptoArr'
+        userPayment?.paymentMethodData.paymentType === 'cryptoArr'
           ?
         <PaymentMethodButton
           setIsActivePayments={setIsActivePayments}
@@ -64,7 +64,7 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
           t={t}
         />
           :
-          userPayment.paymentMethodData.paymentType === null
+          userPayment?.paymentMethodData.paymentType === null
           ?
             <PaymentMethodButton
               setIsActivePayments={setIsActivePayments}

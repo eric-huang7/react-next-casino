@@ -29,7 +29,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   const userCurrency = useSelector((state) => state.userFinance);
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
-  const userPayment = useSelector((state) => state.userPaymentMethod);
+  const userPayment = useSelector((state) => state.userFinance);
   const currencyData = useSelector((store) => store.currency?.currency);
 
 
@@ -71,7 +71,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       dispatch(showCreditCardModal(true));
 
     } else if (type === 'crypto' || type === 'crypto chosen type') {
-      let currencyInfo = currencyData?.results.find((currency) => currency.id === userPayment.paymentMethodData.methodData.currency_from.currency_id);
+      let currencyInfo = currencyData?.results.find((currency) => currency.id === userPayment?.paymentMethodData.methodData.currency_from.currency_id);
 
       let paymentData = {
         senderCurrency_id: currencyInfo.id,
@@ -100,14 +100,14 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         setErrorPaymentMethod(true);
       } else if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
-      } else if (!userPayment.paymentMethodData) {
+      } else if (!userPayment?.paymentMethodData) {
         setErrorPaymentMethod(true);
-      } else if (!userPayment.paymentMethodData.paymentType) {
+      } else if (!userPayment?.paymentMethodData.paymentType) {
         setErrorPaymentMethod(true);
-      } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
+      } else if (userPayment?.paymentMethodData.paymentType === 'cryptoArr') {
         setErrorPaymentMethod(true);
       } else {
-        if (userPayment.paymentMethodData.paymentType === 'crypto') {
+        if (userPayment?.paymentMethodData.paymentType === 'crypto') {
           setErrorPaymentMethod(false);
           setErrorDepositValue(false);
           openWindow('crypto chosen type');
@@ -133,14 +133,14 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
           setErrorPaymentMethod(true);
         } else if (Number(userDepositValue) === 0) {
           setErrorDepositValue(true);
-        } else if (!userPayment.paymentMethodData) {
+        } else if (!userPayment?.paymentMethodData) {
           setErrorPaymentMethod(true);
-        } else if (!userPayment.paymentMethodData.paymentType) {
+        } else if (!userPayment?.paymentMethodData.paymentType) {
           setErrorPaymentMethod(true);
-        } else if (userPayment.paymentMethodData.paymentType === 'cryptoArr') {
+        } else if (userPayment?.paymentMethodData.paymentType === 'cryptoArr') {
           setErrorPaymentMethod(true);
         } else {
-          if (userPayment.paymentMethodData.paymentType === 'crypto') {
+          if (userPayment?.paymentMethodData.paymentType === 'crypto') {
             setErrorPaymentMethod(false);
             setErrorDepositValue(false);
             openWindow('crypto chosen type');
