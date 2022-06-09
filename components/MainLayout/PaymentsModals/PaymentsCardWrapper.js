@@ -40,7 +40,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
   let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userFinance);
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
-  const userPayment = useSelector((state) => state.userPaymentMethod);
+  const userPayment = useSelector((state) => state.userFinance);
 
 
   const dispatch = useDispatch()
@@ -72,7 +72,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
       let date = dateInput.split('/').join('')
       let paymentData = {
         senderCurrency_id: userCurrency?.userCurrencyData?.id,
-        user_id: `${userInfo.user.user.id}`,
+        user_id: `${userInfo?.user?.user?.id}`,
         site_id: siteID,
         number: `${cardNumber}`,
         cvv: Number(cvvValue),
@@ -87,7 +87,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
     }
   }
 
-  if (!userPayment.paymentMethodData.methodData) {
+  if (!userPayment?.paymentMethodData.methodData) {
     return (
       <div className={styles.paymentsMainWrapper}>
         <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>

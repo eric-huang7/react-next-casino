@@ -8,7 +8,14 @@ import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";
 import {getAllBonusesAction} from "../../../../redux/bonuses/action";
-import {backButtonShouldDo, showDepositModal, showPaymentCurrencySwitcher} from "../../../../redux/popups/action";
+import {
+  backButtonShouldDo,
+  showCreditCardModal, showCryptoModal, showCurrencySwitcher,
+  showDepositModal, showMobileCryptoPayments, showMobilePaymentsStepper,
+  showPaymentCurrencySwitcher
+} from "../../../../redux/popups/action";
+import {siteID} from "../../../../envs/envsForFetching";
+import {annulDeposit, postCryptoPayment} from "../../../../redux/deposits/action";
 
 export const ChoosePaymentMethod = ({
   isShowDepositModal,
@@ -16,13 +23,14 @@ export const ChoosePaymentMethod = ({
   t,
   userPayment,
   paymentMethods,
-  userCurrency
+  userCurrency,
+                                      stepHandler
 }) => {
   const dispatch = useDispatch()
   const currencyData = useSelector((store) => store.currency?.currency)
+  const userInfo = useSelector((store) => store.authInfo?.user)
+  const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
 
-  console.log('currencyData', currencyData)
-  console.log('paymentMethods', paymentMethods)
   useEffect(() => {
     if (isShowDepositModal) {
       const config = {
@@ -48,13 +56,14 @@ export const ChoosePaymentMethod = ({
 
   const fiatClickHandler = () => {
 
-    let chosenMethod = method[3].filter((method) => {
+    let chosenMethod = paymentMethods[3].filter((method) => {
       if (method.currency_from.currency === userCurrency?.userCurrencyData?.abbreviation && method.currency_to.currency === userCurrency?.userCurrencyData?.abbreviation) {
         return true
       } else {
         return false
       }
     })
+
     if (chosenMethod[0]) {
       dispatch(setUserPaymentMethod({
         methodData: chosenMethod[0],
@@ -73,52 +82,14 @@ export const ChoosePaymentMethod = ({
     dispatch(setErrorUserPaymentMethod(''))
   }
 
-  const pay = () => {
-    let paymentMethods = []
-    if (userCurrency.userCurrencyData.type === 3) {
-      method[1].forEach((methodItem) => paymentMethods.push(methodItem))
-
-      method[2].forEach((methodItem) => {
-        if (method[1].length > 0) {
-          let universalItem = universalizer(method[1], methodItem)
-          if (universalItem) {
-            paymentMethods.push(methodItem)
-          } else {
-            return methodItem
-          }
-        } else {
-          paymentMethods.push(methodItem)
-        }
-      })
-
-    } else {
-      method[3].forEach((methodItem) => paymentMethods.push(methodItem))
-
-      method[1].forEach((methodItem) => paymentMethods.push(methodItem))
-
-      method[2].forEach((methodItem) => {
-        if (method[1].length > 0) {
-          let universalItem = universalizer(method[1], methodItem)
-          if (universalItem) {
-            paymentMethods.push(methodItem)
-          } else {
-            return methodItem
-          }
-        } else {
-          paymentMethods.push(methodItem)
-        }
-      })
-    }
-
+  const cryptoClickHandler = (method) => {
     dispatch(setUserPaymentMethod({
-      methodData: paymentMethods,
+      methodData: method,
       paymentImg: '/assets/img/depositPage/visa-2.svg',
-      paymentSecImg: '',
-      paymentType: 'cryptoArr',
+      paymentSecImg: '/assets/img/depositPage/master-card.svg',
+      paymentType: 'crypto',
     }))
-    dispatch(showPaymentCurrencySwitcher(true))
-    dispatch(showDepositModal(false))
-    dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal))
+    // dispatch(showCryptoModal(true))
   }
 
   const getMethods = () => {
@@ -131,17 +102,65 @@ export const ChoosePaymentMethod = ({
         ...methodItem.currency_from,
         currencyData: currency,
         title: currency?.name || methodItem.currency_from.currency,
-        image: `/assets/img/depositPage/${methodItem.currency_from?.currency?.toLowerCase()}.svg`
+        image: `/assets/img/depositPage/${methodItem.currency_from?.currency?.toLowerCase()}.svg`,
+        onClick: () => cryptoClickHandler(methodItem)
       })
     })
     paymentMethods[3].forEach((methodItem) => methods.push({
       ...methodItem.currency_from,
       image: '/assets/img/depositPage/card.svg',
-      title: t('myAccount.history.transactions.table.paymentSystem.creditCard')
+      title: t('myAccount.history.transactions.table.paymentSystem.creditCard'),
+      active: userPayment?.paymentMethodData?.paymentType === 'creditCard',
+      onClick: fiatClickHandler
     }))
-    console.log('methods', methods)
+
     return methods
   }
+
+  useEffect(() => {
+    if (!!userPayment?.paymentMethodData) {
+      // stepHandler(step);
+      dispatch(setErrorUserPaymentMethod(''))
+      if (userPayment?.paymentMethodData?.paymentType === 'creditCard') {
+        dispatch(showCreditCardModal(true))
+        dispatch(showDepositModal(false))
+      } else if (userPayment?.paymentMethodData?.paymentType === 'crypto') {
+
+        let currencyInfo = currencyData?.results.find((currency) => currency.id === userPayment?.paymentMethodData?.methodData?.currency_from?.currency_id)
+
+        if (userCurrency.userCurrencyData.type === 3) {
+
+          let paymentData = {
+            senderCurrency_id: currencyInfo.id,
+            user_id: `${userInfo?.user?.id}`,
+            site_id: siteID,
+            award_amount: `${userDepositValue}`,
+            receiverCurrency_id: userCurrency?.userCurrencyData?.id
+          }
+
+          dispatch(postCryptoPayment(paymentData, userPayment))
+          dispatch(showCryptoModal(true))
+          dispatch(showDepositModal(false))
+        } else {
+
+          let paymentData = {
+            senderCurrency_id: currencyInfo.id,
+            user_id: `${userInfo?.user?.id}`,
+            site_id: siteID,
+            award_amount: `${userDepositValue}`,
+            receiverCurrency_id: userCurrency?.userCurrencyData?.id
+          }
+
+          dispatch(postCryptoPayment(paymentData, userPayment))
+          dispatch(showCryptoModal(true))
+          dispatch(showDepositModal(false))
+        }
+
+      }
+
+    }
+  }, [userPayment?.paymentMethodData])
+
 
   return paymentMethods ? (
     <div className={styles.depositsChoosePaymentWrapper}>
@@ -153,7 +172,7 @@ export const ChoosePaymentMethod = ({
           <ErrorEmpty key={index}>
             <PaymentItem
               currencyData={method.currencyData}
-              onClick
+              onClick={method.onClick}
               isActive={false}
               image={method.image}
               title={method.title}
@@ -173,19 +192,4 @@ export const ChoosePaymentMethod = ({
       </div>
     </div>
   )
-}
-
-function universalizer (arrVerify, checkItem) {
-  let sameItem = arrVerify.find((methodOne) => {
-    if (methodOne.currency_from.currency === checkItem.currency_from.currency) {
-      return true
-    } else {
-      return false
-    }
-  })
-  if (!sameItem) {
-    return true
-  } else {
-    return false
-  }
 }
