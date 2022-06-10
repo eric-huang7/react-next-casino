@@ -13,11 +13,11 @@ export const PaymentHeading = ({t, type, closeHandler, pageStep, whatShouldDoBac
           </button>
       }
       {
-        // showBackButton ?
-        //   <button onClick={() => backButtonClickHandler()} className={`${styles.backButton} ${showBackButton ? styles.toDepositBackButton : ""}`}>
-        //   </button>
-        //   :
-        //   <div className={styles.empty}></div>
+        backButtonClickHandler ?
+          <button onClick={() => backButtonClickHandler()} className={`${styles.backButton} ${backButtonClickHandler ? styles.toDepositBackButton : ""}`}>
+          </button>
+          :
+          <div className={styles.empty}></div>
       }
 
       <div className={styles.heading}>
