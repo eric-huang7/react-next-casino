@@ -62,7 +62,7 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
           ? parseFloat(balanceData[0]?.current_balance) * 1000
           : parseFloat(balanceData[0]?.current_balance)
 
-        amount = numberTransformer(`${milliBalance?.toFixed(activeCurrency.decimal)}`)
+        amount = numberTransformer(`${milliBalance?.toFixed(Math.min(isMilli ? 4 : 9, activeCurrency?.decimal))}`)
       } catch (e) {
         amount = ''
       }

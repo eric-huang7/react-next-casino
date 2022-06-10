@@ -14,11 +14,11 @@ export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) =>
     if (paymentsData.paymentMethod.paymentMethodData.methodData.rate_to === '1') {
       const paymentCurrency = currenciesList.currency.results.find((searchCurrency) => searchCurrency.abbreviation === paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency);
 
-      needToPayValue = parseFloat((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value).toFixed(paymentCurrency.decimal));
+      needToPayValue = parseFloat((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value).toFixed(Math.min(9,paymentCurrency?.decimal)));
     } else {
       const paymentCurrency = currenciesList.currency.results.find((searchCurrency) => searchCurrency.abbreviation === paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency);
 
-      needToPayValue = parseFloat(((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value) / paymentsData.paymentMethod.paymentMethodData.methodData.rate_to).toFixed(paymentCurrency.decimal));
+      needToPayValue = parseFloat(((paymentsData.paymentMethod.paymentMethodData.methodData.rate_from * value) / paymentsData.paymentMethod.paymentMethodData.methodData.rate_to).toFixed(Math.min(9,paymentCurrency?.decimal)));
     }
     needToPayRes = `${needToPayValue} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency} \n`;
   }
