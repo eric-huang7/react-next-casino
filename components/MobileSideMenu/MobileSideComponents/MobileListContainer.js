@@ -93,7 +93,7 @@ let listArr = [
   },
   {id: 10,
     name: "mobileSideMenu.listMenu.redeem",
-    icon: '/assets/img/mobileSideMenu/gift.svg',
+    icon: '/assets/img/mobileSideMenu/cup.svg',
     type: "link",
     path: "javascript:void(0)"
   },
@@ -131,9 +131,9 @@ export const MobileListContainer = ({t, isAuth}) => {
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[3]}/>
       </li>
-      <li className={styles.mobileSideListItem}>
+      {isAuth ? <li className={styles.mobileSideListItem}>
         <MobileSideListLinks onClick={handleRedeem} t={t} dataList={listArr[9]}/>
-      </li>
+      </li> : null}
       <li className={styles.mobileSideListItem}>
         <img src={listArr[5].icon} alt='side menu icon'/>
         <DropMenu el={listArr[5]} t={t} isAuth={isAuth}/>
