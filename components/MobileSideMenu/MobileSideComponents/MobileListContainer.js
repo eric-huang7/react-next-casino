@@ -1,7 +1,9 @@
 import {MobileSideListLinks} from "./MobileSideList";
 import styles from '../../../styles/MobileSideMenu/MobileSideMenu.module.scss';
 import {DropMenu} from "./DropMenu";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {showRedeemModal} from "../../../redux/popups/action";
+import {showMobileMenu} from "../../../redux/ui/action";
 
 
 let listArr = [
@@ -89,10 +91,16 @@ let listArr = [
     type: "link",
     path: "/#news"
   },
+  {id: 10,
+    name: "mobileSideMenu.listMenu.redeem",
+    icon: '/assets/img/mobileSideMenu/gift.svg',
+    type: "link",
+    path: "javascript:void(0)"
+  },
 ];
 
 export const MobileListContainer = ({t, isAuth}) => {
-
+  const dispatch = useDispatch();
 
   const messages = useSelector((store) => store.notifications.messagesData);
 
@@ -104,19 +112,27 @@ export const MobileListContainer = ({t, isAuth}) => {
     }
   });
 
+  const handleRedeem = () => {
+    dispatch(showMobileMenu(false))
+    dispatch(showRedeemModal(true))
+  }
+
   return (
     <ul className={styles.mobileSideList}>
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[0]}/>
       </li>
       {isAuth ? <li className={styles.mobileSideListItem}>
-                  <MobileSideListLinks t={t} dataList={listArr[1]}/>
-                </li> : ""}
+        <MobileSideListLinks t={t} dataList={listArr[1]}/>
+      </li> : ""}
       {isAuth ? <li className={styles.mobileSideListItem}>
-                  <MobileSideListLinks messages={unreadMessages} t={t} dataList={listArr[2]}/>
-                </li> : ""}
+        <MobileSideListLinks messages={unreadMessages} t={t} dataList={listArr[2]}/>
+      </li> : ""}
       <li className={styles.mobileSideListItem}>
         <MobileSideListLinks t={t} dataList={listArr[3]}/>
+      </li>
+      <li className={styles.mobileSideListItem}>
+        <MobileSideListLinks onClick={handleRedeem} t={t} dataList={listArr[9]}/>
       </li>
       <li className={styles.mobileSideListItem}>
         <img src={listArr[5].icon} alt='side menu icon'/>
