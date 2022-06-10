@@ -42,7 +42,7 @@ const handlers = {
   [setUserDepositValue]: (state, {payload}) => {
     return {
       ...state,
-      value: payload,
+      depositValue: payload,
     }
   },
   [setErrorUserDepositValue]: (state, {payload}) => {
