@@ -15,8 +15,8 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
 
   let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
 
-  let amount = numberTransformer(parseFloat(balanceData.current_balance)?.toFixed(currency.decimal))
-  let cashOut = numberTransformer(parseFloat(balanceData.cash_amount)?.toFixed(currency.decimal))
+  let amount = numberTransformer(parseFloat(balanceData.current_balance)?.toFixed(Math.min(9,currency?.decimal)))
+  let cashOut = numberTransformer(parseFloat(balanceData.cash_amount)?.toFixed(Math.min(9,currency?.decimal)))
 
   const chooseClickHandler = () => {
     let userData = {
@@ -59,10 +59,10 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
       </td>
       <td className={styles.tableActions}>
         <div>
-          {currency.isDepositEnabled === 1 && <ErrorEmpty>
+          {currency?.isDepositEnabled === 1 && <ErrorEmpty>
             <DepositButton currency={currency} t={t}/>
           </ErrorEmpty>}
-          {currency.isWithdrawEnabled === 1 && (<Link
+          {currency?.isWithdrawEnabled === 1 && (<Link
             href={{
               pathname: `/accounts/cashout/${currency?.abbreviation}`,
               query: { currency_id: `${currency?.id}` }

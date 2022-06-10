@@ -44,7 +44,7 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   useEffect(() => {
     if (rates && currencies) {
       const rateArr = [];
-      let rateUsd = rates['USD'];
+      let rateUsd = rates['USD'] ?? 1;
       let total = 0;
       let totalCrypto = 0;
       let totalFiat = 0;

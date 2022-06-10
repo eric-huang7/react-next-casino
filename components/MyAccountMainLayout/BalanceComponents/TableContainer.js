@@ -48,7 +48,7 @@ export const TableContainer = ({t, balanceInfo, currency}) => {
         return balanceInfo.balance.balances.sort((a, b) => {
           let currencyA = currency?.currency?.results?.find((el) => Number(el.id) === Number(a.currency_id))
           let currencyB = currency?.currency?.results?.find((el) => Number(el.id) === Number(b.currency_id))
-          return direction ? currencyA.abbreviation > currencyB.abbreviation : currencyA.abbreviation < currencyB.abbreviation
+          return direction ? currencyA?.abbreviation > currencyB?.abbreviation : currencyA?.abbreviation < currencyB?.abbreviation
         })
       case 'amount':
         return balanceInfo.balance.balances.sort((a, b) => direction ? a.current_balance > b.current_balance : a.current_balance < b.current_balance)
