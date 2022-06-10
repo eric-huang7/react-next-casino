@@ -53,7 +53,7 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
 
   const backButtonClickHandler = () => {
     dispatch(showCreditCardModal(false));
-    // dispatch(showDepositModal(true));
+    dispatch(showDepositModal(true));
   }
   const [amountError, setAmountError] = useState(null);
 

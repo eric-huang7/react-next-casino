@@ -109,6 +109,7 @@ export const DepositPageStepper = (props) => {
               t={t}
               title={''}
               closeDepositModalHandler={closeDepositModalHandler}
+              whatDoBackButton={() => stepHandler(0)}
             />
             <ErrorText>
               <ChoosePaymentMethod
@@ -131,6 +132,7 @@ export const DepositPageStepper = (props) => {
             <DepositHeading
               t={t}
               closeDepositModalHandler={closeDepositModalHandler}
+              whatDoBackButton={() => stepHandler(1)}
             />
             <ErrorText>
               <DepositLastPage
