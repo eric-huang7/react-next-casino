@@ -9,6 +9,7 @@ import Connect from "../../../helpers/connect";
 import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
 import BalanceErrorBoundary from "../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary";
 import {BalanceMenuContainer} from "../../BalanceMenuContainer/BalanceMenuContainer";
+import {svgSetterById} from "../../../helpers/iconNameFinder";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -77,12 +78,23 @@ export const RedeemPage = ({t}) => {
     }
   }, [userCurrency, userInfo, isShowRedeemModal])
 
+  useEffect(() => {
+    if (activeCurrency?.id) {
+      const returnAbbr = false
+      svgSetterById(activeCurrency, `activeCurrency_${activeCurrency?.id}`, returnAbbr);
+    }
+  }, [activeCurrency])
+
   const closeModal = () => {
     dispatch(showRedeemModal(false));
   }
 
   const onCurrencySelect = (value) => {
-    setActiveCurrency(value)
+    const newValue = userInfo?.balance?.balances.filter((el) => el.currency_id === value?.base_currency_id)
+    setBalanceData(newValue)
+    const currency = currencyFinder(newValue, userInfo, userCurrency)
+    const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
+    setActiveCurrency(activeCurrency)
     setIsShowBalanceList(false)
   }
 
@@ -192,10 +204,13 @@ export const RedeemPage = ({t}) => {
 
             <div className={styles.balanceList}>
               <div onClick={() => setIsShowBalanceList(true)}>
-                <RedeemInput mt="30px" mb="30px" value={activeCurrency?.name}/>
+                <RedeemInput mt="30px" mb="30px" >
+                  <div id={`activeCurrency_${activeCurrency?.id}`} className={styles.iconContainer}></div>
+                  {activeCurrency?.name}
+                </RedeemInput>
               </div>
               {
-                isShowBalanceList && balanceData.length > 0
+                isShowBalanceList && userInfo?.balance?.balances?.length > 0
                   ?
                   <BalanceErrorBoundary>
                     <BalanceMenuContainer
