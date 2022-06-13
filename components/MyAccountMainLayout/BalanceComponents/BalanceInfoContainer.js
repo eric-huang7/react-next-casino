@@ -101,18 +101,18 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
           <div>
             <div>{t('myAccount.balance.fiatAndSpotBalance')}</div>
             <div className={styles.balanceCrypto}>
-              {total.totalBtc} BTC <span className={styles.balanceFiat}>= {total.totalUsd} USD</span>
+              {total.totalBtc} BTC <span className={styles.balanceFiat}>≈ {total.totalUsd} USD</span>
             </div>
           </div>
           <div>
             <div>{t('myAccount.balance.spotBalance')}</div>
             <div className={styles.balanceCrypto}>{total.cryptoBtc} BTC</div>
-            <div className={styles.balanceFiat}>= {total.cryptoUsd} USD</div>
+            <div className={styles.balanceFiat}>≈ {total.cryptoUsd} USD</div>
           </div>
           <div>
             <div>{t('myAccount.balance.fiatBalance')}</div>
             <div className={styles.balanceCrypto}>{total.fiatBtc} BTC</div>
-            <div className={styles.balanceFiat}>= {total.fiatUsd} USD</div>
+            <div className={styles.balanceFiat}>≈ {total.fiatUsd} USD</div>
           </div>
         </div>
         <div className={styles.tableContainerWrapper}>
