@@ -15,7 +15,8 @@ export const RedeemPage = ({t}) => {
   const dispatch = useDispatch();
   const isShowRedeemModal = useSelector(({popups}) => popups?.isShowRedeemModal);
   const userData = useSelector((store) => store.authInfo);
-  const [pointBalance, setPointBalance] = useState()
+  const [maxPointBalance, setMaxPointBalance] = useState(0)
+  const [pointBalance, setPointBalance] = useState(0)
   const [activeCurrency, setActiveCurrency] = useState()
   const [rewardPoint, setRewardPoint] = useState()
   const [isShowBalanceList, setIsShowBalanceList] = useState()
@@ -28,7 +29,9 @@ export const RedeemPage = ({t}) => {
 
   const getPointBalance = () => {
     Connect.get(get_reward_point_url, {}, (status, data) => {
-      setPointBalance(Math.floor(data?.result?.total || 0))
+      const points = Math.floor(data?.result?.total || 0)
+      setPointBalance(points)
+      setMaxPointBalance(points)
     }).catch((error) => {
       console.log('error', error?.message);
     })
@@ -84,7 +87,11 @@ export const RedeemPage = ({t}) => {
   }
 
   const onChangePoints = (e) => {
-    setPointBalance(Math.floor(parseFloat(e.target.value)))
+    const value = Math.floor(parseFloat(e.target.value)) || 0
+
+    if (value <= maxPointBalance) {
+      setPointBalance(value)
+    }
   }
 
   const submit = () => {
@@ -207,13 +214,13 @@ export const RedeemPage = ({t}) => {
             </div>
             <div className={styles.redeemTotalButtons}>
               {[25, 50, 75, 100].map((item, index) => (
-                <div key={index} onClick={() => setPointBalance(Math.round(item * pointBalance / 100))}>
+                <div key={index} onClick={() => setPointBalance(Math.round(item * maxPointBalance / 100))}>
                   {item}%
                 </div>
               ))}
             </div>
 
-            <RedeemInput mb="30px" value={pointBalance}  onChange={onChangePoints}/>
+            <RedeemInput mb="30px" value={pointBalance} onChange={onChangePoints}/>
 
             <div className={styles.redeemTitle5}>
               {t('redeemPage.title6')}
