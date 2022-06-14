@@ -19,8 +19,8 @@ export const RedeemPage = ({t}) => {
   const [maxPointBalance, setMaxPointBalance] = useState(0)
   const [pointBalance, setPointBalance] = useState(0)
   const [activeCurrency, setActiveCurrency] = useState()
-  const [rewardPoint, setRewardPoint] = useState()
-  const [isShowBalanceList, setIsShowBalanceList] = useState()
+  const [rewardPoint, setRewardPoint] = useState(0)
+  const [isShowBalanceList, setIsShowBalanceList] = useState(false)
   const [showNotification, setShowNotification] = useState(false)
   const [error, setError] = useState(false)
 
@@ -221,7 +221,9 @@ export const RedeemPage = ({t}) => {
               {t('redeemPage.title6')}
             </div>
 
-            <RedeemInput mb="30px" value={rewardPoint} readOnly/>
+            <RedeemInput mb="30px">
+              <span>{rewardPoint}</span>
+            </RedeemInput>
 
             <button className={styles.button} onClick={submit}>
               {t('redeemPage.button')}
