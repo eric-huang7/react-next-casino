@@ -65,7 +65,7 @@ export const crypto_currency_url = serverUrl + 'currencies?types=1&isDepositEnab
 export const stable_currency_url = serverUrl + 'currencies?types=2&isDepositEnabled=1&ordering=rank-ASC';
 export const fiat_currency_url = serverUrl + 'currencies?types=3&isDepositEnabled=1&ordering=rank-ASC';
 
-export const currency_quotes_url = serverUrl + 'currencies/quotes?id=1&convertSymbols=';
+export const currency_quotes_url = serverUrl + 'currencies/quotes?id=1';
 
 
 // ######## get tournaments
