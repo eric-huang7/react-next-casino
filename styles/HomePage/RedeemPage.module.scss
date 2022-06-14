@@ -19,6 +19,46 @@
   overflow-y: scroll;
 }
 
+.redeemNotificationBody {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  padding: 20px 16px 0px;
+  font-family: "Lithograph";
+  text-transform: uppercase;
+  position: relative;
+
+  .redeemNotificationTitle1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .redeemNotificationPoints {
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #FFC353;
+  }
+  .redeemNotificationFor {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 11px;
+  }
+  .redeemNotificationTitle2, .redeemNotificationTitle3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .redeemNotificationTitle3 {
+    color: #FFC353;
+  }
+  .redeemError {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 11px;
+    text-align: center;
+  }
+}
+
 .redeemMainContainer {
   max-width: 500px;
   min-width: 340px;
@@ -58,46 +98,12 @@
 
     }
   }
-  .redeemNotificationBody {
-    flex: 1;
-    text-align: center;
-    color: #fff;
-    padding: 10px 16px 16px;
-    font-family: "Lithograph";
-    text-transform: uppercase;
-    position: relative;
 
-    .redeemNotificationTitle1 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-    .redeemNotificationPoints {
-      font-size: 34px;
-      font-weight: 600;
-      margin-bottom: 5px;
-      color: #FFC353;
-    }
-    .redeemNotificationFor {
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 11px;
-    }
-    .redeemNotificationTitle2, .redeemNotificationTitle3 {
-      font-size: 20px;
-      font-weight: 600;
-    }
-    .redeemNotificationTitle3 {
-      color: #FFC353;
-    }
-    .redeemError {
-      font-size: 14px;
-      font-weight: 600;
-      margin-top: 11px;
-      text-align: center;
-    }
+  .redeemNotificationBody {
+    padding: 10px 16px 16px;
   }
 }
+
 .redeemCloseButton {
   position: absolute;
   top: 13px;
