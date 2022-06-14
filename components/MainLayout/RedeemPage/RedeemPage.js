@@ -64,6 +64,8 @@ export const RedeemPage = ({t}) => {
   useEffect(() => {
     if (pointBalance && activeCurrency?.id) {
       getRewardPoint();
+    } else {
+      setRewardPoint(0);
     }
   }, [pointBalance, activeCurrency?.id])
 
