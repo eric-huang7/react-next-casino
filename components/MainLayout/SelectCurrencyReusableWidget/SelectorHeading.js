@@ -6,15 +6,15 @@ export const SelectorHeading = ({t, backButtonClickHandler, closeCurrenciesClick
 
   return (
     <div className={styles.selectCurrencyHeadingBlock}>
-      <div
+      {backButtonClickHandler && <div
         onClick={() => backButtonClickHandler()}
         className={styles.selectCurrencyBackButton}
       >
-      </div>
+      </div>}
       <h3 className={styles.selectCurrencyHeading}>{t(text)}</h3>
       <div
         className={styles.selectCurrencyCloseButton}
-        onClick={() => closeCurrenciesClickHandler()}
+        onClick={closeCurrenciesClickHandler}
       >
         <span className={styles.closeOne}></span>
         <span className={styles.closeTwo}></span>

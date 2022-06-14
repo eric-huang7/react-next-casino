@@ -7,9 +7,9 @@ import {useEffect, useState} from "react";
 import {currencyFinder} from "../../../helpers/currencyFinder";
 import Connect from "../../../helpers/connect";
 import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
-import BalanceErrorBoundary from "../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary";
-import {BalanceMenuContainer} from "../../BalanceMenuContainer/BalanceMenuContainer";
 import {svgSetterById} from "../../../helpers/iconNameFinder";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import {SelectCurrencyReusableWidget} from "../SelectCurrencyReusableWidget/SelectCurrencyWidget";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -21,7 +21,6 @@ export const RedeemPage = ({t}) => {
   const [activeCurrency, setActiveCurrency] = useState()
   const [rewardPoint, setRewardPoint] = useState()
   const [isShowBalanceList, setIsShowBalanceList] = useState()
-  const [balanceData, setBalanceData] = useState(false)
   const [showNotification, setShowNotification] = useState(false)
   const [error, setError] = useState(false)
 
@@ -71,7 +70,6 @@ export const RedeemPage = ({t}) => {
   useEffect(() => {
     if (userCurrency.currency && userInfo.balance && isShowRedeemModal) {
       let balanceData = userInfo?.balance?.balances.filter((el) => !!Number(el.is_default))
-      setBalanceData(balanceData);
       const currency = currencyFinder(balanceData, userInfo, userCurrency);
       const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency);
       setActiveCurrency(activeCurrency)
@@ -89,13 +87,9 @@ export const RedeemPage = ({t}) => {
     dispatch(showRedeemModal(false));
   }
 
-  const onCurrencySelect = (value) => {
-    const newValue = userInfo?.balance?.balances.filter((el) => el.currency_id === value?.base_currency_id)
-    setBalanceData(newValue)
-    const currency = currencyFinder(newValue, userInfo, userCurrency)
-    const activeCurrency = userCurrency.currency.results.find((el) => el.abbreviation === currency)
-    setActiveCurrency(activeCurrency)
+  const onSelectCurrency = (value) => {
     setIsShowBalanceList(false)
+    setActiveCurrency(value)
   }
 
   const onChangePoints = (e) => {
@@ -203,26 +197,12 @@ export const RedeemPage = ({t}) => {
             </div>
 
             <div className={styles.balanceList}>
-              <div onClick={() => setIsShowBalanceList(true)}>
+              <div onClick={() => setIsShowBalanceList(true)}  className={styles.pointer}>
                 <RedeemInput mt="30px" mb="30px" >
                   <div id={`activeCurrency_${activeCurrency?.id}`} className={styles.iconContainer}></div>
                   {activeCurrency?.name}
                 </RedeemInput>
               </div>
-              {
-                isShowBalanceList && userInfo?.balance?.balances?.length > 0
-                  ?
-                  <BalanceErrorBoundary>
-                    <BalanceMenuContainer
-                      balanceData={userInfo}
-                      activeBalance={balanceData}
-                      currencyData={userCurrency}
-                      onSelect={onCurrencySelect}
-                    />
-                  </BalanceErrorBoundary>
-                  :
-                  <></>
-              }
             </div>
             <div className={styles.redeemTitle5}>
               {t('redeemPage.title5')}
@@ -250,6 +230,14 @@ export const RedeemPage = ({t}) => {
           <div className={styles.redeemFooter}/>
         </div>
       )}
+      <ErrorEmpty>
+        <SelectCurrencyReusableWidget
+          t={t}
+          isShowCurrencySwitcher={isShowBalanceList}
+          onClose={() => setIsShowBalanceList(false)}
+          onSelect={onSelectCurrency}
+        />
+      </ErrorEmpty>
     </div>
   )
 }
