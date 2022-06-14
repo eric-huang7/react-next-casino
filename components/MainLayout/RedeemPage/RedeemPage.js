@@ -177,7 +177,7 @@ export const RedeemPage = ({t}) => {
               {t('redeemPage.title3')}
             </div>
             <div className={styles.redeemTitle4}>
-              <b>1$</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
+              <b>$1</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
             </div>
             <div className={styles.divider}></div>
 
