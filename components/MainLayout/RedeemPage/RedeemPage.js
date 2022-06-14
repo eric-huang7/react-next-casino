@@ -122,26 +122,13 @@ export const RedeemPage = ({t}) => {
     className={styles.redeemCloseButton}
     onClick={closeModal}
   >
-    <img src={`/assets/icons/close-icon${dark && '-dark'}.svg`} alt="close"/>
+    <img src={`/assets/icons/close-icon${dark ? '-dark' : ''}.svg`} alt=""/>
   </div>
 
   if (!isShowRedeemModal) return null
 
   return (
     <div className={`${styles.redeemMainWrapper}`}>
-      {error && (
-        <div className={styles.redeemNotificationContainer}>
-          <div className={styles.redeemNotificationBody}>
-            {getCloseButton()}
-            <div className={styles.redeemNotificationPoints}>
-              {t("redeemPage.notificationSorry")}
-            </div>
-            <div className={styles.redeemError}>
-              {t("redeemPage.notificationError")}
-            </div>
-          </div>
-        </div>
-      )}
       {showNotification && (
         <div className={styles.redeemNotificationContainer}>
           <div className={styles.redeemNotificationHeading}>
@@ -170,7 +157,7 @@ export const RedeemPage = ({t}) => {
           </div>
         </div>
       )}
-      {!showNotification && !error && (
+      {!showNotification && (
         <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
           <div className={styles.redeemHeadingBlock}>
             <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
@@ -230,6 +217,17 @@ export const RedeemPage = ({t}) => {
             <button className={styles.button} onClick={submit}>
               {t('redeemPage.button')}
             </button>
+
+            {error && (
+              <div className={styles.redeemNotificationBody}>
+                <div className={styles.redeemNotificationPoints}>
+                  {t("redeemPage.notificationSorry")}
+                </div>
+                <div className={styles.redeemError}>
+                  {t("redeemPage.notificationError")}
+                </div>
+              </div>
+            )}
           </div>
           <div className={styles.redeemFooter}/>
         </div>
