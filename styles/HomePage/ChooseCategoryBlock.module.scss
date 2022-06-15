@@ -13,7 +13,16 @@
 
   padding: 0 22px 0 0;
 
-  position: relative;
+  & > div {
+    max-width: 1920px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+  }
 }
 
 .categoryList {

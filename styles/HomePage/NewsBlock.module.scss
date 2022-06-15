@@ -9,6 +9,8 @@
 .newsHeadingWrapper {
   padding-left: 54px;
   padding-right: 54px;
+  max-width: 1920px;
+  margin: auto;
   .newsHeading {
     display: flex;
     align-items: center;
@@ -41,6 +43,8 @@
 .newsBackground {
   padding-bottom: 1px;
   width: 100%;
+  max-width: 1920px;
+  margin: auto;
 }
 .backShow {
   background-position: center;

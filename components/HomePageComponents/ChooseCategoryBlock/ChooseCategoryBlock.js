@@ -22,33 +22,35 @@ export const ChooseCategoryBlock = ({t, isProvidersPage}) => {
 
   return (
     <div className={styles.categoryWrapper}>
-      <ul className={styles.categoryList}>
-        {
-          linksData.map((el) => {
-            return (
-              <li key={el.name} className={styles.categoryListItem }>
-                <Link href={el.href}>
-                  <a>{t(`homePage.${el.name}`)}</a>
-                </Link>
-              </li>
-            )
-          })
-        }
-      </ul>
+      <div>
+        <ul className={styles.categoryList}>
+          {
+            linksData.map((el) => {
+              return (
+                <li key={el.name} className={styles.categoryListItem }>
+                  <Link href={el.href}>
+                    <a>{t(`homePage.${el.name}`)}</a>
+                  </Link>
+                </li>
+              )
+            })
+          }
+        </ul>
 
-      <div className={styles.categoryInputsWrapper}>
-        <div className={`${styles.providersButton}`}>
-          <Link href={'/providers-page'}>
-            <a>{t('homePage.providers')}</a>
-          </Link>
+        <div className={styles.categoryInputsWrapper}>
+          <div className={`${styles.providersButton}`}>
+            <Link href={'/providers-page'}>
+              <a>{t('homePage.providers')}</a>
+            </Link>
+          </div>
         </div>
+
+        <ErrorText>
+          <SearchBar t={t}/>
+        </ErrorText>
+
+        <div className={styles.divider}></div>
       </div>
-
-      <ErrorText>
-        <SearchBar t={t}/>
-      </ErrorText>
-
-      <div className={styles.divider}></div>
     </div>
   )
 }
