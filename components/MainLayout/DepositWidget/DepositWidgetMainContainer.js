@@ -32,6 +32,11 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const userPayment = useSelector((state) => state.userFinance);
   const currencyData = useSelector((store) => store.currency?.currency);
 
+  useEffect(() => {
+    if (userCurrency?.userCurrencyData?.depositMin) {
+      dispatch(setUserDepositValue(Number(userCurrency?.userCurrencyData?.depositMin)));
+    }
+  }, [userCurrency?.userCurrencyData?.depositMin])
 
   let scrollHeight = useWindowScroll();
   const [activeWidget, setActiveWidget] = useState(true);

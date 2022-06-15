@@ -84,6 +84,7 @@
   padding: 0 5px 0 5px;
 
   margin-right: 7px;
+  text-align: center;
 }
 
 .widgetAmountInput::placeholder {
@@ -328,6 +329,7 @@
   margin-right: 14px;
 
   cursor: pointer;
+  white-space: pre-line;
 }
 
 .disabledButton {
@@ -356,7 +358,7 @@
 
     width: 14px;
 
-    background-color: #a7a7a7;
+    background-color: #772300;
 
     position: absolute;
     top: 6px;
