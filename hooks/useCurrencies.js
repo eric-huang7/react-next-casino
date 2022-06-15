@@ -4,7 +4,6 @@ import Connect from "../helpers/connect";
 import {currency_quotes_url} from "../redux/url/url";
 
 export default function useCurrencies() {
-  const dispatch = useDispatch();
   const [rates, setRates] = useState([]);
   const [currencies, setCurrencies] = useState([]);
   const [abbr, setAbbr] = useState([]);
@@ -41,7 +40,9 @@ export default function useCurrencies() {
   useEffect(() => {
     if (rates && currencies) {
       let currencyUsd = currencies.find(item => item.currency?.abbreviation === 'USD');
-      let rateUsd = currencyUsd ? rates[currencyUsd.currency.id] : 1;
+      let rateUsd = currencyUsd?.currency?.id
+        ? (rates[currencyUsd.currency.id] ? Number(rates[currencyUsd.currency.id]) : null)
+        : null;
       setRateUsd(rateUsd);
     }
   }, [rates, currencies]);
