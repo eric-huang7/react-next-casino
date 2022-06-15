@@ -3,11 +3,13 @@ import {TableHeading} from "./TableHeading";
 import {TableRow} from "./TableRow";
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {useState} from "react";
+import useCurrencies from "../../../hooks/useCurrencies";
 
 export const TableContainer = ({t, balanceInfo, currency}) => {
   const [sort, setSort] = useState('currency')
   const [direction, setDirection] = useState(true)
-
+  const { rates } = useCurrencies()
+  console.log('rates', rates)
   const columns = [
     {
       name: 'currency',
@@ -24,6 +26,12 @@ export const TableContainer = ({t, balanceInfo, currency}) => {
     {
       name: 'cashout',
       title: t("myAccount.balance.table.headings.cashout"),
+      style: styles.headingCashout,
+      sort: true
+    },
+    {
+      name: 'amountBtc',
+      title: t("myAccount.balance.table.headings.amountBtc"),
       style: styles.headingCashout,
       sort: true
     },
@@ -74,6 +82,7 @@ export const TableContainer = ({t, balanceInfo, currency}) => {
                 currencyData={currency}
                 t={t}
                 balanceData={el}
+                rates={rates}
               />
             </ErrorText>
           )

@@ -10,13 +10,14 @@ import {useEffect} from "react";
 import {svgSetter} from "../../../helpers/iconNameFinder";
 import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
 
-export const TableRow = ({ t, balanceData, currencyData }) => {
+export const TableRow = ({ t, balanceData, currencyData, rates = [] }) => {
   const dispatch = useDispatch()
+  let rateUsd = rates['USD'] ?? 1;
 
   let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
-
   let amount = numberTransformer(parseFloat(balanceData.current_balance)?.toFixed(Math.min(9,currency?.decimal)))
   let cashOut = numberTransformer(parseFloat(balanceData.cash_amount)?.toFixed(Math.min(9,currency?.decimal)))
+  let amountBtc = numberTransformer((parseFloat(balanceData.cash_amount) / rateUsd)?.toFixed(Math.min(9,currency?.decimal)))
 
   const chooseClickHandler = () => {
     let userData = {
@@ -24,7 +25,6 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
       base_currency_id: balanceData.currency_id
     }
     dispatch(patchUserActiveCurrency(userData))
-
   }
 
   useEffect(() => {
@@ -56,6 +56,9 @@ export const TableRow = ({ t, balanceData, currencyData }) => {
       </td>
       <td className={styles.tableCashOut}>
         {`${cashOut} ${currency?.abbreviation}`}
+      </td>
+      <td className={styles.tableCashOut}>
+        {`${amountBtc}`}
       </td>
       <td className={styles.tableActions}>
         <div>
