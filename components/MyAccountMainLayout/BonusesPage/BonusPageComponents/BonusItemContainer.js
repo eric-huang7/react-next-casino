@@ -6,6 +6,7 @@ import { PendingBonus } from './PendingBonus'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 import {setActivePendingBonusesTerms} from "../../../../redux/user/action";
 import {useDispatch, useSelector} from "react-redux";
+import {showTermsModal} from "../../../../redux/popups/action";
 
 export const BonusItemContainer = ({
                                      t,
@@ -33,7 +34,7 @@ export const BonusItemContainer = ({
 
   const onShowTerms = () => {
     console.log('onShowTerms', onShowTerms)
-    // TODO
+    dispatch(showTermsModal(true));
   }
   const acceptTerms = (id) => {
     console.log('acceptTerms', id)

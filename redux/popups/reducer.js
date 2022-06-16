@@ -18,7 +18,9 @@ import {
   showSearchModal,
   showTournamentAwardModal,
   showTournaments,
-  showTournamentsDetails, showTwoFaPopup
+  showTournamentsDetails,
+  showTwoFaPopup,
+  showTermsModal
 } from "./action";
 
 const initialState = {
@@ -49,7 +51,8 @@ const initialState = {
   isShowEmailValidationError: false,
   isShowTwoFaPopup: false,
   isShowRedeemModal: false,
-  isTournamentAwardModal: false
+  isTournamentAwardModal: false,
+  isShowTermsModal: false
 }
 
 const handlers = {
@@ -164,7 +167,8 @@ const handlers = {
       isShowEmailValidationError: false,
       isShowTwoFaPopup: false,
       isShowRedeemModal: false,
-      isTournamentAwardModal: false
+      isTournamentAwardModal: false,
+      isShowTermsModal: false
     }
   },
   [showMobileCryptoPayments]: (state, {payload}) => {
@@ -249,6 +253,12 @@ const handlers = {
     return {
       ...state,
       isTournamentAwardModal: payload,
+    }
+  },
+  [showTermsModal]: (state, {payload}) => {
+    return {
+      ...state,
+      isShowTermsModal: payload,
     }
   },
 }
