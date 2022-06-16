@@ -1,0 +1,49 @@
+@import '../../colors.module';
+
+.agreeTermsWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: fit-content;
+  min-height: 34px;
+  & input.agreeTermsCheckbox {
+    position: absolute;
+    z-index: -1;
+  }
+
+  & .iReadAndAgreeLabel {
+    display: inline-block;
+    position: relative;
+
+    margin-left: 40px;
+
+    font-size: 12px;
+  }
+  & .iReadAndAgreeLabel:before {
+    content: '';
+
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid #babbbc;
+    border-radius: 5px;
+
+    position: absolute;
+    top: -7px;
+    left: -40px;
+  }
+  & input.agreeTermsCheckbox:checked + .iReadAndAgreeLabel:before {
+    background-color: $red-color;
+
+    background-image: url("/assets/img/registerSignup/checked.svg");
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  & a {
+    color: $purple-link;
+    text-decoration: underline;
+    position: relative;
+  }
+}

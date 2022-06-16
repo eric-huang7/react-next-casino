@@ -22,7 +22,7 @@ import {
   logoutSuccess,
   mayYwoFactorAuth,
   patchChangeCurrency,
-  qrAuthAction, signupFail, signupSuccess
+  qrAuthAction, setActivePendingBonusesTerms, signupFail, signupSuccess
 } from "./action";
 
 const initialState = {
@@ -45,6 +45,7 @@ const initialState = {
   bonusesHistory: null,
   loadingActivePendingBonuses: true,
   activePendingBonuses: null,
+  activePendingBonusesTerms: {},
   qrAuthLoading: true,
   qrAuth: null,
   savedKeys: null,
@@ -177,6 +178,12 @@ const handlers = {
       activePendingBonuses: { ...payload },
     }
   },
+  [setActivePendingBonusesTerms]: (state, {payload}) => {
+    return {
+      ...state,
+      activePendingBonusesTerms: { ...state.activePendingBonusesTerms, [payload.id]: payload.value },
+    }
+  },
   [getUserBetsData]: (state, {payload}) => {
     return {
       ...state,
@@ -228,6 +235,7 @@ const handlers = {
       bonusesHistory: null,
       loadingActivePendingBonuses: true,
       activePendingBonuses: null,
+      activePendingBonusesTerms: {},
       loadingActiveSessions: true,
       userActiveSessions: null,
       loadingClosedSessions: true,

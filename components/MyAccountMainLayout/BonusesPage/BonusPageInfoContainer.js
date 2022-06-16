@@ -4,8 +4,13 @@ import styles from '../../../styles/MyAccount/BonusPage/BonusPage.module.scss'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import { BonusItemContainer } from './BonusPageComponents/BonusItemContainer'
 import { AddPromoCodeContainer } from './BonusPageComponents/AddPromoCodeContainer'
-import { useDispatch } from 'react-redux'
-import { activateBonus, cancelBonus, getUserActivePendingBonuses } from '../../../redux/user/action'
+import {useDispatch, useSelector} from 'react-redux'
+import {
+  activateBonus,
+  cancelBonus,
+  getUserActivePendingBonuses,
+  setActivePendingBonusesTerms
+} from '../../../redux/user/action'
 import { useState } from 'react'
 import {user_url} from '../../../redux/url/url'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'

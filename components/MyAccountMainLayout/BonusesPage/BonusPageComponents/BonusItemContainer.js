@@ -4,15 +4,22 @@ import { useRouter } from 'next/router'
 import { ActiveBonus } from './ActiveBonus'
 import { PendingBonus } from './PendingBonus'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
+import {setActivePendingBonusesTerms} from "../../../../redux/user/action";
+import {useDispatch, useSelector} from "react-redux";
 
 export const BonusItemContainer = ({
                                      t,
                                      bonusData,
                                      currencyData,
                                      activateBonusClickHandler,
-                                     cancelBonusClickHandler
+                                     cancelBonusClickHandler,
+                                     isTermsChecked,
+                                     onAcceptTerms
                                    }) => {
   const router = useRouter()
+  const dispatch = useDispatch()
+
+  const authInfo = useSelector((store) => store.authInfo)
 
   let title = bonusData.title ? bonusData.title : '-'
   let stage = statusValue(bonusData.status)
@@ -24,6 +31,14 @@ export const BonusItemContainer = ({
   let dateReceived = dateFormatter(bonusData.time_redeemed, router.locale)
   let expiryDate = dateFormatter(bonusData.time_expires, router.locale)
 
+  const onShowTerms = () => {
+    console.log('onShowTerms', onShowTerms)
+    // TODO
+  }
+  const acceptTerms = (id) => {
+    console.log('acceptTerms', id)
+    dispatch(setActivePendingBonusesTerms({id, value: !authInfo.activePendingBonusesTerms[id]}))
+  }
   if (bonusData.status === '1') {
     let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
     let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
@@ -43,6 +58,7 @@ export const BonusItemContainer = ({
           wagerPercent={wagerPercent}
           cancelBonusClickHandler={cancelBonusClickHandler}
           bonusData={bonusData}
+          onShowTerms={onShowTerms}
         />
       </ErrorText>
     )
@@ -64,6 +80,9 @@ export const BonusItemContainer = ({
           wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
           activateBonusClickHandler={activateBonusClickHandler}
           bonusData={bonusData}
+          onAcceptTerms={acceptTerms}
+          onShowTerms={onShowTerms}
+          isTermsChecked={authInfo.activePendingBonusesTerms[bonusData.id]}
         />
       </ErrorText>
     )
