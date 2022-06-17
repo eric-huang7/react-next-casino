@@ -13,7 +13,7 @@ export const GoogleAuthBlock = ({ t }) => {
     dispatch(auth()).then((data) => {
       router.push('/accounts/two_factor')
     }).catch((e) => {
-
+      console.log('googleAuthClickHandler error', e.message)
     })
 
   }

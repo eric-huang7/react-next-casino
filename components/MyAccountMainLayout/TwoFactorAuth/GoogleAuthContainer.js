@@ -9,6 +9,7 @@ import { qr_auth_url } from '../../../redux/url/url'
 import { mayYwoFactorAuth } from '../../../redux/user/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import Connect from "../../../helpers/connect";
+import {GoogleAuthConfirmModal} from "./GoogleAuthComponents/GoogleAuthConfirmModal";
 
 export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedKeys }) => {
   const dispatch = useDispatch()
@@ -57,6 +58,7 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
           />
         </ErrorText>
         <p className={styles.lastText}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</p>
+        <GoogleAuthConfirmModal t={t} />
       </div>
     )
   }
