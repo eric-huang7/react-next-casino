@@ -58,14 +58,14 @@ const config = {
   }
 }
 
-export const auth = () => dispatch => {
+export const auth = () => dispatch =>
   Connect.get(auth_url, config, (status, data) => {
     dispatch(authAction(data))
     if (typeof window !== "undefined") {
       localStorage.setItem("userAuth", 'true');
     }
   }).catch(e => dispatch(authFail(e.response)));
-}
+
 
 export const getDocuments = () => dispatch =>
   Connect.get(document_url, config, (status, data) => dispatch(getDocumentAction(data)));
