@@ -23,6 +23,7 @@ import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryp
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import {MessageContainer} from "../MessageContainer/MessageContainer";
+import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
 
 export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()
@@ -184,6 +185,11 @@ export const AccountMainLayout = ({ t, children }) => {
             </ErrorEmpty>
             :
             <></>}
+          {isShowModal.isShowTermsModal ?
+            <ErrorEmpty>
+              <TermsModal />
+            </ErrorEmpty>
+            : <></>}
           <div className={styles.myAccountContainer}>
             <div className={styles.accountInnerContainer}>
               <SideMenu userInform={userInfo} t={t}/>

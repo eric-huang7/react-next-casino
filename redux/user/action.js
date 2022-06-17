@@ -34,6 +34,7 @@ export const cancelBonusAction = createAction("CANCEL_BONUS");
 export const changePasswordLogin = createAction("CHANGE_PASSWORD_LOGIN");
 export const deleteSession = createAction("DELETE_SESSION");
 export const getActivePendingBonuses = createAction("GET_ACTIVE_PENDING_BONUSES");
+export const setActivePendingBonusesTerms = createAction("GET_ACTIVE_PENDING_BONUSES_TERMS");
 export const getActiveSessions = createAction("GET_ACTIVE_SESSIONS");
 export const getBonusHistorydata = createAction("GET_BONUS_HISTORY_DATA");
 export const getClosedSession = createAction("GET_CLOSED_SESSIONS");

@@ -30,6 +30,7 @@ import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
 import {TournamentAwardModal} from "../MainLayout/TournamentAwardModal/TournamentAwardModal";
+import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()

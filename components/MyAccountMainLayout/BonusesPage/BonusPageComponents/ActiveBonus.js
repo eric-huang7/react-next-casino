@@ -1,4 +1,5 @@
 import styles from '../../../../styles/MyAccount/BonusPage/BonusPage.module.scss'
+import {BonusTermsCheck} from "../BonusTermsCheck";
 
 export const ActiveBonus = ({
   t,
@@ -12,7 +13,8 @@ export const ActiveBonus = ({
   dateReceived,
   expiryDate,
   cancelBonusClickHandler,
-  bonusData
+  bonusData,
+  onShowTerms
 }) => {
 
   return (
@@ -43,12 +45,16 @@ export const ActiveBonus = ({
           <div className={styles.expiryDate}>{expiryDate}</div>
         </li>
       </ul>
-      <button
-        onClick={() => cancelBonusClickHandler(bonusData)}
-        className={styles.cancelBonus}
-      >
-        {t('myAccount.bonusPage.bonusItems.cancelBonus')}
-      </button>
+      <div className={styles.termsWrapper}>
+        <BonusTermsCheck hideCheckbox onShowTerms={onShowTerms}/>
+        <button
+          onClick={() => cancelBonusClickHandler(bonusData)}
+          className={styles.cancelBonus}
+        >
+          {t('myAccount.bonusPage.bonusItems.cancelBonus')}
+        </button>
+      </div>
+
     </div>
   )
 }

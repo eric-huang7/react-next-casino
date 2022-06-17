@@ -71,7 +71,12 @@
 
   list-style-type: none;
 }
-
+.termsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
 .bonusInfoListItem {
   display: flex;
   align-items: stretch;
@@ -122,7 +127,7 @@
 .cancelBonus, .activateBonus {
   align-self: flex-end;
 
-  margin: 20px 5px 35px 5px;
+  margin: 0 5px 0 5px;
 
   min-width: 121px;
   min-height: 34px;
