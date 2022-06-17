@@ -4,8 +4,8 @@ import {showTermsModal} from "../../../redux/popups/action";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useTranslation} from "next-i18next";
 
-export const TermsModal = ({t}) => {
-  // const { t } = useTranslation('termsAndConditions');
+export const TermsModal = () => {
+  const { t } = useTranslation('termsAndConditions');
   let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
   const isShowTermsModal = useSelector(({popups}) => popups?.isShowTermsModal);
@@ -21,7 +21,7 @@ export const TermsModal = ({t}) => {
     <img src={`/assets/icons/close-icon${dark ? "-dark" : ""}.svg`} alt=""/>
   </div>
 
-  if (!isShowTermsModal) return <div></div>
+  if (!isShowTermsModal) return null
 
   return (
     <div className={`${styles.termsMainWrapper}`}>
@@ -33,7 +33,7 @@ export const TermsModal = ({t}) => {
           <div className={styles.termsBody}>
             <div dangerouslySetInnerHTML={{ __html: t('text') }}/>
           </div>
-          <div className={styles.termsFooter}/>
+          {/*<div className={styles.termsFooter}/>*/}
         </div>
     </div>
   )

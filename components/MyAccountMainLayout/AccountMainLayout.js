@@ -121,7 +121,6 @@ export const AccountMainLayout = ({ t, children }) => {
     }
   }, [router.pathname])
 
-  console.log('isShowModal.isShowTermsModal', isShowModal.isShowTermsModal)
   if (userInfo.isAuthenticated) {
     return (
       <>
@@ -188,7 +187,7 @@ export const AccountMainLayout = ({ t, children }) => {
             <></>}
           {isShowModal.isShowTermsModal ?
             <ErrorEmpty>
-              <TermsModal t={t} />
+              <TermsModal />
             </ErrorEmpty>
             : <></>}
           <div className={styles.myAccountContainer}>

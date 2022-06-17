@@ -33,13 +33,13 @@ export const BonusItemContainer = ({
   let expiryDate = dateFormatter(bonusData.time_expires, router.locale)
 
   const onShowTerms = () => {
-    console.log('onShowTerms', onShowTerms)
     dispatch(showTermsModal(true));
   }
+
   const acceptTerms = (id) => {
-    console.log('acceptTerms', id)
     dispatch(setActivePendingBonusesTerms({id, value: !authInfo.activePendingBonusesTerms[id]}))
   }
+
   if (bonusData.status === '1') {
     let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
     let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`

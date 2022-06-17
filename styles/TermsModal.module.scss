@@ -22,6 +22,7 @@
   max-width: 800px;
   min-width: 340px;
   background: url("/assets/img/redeemPage/redeem-bg.jpg");
+  //background: #fed480;
   align-self: center;
   min-height: 300px;
   max-height: 70vh;
@@ -82,8 +83,9 @@
   flex: 1;
   text-align: left;
   color: white;
+  //color: #845c24;
   padding: 25px 16px 35px;
-  font-family: "Lithograph";
+  //font-family: "Lithograph";
   text-transform: uppercase;
   overflow-y: scroll;
 
@@ -98,6 +100,7 @@
   background: url("/assets/img/redeemPage/redeem-footer-bg.jpg");
   background-repeat: repeat-x;
   height: 36px;
+  min-height: 36px;
 }
 @media screen and (max-width: 524px) {
   .termsMainWrapper {
