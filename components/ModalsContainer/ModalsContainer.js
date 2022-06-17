@@ -326,14 +326,6 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         :
         ''
       }
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <TermsModal />
-        </ErrorEmpty>
-        :
-        ''
-      }
     </>
   )
 }
