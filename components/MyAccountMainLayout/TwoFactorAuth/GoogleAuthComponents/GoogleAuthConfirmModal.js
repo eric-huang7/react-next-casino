@@ -1,20 +1,32 @@
 import styles from "../../../../styles/MyAccount/UserInfoPage/GoogleAuthConfirmModal.module.scss";
-import {HeadingBlock} from "./HeadingBlock";
 
-export const GoogleAuthConfirmModal = ({t, register, handleSubmit, onSubmitHandler, errors, onBack, onClose, requestError}) => {
+export const GoogleAuthConfirmModal = ({t, onClose, onConfirm }) => {
 
   return (
     <div className={`${styles.forgotPasswordWrapper} `}>
       <div className={styles.mainContainer}>
         <div className={styles.instructionsBlock}>
-          <HeadingBlock
-            t={t}
-            whatDoBackButton={onBack}
-            closeForgotPasswordHandler={onClose}
-            text={'forgotPasswordForm.headings.resendEmail'}
-            isShowBackButton={true}
-          />
-          <div className={`${styles.innerContainer} ${styles.resendContainer}`}>
+          <div className={styles.blockHeading}>
+            <div className={styles.emptyBlock}/>
+            <h3 className={`${styles.heading} ${styles.smallHeading}`}>{t('myAccount.twoFactorAuthPage.confirm.title')}</h3>
+            <button
+              onClick={onClose}
+              className={styles.closeButton}
+            >
+              <span className={styles.closeOne}></span>
+              <span className={styles.closeTwo}></span>
+            </button>
+          </div>
+          <div className={`${styles.innerContainer}`}>
+            {t('myAccount.twoFactorAuthPage.confirm.text')}
+            <div className={styles.buttonsWrapper}>
+              <button className={styles.confirmButton} onClick={onConfirm}>
+                {t('myAccount.twoFactorAuthPage.confirm.yes')}
+              </button>
+              <button className={styles.cancelButton} onClick={onClose}>
+                {t('myAccount.twoFactorAuthPage.confirm.no')}
+              </button>
+            </div>
           </div>
         </div>
       </div>
