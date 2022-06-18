@@ -15,13 +15,22 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
   const dispatch = useDispatch()
   const [googleKeyValue, setGoogleKeyValue] = useState('')
   const [googleAuthError, setGoogleAuthError] = useState('')
+  const [showModal, setShowModal] = useState(false)
   const googleKEyInputHandler = (value) => {
     setGoogleKeyValue(value)
   }
 
-  const confirmButtonClickHandler = (e) => {
-    e.preventDefault()
+  const onConfirm = () => {
+    setShowModal(false)
+    confirmButtonClickHandler()
+  }
 
+  const confirmButton = (e) => {
+    e.preventDefault()
+    setShowModal(true)
+  }
+
+  const confirmButtonClickHandler = () => {
     let googleAuthData = {
       key: authData.qrAuth.key,
       token: googleKeyValue,
@@ -52,13 +61,13 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
           <AuthCodeInputBlock
             googleAuthError={googleAuthError}
             googleKeyValue={googleKeyValue}
-            confirmButtonClickHandler={confirmButtonClickHandler}
+            confirmButtonClickHandler={confirmButton}
             googleKEyInputHandler={googleKEyInputHandler}
             t={t}
           />
         </ErrorText>
         <p className={styles.lastText}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</p>
-        <GoogleAuthConfirmModal t={t} />
+        {showModal && <GoogleAuthConfirmModal t={t} onClose={() => setShowModal(false)} onConfirm={onConfirm} />}
       </div>
     )
   }

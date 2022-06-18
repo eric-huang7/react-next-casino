@@ -17,7 +17,8 @@
 }
 
 .mainContainer {
-  max-width: 430px;
+  width: 530px;
+  max-width: 90%;
 
   margin: 170px auto 40px;
 
@@ -127,12 +128,44 @@
   }
 }
 
+.buttonsWrapper {
+  padding-top: 30px;
+  text-align: center;
+
+  .confirmButton {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 15px;
+    background-color: $red-color;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    text-transform: uppercase;
+  }
+  .cancelButton {
+    font-size: 15px;
+    line-height: 26px;
+    color: $red-color;
+    font-family: "Segoe UI", Arial, sans-serif;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin: 15px auto 0;
+    width: fit-content;
+    cursor: pointer;
+  }
+}
 .innerContainer {
   padding: 20px 15px 0 20px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .resendContainer {
