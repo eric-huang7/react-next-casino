@@ -323,6 +323,81 @@
   }
   .balanceTableMobile {
     display: block;
+
+    .tableRow {
+      margin: 8px 16px 24px;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: #ddd 0px 0px 7px;
+      .row {
+        display: flex;
+        flex-direction: row;
+        padding: 5px 0;
+
+        .label {
+          width: 40%;
+          color: #969698;
+          padding-right: 16px;
+        }
+      }
+      .actionButtons {
+        padding-top: 30px;
+        align-items: center;
+      }
+
+      .tableCurrency {
+        li {
+          padding: 0;
+          div:last-child {
+            padding-top: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+          }
+        }
+      }
+
+      button, a {
+        margin: 0 16px 0 0;
+      }
+
+      .selectWrapper {
+        position: relative;
+      }
+
+      .tableDataActive {
+        width: auto;
+        height: auto;
+        color: $red-color;
+        text-align: left;
+
+        padding: 0 24px;
+
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & .tableDataActive.tableActiveChoose {
+        cursor: pointer;
+      }
+
+      & .tableDataActive.active div:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 5px;
+
+        content: '';
+
+        width: 19px;
+        height: 19px;
+
+        background-image: url("/assets/img/myAccount/balance/active.webp");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+      }
+    }
   }
 }
 

@@ -35,51 +35,67 @@ export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], ra
 
   return currency ? (
     <div className={styles.tableRow}>
-      {
-        Number(balanceData.is_default) === 0 ?
-          <div className={`${styles.tableDataActive} ${styles.tableActiveChoose}`}>
-            <p onClick={() => chooseClickHandler()}>
-              {t('myAccount.balance.table.items.select')}
-            </p>
-          </div>
-          :
-          <div className={`${styles.tableDataActive} ${styles.active}`}>
-            <p>
-              {t('myAccount.balance.table.items.active')}
-            </p>
-          </div>
-      }
-      <div className={styles.tableCurrency}>
-        {columns.currency.title}
-        <CurrencyItem t={t} currencyData={currency} />
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {columns.currency.title}
+        </div>
+        <div className={styles.tableCurrency}>
+          <CurrencyItem t={t} currencyData={currency} iconId="mobileIcon" />
+        </div>
       </div>
-      <div className={styles.tableAmount}>
-        {columns.amount.title}
-        {`${amount} ${currency?.abbreviation}`}
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {columns.amount.title}
+        </div>
+        <div className={styles.tableAmount}>
+          {`${amount} ${currency?.abbreviation}`}
+        </div>
       </div>
-      <div className={styles.tableCashOut}>
-        {columns.cashout.title}
-        {`${cashOut} ${currency?.abbreviation}`}
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {columns.cashout.title}
+        </div>
+        <div className={styles.tableCashOut}>
+          {`${cashOut} ${currency?.abbreviation}`}
+        </div>
       </div>
-      <div className={styles.tableCashOut}>
-        {columns.amountBtc.title}
-        {rate ? <span>{amountBtc} BTC ≈ {amountFiat} USD</span> : ''}
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {columns.amountBtc.title}
+        </div>
+        <div className={styles.tableCashOut}>
+          {rate ? <span>{amountBtc} BTC<br/> ≈ {amountFiat} USD</span> : ''}
+        </div>
       </div>
-      <div className={styles.tableActions}>
-        <div>
-          {currency?.isDepositEnabled === 1 && <ErrorEmpty>
-            <DepositButton currency={currency} t={t}/>
-          </ErrorEmpty>}
-          {currency?.isWithdrawEnabled === 1 && (<Link
-            href={{
-              pathname: `/accounts/cashout/${currency?.abbreviation}`,
-              query: { currency_id: `${currency?.id}` }
-            }}
-          >
-            <a className={styles.cashoutLink}>
-              {t('myAccount.balance.buttons.cashout')}
-            </a>
-          </Link>)}
+      <div className={`${styles.row} ${styles.actionButtons}`}>
+        {currency?.isDepositEnabled === 1 && <ErrorEmpty>
+          <DepositButton currency={currency} t={t}/>
+        </ErrorEmpty>}
+        {currency?.isWithdrawEnabled === 1 && (<Link
+          href={{
+            pathname: `/accounts/cashout/${currency?.abbreviation}`,
+            query: { currency_id: `${currency?.id}` }
+          }}
+        >
+          <a className={styles.cashoutLink}>
+            {t('myAccount.balance.buttons.cashout')}
+          </a>
+        </Link>)}
+        <div className={styles.selectWrapper}>
+        {
+          Number(balanceData.is_default) === 0 ?
+            <div className={`${styles.tableDataActive} ${styles.tableActiveChoose}`}>
+              <div onClick={() => chooseClickHandler()}>
+                {t('myAccount.balance.table.items.select')}
+              </div>
+            </div>
+            :
+            <div className={`${styles.tableDataActive} ${styles.active}`}>
+              <div>
+                {t('myAccount.balance.table.items.active')}
+              </div>
+            </div>
+        }
         </div>
       </div>
     </div>

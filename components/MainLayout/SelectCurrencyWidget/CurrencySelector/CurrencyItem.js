@@ -1,10 +1,10 @@
 import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
 
 import { useEffect } from 'react'
-import { svgSetter } from '../../../../helpers/iconNameFinder'
+import {svgSetter, svgSetterById} from '../../../../helpers/iconNameFinder'
 import {baseVariants} from "../../../../envs/currency";
 
-export const CurrencyItem = ({ t, currencyData, currencySelectorHandler = () => {} }) => {
+export const CurrencyItem = ({ t, currencyData, currencySelectorHandler = () => {}, iconId = 'currencyImageContainer' }) => {
 
   const abbr = currencyData.abbreviation
   const name = currencyData.name
@@ -19,12 +19,12 @@ export const CurrencyItem = ({ t, currencyData, currencySelectorHandler = () => 
 
   useEffect(() => {
     const returnAbbr = true
-    svgSetter(currencyData, returnAbbr)
+    svgSetterById(currencyData, `${iconId}${currencyData.id}`, returnAbbr)
   }, [])
 
   return (
     <li onClick={() => currencySelectorHandler(currencyData)} className={styles.currencyItem}>
-      <div id={`currencyImageContainer${currencyData.id}`} className={styles.iconContainer}>
+      <div id={`${iconId}${currencyData.id}`} className={styles.iconContainer}>
 
       </div>
       <div className={styles.currencyInfoContainer}>
