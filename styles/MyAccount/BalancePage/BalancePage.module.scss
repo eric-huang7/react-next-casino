@@ -162,7 +162,9 @@
 .balanceTable tr:first-child {
   background-color: transparent;
 }
-
+.balanceTableMobile {
+  display: none
+}
 
 .depositButton {
   width: 121px;
@@ -306,6 +308,21 @@
       }
 
     }
+  }
+  .balanceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 24px;
+
+    & > div {
+      padding-bottom: 24px;
+    }
+  }
+  .balanceTable {
+    display: none
+  }
+  .balanceTableMobile {
+    display: block;
   }
 }
 

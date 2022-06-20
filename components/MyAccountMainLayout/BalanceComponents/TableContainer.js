@@ -3,6 +3,7 @@ import {TableHeading} from "./TableHeading";
 import {TableRow} from "./TableRow";
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {useState} from "react";
+import {BalanceItemMobile} from "./BalanceItemMobile";
 
 export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
   const [sort, setSort] = useState('currency')
@@ -65,29 +66,57 @@ export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
     }
   }
 
+  const getColumnsObject = () => {
+    const res = {}
+    columns.forEach(item => {
+      res[item.name] = item
+    })
+    return res
+  }
+
   return (
-    <table className={styles.balanceTable} cellSpacing={0}>
-      <thead>
-        <TableHeading columns={columns} onSort={onSort} sort={sort} direction={direction} />
-      </thead>
-      <tbody>
-      {
-        sortedData().map((el) => {
-          return (
-            <ErrorText key={`${el.id} balance table item`}>
-              <TableRow
-                key={`${el.id} balance table item`}
-                currencyData={currency}
-                t={t}
-                balanceData={el}
-                rates={rates}
-                rateUsd={rateUsd}
-              />
-            </ErrorText>
-          )
-        })
-      }
-      </tbody>
-    </table>
+    <>
+      <table className={styles.balanceTable} cellSpacing={0}>
+        <thead>
+          <TableHeading columns={columns} onSort={onSort} sort={sort} direction={direction} />
+        </thead>
+        <tbody>
+        {
+          sortedData().map((el) => {
+            return (
+              <ErrorText key={`${el.id} balance table item`}>
+                <TableRow
+                  key={`${el.id} balance table item`}
+                  currencyData={currency}
+                  t={t}
+                  balanceData={el}
+                  rates={rates}
+                  rateUsd={rateUsd}
+                />
+              </ErrorText>
+            )
+          })
+        }
+        </tbody>
+      </table>
+      <div className={styles.balanceTableMobile}>
+        {
+          sortedData().map((el) => {
+            return (
+              <ErrorText key={`mobile-item-${el.id}`}>
+                <BalanceItemMobile
+                  currencyData={currency}
+                  t={t}
+                  balanceData={el}
+                  rates={rates}
+                  rateUsd={rateUsd}
+                  columns={getColumnsObject()}
+                />
+              </ErrorText>
+            )
+          })
+        }
+      </div>
+    </>
   )
 }
