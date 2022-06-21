@@ -25,7 +25,7 @@ export const CurrencyBonusSelector = ({ t, currencyData, userInfo, setCurrencyFi
                 key={`${el.id} option currency select`}
                 value={el.currency_id}
               >
-                {currencyInfo(currencyData.currency.results, el.currency_id)[0].abbreviation}
+                {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
               </option>
             )
           })
