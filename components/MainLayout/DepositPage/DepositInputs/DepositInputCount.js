@@ -14,7 +14,7 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
         value={userDepositValue}
         onChange={(e) => depositValueInputHandler(e)}
       />
-      <span className={styles.errorMessage}>{t(userDepositValueError)}</span>
+      <span className={styles.errorMessage}>{userDepositValueError}</span>
     </div>
   )
 }
