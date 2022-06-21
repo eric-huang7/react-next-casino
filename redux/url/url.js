@@ -94,7 +94,7 @@ export const get_user_bets = serverUrl + 'bets?quantity=50&ordering=time_created
 
 // BONUSES DATA
 
-export const get_bonuses_data_url = serverUrl + 'bonus_redemption?ordering=time_redeemed-DESC&is_fs=0';
+export const get_bonuses_data_url = serverUrl + 'bonus_redemption?ordering=time_redeemed-DESC';
 
 export const put_bonus_redemption_url = serverUrl + 'bonus_redemption';
 export const post_cancel_bonus_redemption_url = serverUrl + 'bonus_cancelation';
