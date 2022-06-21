@@ -3,6 +3,9 @@ import {TableHeading} from "./TableHeading";
 import {TableRow} from "./TableRow";
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {useState} from "react";
+import {BalanceItemMobile} from "./BalanceItemMobile";
+import {FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
+import {currencyInfo} from "../../../helpers/currencyInfo";
 
 export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
   const [sort, setSort] = useState('currency')
@@ -65,29 +68,90 @@ export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
     }
   }
 
+  const getColumnsObject = () => {
+    const res = {}
+    columns.forEach(item => {
+      res[item.name] = item
+    })
+    return res
+  }
+
   return (
-    <table className={styles.balanceTable} cellSpacing={0}>
-      <thead>
-        <TableHeading columns={columns} onSort={onSort} sort={sort} direction={direction} />
-      </thead>
-      <tbody>
-      {
-        sortedData().map((el) => {
-          return (
-            <ErrorText key={`${el.id} balance table item`}>
-              <TableRow
-                key={`${el.id} balance table item`}
-                currencyData={currency}
-                t={t}
-                balanceData={el}
-                rates={rates}
-                rateUsd={rateUsd}
-              />
-            </ErrorText>
-          )
-        })
-      }
-      </tbody>
-    </table>
+    <>
+      <table className={styles.balanceTable} cellSpacing={0}>
+        <thead>
+          <TableHeading columns={columns} onSort={onSort} sort={sort} direction={direction} />
+        </thead>
+        <tbody>
+        {
+          sortedData().map((el) => {
+            return (
+              <ErrorText key={`${el.id} balance table item`}>
+                <TableRow
+                  key={`${el.id} balance table item`}
+                  currencyData={currency}
+                  t={t}
+                  balanceData={el}
+                  rates={rates}
+                  rateUsd={rateUsd}
+                />
+              </ErrorText>
+            )
+          })
+        }
+        </tbody>
+      </table>
+      <div className={styles.balanceTableMobile}>
+        <div className={`${styles.row} ${styles.inputsContainer}`}>
+          <label htmlFor="sortSelect">{t('myAccount.balance.sortBy')}</label>
+          <select
+            onChange={(e) => {
+              const value = e.target.value?.split(':');
+              setDirection(value[1] === 'asc')
+              onSort(value[0])
+            }}
+            id="sortSelect"
+          >
+            {
+              columns.filter(item => item.sort).map((column) => (
+                <>
+                  <option
+                    key={`${column.name}`}
+                    value={`${column.name}:asc`}
+                    selected={sort === column.name && direction}
+                  >
+                    {column.title} {t('myAccount.balance.sortAsc')}
+                  </option>
+                  <option
+                    key={`${column.name}`}
+                    value={`${column.name}:desc`}
+                    selected={sort === column.name && !direction}
+                  >
+                    {column.title} {t('myAccount.balance.sortDesc')}
+                  </option>
+                </>
+              ))
+            }
+          </select>
+        </div>
+
+        {
+          sortedData().map((el) => {
+            return (
+              <ErrorText key={`mobile-item-${el.id}`}>
+                <BalanceItemMobile
+                  currencyData={currency}
+                  t={t}
+                  balanceData={el}
+                  rates={rates}
+                  rateUsd={rateUsd}
+                  columns={getColumnsObject()}
+                />
+              </ErrorText>
+            )
+          })
+        }
+      </div>
+    </>
   )
 }
