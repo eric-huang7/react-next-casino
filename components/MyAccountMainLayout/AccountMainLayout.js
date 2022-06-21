@@ -86,7 +86,7 @@ export const AccountMainLayout = ({ t, children }) => {
         dispatch(getUserPayments({ user_id: Number(userInfo?.user?.user?.id) }))
       }
       if (!userInfo.bonusesHistory) {
-        dispatch(getUserBonuses({ status: '1,2,3,4,6' }))
+        dispatch(getUserBonuses({ status: '1,2,3,4,6', is_fs: 0 }))
       }
       if (!userInfo.activePendingBonuses) {
         dispatch(getUserActivePendingBonuses({ status: '1,5' }))
