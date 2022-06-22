@@ -2,13 +2,16 @@ import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/user/action'
 import { useTranslation } from 'next-i18next'
+import {useRouter} from "next/router";
 
 export const SignOutItem = () => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
+  const router = useRouter();
 
   const logoutButtonHandler = () => {
-    dispatch(logout())
+    router.push('/');
+    dispatch(logout());
   }
 
   return (
