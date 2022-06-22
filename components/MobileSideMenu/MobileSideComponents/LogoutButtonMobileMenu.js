@@ -7,6 +7,7 @@ export const LogoutButtonMobileMenu = ({t, isLogined}) => {
   const dispatch = useDispatch()
 
   const logoutClickHandler = () => {
+    router.push('/');
     dispatch(logout());
     dispatch(showMobileMenu(false));
   }

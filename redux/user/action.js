@@ -22,8 +22,9 @@ import {
 import {siteID} from "../../envs/envsForFetching";
 import {errorPopupActivate, showTournamentAwardModal, showTwoFaPopup} from "../popups/action";
 import {annulActiveBonuses} from "../bonuses/action";
-import {showLogin} from "../ui/action";
+import {minimizeGameWindow, showGameWindow, showLogin} from "../ui/action";
 import {showRegister} from "../ui/action";
+import {deleteGameLink} from "../playGame/action";
 
 export const activateBonusAction = createAction("ACTIVATE_BONUS");
 export const addCurrencyToUser = createAction("ADD_CURRENCY_TO_USER");
@@ -206,6 +207,9 @@ export const signUp = (signUpData) => dispatch =>
 export const logout = () => dispatch =>
   Connect.delete(logout_url, {}, (status, data) => {
     dispatch(logoutSuccess(data));
+    dispatch(showGameWindow(false));
+    dispatch(minimizeGameWindow(false));
+    dispatch(deleteGameLink());
     if (typeof window !== "undefined") {
       localStorage.setItem("userAuth", 'false');
     }
