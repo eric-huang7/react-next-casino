@@ -29,12 +29,17 @@ const GamesPage = (props) => {
   const { t } = useTranslation('common')
   const router = useRouter()
   const { id } = router.query
+  const myRef = useRef(null)
 
   // const searchRef = useRef('')
 
   useEffect(() => {
     dispatch(getCurrency())
   }, [])
+
+  useEffect(() => {
+    myRef.current.scrollIntoView()
+  }, [id])
 
   const [isShowMoreButton, setIsShowMoreButton] = useState(true)
   const [pageCounter, setPageCounter] = useState(0)
@@ -132,6 +137,7 @@ const GamesPage = (props) => {
         <MainBlock/>
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in future */}
+        <div ref={myRef}></div>
         <ChooseCategoryBlock isProvidersPage={false} t={t}/>
 
         <ErrorEmpty>
