@@ -38,6 +38,6 @@ export const errorPopupActivate = (errorData) => dispatch => {
   dispatch (errorPopupActivateAction(errorData));
 }
 
-export const messagePopupActivate = (messageData, messageColor = 'red') => {
+export const messagePopupActivate = (messageData, messageColor = '#d7a33c') => {
   return messagePopupActivateAction({data: messageData, color: messageColor});
 }

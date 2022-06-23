@@ -23,7 +23,7 @@ export default function EmailConfirmation (props) {
       const timer = setTimeout(() => {
         Connect.patch(token_url, sendData, {}, (status, data) => {
           if (data.success) {
-            dispatch(messagePopupActivate('success'))
+            dispatch(messagePopupActivate('success', "#9c3"))
           } else if (data.extra_error_info === 'Token invalid') {
             dispatch(messagePopupActivate('token_invalid'))
           } else {

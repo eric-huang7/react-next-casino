@@ -79,7 +79,7 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
             setErrorMessage('')
             router.push('/accounts/history').then(() => {
               setTimeout(() => {
-                dispatch(messagePopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation', 'green'))
+                dispatch(messagePopupActivate('myAccount.cashoutPage.selectPaymentContainer.errors.needEmailConfirmation', '#9c3'))
               }, 1000)
             })
           } else if (e.response.data.error_code === 'WITHDRAW_WAITING_ON_REVIEW') {
