@@ -12,12 +12,11 @@ import {bonusesFinder} from "../../helpers/bonusesFinder";
 export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   const dispatch = useDispatch();
 
-  // const isShowExitIntent = true;
-
   const activeBonuses = useSelector((state) => state.bonuses);
   const userCurrency = useSelector((state) => state.userFinance);
   const gamesList = useSelector((store) => store.games);
-
+  const isShowPlayWindow = useSelector((store) => store.ui?.isShowPlayWindow);
+  const isShowDepositModal = useSelector((state) => state.popups?.isShowDepositModal);
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -49,7 +48,6 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
         isShowExitByTime;
 
       if (shouldShowExitIntent) {
-        document.removeEventListener('mouseout', mouseEvent);
         setShowPopup(true);
       }
     }
@@ -79,16 +77,25 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     }
   }, [showPopup]);
 
+  useEffect(() => {
+    if ((isShowPlayWindow || isShowDepositModal) && showPopup) {
+      setShowPopup(false);
+    }
+  }, [showPopup, isShowPlayWindow, isShowDepositModal]);
+
 
   useEffect(() => {
     if (showPopup) {
       dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
       dispatch(getTopGames());
     }
-  }, [showPopup, userCurrency?.userCurrencyData?.id])
+  }, [userCurrency?.userCurrencyData?.id])
 
 
 
+  if (isShowPlayWindow || isShowDepositModal) {
+    return null
+  }
 
   if (activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {
     if (!userInfo.isAuthenticated) {
