@@ -67,10 +67,10 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
         setValueError('')
         setAddressError('')
         Connect.post(post_withdraw_url, JSON.stringify(sendData), {}, (status, data) => {
-          setSuccessMessage(t('myAccount.cashoutPage.selectPaymentContainer.errors.successMessage'))
           setErrorMessage('')
           dispatch(getUserPayments(params))
           dispatch(userBalance())
+          router.push("/accounts/history")
         }).catch((e) => {
           setSuccessMessage('')
           dispatch(userBalance())
