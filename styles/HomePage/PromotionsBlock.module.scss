@@ -74,6 +74,7 @@
     position: absolute;
     z-index: 10;
     top: 0;
+    width: 100%;
 
     & h3 {
       margin: 72px 25px 0;
@@ -182,6 +183,12 @@
   & > div > .promotionMainText {
     color: #000;
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    white-space: normal;
   }
   & > div > .promotionAddText {
     color: #944639;
