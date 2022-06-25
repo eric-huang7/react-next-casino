@@ -45,22 +45,15 @@ export const TypeTwoBonusContainer = ({ t, bonusInfo, locale, bonusCalculations,
                   />
                 </ErrorEmpty>
                 :
-                ''
+                <ErrorEmpty>
+                  <BonusLongDescriptionBlock
+                    bonusCalculations={bonusCalculations}
+                    t={t}
+                    bonusInfo={bonusInfo}
+                  />
+                </ErrorEmpty>
             }
           </div>
-          {
-            width <= 700
-              ?
-              <ErrorEmpty>
-                <BonusLongDescriptionBlock
-                  bonusCalculations={bonusCalculations}
-                  t={t}
-                  bonusInfo={bonusInfo}
-                />
-              </ErrorEmpty>
-              :
-              ''
-          }
         </div>
       </div>
     </>

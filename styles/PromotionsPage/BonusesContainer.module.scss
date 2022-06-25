@@ -15,3 +15,9 @@
   color: #ffffff;
   font-family: "Neon", Arial, sans-serif;
 }
+
+@media screen and (max-width: 700px) {
+  .bonusesContainerMainWrapper {
+    padding: 50px 24px;
+  }
+}
