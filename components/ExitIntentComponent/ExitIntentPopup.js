@@ -97,7 +97,7 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     return null
   }
 
-  if (activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {
+  if (activeBonuses.activeBonuses?.success) {
     if (!userInfo.isAuthenticated) {
       let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
       if (bonusesList.length === 0) {
