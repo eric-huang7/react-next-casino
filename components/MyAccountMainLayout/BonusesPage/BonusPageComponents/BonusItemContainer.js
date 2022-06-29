@@ -1,12 +1,12 @@
 import { currencyInfo } from '../../../../helpers/currencyInfo'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
-import { ActiveBonus } from './ActiveBonus'
-import { PendingBonus } from './PendingBonus'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 import {setActivePendingBonusesTerms} from "../../../../redux/user/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showTermsModal} from "../../../../redux/popups/action";
+import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
+import {BonusTermsCheck} from "../BonusTermsCheck";
 
 export const BonusItemContainer = ({
                                      t,
@@ -14,19 +14,21 @@ export const BonusItemContainer = ({
                                      currencyData,
                                      activateBonusClickHandler,
                                      cancelBonusClickHandler,
-                                     isTermsChecked,
-                                     onAcceptTerms
                                    }) => {
   const router = useRouter()
   const dispatch = useDispatch()
 
   const authInfo = useSelector((store) => store.authInfo)
 
+  const isFS = bonusData.free_spins_remaining > 0
+  const isActive = bonusData.status === '1'
+  const isTermsChecked = authInfo.activePendingBonusesTerms[bonusData.id]
+
   let title = bonusData.title ? bonusData.title : '-'
   let stage = statusValue(bonusData.status)
   let currency = currencyInfo(currencyData.currency.results, bonusData.currency_id)[0].abbreviation
-  let amountName = bonusData.status === '1' ? 'myAccount.bonusPage.bonusItems.amount' : 'myAccount.bonusPage.bonusItems.games'
-  let amount = bonusData.status === '1' ? `${Number(bonusData.max_cashout_amount)} ${currency}` : bonusData.game_names
+  let amountName = isFS ? 'myAccount.bonusPage.bonusItems.games' : 'myAccount.bonusPage.bonusItems.amount'
+  let amount = isFS ? bonusData.game_names : `${Number(bonusData.max_cashout_amount)} ${currency}`
   let wagerPercent = wagerPercentCalculator(bonusData.rollover_achieved, bonusData.wager_requirements, bonusData.award_amount)
 
   let dateReceived = dateFormatter(bonusData.time_redeemed, router.locale)
@@ -39,56 +41,64 @@ export const BonusItemContainer = ({
   const acceptTerms = (id) => {
     dispatch(setActivePendingBonusesTerms({id, value: !authInfo.activePendingBonusesTerms[id]}))
   }
+  const wagerOrFreeSpins = `myAccount.bonusPage.bonusItems.${isFS ? 'freeSpins' : 'wager'}`
+  const wagerOrFreeSpinsAmount = isFS ? Number(bonusData.free_spins_awarded)
+    : (bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`)
 
-  if (bonusData.status === '1') {
-    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.wager'
-    let wagerOrFreeSpinsAmount = bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`
-
-    return (
-      <ErrorText>
-        <ActiveBonus
-          t={t}
-          title={title}
-          amount={amount}
-          amountName={amountName}
-          expiryDate={expiryDate}
-          dateReceived={dateReceived}
-          stage={stage}
-          wagerOrFreeSpins={wagerOrFreeSpins}
-          wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
-          wagerPercent={wagerPercent}
-          cancelBonusClickHandler={cancelBonusClickHandler}
-          bonusData={bonusData}
-          onShowTerms={onShowTerms}
-        />
-      </ErrorText>
-    )
-  } else {
-    let wagerOrFreeSpins = 'myAccount.bonusPage.bonusItems.freeSpins'
-    let wagerOrFreeSpinsAmount = Number(bonusData.free_spins_awarded)
-
-    return (
-      <ErrorText>
-        <PendingBonus
-          t={t}
-          title={title}
-          amount={amount}
-          amountName={amountName}
-          expiryDate={expiryDate}
-          dateReceived={dateReceived}
-          stage={stage}
-          wagerOrFreeSpins={wagerOrFreeSpins}
-          wagerOrFreeSpinsAmount={wagerOrFreeSpinsAmount}
-          activateBonusClickHandler={activateBonusClickHandler}
-          bonusData={bonusData}
-          onAcceptTerms={acceptTerms}
+  return <ErrorText>
+    <div className={styles.bonusItemContainer}>
+      <div className={styles.bonusItemHeading}>
+        <p className={styles.headingText}>{title}</p>
+        <p className={`${styles.bonusItemStatus} ${bonusData.status !== '1' && styles.pendingStatus}`}>{t(stage)}</p>
+      </div>
+      <ul className={styles.bonusInfoList}>
+        <li className={styles.bonusInfoListItem}>
+          <div className={styles.amountName}>{t(amountName)}</div>
+          <div className={styles.amountValue}>{amount}</div>
+        </li>
+        <li className={styles.bonusInfoListItem}>
+          <div className={styles.amountWagerReq}>{t(wagerOrFreeSpins)}</div>
+          <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
+        </li>
+        {isFS ? <li className={styles.bonusInfoListItem}>
+          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.freeSpinsRemaining')}</div>
+          <div className={styles.wagerPercentValue}>{bonusData.free_spins_remaining}</div>
+        </li> : <li className={styles.bonusInfoListItem}>
+          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.wagerPercent')}</div>
+          <div className={styles.wagerPercentValue}>{wagerPercent}%</div>
+        </li>}
+        <li className={styles.bonusInfoListItem}>
+          <div className={styles.dateReceived}>{t('myAccount.bonusPage.bonusItems.dateReceived')}</div>
+          <div className={styles.dateReceivedValue}>{dateReceived}</div>
+        </li>
+        <li className={styles.bonusInfoListItem}>
+          <div className={styles.expiryDate}>{t('myAccount.bonusPage.bonusItems.expiryDate')}</div>
+          <div className={styles.expiryDate}>{expiryDate}</div>
+        </li>
+      </ul>
+      <div className={styles.termsWrapper}>
+        {isActive ? <BonusTermsCheck hideCheckbox onShowTerms={onShowTerms}/> : <BonusTermsCheck
+          id={bonusData.id}
+          onAccept={acceptTerms}
           onShowTerms={onShowTerms}
           isTermsChecked={authInfo.activePendingBonusesTerms[bonusData.id]}
-        />
-      </ErrorText>
-    )
-  }
-
+        />}
+        {isActive ? (
+          <button
+            onClick={() => cancelBonusClickHandler(bonusData)}
+            className={styles.cancelBonus}
+          >
+            {t('myAccount.bonusPage.bonusItems.cancelBonus')}
+          </button>
+        ) : isTermsChecked && <button
+          onClick={() => activateBonusClickHandler(bonusData)}
+          className={styles.activateBonus}
+        >
+          {t('myAccount.bonusPage.bonusItems.activateBonus')}
+        </button>}
+      </div>
+    </div>
+  </ErrorText>
 }
 
 function wagerPercentCalculator (rollover_achieved, wager_requirements) {
