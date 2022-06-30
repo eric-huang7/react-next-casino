@@ -31,6 +31,8 @@ export const PaymentsCryptoWrapper = ({ t, paymentsData }) => {
   const whatDoBackButton = () => {
     dispatch(showCryptoModal(false))
     dispatch(showDepositModal(true));
+    dispatch(annulDeposit());
+    dispatch(setUserPaymentMethod(null))
   }
 
   return (
