@@ -1,4 +1,6 @@
+import { ColorModeScript } from '@chakra-ui/react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import theme from '../styles/theme'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,11 +12,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>Slots Idol</title>
         </Head>
         <body>
-        <Main />
-        <NextScript />
-        <script defer type="text/javascript" src="/chatWidget/chatWidget.js"></script>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <Main />
+          <NextScript />
+          <script defer type="text/javascript" src="/chatWidget/chatWidget.js"></script>
         </body>
       </Html>
     )

@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../components/MainLayout/MainLayout'
 import { HomePageContainer } from '../components/HomePageComponents/HomePageContainer'
+import { Button } from '@chakra-ui/react'
 
 export default function Home () {
   const { t } = useTranslation('common')
