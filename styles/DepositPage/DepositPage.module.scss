@@ -194,6 +194,10 @@
         -webkit-appearance: none;
       }
 
+      & .depositSummInput.errorMessage {
+        color: #e31351;
+      }
+
       & .labelIconCurrency {
 
         font-size: 36px;
@@ -751,7 +755,7 @@
 
 span.errorMessage {
   font-size: 10px;
-  color: $red-color;
+  color: #e31351;
 }
 
 .divider{
