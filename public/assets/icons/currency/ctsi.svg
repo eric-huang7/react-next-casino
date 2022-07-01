@@ -1,0 +1,13 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="ctsi" x="350" y="72" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#ejclip0)" stroke="#000" stroke-width=".61" stroke-miterlimit="10">
+            <path d="M4 6.979L10.379 0 13 7M13 15.94L9.478 20 7 13" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 13l-3 3"/>
+            <path d="M13.064 7h4.41L20 13h-8.737L8.737 7H0l2.527 6h4.337" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 7l-6 6"/>
+        </g>
+        <defs>
+            <clipPath id="ejclip0">
+                <path fill="#fff" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

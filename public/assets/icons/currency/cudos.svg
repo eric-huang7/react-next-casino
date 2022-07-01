@@ -1,0 +1,9 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="cudos" x="350" y="96" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.868 2.896A9.873 9.873 0 102.917 16.871a9.873 9.873 0 0013.95-13.975zM9.37 18.723a8.856 8.856 0 010-17.683v3.352a5.513 5.513 0 000 10.98v3.35zm.51-4.35a4.497 4.497 0 11-.01-8.993 4.497 4.497 0 01.012 8.994H9.88zm6.439 1.582a8.858 8.858 0 01-5.924 2.766v-3.35a5.513 5.513 0 000-10.98v-3.35a8.856 8.856 0 015.924 14.914z" fill="url(#ekpaint0_linear)"/>
+        <defs>
+            <linearGradient id="ekpaint0_linear" x1="2.902" y1="16.874" x2="16.863" y2="2.913" gradientUnits="userSpaceOnUse">
+                <stop offset=".005" stop-color="#2D9CFD"/>
+                <stop offset="1" stop-color="#37DAFD"/>
+            </linearGradient>
+        </defs>
+    </svg>

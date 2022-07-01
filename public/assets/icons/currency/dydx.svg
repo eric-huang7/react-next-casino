@@ -1,0 +1,11 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="dydx" x="240" y="340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="20" height="20" rx="4" fill="#1B1A2A"/>
+        <path d="M15.274 4h-2.516l-8.37 11.952h2.564L15.274 4zM7.339 4H4.677l3.726 5.274 1.258-1.887L7.34 4z" fill="#FEFEFE"/>
+        <path d="M12.951 15.903h2.662l-4.065-5.71-1.258 1.888 2.662 3.822z" fill="url(#fjpaint0_linear)"/>
+        <defs>
+            <linearGradient id="fjpaint0_linear" x1="14.258" y1="15.952" x2="10.968" y2="11.161" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6966FF"/>
+                <stop offset="1" stop-color="#9492FF"/>
+            </linearGradient>
+        </defs>
+    </svg>

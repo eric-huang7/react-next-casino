@@ -1,0 +1,10 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="ava" x="240" y="268" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="url(#bjpaint0_linear)"/>
+        <path d="M5.442 5.084a.394.394 0 00-.393.394v2.135c0 .217.176.394.393.394h2.885v7.05c0 .651.528 1.18 1.18 1.18h1.642a.394.394 0 00.394-.394V8.007h3.015a.394.394 0 00.393-.394V6.265a1.18 1.18 0 00-1.18-1.18H5.442z" fill="#fff"/>
+        <defs>
+            <linearGradient id="bjpaint0_linear" x1="2.73" y1="20" x2="17.936" y2="6.457" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#292A4B"/>
+                <stop offset="1" stop-color="#5A567D"/>
+            </linearGradient>
+        </defs>
+    </svg>

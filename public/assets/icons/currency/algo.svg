@@ -1,0 +1,12 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="algo" x="25" y="26" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#alclip0)">
+            <path d="M10.208 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z" fill="#000"/>
+            <path d="M10.208 19.375a9.375 9.375 0 100-18.75 9.375 9.375 0 000 18.75z" fill="#fff"/>
+            <path d="M15.52 15.375h-1.75l-1.187-4.313-2.5 4.313h-2l3.875-6.625-.625-2.313-5.187 8.938H4.02l6.625-11.313h1.812l.75 2.813h1.813L13.833 9l1.688 6.375z" fill="#000"/>
+        </g>
+        <defs>
+            <clipPath id="alclip0">
+                <path fill="#fff" transform="translate(.208)" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

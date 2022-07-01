@@ -1,0 +1,4 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="matic" x="422" y="312" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="#3970E7"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.793 4.875L3.69 6.069v7.424l2.103 1.195 2.104-1.195v-2.646L10 12.04l2.1-1.194h.004v2.665l2.103 1.195.013-.026 2.09-1.188V6.07l-2.103-1.194-2.103 1.194v2.389L5.793 4.875z" fill="#fff"/>
+    </svg>

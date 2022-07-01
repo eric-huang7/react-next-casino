@@ -1,0 +1,15 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="dcr" x="350" y="216" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#eqclip0)">
+            <path d="M8.81 11.852h4.932a3.332 3.332 0 003.334-3.333 3.299 3.299 0 00-3.314-3.314h-1.579L8.811 2.28h4.931A6.219 6.219 0 0120 8.499a6.22 6.22 0 01-3.918 5.809l3.898 3.372h-4.444L8.81 11.852z" fill="url(#eqpaint0_linear)"/>
+            <path d="M11.227 8.129H6.295a3.332 3.332 0 00-3.333 3.333 3.32 3.32 0 003.333 3.333h1.58l3.352 2.924H6.295c-3.45 0-6.257-2.787-6.277-6.218a6.226 6.226 0 013.919-5.828L.037 2.28h4.465l6.725 5.848z" fill="#4971FA"/>
+        </g>
+        <defs>
+            <linearGradient id="eqpaint0_linear" x1="8.82" y1="9.982" x2="19.996" y2="9.982" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#62D0C9"/>
+                <stop offset="1" stop-color="#7DE2AC"/>
+            </linearGradient>
+            <clipPath id="eqclip0">
+                <path fill="#fff" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

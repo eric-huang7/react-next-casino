@@ -1,0 +1,20 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="zen" x="192" y="508" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="#041742"/>
+        <path d="M15.69 5.926L14.545 7.7a5.094 5.094 0 01-6.842 6.846L5.93 15.694A7 7 0 0017.001 10a6.978 6.978 0 00-1.31-4.074z" fill="url(#sapaint0_radial)"/>
+        <path d="M10 13.506a3.517 3.517 0 003.457-2.877 8.107 8.107 0 00-1.691-.18 8.012 8.012 0 00-4.683 1.505A3.513 3.513 0 0010 13.506z" fill="url(#sapaint1_radial)"/>
+        <path d="M11.733 9.81c.612 0 1.208.067 1.783.192a3.515 3.515 0 10-7 .47c-.886.673-1.306 1.206-1.319 1.223a5.094 5.094 0 017.093-6.243l1.775-1.147A6.946 6.946 0 0010 3a7 7 0 00-5.632 11.155c.331-.6.735-1.154 1.196-1.652 0 0 .691-.72 1.22-1.082a8.38 8.38 0 014.949-1.61z" fill="#fff"/>
+        <defs>
+            <radialGradient id="sapaint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.692 5.918) scale(11.7779)">
+                <stop offset=".099" stop-color="#26DB8D"/>
+                <stop offset=".263" stop-color="#23D29A"/>
+                <stop offset=".564" stop-color="#1ABBBB"/>
+                <stop offset=".886" stop-color="#0E9DE5"/>
+            </radialGradient>
+            <radialGradient id="sapaint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.692 5.918) scale(11.7779)">
+                <stop offset=".099" stop-color="#26DB8D"/>
+                <stop offset=".263" stop-color="#23D29A"/>
+                <stop offset=".564" stop-color="#1ABBBB"/>
+                <stop offset=".886" stop-color="#0E9DE5"/>
+            </radialGradient>
+        </defs>
+    </svg>

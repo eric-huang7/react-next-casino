@@ -1,0 +1,16 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="cel" x="104" y="72" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#doclip0)">
+            <circle cx="10.11" cy="10" r="10" fill="url(#dopaint0_linear)"/>
+            <path d="M4.731 10a5.166 5.166 0 018.152-4.217l.343.243a.42.42 0 00.585-.099l.486-.685a.42.42 0 00-.1-.585l-.342-.243a6.846 6.846 0 10.794 10.514l.303-.292a.42.42 0 00.01-.593l-.583-.605a.42.42 0 00-.593-.01l-.303.29A5.166 5.166 0 014.731 10z" fill="#fff"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.56 5.906a1.65 1.65 0 100 3.3 1.65 1.65 0 000-3.3zm-.474 1.65a.474.474 0 11.948 0 .474.474 0 01-.948 0z" fill="#fff"/>
+        </g>
+        <defs>
+            <linearGradient id="dopaint0_linear" x1="10.11" y1="0" x2=".11" y2="10" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F1C26F"/>
+                <stop offset="1" stop-color="#E47F3E"/>
+            </linearGradient>
+            <clipPath id="doclip0">
+                <path fill="#fff" transform="translate(.13)" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

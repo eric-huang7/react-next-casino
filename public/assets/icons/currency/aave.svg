@@ -1,0 +1,16 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="aave" x="277" y="121" xmlns="http://www.w3.org/2000/svg">
+        <mask id="aaa" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0h20v20H0V0z" fill="#fff"/>
+        </mask>
+        <g mask="url(#aaa)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C4.5 20 0 15.5 0 9.95.05 4.45 4.5-.05 10.05 0 15.55.05 20 4.5 20 10.1c-.05 5.45-4.5 9.9-10 9.9z" fill="url(#aapaint0_linear)"/>
+            <path d="M15.95 14.93L11.749 4.78A1.124 1.124 0 0010.69 4h-.37a1.133 1.133 0 00-1.053.78L7.44 9.203H6.053a.761.761 0 00-.751.752v.008a.754.754 0 00.751.752h.744l-1.744 4.216a.888.888 0 00-.052.288.793.793 0 00.205.564.722.722 0 00.558.216.758.758 0 00.434-.144.916.916 0 00.297-.38l1.925-4.76h1.33a.76.76 0 00.756-.752v-.02a.754.754 0 00-.756-.752h-.71l1.466-3.647 3.998 9.93c.064.152.166.283.298.38a.758.758 0 00.434.145.728.728 0 00.562-.216.794.794 0 00.201-.564.677.677 0 00-.048-.288z" fill="#fff"/>
+        </g>
+        <defs>
+            <linearGradient id="aapaint0_linear" x1="16" y1="2" x2="10" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A8589A"/>
+                <stop offset=".505" stop-color="#7692B3"/>
+                <stop offset="1" stop-color="#5CB0C0"/>
+            </linearGradient>
+        </defs>
+    </svg>

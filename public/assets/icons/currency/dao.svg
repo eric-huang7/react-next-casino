@@ -1,0 +1,20 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="dao" x="350" y="168" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="#fff"/>
+        <path d="M2.576 15.162l5.55-10.353 4.893-2.172L7.47 12.99l-4.893 2.172z" fill="url(#eopaint0_linear)"/>
+        <path d="M8.11 12.796l4.217-7.865 2.393 2.367-4.159 7.886-2.45-2.388z" fill="url(#eopaint1_linear)"/>
+        <path d="M15.188 7.536l3.121 1.14-1.557 2.871-3.783.13 2.22-4.141z" fill="url(#eopaint2_linear)"/>
+        <defs>
+            <linearGradient id="eopaint0_linear" x1="2.657" y1="15.137" x2="18.917" y2="2.88" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#48D5FF"/>
+                <stop offset="1" stop-color="#4086FF"/>
+            </linearGradient>
+            <linearGradient id="eopaint1_linear" x1="2.657" y1="15.137" x2="18.917" y2="2.88" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#48D5FF"/>
+                <stop offset="1" stop-color="#4086FF"/>
+            </linearGradient>
+            <linearGradient id="eopaint2_linear" x1="2.657" y1="15.137" x2="18.917" y2="2.88" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#48D5FF"/>
+                <stop offset="1" stop-color="#4086FF"/>
+            </linearGradient>
+        </defs>
+    </svg>

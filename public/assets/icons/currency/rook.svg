@@ -1,0 +1,4 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="rook" x="470" y="216" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z" fill="#000"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.246 4.836H3.743V7.34h2.503v9.177h7.509V7.34h2.502V4.836h-2.503V7.34h-2.502V4.836H8.749V7.34H6.246V4.836zm5.006 4.589H8.749v2.503h2.503V9.425z" fill="#fff"/>
+    </svg>

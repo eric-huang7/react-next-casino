@@ -1,0 +1,11 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="xcur" x="518" y="264" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#reclip0)">
+            <path d="M9.846 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z" fill="#fff"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.283 8.105a5.914 5.914 0 0010.737 4.734 1.099 1.099 0 111.883 1.132 8.11 8.11 0 110-8.364A1.099 1.099 0 1115.02 6.74 5.914 5.914 0 004.283 8.105z" fill="#000"/>
+        </g>
+        <defs>
+            <clipPath id="reclip0">
+                <path fill="#fff" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

@@ -1,0 +1,19 @@
+<svg width="24" height="22" fill="none" viewBox="-2 -2 24 22" id="hex" x="398" y="120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.689 0c.222 0 .428.119.539.311l4.689 8.122a.622.622 0 010 .622l-4.69 8.121a.622.622 0 01-.538.311h-1.976l2.893-5.01a1.555 1.555 0 000-1.556l-2.982-5.166a1.555 1.555 0 00-1.348-.778H5.312c-.556 0-1.07.297-1.347.778l-2.893 5.01-.988-1.71a.622.622 0 010-.622L4.773.31A.622.622 0 015.31 0h9.378z" fill="url(#hipaint0_linear)"/>
+        <path d="M5.311 17.487a.622.622 0 01-.214-.038.622.622 0 01-.308-.267l-1.506-2.608a.622.622 0 010-.622l1.506-2.609a.622.622 0 01.538-.31H8.34c.223 0 .428.118.54.31l1.505 2.609a.622.622 0 010 .622l-1.506 2.608a.622.622 0 01-.45.305H5.31z" fill="url(#hipaint1_linear)"/>
+        <path d="M9.78 17.487l1.412-2.446a1.555 1.555 0 000-1.556l-1.506-2.608a1.555 1.555 0 00-1.347-.778H5.327c-.555 0-1.069.296-1.347.778L2.558 13.34 1.785 12a.622.622 0 01.004-.613L4.772 6.22a.622.622 0 01.539-.31h5.966c.222 0 .427.118.538.31l2.983 5.167a.622.622 0 010 .622l-2.983 5.166a.622.622 0 01-.538.311H9.78z" fill="url(#hipaint2_linear)"/>
+        <defs>
+            <linearGradient id="hipaint0_linear" x1="15.048" y1="0" x2="4.952" y2="17.487" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E93EEA"/>
+                <stop offset=".688" stop-color="#F7C946"/>
+            </linearGradient>
+            <linearGradient id="hipaint1_linear" x1="15.048" y1="0" x2="4.952" y2="17.487" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E93EEA"/>
+                <stop offset=".688" stop-color="#F7C946"/>
+            </linearGradient>
+            <linearGradient id="hipaint2_linear" x1="15.048" y1="0" x2="4.952" y2="17.487" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E93EEA"/>
+                <stop offset=".688" stop-color="#F7C946"/>
+            </linearGradient>
+        </defs>
+    </svg>
