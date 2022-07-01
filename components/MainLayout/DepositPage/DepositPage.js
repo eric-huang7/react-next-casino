@@ -60,7 +60,7 @@ export const DepositPage = ({ t }) => {
   useEffect(() => {
 
     changeButtonText()
-  }, [chosenBonus])
+  }, [chosenBonus, userDepositValue])
 
   useEffect(() => {
     setChosenBonus(userSelectedBonus.bonus_id)
