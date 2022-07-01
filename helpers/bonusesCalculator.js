@@ -23,9 +23,9 @@ export const bonusesCalculator = (objOfBonuses, userCurrency, userDepositValue, 
         }
       }
     }else {
-      return `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`;
+      return `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : userDepositValue} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`;
     }
   } else {
-    return `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : Number(userDepositValue)} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`
+    return `${t("depositPage.bonusInfo.playWith")} ${(userDepositValue < 0) ? "0" : userDepositValue} ${(userCurrency.userCurrencyData.symbol.length > 0) ? userCurrency.userCurrencyData.symbol : userCurrency.userCurrencyData.abbreviation}`
   }
 }
