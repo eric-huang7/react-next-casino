@@ -78,7 +78,6 @@ export const CurrencySelector = ({
                 <CurrencyList
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
-                  t={t}
                   type={t('selectCurrency.popularCrypto')}
                   currenciesData={popularFindArr}
                 />
@@ -93,7 +92,6 @@ export const CurrencySelector = ({
                 <CurrencyList
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
-                  t={t}
                   type={t('selectCurrency.stableCoins')}
                   currenciesData={stableFindArr}
                 />
@@ -108,7 +106,6 @@ export const CurrencySelector = ({
                 <CurrencyList
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
-                  t={t}
                   type={t('selectCurrency.fiat')}
                   currenciesData={fiatFindArr}
                 />
@@ -123,7 +120,6 @@ export const CurrencySelector = ({
                 <CurrencyList
                   userAuth={userAuth}
                   backButtonClickHandler={backButtonClickHandler}
-                  t={t}
                   type={t('selectCurrency.cryptoCurrencies')}
                   currenciesData={cryptoFindArr}
                 />

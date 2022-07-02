@@ -11,7 +11,6 @@ import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
-import MenuModal from "./MenuModal/MenuModal";
 
 const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
