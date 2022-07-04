@@ -3,15 +3,12 @@ import {useDispatch} from 'react-redux'
 import {setUserCurrencySwitcher} from '../../../../redux/userFinance/action'
 import {addCurrencyToUserList} from '../../../../redux/user/action'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
-import CurrencyIcon from "../../../CurrencyIcon";
-import {Box, HStack, VStack} from "@chakra-ui/layout";
-import {baseVariants} from "../../../../envs/currency";
+import {CurrencyItem} from "./CurrencyItem";
 
 export const CurrencyList = ({type, currenciesData, backButtonClickHandler, userAuth}) => {
   const dispatch = useDispatch()
 
-  const currencySelectorHandler = (id) => {
-    const currencyData = currenciesData.find(item => item.id === id)
+  const currencySelectorHandler = (currencyData) => {
     dispatch(setUserCurrencySwitcher(currencyData))
 
     if (userAuth) {
@@ -24,26 +21,21 @@ export const CurrencyList = ({type, currenciesData, backButtonClickHandler, user
     backButtonClickHandler()
   }
 
-  const getColorBase = (base) => {
-    return base && !!baseVariants[base] ? baseVariants[base] : '#ef8a13'
-  }
-
   return (
     <ul className={styles.currenciesList}>
       <span className={styles.currencyCategory}>{type}</span>
       {
-        currenciesData.map(({id, name, abbreviation, base}) => (
-            <ErrorEmpty key={`${id} currency`}>
-              <li onClick={() => currencySelectorHandler(id)} className={styles.currencyItem}>
-                <CurrencyIcon id={abbreviation} size={35} mr={2}/>
-                <VStack py="10px" px="3px" borderBottom="1px solid #cbcbcb" w="100%" alignItems="start" spacing={0}>
-                  <HStack alignItems="center" spacing={0}>
-                    <Box className={styles.abbreviation} mr="4px">{abbreviation}</Box>
-                    {!!base && <Box className={styles.baseName} sx={{bg: `${getColorBase(base)}`}}>{base}</Box>}
-                  </HStack>
-                  <Box className={styles.name}>{name}</Box>
-                </VStack>
-              </li>
+        currenciesData.map((currencyData) => (
+            <ErrorEmpty key={`${currencyData.id} currency`}>
+              <CurrencyItem
+                currencyData={currencyData}
+                onClick={() => currencySelectorHandler(currencyData)}
+                size={8}
+                pl="12px"
+                pr="6px"
+                border
+                pointer
+              />
             </ErrorEmpty>
           )
         )

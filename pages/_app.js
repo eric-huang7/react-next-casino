@@ -43,16 +43,21 @@ const MyApp = ({Component, pageProps}) => {
   //cookies.language, router.route
 
   return (
-    <Provider store={store}>
-      <ChakraProvider theme={theme}>
-        <iframe style={{display: 'none'}} id={'currencyIframe'} src={'/assets/sprite.svg'}/>
-        <NotifyProvider store={store}>
-          <GameProvider>
-            <Component {...pageProps} />
-          </GameProvider>
-        </NotifyProvider>
-      </ChakraProvider>
-    </Provider>
+    <>
+      <Head>
+        <title>Slots Idol</title>
+      </Head>
+      <Provider store={store}>
+        <ChakraProvider theme={theme}>
+          <iframe style={{display: 'none'}} id={'currencyIframe'} src={'/assets/sprite.svg'}/>
+          <NotifyProvider store={store}>
+            <GameProvider>
+              <Component {...pageProps} />
+            </GameProvider>
+          </NotifyProvider>
+        </ChakraProvider>
+      </Provider>
+    </>
   )
 }
 

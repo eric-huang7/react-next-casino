@@ -1,11 +1,22 @@
 import { extendTheme } from "@chakra-ui/react"
 
 const theme = extendTheme({
+  components: {
+    Button: { baseStyle: {  _focus: { boxShadow: 'none' } } }
+  },
+  styles: {
+    global: (props) => ({
+      body: {
+        fontFamily: "Segoe UI",
+      }
+    })
+  },
   colors: {
-    brand: {
+    text: {
       100: "#f7fafc",
+      200: "#919191",
       // ...
-      900: "#1a202c",
+      900: "#2d2d2d",
     },
   },
 })

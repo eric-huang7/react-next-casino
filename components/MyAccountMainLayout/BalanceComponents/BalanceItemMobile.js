@@ -6,8 +6,6 @@ import { patchUserActiveCurrency } from '../../../redux/user/action'
 import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
-import {useEffect} from "react";
-import {svgSetter} from "../../../helpers/iconNameFinder";
 import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
 
 export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], rateUsd, columns }) => {
@@ -28,11 +26,6 @@ export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], ra
     dispatch(patchUserActiveCurrency(userData))
   }
 
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
-
   return currency ? (
     <div className={styles.tableRow}>
       <div className={styles.row}>
@@ -40,7 +33,7 @@ export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], ra
           {columns.currency.title}
         </div>
         <div className={styles.tableCurrency}>
-          <CurrencyItem t={t} currencyData={currency} iconId="mobileIcon" />
+          <CurrencyItem currencyData={currency} pointer />
         </div>
       </div>
       <div className={styles.row}>

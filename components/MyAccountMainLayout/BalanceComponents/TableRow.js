@@ -6,8 +6,6 @@ import { patchUserActiveCurrency } from '../../../redux/user/action'
 import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
-import {useEffect} from "react";
-import {svgSetter} from "../../../helpers/iconNameFinder";
 import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
 
 export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) => {
@@ -27,11 +25,6 @@ export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) 
     }
     dispatch(patchUserActiveCurrency(userData))
   }
-
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
 
   return currency ? (
     <tr className={styles.tableRow}>
