@@ -19,12 +19,13 @@ export const DepositInputCount = ({t, currencySymbol, userDepositValue, depositV
   return (
     <div className={styles.depositInputCountWrapper}>
       <label className={styles.labelEnterSum} htmlFor="depositInputCount">{t("depositPage.depositInputLabel")}</label>
-      <label className={styles.labelIconCurrency} htmlFor="depositInputCount">{currencySymbol}</label>
+      {currencySymbol && <label className={styles.labelIconCurrency} htmlFor="depositInputCount">{currencySymbol}</label>}
       <input
         inputMode="decimal"
         id="depositInputCount"
         maxLength={12}
         className={`${styles.depositSummInput} ${userDepositValueError ? styles.errorMessage : ''}`}
+        style={{paddingLeft: currencySymbol ? "23px" : "5px"}}
         value={userDepositValue}
         onChange={handleChange}
         onFocus={onFocus}
