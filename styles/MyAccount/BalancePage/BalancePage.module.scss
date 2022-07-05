@@ -83,7 +83,7 @@
     }
 
     & td.tableCurrency {
-      display: flex;
+      display: table-cell;
       height: 100%;
       justify-content: flex-start;
       align-items: center;

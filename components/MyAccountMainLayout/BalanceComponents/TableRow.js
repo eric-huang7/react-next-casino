@@ -6,7 +6,7 @@ import { patchUserActiveCurrency } from '../../../redux/user/action'
 import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
-import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
+import {CurrencyItem} from "../../currency/CurrencyItem";
 
 export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) 
           </td>
       }
       <td className={styles.tableCurrency}>
-        <CurrencyItem t={t} currencyData={currency} />
+        <CurrencyItem currencyData={currency} />
       </td>
       <td className={styles.tableAmount}>
         {`${amount} ${currency?.abbreviation}`}
