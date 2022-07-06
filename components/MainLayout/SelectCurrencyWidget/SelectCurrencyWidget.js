@@ -7,7 +7,7 @@ import {
   showCurrencySwitcher, showMobileCryptoPayments,
   showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
-import { setCurrencySelectorType } from '../../../redux/userFinance/action'
+import {setCurrencySelectorType, setUserCurrencySwitcher} from '../../../redux/userFinance/action'
 import { SelectorHeading } from './SelectorHeading'
 import { CurrencySelector } from './CurrencySelector/CurrencySelector'
 import { useEffect } from 'react'
@@ -22,6 +22,7 @@ import { hideRegister } from '../../../redux/ui/action'
 import { PaymentCurrencySelector } from './PaymentCurrencySelector/PaymentCurrencySelector'
 import { setUserPaymentMethod } from '../../../redux/userFinance/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import {addCurrencyToUserList} from "../../../redux/user/action";
 
 export const SelectCurrencyWidget = ({
   isShowCurrencySwitcher,
@@ -92,6 +93,20 @@ export const SelectCurrencyWidget = ({
     dispatch(showMobileCryptoPayments(false))
     dispatch(setCurrencySelectorType(true))
   }
+
+  const currencySelectorHandler = (currencyData) => {
+    dispatch(setUserCurrencySwitcher(currencyData))
+
+    if (userAuth) {
+      let currency = {
+        currency_id: currencyData.id
+      }
+      dispatch(addCurrencyToUserList(currency))
+    }
+
+    backButtonClickHandler()
+  }
+
   if (isShowCurrencySwitcher && !isShowPaymentCurrencySwitcher) {
     if (currencies.popular_currency?.success && currencies.crypto_currency?.success && currencies.stable_currency?.success && currencies.fiat_currency?.success) {
 
@@ -116,6 +131,7 @@ export const SelectCurrencyWidget = ({
                 fiatCurrency={currencies.fiat_currency.results}
                 backButtonClickHandler={backButtonClickHandler}
                 userAuth={userAuth.isAuthenticated}
+                onSelect={currencySelectorHandler}
               />
             </ErrorText>
           </div>

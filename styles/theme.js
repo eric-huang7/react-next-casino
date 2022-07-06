@@ -15,6 +15,7 @@ const theme = extendTheme({
     text: {
       100: "#f7fafc",
       200: "#919191",
+      300: "#757575",
       // ...
       900: "#2d2d2d",
     },

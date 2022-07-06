@@ -10,6 +10,7 @@ import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
 import {svgSetterById} from "../../../helpers/iconNameFinder";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {SelectCurrencyReusableWidget} from "../SelectCurrencyReusableWidget/SelectCurrencyWidget";
+import {SelectCurrencyModal} from "../SelectCurrencyModal/SelectCurrencyModal";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -233,9 +234,8 @@ export const RedeemPage = ({t}) => {
         </div>
       )}
       <ErrorEmpty>
-        <SelectCurrencyReusableWidget
-          t={t}
-          isShowCurrencySwitcher={isShowBalanceList}
+        <SelectCurrencyModal
+          isShow={isShowBalanceList}
           onClose={() => setIsShowBalanceList(false)}
           onSelect={onSelectCurrency}
         />
