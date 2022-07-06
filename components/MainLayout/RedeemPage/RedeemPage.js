@@ -9,8 +9,7 @@ import Connect from "../../../helpers/connect";
 import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
 import {svgSetterById} from "../../../helpers/iconNameFinder";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
-import {SelectCurrencyReusableWidget} from "../SelectCurrencyReusableWidget/SelectCurrencyWidget";
-import {SelectCurrencyModal} from "../SelectCurrencyModal/SelectCurrencyModal";
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();

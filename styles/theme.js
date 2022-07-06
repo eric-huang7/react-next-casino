@@ -12,8 +12,15 @@ const theme = extendTheme({
     })
   },
   colors: {
+    primary: {
+      500: "#99cc33"
+    },
+    accent: {
+
+    },
     text: {
       100: "#f7fafc",
+      150: "#cbcaca",
       200: "#919191",
       300: "#757575",
       // ...
