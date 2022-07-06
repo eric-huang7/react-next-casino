@@ -8,8 +8,8 @@ import {currencyFinder} from "../../../helpers/currencyFinder";
 import Connect from "../../../helpers/connect";
 import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
 import {svgSetterById} from "../../../helpers/iconNameFinder";
-import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import {Modal, ModalContent, ModalBody, ModalOverlay} from "@chakra-ui/react";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -39,7 +39,7 @@ export const RedeemPage = ({t}) => {
 
   const getRewardPoint = () => {
     const payload = {
-      is_preview:true,
+      is_preview: true,
       points_to_redeem: pointBalance,
       currency_id_to_redeem_in: activeCurrency?.id,
       user_id: userData.user.user.id
@@ -104,7 +104,7 @@ export const RedeemPage = ({t}) => {
 
   const submit = () => {
     const payload = {
-      is_preview:false,
+      is_preview: false,
       points_to_redeem: pointBalance,
       currency_id_to_redeem_in: activeCurrency?.id,
       user_id: userData.user.user.id
@@ -125,120 +125,129 @@ export const RedeemPage = ({t}) => {
     <img src={`/assets/icons/close-icon${dark ? '-dark' : ''}.svg`} alt=""/>
   </div>
 
-  if (!isShowRedeemModal) return null
-
   return (
-    <div className={`${styles.redeemMainWrapper}`}>
-      {showNotification && (
-        <div className={styles.redeemNotificationContainer}>
-          <div className={styles.redeemNotificationHeading}>
-            <div className={styles.redeemHeading}>
-              {t("redeemPage.congratulation")}
-            </div>
-            {getCloseButton()}
-          </div>
-          <div className={styles.redeemNotificationBody}>
-            <div className={styles.redeemNotificationTitle1}>
-              {t("redeemPage.notificationTitle1")}
-            </div>
-            <div className={styles.redeemNotificationPoints}>
-              {pointBalance}{" "}{t("redeemPage.points")}
-            </div>
-            <div className={styles.redeemNotificationFor}>
-              {t("redeemPage.for")}{" "}{rewardPoint || 0}{activeCurrency?.abbreviation}
-            </div>
-
-            <div className={styles.redeemNotificationTitle2}>
-              {t("redeemPage.notificationTitle2")}
-            </div>
-            <div className={styles.redeemNotificationTitle3}>
-              {userData?.user?.user?.username}
-            </div>
-          </div>
-        </div>
-      )}
-      {!showNotification && (
-        <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.redeemHeadingBlock}>
-            <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
-            {getCloseButton(true)}
-          </div>
-          <div className={styles.redeemBody}>
-            <div className={styles.redeemTitle}>
-              {t('redeemPage.title1')}{" "}<b>1000{" "}{t('redeemPage.points')}</b>
-            </div>
-            <div className={styles.redeemTitle1}>
-              {t('redeemPage.title2')}
-            </div>
-            <div className={styles.redeemTitle2}>
-              {pointBalance?.toLocaleString()} {t('redeemPage.points')}
-            </div>
-            <div className={styles.redeemTitle3}>
-              {t('redeemPage.title3')}
-            </div>
-            <div className={styles.redeemTitle4}>
-              <b>$1</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
-            </div>
-            <div className={styles.divider}></div>
-
-            <div className={styles.redeemTitle5}>
-              {t('redeemPage.title7')}
-            </div>
-
-            <div className={styles.balanceList}>
-              <div onClick={() => setIsShowBalanceList(true)}  className={styles.pointer}>
-                <RedeemInput mt="30px" mb="30px" >
-                  <div id={`activeCurrency_${activeCurrency?.id}`} className={styles.iconContainer}></div>
-                  {activeCurrency?.name}
-                </RedeemInput>
-              </div>
-            </div>
-            <div className={styles.redeemTitle5}>
-              {t('redeemPage.title5')}
-            </div>
-            <div className={styles.redeemTotalButtons}>
-              {[25, 50, 75, 100].map((item, index) => (
-                <div key={index} onClick={() => setPointBalance(Math.round(item * maxPointBalance / 100))}>
-                  {item}%
+    <>
+      <Modal
+        closeOnOverlayClick
+        isOpen={isShowRedeemModal}
+        onClose={closeModal}
+        scrollBehavior="outside"
+      >
+        <ModalOverlay/>
+        <ModalContent w="500px">
+          <ModalBody p={0}>
+            {showNotification && (
+              <div className={styles.redeemNotificationContainer}>
+                <div className={styles.redeemNotificationHeading}>
+                  <div className={styles.redeemHeading}>
+                    {t("redeemPage.congratulation")}
+                  </div>
+                  {getCloseButton()}
                 </div>
-              ))}
-            </div>
+                <div className={styles.redeemNotificationBody}>
+                  <div className={styles.redeemNotificationTitle1}>
+                    {t("redeemPage.notificationTitle1")}
+                  </div>
+                  <div className={styles.redeemNotificationPoints}>
+                    {pointBalance}{" "}{t("redeemPage.points")}
+                  </div>
+                  <div className={styles.redeemNotificationFor}>
+                    {t("redeemPage.for")}{" "}{rewardPoint || 0}{activeCurrency?.abbreviation}
+                  </div>
 
-            <RedeemInput mb="30px" value={pointBalance} onChange={onChangePoints}/>
-
-            <div className={styles.redeemTitle5}>
-              {t('redeemPage.title6')}
-            </div>
-
-            <RedeemInput mb="30px">
-              <span>{rewardPoint}</span>
-            </RedeemInput>
-
-            <button className={styles.button} onClick={submit}>
-              {t('redeemPage.button')}
-            </button>
-
-            {error && (
-              <div className={styles.redeemNotificationBody}>
-                <div className={styles.redeemNotificationPoints}>
-                  {t("redeemPage.notificationSorry")}
-                </div>
-                <div className={styles.redeemError}>
-                  {t("redeemPage.notificationError")}
+                  <div className={styles.redeemNotificationTitle2}>
+                    {t("redeemPage.notificationTitle2")}
+                  </div>
+                  <div className={styles.redeemNotificationTitle3}>
+                    {userData?.user?.user?.username}
+                  </div>
                 </div>
               </div>
             )}
-          </div>
-          <div className={styles.redeemFooter}/>
-        </div>
-      )}
-      <ErrorEmpty>
-        <SelectCurrencyModal
-          isOpen={isShowBalanceList}
-          onClose={() => setIsShowBalanceList(false)}
-          onSelect={onSelectCurrency}
-        />
-      </ErrorEmpty>
-    </div>
+            {!showNotification && (
+              <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+                <div className={styles.redeemHeadingBlock}>
+                  <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
+                  {getCloseButton(true)}
+                </div>
+                <div className={styles.redeemBody}>
+                  <div className={styles.redeemTitle}>
+                    {t('redeemPage.title1')}{" "}<b>1000{" "}{t('redeemPage.points')}</b>
+                  </div>
+                  <div className={styles.redeemTitle1}>
+                    {t('redeemPage.title2')}
+                  </div>
+                  <div className={styles.redeemTitle2}>
+                    {pointBalance?.toLocaleString()} {t('redeemPage.points')}
+                  </div>
+                  <div className={styles.redeemTitle3}>
+                    {t('redeemPage.title3')}
+                  </div>
+                  <div className={styles.redeemTitle4}>
+                    <b>$1</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
+                  </div>
+                  <div className={styles.divider}></div>
+
+                  <div className={styles.redeemTitle5}>
+                    {t('redeemPage.title7')}
+                  </div>
+
+                  <div className={styles.balanceList}>
+                    <div onClick={() => setIsShowBalanceList(true)} className={styles.pointer}>
+                      <RedeemInput mt="30px" mb="30px">
+                        <div id={`activeCurrency_${activeCurrency?.id}`} className={styles.iconContainer}></div>
+                        {activeCurrency?.name}
+                      </RedeemInput>
+                    </div>
+                  </div>
+                  <div className={styles.redeemTitle5}>
+                    {t('redeemPage.title5')}
+                  </div>
+                  <div className={styles.redeemTotalButtons}>
+                    {[25, 50, 75, 100].map((item, index) => (
+                      <div key={index} onClick={() => setPointBalance(Math.round(item * maxPointBalance / 100))}>
+                        {item}%
+                      </div>
+                    ))}
+                  </div>
+
+                  <RedeemInput mb="30px" value={pointBalance} onChange={onChangePoints}/>
+
+                  <div className={styles.redeemTitle5}>
+                    {t('redeemPage.title6')}
+                  </div>
+
+                  <RedeemInput mb="30px">
+                    <span>{rewardPoint}</span>
+                  </RedeemInput>
+
+                  <button className={styles.button} onClick={submit}>
+                    {t('redeemPage.button')}
+                  </button>
+
+                  {error && (
+                    <div className={styles.redeemNotificationBody}>
+                      <div className={styles.redeemNotificationPoints}>
+                        {t("redeemPage.notificationSorry")}
+                      </div>
+                      <div className={styles.redeemError}>
+                        {t("redeemPage.notificationError")}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className={styles.redeemFooter}/>
+              </div>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+      <SelectCurrencyModal
+        isOpen={isShowBalanceList}
+        onClose={() => setIsShowBalanceList(false)}
+        onSelect={onSelectCurrency}
+      />
+    </>
   )
 }

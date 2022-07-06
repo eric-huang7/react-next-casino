@@ -17,7 +17,7 @@ export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, childr
     isCentered
   >
     <ModalOverlay/>
-    <ModalContent w="320px" h="60%" ref={wrapperRef}>
+    <ModalContent w="320px" h="60%" minH="200px" ref={wrapperRef}>
       <ModalHeader
         minH="60px"
         borderRadius="10px 10px 0 0"

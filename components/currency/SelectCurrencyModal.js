@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {useTranslation} from "next-i18next";
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {
   get_crypto_currency,
   get_fiat_currency,
@@ -17,6 +17,7 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
   const {t} = useTranslation("common")
   const dispatch = useDispatch()
   const wrapperRef = useRef();
+  const [height, setHeight] = useState(0)
 
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
@@ -41,6 +42,12 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
     && currencies?.stable_currency?.success
     && currencies?.fiat_currency?.success)
 
+  useEffect(() => {
+    if (wrapperRef?.current?.offsetHeight > 0) {
+      setHeight(wrapperRef?.current?.offsetHeight)
+    }
+  }, [wrapperRef?.current?.offsetHeight])
+
   return (<SelectModal
     isOpen={isOpen}
     onClose={onClose}
@@ -49,7 +56,7 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
     title={t('selectCurrency.heading')}
   >
     <ErrorText>
-      {isLoading
+      {isLoading || !height
         ? <LoadingComponent t={t}/>
         : <CurrencySelector
           t={t}
@@ -60,7 +67,7 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
           backButtonClickHandler={onBack}
           onSelect={onSelect}
           userAuth={userAuth.isAuthenticated}
-          parentHeight={wrapperRef?.current?.offsetHeight}
+          parentHeight={height}
         />
       }
     </ErrorText>
