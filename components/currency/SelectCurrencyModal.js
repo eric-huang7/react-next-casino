@@ -46,7 +46,7 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
     if (wrapperRef?.current?.offsetHeight > 0) {
       setHeight(wrapperRef?.current?.offsetHeight)
     }
-  }, [wrapperRef?.current?.offsetHeight])
+  }, [wrapperRef?.current?.offsetHeight, height])
 
   return (<SelectModal
     isOpen={isOpen}

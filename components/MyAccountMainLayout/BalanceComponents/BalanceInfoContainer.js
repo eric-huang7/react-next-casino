@@ -2,19 +2,29 @@ import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scs
 import { TableContainer } from './TableContainer'
 import { useDispatch } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
-import { showCurrencySwitcher } from '../../../redux/popups/action'
 import { setCurrencySelectorType } from '../../../redux/userFinance/action'
 import useCurrencies from "../../../hooks/useCurrencies";
 import {TotalBalance} from "./TotalBalance";
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import {addCurrencyToUserList} from "../../../redux/user/action";
+import {useDisclosure} from "@chakra-ui/hooks";
 
 export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   const dispatch = useDispatch();
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const { rates, rateUsd, currencies } = useCurrencies()
 
   const addCurrencyClickHandler = () => {
-    dispatch(showCurrencySwitcher(true));
+    onOpen();
     dispatch(setCurrencySelectorType(false));
+  }
+
+  const onSelectCurrency = (currencyData) => {
+    let currency = {
+      currency_id: currencyData.id
+    }
+    dispatch(addCurrencyToUserList(currency))
+    onClose();
   }
 
   if (balanceInfo?.balance?.success && !currency.loading) {
@@ -27,6 +37,12 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
         <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
           {t('myAccount.balance.buttons.addCurrency')}
         </button>
+
+        <SelectCurrencyModal
+          isOpen={isOpen}
+          onClose={onClose}
+          onSelect={onSelectCurrency}
+        />
       </>
     )
   } else {
