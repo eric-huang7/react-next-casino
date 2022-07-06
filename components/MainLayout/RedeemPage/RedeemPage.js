@@ -234,7 +234,7 @@ export const RedeemPage = ({t}) => {
       )}
       <ErrorEmpty>
         <SelectCurrencyModal
-          isShow={isShowBalanceList}
+          isOpen={isShowBalanceList}
           onClose={() => setIsShowBalanceList(false)}
           onSelect={onSelectCurrency}
         />
