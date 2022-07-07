@@ -3,13 +3,14 @@ import styles from '../../../styles/RegisterSignup.module.scss'
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
+import {useDisclosure} from "@chakra-ui/hooks";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {hideRegister, showRegister} from "../../../redux/ui/action";
 import {showLogin} from "../../../redux/ui/action";
 import {schemaRegister} from "../../../schemasForms/registerForm";
 import {signUp} from "../../../redux/user/action";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
-import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/popups/action";
+import {backButtonShouldDo} from "../../../redux/popups/action";
 import {setUserRegisterBonusCode} from "../../../redux/userBonus/action";
 import {TopHeading} from "./SignupContainerComponents/TopHeading";
 import {LowHeading} from "./SignupContainerComponents/LowHeading";
@@ -21,6 +22,8 @@ import {BonusCodeInput} from "./SignupContainerComponents/BonusCodeInput";
 import {TermsCheckContainer} from "./SignupContainerComponents/TermsCheckContainer";
 import {LoginButton} from "./SignupContainerComponents/LoginButton";
 import {SubmitButton} from "./SignupContainerComponents/SubmitButton";
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
 
 
 export const RegisterSignup = ({t, isShow}) => {
@@ -29,6 +32,7 @@ export const RegisterSignup = ({t, isShow}) => {
   });
 
   const dispatch = useDispatch();
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const ui = useSelector((state) => state.ui)
   const userData = useSelector((userData) => userData.authInfo);
   const userCurrency = useSelector((store) => store.userFinance.userCurrencyData);
@@ -82,12 +86,12 @@ export const RegisterSignup = ({t, isShow}) => {
 
 
   const hideCurrencyShowRegisterModal = () => {
-    dispatch(showCurrencySwitcher(false));
+    onClose()
     dispatch(hideRegister(false));
   }
 
   function showCurrencyBlock() {
-    dispatch(showCurrencySwitcher(true));
+    onOpen();
     dispatch(hideRegister(true));
     dispatch(backButtonShouldDo(hideCurrencyShowRegisterModal));
 
@@ -160,63 +164,77 @@ export const RegisterSignup = ({t, isShow}) => {
     setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
   }, [userRegisterBonusCode])
 
+  const onSelectCurrency = (currencyData) => {
+    dispatch(setUserCurrencySwitcher(currencyData))
+
+    hideCurrencyShowRegisterModal()
+  }
+
   return (
-    <div
-      className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${ui.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
-      <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
-      <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
-        <TopHeading />
-        <div className={styles.registerInnerBlock}>
-          <LowHeading registerCloseButtonHandler={registerCloseButtonHandler}/>
-          <div className={styles.registerInnerBlockForms}>
-            <form
-              id={'register_form'}
-              onSubmit={handleSubmit(onSubmitHandler)}
-            >
-              <EmailInput
-                  errors={errors}
-                  register={register}
-                  setUserEmailData={setUsernameData}
-              />
+    <>
+      <div
+        className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${ui.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
+        <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
+        <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
+          <TopHeading />
+          <div className={styles.registerInnerBlock}>
+            <LowHeading registerCloseButtonHandler={registerCloseButtonHandler}/>
+            <div className={styles.registerInnerBlockForms}>
+              <form
+                id={'register_form'}
+                onSubmit={handleSubmit(onSubmitHandler)}
+              >
+                <EmailInput
+                    errors={errors}
+                    register={register}
+                    setUserEmailData={setUsernameData}
+                />
 
-              <UserNameInput
-                  register={register}
-                  errors={errors}
-                  setUsernameData={setUsernameData}
-              />
+                <UserNameInput
+                    register={register}
+                    errors={errors}
+                    setUsernameData={setUsernameData}
+                />
 
-              <PasswordContainer
-                  errors={errors}
-                  register={register}
-                  showPass={showPass}
-                  passwordInputType={passwordInputType}
-                  setPasswordData={setPasswordData}
-              />
+                <PasswordContainer
+                    errors={errors}
+                    register={register}
+                    showPass={showPass}
+                    passwordInputType={passwordInputType}
+                    setPasswordData={setPasswordData}
+                />
 
-              <CurrencyInput
-                  showCurrencyBlock={showCurrencyBlock}
-                  userCurrency={userCurrency} />
+                <CurrencyInput
+                    showCurrencyBlock={showCurrencyBlock}
+                    userCurrency={userCurrency} />
 
-              <BonusCodeInput
-                  activeBonus={activeBonus}
-                  bonusCodeData={bonusCodeData}
-                  setBonusCodedata={setBonusCodedata}
-                  showBonusInput={showBonusInput}
-              />
+                <BonusCodeInput
+                    activeBonus={activeBonus}
+                    bonusCodeData={bonusCodeData}
+                    setBonusCodedata={setBonusCodedata}
+                    showBonusInput={showBonusInput}
+                />
 
-              <TermsCheckContainer
-                  registerCloseButtonHandler={registerCloseButtonHandler}
-                  youAgreeHandler={youAgreeHandler}
-              />
-              <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
-              <span className={styles.errorMessageRegister}>{registerError}</span>
-            </form>
-            <LoginButton openLogin={openLogin} />
+                <TermsCheckContainer
+                    registerCloseButtonHandler={registerCloseButtonHandler}
+                    youAgreeHandler={youAgreeHandler}
+                />
+                <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
+                <span className={styles.errorMessageRegister}>{registerError}</span>
+              </form>
+              <LoginButton openLogin={openLogin} />
+            </div>
           </div>
+          <SubmitButton />
         </div>
-        <SubmitButton />
       </div>
-    </div>
+      <SelectCurrencyModal
+        isOpen={isOpen}
+        onClose={hideCurrencyShowRegisterModal}
+        onSelect={onSelectCurrency}
+        onBack={hideCurrencyShowRegisterModal}
+      />
+    </>
   )
 }
 

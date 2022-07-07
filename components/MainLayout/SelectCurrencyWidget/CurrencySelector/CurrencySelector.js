@@ -69,7 +69,7 @@ export const CurrencySelector = ({
                 userAuth={userAuth}
                 backButtonClickHandler={backButtonClickHandler}
                 type={item.title}
-                currenciesData={popularFindArr}
+                currenciesData={item.list}
                 onSelect={onSelect}
               />
             </ErrorEmpty>
