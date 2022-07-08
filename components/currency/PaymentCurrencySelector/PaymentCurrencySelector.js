@@ -1,6 +1,7 @@
 import styles from '../../../../styles/CurrencySelector/CurrencySelector.module.scss'
 import { InputContainer } from '../CurrencySelector/InputContainer'
 import { useState } from 'react'
+import { PaymentCurrencyItem } from './PaymentCurrencyItem'
 import { useDispatch } from 'react-redux'
 import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../../redux/userFinance/action'
 import { siteID } from '../../../../envs/envsForFetching'
@@ -13,7 +14,6 @@ import {
   showPaymentCurrencySwitcher
 } from '../../../../redux/popups/action'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
-import {CurrencyItem} from "../../../currency/CurrencySelector/CurrencyItem";
 
 export const PaymentCurrencySelector = ({
   t,
@@ -120,7 +120,6 @@ export const PaymentCurrencySelector = ({
     }
   }
 
-  console.log('currencyData', currencyData)
   return (
     <div className={styles.currencySelectorContainerWrapper}>
       <div className={styles.currencySelectorContainer}>
@@ -130,21 +129,16 @@ export const PaymentCurrencySelector = ({
             {
               cryptoFindArr?.length > 0
                 ?
-                cryptoFindArr.map((paymentMethod) => {
-                  let currencyForPayment = currencyData?.results?.find((currency) => currency.id === paymentMethod.currency_from.currency_id);
-                  return currencyForPayment ? (
+                cryptoFindArr?.map((paymentMethod) => {
+                  return (
                     <ErrorEmpty key={`payment method ${paymentMethod.currency_from.currency}`}>
-                      <CurrencyItem
-                        currencyData={currencyForPayment}
-                        onClick={chosePaymentClickHandler}
-                        size={8}
-                        pl="12px"
-                        pr="6px"
-                        border
-                        pointer
+                      <PaymentCurrencyItem
+                        key={`payment method ${paymentMethod.currency_from.currency}`}
+                        paymentMethod={paymentMethod}
+                        chosePaymentClickHandler={chosePaymentClickHandler}
                       />
                     </ErrorEmpty>
-                  ) : null
+                  )
                 })
                 :
                 <p className={styles.nothingFoundText}>{t('selectCurrency.nothingFound')}</p>

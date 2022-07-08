@@ -177,6 +177,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
 
   return (
     <div
+
       className={`${styles.depositWidgetMainContainer} ${userAuth.isAuthenticated ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
       <ErrorEmpty>
         <CurrencyChooser
@@ -197,7 +198,7 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
         />
       </ErrorEmpty>
       {
-        width > 680 && userAuth.isAuthenticated && true
+        width > 680 && userAuth.isAuthenticated
           ?
           <ErrorText>
             <PaymentMethodMainBlock

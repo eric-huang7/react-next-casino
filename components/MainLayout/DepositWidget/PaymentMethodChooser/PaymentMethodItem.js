@@ -84,6 +84,7 @@ export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paym
       paymentType: 'cryptoArr',
     }))
     dispatch(showPaymentCurrencySwitcher(true))
+    console.log('showPaymentCurrencySwitcher');
     paymentMethodChooser()
     // dispatch(showDepositModal(false));
     // dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal));

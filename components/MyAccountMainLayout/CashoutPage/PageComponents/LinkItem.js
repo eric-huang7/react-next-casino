@@ -5,7 +5,7 @@ import {svgSetter} from "../../../../helpers/iconNameFinder";
 
 export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
 
-  let currency = currencyData.find((el) => Number(el.id) === Number(balanceData.currency_id))
+  let currency = currencyData?.find((el) => Number(el.id) === Number(balanceData.currency_id))
 
   useEffect(() => {
     const returnAbbr = false
