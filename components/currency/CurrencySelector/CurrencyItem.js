@@ -1,6 +1,6 @@
 import {Box, HStack, VStack, Text} from "@chakra-ui/layout";
-import {baseVariants} from "../../envs/currency";
-import CurrencyIcon from "./CurrencyIcon";
+import {baseVariants} from "../../../envs/currency";
+import CurrencyIcon from "../CurrencyIcon";
 
 export const CurrencyItem = ({ currencyData, border, pointer, ...props }) => {
   const { abbreviation, name, base } = currencyData

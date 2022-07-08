@@ -3,62 +3,37 @@ import {InputGroup, InputLeftElement, Input} from "@chakra-ui/react"
 import { SearchIcon } from '@chakra-ui/icons'
 import {CurrencyList} from './CurrencyList'
 import {useState} from 'react'
-import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const CurrencySelector = ({
                                    t,
-                                   cryptoCurrency,
-                                   popularCurrency,
-                                   stableCurrency,
-                                   fiatCurrency,
-                                   backButtonClickHandler,
+                                   onBack,
                                    onSelect,
                                    userAuth,
+                                   currencies = [],
+  onFilter,
                                    parentHeight
                                  }) => {
   const [searchValue, setSearchValue] = useState('')
-  const [cryptoFindArr, setCryptoFindArr] = useState(cryptoCurrency)
-  const [popularFindArr, setPopularFindArr] = useState(popularCurrency)
-  const [stableFindArr, setStableFindArr] = useState(stableCurrency)
-  const [fiatFindArr, setFiatFindArr] = useState(fiatCurrency)
 
   const searchInputHandler = (value) => {
     setSearchValue(value)
-
-    cryptoFinder(value)
+    onFilter(value)
   }
 
-  const cryptoFinder = (value) => {
-    let searchReg = new RegExp(value.toLowerCase().trim())
+  const isEmpty = () => {
+    let empty = true
 
-    const cryptoFindArr = cryptoCurrency.filter((currency) =>
-      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
-    )
-    setCryptoFindArr(cryptoFindArr)
+    currencies?.forEach(item => {
+      if (item.list?.length > 0) {
+        empty = false
+      }
+    })
 
-    const popularFindArr = popularCurrency.filter((currency) =>
-      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
-    )
-    setPopularFindArr(popularFindArr)
-
-    const stableFindArr = stableCurrency.filter((currency) =>
-      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
-    )
-    setStableFindArr(stableFindArr)
-
-    const fiatFindArr = fiatCurrency.filter((currency) =>
-      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
-    )
-    setFiatFindArr(fiatFindArr)
+    return empty;
   }
 
-  const allArr = [
-    {list: popularFindArr, title: t('selectCurrency.popularCrypto')},
-    {list: stableFindArr, title: t('selectCurrency.stableCoins')},
-    {list: fiatFindArr, title: t('selectCurrency.fiat')},
-    {list: cryptoFindArr, title: t('selectCurrency.cryptoCurrencies')},
-  ]
-
+  console.log('currencies', currencies)
   return (
     <Box px="20px" py="16px">
       <Box
@@ -93,19 +68,19 @@ export const CurrencySelector = ({
             scrollbarWidth: "thin",
           }}
         >
-          {allArr.map((item, index) => item.list?.length > 0 ? (
+          {currencies.map((item, index) => item.list?.length > 0 ? (
             <ErrorEmpty key={index}>
               <CurrencyList
                 userAuth={userAuth}
-                backButtonClickHandler={backButtonClickHandler}
-                type={item.title}
+                onBack={onBack}
+                subtitle={item.title}
                 currenciesData={item.list}
                 onSelect={onSelect}
               />
             </ErrorEmpty>
           ) : null)}
 
-          {!(popularFindArr?.length || stableFindArr?.length || fiatFindArr?.length || cryptoFindArr?.length) &&
+          {isEmpty() &&
             <HStack justifyContent="center">
               <Text fontSize={18} fontWeight={600} color="text.300" maxW={200} textAlign="center">
                 {t('selectCurrency.nothingFound')}

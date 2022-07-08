@@ -212,7 +212,7 @@ export const DepositPage = ({ t }) => {
       </div>
       <SelectCurrencyModal
         isOpen={isOpen}
-        onClose={onBack}
+        onClose={onClose}
         onSelect={onSelectCurrency}
         onBack={onBack}
       />

@@ -1,6 +1,6 @@
 import {Box, Text} from "@chakra-ui/layout";
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
-import {CurrencyItem} from "../../../currency/CurrencyItem";
+import {CurrencyItem} from "../../../currency/CurrencySelector/CurrencyItem";
 
 export const CurrencyList = ({type, currenciesData = [], onSelect}) => (
   <Box>

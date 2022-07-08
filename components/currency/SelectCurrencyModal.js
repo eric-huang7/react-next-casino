@@ -10,7 +10,7 @@ import {
 import {LoadingComponent} from '../LoadingComponent/LoadingComponent'
 import ErrorText from '../ErrorBoundaryComponents/ErrorText'
 
-import {CurrencySelector} from "./CurrencySelector";
+import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
 import {SelectModal} from "./SelectModal";
 
 export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
@@ -18,6 +18,10 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
   const dispatch = useDispatch()
   const wrapperRef = useRef();
   const [height, setHeight] = useState(0)
+  const [cryptoFindArr, setCryptoFindArr] = useState([])
+  const [popularFindArr, setPopularFindArr] = useState([])
+  const [stableFindArr, setStableFindArr] = useState([])
+  const [fiatFindArr, setFiatFindArr] = useState([])
 
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
@@ -43,10 +47,45 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
     && currencies?.fiat_currency?.success)
 
   useEffect(() => {
+    cryptoFinder()
+  }, [currencies])
+
+  useEffect(() => {
     if (wrapperRef?.current?.offsetHeight > 0) {
       setHeight(wrapperRef?.current?.offsetHeight)
     }
   }, [wrapperRef?.current?.offsetHeight, height])
+
+  const cryptoFinder = (value = '') => {
+    let searchReg = new RegExp(value.toLowerCase().trim())
+
+    const cryptoFindArr = currencies?.crypto_currency?.results?.filter((currency) =>
+      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
+    )
+    setCryptoFindArr(cryptoFindArr)
+
+    const popularFindArr = currencies?.popular_currency?.results?.filter((currency) =>
+      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
+    )
+    setPopularFindArr(popularFindArr)
+
+    const stableFindArr = currencies?.stable_currency?.results?.filter((currency) =>
+      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
+    )
+    setStableFindArr(stableFindArr)
+
+    const fiatFindArr = currencies?.fiat_currency?.results?.filter((currency) =>
+      searchReg.test(currency.abbreviation.toLowerCase()) || searchReg.test(currency.name.toLowerCase())
+    )
+    setFiatFindArr(fiatFindArr)
+  }
+
+  const getCurrencies = () => [
+    {list: popularFindArr, title: t('selectCurrency.popularCrypto')},
+    {list: stableFindArr, title: t('selectCurrency.stableCoins')},
+    {list: fiatFindArr, title: t('selectCurrency.fiat')},
+    {list: cryptoFindArr, title: t('selectCurrency.cryptoCurrencies')},
+  ]
 
   return (<SelectModal
     isOpen={isOpen}
@@ -60,14 +99,12 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
         ? <LoadingComponent t={t}/>
         : <CurrencySelector
           t={t}
-          popularCurrency={currencies?.popular_currency?.results}
-          cryptoCurrency={currencies?.crypto_currency?.results}
-          stableCurrency={currencies?.stable_currency?.results}
-          fiatCurrency={currencies?.fiat_currency?.results}
+          currencies={getCurrencies()}
           backButtonClickHandler={onBack}
           onSelect={onSelect}
           userAuth={userAuth.isAuthenticated}
           parentHeight={height}
+          onFilter={cryptoFinder}
         />
       }
     </ErrorText>

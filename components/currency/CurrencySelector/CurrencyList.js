@@ -1,12 +1,12 @@
 import {Box, Text} from "@chakra-ui/layout";
-import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {CurrencyItem} from "./CurrencyItem";
 
-export const CurrencyList = ({type, currenciesData = [], onSelect}) => (
+export const CurrencyList = ({subtitle, currenciesData = [], onSelect}) => (
   <Box>
-    <Box py="20px" ml="12px">
-      <Text as="span" color="text.200" fontSize={18}>{type}</Text>
-    </Box>
+    {subtitle && <Box py="20px" ml="12px">
+      <Text as="span" color="text.200" fontSize={18}>{subtitle}</Text>
+    </Box>}
     {
       currenciesData.map((currencyData) => (
           <ErrorEmpty key={`${currencyData.id} currency`}>
