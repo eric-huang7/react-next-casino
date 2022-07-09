@@ -1,48 +1,60 @@
-import {useDispatch, useSelector} from 'react-redux'
-import {useTranslation} from "next-i18next";
-import {useEffect, useRef, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
-  get_crypto_currency,
-  get_fiat_currency,
-  get_popular_currency,
-  get_stable_currency
-} from '../../redux/currency/action'
-import {LoadingComponent} from '../LoadingComponent/LoadingComponent'
+  backButtonShouldDo,
+  setStepDepositModal,
+  showMobileCryptoPayments,
+} from '../../redux/popups/action'
+import {setCurrencySelectorType} from '../../redux/userFinance/action'
+import { PaymentCurrencySelector } from './CurrencySelector/PaymentCurrencySelector'
+import { setUserPaymentMethod } from '../../redux/userFinance/action'
 import ErrorText from '../ErrorBoundaryComponents/ErrorText'
 import {SelectModal} from "./SelectModal";
-import {PaymentCurrencySelector} from "./PaymentCurrencySelector/PaymentCurrencySelector";
+import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
+import {useEffect, useRef, useState} from "react";
+import {useTranslation} from "next-i18next";
 
-const PaymentSelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
+const PaymentSelectCurrencyModal = ({ isOpen, onClose, onBack, isShowMobileCryptoPayments }) => {
   const {t} = useTranslation("common")
-  const dispatch = useDispatch()
-  const wrapperRef = useRef();
   const [height, setHeight] = useState(0)
+  const wrapperRef = useRef();
+  const isLoading = false;
 
-  const userPayment = useSelector((state) => state.userFinance)
+  const dispatch = useDispatch()
+
+  const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
   const currencies = useSelector((store) => store.currency)
   const userAuth = useSelector((store) => store.authInfo)
+  const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userCurrency = useSelector((state) => state.userFinance)
 
-  useEffect(() => {
-    if (currencies?.loading_popular_currency && !currencies?.popular_currency?.success) {
-      dispatch(get_popular_currency())
+  const handleClose = () => {
+    if (isOpen) {
+      dispatch(setUserPaymentMethod(null))
+      onClose()
+      dispatch(showMobileCryptoPayments(false))
     }
-    if (currencies?.loading_crypto_currency && !currencies?.crypto_currency?.success) {
-      dispatch(get_crypto_currency())
+    dispatch(setStepDepositModal(1))
+    dispatch(setCurrencySelectorType(true))
+    if (backButtonShouldDoState !== null) {
+      dispatch(backButtonShouldDo(false))
     }
-    if (currencies?.loading_stable_currency && !currencies?.stable_currency?.success) {
-      dispatch(get_stable_currency())
-    }
-    if (currencies?.loading_fiat_currency && !currencies?.fiat_currency?.success) {
-      dispatch(get_fiat_currency())
-    }
-  }, [])
+  }
 
-  const isLoading = !(currencies?.popular_currency?.success
-    && currencies?.crypto_currency?.success
-    && currencies?.stable_currency?.success
-    && currencies?.fiat_currency?.success)
+  const backHandler = () => {
+    if (backButtonShouldDoState !== false) {
+      backButtonShouldDoState()
+      dispatch(backButtonShouldDo(false))
+    } else {
+      if (isOpen) {
+        onClose()
+      } else {
+        onClose()
+      }
+    }
+    dispatch(showMobileCryptoPayments(false))
+    dispatch(setCurrencySelectorType(true))
+  }
 
   useEffect(() => {
     if (wrapperRef?.current?.offsetHeight > 0) {
@@ -52,8 +64,8 @@ const PaymentSelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
 
   return (<SelectModal
     isOpen={isOpen}
-    onClose={onClose}
-    onBack={onBack}
+    onClose={handleClose}
+    onBack={backHandler}
     wrapperRef={wrapperRef}
     title={t('selectCurrency.heading')}
   >
@@ -61,20 +73,20 @@ const PaymentSelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
       {isLoading || !height
         ? <LoadingComponent t={t}/>
         : <PaymentCurrencySelector
-          t={t}
-          userPayment={userPayment}
-          backButtonClickHandler={onBack}
-          isShowMobileCryptoPayments={isOpen}
-          currencyData={currencies.currency}
-          userDepositValue={userDepositValue}
-          userInfo={userAuth.user}
-          userCurrency={userCurrency}
-          onSelect={onSelect}
-          parentHeight={height}
-        />
+              t={t}
+              userPayment={userPayment}
+              backButtonClickHandler={backHandler}
+              isShowMobileCryptoPayments={isShowMobileCryptoPayments}
+              currencyData={currencies.currency}
+              userDepositValue={userDepositValue}
+              userInfo={userAuth.user}
+              userCurrency={userCurrency}
+              parentHeight={height}
+            />
       }
     </ErrorText>
   </SelectModal>)
+
 }
 
 export default PaymentSelectCurrencyModal;

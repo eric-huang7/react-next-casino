@@ -1,9 +1,10 @@
 import {Text, Box, HStack} from "@chakra-ui/layout"
 import {InputGroup, InputLeftElement, Input} from "@chakra-ui/react"
-import { SearchIcon } from '@chakra-ui/icons'
+import {SearchIcon} from '@chakra-ui/icons'
 import {CurrencyList} from './CurrencyList'
 import {useState} from 'react'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import SearchInput from "./SearchInput";
 
 export const CurrencySelector = ({
                                    t,
@@ -11,7 +12,7 @@ export const CurrencySelector = ({
                                    onSelect,
                                    userAuth,
                                    currencies = [],
-  onFilter,
+                                   onFilter,
                                    parentHeight
                                  }) => {
   const [searchValue, setSearchValue] = useState('')
@@ -41,24 +42,8 @@ export const CurrencySelector = ({
         border="1px solid #cad2d8"
         borderRadius="10px"
       >
-        <InputGroup>
-          <InputLeftElement pointerEvents='none' fontSize={18} h="50px">
-            <SearchIcon color="text.200" opacity={.5}/>
-          </InputLeftElement>
-          <Input
-            h="50px"
-            type="text"
-            placeholder={t("selectCurrency.searchPlaceholder")}
-            _placeholder={{ opacity: .6, fontWeight: 600, fontSize: 18, color: "text.150" }}
-            border="none"
-            focusBorderColor="transparent"
-            fontSize={18}
-            fontWeight={600}
-            color="text.300"
-            value={searchValue}
-            onChange={(e) => searchInputHandler(e.target.value)}
-          />
-        </InputGroup>
+        <SearchInput placeholder={t("selectCurrency.searchPlaceholder")} value={searchValue}
+                     onChange={searchInputHandler}/>
 
         <Box
           h={`${parentHeight - 148}px`}
@@ -81,11 +66,11 @@ export const CurrencySelector = ({
           ) : null)}
 
           {isEmpty() &&
-            <HStack justifyContent="center">
-              <Text fontSize={18} fontWeight={600} color="text.300" maxW={200} textAlign="center">
-                {t('selectCurrency.nothingFound')}
-              </Text>
-            </HStack>
+          <HStack justifyContent="center">
+            <Text fontSize={18} fontWeight={600} color="text.300" maxW={200} textAlign="center">
+              {t('selectCurrency.nothingFound')}
+            </Text>
+          </HStack>
           }
         </Box>
       </Box>
