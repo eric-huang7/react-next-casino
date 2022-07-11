@@ -3,22 +3,28 @@ import { PaymentHeading } from './CreditCardComponents/Heading'
 import { StepOneEnterAmount } from './MobilePaymentsStepperComponents/StepOneEnterAmount'
 import { StepTwoPaymentMethod } from './MobilePaymentsStepperComponents/StepTwoPaymentMethod'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUserDepositValue } from '../../../redux/userFinance/action'
+import {setUserCurrencySwitcher, setUserDepositValue} from '../../../redux/userFinance/action'
 import { useEffect, useState } from 'react'
 import {
   showCreditCardModal,
   showCryptoModal,
-  showCurrencySwitcher,
-  showMobilePaymentsStepper
+  showCurrencySwitcher, showMobileCryptoPayments,
+  showMobilePaymentsStepper, showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
 import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
 import { showRegister } from '../../../redux/ui/action'
 import useWindowScroll from '../../../hooks/useWindowScroll'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import {addCurrencyToUserList} from "../../../redux/user/action";
+import {useDisclosure} from "@chakra-ui/hooks";
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import PaymentSelectCurrencyModal from "../../currency/PaymentSelectCurrencyModal";
 
 export const MobilePaymentsStepper = ({ t, userAuth }) => {
   const [pageStep, setPageStep] = useState(1)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const paymentsModal = useDisclosure()
   let scrollHeight = useWindowScroll()
 
   const dispatch = useDispatch()
@@ -27,7 +33,20 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
   const userPayment = useSelector((state) => state.userFinance)
 
   const currencySwitcherShowHandler = () => {
-    dispatch(showCurrencySwitcher(true))
+    onOpen();
+  }
+
+  const onSelectCurrency = (currencyData) => {
+    dispatch(setUserCurrencySwitcher(currencyData))
+
+    if (userAuth) {
+      let currency = {
+        currency_id: currencyData.id
+      }
+      dispatch(addCurrencyToUserList(currency))
+    }
+
+    onClose()
   }
 
   const [errorInputValue, setErrorInputValue] = useState()
@@ -46,7 +65,6 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
   const openPaymentMethods = () => {
     dispatch(showMobilePaymentsStepper(true))
     setPageStep(2)
-
   }
 
   const openWindow = (type, method = null) => {
@@ -104,42 +122,59 @@ export const MobilePaymentsStepper = ({ t, userAuth }) => {
     }
   }
 
+  const onSelectPayment = () => {
+    dispatch(showMobileCryptoPayments(true))
+    paymentsModal.onOpen()
+  }
+
   return (
-    <div className={styles.paymentsStepperWrapper}>
-      <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-        <div className={styles.paymentsMainContainer}>
-          <PaymentHeading
-            whatShouldDoBackButton={whatShouldDoBackButton}
-            closeHandler={closeMobilePayments}
-            t={t} type={'stepper'}
-            pageStep={pageStep}
-          />
-          {
-            pageStep === 1 ?
-              <ErrorText>
-                <StepOneEnterAmount
-                  userCurrency={userCurrency}
-                  userDepositValue={userDepositValue}
-                  t={t}
-                  valueInputHandler={valueInputHandler}
-                  errorInputValue={errorInputValue}
-                  currencySwitcherShowHandler={currencySwitcherShowHandler}
-                  whatShouldDoPlayWith={whatShouldDoPlayWith}
-                  userPayment={userPayment}
-                />
-              </ErrorText>
-              :
-              <ErrorText>
-                <StepTwoPaymentMethod
-                  userCurrency={userCurrency}
-                  methodClickHandler={methodClickHandler}
-                  t={t}
-                  userPayment={userPayment}
-                />
-              </ErrorText>
-          }
+    <>
+      <div className={styles.paymentsStepperWrapper}>
+        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
+          <div className={styles.paymentsMainContainer}>
+            <PaymentHeading
+              whatShouldDoBackButton={whatShouldDoBackButton}
+              closeHandler={closeMobilePayments}
+              t={t} type={'stepper'}
+              pageStep={pageStep}
+            />
+            {
+              pageStep === 1 ?
+                <ErrorText>
+                  <StepOneEnterAmount
+                    userCurrency={userCurrency}
+                    userDepositValue={userDepositValue}
+                    t={t}
+                    valueInputHandler={valueInputHandler}
+                    errorInputValue={errorInputValue}
+                    currencySwitcherShowHandler={currencySwitcherShowHandler}
+                    whatShouldDoPlayWith={whatShouldDoPlayWith}
+                    userPayment={userPayment}
+                  />
+                </ErrorText>
+                :
+                <ErrorText>
+                  <StepTwoPaymentMethod
+                    userCurrency={userCurrency}
+                    methodClickHandler={methodClickHandler}
+                    t={t}
+                    userPayment={userPayment}
+                    onSelect={onSelectPayment}
+                  />
+                </ErrorText>
+            }
+          </div>
         </div>
       </div>
-    </div>
+      <SelectCurrencyModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSelect={onSelectCurrency}
+      />
+      <PaymentSelectCurrencyModal
+        isOpen={paymentsModal.isOpen}
+        onClose={paymentsModal.onClose}
+      />
+    </>
   )
 }

@@ -6,7 +6,7 @@ import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";
 
-export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, userPayment }) => {
+export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, userPayment, onSelect }) => {
   const [paymentMethods, setPaymentMethods] = useState(null)
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export const StepTwoPaymentMethod = ({ t, methodClickHandler, userCurrency, user
                 type={'crypto'}
                 userCurrency={userCurrency}
                 userPayment={userPayment}
+                onSelect={onSelect}
               />
             </ErrorEmpty>
             :

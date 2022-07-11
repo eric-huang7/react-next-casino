@@ -7,7 +7,7 @@ import {
   showPaymentCurrencySwitcher
 } from '../../../../redux/popups/action'
 
-export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCurrency, userPayment }) => {
+export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCurrency, userPayment, onSelect }) => {
   const dispatch = useDispatch()
 
   const fiatClickHandler = () => {
@@ -80,10 +80,7 @@ export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCur
       paymentSecImg: '',
       paymentType: 'cryptoArr',
     }))
-    dispatch(showPaymentCurrencySwitcher(true))
-    dispatch(showMobileCryptoPayments(true))
-    // dispatch(showDepositModal(false));
-    // dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal));
+    onSelect()
   }
 
   if (type === 'creditCard') {
