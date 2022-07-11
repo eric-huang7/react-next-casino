@@ -15,7 +15,8 @@ export const PaymentMethodsList = ({
   setPaymentMethods,
   isActivePayments,
   paymentMethodChooser,
-  userCurrency
+  userCurrency,
+  onOpenCryptoPayments
 }) => {
   const dispatch = useDispatch()
 
@@ -51,6 +52,7 @@ export const PaymentMethodsList = ({
                 t={t}
                 setErrorPaymentMethod={setErrorPaymentMethod}
                 userCurrency={userCurrency}
+                onOpenCryptoPayments={onOpenCryptoPayments}
                 // paymentData={}
               />
             </ErrorEmpty>
@@ -68,6 +70,7 @@ export const PaymentMethodsList = ({
                 t={t}
                 setErrorPaymentMethod={setErrorPaymentMethod}
                 userCurrency={userCurrency}
+                onOpenCryptoPayments={onOpenCryptoPayments}
                 // paymentData={}
               />
             </ErrorEmpty>
@@ -86,6 +89,7 @@ export const PaymentMethodsList = ({
                 t={t}
                 setErrorPaymentMethod={setErrorPaymentMethod}
                 userCurrency={userCurrency}
+                onOpenCryptoPayments={onOpenCryptoPayments}
                 // paymentData={}
               />
             </ErrorEmpty>

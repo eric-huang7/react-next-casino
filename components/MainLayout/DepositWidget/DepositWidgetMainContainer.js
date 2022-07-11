@@ -13,7 +13,7 @@ import {
   showCurrencySwitcher,
   showMobilePaymentsStepper
 } from "../../../redux/popups/action";
-import {setUserDepositValue} from "../../../redux/userFinance/action";
+import {setUserCurrencySwitcher, setUserDepositValue} from "../../../redux/userFinance/action";
 import {showRegister} from "../../../redux/ui/action";
 import {siteID} from "../../../envs/envsForFetching";
 import {postCryptoPayment} from "../../../redux/deposits/action";
@@ -21,10 +21,14 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {setUserPaymentMethod} from "../../../redux/userFinance/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import {useDisclosure} from "@chakra-ui/hooks";
+import {addCurrencyToUserList} from "../../../redux/user/action";
 
 
 export const DepositWidgetMainContainer = ({t, userAuth}) => {
   const dispatch = useDispatch();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {width, height} = useWindowDimensions();
 
   const userCurrency = useSelector((state) => state.userFinance);
@@ -41,9 +45,6 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   let scrollHeight = useWindowScroll();
   const [activeWidget, setActiveWidget] = useState(true);
 
-  const currencySwitcherShowHandler = () => {
-    dispatch(showCurrencySwitcher(true));
-  }
   const valueInputHandler = (e) => {
     if (e.target.value > 9999999999) {
       e.target.value = userDepositValue;
@@ -158,6 +159,18 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
       }
     }
 
+  const onSelectCurrency = (currencyData) => {
+    dispatch(setUserCurrencySwitcher(currencyData))
+
+    if (userAuth) {
+      let currency = {
+        currency_id: currencyData.id
+      }
+      dispatch(addCurrencyToUserList(currency))
+    }
+
+    onClose()
+  }
 
   useEffect(() => {
     if (scrollHeight < 900 && (isActivePayments || errorPaymentMethod || errorDepositValue)) {
@@ -176,66 +189,73 @@ export const DepositWidgetMainContainer = ({t, userAuth}) => {
   }, [width])
 
   return (
-    <div
+    <>
+      <div
+        className={`${styles.depositWidgetMainContainer} ${userAuth.isAuthenticated ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
+        <ErrorEmpty>
+          <CurrencyChooser
+            width={width}
+            currencySwitcherShowHandler={onOpen}
+            userCurrency={userCurrency}
+            t={t}
+          />
+        </ErrorEmpty>
+        <ErrorEmpty>
+          <AmountInputContainer
+            width={width}
+            userDepositValue={userDepositValue}
+            userCurrency={userCurrency}
+            valueInputHandler={valueInputHandler}
+            errorDepositValue={errorDepositValue}
+            t={t}
+          />
+        </ErrorEmpty>
+        {
+          width > 680 && userAuth.isAuthenticated
+            ?
+            <ErrorText>
+              <PaymentMethodMainBlock
+                scrollHeight={scrollHeight}
+                paymentMethodChooser={paymentMethodChooser}
+                isActivePayments={isActivePayments}
+                setIsActivePayments={setIsActivePayments}
+                t={t}
+                errorPaymentMethod={errorPaymentMethod}
+                userCurrency={userCurrency}
+                setPaymentMethods={setPaymentMethods}
+                paymentMethods={paymentMethods}
+                setErrorPaymentMethod={setErrorPaymentMethod}
+                userPayment={userPayment}
+              />
+            </ErrorText>
+            :
+            <>
+            </>
+        }
+        <ErrorEmpty>
+          <PlayWithButton
+            width={width}
+            userCurrency={userCurrency}
+            userDepositValue={userDepositValue}
+            whatShouldDoPlayWithButton={whatShouldDoPlayWithButton}
+            t={t}
+          />
+        </ErrorEmpty>
 
-      className={`${styles.depositWidgetMainContainer} ${userAuth.isAuthenticated ? '' : styles.moveRight} ${(scrollHeight > 900) && activeWidget ? styles.showDepositWidget : ''}`}>
-      <ErrorEmpty>
-        <CurrencyChooser
-          width={width}
-          currencySwitcherShowHandler={currencySwitcherShowHandler}
+        <CloseButton
           userCurrency={userCurrency}
-          t={t}
+          setActiveWidget={setActiveWidget}
+          setIsActivePayments={setIsActivePayments}
+          setErrorPaymentMethod={setErrorPaymentMethod}
+          setErrorDepositValue={setErrorDepositValue}
         />
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <AmountInputContainer
-          width={width}
-          userDepositValue={userDepositValue}
-          userCurrency={userCurrency}
-          valueInputHandler={valueInputHandler}
-          errorDepositValue={errorDepositValue}
-          t={t}
-        />
-      </ErrorEmpty>
-      {
-        width > 680 && userAuth.isAuthenticated
-          ?
-          <ErrorText>
-            <PaymentMethodMainBlock
-              scrollHeight={scrollHeight}
-              paymentMethodChooser={paymentMethodChooser}
-              isActivePayments={isActivePayments}
-              setIsActivePayments={setIsActivePayments}
-              t={t}
-              errorPaymentMethod={errorPaymentMethod}
-              userCurrency={userCurrency}
-              setPaymentMethods={setPaymentMethods}
-              paymentMethods={paymentMethods}
-              setErrorPaymentMethod={setErrorPaymentMethod}
-              userPayment={userPayment}
-            />
-          </ErrorText>
-          :
-          <>
-          </>
-      }
-      <ErrorEmpty>
-        <PlayWithButton
-          width={width}
-          userCurrency={userCurrency}
-          userDepositValue={userDepositValue}
-          whatShouldDoPlayWithButton={whatShouldDoPlayWithButton}
-          t={t}
-        />
-      </ErrorEmpty>
-
-      <CloseButton
-        userCurrency={userCurrency}
-        setActiveWidget={setActiveWidget}
-        setIsActivePayments={setIsActivePayments}
-        setErrorPaymentMethod={setErrorPaymentMethod}
-        setErrorDepositValue={setErrorDepositValue}
+      </div>
+      <SelectCurrencyModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSelect={onSelectCurrency}
+        onBack={onClose}
       />
-    </div>
+    </>
   )
 }

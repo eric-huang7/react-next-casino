@@ -7,7 +7,7 @@ import {
 } from '../../../../redux/popups/action'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 
-export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paymentMethodChooser, type, method }) => {
+export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paymentMethodChooser, type, method, onOpenCryptoPayments }) => {
   const dispatch = useDispatch()
 
   const fiatClickHandler = () => {
@@ -83,8 +83,7 @@ export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paym
       paymentSecImg: '',
       paymentType: 'cryptoArr',
     }))
-    dispatch(showPaymentCurrencySwitcher(true))
-    console.log('showPaymentCurrencySwitcher');
+    onOpenCryptoPayments();
     paymentMethodChooser()
     // dispatch(showDepositModal(false));
     // dispatch(backButtonShouldDo(hidePaymentCurrencyShowDepositModal));
