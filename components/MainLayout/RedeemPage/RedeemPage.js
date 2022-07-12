@@ -7,9 +7,9 @@ import {useEffect, useState} from "react";
 import {currencyFinder} from "../../../helpers/currencyFinder";
 import Connect from "../../../helpers/connect";
 import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
-import {svgSetterById} from "../../../helpers/iconNameFinder";
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {Modal, ModalContent, ModalBody, ModalOverlay} from "@chakra-ui/react";
+import CurrencyIcon from "../../currency/CurrencyIcon";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -77,13 +77,6 @@ export const RedeemPage = ({t}) => {
       setActiveCurrency(activeCurrency)
     }
   }, [userCurrency, userInfo, isShowRedeemModal])
-
-  useEffect(() => {
-    if (activeCurrency?.id) {
-      const returnAbbr = false
-      svgSetterById(activeCurrency, `activeCurrency_${activeCurrency?.id}`, returnAbbr);
-    }
-  }, [activeCurrency])
 
   const closeModal = () => {
     dispatch(showRedeemModal(false));
@@ -195,7 +188,7 @@ export const RedeemPage = ({t}) => {
                   <div className={styles.balanceList}>
                     <div onClick={() => setIsShowBalanceList(true)} className={styles.pointer}>
                       <RedeemInput mt="30px" mb="30px">
-                        <div id={`activeCurrency_${activeCurrency?.id}`} className={styles.iconContainer}></div>
+                        <CurrencyIcon id={activeCurrency?.abbreviation} size={6} mr={2}/>
                         {activeCurrency?.name}
                       </RedeemInput>
                     </div>
