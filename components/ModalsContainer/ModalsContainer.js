@@ -17,7 +17,6 @@ import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalW
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
 import { RegisterSignup } from '../MainLayout/RegisterSignup/RegisterSignup'
 import { LogIn } from '../MainLayout/LogIn/LogIn'
-import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { ManageSubscriptions } from '../MainLayout/ManageSubscriptions/ManageSubscriptions'
 import { TournamentModalDetails } from '../MainLayout/TournamentSidebar/TournamentModalDetails/TournamentModalDetails'
@@ -255,21 +254,6 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           t={t}
         />
       </ErrorEmpty>
-      {
-        isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
-          ?
-          <ErrorEmpty>
-            <SelectCurrencyWidget
-              t={t}
-              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-
       {userInfo.isAuthenticated
         ?
         <ErrorEmpty>

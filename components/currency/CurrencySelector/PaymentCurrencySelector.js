@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../redux/userFinance/action'
 import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
@@ -19,7 +19,6 @@ import {Box, HStack, Text} from "@chakra-ui/layout";
 export const PaymentCurrencySelector = ({
                                           backButtonClickHandler,
                                           userPayment,
-                                          isShowMobileCryptoPayments,
                                           currencyData,
                                           userDepositValue,
                                           userInfo,
@@ -31,6 +30,8 @@ export const PaymentCurrencySelector = ({
   const [searchValue, setSearchValue] = useState('')
 
   const [cryptoFindArr, setCryptoFindArr] = useState(userPayment?.paymentMethodData?.methodData)
+
+  const isShowModal = useSelector((store) => store.popups)
 
   const searchInputHandler = (value) => {
     setSearchValue(value)
@@ -52,7 +53,7 @@ export const PaymentCurrencySelector = ({
   }
 
   const chosePaymentClickHandler = (paymentData) => {
-    if (isShowMobileCryptoPayments) {
+    if (isShowModal.isShowMobileCryptoPayments) {
       let currencyInfo = currencyData?.results.find((currency) => currency.id === paymentData.currency_from.currency_id)
 
       if (userCurrency.userCurrencyData.type === 3) {

@@ -16,7 +16,6 @@ import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import { showLogin } from '../../redux/ui/action'
 import { ErrorMessageContainer } from './ErrorMessage/ErrorMessageContainer'
-import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
 import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
 import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
@@ -173,18 +172,6 @@ export const AccountMainLayout = ({ t, children }) => {
               <></>
           }
           <MobileSideMenu t={t} userInform={userInfo}/>
-          {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
-            ?
-            <ErrorEmpty>
-              <SelectCurrencyWidget
-                t={t}
-                isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-                isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-                isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-              />
-            </ErrorEmpty>
-            :
-            <></>}
           {isShowModal.isShowTermsModal ?
             <ErrorEmpty>
               <TermsModal />
