@@ -1,16 +1,10 @@
 import styles from '../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
 import Link from 'next/link'
-import {useEffect} from "react";
-import {svgSetter} from "../../../../helpers/iconNameFinder";
+import CurrencyIcon from "../../../currency/CurrencyIcon";
 
 export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
 
   let currency = currencyData?.find((el) => Number(el.id) === Number(balanceData.currency_id))
-
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
 
   return (
     <li className={`${styles.linkItem} ${Number(activeCurrencyId) === Number(currency.id) ? styles.activeLink : ''}`}>
@@ -22,7 +16,7 @@ export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
       >
         <a>
           <div className={styles.currencyContainer}>
-            <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
+            <CurrencyIcon id={currency?.abbreviation} size={6} mr={2}/>
             {currency.abbreviation}
           </div>
           <div className={styles.baseContainer}>{currency.base}</div>

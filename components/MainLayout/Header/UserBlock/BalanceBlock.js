@@ -4,7 +4,6 @@ import { BalanceMenuContainer } from '../../../BalanceMenuContainer/BalanceMenuC
 import { numberTransformer } from '../../../../helpers/numberTransformer'
 import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
 import { currencyFinder } from '../../../../helpers/currencyFinder'
-import {svgSetter} from "../../../../helpers/iconNameFinder";
 import {CurrencyItemShort} from "./CurrencyItemShort";
 import {useTranslation} from "next-i18next";
 import {Withdrawable} from "./Withdrawable";
@@ -18,13 +17,6 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const [activeCurrency, setActiveCurrency] = useState(false)
   const [balance, setBalance] = useState(false)
   const [isMilli, setIsMilli] = useState(false)
-
-  useEffect(() => {
-    if (activeCurrency) {
-      const returnAbbr = false
-      svgSetter(activeCurrency, returnAbbr)
-    }
-  }, [activeCurrency])
 
   useEffect(() => {
     if (userCurrency.currency && userInfo.balance) {

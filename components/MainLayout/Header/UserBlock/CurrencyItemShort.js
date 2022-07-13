@@ -1,8 +1,6 @@
 import styles from '../../../../styles/CurrencySelectorShort/CurrencySelectorShort.module.scss'
-
-import { useEffect } from 'react'
-import { svgSetter } from '../../../../helpers/iconNameFinder'
 import {baseVariants} from "../../../../envs/currency";
+import CurrencyIcon from "../../../currency/CurrencyIcon";
 
 export const CurrencyItemShort = ({ currencyData, isMilli }) => {
 
@@ -16,14 +14,9 @@ export const CurrencyItemShort = ({ currencyData, isMilli }) => {
     colorBase = null
   }
 
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currencyData, returnAbbr)
-  }, [])
-
   return (
     <div className={styles.currencyItem}>
-      <div id={`currencyImageContainer${currencyData?.id}`} className={styles.iconContainer}></div>
+      <CurrencyIcon id={currencyData?.abbreviation} size={6} mx={2}/>
       <div className={styles.abbreviation}>
         <div>{isMilli && 'm'}{abbr}</div>
         {!!base && <div className={styles.baseContainer} style={{ backgroundColor: `${colorBase}` }}>{base}</div>}
