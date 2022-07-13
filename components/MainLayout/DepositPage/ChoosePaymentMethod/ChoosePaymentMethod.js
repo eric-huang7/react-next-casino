@@ -10,9 +10,8 @@ import Connect from "../../../../helpers/connect";
 import {getAllBonusesAction} from "../../../../redux/bonuses/action";
 import {
   backButtonShouldDo,
-  showCreditCardModal, showCryptoModal, showCurrencySwitcher,
+  showCreditCardModal, showCryptoModal,
   showDepositModal, showMobileCryptoPayments, showMobilePaymentsStepper,
-  showPaymentCurrencySwitcher
 } from "../../../../redux/popups/action";
 import {siteID} from "../../../../envs/envsForFetching";
 import {annulDeposit, postCryptoPayment} from "../../../../redux/deposits/action";
@@ -51,7 +50,6 @@ export const ChoosePaymentMethod = ({
 
   const hidePaymentCurrencyShowDepositModal = () => {
     dispatch(showDepositModal(true))
-    dispatch(showPaymentCurrencySwitcher(false))
   }
 
   const fiatClickHandler = () => {

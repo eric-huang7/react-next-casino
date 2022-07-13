@@ -64,8 +64,6 @@ export const AccountMainLayout = ({ t, children }) => {
         ||
         showModalKey === 'isShowMobilePaymentsStepper'
         ||
-        showModalKey === 'isShowPaymentCurrencySwitcher'
-        ||
         showModalKey === 'isShowCurrencySwitcher'
       ) {
         if (isShowModal[showModalKey] === true) {

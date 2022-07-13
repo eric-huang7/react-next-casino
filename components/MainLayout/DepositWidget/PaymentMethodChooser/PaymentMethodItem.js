@@ -1,10 +1,6 @@
 import styles from '../../../../styles/DepostWidget/DepositWidgetMainContainer.module.scss'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import {
-
-  showPaymentCurrencySwitcher
-} from '../../../../redux/popups/action'
 import { setUserPaymentMethod } from '../../../../redux/userFinance/action'
 
 export const PaymentMethodItem = ({ t, userCurrency, setErrorPaymentMethod, paymentMethodChooser, type, method, onOpenCryptoPayments }) => {

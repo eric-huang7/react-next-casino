@@ -10,7 +10,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {
   showCreditCardModal,
   showCryptoModal,
-  showCurrencySwitcher,
   showMobilePaymentsStepper
 } from "../../../redux/popups/action";
 import {setUserCurrencySwitcher, setUserDepositValue} from "../../../redux/userFinance/action";

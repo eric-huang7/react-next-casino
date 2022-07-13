@@ -8,8 +8,9 @@ import {
   Text,
 } from '@chakra-ui/react'
 import {ChevronLeftIcon} from "@chakra-ui/icons"
+import {ModalFooter} from "@chakra-ui/modal";
 
-export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children}) => (
+export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, footer}) => (
   <Modal
     closeOnOverlayClick
     isOpen={isOpen}
@@ -17,11 +18,11 @@ export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, childr
     isCentered
   >
     <ModalOverlay/>
-    <ModalContent w="320px" h="60%" minH="200px" ref={wrapperRef}>
+    <ModalContent w="320px" h="60%" minH="200px" ref={wrapperRef} bg="transparent">
       <ModalHeader
         minH="60px"
-        borderRadius="10px 10px 0 0"
-        border="5px solid white"
+        borderRadius="15px 15px 0 0"
+        border="3px solid white"
         bg="primary.500"
         overflow="hidden"
         p={0}
@@ -48,9 +49,12 @@ export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, childr
         />}
       </ModalHeader>
       <ModalCloseButton color="white" fontSize={18} top={15}/>
-      <ModalBody p={0} position="relative">
+      <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white">
         {children}
       </ModalBody>
+      {footer && <ModalFooter pt={5} px={0} pb={0}>
+        {footer}
+      </ModalFooter>}
     </ModalContent>
   </Modal>
 )

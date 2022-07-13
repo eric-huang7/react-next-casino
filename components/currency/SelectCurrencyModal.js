@@ -11,7 +11,7 @@ import {LoadingComponent} from '../LoadingComponent/LoadingComponent'
 import ErrorText from '../ErrorBoundaryComponents/ErrorText'
 
 import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
-import {SelectModal} from "./SelectModal";
+import {SelectModal} from "../modal/SelectModal";
 
 export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
   const {t} = useTranslation("common")

@@ -1,13 +1,12 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
-import {useDispatch} from 'react-redux'
-import {
-  backButtonShouldDo,
-  showDepositModal,
-  showPaymentCurrencySwitcher
-} from '../../../../redux/popups/action'
-import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../../redux/userFinance/action'
-import {useEffect, useTransition} from "react";
-import {useTranslation} from "next-i18next";
+// import {useDispatch} from 'react-redux'
+// import {
+//   backButtonShouldDo,
+//   showDepositModal,
+// } from '../../../../redux/popups/action'
+// import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../../redux/userFinance/action'
+// import {useEffect, useTransition} from "react";
+// import {useTranslation} from "next-i18next";
 import CurrencyIcon from "../../../currency/CurrencyIcon";
 
 export const PaymentItem = ({onClick, isActive, image, title, currencyData}) => (

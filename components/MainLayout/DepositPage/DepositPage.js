@@ -5,7 +5,6 @@ import {useDisclosure} from "@chakra-ui/hooks";
 import {
   backButtonShouldDo, setStepDepositModal,
   showDepositModal,
-  showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
 import { DepositPageStepper } from './DepositPageStepper'
 import {setErrorUserDepositValue, setUserCurrencySwitcher, setUserDepositValue} from '../../../redux/userFinance/action'

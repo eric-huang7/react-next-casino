@@ -1,7 +1,6 @@
 import styles from '../../../../../styles/HomePage/SumInputs.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {showCurrencySwitcher} from "../../../../../redux/popups/action";
 import {setUserDepositValue} from "../../../../../redux/userFinance/action";
 import {bonusesFinder} from "../../../../../helpers/bonusesFinder";
 import {CurrencyButton} from "./CurrencyButton";
@@ -44,11 +43,6 @@ export const SumInputs = ({userLogin}) => {
   }
 
   const currencyButtonClickHAndler = () => {
-    if (isShowCurrencySwitcher) {
-      dispatch(showCurrencySwitcher(false));
-    } else {
-      dispatch(showCurrencySwitcher(true));
-    }
   }
 
   useEffect(() => {

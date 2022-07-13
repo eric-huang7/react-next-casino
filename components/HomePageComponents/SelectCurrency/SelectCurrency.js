@@ -2,7 +2,7 @@ import styles from '../../../styles/HomePage/SelectCurrency.module.scss'
 import {Header} from "../../MainLayout/Header/Header";
 import {SelectCurrencyHoc} from "./SelectCurrencyHoc";
 import {useDispatch, useSelector} from "react-redux";
-import {backButtonShouldDo, showCurrencySwitcher} from "../../../redux/popups/action";
+import {backButtonShouldDo} from "../../../redux/popups/action";
 import useWindowScroll from "../../../hooks/useWindowScroll";
 import {setCurrencySelectorType} from "../../../redux/userFinance/action";
 
@@ -17,7 +17,6 @@ export const SelectCurrency = ({t}) => {
   const actionCurrencySelector = useSelector((store) => store.userFinance);
 
   const closeCurrenciesClickHandler = () => {
-    dispatch(showCurrencySwitcher(false));
     dispatch(setCurrencySelectorType(true));
     if (backButtonShouldDoState !== null) {
       dispatch(backButtonShouldDo(false));
@@ -27,8 +26,6 @@ export const SelectCurrency = ({t}) => {
   const backButtonClickHandler = () => {
     if (backButtonShouldDoState !== false) {
       backButtonShouldDoState();
-    } else {
-      dispatch(showCurrencySwitcher(false));
     }
     dispatch(setCurrencySelectorType(true));
   }

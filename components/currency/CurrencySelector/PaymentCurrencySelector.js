@@ -5,10 +5,8 @@ import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
 import {
   showCryptoModal,
-  showCurrencySwitcher,
   showMobileCryptoPayments,
   showMobilePaymentsStepper,
-  showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {CurrencyItem} from "./CurrencyItem";
@@ -76,9 +74,7 @@ export const PaymentCurrencySelector = ({
         }
         dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent))
         dispatch(showCryptoModal(true))
-        dispatch(showPaymentCurrencySwitcher(false))
         dispatch(showMobileCryptoPayments(false))
-        dispatch(showCurrencySwitcher(false))
         dispatch(showMobilePaymentsStepper(false))
         dispatch(annulDeposit())
         // dispatch(showDepositModal(false));
@@ -103,9 +99,7 @@ export const PaymentCurrencySelector = ({
 
         dispatch(postCryptoPayment(sendPaymentData, userPaymentCurrent))
         dispatch(showCryptoModal(true))
-        dispatch(showPaymentCurrencySwitcher(false))
         dispatch(showMobileCryptoPayments(false))
-        dispatch(showCurrencySwitcher(false))
         dispatch(showMobilePaymentsStepper(false))
         dispatch(annulDeposit())
       }

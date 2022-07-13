@@ -8,8 +8,8 @@ import { useEffect, useState } from 'react'
 import {
   showCreditCardModal,
   showCryptoModal,
-  showCurrencySwitcher, showMobileCryptoPayments,
-  showMobilePaymentsStepper, showPaymentCurrencySwitcher
+  showMobileCryptoPayments,
+  showMobilePaymentsStepper
 } from '../../../redux/popups/action'
 import { siteID } from '../../../envs/envsForFetching'
 import { annulDeposit, postCryptoPayment } from '../../../redux/deposits/action'
