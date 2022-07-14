@@ -1,16 +1,11 @@
 import styles from "../../styles/ForgotPassword/ForgotPassword.module.scss";
 
-
-export const ResetPasswordButton = ({t, text, whichForm}) => {
-
-
-  return (
-    <button
-      className={styles.resetPasswordButton}
-      type={"submit"}
-      form={whichForm}
-    >
-      {t(text)}
-    </button>
-  )
-}
+export const ResetPasswordButton = ({text, whichForm}) => (
+  <button
+    className={styles.resetPasswordButton}
+    type={"submit"}
+    form={whichForm}
+  >
+    {text}
+  </button>
+)

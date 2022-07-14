@@ -115,8 +115,7 @@ export const ChangePasswordContainer = ({ t, token }) => {
             </div>
           </div>
           <ResetPasswordButton
-            t={t}
-            text={'forgotPasswordForm.buttonsText.submit'}
+            text={t('forgotPasswordForm.buttonsText.submit')}
             whichForm={'changePasswordWindowForm'}
           />
         </div>

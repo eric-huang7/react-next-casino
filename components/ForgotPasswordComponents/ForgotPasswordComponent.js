@@ -1,19 +1,18 @@
-import styles from '../../styles/ForgotPassword/ForgotPassword.module.scss';
-import {HeadingBlock} from "./HeadingBlock";
 import {ResetPasswordButton} from "./ResetPasswordButton";
 import {EmailEnteringContainer} from "./EmailEnteringContainer/EmailEnteringContainer";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {schemaEmail} from "../../schemasForms/emailForm";
 import {InstructionsSendContainer} from "./InstructionsSendContainer/InstructionsSendContainer";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {showForgotPasswordPopup} from "../../redux/popups/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showLogin} from "../../redux/ui/action";
 import {token_url} from "../../redux/url/url";
 import {InputContainer} from "./EmailEnteringContainer/InputContainer";
 import Connect from "../../helpers/connect";
-
+import {SelectModal} from "../modal/SelectModal";
+import {Box} from "@chakra-ui/react";
 
 export const ForgotPasswordComponent = ({t}) => {
   const dispatch = useDispatch();
@@ -68,8 +67,6 @@ export const ForgotPasswordComponent = ({t}) => {
     })
   }
 
-  const forgotPswdWrapperRef = useRef();
-
   const closeForgotPasswordHandler = () => {
     dispatch(showForgotPasswordPopup(false));
   }
@@ -84,128 +81,73 @@ export const ForgotPasswordComponent = ({t}) => {
     dispatch(showLogin(true));
   }
 
-  const handleOutsideClick = (event) => {
-    const path = event.path || (event.composedPath && event.composedPath());
-    if (!path.includes(forgotPswdWrapperRef.current)) {
-      dispatch(showForgotPasswordPopup(false));
-    }
-  };
-  useEffect(() => {
-    document.body.addEventListener("click", handleOutsideClick);
-    return () => {
-      // dispatch(showTournaments(true));
-      document.body.removeEventListener('click', handleOutsideClick);
-    }
-  }, []);
+  return (
+    <>
+      {successSendPswd && <SelectModal
+        isOpen={true}
+        onClose={closeForgotPasswordHandler}
+        onBack={userLogin ? false : backButtonClickHandler}
+        title={t('forgotPasswordForm.headings.instructionsSent')}
+      >
+        <InstructionsSendContainer
+          t={t}
+          text={'forgotPasswordForm.instructionsSentText'}
+        />
+      </SelectModal>}
 
+      {successSendEmail && <SelectModal
+        isOpen={true}
+        onClose={closeForgotPasswordHandler}
+        onBack={userLogin ? false : backButtonClickHandler}
+        title={t('forgotPasswordForm.headings.emailSent')}
+      >
+        <InstructionsSendContainer
+          t={t}
+          text={'forgotPasswordForm.emailConfirmInstructionsSend'}
+        />
+      </SelectModal>}
 
-
-  if (successSendPswd) {
-    return (
-      <div className={`${styles.forgotPasswordWrapper} `}>
-        <div ref={forgotPswdWrapperRef} className={styles.mainContainer}>
-          <div className={styles.instructionsBlock}>
-            <HeadingBlock
-              t={t}
-              closeForgotPasswordHandler={closeForgotPasswordHandler}
-              whatDoBackButton={backButtonClickHandler}
-              text={'forgotPasswordForm.headings.instructionsSent'}
-              isShowBackButton={userLogin ? false : true}
-            />
-            <InstructionsSendContainer
-              t={t}
-              text={'forgotPasswordForm.instructionsSentText'}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (successSendEmail) {
-    return (
-      <div className={`${styles.forgotPasswordWrapper} `}>
-        <div ref={forgotPswdWrapperRef} className={styles.mainContainer}>
-          <div className={styles.instructionsBlock}>
-            <HeadingBlock
-              t={t}
-              closeForgotPasswordHandler={closeForgotPasswordHandler}
-              whatDoBackButton={backButtonClickHandler}
-              text={'forgotPasswordForm.headings.emailSent'}
-              isShowBackButton={userLogin ? false : true}
-            />
-            <InstructionsSendContainer
-              t={t}
-              text={'forgotPasswordForm.emailConfirmInstructionsSend'}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-    if (showResendContainer) {
-      return (
-        <div className={`${styles.forgotPasswordWrapper} `}>
-          <div ref={forgotPswdWrapperRef} className={styles.mainContainer}>
-            <div className={styles.instructionsBlock}>
-              <HeadingBlock
-                t={t}
-                whatDoBackButton={showResendContainerClickHandler}
-                closeForgotPasswordHandler={closeForgotPasswordHandler}
-                text={'forgotPasswordForm.headings.resendEmail'}
-                isShowBackButton={true}
-              />
-              <div className={`${styles.innerContainer} ${styles.resendContainer}`}>
-                <InputContainer
-                  register={register}
-                  handleSubmit={handleSubmit}
-                  onSubmitHandler={onSubmitEmailResendHandler}
-                  errors={errors}
-                  t={t}
-                  requestError={requestError}
-                />
-              </div>
-            </div>
-            <ResetPasswordButton
-              t={t}
-              text={'forgotPasswordForm.buttonsText.resend'}
-              whichForm={'forgotPasswordForm'}
-            />
-          </div>
-        </div>
-      )
-    } else {
-      return (
-        <div className={`${styles.forgotPasswordWrapper} `}>
-          <div ref={forgotPswdWrapperRef} className={styles.mainContainer}>
-            <div className={styles.instructionsBlock}>
-              <HeadingBlock
-                t={t}
-                closeForgotPasswordHandler={closeForgotPasswordHandler}
-                whatDoBackButton={backButtonClickHandler}
-                isShowBackButton={userLogin ? false : true}
-                text={'forgotPasswordForm.headings.forgotPassword'}
-              />
-              <div className={styles.innerContainer}>
-                <EmailEnteringContainer
-                  errors={errors}
-                  handleSubmit={handleSubmit}
-                  onSubmitHandler={onSubmitEmailPswdHandler}
-                  register={register}
-                  showResendContainerClickHandler={showResendContainerClickHandler}
-                  requestError={requestError}
-                  t={t}
-                />
-              </div>
-            </div>
-            <ResetPasswordButton
-              t={t}
-              text={'forgotPasswordForm.buttonsText.resetPassword'}
-              whichForm={'forgotPasswordForm'}
-            />
-          </div>
-        </div>
-      )
-    }
+      {showResendContainer && <SelectModal
+        isOpen={true}
+        onClose={closeForgotPasswordHandler}
+        onBack={showResendContainerClickHandler}
+        title={t('forgotPasswordForm.headings.resendEmail')}
+        footer={<ResetPasswordButton
+          text={t('forgotPasswordForm.buttonsText.resend')}
+          whichForm={'forgotPasswordForm'}
+        />}
+      >
+        <InputContainer
+          register={register}
+          handleSubmit={handleSubmit}
+          onSubmitHandler={onSubmitEmailResendHandler}
+          errors={errors}
+          t={t}
+          requestError={requestError}
+        />
+      </SelectModal>}
+      {!(successSendPswd && successSendEmail && showResendContainer) && <SelectModal
+        isOpen={true}
+        onClose={closeForgotPasswordHandler}
+        onBack={userLogin ? false : backButtonClickHandler}
+        title={t('forgotPasswordForm.headings.forgotPassword')}
+        footer={<ResetPasswordButton
+          text={t('forgotPasswordForm.buttonsText.resetPassword')}
+          whichForm={'forgotPasswordForm'}
+        />}
+      >
+        <Box p={4}>
+          <EmailEnteringContainer
+            errors={errors}
+            handleSubmit={handleSubmit}
+            onSubmitHandler={onSubmitEmailPswdHandler}
+            register={register}
+            showResendContainerClickHandler={showResendContainerClickHandler}
+            requestError={requestError}
+            t={t}
+          />
+        </Box>
+      </SelectModal>}
+    </>
+  )
 }

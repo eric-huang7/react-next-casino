@@ -30,8 +30,7 @@ export const ResendEmailContainer = ({t, register, handleSubmit, onSubmitHandler
           </div>
         </div>
         <ResetPasswordButton
-          t={t}
-          text={'forgotPasswordForm.buttonsText.resend'}
+          text={t('forgotPasswordForm.buttonsText.resend')}
           whichForm={'forgotPasswordForm'}
         />
       </div>
