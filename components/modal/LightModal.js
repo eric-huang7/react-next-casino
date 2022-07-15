@@ -34,10 +34,8 @@ const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foot
         borderRadius="15px 15px 0 0"
         bg="grey.200"
         borderBottom="1px solid #a7a7a7"
-        p={0}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
+        p={4}
+        display="table"
         position="relative"
       >
         <Text

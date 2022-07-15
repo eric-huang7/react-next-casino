@@ -10,7 +10,9 @@ import {
 import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
 
-const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, footer, width = 320}) => (
+const SelectModal = ({
+  isOpen, onClose, onBack, title, header, wrapperRef, children, footer, width = 320, headerHeight = 56,
+}) => (
   <Modal
     closeOnOverlayClick
     isOpen={isOpen}
@@ -28,9 +30,10 @@ const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foo
       bg="transparent"
     >
       <ModalHeader
-        minH="60px"
+        h={`${headerHeight}px`}
+        minH={`${headerHeight}px`}
         borderRadius="15px 15px 0 0"
-        border="3px solid white"
+        border="4px solid white"
         bg="primary.500"
         overflow="hidden"
         p={0}
@@ -39,7 +42,7 @@ const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foo
         alignItems="center"
         position="relative"
       >
-        <Text
+        {title && <Text
           color="white"
           fontFamily="Lithograph"
           textAlign="center"
@@ -47,16 +50,18 @@ const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foo
           fontWeight={600}
         >
           {title}
-        </Text>
+        </Text>}
+        {header}
         {onBack && <ChevronLeftIcon
           position="absolute"
-          w={10} h={10} left={0} top="5px"
+          w={10} h={10} left={0}
+          top={`calc(5px + (${headerHeight}px - 46px - 8px) / 2)`}
           color="white"
           sx={{cursor: "pointer"}}
           onClick={onBack}
         />}
       </ModalHeader>
-      <ModalCloseButton color="white" fontSize={18} top={15}/>
+      <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}/>
       <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white">
         {children}
       </ModalBody>

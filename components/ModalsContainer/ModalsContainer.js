@@ -195,10 +195,8 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           ?
           <ErrorEmpty>
             <PaymentsCardWrapper
-              isShow={isShowModal.isShowCreditCardModal}
               paymentsData={paymentsData}
               userInfo={userInfo}
-              t={t}
             />
           </ErrorEmpty>
           :

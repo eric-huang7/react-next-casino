@@ -34,7 +34,6 @@ export const CurrencySelector = ({
     return empty;
   }
 
-  console.log('currencies', currencies)
   return (
     <Box px="20px" py="16px">
       <Box

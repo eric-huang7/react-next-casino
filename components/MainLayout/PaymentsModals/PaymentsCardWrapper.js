@@ -2,48 +2,30 @@ import styles from '../../../styles/PaymentsModals/CreditCardPayment.module.scss
 
 import Image from "next/image";
 import {ConfirmButton} from "./CreditCardComponents/ConfirmButton";
-import {PaymentHeading} from "./CreditCardComponents/Heading";
 import {InputsContainer} from "./CreditCardComponents/InputsContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {
   setStepDepositModal,
   showCreditCardModal,
-  showCryptoModal,
   showDepositModal
 } from "../../../redux/popups/action";
 import {annulDeposit, postCreditCardPayment} from "../../../redux/deposits/action";
-import useWindowScroll from "../../../hooks/useWindowScroll";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {siteID} from "../../../envs/envsForFetching";
 import {setUserPaymentMethod} from "../../../redux/userFinance/action";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
-import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import SelectModal from "../../modal/SelectModal";
+import {useTranslation} from "next-i18next";
 
-export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
+export const PaymentsCardWrapper = ({ userInfo, paymentsData }) => {
+  const dispatch = useDispatch()
+  const { t } = useTranslation('common')
 
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      if (isShow) {
-        document.body.style.overflowY = "hidden"
-      } else {
-        document.body.style.overflowY = "auto"
-      }
-    }, 1);
-
-    return () => {
-      document.body.style.overflowY = "auto"
-      clearTimeout(timer);
-    }
-  }, [])
-
-  let scrollHeight = useWindowScroll();
   const userCurrency = useSelector((state) => state.userFinance);
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
   const userPayment = useSelector((state) => state.userFinance);
 
-
-  const dispatch = useDispatch()
   const closeCardPayment = () => {
     dispatch(showCreditCardModal(false));
     dispatch(annulDeposit());
@@ -53,6 +35,8 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
 
   const backButtonClickHandler = () => {
     dispatch(showCreditCardModal(false));
+    dispatch(annulDeposit());
+    dispatch(setUserPaymentMethod(null));
     dispatch(showDepositModal(true));
   }
   const [amountError, setAmountError] = useState(null);
@@ -82,103 +66,80 @@ export const PaymentsCardWrapper = ({t, userInfo, paymentsData, isShow}) => {
         deposit_amount: ''
       }
       dispatch(postCreditCardPayment(paymentData));
-    } else {
-
     }
   }
 
-  if (!userPayment?.paymentMethodData.methodData) {
+  if (!userPayment?.paymentMethodData?.methodData) {
     return (
-      <div className={styles.paymentsMainWrapper}>
-        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.paymentsMainContainer}>
-            <ErrorText>
-              <PaymentHeading
-                closeHandler={closeCardPayment}
-                t={t}
-                type={'fiat'}
-                showBackButton={true}
-                backButtonClickHandler={backButtonClickHandler}
-              />
-            </ErrorText>
-            <div className={styles.confirmedPayment}>
-              <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
-            </div>
-          </div>
+      <SelectModal
+        isOpen={true}
+        w={430}
+        onClose={closeCardPayment}
+        onBack={backButtonClickHandler}
+        header={<Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
+                       layout={'fixed'} alt=""/>}
+      >
+        <div className={styles.confirmedPayment}>
+          <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
         </div>
-      </div>
+      </SelectModal>
     )
   }
   if (paymentsData?.creditPaymentData?.data?.success) {
     return (
-      <div className={styles.paymentsMainWrapper}>
-        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.paymentsMainContainer}>
-            <ErrorText>
-              <PaymentHeading
-                closeHandler={closeCardPayment}
-                t={t}
-                type={'confirmed'}
-              />
-            </ErrorText>
-            <div className={styles.confirmedPayment}>
-              <div className={styles.confirmedImageWrapper}>
-                <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'}
-                       alt={'confirmed icon'}/>
-              </div>
-              <p className={styles.confirmedText}>{t("creditCardPayment.confirmText")}</p>
-            </div>
+      <SelectModal
+        isOpen={true}
+        w={430}
+        onClose={closeCardPayment}
+        title={t("creditCardPayment.confirmHeading")}
+      >
+        <div className={styles.confirmedPayment}>
+          <div className={styles.confirmedImageWrapper}>
+            <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'} alt=""/>
           </div>
+          <p className={styles.confirmedText}>{t("creditCardPayment.confirmText")}</p>
         </div>
-      </div>
+      </SelectModal>
     )
   } else {
     return (
-      <div className={styles.paymentsMainWrapper}>
-        <div className={`${styles.paymentsInnerWrapper} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.paymentsMainContainer}>
-            <ErrorText>
-              <PaymentHeading
-                closeHandler={closeCardPayment}
-                t={t}
-                type={'fiat'}
-                showBackButton={false}
-                backButtonClickHandler={backButtonClickHandler}
-              />
-            </ErrorText>
-            <ErrorText>
-              <InputsContainer
-                serverCardNumberError={paymentsData.isCreditPaymentError}
-                userDepositValue={userDepositValue}
-                userCurrency={userCurrency}
-                t={t}
-                amountError={amountError}
-                setAmountError={setAmountError}
-                cardNumberError={cardNumberError}
-                setCardNumberError={setCardNumberError}
-                dateInput={dateInput}
-                setDateInput={setDateInput}
-                cvvValue={cvvValue}
-                setCvvValue={setCvvValue}
-                cardNumber={cardNumber}
-                setCardNumber={setCardNumber}
-                cardDateError={cardDateError}
-                setCardDateError={setCardDateError}
-                cardNameInput={cardNameInput}
-                setCardNameInput={setCardNameInput}
-                setCardNameErrorInput={setCardNameErrorInput}
-                cardNameErrorInput={cardNameErrorInput}
-              />
-            </ErrorText>
-          </div>
-          <ErrorEmpty>
-            <ConfirmButton
-              t={t}
-              confirmButtonClickHandler={confirmButtonClickHandler}
-            />
-          </ErrorEmpty>
-        </div>
-      </div>
+      <SelectModal
+        isOpen={true}
+        width={430}
+        onClose={closeCardPayment}
+        onBack={backButtonClickHandler}
+        header={<Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
+                       layout={'fixed'} alt=""/>}
+        footer={<ConfirmButton
+          t={t}
+          confirmButtonClickHandler={confirmButtonClickHandler}
+        />}
+      >
+        <ErrorText>
+          <InputsContainer
+            serverCardNumberError={paymentsData.isCreditPaymentError}
+            userDepositValue={userDepositValue}
+            userCurrency={userCurrency}
+            t={t}
+            amountError={amountError}
+            setAmountError={setAmountError}
+            cardNumberError={cardNumberError}
+            setCardNumberError={setCardNumberError}
+            dateInput={dateInput}
+            setDateInput={setDateInput}
+            cvvValue={cvvValue}
+            setCvvValue={setCvvValue}
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            cardDateError={cardDateError}
+            setCardDateError={setCardDateError}
+            cardNameInput={cardNameInput}
+            setCardNameInput={setCardNameInput}
+            setCardNameErrorInput={setCardNameErrorInput}
+            cardNameErrorInput={cardNameErrorInput}
+          />
+        </ErrorText>
+      </SelectModal>
     )
   }
 }
