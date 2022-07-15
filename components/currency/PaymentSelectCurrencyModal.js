@@ -8,7 +8,7 @@ import {setCurrencySelectorType} from '../../redux/userFinance/action'
 import { PaymentCurrencySelector } from './CurrencySelector/PaymentCurrencySelector'
 import { setUserPaymentMethod } from '../../redux/userFinance/action'
 import ErrorText from '../ErrorBoundaryComponents/ErrorText'
-import {SelectModal} from "../modal/SelectModal";
+import SelectModal from "../modal/SelectModal";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 import {useEffect, useRef, useState} from "react";
 import {useTranslation} from "next-i18next";

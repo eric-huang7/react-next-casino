@@ -11,7 +11,7 @@ import {showLogin} from "../../redux/ui/action";
 import {token_url} from "../../redux/url/url";
 import {InputContainer} from "./EmailEnteringContainer/InputContainer";
 import Connect from "../../helpers/connect";
-import {SelectModal} from "../modal/SelectModal";
+import SelectModal from "../modal/SelectModal";
 import {Box} from "@chakra-ui/react";
 
 export const ForgotPasswordComponent = ({t}) => {

@@ -10,7 +10,7 @@ import {
 import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
 
-export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, footer}) => (
+const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, footer}) => (
   <Modal
     closeOnOverlayClick
     isOpen={isOpen}
@@ -58,3 +58,5 @@ export const SelectModal = ({ isOpen, onClose, onBack, title, wrapperRef, childr
     </ModalContent>
   </Modal>
 )
+
+export default SelectModal;

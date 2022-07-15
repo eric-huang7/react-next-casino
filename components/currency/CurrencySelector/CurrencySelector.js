@@ -49,7 +49,7 @@ export const CurrencySelector = ({
           h={`${parentHeight - 148}px`}
           overflowY="auto"
           css={{
-            scrollbarColor: "#fda3a2 #dcdcdc",
+            scrollbarColor: "scroll.100 scroll.500",
             scrollbarWidth: "thin",
           }}
         >

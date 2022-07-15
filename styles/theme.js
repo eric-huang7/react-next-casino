@@ -26,6 +26,14 @@ const theme = extendTheme({
       // ...
       900: "#2d2d2d",
     },
+    grey: {
+      200: "#ecedf1",
+      400: "#a7a7a7",
+    },
+    scroll: {
+      100: "#fda3a2",
+      500: "#dcdcdc",
+    }
   },
 })
 
