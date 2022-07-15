@@ -1,4 +1,3 @@
-import styles from '../../../../styles/TournamentSidebar/TournamentModaldetails.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {showTournamentsDetails} from "../../../../redux/popups/action";
 import LightModal from "../../../modal/LightModal";
@@ -17,9 +16,7 @@ export const TournamentModalDetails = ({t}) => {
       onClose={hideDetails}
       title={t(`tournaments.details.${tournamentsData.frontend_id}.heading`)}
     >
-      {/*<p className={styles.textInfo}>*/}
-        {t(`tournaments.details.${tournamentsData.frontend_id}.text`)}
-      {/*</p>*/}
+      {t(`tournaments.details.${tournamentsData.frontend_id}.text`)}
     </LightModal>
   )
 }

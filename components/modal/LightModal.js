@@ -20,9 +20,9 @@ const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foot
   >
     <ModalOverlay/>
     <ModalContent
-      w={width}
-      minW={width}
-      maxW="90%"
+      w={{base: "calc(100% - 120px)", lg: width}}
+      minW={{base: "calc(100% - 120px)", lg: width}}
+      maxW={{base: "calc(100% - 120px)", lg: "80%"}}
       h="80%"
       minH="200px"
       borderRadius="15px"
@@ -58,7 +58,7 @@ const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foot
           onClick={onBack}
         />}
       </ModalHeader>
-      <ModalCloseButton bg="white" fontSize={18} top={0} right={-50}/>
+      <ModalCloseButton bg="white" fontSize={18} top={0} right={-50} _hover={{bg: "#fff"}}/>
       <ModalBody
         p={5}
         position="relative"
