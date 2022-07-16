@@ -73,7 +73,7 @@ export const PaymentsCardWrapper = ({ userInfo, paymentsData }) => {
     return (
       <SelectModal
         isOpen={true}
-        w={430}
+        width={430}
         onClose={closeCardPayment}
         onBack={backButtonClickHandler}
         header={<Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
@@ -89,7 +89,7 @@ export const PaymentsCardWrapper = ({ userInfo, paymentsData }) => {
     return (
       <SelectModal
         isOpen={true}
-        w={430}
+        width={430}
         onClose={closeCardPayment}
         title={t("creditCardPayment.confirmHeading")}
       >

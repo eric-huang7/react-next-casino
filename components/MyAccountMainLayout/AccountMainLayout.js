@@ -159,9 +159,7 @@ export const AccountMainLayout = ({ t, children }) => {
               ?
               <ErrorEmpty>
                 <PaymentsCryptoWrapper
-                  isShow={isShowModal.isShowCryptoModal}
                   paymentsData={paymentsData}
-                  t={t}
                 />
               </ErrorEmpty>
               :

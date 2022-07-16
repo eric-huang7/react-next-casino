@@ -181,10 +181,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           ?
           <ErrorEmpty>
             <MobilePaymentsStepper
-              isShow={isShowModal.isShowMobilePaymentsStepper}
-              paymentsData={paymentsData}
               userAuth={userInfo}
-              t={t}
             />
           </ErrorEmpty>
           :
@@ -207,9 +204,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           ?
           <ErrorEmpty>
             <PaymentsCryptoWrapper
-              isShow={isShowModal.isShowCryptoModal}
               paymentsData={paymentsData}
-              t={t}
             />
           </ErrorEmpty>
           :
