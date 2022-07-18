@@ -17,7 +17,6 @@ import {siteID} from "../../../../envs/envsForFetching";
 import {annulDeposit, postCryptoPayment} from "../../../../redux/deposits/action";
 
 export const ChoosePaymentMethod = ({
-  isShowDepositModal,
   setPaymentMethods,
   t,
   userPayment,
@@ -31,20 +30,17 @@ export const ChoosePaymentMethod = ({
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
 
   useEffect(() => {
-    if (isShowDepositModal) {
-      const config = {
-        params: {
-          currency_id: userCurrency?.userCurrencyData?.id,
-        }
+    const config = {
+      params: {
+        currency_id: userCurrency?.userCurrencyData?.id,
       }
-      Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.results))
-        .catch((err) => {setPaymentMethods(null)});
-    } else {
-      setPaymentMethods(null)
     }
+    Connect.get(payments_methods_url, config, (status, data) => setPaymentMethods(data.results))
+      .catch((err) => {setPaymentMethods(null)});
+
     return () => {
-      setPaymentMethods(null)
-      dispatch(setUserPaymentMethod(null))
+      // setPaymentMethods(null)
+      // dispatch(setUserPaymentMethod(null))
     }
   }, [userCurrency?.userCurrencyData?.id])
 
@@ -111,7 +107,7 @@ export const ChoosePaymentMethod = ({
       active: userPayment?.paymentMethodData?.paymentType === 'creditCard',
       onClick: fiatClickHandler
     }))
-
+    console.log('methods', methods)
     return methods
   }
 

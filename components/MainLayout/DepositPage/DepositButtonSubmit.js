@@ -1,23 +1,15 @@
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import { useDispatch } from 'react-redux'
 import { setErrorUserDepositValue } from '../../../redux/userFinance/action'
-import { setErrorUserPaymentMethod } from '../../../redux/userFinance/action'
-import { siteID } from '../../../envs/envsForFetching'
-import { showCreditCardModal, showCryptoModal, showDepositModal } from '../../../redux/popups/action'
-import { postCryptoPayment } from '../../../redux/deposits/action'
 import {numberTransformer} from "../../../helpers/numberTransformer";
 
 export const DepositButtonSubmit = ({
   t,
   step,
   stepHandler,
-  submitHandler,
   buttonText,
   userDepositValue,
-  userPayment,
   userCurrency,
-  userInfo,
-  currencyData
 }) => {
   const dispatch = useDispatch()
 
@@ -40,7 +32,7 @@ export const DepositButtonSubmit = ({
         dispatch(setErrorUserDepositValue(''))
 
         if (step === 3) {
-          submitHandler()
+
         } else {
 
           stepHandler(step)

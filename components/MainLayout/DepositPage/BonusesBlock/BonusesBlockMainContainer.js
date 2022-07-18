@@ -1,5 +1,6 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
 import { BonusesBlockContainer } from './BonusesBlockContainer'
+import {useState} from "react";
 
 export const BonusesBlockMainContainer = (props) => {
   let {
@@ -8,15 +9,24 @@ export const BonusesBlockMainContainer = (props) => {
     checkedInputHandler,
     isActiveBonusInput,
     userCurrency,
-    showAllBonuses,
-    showAllBonusesHandler,
     chooseBonusClickHandler,
     setDepositButtonText,
     userDepositValue,
     userSelectedBonus,
-    isShowDepositModal,
     bonusesArr
   } = props
+
+  const [showAllBonuses, setShowAllBonuses] = useState(false)
+
+  const showAllBonusesHandler = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    if (showAllBonuses) {
+      setShowAllBonuses(false)
+    } else {
+      setShowAllBonuses(true)
+    }
+  }
 
   return (
     <div className={styles.depositsBonusesBlock}>
@@ -32,7 +42,6 @@ export const BonusesBlockMainContainer = (props) => {
           setDepositButtonText={setDepositButtonText}
           userDepositValue={userDepositValue}
           userSelectedBonus={userSelectedBonus}
-          isShowDepositModal={isShowDepositModal}
           bonusesArr={bonusesArr}
         />
       </div>

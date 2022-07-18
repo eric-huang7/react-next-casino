@@ -24,19 +24,15 @@ export const DepositPage = ({ t }) => {
 
   const userInfo = useSelector((state) => state.authInfo.user)
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-  const isShowDepositModal = useSelector((state) => state.popups)
+  const popups = useSelector((state) => state.popups)
   const userCurrency = useSelector((state) => state.userFinance)
   const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
-  const currencyData = useSelector((store) => store.currency?.currency)
   const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
 
-
-  const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
-  const [showAllBonuses, setShowAllBonuses] = useState(false)
   const [chosenBonus, setChosenBonus] = useState({})
   const [bonusesArr, setBonusesArr] = useState([])
   const [paymentMethods, setPaymentMethods] = useState(null)
@@ -70,20 +66,6 @@ export const DepositPage = ({ t }) => {
     setChosenBonus(userSelectedBonus.bonus_id)
   }, [userSelectedBonus.bonus_id])
 
-  const showAllBonusesHandler = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    if (showAllBonuses) {
-      setShowAllBonuses(false)
-    } else {
-      setShowAllBonuses(true)
-    }
-  }
-
-  const stepHandler = (step) => {
-    dispatch(setStepDepositModal(step + 1))
-  }
-
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
     if (isChecked) {
@@ -95,13 +77,6 @@ export const DepositPage = ({ t }) => {
     }
   }
 
-  const bonusCodeInputActiveHandler = () => {
-    if (isActiveBonusInput) {
-      setIsActiveBonusInput(false)
-    } else {
-      setIsActiveBonusInput(true)
-    }
-  }
   const hideCurrencyShowDepositModal = () => {
     onClose()
     dispatch(showDepositModal(true))
@@ -109,8 +84,8 @@ export const DepositPage = ({ t }) => {
 
   const currencySwitcherShowHandler = () => {
     onOpen()
-    dispatch(showDepositModal(false))
-    dispatch(backButtonShouldDo(hideCurrencyShowDepositModal))
+    // dispatch(showDepositModal(false))
+    // dispatch(backButtonShouldDo(hideCurrencyShowDepositModal))
   }
 
   const onSelectCurrency = (currencyData) => {
@@ -127,7 +102,6 @@ export const DepositPage = ({ t }) => {
   }
 
   const closeDepositModalHandler = () => {
-    setShowAllBonuses(false)
     dispatch(showDepositModal(false))
     dispatch(setUserBonus(0))
     dispatch(setErrorUserDepositValue(''))
@@ -139,10 +113,6 @@ export const DepositPage = ({ t }) => {
   const depositValueInputHandler = (e) => {
     dispatch(setUserDepositValue(e.target.value))
     setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(e.target.value < 0) ? '0' : Number(e.target.value)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`)
-  }
-
-  const submitHandler = () => {
-
   }
 
   useEffect(() => {
@@ -160,7 +130,7 @@ export const DepositPage = ({ t }) => {
       setBonusesArr([])
     }
 
-  }, [userCurrency, isShowDepositModal.isShowDepositModal])
+  }, [userCurrency, popups.isShowDepositModal])
 
   const onBack = () => {
     if (backButtonShouldDoState !== false) {
@@ -170,38 +140,37 @@ export const DepositPage = ({ t }) => {
     onClose()
   }
 
-  return (
+  const handleCloseSelectCurrency = () => {
+    onClose()
+    // dispatch(showDepositModal(false))
+    // dispatch(backButtonShouldDo(hideCurrencyShowDepositModal))
+  }
+
+  return popups.isShowDepositModal && (
     <>
-      <div className={`${styles.depositPageWrapper} ${isShowDepositModal.isShowDepositModal ? '' : styles.hide}`}>
+      <div className={`${styles.depositPageWrapper}`}>
         <div className={styles.depositsMainBlock}>
           <h2 className={`${router.locale === 'ru' ? styles.ru : ''}`}>{t('depositPage.mainHeading')}</h2>
           <ErrorText>
             <DepositPageStepper
-              currencyData={currencyData}
-              step={isShowDepositModal.depositModalStep}
+              step={popups.depositModalStep}
+              // step={3}
               t={t}
-              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-              isActiveBonusInput={isActiveBonusInput}
               checkedInputHandler={checkedInputHandler}
               currencySwitcherShowHandler={currencySwitcherShowHandler}
               closeDepositModalHandler={closeDepositModalHandler}
               isChecked={isChecked}
               userCurrency={userCurrency}
-              stepHandler={stepHandler}
-              submitHandler={submitHandler}
               userDepositValue={userDepositValue}
               depositValueInputHandler={depositValueInputHandler}
               userDepositValueError={userDepositValueError}
               userPayment={userPayment}
               userInfo={userInfo}
-              showAllBonuses={showAllBonuses}
-              showAllBonusesHandler={showAllBonusesHandler}
               chosenBonus={chosenBonus}
               chooseBonusClickHandler={chooseBonusClickHandler}
               setDepositButtonText={setDepositButtonText}
               buttonText={buttonText}
               userSelectedBonus={userSelectedBonus}
-              isShowDepositModal={isShowDepositModal.isShowDepositModal}
               bonusesArr={bonusesArr}
               paymentMethods={paymentMethods}
               setPaymentMethods={setPaymentMethods}
@@ -211,9 +180,9 @@ export const DepositPage = ({ t }) => {
       </div>
       <SelectCurrencyModal
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={handleCloseSelectCurrency}
         onSelect={onSelectCurrency}
-        onBack={onBack}
+        // onBack={onBack}
       />
     </>
   )

@@ -9,10 +9,12 @@ import { ChoosePaymentMethod } from './ChoosePaymentMethod/ChoosePaymentMethod'
 import { DepositLastPage } from './DepositLastPage/DepositLastPage'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {setStepDepositModal} from "../../../redux/popups/action";
+import {useDispatch} from "react-redux";
+import {useState} from "react";
 
 export const DepositPageStepper = (props) => {
   let {
-    currencyData,
     step,
     t,
     closeDepositModalHandler,
@@ -20,27 +22,36 @@ export const DepositPageStepper = (props) => {
     currencySwitcherShowHandler,
     isChecked,
     checkedInputHandler,
-    isActiveBonusInput,
-    bonusCodeInputActiveHandler,
-    submitHandler,
-    stepHandler,
     depositValueInputHandler,
     userDepositValue,
     userDepositValueError,
     userPayment,
     userInfo,
-    showAllBonuses,
-    showAllBonusesHandler,
     chooseBonusClickHandler,
     setDepositButtonText,
     buttonText,
     userSelectedBonus,
-    isShowDepositModal,
     bonusesArr,
     paymentMethods,
     setPaymentMethods
   } = props
 
+  const dispatch = useDispatch()
+  const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
+
+  const bonusCodeInputActiveHandler = () => {
+    if (isActiveBonusInput) {
+      setIsActiveBonusInput(false)
+    } else {
+      setIsActiveBonusInput(true)
+    }
+  }
+
+  const stepHandler = (step) => {
+    dispatch(setStepDepositModal(step + 1))
+  }
+
+  console.log('step', step)
   switch (step) {
     case  1:
       return (
@@ -68,13 +79,10 @@ export const DepositPageStepper = (props) => {
                 checkedInputHandler={checkedInputHandler}
                 isActiveBonusInput={isActiveBonusInput}
                 userCurrency={userCurrency}
-                showAllBonuses={showAllBonuses}
-                showAllBonusesHandler={showAllBonusesHandler}
                 chooseBonusClickHandler={chooseBonusClickHandler}
                 setDepositButtonText={setDepositButtonText}
                 userDepositValue={userDepositValue}
                 userSelectedBonus={userSelectedBonus}
-                isShowDepositModal={isShowDepositModal}
                 bonusesArr={bonusesArr}
               />
             </ErrorText>
@@ -87,16 +95,13 @@ export const DepositPageStepper = (props) => {
           </div>
           <ErrorEmpty>
             <DepositButtonSubmit
-              userPayment={userPayment}
               userDepositValue={userDepositValue}
               stepHandler={stepHandler}
               step={step}
               t={t}
               buttonText={buttonText}
               userCurrency={userCurrency}
-              userInfo={userInfo}
-              currencyData={currencyData}
-            />1
+            />
           </ErrorEmpty>
 
         </>
@@ -117,7 +122,6 @@ export const DepositPageStepper = (props) => {
                 userPayment={userPayment}
                 paymentMethods={paymentMethods}
                 userCurrency={userCurrency}
-                isShowDepositModal={isShowDepositModal}
                 setPaymentMethods={setPaymentMethods}
                 stepHandler={() => stepHandler(step)}
               />
@@ -147,16 +151,12 @@ export const DepositPageStepper = (props) => {
           </div>
           <ErrorEmpty>
             <DepositButtonSubmit
-              userPayment={userPayment}
               userDepositValue={userDepositValue}
-              submitHandler={submitHandler}
               stepHandler={stepHandler}
               step={step}
               t={t}
               buttonText={'Submit'}
               userCurrency={userCurrency}
-              userInfo={userInfo}
-              currencyData={currencyData}
             />
           </ErrorEmpty>
         </>
