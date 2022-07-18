@@ -1,17 +1,19 @@
+import {useDispatch} from "react-redux"
+import {useState} from "react"
+import {Box, Text} from "@chakra-ui/layout"
+import SelectModal from "../../modal/SelectModal"
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
-import { DepositHeading } from './DepositHeading'
-import { DepositInputsContainer } from './DepositInputs/DepositInputsContainer'
-import { BonusesBlockMainContainer } from './BonusesBlock/BonusesBlockMainContainer'
-import { DepositImages } from './DepositPaymentsImages'
-import { BonusCodeActivator } from './BonusCodeActivator'
-import { DepositButtonSubmit } from './DepositButtonSubmit'
-import { ChoosePaymentMethod } from './ChoosePaymentMethod/ChoosePaymentMethod'
-import { DepositLastPage } from './DepositLastPage/DepositLastPage'
+import {DepositInputsContainer} from './DepositInputs/DepositInputsContainer'
+import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
+import {DepositImages} from './DepositPaymentsImages'
+import {BonusCodeActivator} from './BonusCodeActivator'
+import {DepositButtonSubmit} from './DepositButtonSubmit'
+import {ChoosePaymentMethod} from './ChoosePaymentMethod/ChoosePaymentMethod'
+import {DepositLastPage} from './DepositLastPage/DepositLastPage'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {setStepDepositModal} from "../../../redux/popups/action";
-import {useDispatch} from "react-redux";
-import {useState} from "react";
+import {useRouter} from "next/router";
 
 export const DepositPageStepper = (props) => {
   let {
@@ -37,6 +39,7 @@ export const DepositPageStepper = (props) => {
   } = props
 
   const dispatch = useDispatch()
+  const router = useRouter()
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
 
   const bonusCodeInputActiveHandler = () => {
@@ -51,16 +54,48 @@ export const DepositPageStepper = (props) => {
     dispatch(setStepDepositModal(step + 1))
   }
 
-  console.log('step', step)
+  const getHeader = () => <Box
+    position="absolute"
+    top={{base: "-120px", lg: "-80px"}}
+    left="calc((430px - 100vw) / 2)"
+    width="100vw"
+  >
+    <Text
+      fontFamily="Lithograph"
+      color="primary.500"
+      fontSize="40px"
+      fontWeight={700}
+      letterSpacing="1px"
+      textTransform="uppercase"
+      textAlign="center"
+      className={`${router.locale === 'ru' ? styles.ru : ''}`}
+    >
+      {t('depositPage.mainHeading')}
+    </Text>
+  </Box>
+
   switch (step) {
     case  1:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
+        <SelectModal
+          isOpen={true}
+          width={430}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          title={t("depositPage.innerHeading")}
+          footer={<ErrorEmpty>
+            <DepositButtonSubmit
+              userDepositValue={userDepositValue}
+              stepHandler={stepHandler}
+              step={step}
               t={t}
-              closeDepositModalHandler={closeDepositModalHandler}
+              buttonText={buttonText}
+              userCurrency={userCurrency}
             />
+          </ErrorEmpty>}
+          before={getHeader()}
+        >
+          <Box pb={4}>
             <ErrorText>
               <DepositInputsContainer
                 userCurrency={userCurrency}
@@ -92,30 +127,22 @@ export const DepositPageStepper = (props) => {
               isActiveBonusInput={isActiveBonusInput}
               bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
             />
-          </div>
-          <ErrorEmpty>
-            <DepositButtonSubmit
-              userDepositValue={userDepositValue}
-              stepHandler={stepHandler}
-              step={step}
-              t={t}
-              buttonText={buttonText}
-              userCurrency={userCurrency}
-            />
-          </ErrorEmpty>
-
-        </>
+          </Box>
+        </SelectModal>
       )
     case 2:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
-              t={t}
-              title={''}
-              closeDepositModalHandler={closeDepositModalHandler}
-              whatDoBackButton={() => stepHandler(0)}
-            />
+        <SelectModal
+          isOpen={true}
+          width={430}
+          height={100}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          onBack={() => stepHandler(0)}
+          title={t("depositPage.innerHeading")}
+          before={getHeader()}
+        >
+          <Box p={2}>
             <ErrorText>
               <ChoosePaymentMethod
                 t={t}
@@ -126,30 +153,19 @@ export const DepositPageStepper = (props) => {
                 stepHandler={() => stepHandler(step)}
               />
             </ErrorText>
-          </div>
-        </>
+          </Box>
+        </SelectModal>
       )
     case 3:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
-              t={t}
-              closeDepositModalHandler={closeDepositModalHandler}
-              whatDoBackButton={() => stepHandler(1)}
-            />
-            <ErrorText>
-              <DepositLastPage
-                t={t}
-                userDepositValue={userDepositValue}
-                depositValueInputHandler={depositValueInputHandler}
-                userDepositValueError={userDepositValueError}
-                userInfo={userInfo}
-                userCurrency={userCurrency}
-              />
-            </ErrorText>
-          </div>
-          <ErrorEmpty>
+        <SelectModal
+          isOpen={true}
+          width={430}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          onBack={() => stepHandler(1)}
+          title={t("depositPage.innerHeading")}
+          footer={<ErrorEmpty>
             <DepositButtonSubmit
               userDepositValue={userDepositValue}
               stepHandler={stepHandler}
@@ -158,8 +174,20 @@ export const DepositPageStepper = (props) => {
               buttonText={'Submit'}
               userCurrency={userCurrency}
             />
-          </ErrorEmpty>
-        </>
+          </ErrorEmpty>}
+          before={getHeader()}
+        >
+          <ErrorText>
+            <DepositLastPage
+              t={t}
+              userDepositValue={userDepositValue}
+              depositValueInputHandler={depositValueInputHandler}
+              userDepositValueError={userDepositValueError}
+              userInfo={userInfo}
+              userCurrency={userCurrency}
+            />
+          </ErrorText>
+        </SelectModal>
       )
   }
 }
