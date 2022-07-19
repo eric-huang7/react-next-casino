@@ -74,10 +74,6 @@ export const ChangePasswordContainer = ({t, token}) => {
       height={100}
       onClose={closeForgotPasswordHandler}
       title={t('forgotPasswordForm.headings.passwordChanged')}
-      footer={<ResetPasswordButton
-        text={t('forgotPasswordForm.buttonsText.submit')}
-        whichForm={'changePasswordWindowForm'}
-      />}
     >
       <Box p={4}>
         <InstructionsSendContainer
