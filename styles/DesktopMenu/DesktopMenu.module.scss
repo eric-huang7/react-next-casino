@@ -42,6 +42,8 @@
         font-family: "Lithograph";
         cursor: pointer;
         text-align: left;
+        display: flex;
+        align-items: center;
 
         img {
           width: auto;

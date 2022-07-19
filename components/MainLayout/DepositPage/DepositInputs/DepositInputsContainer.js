@@ -2,7 +2,6 @@ import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {DepositInputCount} from "./DepositInputCount";
 import ErrorText from "../../../ErrorBoundaryComponents/ErrorText";
 import CurrencyIcon from "../../../currency/CurrencyIcon";
-import {backButtonShouldDo, showDepositModal} from "../../../../redux/popups/action";
 
 export const DepositInputsContainer = ({
                                          t,

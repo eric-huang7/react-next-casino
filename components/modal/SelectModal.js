@@ -24,8 +24,8 @@ const SelectModal = ({
       w={{base: "90%", lg: width}}
       minW={{base: "90%", lg: width}}
       maxW={{base: "90%", lg: "80%"}}
-      h={height || "60%"}
-      minH="200px"
+      h="fit-content"
+      minH={height || "200px"}
       ref={wrapperRef}
       bg="transparent"
     >
