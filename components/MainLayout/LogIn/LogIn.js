@@ -12,17 +12,15 @@ import {dateFormatter} from "../../../helpers/dateTranslator";
 import {useRouter} from "next/router";
 import {auth_type_id, is_admin, siteID} from "../../../envs/envsForFetching";
 import {showForgotPasswordPopup} from "../../../redux/popups/action";
-import {TopHeading} from "./LoginComponents/TopHeading";
 import {useTranslation} from "next-i18next";
-import {LowHeading} from "./LoginComponents/LowHeading";
 import {LoginInput} from "./LoginComponents/LoginInput";
 import {PasswordInput} from "./LoginComponents/PasswordInput";
 import {ForgotPasswordButton} from "./LoginComponents/ForgotPasswordButton";
 import {RegisterButton} from "./LoginComponents/RegisterButton";
-import {SubmitButton} from "./LoginComponents/SubmitButton";
+import {SubmitButton} from "../../buttons/SubmitButton";
 import {ErrorMessage} from "./LoginComponents/ErrorMessage";
-
-
+import {Box, Text} from "@chakra-ui/layout";
+import SelectModal from "../../modal/SelectModal";
 
 export const LogIn = ({isShow}) => {
   const {t} = useTranslation('common');
@@ -116,47 +114,68 @@ export const LogIn = ({isShow}) => {
     loginUser();
   }
 
+  const getHeader = () => <Box
+    position="absolute"
+    top={{base: "-120px", lg: "-80px"}}
+    left="calc((430px - 100vw) / 2)"
+    width="100vw"
+  >
+    <Text
+      fontFamily="Lithograph"
+      // Gobold
+      color="primary.500"
+      fontSize="33px"
+      fontWeight={700}
+      letterSpacing="1px"
+      textTransform="uppercase"
+      textAlign="center"
+      className={`${router.locale === 'ru' ? styles.ru : ''}`}
+    >
+      {t('loginForm.mainHeading')}
+    </Text>
+  </Box>
+
   return (
-    <div className={`${styles.loginWrapper} ${isShow ? "" : styles.hideLogIn}`}>
-      <div onClick={() => loginCloseButtonHandler()} className={styles.forClosePopup}></div>
-      <div onClick={(e) => closePopupHandler(e)} className={styles.logInMainBlock}>
-        <TopHeading />
-        <div className={styles.logInInnerBlock}>
-          <LowHeading loginCloseButtonHandler={loginCloseButtonHandler} />
-          <div className={styles.logInInnerBlockForms}>
-            <form
-              id={'login_form'}
-              onSubmit={handleSubmit(onSubmitHandler)}
-            >
-              <LoginInput
-                  errors={errors}
-                  loginData={loginData}
-                  setLoginData={setLoginData}
-                  register={register}
-              />
-              <PasswordInput
-                  errors={errors}
-                  passwordData={passwordData}
-                  setPasswordData={setPasswordData}
-                  passwordInputType={passwordInputType}
-                  showPass={showPass}
-                  register={register}
-              />
-              <ErrorMessage errorMessage={errorMessage} />
-            </form>
-            <ForgotPasswordButton forgotPasswordClickHandler={forgotPasswordClickHandler} />
-            <RegisterButton openRegister={openRegister} />
-          </div>
+    <SelectModal
+      isOpen={isShow}
+      width={430}
+      headerHeight={70}
+      onClose={loginCloseButtonHandler}
+      title={t('loginForm.innerHeading')}
+      footer={<SubmitButton title={t('loginForm.signUpButton')} form="login_form" />}
+      before={getHeader()}
+    >
+      <Box pb={4}>
+        <div className={styles.logInInnerBlockForms}>
+          <form
+            id={'login_form'}
+            onSubmit={handleSubmit(onSubmitHandler)}
+          >
+            <LoginInput
+              errors={errors}
+              loginData={loginData}
+              setLoginData={setLoginData}
+              register={register}
+            />
+            <PasswordInput
+              errors={errors}
+              passwordData={passwordData}
+              setPasswordData={setPasswordData}
+              passwordInputType={passwordInputType}
+              showPass={showPass}
+              register={register}
+            />
+            <ErrorMessage errorMessage={errorMessage} />
+          </form>
+          <ForgotPasswordButton forgotPasswordClickHandler={forgotPasswordClickHandler} />
+          <RegisterButton openRegister={openRegister} />
         </div>
-        <SubmitButton />
-      </div>
-    </div>
+      </Box>
+    </SelectModal>
   )
 }
 
-
 const errorHelper = (userInfo, router, setPasswordData, setErrorMessage, t) => {
-
   if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
 
     let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
@@ -165,11 +184,9 @@ const errorHelper = (userInfo, router, setPasswordData, setErrorMessage, t) => {
     setPasswordData('');
     setErrorMessage(`${t('errors.selfExcluded')} ${timeExclude}`)
   } else if (userInfo.error.data.error_code === "ACCOUNT_LOCKED") {
-
     setPasswordData('');
     setErrorMessage(t('errors.accountLocked'));
   } else {
-
     setPasswordData('');
     setErrorMessage(t('errors.wrongPasswordOrEmail'));
   }
