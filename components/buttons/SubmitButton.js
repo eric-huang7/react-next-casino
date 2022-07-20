@@ -1,6 +1,6 @@
 import {Button, Text} from "@chakra-ui/react";
 
-export const SubmitButton = ({
+const SubmitButton = ({
   title, type = 'submit', height = '75px', width = "100%", bg = "primary.500", form, onClick
 }) => (
   <Button
@@ -19,3 +19,5 @@ export const SubmitButton = ({
     </Text>
   </Button>
 )
+
+export default SubmitButton;

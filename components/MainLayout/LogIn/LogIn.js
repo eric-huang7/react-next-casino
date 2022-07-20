@@ -3,7 +3,7 @@ import styles from '../../../styles/LogIn.module.scss';
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {yupResolver} from "@hookform/resolvers/yup";
 import {showRegister} from "../../../redux/ui/action";
 import {showLogin} from "../../../redux/ui/action";
 import {userData} from "../../../redux/user/action";
@@ -17,10 +17,11 @@ import {LoginInput} from "./LoginComponents/LoginInput";
 import {PasswordInput} from "./LoginComponents/PasswordInput";
 import {ForgotPasswordButton} from "./LoginComponents/ForgotPasswordButton";
 import {RegisterButton} from "./LoginComponents/RegisterButton";
-import {SubmitButton} from "../../buttons/SubmitButton";
 import {ErrorMessage} from "./LoginComponents/ErrorMessage";
-import {Box, Text} from "@chakra-ui/layout";
+import {Box} from "@chakra-ui/layout";
 import SelectModal from "../../modal/SelectModal";
+import SubmitButton from "../../buttons/SubmitButton";
+import ModalTopHeader from "../../modal/ModalTopHeader";
 
 export const LogIn = ({isShow}) => {
   const {t} = useTranslation('common');
@@ -46,14 +47,6 @@ export const LogIn = ({isShow}) => {
       dispatch(showLogin(true));
     }
   }
-  function closePopupHandler(e) {
-    if (e.target.className.split('_')[1] === 'logInMainBlock') {
-      dispatch(showLogin(false));
-
-    } else {
-      return
-    }
-  }
 
   function openRegister() {
 
@@ -64,7 +57,7 @@ export const LogIn = ({isShow}) => {
   const [isPassShow, setIsPassShow] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState('password');
 
-  function showPass(){
+  function showPass() {
     if (isPassShow) {
       setIsPassShow(false);
       setPasswordInputType("password");
@@ -93,17 +86,17 @@ export const LogIn = ({isShow}) => {
     setPasswordData('');
     setErrorMessage('');
 
-  },[isShowLogin])
+  }, [isShowLogin])
 
 
   function loginUser() {
 
     let sendData = {
-      site_id : siteID,
+      site_id: siteID,
       auth_type_id: auth_type_id,
       username: loginData,
       auth_info: passwordData,
-      is_admin : is_admin,
+      is_admin: is_admin,
     }
 
     dispatch(userData(sendData));
@@ -114,27 +107,6 @@ export const LogIn = ({isShow}) => {
     loginUser();
   }
 
-  const getHeader = () => <Box
-    position="absolute"
-    top={{base: "-120px", lg: "-80px"}}
-    left="calc((430px - 100vw) / 2)"
-    width="100vw"
-  >
-    <Text
-      fontFamily="Lithograph"
-      // Gobold
-      color="primary.500"
-      fontSize="33px"
-      fontWeight={700}
-      letterSpacing="1px"
-      textTransform="uppercase"
-      textAlign="center"
-      className={`${router.locale === 'ru' ? styles.ru : ''}`}
-    >
-      {t('loginForm.mainHeading')}
-    </Text>
-  </Box>
-
   return (
     <SelectModal
       isOpen={isShow}
@@ -142,8 +114,8 @@ export const LogIn = ({isShow}) => {
       headerHeight={70}
       onClose={loginCloseButtonHandler}
       title={t('loginForm.innerHeading')}
-      footer={<SubmitButton title={t('loginForm.signUpButton')} form="login_form" />}
-      before={getHeader()}
+      footer={<SubmitButton title={t('loginForm.signUpButton')} form="login_form"/>}
+      before={<ModalTopHeader title={t('loginForm.mainHeading')} fontSize="33px"/>}
     >
       <Box pb={4}>
         <div className={styles.logInInnerBlockForms}>
@@ -165,10 +137,10 @@ export const LogIn = ({isShow}) => {
               showPass={showPass}
               register={register}
             />
-            <ErrorMessage errorMessage={errorMessage} />
+            <ErrorMessage errorMessage={errorMessage}/>
           </form>
-          <ForgotPasswordButton forgotPasswordClickHandler={forgotPasswordClickHandler} />
-          <RegisterButton openRegister={openRegister} />
+          <ForgotPasswordButton forgotPasswordClickHandler={forgotPasswordClickHandler}/>
+          <RegisterButton openRegister={openRegister}/>
         </div>
       </Box>
     </SelectModal>

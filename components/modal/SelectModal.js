@@ -12,6 +12,7 @@ import {ModalFooter} from "@chakra-ui/modal";
 
 const SelectModal = ({
   isOpen, onClose, onBack, title, header, wrapperRef, children, footer, width = 320, height, headerHeight = 56, before,
+  ...props
 }) => (
   <Modal
     closeOnOverlayClick
@@ -28,6 +29,7 @@ const SelectModal = ({
       minH={height || "200px"}
       ref={wrapperRef}
       bg="transparent"
+      {...props}
     >
       {before}
       <ModalHeader

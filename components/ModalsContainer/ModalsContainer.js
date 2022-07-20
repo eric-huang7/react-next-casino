@@ -220,43 +220,29 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           :
           <></>
       }
-      {
-        isShowModal.isShowPlaySafe
-          ?
-          <ErrorEmpty>
-            <PlaySafeMainWrapper/>
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        userInfo.isAuthenticated
-          ?
-          ''
-          :
-          <ErrorEmpty>
-            <RegisterSignup
-              isShow={registerShow}
-              t={t}
-            />
-          </ErrorEmpty>
-      }
-      <ErrorEmpty>
+
+      {isShowModal.isShowPlaySafe && <ErrorEmpty>
+        <PlaySafeMainWrapper/>
+      </ErrorEmpty>}
+
+      {!userInfo.isAuthenticated && <ErrorEmpty>
+        <RegisterSignup
+          isShow={registerShow}
+        />
+      </ErrorEmpty>}
+
+      {!userInfo.isAuthenticated && <ErrorEmpty>
         <LogIn
           isShow={logInShow}
+        />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <DepositPage
           t={t}
         />
-      </ErrorEmpty>
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <DepositPage
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
+      </ErrorEmpty>}
+
       {
         userInfo.isAuthenticated
           ?

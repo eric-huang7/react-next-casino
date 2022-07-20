@@ -13,7 +13,7 @@ import {DepositLastPage} from './DepositLastPage/DepositLastPage'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {setStepDepositModal} from "../../../redux/popups/action";
-import {useRouter} from "next/router";
+import ModalTopHeader from "../../modal/ModalTopHeader";
 
 export const DepositPageStepper = (props) => {
   let {
@@ -39,7 +39,6 @@ export const DepositPageStepper = (props) => {
   } = props
 
   const dispatch = useDispatch()
-  const router = useRouter()
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
 
   const bonusCodeInputActiveHandler = () => {
@@ -53,26 +52,6 @@ export const DepositPageStepper = (props) => {
   const stepHandler = (step) => {
     dispatch(setStepDepositModal(step + 1))
   }
-
-  const getHeader = () => <Box
-    position="absolute"
-    top={{base: "-120px", lg: "-80px"}}
-    left="calc((430px - 100vw) / 2)"
-    width="100vw"
-  >
-    <Text
-      fontFamily="Lithograph"
-      color="primary.500"
-      fontSize="40px"
-      fontWeight={700}
-      letterSpacing="1px"
-      textTransform="uppercase"
-      textAlign="center"
-      className={`${router.locale === 'ru' ? styles.ru : ''}`}
-    >
-      {t('depositPage.mainHeading')}
-    </Text>
-  </Box>
 
   switch (step) {
     case  1:
@@ -93,7 +72,7 @@ export const DepositPageStepper = (props) => {
               userCurrency={userCurrency}
             />
           </ErrorEmpty>}
-          before={getHeader()}
+          before={<ModalTopHeader title={t('depositPage.mainHeading')} />}
         >
           <Box pb={4}>
             <ErrorText>
