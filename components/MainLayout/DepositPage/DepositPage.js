@@ -57,7 +57,7 @@ export const DepositPage = ({t}) => {
   useEffect(() => {
 
     changeButtonText()
-  }, [chosenBonus])
+  }, [chosenBonus, userDepositValue])
 
   useEffect(() => {
     setChosenBonus(userSelectedBonus.bonus_id)
@@ -100,9 +100,9 @@ export const DepositPage = ({t}) => {
     // setStep(1);
     dispatch(setStepDepositModal(1))
   }
-  const depositValueInputHandler = (e) => {
-    dispatch(setUserDepositValue(e.target.value))
-    setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(e.target.value < 0) ? '0' : Number(e.target.value)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`)
+  const depositValueInputHandler = (value) => {
+    dispatch(setUserDepositValue(value))
+    setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(value < 0) ? '0' : Number(value)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`)
   }
 
   useEffect(() => {

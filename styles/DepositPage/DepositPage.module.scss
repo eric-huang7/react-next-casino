@@ -175,23 +175,28 @@
 
         border: 0.75px solid $red-color;
 
-        width: 221px;
+        width: 241px;
         height: 50px;
 
-        font-size: 36px;
+        font-size: 32px;
         color: #3a3a3a;
-        font-weight: 600;
-        font-family: "Lithograph", sans-serif;
+        font-weight: 400;
+        //font-family: "Lithograph", sans-serif;
 
         outline: none;
 
-        padding-left: 45px;
+        padding-left: 5px;
+        padding-right: 5px;
 
         -moz-appearance: textfield;
       }
       & input.depositSummInput::-webkit-outer-spin-button,
       input.depositSummInput::-webkit-inner-spin-button {
         -webkit-appearance: none;
+      }
+
+      & .depositSummInput.errorMessage {
+        color: #e31351;
       }
 
       & .labelIconCurrency {
@@ -203,7 +208,7 @@
         position: absolute;
 
         top: 24px;
-        left: 10px;
+        left: 5px;
       }
     }
 
@@ -752,7 +757,7 @@
 
 span.errorMessage {
   font-size: 10px;
-  color: $red-color;
+  color: #e31351;
 }
 
 .divider{
