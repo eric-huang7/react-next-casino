@@ -1,5 +1,7 @@
 import styles from "../../../../styles/RegisterSignup.module.scss";
 import {useTranslation} from "next-i18next";
+import CurrencyIcon from "../../../currency/CurrencyIcon";
+import {HStack, Text} from "@chakra-ui/react";
 
 export const CurrencyInput = ({ showCurrencyBlock, userCurrency }) => {
     const {t} = useTranslation('common');
@@ -9,15 +11,10 @@ export const CurrencyInput = ({ showCurrencyBlock, userCurrency }) => {
             <label htmlFor={'currencyIn'}>
                 {t('registrationForm.currencyInput')}
             </label>
-            <input
-                readOnly={true}
-                // ref={currencyRef}
-                className={styles.currencyInput}
-                onClick={() => showCurrencyBlock()}
-                value={userCurrency.abbreviation}
-                id={'currencyIn'}
-                type="text"
-            />
+            <HStack className={styles.input} onClick={showCurrencyBlock} mb={0}>
+              <CurrencyIcon id={userCurrency?.abbreviation} size={8} />
+              <Text>{userCurrency?.abbreviation}</Text>
+            </HStack>
         </>
     )
 }

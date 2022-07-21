@@ -1,7 +1,6 @@
 import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss';
 import {LinkItem} from "./LinkItem";
 import {SignOutItem} from "./SignOutItem";
-import {HeaderButtonsDeposit} from "../MainLayout/Header/HeaderButtons/HeaderButtonsDeposit";
 import {useDispatch, useSelector} from "react-redux";
 import {showDepositModal, showPlaySafe, showRedeemModal} from "../../redux/popups/action";
 import Link from "next/link";

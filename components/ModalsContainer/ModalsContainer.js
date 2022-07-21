@@ -29,7 +29,6 @@ import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
 import {TournamentAwardModal} from "../MainLayout/TournamentAwardModal/TournamentAwardModal";
-import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -243,52 +242,30 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         />
       </ErrorEmpty>}
 
-      {
-        userInfo.isAuthenticated
-          ?
-          <ErrorEmpty>
-            <ManageSubscriptions
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          ''
-      }
-      {
-        isShowModal.showMessagePopup && <MessageContainer />
-      }
-      {
-        userInfo.isAuthenticated && width > 1239
-          ?
-          <ErrorEmpty>
-            <FooterAreaContainer
-              userData={userInfo}
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          ''
-      }
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <RedeemPage
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <TournamentAwardModal
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <ManageSubscriptions />
+      </ErrorEmpty>}
+
+      {isShowModal.showMessagePopup && <MessageContainer />}
+
+      {userInfo.isAuthenticated && width > 1239 && <ErrorEmpty>
+        <FooterAreaContainer
+          userData={userInfo}
+          t={t}
+        />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <RedeemPage
+          t={t}
+        />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <TournamentAwardModal
+          t={t}
+        />
+      </ErrorEmpty>}
     </>
   )
 }

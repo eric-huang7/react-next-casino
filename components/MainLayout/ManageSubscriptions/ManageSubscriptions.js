@@ -1,13 +1,15 @@
-import styles from '../../../styles/ManageSubscriptions/ManageSubscriptions.module.scss';
 import {SubscriptionsInputsContainer} from "./SubscriptionsInputsContainer";
 import {SubscriptionsSubmitButton} from "./SubscriptionsSubmitButton";
 import {useDispatch, useSelector} from "react-redux";
 import {showManageSubscriptions} from "../../../redux/popups/action";
 import {useEffect, useState} from "react";
 import {changeLocalUserSubscriptions} from "../../../redux/userSubscriptions/action";
+import SelectModal from "../../modal/SelectModal";
+import {Box} from "@chakra-ui/layout";
+import {useTranslation} from "next-i18next";
 
-
-export const ManageSubscriptions = ({t}) => {
+export const ManageSubscriptions = () => {
+  const {t} = useTranslation('common');
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state)
   const isShowSubscriptions = useSelector((state) => state.popups.isShowManageSubscriptions);
@@ -39,7 +41,6 @@ export const ManageSubscriptions = ({t}) => {
   //   }))
   // }, [])
 
-
   const inputsCheckedHandler = (e) => {
     if (e.target.id === "emailSubscript") {
       setEmailSubscript(Number(e.target.checked));
@@ -51,32 +52,29 @@ export const ManageSubscriptions = ({t}) => {
   }
 
   return (
-    <div className={`${styles.subscriptions__MainWrapper} ${isShowSubscriptions ? '' : styles.hide}`}>
-      <div className={styles.subscriptions__MainBlockWrapper}>
-        <div className={styles.subscriptions__MainBlock}>
-          <div className={styles.subscriptions__heading}>
-            <h3>{t("manageSubscriptions.heading")}</h3>
-            <div onClick={() => closeButtonHandler()} className={styles.closeButton}>
-              <div className={styles.closeOne}></div>
-              <div className={styles.closeTwo}></div>
-            </div>
-          </div>
-          <SubscriptionsInputsContainer
-            inputsCheckedHandler={inputsCheckedHandler}
-            emailSubscript={emailSubscript}
-            smsSubscript={smsSubscript}
-            notifySubscript={notifySubscript}
-            userInfo={userInfo} t={t}
-          />
-        </div>
-        <SubscriptionsSubmitButton
+    <SelectModal
+      isOpen={isShowSubscriptions}
+      width={430}
+      headerHeight={70}
+      onClose={closeButtonHandler}
+      title={t("manageSubscriptions.heading")}
+      footer={<SubscriptionsSubmitButton
+        emailSubscript={emailSubscript}
+        smsSubscript={smsSubscript}
+        notifySubscript={notifySubscript}
+        userInfo={userInfo}
+        t={t}
+      />}
+    >
+      <Box pb={4}>
+        <SubscriptionsInputsContainer
+          inputsCheckedHandler={inputsCheckedHandler}
           emailSubscript={emailSubscript}
           smsSubscript={smsSubscript}
           notifySubscript={notifySubscript}
-          userInfo={userInfo}
-          t={t}
+          userInfo={userInfo} t={t}
         />
-      </div>
-    </div>
+      </Box>
+    </SelectModal>
   )
 }

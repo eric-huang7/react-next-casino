@@ -132,7 +132,7 @@
 
     }
 
-    & input {
+    & input, & .input {
       height: 51px;
               //6vh;
               //51px;
@@ -151,7 +151,7 @@
               //20px;
       padding-left: 15px;
     }
-    & .currencyInput {
+    & .currencyInput, & .input {
       margin-bottom: 0px;
     }
     & input:focus {
