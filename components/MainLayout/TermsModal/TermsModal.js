@@ -1,12 +1,10 @@
-import styles from '../../../styles/TermsModal.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {showTermsModal} from "../../../redux/popups/action";
-import useWindowScroll from "../../../hooks/useWindowScroll";
 import {useTranslation} from "next-i18next";
+import {showTermsModal} from "../../../redux/popups/action";
+import LightModal from "../../modal/LightModal";
 
 export const TermsModal = () => {
-  const { t } = useTranslation('termsAndConditions');
-  let scrollHeight = useWindowScroll();
+  const {t} = useTranslation('termsAndConditions');
   const dispatch = useDispatch();
   const isShowTermsModal = useSelector(({popups}) => popups?.isShowTermsModal);
 
@@ -14,27 +12,13 @@ export const TermsModal = () => {
     dispatch(showTermsModal(false));
   }
 
-  const getCloseButton = (dark = false) => <div
-    className={styles.termsCloseButton}
-    onClick={closeModal}
-  >
-    <img src={`/assets/icons/close-icon${dark ? "-dark" : ""}.svg`} alt=""/>
-  </div>
-
-  if (!isShowTermsModal) return null
-
   return (
-    <div className={`${styles.termsMainWrapper}`}>
-        <div className={`${styles.termsMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-          <div className={styles.termsHeadingBlock}>
-            <h3 className={styles.termsHeading}>{t("heading")}</h3>
-            {getCloseButton(true)}
-          </div>
-          <div className={styles.termsBody}>
-            <div dangerouslySetInnerHTML={{ __html: t('text') }}/>
-          </div>
-          {/*<div className={styles.termsFooter}/>*/}
-        </div>
-    </div>
+    <LightModal
+      isOpen={isShowTermsModal}
+      onClose={closeModal}
+      title={t('heading')}
+    >
+      <div dangerouslySetInnerHTML={{__html: t('text')}}/>
+    </LightModal>
   )
 }

@@ -166,11 +166,11 @@ export const AccountMainLayout = ({ t, children }) => {
               <></>
           }
           <MobileSideMenu t={t} userInform={userInfo}/>
-          {isShowModal.isShowTermsModal ?
-            <ErrorEmpty>
-              <TermsModal />
-            </ErrorEmpty>
-            : <></>}
+
+          {isShowModal.isShowTermsModal && <ErrorEmpty>
+            <TermsModal />
+          </ErrorEmpty>}
+
           <div className={styles.myAccountContainer}>
             <div className={styles.accountInnerContainer}>
               <SideMenu userInform={userInfo} t={t}/>
