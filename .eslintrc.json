@@ -1,11 +1,17 @@
 {
-  "extends": "next",
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["next", "prettier"],
+  "plugins": ["react"],
   "overrides": [
     {
       "files": ["*.js", "*.jsx"],
       "rules": {
         "@next/next/no-img-element" : "off",
-        "react-hooks/exhaustive-deps": "off"
+        "react-hooks/exhaustive-deps": "off",
+        "@next/next/no-document-import-in-page": "off"
       }
     }
   ]
