@@ -16,7 +16,7 @@ import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryp
 import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
 import { RegisterSignup } from '../MainLayout/RegisterSignup/RegisterSignup'
-import { LogIn } from '../MainLayout/LogIn/LogIn'
+import { LogIn } from '../MainLayout/LogIn'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { ManageSubscriptions } from '../MainLayout/ManageSubscriptions/ManageSubscriptions'
 import { TournamentModalDetails } from '../MainLayout/TournamentSidebar/TournamentModalDetails/TournamentModalDetails'
@@ -230,7 +230,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         />
       </ErrorEmpty>}
 
-      {!userInfo.isAuthenticated && <ErrorEmpty>
+      {!userInfo.isAuthenticated && logInShow && <ErrorEmpty>
         <LogIn
           isShow={logInShow}
         />

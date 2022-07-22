@@ -15,7 +15,7 @@ import MenuModal from "../MenuModal/MenuModal";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const [isMenuActive, setIsMenuActive] = useState(true);
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   const userLogin = useSelector((userInfo) => userInfo.authInfo);
   let userLogined = userLogin.isAuthenticated;
