@@ -1,9 +1,11 @@
-import styles from '../../../styles/RegisterSignup.module.scss'
-
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {useDisclosure} from "@chakra-ui/hooks";
+import Link from "next/link";
+import {useTranslation} from "next-i18next";
+import {Box, HStack} from "@chakra-ui/layout";
+import {Checkbox} from "@chakra-ui/checkbox";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {hideRegister, showRegister} from "../../../redux/ui/action";
 import {showLogin} from "../../../redux/ui/action";
@@ -12,39 +14,22 @@ import {signUp} from "../../../redux/user/action";
 import {auth_type_id, siteID} from "../../../envs/envsForFetching";
 import {backButtonShouldDo} from "../../../redux/popups/action";
 import {setUserRegisterBonusCode} from "../../../redux/userBonus/action";
-import {EmailInput} from "./SignupContainerComponents/EmailInput";
-import {UserNameInput} from "./SignupContainerComponents/UserNameInput";
-import {PasswordContainer} from "./SignupContainerComponents/PasswordContainer";
-import {CurrencyInput} from "./SignupContainerComponents/CurrencyInput";
-import {BonusCodeInput} from "./SignupContainerComponents/BonusCodeInput";
-import {TermsCheckContainer} from "./SignupContainerComponents/TermsCheckContainer";
-import {LoginButton} from "./SignupContainerComponents/LoginButton";
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
-import {useTranslation} from "next-i18next";
-import {Box} from "@chakra-ui/layout";
 import SelectModal from "../../modal/SelectModal";
 import SubmitButton from "../../buttons/SubmitButton";
 import ModalTopHeader from "../../modal/ModalTopHeader";
-
+import InputField from "../../form/InputField";
+import {chakra, Text, VStack} from "@chakra-ui/react";
+import LinkButton from "../../buttons/LinkButton";
+import FloatingLabelField from "../../form/FloatingLabelField";
+import CurrencyIcon from "../../currency/CurrencyIcon";
+import InputButton from "../../buttons/InputButton";
+import FieldLabel from "../../form/FieldLabel";
 
 export const RegisterSignup = ({isShow}) => {
   const {t} = useTranslation('common');
-  const {register, handleSubmit, formState: {errors}, reset} = useForm({
-    resolver: yupResolver(schemaRegister),
-  });
-
-  const dispatch = useDispatch();
-  const {isOpen, onOpen, onClose} = useDisclosure()
-  const ui = useSelector((state) => state.ui)
-  const userData = useSelector((userData) => userData.authInfo);
-  const userCurrency = useSelector((store) => store.userFinance.userCurrencyData);
-  const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
-
-
   const [activeBonus, setActiveBonus] = useState(false);
-  const [isPassShow, setIsPassShow] = useState(false);
-  const [passwordInputType, setPasswordInputType] = useState('password');
   const [usernameData, setUsernameData] = useState('');
   const [passwordData, setPasswordData] = useState('');
   const [userEmailData, setUserEmailData] = useState('');
@@ -53,6 +38,16 @@ export const RegisterSignup = ({isShow}) => {
   const [youAgreeError, setYouAgreeError] = useState('');
   const [registerError, setRegisterError] = useState('');
 
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+    resolver: yupResolver(schemaRegister),
+  });
+
+  const dispatch = useDispatch();
+  const {isOpen, onOpen, onClose} = useDisclosure()
+  const userData = useSelector((userData) => userData.authInfo);
+  const userCurrency = useSelector((store) => store.userFinance.userCurrencyData);
+  const userRegisterBonusCode = useSelector((store) => store.userBonus.bonus_code);
+  const userInfo = useSelector((userInfo) => userInfo.authInfo);
 
   if (userData.isAuthenticated) {
     dispatch(showRegister(false));
@@ -62,7 +57,7 @@ export const RegisterSignup = ({isShow}) => {
   }
 
   function registerCloseButtonHandler() {
-    if (ui.isShowRegister) {
+    if (isShow) {
       dispatch(showRegister(false));
     } else {
       dispatch(showRegister(true))
@@ -89,16 +84,6 @@ export const RegisterSignup = ({isShow}) => {
     dispatch(backButtonShouldDo(hideCurrencyShowRegisterModal));
   }
 
-  function showPass() {
-    if (isPassShow) {
-      setIsPassShow(false);
-      setPasswordInputType("password");
-    } else {
-      setIsPassShow(true);
-      setPasswordInputType('text');
-    }
-  }
-
   function showBonusInput() {
     if (activeBonus) {
       setActiveBonus(false);
@@ -122,7 +107,6 @@ export const RegisterSignup = ({isShow}) => {
   }
 
   const onSubmitHandler = (data) => {
-
     if (youAgree) {
       registerUser(data.username, data.password, data.email);
       // reset();
@@ -131,20 +115,18 @@ export const RegisterSignup = ({isShow}) => {
     }
   }
 
-  const userInfo = useSelector((userInfo) => userInfo.authInfo);
-
   useEffect(() => {
     reset();
     setYouAgreeError('');
     setRegisterError('');
     setActiveBonus(false);
-    if (ui.isShowRegister) {
+    if (isShow) {
       setBonusCodedata(userRegisterBonusCode ? userRegisterBonusCode : '');
     } else {
       setBonusCodedata('');
       dispatch(setUserRegisterBonusCode(null));
     }
-  }, [ui.isShowRegister]);
+  }, [isShow]);
 
   useEffect(() => {
     if (userInfo.registerError) {
@@ -162,6 +144,26 @@ export const RegisterSignup = ({isShow}) => {
     hideCurrencyShowRegisterModal()
   }
 
+  const onChangeEmail = (e) => {
+    setUserEmailData(e.target.value);
+    setRegisterError('');
+  }
+
+  const onChangeUsername = (e) => {
+    setUsernameData(e.target.value);
+    setRegisterError('');
+  }
+
+  const onChangePassword = (e) => {
+    setPasswordData(e.target.value);
+    setRegisterError('');
+  }
+
+  const onChangeBonus = (e) => {
+    setBonusCodedata(e.target.value);
+    setRegisterError('');
+  }
+
   return (
     <>
       <SelectModal
@@ -171,71 +173,103 @@ export const RegisterSignup = ({isShow}) => {
         onClose={registerCloseButtonHandler}
         title={t('registrationForm.innerHeading')}
         footer={<SubmitButton title={t('registrationForm.signUpButton')} form="register_form"/>}
-        before={<ModalTopHeader title={t('loginForm.mainHeading')} fontSize="33px"/>}
+        before={<ModalTopHeader title={t('loginForm.mainHeading')} fontSize="33px"
+                                top={{base: "-100px", lg: "-60px"}}/>}
         mt="200px"
         scrollBehavior="outside"
       >
-        <Box pb={4}>
-          <div className={styles.registerInnerBlockForms}>
-            <form
-              id={'register_form'}
-              onSubmit={handleSubmit(onSubmitHandler)}
-            >
-              <EmailInput
-                errors={errors}
-                register={register}
-                setUserEmailData={setUsernameData}
-              />
+        <VStack p="20px 34px 10px">
+          <chakra.form
+            id={'register_form'}
+            onSubmit={handleSubmit(onSubmitHandler)}
+            fontFamily="Verdana"
+            w="100%"
+          >
+            <InputField
+              label={t('registrationForm.emailInput')}
+              error={t(errors?.email?.message)}
+              onInput={onChangeEmail}
+              validation={{...register("email")}}
+              value={userEmailData}
+              id={'emailIn'}
+            />
 
-              <UserNameInput
-                register={register}
-                errors={errors}
-                setUsernameData={setUsernameData}
-              />
+            <InputField
+              label={t('registrationForm.usernameInput')}
+              error={t(errors?.username?.message)}
+              onInput={onChangeUsername}
+              validation={{...register("username")}}
+              value={usernameData}
+              id={'usernameIn'}
+            />
 
-              <PasswordContainer
-                errors={errors}
-                register={register}
-                showPass={showPass}
-                passwordInputType={passwordInputType}
-                setPasswordData={setPasswordData}
-              />
+            <InputField
+              label={t('registrationForm.passwordInput')}
+              error={t(errors?.password?.message)}
+              onInput={onChangePassword}
+              validation={{...register("password")}}
+              value={passwordData}
+              id={'passwordLogIn'}
+              type="password"
+            />
 
-              <CurrencyInput
-                showCurrencyBlock={showCurrencyBlock}
-                userCurrency={userCurrency}/>
+            <FieldLabel>{t('registrationForm.currencyInput')}</FieldLabel>
+            <InputButton onClick={showCurrencyBlock} mb={1}>
+              <HStack>
+                <CurrencyIcon id={userCurrency?.abbreviation} size={8}/>
+                <Text>{userCurrency?.abbreviation}</Text>
+              </HStack>
+            </InputButton>
 
-              <BonusCodeInput
-                activeBonus={activeBonus}
-                bonusCodeData={bonusCodeData}
-                setBonusCodedata={setBonusCodedata}
-                showBonusInput={showBonusInput}
-              />
+            {!activeBonus && <HStack justifyContent="center">
+              <LinkButton onClick={() => showBonusInput()}>{t('registrationForm.iHaveBonusHeading')}</LinkButton>
+            </HStack>}
+            {activeBonus && <FloatingLabelField
+              label={t('registrationForm.bonusCodeInput')}
+              placeholder=" "
+              onInput={onChangeBonus}
+              value={bonusCodeData}
+              id={'bonusIn'}
+              mt={7}
+              color="primary.500"
+            />}
 
-              <TermsCheckContainer
-                registerCloseButtonHandler={registerCloseButtonHandler}
-                youAgreeHandler={youAgreeHandler}
-              />
-              <span className={styles.errorMessageYouAgree}>{youAgreeError}</span>
-              <span className={styles.errorMessageRegister}>{registerError}</span>
-            </form>
-            <LoginButton openLogin={openLogin}/>
-          </div>
-        </Box>
+            <HStack fontSize={10} mt={4}>
+              <Checkbox
+                size="lg"
+                colorScheme='primary'
+                onChange={youAgreeHandler}
+              >
+                <Text fontSize="10px">{t('registrationForm.iReadAndAgree')}</Text>
+              </Checkbox>
+              <Link href={'/termsAndConditions'}>
+                <chakra.a textDecoration="underline" onClick={registerCloseButtonHandler}>
+                  {t('registrationForm.termsOfUseLink')}
+                </chakra.a>
+              </Link>
+            </HStack>
+
+            {youAgreeError && <Box fontSize={12} my={1} color="red.500">{youAgreeError}</Box>}
+            {registerError && <Box fontSize={12} my={1} color="red.500">{registerError}</Box>}
+          </chakra.form>
+
+          <HStack>
+            <Text color="grey.600" fontFamily="Verdana" fontSize={15}>{t('registrationForm.alreadyRegistered')}</Text>
+            <LinkButton onClick={openLogin}>{t('registrationForm.logInLink')}</LinkButton>
+          </HStack>
+        </VStack>
       </SelectModal>
 
       <SelectCurrencyModal
         isOpen={isOpen}
         onClose={hideCurrencyShowRegisterModal}
         onSelect={onSelectCurrency}
-        onBack={hideCurrencyShowRegisterModal}
       />
     </>
   )
 }
 
 const setErrorHelper = (userInfo, setRegisterError, reset, t, bonusCodeData) => {
-
   if (userInfo.registerError.data.error_code === "DUPLICATE_USER_NAME") {
     reset();
     setRegisterError(t("registrationForm.errors.duplicateUsername"));
@@ -249,5 +283,4 @@ const setErrorHelper = (userInfo, setRegisterError, reset, t, bonusCodeData) => 
   } else {
     setRegisterError(userInfo.registerError.data.extra_error_info.message);
   }
-
 }

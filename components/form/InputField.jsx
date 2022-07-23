@@ -4,11 +4,11 @@ import {InputGroup, InputRightElement} from "@chakra-ui/input";
 import {ViewIcon, ViewOffIcon} from "@chakra-ui/icons";
 import {useState} from "react";
 
-const InputField = ({value, error, label, onInput, validation, id, type = "text", ...props}) => {
+const InputField = ({value, error, label, onInput, validation, id, placeholder, type = "text", ...props}) => {
   const [showPass, setShowPass] = useState(false);
 
   return (
-    <FormControl mb={4} isInvalid={!!error} fontFamily="Verdana">
+    <FormControl mb={4} isInvalid={!!error} fontFamily="Verdana" {...props}>
       <FormLabel htmlFor={id} mb="5px" fontSize="14px" color="text.250">{label}</FormLabel>
       <InputGroup>
         <Input
@@ -18,12 +18,14 @@ const InputField = ({value, error, label, onInput, validation, id, type = "text"
           type={showPass && type === "password" ? "text" : type}
           height="51px"
           fontSize="15px"
-          border="1px solid #babbbc"
+          border="1px solid"
+          borderColor="grey.300"
           borderRadius={0}
           bg="grey.100"
           outline="none"
           px={4}
           focusBorderColor="primary.500"
+          placeholder={placeholder}
           id={id}
         />
         {type === "password" && <InputRightElement pt="11px">

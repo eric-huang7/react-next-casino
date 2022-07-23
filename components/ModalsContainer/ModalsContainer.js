@@ -224,7 +224,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         <PlaySafeMainWrapper/>
       </ErrorEmpty>}
 
-      {!userInfo.isAuthenticated && <ErrorEmpty>
+      {!userInfo.isAuthenticated && registerShow && <ErrorEmpty>
         <RegisterSignup
           isShow={registerShow}
         />

@@ -2,7 +2,7 @@ import {Box, Text} from "@chakra-ui/layout";
 import {useRouter} from "next/router";
 
 const ModalTopHeader = ({
-  title, fontSize = {base: "30px", lg: "40px"}, top = {base: "-120px", lg: "-80px"}
+  width = '430px', title, fontSize = {base: "30px", lg: "40px"}, top = {base: "-120px", lg: "-80px"}
 }) => {
   const router = useRouter();
 
@@ -10,8 +10,8 @@ const ModalTopHeader = ({
     <Box
       position="absolute"
       top={top}
-      left={{base: 0, lg: "calc((430px - 100vw) / 2)"}}
-      width={{base: "100%", lg: "100vw"}}
+      left={{base: 0, lg: `calc((${width} - 70vw) / 2)`, xl: `calc((${width} - 50vw) / 2)`}}
+      width={{base: "100%", lg: '70vw', xl: '50vw'}}
     >
       <Text
         fontFamily={router.locale === 'ru' ? "Arial" : "Lithograph"}
