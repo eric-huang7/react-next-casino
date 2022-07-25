@@ -49,7 +49,10 @@ const theme = extendTheme({
       500: "#99cc33"
     },
     accent: {
-      500: "#d7a33c"
+      400: "#FFC353",
+      500: "#d7a33c",
+      600: "#C06313",
+      900: "#481500"
     },
     text: {
       100: "#f7fafc",

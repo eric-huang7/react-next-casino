@@ -10,6 +10,8 @@ import {get_reward_point_url, reward_point_url} from "../../../redux/url/url";
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {Modal, ModalContent, ModalBody, ModalOverlay} from "@chakra-ui/react";
 import CurrencyIcon from "../../currency/CurrencyIcon";
+import {Box, HStack, Text, VStack} from "@chakra-ui/layout";
+import CloseButton from "../../buttons/CloseButton";
 
 export const RedeemPage = ({t}) => {
   let scrollHeight = useWindowScroll();
@@ -111,13 +113,6 @@ export const RedeemPage = ({t}) => {
     })
   }
 
-  const getCloseButton = (dark = false) => <div
-    className={styles.redeemCloseButton}
-    onClick={closeModal}
-  >
-    <img src={`/assets/icons/close-icon${dark ? '-dark' : ''}.svg`} alt=""/>
-  </div>
-
   return (
     <>
       <Modal
@@ -127,7 +122,7 @@ export const RedeemPage = ({t}) => {
         scrollBehavior="outside"
       >
         <ModalOverlay/>
-        <ModalContent w="500px">
+        <ModalContent w="500px" maxW="500px" minW="340px">
           <ModalBody p={0}>
             {showNotification && (
               <div className={styles.redeemNotificationContainer}>
@@ -135,7 +130,7 @@ export const RedeemPage = ({t}) => {
                   <div className={styles.redeemHeading}>
                     {t("redeemPage.congratulation")}
                   </div>
-                  {getCloseButton()}
+                  <CloseButton onClick={closeModal} />
                 </div>
                 <div className={styles.redeemNotificationBody}>
                   <div className={styles.redeemNotificationTitle1}>
@@ -158,32 +153,66 @@ export const RedeemPage = ({t}) => {
               </div>
             )}
             {!showNotification && (
-              <div className={`${styles.redeemMainContainer} ${scrollHeight > 100 ? styles.marginNull : ''}`}>
-                <div className={styles.redeemHeadingBlock}>
-                  <h3 className={styles.redeemHeading}>{t("redeemPage.heading")}</h3>
-                  {getCloseButton(true)}
-                </div>
-                <div className={styles.redeemBody}>
-                  <div className={styles.redeemTitle}>
-                    {t('redeemPage.title1')}{" "}<b>1000{" "}{t('redeemPage.points')}</b>
-                  </div>
-                  <div className={styles.redeemTitle1}>
-                    {t('redeemPage.title2')}
-                  </div>
-                  <div className={styles.redeemTitle2}>
-                    {pointBalance?.toLocaleString()} {t('redeemPage.points')}
-                  </div>
-                  <div className={styles.redeemTitle3}>
-                    {t('redeemPage.title3')}
-                  </div>
-                  <div className={styles.redeemTitle4}>
-                    <b>$1</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
-                  </div>
-                  <div className={styles.divider}></div>
+              <VStack
+                w="100%"
+                minHeight={100}
+                bg="url('/assets/img/redeemPage/redeem-bg.jpg')"
+                spacing={0}
+              >
+                <HStack
+                  w="100%"
+                  h="79px"
+                  justifyContent="center"
+                  alignItems="center"
+                  position="relative"
+                  bg="url('/assets/img/redeemPage/redeem-header-bg.jpg')"
+                >
+                  <Text
+                    casing="uppercase"
+                    fontSize={28}
+                    fontWeight={600}
+                    lineHeight="79px"
+                    color="accent.900"
+                    fontFamily="Lithograph"
+                    sx={{
+                      "-webkit-text-stroke-width": "1px",
+                      "-webkit-text-stroke-color": "white"
+                    }}
+                  >
+                    {t("redeemPage.heading")}
+                  </Text>
+                  <CloseButton dark top="30px" onClick={closeModal} />
+                </HStack>
 
-                  <div className={styles.redeemTitle5}>
+                <VStack
+                  spacing={0}
+                  p="63px 16px 35px"
+                  fontFamily="Lithograph"
+                  textTransform="uppercase"
+                  color="white"
+                  className={styles.redeemBody}
+                >
+                  <Text fontSize={13} mt="17px">
+                    {t('redeemPage.title1')}{" "}<b>1000{" "}{t('redeemPage.points')}</b>
+                  </Text>
+                  <Text fontSize={20} mb="22px" fontWeight={600}>
+                    {t('redeemPage.title2')}
+                  </Text>
+                  <Text fontSize={34} mb="30px" fontWeight={600} color="accent.400">
+                    {pointBalance?.toLocaleString()} {t('redeemPage.points')}
+                  </Text>
+                  <Text fontSize={16} fontWeight={600}>
+                    {t('redeemPage.title3')}
+                  </Text>
+                  <Text  fontSize={16} pb="15px">
+                    <b>$1</b>{" "}{t('redeemPage.title4')}{" "}<b>100{" "}{t('redeemPage.points')}</b>
+                  </Text>
+
+                  <Box w={298} h="2px" bg="accent.600" margin="auto"/>
+
+                  <Text fontSize={17} pt="25px" fontWeight={600} textAlign="center">
                     {t('redeemPage.title7')}
-                  </div>
+                  </Text>
 
                   <div className={styles.balanceList}>
                     <div onClick={() => setIsShowBalanceList(true)} className={styles.pointer}>
@@ -228,9 +257,10 @@ export const RedeemPage = ({t}) => {
                       </div>
                     </div>
                   )}
-                </div>
-                <div className={styles.redeemFooter}/>
-              </div>
+                </VStack>
+
+                <Box w="100%" h="36px" bg="url('/assets/img/redeemPage/redeem-footer-bg.jpg')" />
+              </VStack>
             )}
           </ModalBody>
         </ModalContent>
