@@ -11,7 +11,7 @@ import { setUserCurrencySwitcher } from "../../../redux/userFinance/action";
 import Link from "next/link";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import { AiOutlineMenu } from "react-icons/ai";
-import MenuModal from "../MenuModal/MenuModal";
+import MenuModal from "../../modals/MenuModal";
 
 export const Header = () => {
   const dispatch = useDispatch();

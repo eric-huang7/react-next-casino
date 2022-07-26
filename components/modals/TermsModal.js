@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "next-i18next";
-import {showTermsModal} from "../../../redux/popups/action";
-import LightModal from "../../modal/LightModal";
+import {showTermsModal} from "../../redux/popups/action";
+import LightModal from "../modal/LightModal";
 
 export const TermsModal = () => {
   const {t} = useTranslation('termsAndConditions');

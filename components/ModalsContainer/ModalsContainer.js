@@ -15,8 +15,8 @@ import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWr
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
 import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
-import { RegisterSignup } from '../MainLayout/RegisterSignup/RegisterSignup'
-import { LogIn } from '../MainLayout/LogIn'
+import { RegisterSignup } from '../modals/RegisterSignup'
+import { LogIn } from '../modals/LogIn'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { ManageSubscriptions } from '../MainLayout/ManageSubscriptions/ManageSubscriptions'
 import { TournamentModalDetails } from '../MainLayout/TournamentSidebar/TournamentModalDetails/TournamentModalDetails'
@@ -27,8 +27,8 @@ import { EmailValidationError } from '../ForgotPasswordComponents/EmailValidatio
 import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutContainer'
 import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
-import {TournamentAwardModal} from "../MainLayout/TournamentAwardModal/TournamentAwardModal";
+import RedeemPage from "../modals/RedeemPage/RedeemPage";
+import TournamentAwardModal from "../modals/TournamentAwardModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -256,15 +256,11 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>
-        <RedeemPage
-          t={t}
-        />
+        <RedeemPage />
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>
-        <TournamentAwardModal
-          t={t}
-        />
+        <TournamentAwardModal/>
       </ErrorEmpty>}
     </>
   )

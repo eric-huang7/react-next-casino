@@ -22,7 +22,7 @@ import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryp
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import {MessageContainer} from "../MessageContainer/MessageContainer";
-import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
+import {TermsModal} from "../modals/TermsModal";
 
 export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()

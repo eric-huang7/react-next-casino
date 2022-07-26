@@ -11,11 +11,13 @@ import CurrencyIcon from "../../currency/CurrencyIcon";
 import {Box, HStack, Text, VStack} from "@chakra-ui/layout";
 import CloseButton from "../../buttons/CloseButton";
 import {Button} from "@chakra-ui/button";
+import {useTranslation} from "next-i18next";
 
 const Title = ({children, ...props}) =>
   <Text fontSize={17} pt="25px" fontWeight={600} textAlign="center" {...props}>{children}</Text>
 
-export const RedeemPage = ({t}) => {
+const RedeemPage = () => {
+  const { t } = useTranslation('common')
   const dispatch = useDispatch();
   const isShowRedeemModal = useSelector(({popups}) => popups?.isShowRedeemModal);
   const userData = useSelector((store) => store.authInfo);
@@ -345,3 +347,5 @@ export const RedeemPage = ({t}) => {
     </>
   )
 }
+
+export default RedeemPage;
