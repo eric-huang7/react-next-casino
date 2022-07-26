@@ -1,7 +1,5 @@
-import styles from '../../../styles/HomePage/RedeemPage.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {showRedeemModal} from "../../../redux/popups/action";
-import useWindowScroll from "../../../hooks/useWindowScroll";
 import {RedeemInput} from "./RedeemInput";
 import {useEffect, useState} from "react";
 import {currencyFinder} from "../../../helpers/currencyFinder";
@@ -12,9 +10,12 @@ import {Modal, ModalContent, ModalBody, ModalOverlay} from "@chakra-ui/react";
 import CurrencyIcon from "../../currency/CurrencyIcon";
 import {Box, HStack, Text, VStack} from "@chakra-ui/layout";
 import CloseButton from "../../buttons/CloseButton";
+import {Button} from "@chakra-ui/button";
+
+const Title = ({children, ...props}) =>
+  <Text fontSize={17} pt="25px" fontWeight={600} textAlign="center" {...props}>{children}</Text>
 
 export const RedeemPage = ({t}) => {
-  let scrollHeight = useWindowScroll();
   const dispatch = useDispatch();
   const isShowRedeemModal = useSelector(({popups}) => popups?.isShowRedeemModal);
   const userData = useSelector((store) => store.authInfo);
@@ -125,32 +126,51 @@ export const RedeemPage = ({t}) => {
         <ModalContent w="500px" maxW="500px" minW="340px">
           <ModalBody p={0}>
             {showNotification && (
-              <div className={styles.redeemNotificationContainer}>
-                <div className={styles.redeemNotificationHeading}>
-                  <div className={styles.redeemHeading}>
+              <VStack
+                w="100%"
+                minHeight={100}
+                bg="url('/assets/img/redeemPage/notification-bg.jpg')"
+                spacing={0}
+                pb="24px"
+              >
+                <HStack h="72px" bg="accent.900" w="100%" position="relative" justifyContent="center">
+                  <Text
+                    fontSize={26}
+                    fontWeight={600}
+                    color="accent.400"
+                    fontFamily="Lithograph"
+                  >
                     {t("redeemPage.congratulation")}
-                  </div>
+                  </Text>
                   <CloseButton onClick={closeModal} />
-                </div>
-                <div className={styles.redeemNotificationBody}>
-                  <div className={styles.redeemNotificationTitle1}>
+                </HStack>
+                <VStack
+                  flex={1}
+                  textAlign="center"
+                  color="white"
+                  p="20px 16px 0px"
+                  fontFamily="Lithograph"
+                  textTransform="uppercase"
+                  position="relative"
+                >
+                  <Text as="div" fontSize={22} mb="5px" fontWeight={600}>
                     {t("redeemPage.notificationTitle1")}
-                  </div>
-                  <div className={styles.redeemNotificationPoints}>
+                  </Text>
+                  <Text as="div" fontSize={34} mb="5px" fontWeight={600} color="accent.400">
                     {pointBalance}{" "}{t("redeemPage.points")}
-                  </div>
-                  <div className={styles.redeemNotificationFor}>
+                  </Text>
+                  <Text as="div" fontSize={16} mb="11px" fontWeight={400}>
                     {t("redeemPage.for")}{" "}{rewardPoint || 0}{activeCurrency?.abbreviation}
-                  </div>
+                  </Text>
 
-                  <div className={styles.redeemNotificationTitle2}>
+                  <Text as="div" fontSize={20} fontWeight={600}>
                     {t("redeemPage.notificationTitle2")}
-                  </div>
-                  <div className={styles.redeemNotificationTitle3}>
+                  </Text>
+                  <Text as="div" fontSize={20} fontWeight={600} color="accent.400">
                     {userData?.user?.user?.username}
-                  </div>
-                </div>
-              </div>
+                  </Text>
+                </VStack>
+              </VStack>
             )}
             {!showNotification && (
               <VStack
@@ -190,7 +210,6 @@ export const RedeemPage = ({t}) => {
                   fontFamily="Lithograph"
                   textTransform="uppercase"
                   color="white"
-                  className={styles.redeemBody}
                 >
                   <Text fontSize={13} mt="17px">
                     {t('redeemPage.title1')}{" "}<b>1000{" "}{t('redeemPage.points')}</b>
@@ -210,52 +229,104 @@ export const RedeemPage = ({t}) => {
 
                   <Box w={298} h="2px" bg="accent.600" margin="auto"/>
 
-                  <Text fontSize={17} pt="25px" fontWeight={600} textAlign="center">
+                  <Title>
                     {t('redeemPage.title7')}
-                  </Text>
+                  </Title>
 
-                  <div className={styles.balanceList}>
-                    <div onClick={() => setIsShowBalanceList(true)} className={styles.pointer}>
-                      <RedeemInput mt="30px" mb="30px">
-                        <CurrencyIcon id={activeCurrency?.abbreviation} size={6} mr={2}/>
-                        {activeCurrency?.name}
-                      </RedeemInput>
-                    </div>
-                  </div>
-                  <div className={styles.redeemTitle5}>
+                  <Box onClick={() => setIsShowBalanceList(true)} cursor="pointer">
+                    <RedeemInput mt="30px" mb="30px">
+                      <CurrencyIcon id={activeCurrency?.abbreviation} size={6}/>
+                      <Text>{activeCurrency?.name}</Text>
+                    </RedeemInput>
+                  </Box>
+
+                  <Title>
                     {t('redeemPage.title5')}
-                  </div>
-                  <div className={styles.redeemTotalButtons}>
+                  </Title>
+                  <HStack spacing={4}>
                     {[25, 50, 75, 100].map((item, index) => (
-                      <div key={index} onClick={() => setPointBalance(Math.round(item * maxPointBalance / 100))}>
-                        {item}%
-                      </div>
+                      <Box
+                        key={index}
+                        color="accent.400"
+                        cursor="pointer"
+                        my={0}
+                        // mx="8px"
+                        borderBottom="2px solid"
+                        borderColor="accent.400"
+                        onClick={() => setPointBalance(Math.round(item * maxPointBalance / 100))}
+                      >
+                        <Title pt={0}>
+                          {item}%
+                        </Title>
+                      </Box>
                     ))}
-                  </div>
+                  </HStack>
 
-                  <RedeemInput mb="30px" value={pointBalance} onChange={onChangePoints}/>
+                  <RedeemInput mb="5px" value={pointBalance} onChange={onChangePoints}/>
 
-                  <div className={styles.redeemTitle5}>
+                  <Title>
                     {t('redeemPage.title6')}
-                  </div>
+                  </Title>
 
                   <RedeemInput mb="30px">
                     <span>{rewardPoint}</span>
                   </RedeemInput>
 
-                  <button className={styles.button} onClick={submit}>
-                    {t('redeemPage.button')}
-                  </button>
+                  <Button
+                    p="10px 22px"
+                    h="52px"
+                    bg="linear-gradient(0deg, #FCDC8F, #FCDC8F), #FCDC8F"
+                    _hover={{
+                      bg: "linear-gradient(0deg, #FCDC8F, #FCDC8F), #FCDC8F"
+                    }}
+                    border="6px solid"
+                    borderColor="accent.800"
+                    borderTop="6px solid"
+                    borderTopColor="accent.100"
+                    borderRadius={0}
+                    onClick={submit}
+                  >
+                    <Text
+                      as="div"
+                      fontSize={24}
+                      fontWeight={600}
+                      fontFamily="Lithograph"
+                      textTransform="uppercase"
+                      color="accent.900"
+                    >
+                      {t('redeemPage.button')}
+                    </Text>
+                  </Button>
 
                   {error && (
-                    <div className={styles.redeemNotificationBody}>
-                      <div className={styles.redeemNotificationPoints}>
+                    <Box
+                      flex={1}
+                      textAlign="center"
+                      color="white"
+                      p="20px 16px 0px"
+                      fontFamily="Lithograph"
+                      textTransform="uppercase"
+                      position="relative"
+                    >
+                      <Text
+                        as="div"
+                        fontSize="34px"
+                        fontWeight={600}
+                        mb="5px"
+                        color="accent.400"
+                      >
                         {t("redeemPage.notificationSorry")}
-                      </div>
-                      <div className={styles.redeemError}>
+                      </Text>
+                      <Text
+                        as="div"
+                        fontSize="14px"
+                        fontWeight={600}
+                        mt="11px"
+                        textAlign="center"
+                      >
                         {t("redeemPage.notificationError")}
-                      </div>
-                    </div>
+                      </Text>
+                    </Box>
                   )}
                 </VStack>
 
