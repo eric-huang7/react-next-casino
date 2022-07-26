@@ -11,7 +11,7 @@ import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
 
 const SelectModal = ({
-  isOpen, onClose, onBack, title, header, wrapperRef, children, footer, width = 320, height, headerHeight = 56, before,
+  isOpen, onClose, onBack, title, header, children, footer, width = 320, height, headerHeight = 56, before,
   ...props
 }) => (
   <Modal
@@ -25,9 +25,8 @@ const SelectModal = ({
       w={{base: "90%", lg: width}}
       minW={{base: "90%", lg: width}}
       maxW={{base: "90%", lg: "80%"}}
-      h="fit-content"
-      minH={height || "200px"}
-      ref={wrapperRef}
+      h={height ?? "fit-content"}
+      minH={height ?? "200px"}
       bg="transparent"
       {...props}
     >
@@ -65,7 +64,7 @@ const SelectModal = ({
         />}
       </ModalHeader>
       <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}/>
-      <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white">
+      <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white" h="100%" display="block">
         {children}
       </ModalBody>
       {footer && <ModalFooter pt={5} px={0} pb={0}>

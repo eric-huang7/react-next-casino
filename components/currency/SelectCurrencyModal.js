@@ -16,8 +16,6 @@ import SelectModal from "../modal/SelectModal";
 export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
   const {t} = useTranslation("common")
   const dispatch = useDispatch()
-  const wrapperRef = useRef();
-  const [height, setHeight] = useState(0)
   const [cryptoFindArr, setCryptoFindArr] = useState([])
   const [popularFindArr, setPopularFindArr] = useState([])
   const [stableFindArr, setStableFindArr] = useState([])
@@ -49,12 +47,6 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
   useEffect(() => {
     cryptoFinder()
   }, [currencies])
-
-  useEffect(() => {
-    if (wrapperRef?.current?.offsetHeight > 0) {
-      setHeight(wrapperRef?.current?.offsetHeight)
-    }
-  }, [wrapperRef?.current?.offsetHeight, height])
 
   const cryptoFinder = (value = '') => {
     let searchReg = new RegExp(value.toLowerCase().trim())
@@ -91,11 +83,11 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
     isOpen={isOpen}
     onClose={onClose}
     onBack={onBack}
-    wrapperRef={wrapperRef}
+    height="60%"
     title={t('selectCurrency.heading')}
   >
     <ErrorText>
-      {isLoading || !height
+      {isLoading
         ? <LoadingComponent t={t}/>
         : <CurrencySelector
           t={t}
@@ -103,7 +95,6 @@ export const SelectCurrencyModal = ({ isOpen, onClose, onBack, onSelect }) => {
           backButtonClickHandler={onBack}
           onSelect={onSelect}
           userAuth={userAuth.isAuthenticated}
-          parentHeight={height}
           onFilter={cryptoFinder}
         />
       }
