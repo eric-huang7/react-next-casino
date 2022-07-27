@@ -1,11 +1,10 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentSidebar.module.scss'
-
+import { HStack } from "@chakra-ui/react"
 import { Timer } from './Timer'
 import { DepositRegistrationButton } from './DepositRegistrationButton'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setActiveTournaments } from '../../../../redux//tournaments/action'
-import { DetailsButton } from './DetailsButton'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo, showDetails }) => {
@@ -23,7 +22,11 @@ export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo,
   } else {
     return tournaments?.tournaments?.results?.length > 0 ? (
       <div className={styles.buttonsWrapper}>
-        <div className={styles.timeDetails}>
+        <HStack
+          alignItems="center"
+          justifyContent="space-between"
+          p="15px 16px 18px 16px"
+        >
           <ErrorEmpty>
             <Timer
               t={t}
@@ -31,11 +34,13 @@ export const ButtonsBlock = ({ t, tournaments, sliderPosition, router, userInfo,
               router={router}
             />
           </ErrorEmpty>
-          <DetailsButton
-            t={t}
-            showDetails={showDetails}
-          />
-        </div>
+          <button
+            onClick={showDetails}
+            className={styles.detailsButton}
+          >
+            {t('tournaments.buttons.details')}
+          </button>
+        </HStack>
         <div className={styles.depositSignupContainer}>
           <DepositRegistrationButton
             t={t}

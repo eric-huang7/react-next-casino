@@ -1,5 +1,4 @@
 import styles from '../../../../styles/TournamentSidebar/TournamentSidebar.module.scss'
-import { PrizerItem } from './PrizerItem'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const PrizerList = ({ t, sliderPosition, tournaments }) => {
@@ -8,7 +7,7 @@ export const PrizerList = ({ t, sliderPosition, tournaments }) => {
     return <></>
   } else {
     return (
-      <div className={styles.prizerListWrapper}>
+      <div className={styles.prizerListWrapper} style={{height: 'calc(100% - 270px)'}}>
         <ol className={styles.prizerList}>
           {
             tournaments.tournaments?.results[sliderPosition]?.prizes?.map((el, index) => {
@@ -26,15 +25,14 @@ export const PrizerList = ({ t, sliderPosition, tournaments }) => {
                 : 'fs'
               return (
                 <ErrorEmpty key={`${el.id} prizes list`}>
-                  <PrizerItem
-                    key={`${el.id} prizes list`}
-                    t={t}
-                    currency={currency}
-                    moneyAward={moneyAward}
-                    nickName={nickName}
-                    points={points}
-                    index={index}
-                  />
+                  <li key={`${el.id} prizes list`} className={styles.prizerItem}>
+                    <span className={styles.number}>{index + 1}.</span>
+                    <span className={styles.name}>{nickName}</span>
+                    <span className={styles.points}>{points ? points : 'points null'}</span>
+                    <span className={styles.winAward}>{moneyAward}</span>
+                    <span className={styles.currency}>{currency}</span>
+                  </li>
+                  <hr className={styles.divider}/>
                 </ErrorEmpty>
               )
             })

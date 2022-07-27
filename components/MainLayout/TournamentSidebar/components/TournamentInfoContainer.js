@@ -1,4 +1,4 @@
-import {TournamentSliderContainer} from "../TournamentSliderContainer";
+import {TournamentSliderContainer} from "./TournamentSliderContainer";
 import {useSelector} from "react-redux";
 import {useState} from "react";
 import {PrizerList} from "./PrizerList";

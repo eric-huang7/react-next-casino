@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
-import { TournamentMainContainer } from './TournamentSidebar/TournamentMainContainer'
-import { TournamentIcon } from './TournamentIcon/TournamentIcon'
+import { TournamentIcon } from './TournamentSidebar/TournamentIcon'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
+import TournamentSidebar from "./TournamentSidebar/TournamentSidebar";
 
 const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
@@ -40,7 +40,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         <TournamentIcon
           toursref={toursref}
         />
-        <TournamentMainContainer
+        <TournamentSidebar
           toursref={toursref}
           router={router}
           isShowModal={isShowModal}

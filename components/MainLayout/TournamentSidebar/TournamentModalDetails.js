@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {showTournamentsDetails} from "../../../../redux/popups/action";
-import LightModal from "../../../modal/LightModal";
+import {showTournamentsDetails} from "../../../redux/popups/action";
+import LightModal from "../../modal/LightModal";
 
 export const TournamentModalDetails = ({t}) => {
   const dispatch = useDispatch();
