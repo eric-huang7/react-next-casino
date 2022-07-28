@@ -61,6 +61,7 @@ const theme = extendTheme({
     text: {
       100: "#f7fafc",
       150: "#cbcaca",
+      180: "#b7b7b7",
       200: "#919191",
       250: "#8f8f8f",
       300: "#757575",
@@ -73,6 +74,8 @@ const theme = extendTheme({
       300: "#babbbc",
       400: "#a7a7a7",
       600: "#8f8f8f",
+      800: "#444444",
+      900: "#2a2a31",
     },
     scroll: {
       100: "#fda3a2",

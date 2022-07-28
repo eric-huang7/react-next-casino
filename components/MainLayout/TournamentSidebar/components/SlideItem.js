@@ -1,8 +1,11 @@
-import styles from '../../../../styles/TournamentSidebar/TournamentSidebar.module.scss'
+import { Box } from "@chakra-ui/react"
+import {Text} from "@chakra-ui/layout";
+import {Fade} from "@chakra-ui/transition";
 import { urlGen } from '../../../../helpers/imageUrl'
+import {useState} from "react";
 
 export const SlideItem = ({ t, setSliderPosition, count, tournamentData, router, sliderPosition }) => {
-
+  const [hover, setHover] = useState(false);
   let image = 'tournament_image'
 
   try {
@@ -25,16 +28,43 @@ export const SlideItem = ({ t, setSliderPosition, count, tournamentData, router,
   }
 
   return (
-    <div onClick={() => setSliderPosition(count)} className={styles.slideItemWrapper}>
-      <div className={styles.slideItem}>
-        <img src={image} alt={tournamentData.frontend_id}/>
-      </div>
-      <div
-        onClick={() => tournamentClickHandler()}
-        className={`${styles.tournamentSliderHover} ${sliderPosition === count ? styles.showHover : ''}`}
+    <Box onClick={() => setSliderPosition(count)} p="5px" position="relative">
+      <Box
+        bg="grey.800"
+        w="285px"
+        h="150px"
+        border="1px solid"
+        borderColor="grey.400"
+        position="relative"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-        <p className={styles.learnMore}>{t('tournaments.learnMore')}</p>
-      </div>
-    </div>
+        <img src={image} alt={tournamentData.frontend_id}/>
+      </Box>
+      {sliderPosition === count && <Fade in={hover}>
+        <Box
+          position="absolute"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+          cursor="pointer"
+          onClick={tournamentClickHandler}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="rgba(0,0,0, 0.7)"
+        >
+          <Text
+            color="white"
+            fontSize="18px"
+            fontFamily="Verdana"
+            textTransform="uppercase"
+          >{t('tournaments.learnMore')}</Text>
+        </Box>
+      </Fade>}
+    </Box>
   )
 }
