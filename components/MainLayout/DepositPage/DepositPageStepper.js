@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux"
 import {useState} from "react"
 import {Box, Text} from "@chakra-ui/layout"
+import {useRouter} from "next/router";
 import SelectModal from "../../modal/SelectModal"
 import styles from '../../../styles/DepositPage/DepositPage.module.scss'
 import {DepositInputsContainer} from './DepositInputs/DepositInputsContainer'
@@ -38,6 +39,7 @@ export const DepositPageStepper = (props) => {
     setPaymentMethods
   } = props
 
+  const router = useRouter()
   const dispatch = useDispatch()
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
 
@@ -52,6 +54,26 @@ export const DepositPageStepper = (props) => {
   const stepHandler = (step) => {
     dispatch(setStepDepositModal(step + 1))
   }
+
+  const getHeader = () => <Box
+    position="absolute"
+    top={{base: "-120px", lg: "-80px"}}
+    left="calc((430px - 100vw) / 2)"
+    width="100vw"
+  >
+    <Text
+      fontFamily="Lithograph"
+      color="primary.500"
+      fontSize="40px"
+      fontWeight={700}
+      letterSpacing="1px"
+      textTransform="uppercase"
+      textAlign="center"
+      className={`${router.locale === 'ru' ? styles.ru : ''}`}
+    >
+      {t('depositPage.mainHeading')}
+    </Text>
+  </Box>
 
   switch (step) {
     case  1:
@@ -114,7 +136,6 @@ export const DepositPageStepper = (props) => {
         <SelectModal
           isOpen={true}
           width={430}
-          height={100}
           headerHeight={70}
           onClose={closeDepositModalHandler}
           onBack={() => stepHandler(0)}

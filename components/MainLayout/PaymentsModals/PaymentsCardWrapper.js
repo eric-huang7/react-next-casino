@@ -1,29 +1,26 @@
-import styles from '../../../styles/PaymentsModals/CreditCardPayment.module.scss';
-
 import Image from "next/image";
-import {ConfirmButton} from "./CreditCardComponents/ConfirmButton";
-import {InputsContainer} from "./CreditCardComponents/InputsContainer";
+import {Box, VStack} from "@chakra-ui/react";
 import {useDispatch, useSelector} from "react-redux";
 import {
   setStepDepositModal,
   showCreditCardModal,
   showDepositModal
 } from "../../../redux/popups/action";
-import {annulDeposit, postCreditCardPayment} from "../../../redux/deposits/action";
+import {annulDeposit} from "../../../redux/deposits/action";
 import {useState} from "react";
-import {siteID} from "../../../envs/envsForFetching";
 import {setUserPaymentMethod} from "../../../redux/userFinance/action";
 import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 import SelectModal from "../../modal/SelectModal";
 import {useTranslation} from "next-i18next";
+import SubmitButton from "../../buttons/SubmitButton";
+import {Text} from "@chakra-ui/layout";
+import CardForm from "./CreditCardComponents/CardForm";
 
-export const PaymentsCardWrapper = ({ userInfo, paymentsData }) => {
+export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
   const dispatch = useDispatch()
-  const { t } = useTranslation('common')
+  const {t} = useTranslation('common')
 
-  const userCurrency = useSelector((state) => state.userFinance);
-  const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
   const userPayment = useSelector((state) => state.userFinance);
 
   const closeCardPayment = () => {
@@ -39,107 +36,64 @@ export const PaymentsCardWrapper = ({ userInfo, paymentsData }) => {
     dispatch(setUserPaymentMethod(null));
     dispatch(showDepositModal(true));
   }
-  const [amountError, setAmountError] = useState(null);
 
   // TODO: ADD AMOUNT VALUE
   const [amountValue, setAmountValue] = useState('');
-  const [cardNumberError, setCardNumberError] = useState(null);
-  const [dateInput, setDateInput] = useState('');
-  const [cvvValue, setCvvValue] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardDateError, setCardDateError] = useState('')
-  const [cardNameInput, setCardNameInput] = useState('')
-  const [cardNameErrorInput, setCardNameErrorInput] = useState('')
+  const [submitted, setSubmitted] = useState('');
 
-  const confirmButtonClickHandler = () => {
-    if (!amountError && !cardNumberError && !cardDateError && !cardNameErrorInput) {
-      let date = dateInput.split('/').join('')
-      let paymentData = {
-        senderCurrency_id: userCurrency?.userCurrencyData?.id,
-        user_id: `${userInfo?.user?.user?.id}`,
-        site_id: siteID,
-        number: `${cardNumber}`,
-        cvv: Number(cvvValue),
-        name: `${cardNameInput}`,
-        expiry: `${date}`,
-        bonus_offer_id: '',
-        deposit_amount: ''
-      }
-      dispatch(postCreditCardPayment(paymentData));
-    }
-  }
-
-  if (!userPayment?.paymentMethodData?.methodData) {
-    return (
-      <SelectModal
-        isOpen={true}
-        width={430}
-        onClose={closeCardPayment}
-        onBack={backButtonClickHandler}
-        header={<Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
-                       layout={'fixed'} alt=""/>}
-      >
-        <div className={styles.confirmedPayment}>
-          <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
-        </div>
-      </SelectModal>
-    )
-  }
-  if (paymentsData?.creditPaymentData?.data?.success) {
-    return (
+  return !userPayment?.paymentMethodData?.methodData ? (
+    <SelectModal
+      isOpen={true}
+      width={430}
+      onClose={closeCardPayment}
+      onBack={backButtonClickHandler}
+      header={<Image src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
+                     layout={'fixed'} alt=""/>}
+    >
+      <VStack w="100%" display="flex" alignItems="center" marginTop="50px">
+        <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
+      </VStack>
+    </SelectModal>
+  ) : (paymentsData?.creditPaymentData?.data?.success ? (
       <SelectModal
         isOpen={true}
         width={430}
         onClose={closeCardPayment}
         title={t("creditCardPayment.confirmHeading")}
       >
-        <div className={styles.confirmedPayment}>
-          <div className={styles.confirmedImageWrapper}>
+        <VStack w="100%" alignItems="center" mt="50px">
+          <Box mb="60px">
             <Image src={'/assets/img/paymentsModals/confirmed.png'} width={120} height={126} layout={'fixed'} alt=""/>
-          </div>
-          <p className={styles.confirmedText}>{t("creditCardPayment.confirmText")}</p>
-        </div>
+          </Box>
+          <Text
+            fontSize="20px"
+            color="text.200"
+            textAlign="center"
+            pb="50px"
+            fontFamily="Segoe UI"
+          >
+            {t("creditCardPayment.confirmText")}
+          </Text>
+        </VStack>
       </SelectModal>
-    )
-  } else {
-    return (
+    ) : (
       <SelectModal
         isOpen={true}
         width={430}
         onClose={closeCardPayment}
         onBack={backButtonClickHandler}
-        header={<Image className={styles.cardImage} src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
+        header={<Image src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
                        layout={'fixed'} alt=""/>}
-        footer={<ConfirmButton
-          t={t}
-          confirmButtonClickHandler={confirmButtonClickHandler}
-        />}
+        footer={<SubmitButton title={t('creditCardPayment.confirmButton')} onClick={() => setSubmitted(true)}/>}
       >
         <ErrorText>
-          <InputsContainer
+          <CardForm
+            userInfo={userInfo}
+            submitted={submitted}
             serverCardNumberError={paymentsData.isCreditPaymentError}
-            userDepositValue={userDepositValue}
-            userCurrency={userCurrency}
-            t={t}
-            amountError={amountError}
-            setAmountError={setAmountError}
-            cardNumberError={cardNumberError}
-            setCardNumberError={setCardNumberError}
-            dateInput={dateInput}
-            setDateInput={setDateInput}
-            cvvValue={cvvValue}
-            setCvvValue={setCvvValue}
-            cardNumber={cardNumber}
-            setCardNumber={setCardNumber}
-            cardDateError={cardDateError}
-            setCardDateError={setCardDateError}
-            cardNameInput={cardNameInput}
-            setCardNameInput={setCardNameInput}
-            setCardNameErrorInput={setCardNameErrorInput}
-            cardNameErrorInput={cardNameErrorInput}
           />
         </ErrorText>
       </SelectModal>
     )
-  }
+  )
 }
