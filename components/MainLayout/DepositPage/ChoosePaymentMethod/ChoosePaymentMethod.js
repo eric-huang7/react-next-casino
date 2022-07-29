@@ -107,7 +107,7 @@ export const ChoosePaymentMethod = ({
       active: userPayment?.paymentMethodData?.paymentType === 'creditCard',
       onClick: fiatClickHandler
     }))
-    console.log('methods', methods)
+
     return methods
   }
 

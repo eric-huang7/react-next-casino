@@ -37,8 +37,6 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
     dispatch(showDepositModal(true));
   }
 
-  // TODO: ADD AMOUNT VALUE
-  const [amountValue, setAmountValue] = useState('');
   const [submitted, setSubmitted] = useState('');
 
   return !userPayment?.paymentMethodData?.methodData ? (
@@ -90,6 +88,7 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
           <CardForm
             userInfo={userInfo}
             submitted={submitted}
+            onSubmit={() => setSubmitted(false)}
             serverCardNumberError={paymentsData.isCreditPaymentError}
           />
         </ErrorText>
