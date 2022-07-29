@@ -1,11 +1,15 @@
 import styles from "../../../../styles/PaymentsModals/CreditCardPayment.module.scss";
 import Image from "next/image";
+import { HStack } from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 import {validateExpiry} from "../../../../helpers/validateExpiryCardDate";
 import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "next-i18next";
 import {postCreditCardPayment} from "../../../../redux/deposits/action";
 import {siteID} from "../../../../envs/envsForFetching";
+import InputField from "../../../form/InputField";
+import InputFieldRound from "../../../form/InputFieldRound";
+import {Text, VStack} from "@chakra-ui/layout";
 
 const CardForm = ({serverCardNumberError, userInfo, submitted}) => {
   const dispatch = useDispatch()
@@ -141,60 +145,109 @@ const CardForm = ({serverCardNumberError, userInfo, submitted}) => {
 
   return (
     <div className={styles.inputsWrapper}>
-      <div className={styles.cardNumberDate}>
-        <div className={styles.cardNumberWrapper}>
-          <input
-            onChange={(e) => cardNumberInputHandler(e)}
-            id={'cardNumber'}
-            type="number"
-            value={cardNumber}
-            className={styles.cardNumberInput}
-            placeholder={t("creditCardPayment.creditCard")}
-          />
-          <span className={styles.errorText}>{cardNumberError}</span>
-          <span
-            className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard}</span>
-          {/*<span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard*/}
-          {/*  ? t("creditCardPayment.errors.serverCardNumberError")*/}
-          {/*  :*/}
-          {/*  ''*/}
-          {/*}</span>*/}
-          <label htmlFor="cardNumber" className={styles.cardNumberLabel}>
-          </label>
-        </div>
-        <div className={styles.cardDateWrapper}>
-          <input
-            onChange={(e) => cardDateValue(e)}
-            value={dateInput}
-            id={'dateInput'}
-            type="text"
-            className={styles.dateInput}
-            placeholder={t("creditCardPayment.expiryDate")}
-            autoComplete={"cc-exp"}
-          />
-          <span className={styles.errorText}>{cardDateError}</span>
-          <span
-            className={`${styles.errorText} ${styles.errorTextLong}`}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'expiry')[0]?.constraints?.isNotEmpty}</span>
-        </div>
-      </div>
-      <div className={styles.nameCardCvv}>
-        <div className={styles.cardNameWrapper}>
-          <input
-            id={'cardName'}
-            type="text"
-            value={cardNameInput}
-            className={styles.cardNameInput}
-            placeholder={t("creditCardPayment.creditHolder")}
-            onChange={(e) => cardNameInputHandler(e)}
-          />
-          <span className={styles.errorText}>{cardNameErrorInput}</span>
-          <span
-            className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'name')[0]?.constraints?.isNotEmpty}</span>
-          <label htmlFor="cardName" className={styles.cardNameLabel}></label>
-        </div>
-        <input onChange={(e) => cvvInputHandler(e)} type="number" value={cvvValue} className={styles.cardCvv}
-               placeholder={'CVV'}/>
-      </div>
+      <HStack alignItems="flex-start">
+        <InputFieldRound
+          error={cardNumberError}
+          onChange={cardNumberInputHandler}
+          value={cardNumber}
+          type="number"
+          id={'usernameLogIn'}
+          placeholder={t("creditCardPayment.creditCard")}
+          icon={<Image src="/assets/img/paymentsModals/card.webp" width="36px" height="31px" alt="" />}
+        />
+        <InputFieldRound
+          w="35%"
+          error={cardDateError}
+          onChange={cardDateValue}
+          value={dateInput}
+          id={'dateInput'}
+          placeholder={t("creditCardPayment.expiryDate")}
+          autoComplete={"cc-exp"}
+        />
+      </HStack>
+      {/*<div className={styles.cardNumberDate}>*/}
+
+      {/*  <div className={styles.cardNumberWrapper}>*/}
+      {/*    <input*/}
+      {/*      onChange={(e) => cardNumberInputHandler(e)}*/}
+      {/*      id={'cardNumber'}*/}
+      {/*      type="number"*/}
+      {/*      value={cardNumber}*/}
+      {/*      className={styles.cardNumberInput}*/}
+      {/*      placeholder={t("creditCardPayment.creditCard")}*/}
+      {/*    />*/}
+      {/*    <span className={styles.errorText}>{cardNumberError}</span>*/}
+      {/*    <span*/}
+      {/*      className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard}</span>*/}
+      {/*    /!*<span className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors[0]?.constraints?.isCreditCard*!/*/}
+      {/*    /!*  ? t("creditCardPayment.errors.serverCardNumberError")*!/*/}
+      {/*    /!*  :*!/*/}
+      {/*    /!*  ''*!/*/}
+      {/*    /!*}</span>*!/*/}
+      {/*    <label htmlFor="cardNumber" className={styles.cardNumberLabel}>*/}
+      {/*    </label>*/}
+      {/*  </div>*/}
+      {/*  <div className={styles.cardDateWrapper}>*/}
+      {/*    <input*/}
+      {/*      onChange={(e) => cardDateValue(e)}*/}
+      {/*      value={dateInput}*/}
+      {/*      id={'dateInput'}*/}
+      {/*      type="text"*/}
+      {/*      className={styles.dateInput}*/}
+      {/*      placeholder={t("creditCardPayment.expiryDate")}*/}
+      {/*      autoComplete={"cc-exp"}*/}
+      {/*    />*/}
+      {/*    <span className={styles.errorText}>{cardDateError}</span>*/}
+      {/*    <span*/}
+      {/*      className={`${styles.errorText} ${styles.errorTextLong}`}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'expiry')[0]?.constraints?.isNotEmpty}</span>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      <HStack alignItems="flex-start">
+        <InputFieldRound
+          error={cardNameErrorInput}
+          onChange={cardNameInputHandler}
+          value={cardNameInput}
+          id={'cardName'}
+          placeholder={t("creditCardPayment.creditHolder")}
+          icon={<Image src="/assets/img/paymentsModals/user.webp" width="36px" height="31px" alt="" />}
+        />
+        <InputFieldRound
+          w="35%"
+          type="number"
+          onChange={cvvInputHandler}
+          value={cvvValue}
+          id={'amountValueModal'}
+          placeholder="CVV"
+        />
+      </HStack>
+      {/*<div className={styles.nameCardCvv}>*/}
+      {/*  <div className={styles.cardNameWrapper}>*/}
+      {/*    <input*/}
+      {/*      id={'cardName'}*/}
+      {/*      type="text"*/}
+      {/*      value={cardNameInput}*/}
+      {/*      className={styles.cardNameInput}*/}
+      {/*      placeholder={t("creditCardPayment.creditHolder")}*/}
+      {/*      onChange={(e) => cardNameInputHandler(e)}*/}
+      {/*    />*/}
+      {/*    <span className={styles.errorText}>{cardNameErrorInput}</span>*/}
+      {/*    <span*/}
+      {/*      className={styles.errorText}>{serverCardNumberError?.data?.extra_error_info?.errors?.filter((el) => el.property === 'name')[0]?.constraints?.isNotEmpty}</span>*/}
+      {/*    <label htmlFor="cardName" className={styles.cardNameLabel}></label>*/}
+      {/*  </div>*/}
+      {/*  <input onChange={(e) => cvvInputHandler(e)} type="number" value={cvvValue} className={styles.cardCvv}*/}
+      {/*         placeholder={'CVV'}/>*/}
+      {/*</div>*/}
+      <VStack alignItems="flex-start" spacing={0}>
+        <Text color="primary.500">{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</Text>
+        <InputFieldRound
+          type="number"
+          error={amountError}
+          onChange={amountValueInputHandler}
+          id={'amountValueModal'}
+          defaultValue={`${userDepositValue}`}
+        />
+      </VStack>
       <div className={styles.amountValue}>
         <p>{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</p>
         <input id={"amountValueModal"} onChange={(e) => amountValueInputHandler(e)} defaultValue={`${userDepositValue}`}
