@@ -79,28 +79,23 @@ export const PaymentMethodItem = ({ t, methodClickHandler, type, method, userCur
     onSelect()
   }
 
-  if (type === 'creditCard') {
-    return (
-      <div onClick={() => fiatClickHandler()} className={styles.paymentMethodItem}>
-        <div className={`${styles.methodIconWrapper} ${styles.cardsWrapper}`}>
-          <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
-          <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
-        </div>
-        <p className={styles.methodName}>{t('depositWidget.card')}</p>
+  return type === 'creditCard' ? (
+    <div onClick={() => fiatClickHandler()} className={styles.paymentMethodItem}>
+      <div className={`${styles.methodIconWrapper} ${styles.cardsWrapper}`}>
+        <img src={'/assets/img/depositPage/visa-2.svg'} alt={`payment method icon master-card`}/>
+        <img src={'/assets/img/depositPage/master-card.svg'} alt={`payment method icon visa`}/>
       </div>
-    )
-  } else {
-    return (
-      <div onClick={() => cryptoClickHandler()} className={styles.paymentMethodItem}>
-        <div className={`${styles.methodIconWrapper} ${styles.cryptoWrapper}`}>
-          <Image src={'/assets/img/depositPage/payments/crypto.png'} alt={`crypto currency icon`} layout={'fixed'}
-                 width={50} height={50}/>
-        </div>
-        <p className={styles.methodName}>{t('depositWidget.cryptoPayment')}</p>
+      <p className={styles.methodName}>{t('depositWidget.card')}</p>
+    </div>
+  ) : (
+    <div onClick={() => cryptoClickHandler()} className={styles.paymentMethodItem}>
+      <div className={`${styles.methodIconWrapper} ${styles.cryptoWrapper}`}>
+        <Image src={'/assets/img/depositPage/payments/crypto.png'} alt={`crypto currency icon`} layout={'fixed'}
+               width={50} height={50}/>
       </div>
-    )
-  }
-
+      <p className={styles.methodName}>{t('depositWidget.cryptoPayment')}</p>
+    </div>
+  )
 }
 
 function universalizer (arrVerify, checkItem) {

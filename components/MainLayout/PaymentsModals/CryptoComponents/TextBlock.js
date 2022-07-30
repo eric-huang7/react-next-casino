@@ -1,11 +1,6 @@
-import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss';
-
+import { Box, chakra } from "@chakra-ui/react";
 
 export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) => {
-
-
-  let paymentValue = `${value} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_to.currency}`;
-
   let needToPayValue = `${paymentsData.data.sender_amount} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency} \n`;
 
   let needToPayRes = '';
@@ -27,10 +22,18 @@ export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) =>
   }
 
   return (
-    <p className={styles.cryptoText}>
+    <Box
+      fontSize="14px"
+      lineHeight="24px"
+      color="text.250"
+      fontFamily="Verdana"
+      textAlign="center"
+      whiteSpace="break-spaces"
+    >
       <span>{t("cryptoPayment.textBlock.firstBlock")}</span>
-      <span
-        className={styles.cryptoValue}
+      <chakra.span
+        color="primary.500"
+        fontWeight={600}
       >
         {
           paymentsData.paymentMethod.paymentMethodData.methodData.hasOwnProperty("rate_from")
@@ -39,7 +42,7 @@ export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) =>
           :
           `${value} ${currency.userCurrencyData.abbreviation} \n`
         }
-      </span>
+      </chakra.span>
       {
         paymentsData.paymentMethod.paymentMethodData.methodData.hasOwnProperty("rate_from")
         ?
@@ -52,6 +55,6 @@ export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) =>
       <span>
         {t("cryptoPayment.textBlock.secondBlock")}
       </span>
-    </p>
+    </Box>
   )
 }

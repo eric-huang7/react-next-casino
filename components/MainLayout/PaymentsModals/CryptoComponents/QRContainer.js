@@ -1,7 +1,7 @@
-import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss'
-
+import { Box } from "@chakra-ui/react"
 import QRCode from 'qrcode'
 import { useEffect, useState } from 'react'
+import Image from "next/image";
 
 export const QRContainer = ({ qrData }) => {
   const [src, setSrc] = useState('')
@@ -13,8 +13,12 @@ export const QRContainer = ({ qrData }) => {
   }, [qrData])
 
   return (
-    <div className={styles.qrImageContainer}>
-      <img src={src} alt="qr code image" className={styles.qrCodeImage}/>
-    </div>
+    <Box
+      w="154px"
+      h="154px"
+      border="1px solid rgba(43,47,46,0.11)"
+    >
+      {src && <Image width="152px" height="152px" src={src} alt=""/>}
+    </Box>
   )
 }

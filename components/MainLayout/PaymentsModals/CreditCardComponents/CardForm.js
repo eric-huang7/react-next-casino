@@ -1,4 +1,3 @@
-import styles from "../../../../styles/PaymentsModals/CreditCardPayment.module.scss";
 import Image from "next/image";
 import { HStack } from "@chakra-ui/react";
 import {useEffect, useState} from "react";
@@ -22,7 +21,6 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
   const [cardDateError, setCardDateError] = useState('')
   const [cardNameInput, setCardNameInput] = useState('')
   const [cardNameErrorInput, setCardNameErrorInput] = useState('')
-  const [errors, setErrors] = useState({})
 
   const userCurrency = useSelector((state) => state.userFinance);
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue);
@@ -59,7 +57,6 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
       });
     }
 
-    setErrors(errors);
   }, [serverCardNumberError?.data?.extra_error_info?.errors])
 
   const confirmButtonClickHandler = () => {
@@ -184,8 +181,8 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
   }
 
   return (
-    <div className={styles.inputsWrapper}>
-      <HStack alignItems="flex-start" spacing={4}>
+    <VStack p="20px 15px" spacing={0}>
+      <HStack w="100%" alignItems="flex-start" spacing={4}>
         <InputFieldRound
           error={cardNumberError}
           onChange={cardNumberInputHandler}
@@ -205,14 +202,14 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           autoComplete={"cc-exp"}
         />
       </HStack>
-      <HStack alignItems="flex-start" spacing={4}>
+      <HStack w="100%" alignItems="flex-start" spacing={4}>
         <InputFieldRound
           error={cardNameErrorInput}
           onChange={cardNameInputHandler}
           value={cardNameInput}
           id={'cardName'}
           placeholder={t("creditCardPayment.creditHolder")}
-          icon={<Image src="/assets/img/paymentsModals/user.webp" width="36px" height="31px" alt="" />}
+          icon={<Image src="/assets/img/paymentsModals/user.webp" width="31px" height="31px" alt="" />}
         />
         <InputFieldRound
           w="35%"
@@ -223,7 +220,7 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           placeholder="CVV"
         />
       </HStack>
-      <VStack alignItems="flex-start" spacing={0} pb={4}>
+      <VStack alignItems="flex-start" spacing={0} pb={4} w="100%">
         <Text color="primary.500">{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</Text>
         <InputFieldRound
           type="number"
@@ -233,11 +230,19 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           defaultValue={`${userDepositValue}`}
         />
       </VStack>
-      <div className={styles.secureBlock}>
+      <HStack>
         <Image src={'/assets/img/paymentsModals/lock.webp'} layout={'fixed'} width={20} height={28} alt={'lock icon'}/>
-        <p className={styles.secureText}>{t("creditCardPayment.secureText")}</p>
-      </div>
-    </div>
+        <Text
+          fontSize="13px"
+          color="text.400"
+          fontFamily="Verdana"
+          textAlign="center"
+          ml="15px"
+        >
+          {t("creditCardPayment.secureText")}
+        </Text>
+      </HStack>
+    </VStack>
   )
 }
 

@@ -43,7 +43,7 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
       onBack={whatDoBackButton}
       title={t("cryptoPayment.heading")}
     >
-      <VStack alignItems="center" p={4}>
+      <VStack alignItems="center" p={4} spacing={0}>
         {
           paymentsData.isCryptoPaymentDataLoading || currenciesList.loading
             ? <LoadingComponent t={t} text={'loadingComponent'}/>

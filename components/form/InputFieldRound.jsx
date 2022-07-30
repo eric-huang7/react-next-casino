@@ -3,7 +3,7 @@ import {chakra, Input} from "@chakra-ui/react";
 import {InputGroup, InputRightElement} from "@chakra-ui/input";
 import {ViewIcon, ViewOffIcon} from "@chakra-ui/icons";
 
-const InputFieldRound = ({value, error, label, onChange, validation, id, placeholder, type = "text", defaultValue, icon, ...props}) => {
+const InputFieldRound = ({value, error, label, onChange, validation, id, placeholder, type = "text", defaultValue, icon, iconStyle, ...props}) => {
   return (
     <FormControl mb={4} isInvalid={!!error} fontFamily="Verdana" {...props}>
       <FormLabel htmlFor={id} mb="5px" fontSize="14px" color="text.250">{label}</FormLabel>
@@ -33,9 +33,19 @@ const InputFieldRound = ({value, error, label, onChange, validation, id, placeho
           }}
           defaultValue={defaultValue}
         />
-        {icon && <InputRightElement pt="3px" pr="5px">
-          {icon}
-        </InputRightElement>}
+        {icon &&
+          <InputRightElement
+            p="3px 5px 0"
+            sx={iconStyle}
+            h="calc(100% - 2px)"
+            top="1px"
+            right="1px"
+            borderRadius="0 5px 5px 0"
+            borderColor="grey.600 !important"
+          >
+            {icon}
+          </InputRightElement>
+        }
       </InputGroup>
       <FormErrorMessage fontSize="12px" _invalid={{fontSize: "12px"}}>{error}</FormErrorMessage>
     </FormControl>
