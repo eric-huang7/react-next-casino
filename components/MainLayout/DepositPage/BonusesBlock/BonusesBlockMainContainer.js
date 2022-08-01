@@ -1,6 +1,9 @@
 import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
 import { BonusesBlockContainer } from './BonusesBlockContainer'
 import {useState} from "react";
+import { Switch } from '@chakra-ui/react';
+import {Box, HStack, Text} from "@chakra-ui/layout";
+import {Input} from "@chakra-ui/input";
 
 export const BonusesBlockMainContainer = (props) => {
   let {
@@ -30,7 +33,13 @@ export const BonusesBlockMainContainer = (props) => {
 
   return (
     <div className={styles.depositsBonusesBlock}>
-      <p className={styles.selectBonus}>{t('depositPage.bonusBlockHeading')}</p>
+      <HStack justifyContent="space-between" pb={{base: 0, lg: 2}}>
+        <Text fontSize="14px" color="text.250" fontFamily="Verdana" textTransform="uppercase">
+          {t('depositPage.bonusBlockHeading')}
+        </Text>
+        <Switch size='lg' id='isChecked' isChecked={isChecked} onChange={checkedInputHandler} colorScheme="primary" />
+      </HStack>
+
       <div onClick={(e) => showAllBonusesHandler(e)}
            className={`${styles.bonusesInformationBlock} ${showAllBonuses ? styles.showAllBonuses : styles.hideBonuses}`}>
         <BonusesBlockContainer
@@ -45,21 +54,23 @@ export const BonusesBlockMainContainer = (props) => {
           bonusesArr={bonusesArr}
         />
       </div>
-      <div className={styles.bonusesSwitcher}>
-        <label className={styles.switch}>
-          <input onChange={(e) => checkedInputHandler(e)} className={styles.bonusSwitcherInput} type="checkbox"
-                 checked={isChecked}/>
-          <span className={`${styles.slider} ${styles.round}`}>
-                </span>
-        </label>
-      </div>
-      <div className={`${styles.bonusCodeInputWrapper} ${isActiveBonusInput ? styles.showDepositsBonusInput : ''}`}>
-        <input
-          className={styles.depositsBonusInput}
+
+      {isActiveBonusInput && <Box mt={2} w="100%">
+        <Input
+          w="100%"
+          h="40px"
+          bg="#f2f6f9"
+          color="primary"
+          border="0.75px solid"
+          borderColor="primary.500"
+          borderRadius={0}
+          focusBorderColor="primary.500"
+          outline="none"
+          p="0 15px"
           id={'depositsBonusIn'}
           type="text"
           placeholder={t('depositPage.bonusBlockInput')}/>
-      </div>
+      </Box>}
     </div>
   )
 }

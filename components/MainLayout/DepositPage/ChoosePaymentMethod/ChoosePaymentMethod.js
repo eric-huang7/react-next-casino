@@ -4,16 +4,15 @@ import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../../redux
 import React, { useEffect } from 'react'
 import {payments_methods_url} from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
-import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";
 import {
   showCreditCardModal, showCryptoModal,
   showDepositModal, showMobileCryptoPayments, showMobilePaymentsStepper,
 } from "../../../../redux/popups/action";
 import {siteID} from "../../../../envs/envsForFetching";
-import {annulDeposit, postCryptoPayment} from "../../../../redux/deposits/action";
+import {postCryptoPayment} from "../../../../redux/deposits/action";
 import {chakra} from "@chakra-ui/react";
-import {Box, HStack, Text} from "@chakra-ui/layout";
+import {HStack, Text} from "@chakra-ui/layout";
 import CurrencyIcon from "../../../currency/CurrencyIcon";
 
 export const ChoosePaymentMethod = ({
@@ -167,38 +166,37 @@ export const ChoosePaymentMethod = ({
         {t('depositPage.choosePaymentMethod')}
       </Text>
       {paymentMethods ? (
-        <HStack flexWrap="wrap" w="100%" justifyContent="center" spacing={4}>
+        <HStack flexWrap="wrap" w="100%" justifyContent="center" spacing={0}>
         {getMethods()?.map((method, index) => (
-          <ErrorEmpty key={index}>
-            <VStack w="30%" textAlign="center" spacing={0} pb={3} cursor="pointer">
-              <VStack
-                w="100%"
-                h="50px"
-                border="1px solid"
-                borderColor="grey.370"
-                borderRadius="6px"
-                bg="white"
-                onClick={method.onClick}
-                alignItems="center"
-                justifyContent="center"
-                _hover={{bg: "grey.250", border: "1px solid", borderColor: "grey.380"}}
-              >
-                {method.image && <chakra.img src={method.image} sx={{maxW: "75%", maxH: "60%"}} alt=""/>}
-                {!method.image && method?.currencyData && <CurrencyIcon id={method?.currencyData?.abbreviation} size={6} mx={2}/>}
-              </VStack>
-              <Text as="div"
-                    // className={styles.itemTitle}
-                p="5px 5px 0"
-                fontWeight={400}
-                fontSize="12px"
-                color="rgba(38,38,38,.6)"
-                textOverflow="ellipsis"
-                overflow="hidden"
-                whiteSpace="nowrap"
-                textAlign="center"
-              >{method.title}</Text>
+          <VStack px="1.5%" key={index} w="30%" textAlign="center" spacing={0} pb={3} cursor="pointer">
+            <VStack
+              bg="red"
+              w="100%"
+              h="50px"
+              border="1px solid"
+              borderColor="grey.370"
+              borderRadius="6px"
+              bg="white"
+              onClick={method.onClick}
+              alignItems="center"
+              justifyContent="center"
+              _hover={{bg: "grey.250", border: "1px solid", borderColor: "grey.380"}}
+            >
+              {method.image && <chakra.img src={method.image} sx={{maxW: "75%", maxH: "60%"}} alt=""/>}
+              {!method.image && method?.currencyData && <CurrencyIcon id={method?.currencyData?.abbreviation} size={6} mx={2}/>}
             </VStack>
-          </ErrorEmpty>
+            <Text as="div"
+                  // className={styles.itemTitle}
+              p="5px 5px 0"
+              fontWeight={400}
+              fontSize="12px"
+              color="rgba(38,38,38,.6)"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              whiteSpace="nowrap"
+              textAlign="center"
+            >{method.title}</Text>
+          </VStack>
         ))}
       </HStack>
       ) : (

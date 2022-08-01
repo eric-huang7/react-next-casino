@@ -100,14 +100,13 @@ export const DepositPageStepper = (props) => {
     width="100vw"
   >
     <Text
-      fontFamily="Lithograph"
+      fontFamily={router.locale === 'ru' ? "Lithograph" : "Arial"}
       color="primary.500"
       fontSize="40px"
       fontWeight={700}
       letterSpacing="1px"
       textTransform="uppercase"
       textAlign="center"
-      className={`${router.locale === 'ru' ? styles.ru : ''}`}
     >
       {t('depositPage.mainHeading')}
     </Text>
@@ -136,7 +135,7 @@ export const DepositPageStepper = (props) => {
                 userDepositValueError={userDepositValueError}
               />
             </ErrorText>
-            <div className={styles.divider}></div>
+
             <ErrorText>
               <BonusesBlockMainContainer
                 t={t}

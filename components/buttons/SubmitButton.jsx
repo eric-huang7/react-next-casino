@@ -14,7 +14,7 @@ const SubmitButton = ({
     border="4px solid white"
     _hover={{ bg: bg }}
   >
-    <Text casing="uppercase" fontSize={18} color="white" fontFamily={fontFamily}>
+    <Text casing="uppercase" fontSize={{base: 16, lg: 18}} color="white" fontFamily={fontFamily} whiteSpace="pre-line">
       {title}
     </Text>
   </Button>
