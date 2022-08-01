@@ -25,14 +25,14 @@ export const DepositPage = ({t}) => {
   const userCurrency = useSelector((state) => state.userFinance)
   const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
-  const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
+
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
   const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
 
   const [chosenBonus, setChosenBonus] = useState({})
   const [bonusesArr, setBonusesArr] = useState([])
-  const [paymentMethods, setPaymentMethods] = useState(null)
+
 
   let newButtonText = `${t('depositPage.bonusInfo.playWith')} ${(userDepositValue < 0) ? '0' : Number(userDepositValue)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`
   const [buttonText, setNewButtonText] = useState(newButtonText)
@@ -130,10 +130,6 @@ export const DepositPage = ({t}) => {
     onClose()
   }
 
-  const handleCloseSelectCurrency = () => {
-    onClose()
-  }
-
   return popups.isShowDepositModal && (
     <>
       <ErrorText>
@@ -147,7 +143,6 @@ export const DepositPage = ({t}) => {
           userCurrency={userCurrency}
           userDepositValue={userDepositValue}
           depositValueInputHandler={depositValueInputHandler}
-          userDepositValueError={userDepositValueError}
           userPayment={userPayment}
           userInfo={userInfo}
           chosenBonus={chosenBonus}
@@ -156,13 +151,11 @@ export const DepositPage = ({t}) => {
           buttonText={buttonText}
           userSelectedBonus={userSelectedBonus}
           bonusesArr={bonusesArr}
-          paymentMethods={paymentMethods}
-          setPaymentMethods={setPaymentMethods}
         />
       </ErrorText>
       <SelectCurrencyModal
         isOpen={isOpen}
-        onClose={handleCloseSelectCurrency}
+        onClose={onClose}
         onSelect={onSelectCurrency}
         // onBack={onBack}
       />

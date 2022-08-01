@@ -1,20 +1,20 @@
-import styles from '../../../../styles/DepositPage/DepositPage.module.scss'
 import {useDispatch, useSelector} from 'react-redux'
+import { VStack } from "@chakra-ui/react"
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../../redux/userFinance/action'
-import { PaymentItem } from './PaymentItem'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {payments_methods_url} from '../../../../redux/url/url'
 import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";
-import {getAllBonusesAction} from "../../../../redux/bonuses/action";
 import {
-  backButtonShouldDo,
   showCreditCardModal, showCryptoModal,
   showDepositModal, showMobileCryptoPayments, showMobilePaymentsStepper,
 } from "../../../../redux/popups/action";
 import {siteID} from "../../../../envs/envsForFetching";
 import {annulDeposit, postCryptoPayment} from "../../../../redux/deposits/action";
+import {chakra} from "@chakra-ui/react";
+import {Box, HStack, Text} from "@chakra-ui/layout";
+import CurrencyIcon from "../../../currency/CurrencyIcon";
 
 export const ChoosePaymentMethod = ({
   setPaymentMethods,
@@ -149,41 +149,64 @@ export const ChoosePaymentMethod = ({
           dispatch(showCryptoModal(true))
           dispatch(showDepositModal(false))
         }
-
       }
-
     }
   }, [userPayment?.paymentMethodData])
 
-
-  return paymentMethods ? (
-    <div className={styles.depositsChoosePaymentWrapper}>
-      <h3 className={styles.choosePaymentHeading}>
+  return (
+    <VStack w="100%">
+      <Text
+        fontSize="18px"
+        fontWeight={600}
+        color="text.190"
+        fontFamily="Myriad Pro"
+        textTransform="uppercase"
+        textAlign="center"
+        pt="20px"
+      >
         {t('depositPage.choosePaymentMethod')}
-      </h3>
-      <div className={styles.paymentMethodsBlock}>
+      </Text>
+      {paymentMethods ? (
+        <HStack flexWrap="wrap" w="100%" justifyContent="center" spacing={4}>
         {getMethods()?.map((method, index) => (
           <ErrorEmpty key={index}>
-            <PaymentItem
-              currencyData={method.currencyData}
-              onClick={method.onClick}
-              isActive={false}
-              image={method.image}
-              title={method.title}
-            />
+            <VStack w="30%" textAlign="center" spacing={0} pb={3} cursor="pointer">
+              <VStack
+                w="100%"
+                h="50px"
+                border="1px solid"
+                borderColor="grey.370"
+                borderRadius="6px"
+                bg="white"
+                onClick={method.onClick}
+                alignItems="center"
+                justifyContent="center"
+                _hover={{bg: "grey.250", border: "1px solid", borderColor: "grey.380"}}
+              >
+                {method.image && <chakra.img src={method.image} sx={{maxW: "75%", maxH: "60%"}} alt=""/>}
+                {!method.image && method?.currencyData && <CurrencyIcon id={method?.currencyData?.abbreviation} size={6} mx={2}/>}
+              </VStack>
+              <Text as="div"
+                    // className={styles.itemTitle}
+                p="5px 5px 0"
+                fontWeight={400}
+                fontSize="12px"
+                color="rgba(38,38,38,.6)"
+                textOverflow="ellipsis"
+                overflow="hidden"
+                whiteSpace="nowrap"
+                textAlign="center"
+              >{method.title}</Text>
+            </VStack>
           </ErrorEmpty>
         ))}
-      </div>
-      <span className={styles.errorMessage}>{t(userPayment?.paymentError)}</span>
-    </div>
-  ) : (
-    <div className={styles.depositsChoosePaymentWrapper}>
-      <h3 className={styles.choosePaymentHeading}>
-        {t('depositPage.choosePaymentMethod')}
-      </h3>
-      <div className={styles.paymentLoading}>
+      </HStack>
+      ) : (
+        <VStack h={150} >
         <LoadingComponent t={t}/>
-      </div>
-    </div>
+      </VStack>
+      )}
+      <Text as="span" color="red.500" fontSize={10}>{t(userPayment?.paymentError)}</Text>
+    </VStack>
   )
 }

@@ -62,6 +62,7 @@ const theme = extendTheme({
       100: "#f7fafc",
       150: "#cbcaca",
       180: "#b7b7b7",
+      190: "#a1a1a1",
       200: "#919191",
       250: "#8f8f8f",
       300: "#757575",
@@ -72,6 +73,9 @@ const theme = extendTheme({
     grey: {
       100: "#f2f6f9",
       200: "#ededed",
+      250: "#e1eaf1",
+      370: "#d5dee7",
+      380: "#c5d1de",
       300: "#babbbc",
       400: "#a7a7a7",
       600: "#8f8f8f",
