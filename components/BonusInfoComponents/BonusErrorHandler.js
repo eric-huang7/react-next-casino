@@ -1,6 +1,5 @@
 import React from "react";
-import {logErrorToMyService} from "../../../helpers/errorLoger";
-
+import {logErrorToMyService} from "../../helpers/errorLoger";
 
 class BonusErrorHandler extends React.Component {
   constructor(props) {

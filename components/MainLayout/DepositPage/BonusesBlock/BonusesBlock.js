@@ -2,7 +2,6 @@ import {useTranslation} from "next-i18next";
 import {BonusInfoContainer} from "../../../BonusInfoComponents/BonusInfoContainer";
 import {useState} from "react";
 import { Text, HStack, Box, Image } from "@chakra-ui/react";
-import BonusErrorHandler from "../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
 
 export const BonusesBlock = (props) => {
   const {t} = useTranslation('promotionsPage');
@@ -92,14 +91,12 @@ export const BonusesBlock = (props) => {
       </Box>
     </HStack>
 
-    {isShowBonusInfo && <BonusErrorHandler>
-      <BonusInfoContainer
-        bonusData={bonusData}
-        infoClickHandler={setIsShowBonusInfo}
-        isShow={isShowBonusInfo}
-        userCurrency={userCurrency}
-        fromDeposit={true}
-      />
-    </BonusErrorHandler>}
+    {isShowBonusInfo && <BonusInfoContainer
+      bonusData={bonusData}
+      infoClickHandler={setIsShowBonusInfo}
+      isShow={isShowBonusInfo}
+      userCurrency={userCurrency}
+      fromDeposit={true}
+    />}
   </>)
 }
