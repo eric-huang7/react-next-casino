@@ -1,9 +1,9 @@
-import styles from "../../../styles/Header/Header.module.scss";
 import { Navigation } from "./Navigation/Navigation";
 import { UserBlockNavigation } from "./UserBlock/UserBlock";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, userBalance } from "../../../redux/user/action";
 import { useEffect, useState } from "react";
+import { Box, Image } from "@chakra-ui/react"
 import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import { getActiveBonuses } from "../../../redux/bonuses/action";
 import { changeLocalUserSubscriptions } from "../../../redux/userSubscriptions/action";
@@ -12,6 +12,7 @@ import Link from "next/link";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import { AiOutlineMenu } from "react-icons/ai";
 import MenuModal from "../../modals/MenuModal";
+import {HStack} from "@chakra-ui/layout";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -86,29 +87,41 @@ export const Header = () => {
 
   return (
     <>
-      <header className={styles.mainHeader}>
-        <div className={styles.tooltip}>
-          <AiOutlineMenu
-            className={styles.hamburger}
-            onClick={showMenu}
-            color="white"
-            size={30}
-          />
+      <HStack
+        position="relative"
+        h={{base: "53px", lg: "85px"}}
+        justifyContent="space-between"
+        alignItems="center"
+        backgroundColor="accent.850"
+        backgroundImage='url("/assets/img/mainLayoutImg/header_bg.webp")'
+        spacing={0}
+        zIndex={14}
+      >
+        <HStack alignItems="center" flexWrap="nowrap" spacing={5}>
+          <Box cursor="pointer" display={{base: 'none', lg: 'block'}} pl="30px">
+            <AiOutlineMenu
+              onClick={showMenu}
+              color="white"
+              size={30}
+            />
+          </Box>
           <Link href={"/"} passHref>
-            <img
+            <Image
+              w={{base: '100px', lg: '250px'}}
+              h="auto"
+              m="2px 16px 2px 16px"
               style={{ cursor: "pointer" }}
-              className={styles.logo}
               src={"/assets/img/mainLayoutImg/logo.webp"}
-              alt="logo"
+              alt=""
             />
           </Link>
-          <Navigation isAuthenticated={userLogin.isAuthenticated} />
-        </div>
+          <Navigation />
+        </HStack>
         <ErrorEmpty>
           <LangSwitcher />
         </ErrorEmpty>
         <UserBlockNavigation userInfo={userLogin} />
-      </header>
+      </HStack>
       {/*<div className={styles.test} onClick={onCloseMenu}/>*/}
       <MenuModal open={isMenuActive} onClose={onCloseMenu} />
     </>
