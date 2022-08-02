@@ -1,8 +1,7 @@
-import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useTranslation} from "next-i18next";
 import {BonusInfoContainer} from "../../../BonusInfoComponents/BonusInfoContainer";
 import {useState} from "react";
-import { Text, HStack, Box } from "@chakra-ui/react";
+import { Text, HStack, Box, Image } from "@chakra-ui/react";
 import BonusErrorHandler from "../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
 
 export const BonusesBlock = (props) => {
@@ -37,12 +36,16 @@ export const BonusesBlock = (props) => {
     }
   }
   return (<>
-    <Box
+    <HStack
       w="100%"
+      flexWrap="nowrap"
+      alignItems="center"
+      minH="60px"
+      px="5px"
       onClick={bonusClickHandler}
-      className={`${styles.activeBonusInfo} ${isUseBonus ? styles.activeBonusInfo : styles.notActiveBonusInfo}`}
+      cursor="pointer"
     >
-      <img src={bonusImage} alt=""/>
+      <Image src={bonusImage} alt="" width={{base: "37px", lg: "50px"}} height={{base: "37px", lg: "50px"}} />
       <Box w={{base: "175px", lg: "255px"}}>
         <HStack
           fontSize="14px"
@@ -87,22 +90,16 @@ export const BonusesBlock = (props) => {
           }}
         >{bonusDescription}</Text>
       </Box>
-    </Box>
+    </HStack>
 
-    {
-      isShowBonusInfo
-        ?
-        <BonusErrorHandler>
-          <BonusInfoContainer
-            bonusData={bonusData}
-            infoClickHandler={setIsShowBonusInfo}
-            isShow={isShowBonusInfo}
-            userCurrency={userCurrency}
-            fromDeposit={true}
-          />
-        </BonusErrorHandler>
-        :
-        <></>
-    }
+    {isShowBonusInfo && <BonusErrorHandler>
+      <BonusInfoContainer
+        bonusData={bonusData}
+        infoClickHandler={setIsShowBonusInfo}
+        isShow={isShowBonusInfo}
+        userCurrency={userCurrency}
+        fromDeposit={true}
+      />
+    </BonusErrorHandler>}
   </>)
 }

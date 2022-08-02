@@ -1,19 +1,19 @@
 import {useDispatch, useSelector} from 'react-redux'
 import { VStack } from "@chakra-ui/react"
-import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../../redux/userFinance/action'
+import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../redux/userFinance/action'
 import React, { useEffect } from 'react'
-import {payments_methods_url} from '../../../../redux/url/url'
-import { LoadingComponent } from '../../../LoadingComponent/LoadingComponent'
-import Connect from "../../../../helpers/connect";
+import {payments_methods_url} from '../../../redux/url/url'
+import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
+import Connect from "../../../helpers/connect";
 import {
   showCreditCardModal, showCryptoModal,
   showDepositModal, showMobileCryptoPayments, showMobilePaymentsStepper,
-} from "../../../../redux/popups/action";
-import {siteID} from "../../../../envs/envsForFetching";
-import {postCryptoPayment} from "../../../../redux/deposits/action";
+} from "../../../redux/popups/action";
+import {siteID} from "../../../envs/envsForFetching";
+import {postCryptoPayment} from "../../../redux/deposits/action";
 import {chakra} from "@chakra-ui/react";
 import {HStack, Text} from "@chakra-ui/layout";
-import CurrencyIcon from "../../../currency/CurrencyIcon";
+import CurrencyIcon from "../../currency/CurrencyIcon";
 
 export const ChoosePaymentMethod = ({
   setPaymentMethods,
@@ -186,7 +186,6 @@ export const ChoosePaymentMethod = ({
               {!method.image && method?.currencyData && <CurrencyIcon id={method?.currencyData?.abbreviation} size={6} mx={2}/>}
             </VStack>
             <Text as="div"
-                  // className={styles.itemTitle}
               p="5px 5px 0"
               fontWeight={400}
               fontSize="12px"

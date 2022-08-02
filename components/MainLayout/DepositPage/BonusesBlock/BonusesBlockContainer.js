@@ -11,14 +11,11 @@ export const BonusesBlockContainer = (props) => {
     userCurrency,
     showAllBonuses,
     chooseBonusClickHandler,
-    setDepositButtonText,
-    userDepositValue,
     userSelectedBonus,
     bonusesArr
   } = props
 
   return isUseBonus && bonusesArr.length > 0 ? (
-    <ErrorEmpty>
       <BonusesDropdown
         t={t}
         bonusImage={'/assets/icons/home/bonus_info_icon.svg'}
@@ -32,7 +29,6 @@ export const BonusesBlockContainer = (props) => {
         userSelectedBonus={userSelectedBonus}
         userCurrency={userCurrency}
       />
-    </ErrorEmpty>
   ) : (
     <BonusesBlock
       classImageNotActive={'imageNotActive'}

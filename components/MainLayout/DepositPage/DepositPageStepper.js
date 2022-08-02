@@ -3,11 +3,10 @@ import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
 import SelectModal from "../../modal/SelectModal"
-import styles from '../../../styles/DepositPage/DepositPage.module.scss'
-import {DepositInputsContainer} from './DepositInputs/DepositInputsContainer'
+import {DepositInputsContainer} from './DepositInputsContainer'
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
-import {ChoosePaymentMethod} from './ChoosePaymentMethod/ChoosePaymentMethod'
-import {DepositLastPage} from './DepositLastPage/DepositLastPage'
+import {ChoosePaymentMethod} from './ChoosePaymentMethod'
+import {DepositLastPage} from './DepositLastPage'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {setStepDepositModal} from "../../../redux/popups/action";
 import ModalTopHeader from "../../modal/ModalTopHeader";
@@ -151,7 +150,7 @@ export const DepositPageStepper = (props) => {
               />
             </ErrorText>
 
-            <HStack w="100%" p="40px 30px 10px" justifyContent="space-between">
+            <HStack w="100%" p={{base: "20px 16px 0px", lg: "40px 24px 10px"}} justifyContent="space-between">
               {paymentImages.map((el) => (
                 <img key={el.id} src={el.src} alt=""/>
               ))}
