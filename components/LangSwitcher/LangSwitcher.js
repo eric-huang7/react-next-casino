@@ -1,28 +1,21 @@
-import Link from 'next/link'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-
-import styles from '../../styles/LangSwitcher.module.scss'
-
+import { HStack, Box, Image, chakra } from "@chakra-ui/react";
 import {setLang} from "../../redux/lang/action";
 import {useCookies} from "react-cookie";
-import {LangSwitcherPopup} from "./LangSwitcherPopup";
+import {useRouter} from "next/router";
+import Link from "next/link";
+import {VStack} from "@chakra-ui/layout";
 
 const LangSwitcher = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  let hrefRoute = router.route;
+
   const [cookies, setCookie, removeCookie] = useCookies(['language']);
   const activeLang = useSelector(({lang}) => lang.activeLang);
   const languages = useSelector(({lang}) => lang.languages);
   const [activeLangBlock, setActiveLangBlock] = useState(false);
-
-  const switchActiveLangBlock = () => {
-    if (activeLangBlock) {
-      setActiveLangBlock(false)
-    } else {
-      setActiveLangBlock(true)
-    }
-  }
-
   const [activeLangNow, setActiveLang] = useState({})
 
   useEffect(() => {
@@ -32,25 +25,68 @@ const LangSwitcher = () => {
     setActiveLang(active);
   }, [languages, activeLang])
 
-
   const langChooser = (e) => {
     dispatch(setLang({lang: e.target.dataset.lang, setCookie} ));
   }
 
-
   return (
-    <div
-      className={styles.langSwitcherBlock}
-      onClick={() => switchActiveLangBlock()}
+    <Box
+      cursor="pointer"
+      transition="right 0.5s ease-in-out"
+      outline="none"
+      position="relative"
+      mr="10px"
+      onMouseEnter={() => setActiveLangBlock(true)}
+      onMouseLeave={() => setActiveLangBlock(false)}
     >
-      <div className={styles.activeLangBlock}>
-        {activeLangNow?.icon && <img className={styles.langSwitcherActiveLangFlag} src={activeLangNow?.icon} alt="flag icon"/>}
+      <HStack w="111px" h="51px" bg="grey.400" textAlign="center" alignItems="center" justifyContent="center">
+        {activeLangNow?.icon && <img src={activeLangNow?.icon} alt="flag icon"/>}
         <span>
           {activeLangNow?.language}
         </span>
-      </div>
-      <LangSwitcherPopup arrLang={languages} langChooser={langChooser} />
-    </div>
+      </HStack>
+
+      {activeLangBlock && <VStack
+        bg="grey.400"
+        w="100%"
+        m={0}
+        p={0}
+        alignItems="center"
+        outline="none"
+        position="absolute"
+        top="10px"
+        spacing={0}
+      >
+        {languages
+          .map(language => (
+            <HStack
+              w="111px"
+              h="31px"
+              flexWrap="nowrap"
+              alignItems="center"
+              justifyContent="flex-start"
+              pl="12px"
+              pr="12px"
+              spacing={0}
+              key={language.name}
+              onClick={(e) => langChooser(e)}
+            >
+              <Image src={language.icon} alt="" w="22px" mr="6px" />
+              <Link
+                href={{
+                  pathname: hrefRoute,
+                  query: {...router.query}
+                }}
+                locale={language.lang}
+              >
+                <chakra.a fontSize="11px" data-lang={language.lang}>
+                  {language.language}
+                </chakra.a>
+              </Link>
+            </HStack>
+          ))}
+      </VStack>}
+    </Box>
   )
 }
 
