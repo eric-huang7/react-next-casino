@@ -77,11 +77,9 @@ export const Header = () => {
   }, [userLogin.balance, currencyData, userLogin.isAuthenticated]);
 
   const showMenu = () => {
-    console.log("showMenu");
     setIsMenuActive(true);
   };
   const onCloseMenu = () => {
-    console.log("onCloseMenu");
     setIsMenuActive(false);
   };
 
