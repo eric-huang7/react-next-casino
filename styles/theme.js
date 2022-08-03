@@ -82,7 +82,11 @@ const theme = extendTheme({
       400: "#a7a7a7",
       600: "#8f8f8f",
       800: "#444444",
+      850: "#393939",
       900: "#2a2a31",
+    },
+    currency: {
+      500: "#fda3a2"
     },
     scroll: {
       100: "#fda3a2",

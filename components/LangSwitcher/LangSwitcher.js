@@ -36,6 +36,7 @@ const LangSwitcher = () => {
       outline="none"
       position="relative"
       mr="10px"
+      display={{base: 'none', lg: 'block'}}
       onMouseEnter={() => setActiveLangBlock(true)}
       onMouseLeave={() => setActiveLangBlock(false)}
     >
