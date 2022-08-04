@@ -13,8 +13,8 @@ export const NotificationCounter = ({messageCount}) => (
     fontSize="10px"
     fontWeight={700}
     color="#ffffff"
-    w={{base: "13px", lg: "16px"}}
-    h={{base: "13px", lg: "16px"}}
+    w={{base: "16px", lg: "16px"}}
+    h={{base: "16px", lg: "16px"}}
   >
     {messageCount}
   </Text>

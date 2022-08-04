@@ -1,7 +1,10 @@
-import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss'
-
 import { BalanceItem } from './BalanceItem'
 import BalanceItemError from './BalanceErrorBoundary/BalansItemError'
+import {
+  Table,
+  Tbody,
+  TableContainer,
+} from '@chakra-ui/react'
 
 export const BalanceMenuContainer = ({ balanceData, currencyData, activeBalance, onSelect }) => {
 
@@ -13,25 +16,21 @@ export const BalanceMenuContainer = ({ balanceData, currencyData, activeBalance,
   }
 
   return (
-    <div className={styles.balanceMenuContainer}>
-      <ul className={styles.balanceList}>
-        {
-          balanceArr.map((el) => {
-
-            return (
-              <BalanceItemError key={`${el.id} balance item`}>
-                <BalanceItem
-                  key={`${el.id} balance item`}
-                  balanceData={el}
-                  currencyData={currencyData}
-                  onSelect={onSelect}
-                />
-              </BalanceItemError>
-            )
-          })
-        }
-
-      </ul>
-    </div>
+    <TableContainer  position="absolute" top="20px" right={0} bg="#2d2b2b" overflowX="hidden">
+      <Table p={0}>
+        <Tbody>
+        {balanceArr.map((el) => (
+          <BalanceItemError key={`${el.id} balance item`}>
+            <BalanceItem
+              key={`${el.id} balance item`}
+              balanceData={el}
+              currencyData={currencyData}
+              onSelect={onSelect}
+            />
+          </BalanceItemError>
+        ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   )
 }

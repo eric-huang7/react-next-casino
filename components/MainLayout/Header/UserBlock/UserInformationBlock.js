@@ -112,7 +112,7 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
         onMouseLeave={() => hideLinksMenuHandler()}
       >
         <img src="/assets/img/avatars/Blue.webp" width={50} alt="" />
-        {(isShowLinksMenu || true) &&
+        {isShowLinksMenu &&
           <DesktopMenuContainer onClose={hideLinksMenuHandler} userInfo={userInfo} userCurrency={userCurrency}/>
         }
       </Box>

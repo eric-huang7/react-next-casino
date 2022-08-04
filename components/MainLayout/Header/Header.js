@@ -120,7 +120,6 @@ export const Header = () => {
         </ErrorEmpty>
         <UserBlockNavigation userInfo={userLogin} />
       </HStack>
-      {/*<div className={styles.test} onClick={onCloseMenu}/>*/}
       <MenuModal open={isMenuActive} onClose={onCloseMenu} />
     </>
   );

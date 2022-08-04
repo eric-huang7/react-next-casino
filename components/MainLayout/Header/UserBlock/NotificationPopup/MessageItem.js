@@ -1,4 +1,3 @@
-import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss'
 import Link from 'next/link'
 import { Text } from "@chakra-ui/react"
 import { urlGen } from '../../../../../helpers/imageUrl'
