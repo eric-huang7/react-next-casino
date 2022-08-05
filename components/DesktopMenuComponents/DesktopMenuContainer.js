@@ -1,5 +1,6 @@
 import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss';
 import {LinkItem} from "./LinkItem";
+import { Box } from "@chakra-ui/react";
 import {SignOutItem} from "./SignOutItem";
 import {useDispatch, useSelector} from "react-redux";
 import {showDepositModal, showPlaySafe, showRedeemModal} from "../../redux/popups/action";
@@ -38,14 +39,12 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
     onClose();
   }
 
-
-
   return (
     <div className={styles.desktopMenuContainer}>
       <div className={styles.topNav}>
-        <div className={styles.balance}>
+        <Box minWidth="55%" w="max-content">
           <BalanceBlock userInfo={userInfo} userCurrency={userCurrency} />
-        </div>
+        </Box>
 
         <div className={styles.buttons}>
           <div>
