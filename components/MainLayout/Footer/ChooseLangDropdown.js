@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import { useRouter } from 'next/router';
-
-import styles from '../../../styles/Footer/Footer.module.scss'
+import { Text, VStack, HStack } from '@chakra-ui/react';
 import {setLang} from "../../../redux/lang/action";
 import {useCookies} from "react-cookie";
+import {Box} from "@chakra-ui/layout";
 
 export const ChooseLangDropdown = ({t, isVis}) => {
   const dispatch = useDispatch();
@@ -18,13 +17,27 @@ export const ChooseLangDropdown = ({t, isVis}) => {
   }
 
   return (
-    <div className={`${styles.dropdownWrapper} ${isVis ? "" : styles.hidden}`}>
-      <ul className={styles.langChooserBlockList}>
+    <Box
+      position="absolute"
+      height="125px"
+      bg="white"
+      zIndex={10}
+      overflowY="scroll"
+      top="-126px"
+      left="-1px"
+      w="100%"
+      // className={`${styles.dropdownWrapper}`}
+    >
+      <VStack alignItems="center" p="10px">
         {
           languages?.map((language) => {
             return (
-              <li
-                className={styles.langChooserListItem}
+              <HStack
+                mt="10px"
+                cursor="pointer"
+                w="100%"
+                alignItems="center"
+                justifyContent="center"
                 key={language.name}
                 onClick={(e) => langChooser(e?.target?.dataset?.lang)}
               >
@@ -35,17 +48,17 @@ export const ChooseLangDropdown = ({t, isVis}) => {
                   }}
                   locale={language.lang}
                 >
-                  <a
-                    data-lang={language.lang}
-                  >
-                    {language.language.toUpperCase()}
+                  <a data-lang={language.lang}>
+                    <Text color="black" textTransform="uppercase" fontSize={{base: "14px", lg: "16px"}}>
+                      {language.language}
+                    </Text>
                   </a>
                 </Link>
-              </li>
+              </HStack>
             )
           })
         }
-      </ul>
-    </div>
+      </VStack>
+    </Box>
   )
 }

@@ -1,13 +1,22 @@
-import styles from '../../../styles/Footer/Footer.module.scss'
-
 import Link from 'next/link'
-import Image from 'next/image'
+import { Box, Image } from '@chakra-ui/react'
 import { ChooseLangDropdown } from './ChooseLangDropdown'
 import { useDispatch, useSelector } from 'react-redux'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
 import { useTranslation } from 'next-i18next'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
+import {HStack, Text, VStack, Stack} from "@chakra-ui/layout";
+import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
+
+const Label = ({children, ...props}) => <Box
+  whiteSpace="nowrap"
+  fontSize="14px"
+  color="white"
+  p="0 15px 15px"
+  fontFamily="Verdana"
+  {...props}
+>{children}</Box>
 
 export const Footer = ({ userAuth }) => {
   const { t } = useTranslation('common');
@@ -70,97 +79,138 @@ export const Footer = ({ userAuth }) => {
   let language = copyLanguages.find(item => item.lang === activeLang)?.language?.toUpperCase()
 
   return (
-    <footer className={styles.mainFooter}>
-      <section className={styles.footerLogoWrapper}>
-        <div className={styles.footerLogo}>
-        </div>
-      </section>
-      <section className={styles.footerMiddleBlock}>
-        <div className={styles.footerMiddleInnerWrapper}>
-          {coinsImg.map((el) => {
-            return (
-              <div className={styles.coinImgWrapper} key={el.key}>
-                <Image src={el.src} width={189} height={64} alt={el.key}/>
-              </div>
-            )
-          })}
-        </div>
-      </section>
-      <section className={styles.footerUpperBlock}>
-        <ul className={styles.linksFirst}>
-          {linkKeyFirs.map((el) => {
-            if (el.key === 'liveChat') {
-              return (
-                <li key={el.key}>
-                  <a style={{ cursor: 'pointer' }} onClick={(e) => liveChatClick(e)}>{t(`footer.${el.name}`)}</a>
-                </li>
-              )
-            } else {
-              return (
-                <li key={el.key}>
-                  <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>
-                </li>
-              )
-            }
-          })}
-        </ul>
-        <ul className={styles.linksSecond}>
-          <li>
+    <Box
+      backgroundColor="accent.950"
+      mt="100px"
+      pb="30px"
+    >
+      <Box
+        w="100%"
+        h="50px"
+        position="relative"
+      >
+        <Box
+          position="absolute"
+          left="calc(50% - 50px)"
+          top="-50px"
+          w="120px"
+          h="120px"
+          borderRadius="60px"
+          border="10px solid"
+          borderColor="accent.950"
+          backgroundColor="accent.950"
+          backgroundImage="url('/assets/img/mainLayoutImg/logo-round.webp')"
+          backgroundRepeat="no-repeat"
+          backgroundPosition="center center"
+        />
+      </Box>
+      <HStack w="100%" pt="40px" alignItems="center">
+        <Stack direction={{base: 'column', lg: 'row'}} alignItems="center" justifyContent="center" w="100%" p="0 50px">
+          {coinsImg.map((el, index) => (
+            <Box key={index}>
+              <Image src={el.src} alt=""/>
+            </Box>
+          ))}
+        </Stack>
+      </HStack>
+      <VStack p="5% 0 4%" alignItems="center" spacing={0}>
+        <HStack flexWrap="wrap" justifyContent="center" pb={{base: 0, lg: "35px"}} spacing={0}>
+          {linkKeyFirs.map((el) => (
+            <Label key={el.key}>
+              {el.key === 'liveChat'
+                ? <a style={{ cursor: 'pointer' }} onClick={liveChatClick}>{t(`footer.${el.name}`)}</a>
+                : <Link href={el.route}><a>{t(`footer.${el.name}`)}</a></Link>}
+            </Label>
+          ))}
+        </HStack>
+        <HStack flexWrap="wrap" justifyContent="center" spacing={0} pb={{base: "30px", lg: 0}}>
+          <Label>
             <Link href={linkKeySecond[0].route}><a>{t(`footer.${linkKeySecond[0].name}`)}</a></Link>
-          </li>
-          <li>
+          </Label>
+          <Label>
             <Link href={linkKeySecond[1].route}><a>{t(`footer.${linkKeySecond[1].name}`)}</a></Link>
-          </li>
-          <li>
+          </Label>
+          <Label>
             <Link href={linkKeySecond[2].route}><a>{t(`footer.${linkKeySecond[2].name}`)}</a></Link>
-          </li>
-          <li>
+          </Label>
+          <Label>
             <span onClick={() => dispatch(showPlaySafe(true))}>{t(`footer.playSafe`)}</span>
-          </li>
-          {
-            userAuth
-              ?
-              <li>
-                <span onClick={() => dispatch(showManageSubscriptions(true))}>{t(`footer.manageSubscriptions`)}</span>
-              </li>
-              :
-              <></>
-          }
-
-        </ul>
-      </section>
-      <section className={`${styles.footerLowerBlock} ${userAuth && width > 1239 ? styles.paddingEnable : ''}`}>
-        <div className={styles.lowerFooter}>
-          <div className={styles.socialBlock}>
-            {socilaLinks.map((el) => {
-              return (
-                <a className={styles.socialLink} target="_blank" rel={'noreferrer'} key={el.key} href={el.href}>
-                  <img className={styles.socialImage} src={el.img} alt={el.key}/>
-                </a>
-              )
-            })}
-          </div>
-          <div className={styles.languageRightInfo}>
-            <div className={styles.languageSelectBlock}>
-              <p>{t(`footer.SelectLanguage`)}</p>
-              <div
-                className={styles.chooseLanguageButton}
-                onClick={() => switchActiveLangBlock()}>
-                <ChooseLangDropdown t={t} isVis={activeChooseLangBlock}/>
-                <span>{language}</span>
-              </div>
-            </div>
-            <div className={styles.rightsLicenseContainer}>
-              <p className={styles.rightInfoText}>2020 SlotsIdol.com&#169; All Rights Reserved</p>
-              <div className={styles.licensingBlock}>
-                <iframe
-                  src="https://licensing.gaming-curacao.com/validator/?lh=39be67de0ffa98b11f0dd2b6aec51152&template=seal"
-                  width="150" height="50" style={{ border: 'none' }}/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </footer>
+          </Label>
+          {userAuth && <Label>
+            <span onClick={() => dispatch(showManageSubscriptions(true))}>{t(`footer.manageSubscriptions`)}</span>
+          </Label>}
+        </HStack>
+      </VStack>
+      <Stack
+        direction={{base: 'column-reverse', lg: 'row'}}
+        flexWrap="wrap"
+        p={{base: 0, lg: "0 30px"}}
+        alignItems="center"
+        justifyContent={{base: "flex-start", lg: "space-between"}}
+        spacing={{base: 0, lg: 2}}
+      >
+        <HStack
+          alignItems="center"
+          w={{base: '100%', lg: 'auto'}}
+          justifyContent={{base: 'center', lg: 'flex-start'}}
+          pt={{base: "30px", lg: 0}}
+        >
+          {socilaLinks.map((el) => (
+            <a target="_blank" rel={'noreferrer'} key={el.key} href={el.href}>
+              <Image src={el.img} width="43px" height="43px" alt=""/>
+            </a>
+          ))}
+        </HStack>
+        <Stack
+          direction={{base: 'column', lg: 'row'}}
+          w={{base: '100%', lg: 'auto'}}
+          alignItems="center"
+          color="white"
+          fontSize={{base: '13px', lg: '16px'}}
+        >
+          <HStack
+            spacing={4}
+            w={{base: '100%', lg: 'auto'}}
+            alignItems="center"
+            pb={{base: '10px', lg: 0}}
+            justifyContent={{base: 'center', lg: 'flex-start'}}
+          >
+            <Text>{t(`footer.SelectLanguage`)}</Text>
+            <HStack
+              w={{base: "96px", lg: "189px"}}
+              h={{base: "30px", lg: "42px"}}
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              border="1px solid"
+              borderColor="white"
+              p="0 23px"
+              ml="25px"
+              position="relative"
+              // className={styles.chooseLanguageButton}
+              onClick={switchActiveLangBlock}
+              spacing={0}
+            >
+              <Text as="span">{language}</Text>
+              <Box display={{base: 'none', lg: 'block'}}>
+                {activeChooseLangBlock
+                  ? <ChevronUpIcon w={8} h={8} color="white"/>
+                  : <ChevronDownIcon w={8} h={8} color="white"/>
+                }
+              </Box>
+              {activeChooseLangBlock && <ChooseLangDropdown t={t} isVis={activeChooseLangBlock}/>}
+            </HStack>
+          </HStack>
+          <Stack direction={{base: 'column', lg: 'row'}} alignItems="center" spacing={4}>
+            <Text ml={{base: '5px', lg: '40px'}}>2020 SlotsIdol.com&#169; All Rights Reserved</Text>
+            <Box m="0 5px 0 20px">
+              <iframe
+                src="https://licensing.gaming-curacao.com/validator/?lh=39be67de0ffa98b11f0dd2b6aec51152&template=seal"
+                width="150" height="50" style={{ border: 'none' }}/>
+            </Box>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Box>
   )
 }
