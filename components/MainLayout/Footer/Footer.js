@@ -91,7 +91,7 @@ export const Footer = ({ userAuth }) => {
       >
         <Box
           position="absolute"
-          left="calc(50% - 50px)"
+          left="calc(50% - 60px)"
           top="-50px"
           w="120px"
           h="120px"

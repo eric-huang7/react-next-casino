@@ -1,16 +1,41 @@
-import styles from '../../styles/DesktopMenu/DesktopMenu.module.scss';
 import {LinkItem} from "./LinkItem";
-import { Box } from "@chakra-ui/react";
-import {SignOutItem} from "./SignOutItem";
+import { Box, Image, Button } from "@chakra-ui/react";
 import {useDispatch, useSelector} from "react-redux";
 import {showDepositModal, showPlaySafe, showRedeemModal} from "../../redux/popups/action";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
 import {BalanceBlock} from "../MainLayout/Header/UserBlock/BalanceBlock";
+import {VStack, HStack} from "@chakra-ui/layout";
+import {logout} from "../../redux/user/action";
+import {useRouter} from "next/router";
+
+const HeaderButton = ({label, image, onClick}) => <Button
+  onClick={onClick}
+  bg="accent.850"
+  _hover={{bg: "accent.850"}}
+  borderRadius={0}
+  color="white"
+  w="100%"
+  fontSize="10px"
+  fontFamily="Lithograph"
+  textAlign="left"
+  justifyContent="flex-start"
+>
+  <Image
+    width="auto"
+    height="18px"
+    verticalAlign="middle"
+    marginRight="8px"
+    src={image}
+    alt=""
+  />
+  {label}
+</Button>
 
 export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
+  const router = useRouter();
   const isShowDepositModal = useSelector((state) => state.popups.isShowDepositModal)
   const isShowRedeemModal = useSelector((state) => state.popups.isShowDepositModal)
 
@@ -39,58 +64,83 @@ export const DesktopMenuContainer = ({ onClose, userInfo, userCurrency }) => {
     onClose();
   }
 
+  const logoutButtonHandler = () => {
+    router.push('/');
+    dispatch(logout());
+  }
+
   return (
-    <div className={styles.desktopMenuContainer}>
-      <div className={styles.topNav}>
+    <Box
+      boxShadow="-6px 11px 21px 7px rgba(0,0,0,0.5)"
+      position="absolute"
+      right="10px"
+      top="47px"
+      w="max-content"
+    >
+      <HStack justifyContent="space-between" alignItems="center" minW="100%" w="max-content" p="10px 15px" bg="accent.820">
         <Box minWidth="55%" w="max-content">
           <BalanceBlock userInfo={userInfo} userCurrency={userCurrency} />
         </Box>
 
-        <div className={styles.buttons}>
-          <div>
-            <button onClick={closeDepositModalHandler}>
-              <img className={styles.logo} src={'/assets/icons/desktopMenu/deposit-icon.webp'} alt=""/>
-              {t('header.navbarButtons.deposit')}
-            </button>
-          </div>
-          <div>
-            <Link href={'/accounts/cashout'}>
-              <a>
-                <button onClick={onClose}>
-                  <img className={styles.logo} src={'/assets/icons/desktopMenu/withdraw-icon.webp'} alt=""/>
-                  {t('header.navbarButtons.cashOut')}
-                </button>
-              </a>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className={styles.menuContainer}>
-        <ul className={styles.menuList}>
-          {
-            linksData.map((link) => (
-              <LinkItem
-                name={link.name}
-                icon={link.icon}
-                path={link.path}
-                onClick={link.onClick}
-                key={`${link.id} ${link.name} link item`}
+        <VStack alignItems="flex-start">
+          <HeaderButton
+            image="/assets/icons/desktopMenu/deposit-icon.webp"
+            label={t('header.navbarButtons.deposit')}
+            onClick={closeDepositModalHandler}
+          />
+
+          <Link href={'/accounts/cashout'}>
+            <a>
+              <HeaderButton
+                image="/assets/icons/desktopMenu/withdraw-icon.webp"
+                label={t('header.navbarButtons.cashOut')}
+                onClick={onClose}
               />
-            ))
-          }
-        </ul>
-      </div>
-      <div className={styles.footer}>
-        <ul className={styles.linkList}>
-          <li>
+            </a>
+          </Link>
+        </VStack>
+      </HStack>
+
+      <Box backgroundImage="url('/assets/img/homeImg/popup_menu_bg.webp')" p="20px">
+        <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap="20px" rowGap="20px" w="100%" p={0} m={0}>
+          {linksData.map((link) => (
+            <LinkItem
+              name={link.name}
+              icon={link.icon}
+              path={link.path}
+              onClick={link.onClick}
+              key={`${link.id} ${link.name} link item`}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box bg="accent.500">
+        <VStack
+          fontSize="12px"
+          lineHeight="16px"
+          color="#361712"
+          fontWeight={600}
+          fontFamily="Lithograph"
+          spacing={0}
+          w="100%"
+          alignItems="flex-start"
+      >
+          <Box w="100%" p="10px">
             <Link href="/contactUs#faq"><a>{t(`header.userDesktopMenu.help`)}</a></Link>
-          </li>
-          <li className={styles.borderTop}>
-            <div onClick={() => dispatch(showPlaySafe(true))}>{t(`header.userDesktopMenu.responsibleGaming`)}</div>
-          </li>
-          <SignOutItem />
-        </ul>
-      </div>
-    </div>
+          </Box>
+          <Box w="100%" p="10px" borderBottom="1px solid" borderColor="accent.870">
+            <Box cursor="pointer" onClick={() => dispatch(showPlaySafe(true))}>
+              {t(`header.userDesktopMenu.responsibleGaming`)}
+            </Box>
+          </Box>
+          <Box w="100%" p="10px">
+            <Box onClick={logoutButtonHandler} cursor="pointer">
+              {t('header.userDesktopMenu.signOut')}
+            </Box>
+          </Box>
+        </VStack>
+      </Box>
+    </Box>
   )
 }
