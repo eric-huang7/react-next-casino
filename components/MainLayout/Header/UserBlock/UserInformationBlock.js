@@ -1,4 +1,4 @@
-import { DesktopMenuContainer } from '../../../DesktopMenuComponents/DesktopMenuContainer'
+import { DesktopMenuContainer } from '../DesktopMenuComponents/DesktopMenuContainer'
 import {useEffect, useState} from 'react'
 import { Box, Text } from "@chakra-ui/react";
 import {numberTransformer} from "../../../../helpers/numberTransformer";

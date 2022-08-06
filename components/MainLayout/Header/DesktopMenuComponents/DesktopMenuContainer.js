@@ -1,12 +1,12 @@
 import {LinkItem} from "./LinkItem";
 import { Box, Image, Button } from "@chakra-ui/react";
 import {useDispatch, useSelector} from "react-redux";
-import {showDepositModal, showPlaySafe, showRedeemModal} from "../../redux/popups/action";
+import {showDepositModal, showPlaySafe, showRedeemModal} from "../../../../redux/popups/action";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
-import {BalanceBlock} from "../MainLayout/Header/UserBlock/BalanceBlock";
+import {BalanceBlock} from "../UserBlock/BalanceBlock";
 import {VStack, HStack} from "@chakra-ui/layout";
-import {logout} from "../../redux/user/action";
+import {logout} from "../../../../redux/user/action";
 import {useRouter} from "next/router";
 
 const HeaderButton = ({label, image, onClick}) => <Button
