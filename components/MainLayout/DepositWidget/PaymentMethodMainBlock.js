@@ -179,3 +179,18 @@ export const PaymentMethodMainBlock = ({t, userPayment, setErrorPaymentMethod, p
     </Box>
   )
 }
+
+function universalizer (arrVerify, checkItem) {
+  let sameItem = arrVerify.find((methodOne) => {
+    if (methodOne.currency_from.currency_id === checkItem.currency_from.currency_id) {
+      return true
+    } else {
+      return false
+    }
+  })
+  if (!sameItem) {
+    return true
+  } else {
+    return false
+  }
+}

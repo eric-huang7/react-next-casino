@@ -186,7 +186,6 @@ export const Footer = ({ userAuth }) => {
               p="0 23px"
               ml="25px"
               position="relative"
-              // className={styles.chooseLanguageButton}
               onClick={switchActiveLangBlock}
               spacing={0}
             >

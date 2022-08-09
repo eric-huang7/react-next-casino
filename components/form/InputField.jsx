@@ -6,7 +6,7 @@ import {useState} from "react";
 
 const InputField = ({
   value, error, label, onInput, validation, id, placeholder, type = "text", maxLength, fontSize = "15px",
-  defaultValue, onChange, px = 4, ...props
+  defaultValue, onChange, px = 4, inputProps, ...props
 }) => {
   const [showPass, setShowPass] = useState(false);
 
@@ -33,6 +33,7 @@ const InputField = ({
           maxLength={maxLength}
           onChange={onChange}
           defaultValue={defaultValue}
+          {...inputProps}
         />
         {type === "password" && <InputRightElement pt="11px">
           {!showPass && <ViewIcon w={6} h={6} color="text.200" opacity={.5} onClick={() => setShowPass(!showPass)}/>}

@@ -172,17 +172,12 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           :
           <></>
       }
-      {
-        isShowModal.isShowMobilePaymentsStepper
-          ?
-          <ErrorEmpty>
-            <MobilePaymentsStepper
-              userAuth={userInfo}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
+      {isShowModal.isShowMobilePaymentsStepper && <ErrorEmpty>
+        <MobilePaymentsStepper
+          userAuth={userInfo}
+        />
+      </ErrorEmpty>}
+
       {
         isShowModal.isShowCreditCardModal
           ?

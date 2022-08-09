@@ -26,6 +26,7 @@ import {Input} from "@chakra-ui/input";
 import {Box, HStack} from "@chakra-ui/layout";
 import {CloseIcon} from "@chakra-ui/icons";
 import {Tooltip} from "@chakra-ui/tooltip";
+import PrimaryButton from "../../buttons/PrimaryButton";
 
 const Label = ({children, ...props}) => <Text
   as="div"
@@ -136,6 +137,7 @@ export const DepositWidgetMainContainer = ({userAuth}) => {
         }
       }
     } else if (width <= 680) {
+      console.log('showMobilePaymentsStepper')
       if (Number(userDepositValue) === 0) {
         setErrorDepositValue(true);
       } else {
@@ -143,7 +145,6 @@ export const DepositWidgetMainContainer = ({userAuth}) => {
         setErrorDepositValue(false);
         dispatch(showMobilePaymentsStepper(true));
       }
-
     } else {
         if (Number(userDepositValue) === 0) {
           setErrorDepositValue(true);
@@ -273,25 +274,20 @@ export const DepositWidgetMainContainer = ({userAuth}) => {
         </ErrorText>}
 
         <ErrorEmpty>
-          <Button
+          <PrimaryButton
             onClick={whatShouldDoPlayWithButton}
             disabled={userCurrency?.userCurrencyData?.isDepositEnabled === 0}
-            w={{base: "90px", lg: "138px"}}
-            order={3}
-            h="42px"
-            bg="primary.500"
-            _hover={{bg: "primary.500"}}
-            color="white"
             fontSize="14px"
-            px="5px"
-            whiteSpace="pre-line"
-            textTransform="uppercase"
+            px={{base: "12px", lg: "5px"}}
+            height="42px"
+            order={3}
+            width="auto"
           >
             <Text display={{base: 'block', lg: 'none'}}>{t("depositWidget.deposit")}</Text>
             <Text display={{base: 'none', lg: 'block'}}>
               {`${t("depositWidget.playWith")}\n${userCurrency?.userCurrencyData?.symbol ? userCurrency?.userCurrencyData?.symbol : ''}${userDepositValue} ${userCurrency?.userCurrencyData?.symbol ? "" : userCurrency?.userCurrencyData?.abbreviation}`}
             </Text>
-          </Button>
+          </PrimaryButton>
         </ErrorEmpty>
 
         <Box cursor="pointer" onClick={closeButtonClickHandler} order={5} pb={3}>
