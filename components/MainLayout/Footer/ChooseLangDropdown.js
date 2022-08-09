@@ -26,7 +26,6 @@ export const ChooseLangDropdown = ({t, isVis}) => {
       top="-126px"
       left="-1px"
       w="100%"
-      // className={`${styles.dropdownWrapper}`}
     >
       <VStack alignItems="center" p="10px">
         {

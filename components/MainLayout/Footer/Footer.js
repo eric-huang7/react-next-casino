@@ -70,7 +70,6 @@ export const Footer = ({ userAuth }) => {
   }
 
   const liveChatClick = (e) => {
-
     e.preventDefault()
     const liveChatButton = document.getElementById('lhc_status_widget_v2').contentWindow.document.body.childNodes[0]
     liveChatButton.click()

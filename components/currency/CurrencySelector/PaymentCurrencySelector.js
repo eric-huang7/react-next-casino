@@ -21,7 +21,6 @@ export const PaymentCurrencySelector = ({
                                           userDepositValue,
                                           userInfo,
                                           userCurrency,
-                                          parentHeight
                                         }) => {
   const {t} = useTranslation("common")
   const dispatch = useDispatch()
@@ -116,16 +115,17 @@ export const PaymentCurrencySelector = ({
   }
 
   return (
-    <Box px="20px" py="16px">
+    <Box px="20px" py="16px" h="100%">
       <Box
         bg="#fcfcfc"
         border="1px solid #cad2d8"
         borderRadius="10px"
+        h="100%"
       >
         <SearchInput placeholder={t("selectCurrency.searchPlaceholder")} value={searchValue} onChange={searchInputHandler} />
 
         <Box
-          h={`${parentHeight - 148}px`}
+          h="calc(100% - 55px)"
           overflowY="auto"
           css={{
             scrollbarColor: "scroll.100 scroll.500",

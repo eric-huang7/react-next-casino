@@ -66,11 +66,11 @@ const PaymentSelectCurrencyModal = ({ isOpen, onClose, onBack, isShowMobileCrypt
     isOpen={isOpen}
     onClose={handleClose}
     onBack={backHandler}
-    wrapperRef={wrapperRef}
+    height="60%"
     title={t('selectCurrency.heading')}
   >
     <ErrorText>
-      {isLoading || !height
+      {isLoading
         ? <LoadingComponent t={t}/>
         : <PaymentCurrencySelector
               t={t}

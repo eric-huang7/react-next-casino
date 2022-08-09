@@ -104,10 +104,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         />
       </ExitIntentError>
       <ErrorEmpty>
-        <DepositWidgetMainContainer
-          userAuth={userInfo}
-          t={t}
-        />
+        <DepositWidgetMainContainer userAuth={userInfo} />
       </ErrorEmpty>
       {isShowModal.isShowTournamentsDetails
         ?
