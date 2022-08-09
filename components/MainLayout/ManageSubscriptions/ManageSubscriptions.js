@@ -1,12 +1,31 @@
-import {SubscriptionsInputsContainer} from "./SubscriptionsInputsContainer";
-import {SubscriptionsSubmitButton} from "./SubscriptionsSubmitButton";
 import {useDispatch, useSelector} from "react-redux";
 import {showManageSubscriptions} from "../../../redux/popups/action";
 import {useEffect, useState} from "react";
-import {changeLocalUserSubscriptions} from "../../../redux/userSubscriptions/action";
+import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/userSubscriptions/action";
 import SelectModal from "../../modal/SelectModal";
-import {Box} from "@chakra-ui/layout";
+import {VStack} from "@chakra-ui/layout";
 import {useTranslation} from "next-i18next";
+import SubmitButton from "../../buttons/SubmitButton";
+import {Checkbox} from "@chakra-ui/checkbox";
+import {CheckIcon} from "@chakra-ui/icons";
+import {Text} from "@chakra-ui/react";
+
+const CheckboxElement = ({label, onChange, checked, id, name}) => <Checkbox
+  icon={<CheckIcon w={6} h={6} />}
+  sx={{
+    '& .chakra-checkbox__control': {
+      width: 10,
+      height: 10,
+    }
+  }}
+  id={id}
+  name={name}
+  isChecked={checked}
+  colorScheme='primary'
+  onChange={onChange}
+>
+  <Text fontSize="16px" color="text.250">{label}</Text>
+</Checkbox>
 
 export const ManageSubscriptions = () => {
   const {t} = useTranslation('common');
@@ -51,30 +70,51 @@ export const ManageSubscriptions = () => {
     }
   }
 
+  const submitButtonClickHandler = () => {
+    const userData = {
+      id: userInfo.authInfo.user.user.id,
+      transactional_email_opt_in: emailSubscript,
+      transactional_sms_opt_in: smsSubscript,
+      browser_opt_in: notifySubscript
+    }
+    dispatch(changeUserSubscriptions(userData));
+    dispatch(changeLocalUserSubscriptions(userData));
+  }
+
   return (
     <SelectModal
-      isOpen={isShowSubscriptions}
+      isOpen={isShowSubscriptions || true}
       width={430}
       headerHeight={70}
       onClose={closeButtonHandler}
       title={t("manageSubscriptions.heading")}
-      footer={<SubscriptionsSubmitButton
-        emailSubscript={emailSubscript}
-        smsSubscript={smsSubscript}
-        notifySubscript={notifySubscript}
-        userInfo={userInfo}
-        t={t}
-      />}
+      footer={<SubmitButton title={t("manageSubscriptions.subscriptionsButton")} onClick={submitButtonClickHandler}/>}
     >
-      <Box pb={4}>
-        <SubscriptionsInputsContainer
-          inputsCheckedHandler={inputsCheckedHandler}
-          emailSubscript={emailSubscript}
-          smsSubscript={smsSubscript}
-          notifySubscript={notifySubscript}
-          userInfo={userInfo} t={t}
-        />
-      </Box>
+      <VStack p="50px 24px" w="100%" alignItems="center">
+        <VStack alignItems="flex-start" spacing={5}>
+          <CheckboxElement
+            id='emailSubscript'
+            name='emailSubscript'
+            checked={!!emailSubscript}
+            onChange={inputsCheckedHandler}
+            label={t("manageSubscriptions.emailSubscript")}
+          />
+          <CheckboxElement
+            id='smsSubscript'
+            name='smsSubscript'
+            checked={!!smsSubscript}
+            onChange={inputsCheckedHandler}
+            label={t("manageSubscriptions.smsSubscript")}
+          />
+          <CheckboxElement
+            id='notifySubscript'
+            name='notifySubscript'
+            checked={!!notifySubscript}
+            onChange={inputsCheckedHandler}
+            label={t("manageSubscriptions.notifySubscript")}
+          />
+        </VStack>
+      </VStack>
     </SelectModal>
   )
 }
