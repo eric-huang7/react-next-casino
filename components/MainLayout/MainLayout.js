@@ -1,7 +1,7 @@
 import { Header } from './Header/Header'
-import styles from '../../styles/MainLayout.module.scss'
 import { Footer } from './Footer/Footer'
 import { useSelector } from 'react-redux'
+import { Box } from '@chakra-ui/react'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
@@ -28,7 +28,11 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         emailError={emailError}
         withdrawConfirmError={withdrawConfirmError}
       />
-      <div className={styles.mainLayoutWrapper}>
+      <Box
+        backgroundColor="accent.850"
+        backgroundImage="url('/assets/img/mainLayoutImg/background.webp')"
+        overflow="hidden"
+      >
         <ErrorHeaderPage>
           <Header/>
         </ErrorHeaderPage>
@@ -37,9 +41,8 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
           userInform={userInfo}
         />
 
-        <TournamentIcon
-          toursref={toursref}
-        />
+        <TournamentIcon toursref={toursref} />
+
         <TournamentSidebar
           toursref={toursref}
           router={router}
@@ -54,7 +57,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
             userAuth={userInfo.isAuthenticated}
           />
         </ErrorEmpty>
-      </div>
+      </Box>
     </>
   )
 }

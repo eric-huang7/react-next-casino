@@ -83,7 +83,7 @@ export const ManageSubscriptions = () => {
 
   return (
     <SelectModal
-      isOpen={isShowSubscriptions || true}
+      isOpen={isShowSubscriptions}
       width={430}
       headerHeight={70}
       onClose={closeButtonHandler}
