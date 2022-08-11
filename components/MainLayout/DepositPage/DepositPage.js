@@ -14,10 +14,12 @@ import {bonusesCalculator} from '../../../helpers/bonusesCalculator'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {addCurrencyToUserList} from "../../../redux/user/action";
+import {useTranslation} from "next-i18next";
 
-export const DepositPage = ({t}) => {
+export const DepositPage = () => {
   const dispatch = useDispatch()
   const {isOpen, onOpen, onClose} = useDisclosure()
+  const { t } = useTranslation('common')
 
   const userInfo = useSelector((state) => state.authInfo.user)
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)

@@ -1,12 +1,9 @@
 import styles from '../../../styles/HomePage/MainBlock.module.scss'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
-import { SlotMachineInterface } from './SlotMachineInterface/SlotMachineInterfase'
-import { SubmitButton } from './SlotMachineInterface/SubmitButton'
 import { useSelector } from 'react-redux'
 
 export const MainBlock = () => {
   const { width } = useWindowDimensions()
-  const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
 
   return (
     <div className={styles.mainBlockWrapper}>

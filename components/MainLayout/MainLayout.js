@@ -32,6 +32,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         backgroundColor="accent.850"
         backgroundImage="url('/assets/img/mainLayoutImg/background.webp')"
         overflow="hidden"
+        w="100%"
       >
         <ErrorHeaderPage>
           <Header/>

@@ -1,4 +1,3 @@
-import styles from '../../../styles/HomePage/ChooseCategoryBlock.module.scss'
 import Connect from "../../../helpers/connect";
 import {
   game_category_ids_search,
@@ -15,8 +14,9 @@ import {
 import { useDispatch } from 'react-redux'
 import {setLoaded, setSearch, setSearchGames} from '../../../redux/games/action'
 import { useRouter } from 'next/router';
-import {useEffect, useRef} from "react";
+import {useEffect, useState} from "react";
 import {delay} from "../../../helpers/timer";
+import SearchField from "../../form/SearchField";
 
 const minQueryLength = 2
 const inputDelay = 500
@@ -25,19 +25,20 @@ export const SearchBar = ({ t }) => {
   const router = useRouter();
   const type = router.query.id;
   const dispatch = useDispatch()
-  const searchRef = useRef('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    searchRef.current.value = '';
+    setQuery('');
     clearSearch();
   },[type])
 
   const searchButtonClickHandler = async (event) => {
+    const query = event.target.value;
 
-    if (searchRef.current.value?.length >= minQueryLength) {
+    if (query?.length >= minQueryLength) {
       dispatch(setSearch(true))
       dispatch(setLoaded(false))
-      fetchSearch();
+      fetchSearch(query);
     } else {
       clearSearch();
     }
@@ -48,45 +49,43 @@ export const SearchBar = ({ t }) => {
     dispatch(setSearchGames([]))
   }
 
-  const fetchSearch = async (e) => {
-    if (searchRef.current.value) {
-      // searchRef.current.blur()
-
+  const fetchSearch = async (query) => {
+    if (query) {
       let url
       try {
         if (type === 'all-games' || !type) {
-          url = searchGames_url(searchRef.current.value)
+          url = searchGames_url(query)
         } else if (type === 'new-games') {
-          url = search_newGames_url(searchRef.current.value)
+          url = search_newGames_url(query)
         } else if (type === 'btc-games') {
-          url = search_topGames_url(searchRef.current.value)
+          url = search_topGames_url(query)
         } else if (type === 'top-games') {
-          url = search_topGames_url(searchRef.current.value)
+          url = search_topGames_url(query)
         } else if (type === 'jackpot-games') {
-          url = search_jackpotGames_url(searchRef.current.value)
+          url = search_jackpotGames_url(query)
         } else if (type === 'table-games') {
-          url = search_tableGames_url(searchRef.current.value)
+          url = search_tableGames_url(query)
         } else if (type === 'tournaments') {
 
           let whatSearch = JSON.parse(router.query.tournamentData)
           if (whatSearch.game_category_ids && whatSearch.game_provider_ids) {
             let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            url = game_provider_category_ids_search(providers, whatSearch.game_category_ids, searchRef.current.value)
+            url = game_provider_category_ids_search(providers, whatSearch.game_category_ids, query)
 
           } else if (whatSearch.game_category_ids) {
-            url = game_category_ids_search(whatSearch.game_category_ids, searchRef.current.value)
+            url = game_category_ids_search(whatSearch.game_category_ids, query)
 
           } else if (whatSearch.game_provider_ids) {
             let providers = whatSearch.game_provider_ids.split('|').filter((el) => el !== '').join(',')
-            url = game_provider_ids_search(providers, searchRef.current.value)
+            url = game_provider_ids_search(providers, query)
 
           } else {
-            url = game_ids_search(whatSearch.game_ids, searchRef.current.value)
+            url = game_ids_search(whatSearch.game_ids, query)
 
           }
 
         } else {
-          url = search_chosenProviderGames_url(type, searchRef.current.value)
+          url = search_chosenProviderGames_url(type, query)
         }
 
         Connect.get(url, {}, (status, data) => {
@@ -96,7 +95,7 @@ export const SearchBar = ({ t }) => {
         dispatch(setSearchGames([]))
       }
     }
-    if (!searchRef.current.value || searchRef.current.value.trim() === '') {
+    if (!query || query?.trim() === '') {
       dispatch(setSearchGames([]))
       clearSearch()
     }
@@ -124,14 +123,11 @@ export const SearchBar = ({ t }) => {
   }
 
   return (
-    <label className={styles.searchInputLabel}>
-      <input
-        ref={searchRef}
-        type={'text'}
-        onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
-        placeholder={t('homePage.searchBar') + ' ' + getTitle()}
-        className={styles.searchInput}
-      />
-    </label>
+    <SearchField
+      value={query}
+      placeholder={t('homePage.searchBar') + ' ' + getTitle()}
+      onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
+      onChange={(e) => setQuery(e.target.value)}
+    />
   )
 }

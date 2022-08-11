@@ -106,26 +106,17 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       <ErrorEmpty>
         <DepositWidgetMainContainer userAuth={userInfo} />
       </ErrorEmpty>
-      {isShowModal.isShowTournamentsDetails
-        ?
-        <ErrorEmpty>
-          <TournamentModalDetails
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        <></>
-      }
-      {isShowModal.isShowForgotPassword
-        ?
-        <ErrorEmpty>
-          <ForgotPasswordComponent
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        <></>
-      }
+
+      {isShowModal.isShowTournamentsDetails && <ErrorEmpty>
+        <TournamentModalDetails
+          t={t}
+        />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowForgotPassword && <ErrorEmpty>
+        <ForgotPasswordComponent t={t} />
+      </ErrorEmpty>}
+
       {
         isShowModal.isShowChangePassword && token
           ?
@@ -229,9 +220,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>
-        <DepositPage
-          t={t}
-        />
+        <DepositPage />
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>
