@@ -35,6 +35,45 @@ const theme = extendTheme({
           }
         }
       }
+    },
+    Text: {
+      baseStyle: {
+
+      },
+      variants: {
+        heading: {
+          letterSpacing: "1px",
+          color: "white",
+          fontWeight: 600,
+          fontFamily: "Lithograph",
+        },
+        text: {
+          letterSpacing: "1px",
+          color: "white",
+          fontWeight: 400,
+          fontFamily: "Verdana",
+        },
+        base: {},
+      },
+      sizes: {
+        lg: {
+          fontSize: "30px",
+        },
+        md: {
+          fontSize: "23px",
+        },
+        sm: {
+          fontSize: "16px"
+        },
+        xs: {
+          fontSize: "12px"
+        },
+        base: {}
+      },
+      defaultProps: {
+        size: 'base',
+        variant: 'base',
+      },
     }
   },
   styles: {
