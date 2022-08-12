@@ -1,11 +1,8 @@
-import Link from "next/link";
 import { Box } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import { chakra } from "@chakra-ui/react";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-
 import {GameItemContainer} from "./GameItemContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
@@ -13,28 +10,8 @@ import {useEffect} from "react";
 import {deleteGameLink, freeGame, playPayGame} from "../../../redux/playGame/action";
 import {showGameWindow} from "../../../redux/ui/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
-import {IoChevronForwardOutline} from "react-icons/io5";
-import {HStack, Text} from "@chakra-ui/layout";
-
-const Arrow = ({...props}) => <Box
-  backgroundColor="rgba(0,0,0, 0.5) !important"
-  backgroundRepeat="no-repeat"
-  backgroundPosition="center"
-  backgroundSize="46px 46px"
-  cursor="pointer"
-  position="absolute"
-  zIndex={1}
-  content=''
-  w="46px"
-  h="100%"
-  top="0"
-  opacity={0}
-  _hover={{
-    opacity: 1,
-    transition: 'opacity 200ms ease'
-  }}
-  {...props}
-/>
+import SectionHeader from "../../typography/SectionHeader";
+import ArrowButton from "../../buttons/ArrowButton";
 
 export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loading, linkPath, titleImage}) => {
   const {height, width} = useWindowDimensions();
@@ -146,12 +123,10 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
     const { currentSlide, onClick } = props;
 
     return itemsCount * (currentSlide + 1) < slides?.length ? (
-      <Arrow
+      <ArrowButton
         onClick={onClick}
-        right="0"
-        backgroundImage="url('/assets/img/gamesSlider/arrow-right.svg')"
-        borderTopLeftRadius="0.25rem"
-        borderBottomLeftRadius="0.25rem"
+        direction="next"
+        round
       />
     ) : null;
   };
@@ -160,12 +135,10 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
     const { onClick, currentSlide } = props;
 
     return currentSlide > 0 ? (
-        <Arrow
+        <ArrowButton
           onClick={onClick}
-          left="0"
-          backgroundImage="url('/assets/img/gamesSlider/arrow-left.svg')"
-          borderTopRightRadius="0.25rem"
-          borderBottomRightRadius="0.25rem"
+          direction="prev"
+          round
         />
     ) : null;
   };
@@ -185,14 +158,9 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
 
   return loading ? <h1>Loading...</h1> : (
     <Box w="100%" maxW="1920px" m="auto" mb="15px">
-      <HStack py="0.25rem" mb="0.5rem" justifyContent="space-between" px="54px" color="white">
-        <Text as="div" lineHeight="1.38" fontSize="24px" fontWeight="bold" fontFamily="Lithograph">
-          {title} {count && `(${count})`}
-        </Text>
-        <Link href={linkPath}><chakra.a display="inline-flex" alignItems="center">
-          {t(`homePage.viewAll`)} <IoChevronForwardOutline />
-        </chakra.a></Link>
-      </HStack>
+      <SectionHeader path={linkPath}>
+        {title} {count && `(${count})`}
+      </SectionHeader>
       <Box w="100%" maxW="1920px" m="0 auto" position="relative">
         <Slider {...sliderSettings}>
           {slides?.map((el, ind) => {

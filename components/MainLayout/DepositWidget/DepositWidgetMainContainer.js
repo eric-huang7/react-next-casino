@@ -220,7 +220,7 @@ export const DepositWidgetMainContainer = ({userAuth}) => {
         borderRadius="8px"
         bg="accent.500"
         left="50%"
-        ml={{base: "-50%", lg: "-327px"}}
+        ml={{base: "-50%", lg: userAuth?.isAuthenticated ? "-327px" : "-190px"}}
         p="19px 7px 8px"
         w={{base: '100%', lg: 'auto'}}
         transition="transform 1s ease-in-out"
