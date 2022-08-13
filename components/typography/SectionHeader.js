@@ -8,7 +8,8 @@ const SectionHeader = ({children, path, label, ...props}) => {
   const { t } = useTranslation('common');
 
   return (
-    <HStack py="0.25rem" mb="0.5rem" justifyContent="space-between" px="54px" color="white" mt="2rem" {...props}>
+    <HStack py="0.25rem" mb="0.5rem" justifyContent="space-between" px={{base: "16px", lg: "54px"}} color="white"
+            mt="2rem" {...props}>
       <Text
         as="div"
         lineHeight="1.38"

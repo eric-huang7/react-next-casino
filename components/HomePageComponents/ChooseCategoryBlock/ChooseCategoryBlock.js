@@ -32,7 +32,7 @@ export const ChooseCategoryBlock = ({t}) => (
           linksData.map((el) => (
             <Box
               key={el.name}
-              lineHight="85px"
+              lineHeight="85px"
               color="white"
               fontSize="22px"
               fontWeight="bold"

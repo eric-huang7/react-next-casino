@@ -23,7 +23,7 @@ export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGa
   const onLeave = () => { setHover(false) }
 
   return (
-    <Box h="180px" m="0 4px" position="relative" borderRadius="0.25rem" overflow="hidden"
+    <Box h={{base: "95px", lg: "180px"}} m="0 4px" position="relative" borderRadius="0.25rem" overflow="hidden"
          onMouseEnter={onEnter} onMouseLeave={onLeave}>
       {hover && <VStack
         spacing={2}
