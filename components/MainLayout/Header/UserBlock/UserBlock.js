@@ -22,7 +22,7 @@ export const UserBlockNavigation = ({ userInfo }) => {
           <UserInformationBlock t={t} userInfo={userInfo} userCurrency={currency}/>
         </ErrorEmpty>}
       </HStack>}
-      {!userInfo.isAuthenticated && <HeaderButtonsRegistration />}
+      {!userInfo.isAuthenticated && <HeaderButtonsRegistration display={{base: 'none', lg: 'flex'}} />}
       <ErrorEmpty>
         <BurgerButton userLogined={userInfo.isAuthenticated}/>
       </ErrorEmpty>
