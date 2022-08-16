@@ -3,12 +3,15 @@ import Image from "next/image";
 import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
 import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import {useState} from "react";
+import React, {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
 import Link from "next/link";
 import {IoChevronForwardOutline} from "react-icons/io5";
+import SectionHeaderCenter from "../../typography/SectionHeaderCenter";
+import {Box} from "@chakra-ui/react";
+import {HStack, Text} from "@chakra-ui/layout";
 
 export const TotalJackpotsAmount = ({t, title, gameData}) => {
   const {height, width} = useWindowDimensions();
@@ -87,16 +90,30 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
   }
 
   return (
-    <div className={styles.totalJackpotsMainWrapper}>
-
-      <div className={styles.headingWrapper}>
-        <div className={styles.heading}>
-          <div className={styles.title}>{title}</div>
-        </div>
-      </div>
-      <div className={styles.totalJackpotsWrapper}>
-        <h1 className={styles.totalMountHeading}>{`${currency} ${totalMount}`}</h1>
-        <div className={styles.winnersInfoBlockWrapper}>
+    <Box w="100%" bg="url('assets/img/mainLayoutImg/section-bg-2.webp')" pb="100px" overflow="hidden">
+      <SectionHeaderCenter pt="30px">{title}</SectionHeaderCenter>
+      <Box position="relative" zIndex={4} w="100%" pb="30px">
+        <Text
+          as="h1"
+          fontSize="90px"
+          letterSpacing="2px"
+          lineHeight={1}
+          pt="30px"
+          pb="50px"
+          color="primary.500"
+          fontWeight="bold"
+          fontFamily="Gobold"
+          textAlign="center"
+        >
+          {`${currency} ${totalMount}`}
+        </Text>
+        <HStack
+          alignItems="stretch"
+          justifyContent="center"
+          w="76%"
+          m="0 auto"
+          // className={styles.winnersInfoBlockWrapper}
+        >
           <ErrorText>
             <WinnersInfoBlock isHidden={isHidden} heading={headings.latestWinn} winnersData={latestWinnersArr}/>
           </ErrorText>
@@ -107,8 +124,8 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
           <ErrorText>
             <JackpotsInfoBlock isHidden={false} heading={headings.jackpots} jackpotsData={jackpotsWinnersArr}/>
           </ErrorText>
-        </div>
-      </div>
-    </div>
+        </HStack>
+      </Box>
+    </Box>
   )
 }

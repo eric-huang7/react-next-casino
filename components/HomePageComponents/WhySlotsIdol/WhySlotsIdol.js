@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { Box, Image } from "@chakra-ui/react"
 import {HStack, Text, VStack} from "@chakra-ui/layout";
+import SectionHeaderCenter from "../../typography/SectionHeaderCenter";
 
 const images = [
   {name: 'minute', key: 'whySlotsIdol.minuteRegistration', reverse: true},
@@ -13,11 +14,7 @@ export const WhySlotsIdol = ({ isBackShow, title }) => {
   const { t } = useTranslation('common')
   return (
     <Box w="100%" backgroundImage="url('/assets/img/mainLayoutImg/section-bg-2.webp')" p="62px 0 85px 0">
-      <HStack w="100%" px="54px" pb="30px" justifyContent="center">
-        <Text variant="heading" size="lg">
-          {title}
-        </Text>
-      </HStack>
+      <SectionHeaderCenter>{title}</SectionHeaderCenter>
       <HStack w="90%" m="0 auto" alignItems={{base: "flex-start", lg: "center"}}
               justifyContent="center" flexWrap="wrap" spacing={3}>
         {images.map((item, index) => (

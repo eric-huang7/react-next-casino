@@ -85,7 +85,6 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
     ) : null;
   };
 
-  console.log('width', width, itemsCount, newsData.length)
   const sliderSettings = {
     dots: false,
     // infinite: false,
