@@ -85,13 +85,14 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
     ) : null;
   };
 
+  console.log('width', width, itemsCount, newsData.length)
   const sliderSettings = {
     dots: false,
     // infinite: false,
     speed: 500,
     slidesToShow: itemsCount,
     centerMode: true,
-    centerPadding: width > 860 ? '50px' : 0,
+    centerPadding: width > 700 ? 0: '50px',
     // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -102,6 +103,7 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
       <SectionHeader>
         {t('homePage.news')} ({newsData?.length})
       </SectionHeader>
+
       {newsError || newsData.length === 0 ? (
         <HStack pb="1px" w="100%" maxW="1920px" m="auto">
           <Text
@@ -125,7 +127,8 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
             backgroundSize={isBackShow && 'cover'}
             backgroundRepeat={isBackShow && "no-repeat"}
           >
-            <Box bg="rgba(0,0,0,0)" pb="85px">
+
+            <Box bg="rgba(0,0,0,0)" pb="85px" w={{base: "660px", lg: "100%"}}>
               <Slider {...sliderSettings}>
                 {newsData.map((el) => {
                   return (

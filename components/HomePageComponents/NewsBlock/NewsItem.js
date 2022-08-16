@@ -24,12 +24,13 @@ export const NewsItem = ({newsData, locale}) => {
   }
 
   return (
-    <Box h="465px" bg="white" position="relative" outline="1px solid #FFBF69" outlineOffset="-10px" m="0 4px">
-      <Box w="100%" h="295px" overflow="hidden">
+    <Box h={{base: "335px", lg: "465px"}} bg="white" position="relative"
+         outline="1px solid #FFBF69" outlineOffset="-10px" m="0 4px">
+      <Box w="100%" h={{base: "199px", lg: "295px"}} overflow="hidden">
         <Image src={newsImageUrl(imgName)} alt="" width="100%" m="0 auto"/>
       </Box>
       <Box bg="white" color="black" w="100%" h="165px" p="0 5px 5px 5px">
-        <VStack w="100%" h="100%" p="10px" justifyContent="space-between">
+        <VStack w="100%" h="100%" p="10px" justifyContent="space-between" fontSize={{base: "10px", lg: "13px"}}>
           <Text color="#000" mb="15px">{t(`${newsData.frontend_id}.newsText`)}</Text>
           <Text color="#944639" alignSelf="flex-end">{date}</Text>
         </VStack>
