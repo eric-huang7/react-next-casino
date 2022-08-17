@@ -1,15 +1,41 @@
-import styles from '../../styles/GamesPage/GamesPage.module.scss';
-import {GamesItem} from "./GamesItem";
 import {useDispatch, useSelector} from "react-redux";
-import {GamesPageHeading} from "./GamesPageHeading";
 import {useRouter} from "next/router";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
+import { HStack } from "@chakra-ui/react";
 import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
 import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
-import {SearchBar} from "../HomePageComponents/ChooseCategoryBlock/SearchBar";
 import preloadImages from "../../helpers/preloadImages";
 import {setLoaded} from "../../redux/games/action";
+import SectionHeader from "../typography/SectionHeader";
+import {keyframes} from "@chakra-ui/react";
+import {Text, Box, VStack} from "@chakra-ui/layout";
+import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItemContainer";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+
+const titles = {
+  'all-games': 'gamesPage.headings.allGames',
+  'new-games': 'gamesPage.headings.newGames',
+  'btc-games': 'gamesPage.headings.btcGames',
+  'top-games': 'gamesPage.headings.topGames',
+  'jackpot-games': 'gamesPage.headings.jackpotGames',
+  'table-games': 'gamesPage.headings.tableGames',
+  'tournaments': 'gamesPage.headings.tournaments',
+}
+
+const pulse = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const animation = `${pulse} 1.5s ease-in-out 0.5s infinite`
 
 export const GamesContainer = (props) => {
   const {
@@ -19,6 +45,7 @@ export const GamesContainer = (props) => {
     setPageCounter,
     gamesError
   } = props;
+  const { width } = useWindowDimensions();
   const userInfo = useSelector((store) => store.authInfo);
   const playGames = useSelector((state) => state.playGame);
   const isLoaded = useSelector((store) => store.games.isLoaded)
@@ -34,18 +61,14 @@ export const GamesContainer = (props) => {
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth <= 1065) {
-          router.push(playGames.startGame.game_link);
-        }
+      if (width <= 1065) {
+        router.push(playGames.startGame.game_link);
       }
     }
 
     if (playGames.freeGame?.game_link) {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth <= 1065) {
-          router.push(playGames.freeGame.game_link);
-        }
+      if (width <= 1065) {
+        router.push(playGames.freeGame.game_link);
       }
     }
   }, [playGames]);
@@ -72,7 +95,7 @@ export const GamesContainer = (props) => {
     })).then((res) => {
       if (res?.error) {
         // TODO show notification
-      } else if (window.innerWidth > 1065) {
+      } else if (width > 1065) {
         router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
           dispatch(showGameWindow(true));
         });
@@ -112,7 +135,7 @@ export const GamesContainer = (props) => {
       })).then((res) => {
         if (res?.error) {
           // TODO show notification
-        } else if ( window.innerWidth > 1065) {
+        } else if ( width > 1065) {
           router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
             dispatch(showGameWindow(true));
           });
@@ -141,43 +164,44 @@ export const GamesContainer = (props) => {
   let games = gamesData.map((el, ind) => {
     return (
       <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
-        <GamesItem
-          showFrame={false}
+        <GameItemContainer
+          w={{base: "160px", lg: "235px"}}
+          h={{base: "125px !important", lg: "160px !important"}}
+          m={{base: "5px !important", lg: "10px !important"}}
+          playGameClickHAndler={playGameClickHandler}
           playFunClickHandler={playFunClickHandler}
-          playGameClickHandler={playGameClickHandler}
-          key={`${el.id} ${el.name} game page`}
-          userInfo={userInfo}
           t={t}
           gameData={el}
+          user={userInfo}
         />
       </GamesItemErrorHandler>
     )
   })
 
-  return gamesError ? (
-    <div className={styles.gamesMainContainer}>
-      <GamesPageHeading heading={heading} t={t} />
-      <div className={styles.gamesItemsContainer}>
-        <h2 className={styles.errorMessage}>{t(gamesError)}</h2>
-      </div>
-    </div>
-  ) : (
-    <>
-      <div className={styles.gamesMainContainer}>
-        <GamesPageHeading heading={heading} t={t} />
-        {!isLoaded ? <div className={styles.gamesItemsContainer} style={{ paddingBottom: 60 }}>
-            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
-            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
-            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
-            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
-            <span className={`${styles.MuiSkeletonRoot} ${styles.MuiSkeletonRectangular} ${styles.MuiSkeletonPulse}`}></span>
-          </div>: (
-          <div className={styles.gamesItemsContainer}>
-            {games}
-          </div>
-        )}
-      </div>
-    </>
+  return (
+    <VStack
+      maxW="1360px"
+      m={{base: "16px", lg: "30px auto"}}
+      p={{base: "0 0 30px", lg: "0 30px 50px"}}
+    >
+      <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30}>{t(titles[heading] || heading)}</SectionHeader>
+      <HStack w="100%" spacing={0} p={{base: 0, lg: "12px 6px 6px 6px"}} flexWrap="wrap"
+        pb={!gamesError && !isLoaded ? 60 : 0 }
+      >
+        {gamesError
+          ? <Text as="h2" m="0 auto" fontSize="24px" fontFamily="Arial" color="#ffffff">{t(gamesError)}</Text>
+          : (!isLoaded ? (width > 800 ? [0,1,2,3,4] : [0,1]).map(key => (
+              <Box m={{base: "5px", lg: "10px"}} key={key}
+                bg="rgba(0, 0, 0, 0.21)"
+                borderRadius="0.25rem"
+                h={{base: "125px", lg: "160px"}}
+                w={{base: "calc(50% - 10px)", lg: "calc(20% - 20px)"}}
+                animation={animation}
+              />
+            )) : games)
+        }
+      </HStack>
+    </VStack>
   )
 }
 

@@ -83,12 +83,12 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
   }
 
   return (
-    <Box w="100%" bg="url('assets/img/mainLayoutImg/section-bg-2.webp')" pb="100px" overflow="hidden">
-      <SectionHeaderCenter pt="30px">{title}</SectionHeaderCenter>
+    <Box w="100%" bg="url('assets/img/mainLayoutImg/section-bg-2.webp')" pb={{base: "50px", lg: "100px"}} overflow="hidden">
+      <SectionHeaderCenter pt="30px" textAlign="center">{title}</SectionHeaderCenter>
       <Box position="relative" zIndex={4} w="100%" pb="30px">
         <Text
           as="h1"
-          fontSize="90px"
+          fontSize={{base: "40px", lg: "90px"}}
           letterSpacing="2px"
           lineHeight={1}
           pt="30px"

@@ -4,7 +4,7 @@ import {Button, VStack, Box} from "@chakra-ui/react";
 import {Text} from "@chakra-ui/layout";
 import {useState} from "react";
 
-export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGameClickHAndler, user}) => {
+export const GameItemContainer = ({gameData, t, playFunClickHandler, playGameClickHAndler, user, ...props}) => {
   const [hover, setHover] = useState(false);
 
   const playFreeClickHandler = () => {
@@ -24,7 +24,7 @@ export const GameItemContainer = ({ind, gameData, t, playFunClickHandler, playGa
 
   return (
     <Box h={{base: "95px", lg: "180px"}} m="0 4px" position="relative" borderRadius="0.25rem" overflow="hidden"
-         onMouseEnter={onEnter} onMouseLeave={onLeave}>
+         onMouseEnter={onEnter} onMouseLeave={onLeave} {...props}>
       {hover && <VStack
         spacing={2}
         backgroundColor="rgba(0,0,0,0.5)"

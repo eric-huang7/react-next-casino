@@ -4,7 +4,7 @@ import {IoChevronForwardOutline} from "react-icons/io5";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
 
-const SectionHeader = ({children, path, label, ...props}) => {
+const SectionHeader = ({children, path, label, fontSize = '24px', ...props}) => {
   const { t } = useTranslation('common');
 
   return (
@@ -13,7 +13,7 @@ const SectionHeader = ({children, path, label, ...props}) => {
       <Text
         as="div"
         lineHeight="1.38"
-        fontSize="24px"
+        fontSize={fontSize}
         fontWeight="bold"
         fontFamily="Lithograph"
       >

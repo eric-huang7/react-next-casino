@@ -170,7 +170,6 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
                   <GameItemContainer
                     playGameClickHAndler={playGameClickHAndler}
                     playFunClickHandler={playFunClickHandler}
-                    ind={ind}
                     t={t}
                     gameData={el}
                     user={user}
