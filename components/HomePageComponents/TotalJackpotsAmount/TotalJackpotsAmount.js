@@ -1,21 +1,14 @@
-import Image from "next/image";
-
-import styles from '../../../styles/HomePage/TotalJackpotsAmount.module.scss'
 import {WinnersInfoBlock} from "./WinnersInfoBlock";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import React, {useState} from "react";
 import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
-import {userData} from "../../../redux/user/action";
 import ErrorText from "../../ErrorBoundaryComponents/ErrorText";
-import Link from "next/link";
-import {IoChevronForwardOutline} from "react-icons/io5";
 import SectionHeaderCenter from "../../typography/SectionHeaderCenter";
 import {Box} from "@chakra-ui/react";
 import {HStack, Text} from "@chakra-ui/layout";
 
 export const TotalJackpotsAmount = ({t, title, gameData}) => {
   const {height, width} = useWindowDimensions();
-
 
   let isHidden = false;
   if (width <= 1165) {
@@ -112,7 +105,6 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
           justifyContent="center"
           w="76%"
           m="0 auto"
-          // className={styles.winnersInfoBlockWrapper}
         >
           <ErrorText>
             <WinnersInfoBlock isHidden={isHidden} heading={headings.latestWinn} winnersData={latestWinnersArr}/>

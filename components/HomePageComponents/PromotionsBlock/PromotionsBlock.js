@@ -69,7 +69,6 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
     const {className, onClick} = props;
     return (
       <SmallArrowButton
-        // className={styles.nextArr}
         direction="next"
         onClick={onClick}
       />
@@ -80,7 +79,6 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
     const {className, onClick} = props;
     return (
       <SmallArrowButton
-        // className={styles.prevArr}
         direction="prev"
         onClick={onClick}
       />

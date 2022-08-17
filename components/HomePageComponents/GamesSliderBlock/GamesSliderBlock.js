@@ -157,7 +157,7 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
   }
 
   return loading ? <h1>Loading...</h1> : (
-    <Box w="100%" maxW="1920px" m="auto" mb="15px">
+    <Box w="100%" maxW="1920px" m="auto" mb="30px">
       <SectionHeader path={linkPath}>
         {title} {count && `(${count})`}
       </SectionHeader>
