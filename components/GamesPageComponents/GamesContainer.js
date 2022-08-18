@@ -184,7 +184,9 @@ export const GamesContainer = (props) => {
       m={{base: "16px", lg: "30px auto"}}
       p={{base: "0 0 30px", lg: "0 30px 50px"}}
     >
-      <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30}>{t(titles[heading] || heading)}</SectionHeader>
+      <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30} justifyContent={{base: 'center', lg: 'flex-start'}}>
+        {t(titles[heading] || heading)}
+      </SectionHeader>
       <HStack w="100%" spacing={0} p={{base: 0, lg: "12px 6px 6px 6px"}} flexWrap="wrap"
         pb={!gamesError && !isLoaded ? 60 : 0 }
       >

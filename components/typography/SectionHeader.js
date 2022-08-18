@@ -9,7 +9,7 @@ const SectionHeader = ({children, path, label, fontSize = '24px', ...props}) => 
 
   return (
     <HStack py="0.25rem" mb="0.5rem" justifyContent="space-between" px={{base: "16px", lg: "54px"}} color="white"
-            mt="2rem" {...props}>
+            mt="2rem" w="100%" {...props}>
       <Text
         as="div"
         lineHeight="1.38"
