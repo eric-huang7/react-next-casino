@@ -13,7 +13,7 @@ import { DepositWidgetMainContainer } from '../MainLayout/DepositWidget/DepositW
 import { MobilePaymentsStepper } from '../MainLayout/PaymentsModals/MobilePaymentsStepper'
 import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
-import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
+// import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
 import { RegisterSignup } from '../modals/RegisterSignup'
 import { LogIn } from '../modals/LogIn'
@@ -192,16 +192,16 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           :
           <></>
       }
-      {
-        isShowModal.isShowSearchModal
-          ?
-          <SearchModalWindowWrapper
-            isShowSearchModal={isShowModal.isShowSearchModal}
-            t={t}
-          />
-          :
-          <></>
-      }
+      {/*{*/}
+      {/*  isShowModal.isShowSearchModal*/}
+      {/*    ?*/}
+      {/*    <SearchModalWindowWrapper*/}
+      {/*      isShowSearchModal={isShowModal.isShowSearchModal}*/}
+      {/*      t={t}*/}
+      {/*    />*/}
+      {/*    :*/}
+      {/*    <></>*/}
+      {/*}*/}
 
       {isShowModal.isShowPlaySafe && <ErrorEmpty>
         <PlaySafeMainWrapper/>

@@ -1,41 +1,35 @@
-import styles from '../../../styles/ExitIntentComponent/GamesContainer/GamesContainer.module.scss';
+import {useEffect, useState} from "react";
+import {deleteGameLink, freeGame, playPayGame} from "../redux/playGame/action";
+import {showGameWindow} from "../redux/ui/action";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {LoadingComponent} from "../../LoadingComponent/LoadingComponent";
-import {GameItemContainer} from "./GameItemContainer";
 import {useRouter} from "next/router";
-import {deleteGameLink, freeGame, playPayGame} from "../../../redux/playGame/action";
-import {showRegister} from "../../../redux/ui/action";
-import {showExitIntentPopup} from "../../../redux/popups/action";
-import {showGameWindow} from "../../../redux/ui/action";
+import {useMediaQuery} from "@chakra-ui/media-query";
 
-export const GamesContainer = ({t, exit}) => {
+export default function usePlayGame() {
+  const [isMobile] = useMediaQuery('(max-width: 30em)')
+
   const dispatch = useDispatch();
-  const router = useRouter();
-  const gamesList = useSelector((store) => store.games);
   const playGames = useSelector((state) => state.playGame);
   const user = useSelector((state) => state.authInfo);
 
+  const router = useRouter()
 
   useEffect(() => {
     if (playGames.startGame?.game_link) {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth <= 1065) {
-          router.push(playGames.startGame.game_link);
-        }
+      if (isMobile) {
+        router.push(playGames.startGame.game_link);
       }
     }
 
     if (playGames.freeGame?.game_link) {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth <= 1065) {
-          router.push(playGames.freeGame.game_link);
-        }
+      if (isMobile) {
+        router.push(playGames.freeGame.game_link);
       }
     }
   }, [playGames]);
 
-  const playFunClickHandler = (gameData) => {
+  const playFun = (gameData) => {
+
     let sendData = {
       game_provider_id: gameData.game_provider_id,
       game_id: gameData.game_provided_id
@@ -57,14 +51,14 @@ export const GamesContainer = ({t, exit}) => {
     })).then((res) => {
       if (res?.error) {
         // TODO show notification
-      } else if (window.innerWidth > 1065) {
+      } else if (!isMobile) {
         router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
           dispatch(showGameWindow(true));
         });
       }
     });
   }
-  const playGameClickHandler = (gameData) => {
+  const playGame = (gameData, user) => {
     if (user.isAuthenticated && (user.balance.balances.length > 0)) {
       let is_bonus = false; // default val
       let bonus_id = null; // default val
@@ -95,45 +89,16 @@ export const GamesContainer = ({t, exit}) => {
       })).then((res) => {
         if (res?.error) {
           // TODO show notification
-        } else if (window.innerWidth > 1065) {
+        } else if (!isMobile) {
           router.push(`/game/${gameData.name ? gameData.name : "..."}`).then((data) => {
             dispatch(showGameWindow(true));
           });
         }
       });
     } else {
-        dispatch(showRegister(true));
-        dispatch(showExitIntentPopup(false));
+
     }
   }
 
-
-  if (gamesList?.topGames?.success) {
-    let gamesData = gamesList.topGames.results.slice(0, 3);
-
-
-    return (
-      <div className={styles.gamesMainContainer}>
-        {gamesData.map((game) => {
-          return (
-            <GameItemContainer
-              playGameClickHandler={playGameClickHandler}
-              playFunClickHandler={playFunClickHandler}
-              key={`${game.name} game key`}
-              t={t}
-              gameData={game}
-            />
-          )
-        })}
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.gamesMainContainer}>
-        <LoadingComponent t={t} />
-      </div>
-    )
-  }
-
-
+  return {playFun, playGame}
 }
