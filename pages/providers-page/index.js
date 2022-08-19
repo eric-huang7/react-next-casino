@@ -7,7 +7,7 @@ import { getCurrency } from '../../redux/currency/action'
 import { MainBlock } from '../../components/HomePageComponents/MainBlock'
 import { ChooseCategoryBlock } from '../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock'
 import { ProvidersContainer } from '../../components/ProvidersPageComponents/ProvidersContainer'
-import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
+import { SearchGamesContainer } from '../../components/GamesPageComponents/SearchGamesContainer'
 import { serverUrl } from '../../envs/url'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";

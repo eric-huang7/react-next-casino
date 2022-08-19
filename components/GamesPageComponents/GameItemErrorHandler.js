@@ -1,5 +1,5 @@
 import React from "react";
-import {logErrorToMyService} from "../../../helpers/errorLoger";
+import {logErrorToMyService} from "../../helpers/errorLoger";
 
 
 class GamesItemErrorHandler extends React.Component {

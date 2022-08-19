@@ -29,6 +29,7 @@ import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import RedeemPage from "../modals/RedeemPage/RedeemPage";
 import TournamentAwardModal from "../modals/TournamentAwardModal";
+import {SearchGamesModal} from "../GamesPageComponents/SearchGamesModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -192,16 +193,12 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           :
           <></>
       }
-      {/*{*/}
-      {/*  isShowModal.isShowSearchModal*/}
-      {/*    ?*/}
-      {/*    <SearchModalWindowWrapper*/}
-      {/*      isShowSearchModal={isShowModal.isShowSearchModal}*/}
-      {/*      t={t}*/}
-      {/*    />*/}
-      {/*    :*/}
-      {/*    <></>*/}
-      {/*}*/}
+      {isShowModal.isShowSearchModal &&
+        <SearchGamesModal
+          isShowSearchModal={isShowModal.isShowSearchModal}
+          t={t}
+        />
+      }
 
       {isShowModal.isShowPlaySafe && <ErrorEmpty>
         <PlaySafeMainWrapper/>

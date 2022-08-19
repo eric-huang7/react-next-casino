@@ -17,14 +17,16 @@ import { useRouter } from 'next/router';
 import {useEffect, useState} from "react";
 import {delay} from "../../../helpers/timer";
 import SearchField from "../../form/SearchField";
+import {useTranslation} from "next-i18next";
 
 const minQueryLength = 2
 const inputDelay = 500
 
-export const SearchBar = ({ t }) => {
+export const SearchBar = ({width}) => {
   const router = useRouter();
   const type = router.query.id;
-  const dispatch = useDispatch()
+  const { t } = useTranslation('common');
+  const dispatch = useDispatch();
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -125,6 +127,7 @@ export const SearchBar = ({ t }) => {
   return (
     <SearchField
       value={query}
+      width={width}
       placeholder={t('homePage.searchBar') + ' ' + getTitle()}
       onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
       onChange={(e) => setQuery(e.target.value)}

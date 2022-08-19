@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
 // import {GamesItem} from "../GamesPageComponents/GamesItem";
-import {SliderComponent} from "../SearchGamesModalWindow/SliderComponent";
+import {SliderComponent} from "./SliderComponent";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

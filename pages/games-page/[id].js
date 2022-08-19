@@ -23,7 +23,7 @@ import {setGames, setLoaded, setSearch, setTotalRows} from '../../redux/games/ac
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
 import {MoreButton} from "../../components/GamesPageComponents/MoreButton";
-import { SearchGamesContainer } from '../../components/SearchGamesModalWindow/SearchGamesContainer'
+import { SearchGamesContainer } from '../../components/GamesPageComponents/SearchGamesContainer'
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()

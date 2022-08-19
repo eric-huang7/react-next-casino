@@ -68,7 +68,7 @@ export const ChooseCategoryBlock = ({t}) => (
       </Link>
 
       <ErrorText>
-        <SearchBar t={t}/>
+        <SearchBar />
       </ErrorText>
 
     </HStack>

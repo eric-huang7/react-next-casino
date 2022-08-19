@@ -11,7 +11,7 @@ import {getJackpots} from "../../redux/gameData/action";
 import {getLatestWinners, getWinners} from "../../redux/gameData/action";
 import {getCurrency} from "../../redux/currency/action";
 import {useDispatch, useSelector} from "react-redux";
-import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
+import {SearchGamesContainer} from "../GamesPageComponents/SearchGamesContainer";
 import ErrorText from "../ErrorBoundaryComponents/ErrorText";
 import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
 import {FaCertificate} from "react-icons/fa";

@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import { HStack } from "@chakra-ui/react";
-import GamesItemErrorHandler from "./GamesPageErrorHandler/GameItemErrorHandler";
+import GamesItemErrorHandler from "./GameItemErrorHandler";
 import preloadImages from "../../helpers/preloadImages";
 import {setLoaded} from "../../redux/games/action";
 import SectionHeader from "../typography/SectionHeader";
@@ -10,7 +10,6 @@ import {Text, Box, VStack} from "@chakra-ui/layout";
 import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItemContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import usePlayGame from "../../hooks/usePlayGame";
-import styles from "../../styles/SearchModalWindow/SearchModalWindow.module.scss";
 import {useTranslation} from "next-i18next";
 
 const titles = {
