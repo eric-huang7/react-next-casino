@@ -5,7 +5,6 @@ import {gameUrl} from "../../helpers/imageUrl";
 
 export const GamesItem = ({t, gameData, userInfo, playFunClickHandler, playGameClickHandler, showFrame}) => {
 
-
   return (
     <div className={`${styles.gameItemWrapper} ${showFrame ? styles.frame : ''}`}>
         <img
