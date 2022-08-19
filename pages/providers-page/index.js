@@ -18,6 +18,7 @@ const ProvidersPage = () => {
   const searchRef = useRef('')
   let searchGames = useSelector((store) => store.games.searchGames)
 
+
   const [providersData, setProvidersData] = useState([])
   const [providersError, setProvidersError] = useState('')
 
@@ -31,6 +32,8 @@ const ProvidersPage = () => {
     })
   }, [])
 
+  console.log('searchGames', searchGames)
+
   return (
     <>
       <MainLayout t={t}>
@@ -40,7 +43,7 @@ const ProvidersPage = () => {
         re */}
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={true} t={t}/>
         {
-          searchGames.length >= 0 && searchRef.current.value ?
+          searchGames.length >= 0 ?
             <ErrorEmpty>
               <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
             </ErrorEmpty>

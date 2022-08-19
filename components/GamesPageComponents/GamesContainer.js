@@ -10,6 +10,8 @@ import {Text, Box, VStack} from "@chakra-ui/layout";
 import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItemContainer";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import usePlayGame from "../../hooks/usePlayGame";
+import styles from "../../styles/SearchModalWindow/SearchModalWindow.module.scss";
+import {useTranslation} from "next-i18next";
 
 const titles = {
   'all-games': 'gamesPage.headings.allGames',
@@ -37,12 +39,13 @@ const animation = `${pulse} 1.5s ease-in-out 0.5s infinite`
 
 export const GamesContainer = (props) => {
   const {
-    t,
     heading,
     gamesData,
-    setPageCounter,
-    gamesError
+    setPageCounter = () => {},
+    gamesError,
+    searchQuery
   } = props;
+  const {t} = useTranslation('common')
   const { width } = useWindowDimensions();
   const dispatch = useDispatch();
 
@@ -97,6 +100,13 @@ export const GamesContainer = (props) => {
       <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30} justifyContent={{base: 'center', lg: 'flex-start'}}>
         {t(titles[heading] || heading)}
       </SectionHeader>
+
+      {searchQuery &&
+        <Text w="100%" as="h3" fontFamily="Verdana" fontSize={20} textTransform="uppercase"
+              textAlign="left" color="white" px={{base: "16px", lg: "20px"}}>
+        {`${t("searchGames.gamesMatching")} "${searchQuery}"`}
+      </Text>}
+
       <HStack w="100%" spacing={0} p={{base: 0, lg: "12px 6px 6px 6px"}} flexWrap="wrap"
         pb={!gamesError && !isLoaded ? 60 : 0 }
       >

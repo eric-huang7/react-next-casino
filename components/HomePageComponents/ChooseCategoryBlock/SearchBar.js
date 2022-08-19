@@ -36,7 +36,7 @@ export const SearchBar = ({ t }) => {
     const query = event.target.value;
 
     if (query?.length >= minQueryLength) {
-      dispatch(setSearch(true))
+      dispatch(setSearch(query))
       dispatch(setLoaded(false))
       fetchSearch(query);
     } else {
@@ -103,7 +103,7 @@ export const SearchBar = ({ t }) => {
 
   const getTitle = () => {
     switch (type) {
-      case 'all-games':
+      case 'all-games' || undefined:
         return t('gamesPage.headings.allGames');
       case 'new-games':
         return t('gamesPage.headings.newGames');
