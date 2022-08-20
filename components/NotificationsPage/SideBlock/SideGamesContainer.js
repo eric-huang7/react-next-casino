@@ -71,8 +71,8 @@ export const SideGamesContainer = ({ t }) => {
             key={`game id key ${el.id}`}
             gameData={el}
             isLoading={gamesStoredData.loadingLatestGames}
-            playFunClickHandler={playFunClickHandler}
-            playGameClickHandler={playGameClickHandler}
+            playFunClickHandler={playFun}
+            playGameClickHandler={playGame}
           />
         </ErrorEmpty>
       )
