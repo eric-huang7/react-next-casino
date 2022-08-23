@@ -11,6 +11,7 @@ import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItem
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import usePlayGame from "../../hooks/usePlayGame";
 import {useTranslation} from "next-i18next";
+import LoadingItems from "./LoadingItems";
 
 const titles = {
   'all-games': 'gamesPage.headings.allGames',
@@ -22,20 +23,6 @@ const titles = {
   'tournaments': 'gamesPage.headings.tournaments',
 }
 
-const pulse = keyframes`
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const animation = `${pulse} 1.5s ease-in-out 0.5s infinite`
-
 export const GamesContainer = (props) => {
   const {
     heading,
@@ -45,7 +32,6 @@ export const GamesContainer = (props) => {
     searchQuery
   } = props;
   const {t} = useTranslation('common')
-  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
 
   const userInfo = useSelector((store) => store.authInfo);
@@ -111,15 +97,7 @@ export const GamesContainer = (props) => {
       >
         {gamesError
           ? <Text as="h2" m="0 auto" fontSize="24px" fontFamily="Arial" color="#ffffff">{t(gamesError)}</Text>
-          : (!isLoaded ? (width > 800 ? [0,1,2,3,4] : [0,1]).map(key => (
-              <Box m={{base: "5px !important", lg: "10px !important"}} key={key}
-                bg="rgba(0, 0, 0, 0.21)"
-                borderRadius="0.25rem"
-                h={{base: "125px", lg: "160px"}}
-                w={{base: "160px", lg: "235px"}}
-                animation={animation}
-              />
-            )) : games)
+          : (!isLoaded ? <LoadingItems /> : games)
         }
       </HStack>
     </VStack>

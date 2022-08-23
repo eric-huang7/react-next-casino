@@ -49,6 +49,7 @@ export const SearchBar = ({width}) => {
   const clearSearch = () => {
     dispatch(setSearch(false))
     dispatch(setSearchGames([]))
+    setQuery('')
   }
 
   const fetchSearch = async (query) => {
@@ -131,6 +132,7 @@ export const SearchBar = ({width}) => {
       placeholder={t('homePage.searchBar') + ' ' + getTitle()}
       onKeyUp={delay((e) => searchButtonClickHandler(e), inputDelay)}
       onChange={(e) => setQuery(e.target.value)}
+      onClear={clearSearch}
     />
   )
 }

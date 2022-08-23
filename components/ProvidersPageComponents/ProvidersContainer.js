@@ -1,10 +1,13 @@
-import styles from '../../styles/ProvidersPage/ProvidersContainer.module.scss'
 import { ProviderItem } from './ProviderItem'
-import { AllProvidersItem } from './AllProvidersItem'
 import { useRouter } from 'next/router'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
+import SectionHeader from "../typography/SectionHeader";
+import {Text, VStack} from "@chakra-ui/layout";
+import React from "react";
+import {HStack} from "@chakra-ui/react";
+import LoadingItems from "../GamesPageComponents/LoadingItems";
 
-export const ProvidersContainer = ({ t, providersData, providersError }) => {
+export const ProvidersContainer = ({ t, isLoaded, providersData, providersError }) => {
   const router = useRouter()
 
   let countOfGames = 0
@@ -30,7 +33,7 @@ export const ProvidersContainer = ({ t, providersData, providersError }) => {
     return (
       <ErrorEmpty key={`${index} ${el.game_producer}`}>
         <ProviderItem
-          providerClickHandler={providerClickHandler}
+          onClick={providerClickHandler}
           key={`${index} ${el.game_producer}`}
           t={t}
           providerData={el}
@@ -40,26 +43,31 @@ export const ProvidersContainer = ({ t, providersData, providersError }) => {
   })
 
   return (
-    <div className={styles.providersMainContainer}>
-      <h2 className={styles.providersMainHeading}>{t('providersPage.heading')}</h2>
-      <div className={styles.providersItemsContainer}>
-        {
-          providersError ?
-            <h2 className={styles.errorMessage}>{t(providersError)}</h2>
-            :
-            <>
-              <AllProvidersItem
-                locale={router.locale}
-                allGamesClickHandler={allGamesClickHandler}
+    <VStack
+      maxW="1360px"
+      m={{base: "16px", lg: "30px auto"}}
+      p={{base: "0 0 30px", lg: "0 30px 50px"}}
+    >
+      <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30} justifyContent={{base: 'center', lg: 'flex-start'}}>
+        {t('providersPage.heading')}
+      </SectionHeader>
+      <HStack w="100%" spacing={0} p={{base: 0, lg: "12px 6px 6px 6px"}} flexWrap="wrap" pb={0}>
+        {providersError ?
+          <Text as="h2" m="0 auto" fontSize="24px" fontFamily="Arial" color="#ffffff">{t(providersError)}</Text>
+          : (isLoaded
+            ? <>
+              <ProviderItem
+                onClick={allGamesClickHandler}
                 t={t}
-                providerData={'asd'}
-                countOfGames={countOfGames}
+                text={t('providersPage.allProviders')}
+                providerData={{games: countOfGames}}
               />
               {providers}
             </>
+            : <LoadingItems />
+          )
         }
-
-      </div>
-    </div>
+      </HStack>
+    </VStack>
   )
 }

@@ -1,9 +1,9 @@
 import {Input} from "@chakra-ui/react";
 import {InputGroup, InputRightElement} from "@chakra-ui/input";
-import {SearchIcon} from "@chakra-ui/icons";
+import {SearchIcon, CloseIcon} from "@chakra-ui/icons";
 
 const SearchField = ({
-  value, onKeyUp, id, placeholder, fontSize = "15px", width = "155px",
+  value, onKeyUp, id, placeholder, onClear, fontSize = "15px", width = "155px",
   onChange, ...props
 }) => (
   <InputGroup
@@ -25,7 +25,9 @@ const SearchField = ({
       }}
       {...props}
     />
-    <InputRightElement ><SearchIcon color='accent.850' /></InputRightElement>
+    <InputRightElement >
+      {value ? <CloseIcon color='accent.850' cursor="pointer" onClick={onClear} /> : <SearchIcon color='accent.850' />}
+    </InputRightElement>
   </InputGroup>
 )
 

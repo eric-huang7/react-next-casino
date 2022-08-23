@@ -17,7 +17,7 @@ class Connect {
   }
 
   handleError = (error) => {
-    switch (error.response.status) {
+    switch (error?.response?.status) {
       case 401:
         // this.redirectTo(document, '/')
         // break;

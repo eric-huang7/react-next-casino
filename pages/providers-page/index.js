@@ -16,23 +16,25 @@ const ProvidersPage = () => {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
   const searchRef = useRef('')
+  const [isLoaded, setIsLoaded] = useState(false)
   let searchGames = useSelector((store) => store.games.searchGames)
-
+  const myRef = useRef(null)
 
   const [providersData, setProvidersData] = useState([])
   const [providersError, setProvidersError] = useState('')
 
   useEffect(() => {
+    myRef.current.scrollIntoView()
     dispatch(getCurrency())
     Connect.get(serverUrl + 'game_providers', {}, (status, data) => {
+      setIsLoaded(true)
       setProvidersData(data.results)
       setProvidersError('')
     }).catch((err) => {
+      setIsLoaded(true)
       setProvidersError('providersPage.error')
     })
   }, [])
-
-  console.log('searchGames', searchGames)
 
   return (
     <>
@@ -41,15 +43,14 @@ const ProvidersPage = () => {
         {/*<JackpotBlock />*/}
         {/*API for jackpots will add in futu
         re */}
+        <div ref={myRef}></div>
         <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={true} t={t}/>
-        {
-          searchGames.length >= 0 ?
-            <ErrorEmpty>
+        {searchGames.length > 0
+          ? <ErrorEmpty>
               <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
             </ErrorEmpty>
-            :
-            <ErrorEmpty>
-              <ProvidersContainer t={t} providersData={providersData} providersError={providersError}/>
+          : <ErrorEmpty>
+              <ProvidersContainer isLoaded={isLoaded} t={t} providersData={providersData} providersError={providersError}/>
             </ErrorEmpty>
         }
       </MainLayout>
