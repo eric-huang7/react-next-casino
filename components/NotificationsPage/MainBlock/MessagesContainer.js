@@ -2,9 +2,6 @@ import {MessageItem} from "./MessageItem";
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 export const MessagesContainer = ({t, notifyData}) => {
-
-
-
   if (notifyData.loading) {
     return (
       <h1 className={"loadingHeader"}>LOADING .....</h1>
@@ -18,27 +15,24 @@ export const MessagesContainer = ({t, notifyData}) => {
       }
     });
 
-
     return (
       <>
-        {
-          arrOfMessages.map((el) => {
-            return (
-              <ErrorEmpty key={`${el.id} message key`}>
-                <MessageItem
-                  key={`${el.id} message key`}
-                  link={el.link}
-                  messageType={el.type}
-                  icon={el.image}
-                  text={el.text}
-                  additionalText={el.text_additional}
-                  time={el.time_created}
-                  read={el.read}
-                />
-              </ErrorEmpty>
-            )
-          })
-        }
+        {arrOfMessages.map((el) => {
+          return (
+            <ErrorEmpty key={`${el.id} message key`}>
+              <MessageItem
+                key={`${el.id} message key`}
+                link={el.link}
+                messageType={el.type}
+                icon={el.image}
+                text={el.text}
+                additionalText={el.text_additional}
+                time={el.time_created}
+                read={el.read}
+              />
+            </ErrorEmpty>
+          )
+        })}
       </>
     )
   }

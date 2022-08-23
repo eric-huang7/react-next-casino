@@ -33,6 +33,7 @@ const NotificationsPage = () => {
             bg="rgba(0,0,0,0.3)"
             m="0 auto 150px auto"
             alignItems="flex-start"
+            spacing={0}
           >
             <ErrorText>
               <MainBlockContainer notifyData={notifyData} userInfo={userInfo} t={t}/>
