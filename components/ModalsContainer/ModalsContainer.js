@@ -140,18 +140,12 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
           <>
           </>
       }
-      {
-        isShowModal.isShowEmailValidationError
-          ?
-          <ErrorEmpty>
-            <EmailValidationError
-              t={t}
-              emailError={emailError}
-            />
-          </ErrorEmpty>
-          :
-          <>
-          </>
+      {isShowModal.isShowEmailValidationError && <ErrorEmpty>
+          <EmailValidationError
+            t={t}
+            emailError={emailError}
+          />
+        </ErrorEmpty>
       }
       {
         isShowModal.isShowTwoFaPopup
