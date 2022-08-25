@@ -15,7 +15,7 @@ export const ExitIntentMainComponent = ({t, showPopup, exit, type, isShowExitInt
     exit();
     router.push(path);
   }
-  console.log('type', type, type === "games")
+
   return showPopup && isShowExitIntent && (
     <Modal
       closeOnOverlayClick
