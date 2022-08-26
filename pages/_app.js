@@ -49,6 +49,7 @@ const MyApp = ({Component, pageProps}) => {
       </Head>
       <Provider store={store}>
         <ChakraProvider theme={theme}>
+          {/* TODO remove iframe */}
           <iframe style={{display: 'none'}} id={'currencyIframe'} src={'/assets/sprite.svg'}/>
           <NotifyProvider store={store}>
             <GameProvider>

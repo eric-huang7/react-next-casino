@@ -47,70 +47,73 @@ export const HomePageContainer = ({t}) => {
       {/*</ErrorText>*/}
       {/*API for jackpots will add in future */}
       <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
-      {searchGames.length > 0
-        ? <ErrorEmpty>
-          <SearchGamesContainer t={t} searchGames={searchGames} heading={'all-games'}/>
-        </ErrorEmpty>
-        : <div>
-          <ErrorText>
-            <GamesSliderBlock
-              t={t}
-              titleImage={"/assets/img/gamesSlider/new_games_head.svg"}
-              title={t('gamesPage.headings.newGames')}
-              titleIcon={<FaCertificate />}
-              slides={games?.newGames?.results?.slice()}
-              count={games?.newGames?.rows}
-              loading={games.loadingNewGames}
-              linkPath="/games-page/new-games"
-            />
-          </ErrorText>
-          <ErrorText>
-            <GamesSliderBlock
-              t={t}
-              titleImage={"/assets/img/gamesSlider/jackpot_head.svg"}
-              title={t('gamesPage.headings.jackpotGames')}
-              titleIcon={<GiStarsStack />}
-              slides={games?.jackpotGames?.results?.slice()}
-              count={games?.jackpotGames?.rows}
-              loading={games.loadingJackpotGames}
-              linkPath="/games-page/jackpot-games"
-            />
-          </ErrorText>
-          <PromotionsBlock
+      <div>
+        {searchGames.length > 0 ?(
+          <ErrorEmpty>
+            <SearchGamesContainer t={t} searchGames={searchGames} heading={'all-games'}/>
+          </ErrorEmpty>
+        ) : (
+          <>
+            <ErrorText>
+              <GamesSliderBlock
+                t={t}
+                titleImage={"/assets/img/gamesSlider/new_games_head.svg"}
+                title={t('gamesPage.headings.newGames')}
+                titleIcon={<FaCertificate />}
+                slides={games?.newGames?.results?.slice()}
+                count={games?.newGames?.rows}
+                loading={games.loadingNewGames}
+                linkPath="/games-page/new-games"
+              />
+            </ErrorText>
+            <ErrorText>
+              <GamesSliderBlock
+                t={t}
+                titleImage={"/assets/img/gamesSlider/jackpot_head.svg"}
+                title={t('gamesPage.headings.jackpotGames')}
+                titleIcon={<GiStarsStack />}
+                slides={games?.jackpotGames?.results?.slice()}
+                count={games?.jackpotGames?.rows}
+                loading={games.loadingJackpotGames}
+                linkPath="/games-page/jackpot-games"
+              />
+            </ErrorText>
+          </>
+        )}
+        <PromotionsBlock
+          t={t}
+          title={t('header.navbarLinks.promotions')}
+          titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}
+        />
+        <ErrorText>
+          <GamesSliderBlock
             t={t}
-            title={t('header.navbarLinks.promotions')}
-            titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}
+            titleImage={"/assets/img/gamesSlider/table_head.svg"}
+            title={t('gamesPage.headings.tableGames')}
+            titleIcon={<GiCardJackHearts />}
+            slides={games?.tableGames?.results?.slice()}
+            count={games?.tableGames?.rows}
+            loading={games.loadingTableGames}
+            linkPath="/games-page/table-games"
           />
-          <ErrorText>
-            <GamesSliderBlock
-              t={t}
-              titleImage={"/assets/img/gamesSlider/table_head.svg"}
-              title={t('gamesPage.headings.tableGames')}
-              titleIcon={<GiCardJackHearts />}
-              slides={games?.tableGames?.results?.slice()}
-              count={games?.tableGames?.rows}
-              loading={games.loadingTableGames}
-              linkPath="/games-page/table-games"
-            />
-          </ErrorText>
-          <ErrorText>
-            <TotalJackpotsAmount
-              t={t}
-              title={t('homePage.totalJackpotHeading')}
-              gameData={gameData}
-            />
-          </ErrorText>
-          <ErrorText>
-            <NewsBlock
-              isBackShow={true}
-              titleImage={"/assets/img/newsSlider/news_heading.svg"}
-            />
-          </ErrorText>
-          <ErrorText>
-            <WhySlotsIdol t={t} title={t('homePage.whySlotsIdol')} isBackShow={true}/>
-          </ErrorText>
-        </div>
-      }
+        </ErrorText>
+        <ErrorText>
+          <TotalJackpotsAmount
+            t={t}
+            title={t('homePage.totalJackpotHeading')}
+            gameData={gameData}
+          />
+        </ErrorText>
+        <ErrorText>
+          <NewsBlock
+            isBackShow={true}
+            titleImage={"/assets/img/newsSlider/news_heading.svg"}
+          />
+        </ErrorText>
+        <ErrorText>
+          <WhySlotsIdol t={t} title={t('homePage.whySlotsIdol')} isBackShow={true}/>
+        </ErrorText>
+      </div>
     </>
   )
 }

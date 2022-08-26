@@ -1,4 +1,3 @@
-import {GamePageMainContainer} from "./GamePageMainContainer";
 import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
@@ -7,7 +6,6 @@ import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../re
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {deleteGameLink} from "../../redux/playGame/action";
 import {userBalance} from "../../redux/user/action";
-
 
 export const GameProvider = ({children}) => {
   const {t} = useTranslation('common');
@@ -54,28 +52,19 @@ export const GameProvider = ({children}) => {
     }
   }, [router])
 
-
   return (
     <>
       {children}
-      {
-        showPlayWindow.isShowPlayWindow
-          ?
-          <PlayWindowWrapper
-            isFullScreen={showPlayWindow.isFullScreen}
-            fullscreenClickHandler={fullscreenClickHandler}
-            minimizedHandler={minimizeHandler}
-            maximizeHandler={maximizeHandler}
-            isMinimized={showPlayWindow.isMinimizePlayWindow}
-            closeGameHandler={closeGameHandler}
-            t={t}
-            playGames={playGames}
-          />
-          :
-          <></>
-      }
-
+      {showPlayWindow.isShowPlayWindow && <PlayWindowWrapper
+        isFullScreen={showPlayWindow.isFullScreen}
+        fullscreenClickHandler={fullscreenClickHandler}
+        minimizedHandler={minimizeHandler}
+        maximizeHandler={maximizeHandler}
+        isMinimized={showPlayWindow.isMinimizePlayWindow}
+        closeGameHandler={closeGameHandler}
+        t={t}
+        playGames={playGames}
+      />}
     </>
   )
-
 }

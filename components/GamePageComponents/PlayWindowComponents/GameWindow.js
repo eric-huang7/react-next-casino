@@ -1,7 +1,6 @@
 import styles from "../../../styles/GamePage/GamePage.module.scss";
 import {useEffect} from "react";
 
-
 export const GameWindow = ({gameUrl, closeGameHandler}) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -24,10 +23,6 @@ export const GameWindow = ({gameUrl, closeGameHandler}) => {
     }
   }
 
-  return (
-    <>
-      <iframe id={'currencyIcons'} className={styles.gameWindow} src={gameUrl} frameBorder="0"></iframe>
-    </>
-  )
+  return <iframe id={'currencyIcons'} className={styles.gameWindow} src={gameUrl} frameBorder="0"></iframe>
 }
 

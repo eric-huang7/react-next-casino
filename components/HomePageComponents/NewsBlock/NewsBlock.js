@@ -91,7 +91,7 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
     speed: 500,
     slidesToShow: itemsCount,
     centerMode: true,
-    centerPadding: width > 700 ? 0: '50px',
+    centerPadding: '50px',
     // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,

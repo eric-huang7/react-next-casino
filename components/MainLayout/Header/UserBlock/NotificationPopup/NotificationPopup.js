@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { Image } from "@chakra-ui/react"
+import { Image, chakra } from "@chakra-ui/react"
 import { browserNotifications } from '../../../../../helpers/browserNotifications'
 import {
   changeLocalUserSubscriptions,
@@ -8,7 +8,7 @@ import {
 } from '../../../../../redux/userSubscriptions/action'
 import ErrorEmpty from '../../../../ErrorBoundaryComponents/ErrorEmpty'
 import { useTranslation } from 'next-i18next'
-import {HStack, chakra, Text, Box} from "@chakra-ui/layout";
+import {HStack, Text, Box} from "@chakra-ui/layout";
 import {MessageItem} from "./MessageItem";
 import Link from "next/link";
 

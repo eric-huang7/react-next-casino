@@ -1,15 +1,14 @@
 import MainLayout from "../../components/MainLayout/MainLayout";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import {GamePageMainContainer} from "../../components/GamePageComponents/GamePageMainContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {freeGame} from "../../redux/playGame/action";
 import {showGameWindow} from "../../redux/ui/action";
 import {getCurrency} from "../../redux/currency/action";
 import {useRouter} from "next/router";
-
-
+import {Background} from "../../components/GamePageComponents/Background";
+import {Box} from "@chakra-ui/layout";
 
 const PlayGamePage = () => {
   const {t} = useTranslation('common');
@@ -44,20 +43,17 @@ const PlayGamePage = () => {
   }, [])
 
   return (
-    <>
-      <MainLayout t={t}>
-        <GamePageMainContainer
-          t={t}
-        />
-      </MainLayout>
-    </>
-
+    <MainLayout>
+      <Box w="100vw" h="100vh" minH="95vh" alignItems="center" justifyContent="center" overflow="hidden"
+           backgroundColor="#282828" backgroundImage="url('/assets/img/gamePage/backIcons.png')"
+           position="relative" mb="-100px">
+        <Background/>
+      </Box>
+    </MainLayout>
   )
 }
 
-
 export const getServerSideProps = async (context) => {
-
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common', 'newsData']),
