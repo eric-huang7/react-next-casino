@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
 import TournamentSidebar from "./TournamentSidebar/TournamentSidebar";
 
-const MainLayout = ({ children, token, emailError, withdrawConfirmError, ...props }) => {
+const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
   const router = useRouter()
 
@@ -33,7 +33,6 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError, ...prop
         backgroundImage="url('/assets/img/mainLayoutImg/background.webp')"
         overflow="hidden"
         w="100%"
-        {...props}
       >
         <ErrorHeaderPage>
           <Header/>

@@ -33,7 +33,6 @@ const PlayGamePage = () => {
         } else {
           router.push('/');
         }
-
       }
     }, 1000);
 

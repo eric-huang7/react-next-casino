@@ -1,7 +1,7 @@
 import {useTranslation} from "next-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
-import {useEffect, useRef, useState} from "react";
+import {useEffect} from "react";
 import {fullScreenGameWindow, minimizeGameWindow, showGameWindow} from "../../redux/ui/action";
 import {PlayWindowWrapper} from "./PlayWindowWrapper";
 import {deleteGameLink} from "../../redux/playGame/action";
