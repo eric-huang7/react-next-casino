@@ -1,12 +1,12 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import styles from '../../styles/AboutUs.module.scss'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
 import { MainBlock } from '../../components/AboutUsPageComponents/MainBlock/MainBlock'
 import { TextBlocks } from '../../components/AboutUsPageComponents/TextBlocks/TextBlocks'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { Box } from "@chakra-ui/react"
 import { getCurrency } from '../../redux/currency/action'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
@@ -21,12 +21,12 @@ const AboutUS = () => {
     <>
       <MainLayout>
         <MainBlock/>
-        <div className={styles.textWhyslotsBack}>
+        <Box backgroundPosition="center" backgroundRepeat="no-repeat" backgroundSize="cover">
           <TextBlocks/>
           <ErrorText>
             <WhySlotsIdol isBackShow={false} title="WHY SLOTS IDOL"/>
           </ErrorText>
-        </div>
+        </Box>
         <ErrorText>
           <NewsBlock isBackShow={false}/>
         </ErrorText>
