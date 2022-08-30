@@ -4,9 +4,8 @@ import MainLayout from '../../components/MainLayout/MainLayout'
 import styles from '../../styles/ContactUs.module.scss'
 import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
-// import { MainBlock } from '../../components/MainLayout/MainBlock'
-import {MainBlock} from "../../components/ContactUsPageComponents/MainBlock/MainBlock";
-import { HeadersBlock } from '../../components/ContactUsPageComponents/HeadersBlock/HeadersBclock'
+import MainBlock from "../../components/ContactUsPageComponents/MainBlock";
+import HeadersBlock from '../../components/ContactUsPageComponents/HeadersBlock'
 import { ContactsBlocks } from '../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks'
 import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
 import { useDispatch } from 'react-redux'
@@ -25,8 +24,7 @@ const ContactUs = () => {
   return (
     <>
       <MainLayout>
-
-        <MainBlock title={t('contactUsPage.contactsBlock.heading')}/>
+        <MainBlock />
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
         <div className={styles.textWhyslotsBack}>
