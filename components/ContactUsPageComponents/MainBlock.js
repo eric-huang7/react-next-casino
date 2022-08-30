@@ -3,7 +3,6 @@ import {Box} from "@chakra-ui/react";
 const MainBlock = () => (
   <Box
     backgroundImage="url('/assets/img/homeImg/home_header_bckgr.jpg')"
-    backgroundSize="contain"
     minH={{base: "45vw", lg: "424px"}}
     position="relative"
   >

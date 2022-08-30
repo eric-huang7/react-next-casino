@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import styles from '../../styles/ContactUs.module.scss'
 import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import MainBlock from "../../components/ContactUsPageComponents/MainBlock";
@@ -10,6 +9,7 @@ import { ContactsBlocks } from '../../components/ContactUsPageComponents/Contact
 import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { Box } from "@chakra-ui/react"
 import { getCurrency } from '../../redux/currency/action'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
@@ -27,12 +27,17 @@ const ContactUs = () => {
         <MainBlock />
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
-        <div className={styles.textWhyslotsBack}>
+        <Box
+          backgroundImage="url('/assets/img/aboutUs/back_textwhyslots.jpg')"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+        >
           <Faq t={t}/>
           <ErrorText>
             <WhySlotsIdol t={t} isBackShow={false}/>
           </ErrorText>
-        </div>
+        </Box>
         <ErrorText>
           <NewsBlock t={t} isBackShow={false}/>
         </ErrorText>
