@@ -1,30 +1,33 @@
-import styles from '../../../styles/ContactUs/FAQ.module.scss'
 import { data } from './faqData'
-import { FaqDropdownItem } from './FaqDropdownItem/FaqDropdownItem'
+import { FaqDropdownItem } from './FaqDropdownItem'
+import {Accordion, Box} from "@chakra-ui/react"
+import {Text} from "@chakra-ui/layout";
 
-export const Faq = ({ t }) => {
-
-  return (
-    <section className={styles.faqSection}>
-      <div className={styles.faqInnerWrapper}>
-        <h2 id={'faq'} className={styles.faqHeading}>FAQ</h2>
-        <ul className={styles.faqItemsList}>
-          {
-            data.map((el) => {
-              return (
-                <li key={el.id} className={styles.faqItem}>
-                  <FaqDropdownItem
-                    t={t}
-                    heading={el.heading}
-                    img={el.img}
-                    innerInfo={el.innerInfo}
-                  />
-                </li>
-              )
-            })
-          }
-        </ul>
-      </div>
-    </section>
-  )
-}
+export const Faq = ({ t }) => (
+  <>
+  <Box w="100%" mt="0" p="20px 20px 30px" bg="transparent" >
+    <Box m="0 auto" maxW="830px">
+      <Text as="h2" id={'faq'} fontFamily="Lithograph" fontWeight={700} fontSize="36px" lineHeight="31px"
+        color="#FFFFFF" m={0} position="relative">
+        FAQ
+      </Text>
+    </Box>
+  </Box>
+  <Box w="100%" bg="white" mt="0" p="0 20px">
+    <Box m="0 auto" maxW="830px">
+        <Accordion allowMultiple>
+        {data.map((el, index) => (
+          <Box key={el.id} borderBottom={index < data.length - 1 && "1px solid #A93618"}>
+            <FaqDropdownItem
+              t={t}
+              heading={el.heading}
+              img={el.img}
+              innerInfo={el.innerInfo}
+            />
+          </Box>
+        ))}
+        </Accordion>
+    </Box>
+  </Box>
+  </>
+)

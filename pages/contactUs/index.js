@@ -5,7 +5,7 @@ import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/W
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import MainBlock from "../../components/ContactUsPageComponents/MainBlock";
 import HeadersBlock from '../../components/ContactUsPageComponents/HeadersBlock'
-import { ContactsBlocks } from '../../components/ContactUsPageComponents/ContactsBlocks/ContactsBlocks'
+import { ContactsBlocks } from '../../components/ContactUsPageComponents/ContactsBlocks'
 import { Faq } from '../../components/ContactUsPageComponents/FAQ/Faq'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
@@ -27,12 +27,7 @@ const ContactUs = () => {
         <MainBlock />
         <HeadersBlock t={t}/>
         <ContactsBlocks t={t}/>
-        <Box
-          backgroundImage="url('/assets/img/aboutUs/back_textwhyslots.jpg')"
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="cover"
-        >
+        <Box>
           <Faq t={t}/>
           <ErrorText>
             <WhySlotsIdol t={t} isBackShow={false}/>
