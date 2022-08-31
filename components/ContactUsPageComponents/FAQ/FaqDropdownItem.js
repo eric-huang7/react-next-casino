@@ -30,7 +30,7 @@ export const FaqDropdownItem = ({t, heading, img, innerInfo}) => {
         </HStack>
         <AccordionIcon />
       </AccordionButton>
-      <AccordionPanel pb={4}>
+      <AccordionPanel pb={4} px={0}>
         <Accordion allowMultiple>
         {innerInfo.map((el, index) => (
           <AccordionItem key={index}>
