@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { showMobileMenu } from '../../redux/ui/action'
-import { MobileListContainer } from './MobileSideComponents/MobileListContainer'
-import { UserInfoBlock } from './MobileSideComponents/UserInfoBlock'
+import { MobileListContainer } from './MobileListContainer'
+import { UserInfoBlock } from './UserInfoBlock'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import {
   Drawer,

@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 import {Badge, Box} from "@chakra-ui/layout";
 import {useDispatch} from "react-redux";
-import {showMobileMenu} from "../../../redux/ui/action";
+import {showMobileMenu} from "../../redux/ui/action";
 import {useRouter} from "next/router";
 
 const ListDropdownItem = ({t, heading, path, img, blockData, isAuth, badge, onClick}) => {

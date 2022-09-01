@@ -1,13 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
-import {showRedeemModal} from "../../../redux/popups/action";
-import {showMobileMenu} from "../../../redux/ui/action";
+import {showRedeemModal} from "../../redux/popups/action";
+import {showMobileMenu} from "../../redux/ui/action";
 import {Accordion, Box} from "@chakra-ui/react";
 import ListDropdownItem from "./ListDropdownItem";
-import {logout} from "../../../redux/user/action";
+import {logout} from "../../redux/user/action";
 import {useRouter} from "next/router";
 import {useCookies} from "react-cookie";
-import {setLang} from "../../../redux/lang/action";
-import {languages} from "../../../envs/languages";
+import {setLang} from "../../redux/lang/action";
+import {languages} from "../../envs/languages";
 
 export const MobileListContainer = ({t, isAuth}) => {
   const dispatch = useDispatch();
