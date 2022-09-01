@@ -15,18 +15,18 @@ export const Faq = ({ t }) => (
   </Box>
   <Box w="100%" bg="white" mt="0" p="0 20px">
     <Box m="0 auto" maxW="830px">
-        <Accordion allowMultiple>
-        {data.map((el, index) => (
-          <Box key={el.id} borderBottom={index < data.length - 1 && "1px solid #A93618"}>
-            <FaqDropdownItem
-              t={t}
-              heading={el.heading}
-              img={el.img}
-              innerInfo={el.innerInfo}
-            />
-          </Box>
+      <Accordion allowMultiple>
+        {data?.map((el, index) => (
+          <FaqDropdownItem
+            t={t}
+            index={index}
+            key={el.id}
+            heading={el.heading}
+            img={el.img}
+            innerInfo={el.innerInfo}
+          />
         ))}
-        </Accordion>
+      </Accordion>
     </Box>
   </Box>
   </>

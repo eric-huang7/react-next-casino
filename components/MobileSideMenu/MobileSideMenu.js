@@ -60,7 +60,7 @@ export const MobileSideMenu = ({ t, userInform }) => {
     <Drawer placement="right" onClose={closeClickHandler} isOpen={isShowMobileMenu} size="full">
       <DrawerOverlay />
       <DrawerContent bg="grey.850" p={0}>
-        <DrawerCloseButton color="white" />
+        <DrawerCloseButton color="white" _focus={{ boxShadow: 'none' }}/>
         <DrawerHeader borderBottomWidth={0} display="flex" justifyContent="center">
           <Image src={'/assets/img/mainLayoutImg/logo.webp'} width={102} height="auto" alt={'logo'}/>
         </DrawerHeader>
