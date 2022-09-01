@@ -2,9 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { showMobileMenu } from '../../redux/ui/action'
 import { MobileListContainer } from './MobileSideComponents/MobileListContainer'
-import { LogoutButtonMobileMenu } from './MobileSideComponents/LogoutButtonMobileMenu'
 import { UserInfoBlock } from './MobileSideComponents/UserInfoBlock'
-import { SideLagSwitcherWrapper } from './MobileSideComponents/SideLagSwitcherWrapper'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import {
   Drawer,
@@ -76,15 +74,6 @@ export const MobileSideMenu = ({ t, userInform }) => {
             <MobileListContainer
               isAuth={userInform.isAuthenticated}
               t={t}
-            />
-            <SideLagSwitcherWrapper
-              t={t}
-              isOpenLanguages={isOpenLanguages}
-              openLanguagesClickHandler={openLanguagesClickHandler}
-            />
-            <LogoutButtonMobileMenu
-              t={t}
-              isLogined={userInform.isAuthenticated}
             />
           </Box>
 

@@ -3,9 +3,16 @@ import {showRedeemModal} from "../../../redux/popups/action";
 import {showMobileMenu} from "../../../redux/ui/action";
 import {Accordion, Box} from "@chakra-ui/react";
 import ListDropdownItem from "./ListDropdownItem";
+import {logout} from "../../../redux/user/action";
+import {useRouter} from "next/router";
+import {useCookies} from "react-cookie";
+import {setLang} from "../../../redux/lang/action";
+import {languages} from "../../../envs/languages";
 
 export const MobileListContainer = ({t, isAuth}) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const [cookies, setCookie, removeCookie] = useCookies(['language']);
   const messages = useSelector((store) => store.notifications.messagesData);
 
   const unreadMessages = messages.slice().filter((el) => {
@@ -14,9 +21,25 @@ export const MobileListContainer = ({t, isAuth}) => {
     }
   });
 
-  const handleRedeem = () => {
+  const onClose = () => {
     dispatch(showMobileMenu(false))
+  }
+
+  const handleRedeem = () => {
+    onClose()
     dispatch(showRedeemModal(true))
+  }
+
+  const langChooser = (e) => {
+    onClose()
+    dispatch(setLang({lang: e?.lang, setCookie}));
+    router.push(`/${e?.lang}`)
+  }
+
+  const handleLogout = () => {
+    onClose()
+    router.push('/');
+    dispatch(logout());
   }
 
   const listArr = [
@@ -117,7 +140,25 @@ export const MobileListContainer = ({t, isAuth}) => {
     //   type: "link",
     //   path: "/#news"
     // },
-
+    {id: 11,
+      name: "mobileSideMenu.listMenu.language",
+      icon: '/assets/img/mobileSideMenu/globe.svg',
+      type: "block",
+      blockData: languages.map(item => ({
+        ...item,
+        id: item.name,
+        name: item.language,
+        onClick: langChooser
+      })),
+      isAuth: true,
+    },
+    {id: 12,
+      name: "mobileSideMenu.listMenu.logout",
+      icon: '/assets/img/mobileSideMenu/arrow.svg',
+      type: "link",
+      isAuth: true,
+      onClick: handleLogout
+    },
   ];
 
   return (

@@ -51,14 +51,17 @@ const ListDropdownItem = ({t, heading, path, img, blockData, isAuth, badge, onCl
         <Accordion allowMultiple>
           {blockData?.filter(item => item.isAuth ? isAuth : true)?.map((el, index) => (
             <AccordionItem key={index} borderBottomWidth="0px !important">
-              <AccordionButton onClick={() => el.path && handleClick(el.path)} pl="63px" minH="60px"
+              <AccordionButton
+                onClick={() => el.onClick ? el.onClick(el) : el.path && handleClick(el.path)}
+                pl={el.blockData || !el.icon ? "63px" : 2}
+                minH="60px"
                 flexDirection={el.type === 'block' ? "column" : "row"}
                 alignItems={el.type === 'block' ? "flex-start" : "center"}
                 cursor={el.type === 'block' ? "default" : "pointer"}
               >
                 <HStack flex='1' justifyContent="flex-start" alignItems="center" h="50px" spacing={5}>
                   {el.icon && <Box w="35px">
-                    <Image src={el.icon} alt="" />
+                    <Image src={el.icon} w="100%" h="auto" alt="" />
                   </Box>}
                   <Text textAlign='left' color="#bfbfbf" fontFamily="Verdana" fontSize="18px" fontWeight="bold">
                     {t(el.name)}
@@ -71,9 +74,9 @@ const ListDropdownItem = ({t, heading, path, img, blockData, isAuth, badge, onCl
                 </Box>}
                 {el.blockData && <VStack pt={3} alignItems="flex-start">
                   {el.blockData.map(item => (
-                    <chakra.a textAlign='left' color="#fff" fontFamily="Arial" fontSize="16px" bg="#5d5d5d"
+                    <chakra.a color="#fff" fontFamily="Arial" fontSize="16px" bg="#5d5d5d" textAlign="center"
                       borderRadius="15px" border="2px solid #fff" href={item.path} _hover={{bg: "#5d5d5d"}}
-                      minW="185px" p="10px" textAlign="center"
+                      minW="185px" p="10px"
                     >
                       {t(item.name)}
                     </chakra.a>
