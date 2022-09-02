@@ -56,7 +56,7 @@ const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foot
           onClick={onBack}
         />}
       </ModalHeader>
-      <ModalCloseButton bg="white" fontSize={18} top={0} right={-50} _hover={{bg: "#fff"}}/>
+      <ModalCloseButton bg="white" fontSize={18} top={0} right={-50} _hover={{bg: "#fff"}} _focus={{ boxShadow: 'none' }}/>
       <ModalBody
         p={5}
         position="relative"
