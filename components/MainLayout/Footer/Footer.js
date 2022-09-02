@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import { Box, Image } from '@chakra-ui/react'
-import { ChooseLangDropdown } from './ChooseLangDropdown'
 import { useDispatch, useSelector } from 'react-redux'
 import {useState} from 'react'
 import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
 import { useTranslation } from 'next-i18next'
-import useWindowDimensions from '../../../hooks/useWindowDimensions'
 import {HStack, Text, VStack, Stack} from "@chakra-ui/layout";
-import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
+import {tel} from "../../../envs/contacts";
 
 const Label = ({children, ...props}) => <Box
   whiteSpace="nowrap"
@@ -15,17 +13,17 @@ const Label = ({children, ...props}) => <Box
   color="white"
   p="0 15px 15px"
   fontFamily="Verdana"
+  cursor="pointer"
   {...props}
 >{children}</Box>
 
 export const Footer = ({ userAuth }) => {
   const { t } = useTranslation('common');
-  const { width } = useWindowDimensions()
   const dispatch = useDispatch()
 
   const linkKeyFirs = [
     { key: 'liveChat', route: '/#livechat', name: `LiveChat` },
-    { key: 'tel', route: '/#tel', name: `Tel:7-55-7-99-8-487` },
+    { key: 'tel', route: '/#tel', name: `Tel:${tel}` },
     { key: 'aboutUs', route: '/aboutUs', name: `aboutUs` },
     { key: 'faqs', route: '/contactUs#faq', name: `FAQs` },
     { key: 'contactUs', route: '/contactUs', name: `ContactUs` },
@@ -168,40 +166,8 @@ export const Footer = ({ userAuth }) => {
           color="white"
           fontSize={{base: '13px', lg: '16px'}}
         >
-          <HStack
-            spacing={4}
-            w={{base: '100%', lg: 'auto'}}
-            alignItems="center"
-            pb={{base: '10px', lg: 0}}
-            justifyContent={{base: 'center', lg: 'flex-start'}}
-          >
-            <Text>{t(`footer.SelectLanguage`)}</Text>
-            <HStack
-              w={{base: "96px", lg: "189px"}}
-              h={{base: "30px", lg: "42px"}}
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              border="1px solid"
-              borderColor="white"
-              p="0 23px"
-              ml="25px"
-              position="relative"
-              onClick={switchActiveLangBlock}
-              spacing={0}
-            >
-              <Text as="span">{language}</Text>
-              <Box display={{base: 'none', lg: 'block'}}>
-                {activeChooseLangBlock
-                  ? <ChevronUpIcon w={8} h={8} color="white"/>
-                  : <ChevronDownIcon w={8} h={8} color="white"/>
-                }
-              </Box>
-              {activeChooseLangBlock && <ChooseLangDropdown t={t} isVis={activeChooseLangBlock}/>}
-            </HStack>
-          </HStack>
           <Stack direction={{base: 'column', lg: 'row'}} alignItems="center" spacing={4}>
-            <Text ml={{base: '5px', lg: '40px'}}>2020 SlotsIdol.com&#169; All Rights Reserved</Text>
+            <Text ml={{base: '5px', lg: '40px'}}>{new Date().getFullYear()} SlotsIdol.com&#169; All Rights Reserved</Text>
             <Box m="0 5px 0 20px">
               <iframe
                 src="https://licensing.gaming-curacao.com/validator/?lh=39be67de0ffa98b11f0dd2b6aec51152&template=seal"

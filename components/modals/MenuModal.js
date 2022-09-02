@@ -2,6 +2,7 @@ import {Text, VStack, Box} from "@chakra-ui/react";
 import {GrClose} from "react-icons/gr";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
+import {tel} from "../../envs/contacts";
 
 const TextLink = ({children, ...props}) => <Text
   as="div"
@@ -32,7 +33,7 @@ const MenuModal = ({open, onClose}) => {
 
   const contacts = [
     {key: "liveChat", route: "/#livechat", name: `LiveChat`},
-    {key: "tel", route: "/#tel", name: `Tel:7-55-7-99-8-487`},
+    {key: "tel", route: "/#tel", name: `Tel:${tel}`},
   ];
   const rightMenu = [
     {key: "faqs", route: "/contactUs#faq", name: `FAQs`},

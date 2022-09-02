@@ -50,9 +50,12 @@ export const ContactsBlocks = ({ t }) => {
                   <HStack w="150px" minW="150px" justifyContent="center" alignItems="center" p="30px">
                     <Image w="100%" src={el.image} alt='' />
                   </HStack>
-                  <VStack justifyContent={{base: "center", lg: "flex-start"}}>
+                  <VStack
+                    justifyContent={{base: "center", lg: "flex-start"}}
+                    alignItems={{base: "center", lg: "flex-start"}}
+                  >
                     <Text as="h3" fontSize={{base: "16px", lg: "18px"}} lineHeight="30px" color="white"
-                          fontFamily="Verdana" textTransform="uppercase" m={0}>
+                          fontFamily="Verdana" textTransform="uppercase" m={0} textAlign={{base: "center", lg: "left"}}>
                       {t(el.heading)}
                     </Text>
                     <Text fontSize={{base: "14px", lg: "16px"}} lineHeight="30px" color="white"
