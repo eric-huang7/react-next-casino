@@ -3,7 +3,6 @@ import {useTranslation} from "next-i18next";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import { Box } from "@chakra-ui/react";
@@ -11,6 +10,7 @@ import {getCurrency} from "../../redux/currency/action";
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import {MainBlock} from "../../components/MainLayout/MainBlock";
+import {TextBlock} from "../../components/typography/TextBlock";
 
 
 const TermsConditions = () => {
@@ -28,11 +28,9 @@ const TermsConditions = () => {
         <MainBlock title={t('heading')} />
         {/*<PlayerBlock />*/}
 
-        <Box pb="30px" sx={{ '& p': {my: "16px"}}}>
+        <Box pb="30px">
           <ErrorEmpty>
-            <TextBlock
-              textHeading={'heading'}
-            />
+            <TextBlock title={t('heading')} content={t('text')} />
           </ErrorEmpty>
         </Box>
 

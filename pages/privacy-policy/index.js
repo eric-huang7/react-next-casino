@@ -10,6 +10,7 @@ import { MainBlock } from '../../components/MainLayout/MainBlock'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 import {Box} from "@chakra-ui/react";
 import {TextBlock} from "../../components/typography/TextBlock";
+import ErrorEmpty from "../../components/ErrorBoundaryComponents/ErrorEmpty";
 
 const PrivacyPolicy = (props) => {
   const { t } = useTranslation('common')
@@ -26,9 +27,9 @@ const PrivacyPolicy = (props) => {
         <MainBlock title={privacyT.t('heading')} />
 
         <Box pb="30px">
-          <ErrorText>
+          <ErrorEmpty>
             <TextBlock title={privacyT.t('heading')} content={privacyT.t('text')} />
-          </ErrorText>
+          </ErrorEmpty>
         </Box>
 
         <ErrorText>
