@@ -1,15 +1,15 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss'
 import { WhySlotsIdol } from '../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getCurrency } from '../../redux/currency/action'
 import { MainBlock } from '../../components/MainLayout/MainBlock'
-import { TextBlock } from '../../components/PrivacyPolicyPageComponents/TextBlock'
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
+import {Box} from "@chakra-ui/react";
+import {TextBlock} from "../../components/typography/TextBlock";
 
 const PrivacyPolicy = (props) => {
   const { t } = useTranslation('common')
@@ -24,16 +24,17 @@ const PrivacyPolicy = (props) => {
     <>
       <MainLayout t={t}>
         <MainBlock title={privacyT.t('heading')} />
-        <div className={styles.textWhyslotsBack}>
+
+        <Box pb="30px">
           <ErrorText>
-            <TextBlock
-              textHeading={'heading'}
-            />
+            <TextBlock title={privacyT.t('heading')} content={privacyT.t('text')} />
           </ErrorText>
-          <ErrorText>
-            <WhySlotsIdol isBackShow={false}/>
-          </ErrorText>
-        </div>
+        </Box>
+
+        <ErrorText>
+          <WhySlotsIdol isBackShow={false}/>
+        </ErrorText>
+
         <ErrorText>
           <NewsBlock isBackShow={false}/>
         </ErrorText>
