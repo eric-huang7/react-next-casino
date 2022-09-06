@@ -7,25 +7,20 @@ import {getCurrency} from "../../redux/currency/action";
 import {useDispatch} from "react-redux";
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
-
 const Promotions = () => {
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getCurrency());
   }, []);
 
-
   return (
-    <>
-      <MainLayout>
-        <PromotionsContainer />
-        <ErrorText>
-          <NewsBlock isBackShow={false}/>
-        </ErrorText>
-      </MainLayout>
-    </>
+    <MainLayout>
+      <PromotionsContainer />
+      <ErrorText>
+        <NewsBlock isBackShow={false}/>
+      </ErrorText>
+    </MainLayout>
   )
 }
 

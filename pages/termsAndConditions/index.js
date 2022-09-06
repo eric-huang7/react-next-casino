@@ -19,30 +19,27 @@ const TermsConditions = () => {
 
   useEffect(() => {
     dispatch(getCurrency());
-
   }, []);
 
   return (
-    <>
-      <MainLayout>
-        <MainBlock title={t('heading')} />
-        {/*<PlayerBlock />*/}
+    <MainLayout>
+      <MainBlock title={t('heading')} />
+      {/*<PlayerBlock />*/}
 
-        <Box pb="30px">
-          <ErrorEmpty>
-            <TextBlock title={t('heading')} content={t('text')} />
-          </ErrorEmpty>
-        </Box>
+      <Box pb="30px">
+        <ErrorEmpty>
+          <TextBlock title={t('heading')} content={t('text')} />
+        </ErrorEmpty>
+      </Box>
 
-        <ErrorText>
-          <WhySlotsIdol isBackShow={false}/>
-        </ErrorText>
+      <ErrorText>
+        <WhySlotsIdol isBackShow={false}/>
+      </ErrorText>
 
-        <ErrorText>
-          <NewsBlock isBackShow={false}/>
-        </ErrorText>
-      </MainLayout>
-    </>
+      <ErrorText>
+        <NewsBlock isBackShow={false}/>
+      </ErrorText>
+    </MainLayout>
   )
 }
 
