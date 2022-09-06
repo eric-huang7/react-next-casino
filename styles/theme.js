@@ -5,6 +5,11 @@ const activeLabelStyles = {
   backgroundColor: "white",
 };
 
+export const thinScroll = {
+  scrollbarColor: "scroll.100 scroll.500",
+  scrollbarWidth: "thin",
+};
+
 const theme = extendTheme({
   components: {
     Button: { baseStyle: {  _focus: { boxShadow: 'none' } } },

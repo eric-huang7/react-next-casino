@@ -1,5 +1,6 @@
 import { Text } from "@chakra-ui/react"
 import {Box} from "@chakra-ui/layout";
+import {thinScroll} from "../../styles/theme";
 
 export const TextBlock = ({ title, content }) => (
   <Box p="15px" m="0 auto">
@@ -9,10 +10,7 @@ export const TextBlock = ({ title, content }) => (
         maxW="1065px"
         maxH="1035px"
         overflowY="auto"
-        css={{
-          scrollbarColor: "rgba(124,125,129, 1) rgba(124,125,129, 0.6)",
-          scrollbarWidth: "thin",
-        }}
+        css={thinScroll}
         p="20px 50px 20px 10px"
       >
         <Text as="h2" fontSize="22px" color="primary.500" fontWeight={700} fontFamily="Verdana" pb={4}>

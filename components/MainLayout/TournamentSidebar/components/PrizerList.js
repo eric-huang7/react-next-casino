@@ -2,6 +2,7 @@ import {Box, chakra} from "@chakra-ui/react"
 import {HStack, VStack} from "@chakra-ui/layout";
 import Image from "next/image";
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import {thinScroll} from "../../../../styles/theme";
 
 const PrizerList = ({sliderPosition, tournaments}) => {
   const tournament = tournaments?.tournaments?.results[sliderPosition]
@@ -13,10 +14,7 @@ const PrizerList = ({sliderPosition, tournaments}) => {
       w="100%"
       overflowY="scroll"
       height="calc(100% - 274px)"
-      css={{
-        scrollbarColor: "scroll.100 scroll.500",
-        scrollbarWidth: "thin",
-      }}
+      css={thinScroll}
     >
       <VStack spacing={0}>
         {

@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
+import {thinScroll} from "../../styles/theme";
 
 const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, footer, width = "800px"}) => (
   <Modal
@@ -61,10 +62,7 @@ const LightModal = ({ isOpen, onClose, onBack, title, wrapperRef, children, foot
         p={5}
         position="relative"
         whiteSpace="pre-line"
-        css={{
-          scrollbarColor: "scroll.100 scroll.500",
-          scrollbarWidth: "thin",
-        }}
+        css={thinScroll}
       >
         {children}
       </ModalBody>

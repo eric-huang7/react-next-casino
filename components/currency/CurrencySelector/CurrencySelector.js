@@ -3,6 +3,7 @@ import {CurrencyList} from './CurrencyList'
 import {useLayoutEffect, useRef, useState} from 'react'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import SearchInput from "./SearchInput";
+import {thinScroll} from "../../../styles/theme";
 
 export const CurrencySelector = ({
                                    t,
@@ -44,10 +45,7 @@ export const CurrencySelector = ({
         <Box
           h="calc(100% - 55px)"
           overflowY="auto"
-          css={{
-            scrollbarColor: "scroll.100 scroll.500",
-            scrollbarWidth: "thin",
-          }}
+          css={thinScroll}
         >
           {currencies.map((item, index) => item.list?.length > 0 ? (
             <ErrorEmpty key={index}>

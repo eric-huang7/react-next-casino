@@ -13,6 +13,7 @@ import {CurrencyItem} from "./CurrencyItem";
 import SearchInput from "./SearchInput";
 import {useTranslation} from "next-i18next";
 import {Box, HStack, Text} from "@chakra-ui/layout";
+import {thinScroll} from "../../../styles/theme";
 
 export const PaymentCurrencySelector = ({
                                           backButtonClickHandler,
@@ -127,10 +128,7 @@ export const PaymentCurrencySelector = ({
         <Box
           h="calc(100% - 55px)"
           overflowY="auto"
-          css={{
-            scrollbarColor: "scroll.100 scroll.500",
-            scrollbarWidth: "thin",
-          }}
+          css={thinScroll}
         >
           {
             cryptoFindArr?.length > 0
