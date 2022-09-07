@@ -9,9 +9,10 @@ const InfoBlock = ({title, text}) => (
   >
     <Text as="h2"
       fontSize={{base: "21px", lg: "48px"}}
+      fontWeight={700}
       letterSpacing="4px"
-      color="primary.500"
-      fontFamily="Verdana"
+      color="white"
+      fontFamily="Lithograph"
       textTransform="uppercase"
       mb="30px"
     >

@@ -1,10 +1,9 @@
 import React from "react";
 import {logErrorToMyService} from "../../helpers/errorLoger";
-import styles from "../../styles/Header/Header.module.scss";
 import Link from "next/link";
-import {Navigation} from "../MainLayout/Header/Navigation/Navigation";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
-import {UserBlockNavigation} from "../MainLayout/Header/UserBlock/UserBlock";
+import {HStack} from "@chakra-ui/layout";
+import {Image} from "@chakra-ui/react";
 
 class ErrorHeaderPage extends React.Component {
   constructor(props) {
@@ -23,14 +22,33 @@ class ErrorHeaderPage extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.hasError || true) {
       return (
-        <header className={styles.mainHeader}>
-          <Link href={'/'} passHref>
-            <img style={{cursor: "pointer"}} className={styles.logo} src={'/assets/img/mainLayoutImg/logo.webp'} alt="logo"/>
-          </Link>
+        <HStack
+          position="relative"
+          h={{base: "53px", lg: "85px"}}
+          justifyContent="space-between"
+          alignItems="center"
+          backgroundColor="accent.850"
+          backgroundImage='url("/assets/img/mainLayoutImg/header_bg.webp")'
+          spacing={0}
+          zIndex={14}
+          px="16px"
+        >
+          <HStack alignItems="center" flexWrap="nowrap" spacing={5}>
+            <Link href={"/"} passHref>
+              <Image
+                w={{base: '100px', lg: '250px'}}
+                h="auto"
+                m="2px 16px"
+                style={{ cursor: "pointer" }}
+                src={"/assets/img/mainLayoutImg/logo.webp"}
+                alt=""
+              />
+            </Link>
+          </HStack>
           <LangSwitcher />
-        </header>
+        </HStack>
       );
     }
     return this.props.children;

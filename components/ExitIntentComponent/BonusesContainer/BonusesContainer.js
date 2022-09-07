@@ -9,17 +9,17 @@ export const BonusesContainer = ({t, exit}) => {
   const userCurrency = useSelector((state) => state.userFinance);
   const userData = useSelector((store) => store.authInfo);
 
-  let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
+  let bonusesList = activeBonuses?.activeBonuses?.offers?.slice(0, 3);
 
   if (userData.isAuthenticated) {
-    bonusesList = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency).slice(0, 3);
+    bonusesList = bonusesFinder(activeBonuses?.activeBonuses?.offers, userCurrency).slice(0, 3);
   } else {
-    bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
+    bonusesList = activeBonuses?.activeBonuses?.offers?.slice(0, 3);
   }
 
   return (
     <Box p="15px 10px 15px 20px">
-      {activeBonuses.activeBonuses?.success ?
+      {activeBonuses?.activeBonuses?.success ?
         bonusesList.map((bonus, index) => (
           <BonusItemContainer
             index={index}
