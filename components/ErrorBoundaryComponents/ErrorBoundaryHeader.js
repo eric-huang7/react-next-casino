@@ -22,7 +22,7 @@ class ErrorHeaderPage extends React.Component {
   }
 
   render() {
-    if (this.state.hasError || true) {
+    if (this.state.hasError) {
       return (
         <HStack
           position="relative"

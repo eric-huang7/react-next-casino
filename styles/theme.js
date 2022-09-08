@@ -90,8 +90,10 @@ const theme = extendTheme({
   },
   colors: {
     primary: {
+      400: "#96d399",
       500: "#99cc33",
-      700: "#78797d"
+      700: "#78797d",
+      900: "#47b14c",
     },
     accent: {
       100: "#FFFFCB",
