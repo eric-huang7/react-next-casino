@@ -1,54 +1,22 @@
-import Slider from "react-slick";
 import styles from '../../styles/FooterArea/FooterArea.module.scss';
-// import {GamesItem} from "../GamesPageComponents/GamesItem";
 import {SliderComponent} from "./SliderComponent";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {GamesItem} from "./GameItem";
 import GameItemErrorHandler from "./ErrorHandler/GameItemErrorHandler";
-
+import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItemContainer";
+import React from "react";
 
 export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, playFunClickHandler, playGameClickHandler}) => {
 
   let gamesLast = [];
   let gamesTop = [];
-  if (activeTime) {
-    if (!gamesData.loadingLatestGames) {
-      gamesLast = gamesData.latestGames.results.map((el) => {
-        return (
-          <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
-            <GamesItem
-              t={t}
-              playFunClickHandler={playFunClickHandler}
-              playGameClickHandler={playGameClickHandler}
-              userInfo={userInfo}
-              gameData={el}
-              key={`${el.id} ${el.name} game page`}
-            />
-          </GameItemErrorHandler>
-          )
-      })
-    }
-  } else {
-    if (!gamesData.loadingTopGames) {
-      gamesTop = gamesData.topGames.results.map((el) => {
-        return (
-          <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
-            <GamesItem
-              t={t}
-              playFunClickHandler={playFunClickHandler}
-              playGameClickHandler={playGameClickHandler}
-              userInfo={userInfo}
-              gameData={el}
-              key={`${el.id} ${el.name} game page`}
-            />
-          </GameItemErrorHandler>
-        )
-      })
-    }
-  }
 
+  if (activeTime && !gamesData.loadingLatestGames) {
+    gamesLast = gamesData.latestGames.results
+  } else if (!gamesData.loadingTopGames) {
+    gamesTop = gamesData.topGames.results
+  }
 
   function SampleNextArrow(props) {
     const { className, onClick } = props;
@@ -97,23 +65,21 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     ]
   }
 
-  if (activeTime) {
-    return (
-      <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={gamesLast}/>
-    )
-  } else if (activeSlots) {
-    return (
-      <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={gamesTop}/>
-      // <Slider {...sliderSettings}>
-      //   {gamesTop}
-      // </Slider>
-    )
-  } else {
-    return (
-      <Slider {...sliderSettings}>
-        <div></div>
-      </Slider>
-    )
-  }
+  const items = (activeTime ? gamesLast : (activeSlots ? gamesTop : [])).map((el) => (
+    <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
+      <GameItemContainer
+        w="185px"
+        h="115px !important"
+        m="10px !important"
+        playGameClickHAndler={playFunClickHandler}
+        playFunClickHandler={playGameClickHandler}
+        t={t}
+        gameData={el}
+        user={userInfo}
+        fontSize="14px"
+      />
+    </GameItemErrorHandler>
+  ))
 
+  return <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={items}/>
 }

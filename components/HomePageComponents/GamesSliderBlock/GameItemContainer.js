@@ -4,7 +4,9 @@ import {Button, VStack, Box} from "@chakra-ui/react";
 import {Text} from "@chakra-ui/layout";
 import {useState} from "react";
 
-export const GameItemContainer = ({gameData, t, playFunClickHandler, playGameClickHAndler, user, ...props}) => {
+export const GameItemContainer = ({
+  gameData, t, playFunClickHandler, playGameClickHAndler, fontSize="17px", user, ...props
+}) => {
   const [hover, setHover] = useState(false);
 
   const playFreeClickHandler = () => {
@@ -49,7 +51,7 @@ export const GameItemContainer = ({gameData, t, playFunClickHandler, playGameCli
           color="#1e2127"
           onClick={playPaidClickHandler}
         >
-          <Text as="span" fontSize="17px" textTransform="uppercase">
+          <Text as="span" fontSize={fontSize} textTransform="uppercase">
             {t('gameButtons.play')}
           </Text>
         </Button>
@@ -66,7 +68,7 @@ export const GameItemContainer = ({gameData, t, playFunClickHandler, playGameCli
           border="1px solid #909091"
           onClick={playFreeClickHandler}
         >
-          <Text as="span" fontSize="17px" color="#fff" textTransform="uppercase">
+          <Text as="span" fontSize={fontSize} color="#fff" textTransform="uppercase">
             {t('gameButtons.playForFun')}
           </Text>
         </Button>

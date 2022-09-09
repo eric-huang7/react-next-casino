@@ -191,10 +191,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       {isShowModal.showMessagePopup && <MessageContainer />}
 
       {userInfo.isAuthenticated && width > 1239 && <ErrorEmpty>
-        <FooterAreaContainer
-          userData={userInfo}
-          t={t}
-        />
+        <FooterAreaContainer userData={userInfo} t={t} />
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>

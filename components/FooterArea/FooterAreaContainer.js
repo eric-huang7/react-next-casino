@@ -5,9 +5,11 @@ import {GamesContainer} from "./GamesContainer";
 import {useDispatch} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/games/action";
 import {useRouter} from "next/router";
+import {useTranslation} from "next-i18next";
 
 
-export const FooterAreaContainer = ({t, userData}) => {
+export const FooterAreaContainer = ({userData}) => {
+  const { t } = useTranslation('common')
   const dispatch = useDispatch();
   const router = useRouter();
 

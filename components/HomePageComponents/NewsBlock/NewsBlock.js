@@ -127,7 +127,7 @@ export const NewsBlock = ({ isBackShow, titleImage }) => {
             backgroundRepeat={isBackShow && "no-repeat"}
           >
 
-            <Box bg="rgba(0,0,0,0)" pb="85px" w={{base: "660px", lg: "100%"}}>
+            <Box bg="rgba(0,0,0,0)" pb="85px" w="100%">
               <Slider {...sliderSettings}>
                 {newsData.map((el) => {
                   return (
