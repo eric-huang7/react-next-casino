@@ -1,6 +1,6 @@
 import { MessageContainer } from '../MessageContainer/MessageContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import {useCallback, useEffect, useMemo} from 'react'
+import {useEffect} from 'react'
 import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
 import { showLogin } from '../../redux/ui/action'
 import { showRegister } from '../../redux/ui/action'
@@ -118,81 +118,51 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         <ForgotPasswordComponent t={t} />
       </ErrorEmpty>}
 
-      {
-        isShowModal.isShowChangePassword && token
-          ?
-          <ErrorEmpty>
-            <ChangePasswordContainer
-              t={t}
-              token={token}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowEmailValidationSuccess
-          ?
-          <ErrorEmpty>
-            <EmailValidationContainer t={t}/>
-          </ErrorEmpty>
-          :
-          <>
-          </>
-      }
+      {isShowModal.isShowChangePassword && token && <ErrorEmpty>
+        <ChangePasswordContainer
+          t={t}
+          token={token}
+        />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowEmailValidationSuccess && <ErrorEmpty>
+        <EmailValidationContainer t={t}/>
+      </ErrorEmpty>}
+
       {isShowModal.isShowEmailValidationError && <ErrorEmpty>
-          <EmailValidationError
-            t={t}
-            emailError={emailError}
-          />
-        </ErrorEmpty>
-      }
-      {
-        isShowModal.isShowTwoFaPopup
-          ?
-          <ErrorEmpty>
-            <TwoFactorAutContainer
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
+        <EmailValidationError
+          t={t}
+          emailError={emailError}
+        />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowTwoFaPopup && <ErrorEmpty>
+        <TwoFactorAutContainer t={t} />
+      </ErrorEmpty>}
+
       {isShowModal.isShowMobilePaymentsStepper && <ErrorEmpty>
         <MobilePaymentsStepper
           userAuth={userInfo}
         />
       </ErrorEmpty>}
 
-      {
-        isShowModal.isShowCreditCardModal
-          ?
-          <ErrorEmpty>
-            <PaymentsCardWrapper
-              paymentsData={paymentsData}
-              userInfo={userInfo}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowCryptoModal
-          ?
-          <ErrorEmpty>
-            <PaymentsCryptoWrapper
-              paymentsData={paymentsData}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {isShowModal.isShowSearchModal &&
-        <SearchGamesModal
-          isShowSearchModal={isShowModal.isShowSearchModal}
-          t={t}
+      {isShowModal.isShowCreditCardModal && <ErrorEmpty>
+        <PaymentsCardWrapper
+          paymentsData={paymentsData}
+          userInfo={userInfo}
         />
-      }
+      </ErrorEmpty>}
+
+      {isShowModal.isShowCryptoModal && <ErrorEmpty>
+        <PaymentsCryptoWrapper
+          paymentsData={paymentsData}
+        />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowSearchModal && <SearchGamesModal
+        isShowSearchModal={isShowModal.isShowSearchModal}
+        t={t}
+      />}
 
       {isShowModal.isShowPlaySafe && <ErrorEmpty>
         <PlaySafeMainWrapper/>
