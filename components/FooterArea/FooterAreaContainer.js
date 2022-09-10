@@ -1,4 +1,3 @@
-import styles from '../../styles/FooterArea/FooterArea.module.scss';
 import {ImgContainer} from "./ImgContainer";
 import {useEffect, useRef, useState} from "react";
 import {GamesContainer} from "./GamesContainer";
@@ -6,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {getLatestGames, getTopGames} from "../../redux/games/action";
 import {useRouter} from "next/router";
 import {useTranslation} from "next-i18next";
-
+import { Box } from "@chakra-ui/react";
 
 export const FooterAreaContainer = ({userData}) => {
   const { t } = useTranslation('common')
@@ -48,10 +47,8 @@ export const FooterAreaContainer = ({userData}) => {
     }
   }, []);
 
-
-
   return (
-    <div className={styles.footerAreaMainContainer}>
+    <Box w="100%" h="38px" bg="rgba(21,21,21,0.9)" position="fixed" bottom={0} zIndex={10}>
       <ImgContainer
         activeSlots={activeSlots}
         setActiveSlots={setActiveSlots}
@@ -67,9 +64,7 @@ export const FooterAreaContainer = ({userData}) => {
         activeTime={activeTime}
         setActiveTime={setActiveTime}
         t={t}
-
       />
-
-    </div>
+    </Box>
   )
 }

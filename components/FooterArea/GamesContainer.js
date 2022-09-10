@@ -1,25 +1,31 @@
-import styles from '../../styles/FooterArea/FooterArea.module.scss';
-import Image from "next/image";
 import {GamesContainerNavigation} from "./GamesContainerNavigation";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {GamesSlider} from "./GamesSlider";
-import {useEffect} from "react";
 import {useRouter} from "next/router";
-import {deleteGameLink, freeGame, playPayGame} from "../../redux/playGame/action";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import {showGameWindow} from "../../redux/ui/action";
 import GameSliderErrorHandler from "./ErrorHandler/GameSliderErrorHandler";
 import usePlayGame from "../../hooks/usePlayGame";
+import { HStack, Box } from "@chakra-ui/react";
 
 export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setActiveTime, footerArea}) => {
+  const router = useRouter();
   const games = useSelector((store) => store.games);
   const userInfo = useSelector((store) => store.authInfo);
   const {playFun, playGame} = usePlayGame();
 
-  const router = useRouter();
-
   return (
-    <div ref={footerArea} className={`${styles.gamesWrapper} ${activeSlots || activeTime ? styles.active : ''}`}>
+    <HStack
+      ref={footerArea}
+      overflow="hidden"
+      transform={activeSlots || activeTime ? "translateY(-164px)" : "translateY(164px)"}
+      opacity={activeSlots || activeTime ? 1 : 0}
+      w="100%"
+      maxW="1920px"
+      h="126px"
+      position="absolute"
+      bg="#000000"
+      alignItems="center"
+      transition="transform 0.5s ease-in-out, opacity 0.2s ease-in-out"
+    >
       <GamesContainerNavigation
         t={t}
         setActiveSlots={setActiveSlots}
@@ -28,7 +34,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
         activeTime={activeTime}
         router={router}
       />
-      <div className={styles.gamesListContainer}>
+      <Box w="85%" position="relative">
         <GameSliderErrorHandler>
           <GamesSlider
             playFunClickHandler={playFun}
@@ -40,7 +46,7 @@ export const GamesContainer = ({t, activeSlots, activeTime, setActiveSlots, setA
             t={t}
           />
         </GameSliderErrorHandler>
-      </div>
-    </div>
+      </Box>
+    </HStack>
   )
 }

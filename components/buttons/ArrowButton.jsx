@@ -1,6 +1,6 @@
 import {Box} from "@chakra-ui/layout";
 
-const ArrowButton = ({direction = 'prev', round = false, ...props}) => (
+const ArrowButton = ({direction = 'prev', round = false, display = false, ...props}) => (
   <Box
     backgroundColor="rgba(0,0,0, 0.5) !important"
     backgroundRepeat="no-repeat"
@@ -13,7 +13,7 @@ const ArrowButton = ({direction = 'prev', round = false, ...props}) => (
     w="46px"
     h="100%"
     top="0"
-    opacity={0}
+    opacity={display ? 0.5 : 0}
     right={direction === 'next' && "0"}
     left={direction === 'prev' && "0"}
     backgroundImage={`url('/assets/img/gamesSlider/arrow-${direction === 'prev' ? 'left' : 'right'}.svg')`}

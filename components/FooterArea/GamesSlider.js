@@ -1,14 +1,15 @@
-import styles from '../../styles/FooterArea/FooterArea.module.scss';
-import {SliderComponent} from "./SliderComponent";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GameItemErrorHandler from "./ErrorHandler/GameItemErrorHandler";
 import {GameItemContainer} from "../HomePageComponents/GamesSliderBlock/GameItemContainer";
-import React from "react";
+import React, {useState} from "react";
+import ArrowButton from "../buttons/ArrowButton";
+import Slider from "react-slick";
 
-export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, playFunClickHandler, playGameClickHandler}) => {
-
+export const GamesSlider = ({
+  t, gamesData, userInfo, activeSlots, activeTime, playFunClickHandler, playGameClickHandler
+}) => {
+  const [games, setGames] = useState([]);
   let gamesLast = [];
   let gamesTop = [];
 
@@ -18,33 +19,30 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     gamesTop = gamesData.topGames.results
   }
 
-  function SampleNextArrow(props) {
-    const { className, onClick } = props;
-    return (
-      <div
-        className={styles.nextArr}
-        onClick={onClick}
-      >&gt;</div>
-    );
-  };
-  function SamplePrevArrow(props) {
-    const { className, onClick } = props;
-    return (
-      <div
-        className={styles.prevArr}
-        onClick={onClick}
-      >&lt;</div>
-    );
-  };
+  const SampleNextArrow = ({onClick}) => (
+    <ArrowButton
+      onClick={onClick}
+      direction="next"
+      display
+    />
+  );
+
+  const SamplePrevArrow = ({onClick}) => (
+    <ArrowButton
+      onClick={onClick}
+      direction="prev"
+      display
+    />
+  );
+
   const sliderSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 200,
     slidesToShow: 7,
     rows: 1,
     swipe: false,
     slidesToScroll: 1,
-    className: `${styles.customSlider}`,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -65,7 +63,7 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     ]
   }
 
-  const items = (activeTime ? gamesLast : (activeSlots ? gamesTop : [])).map((el) => (
+  const getItems = () => (activeTime ? gamesLast : (activeSlots ? gamesTop : [])).map((el) => (
     <GameItemErrorHandler key={`${el.id} ${el.name} game page`}>
       <GameItemContainer
         w="185px"
@@ -81,5 +79,7 @@ export const GamesSlider = ({t, gamesData, userInfo, activeSlots, activeTime, pl
     </GameItemErrorHandler>
   ))
 
-  return <SliderComponent t={t} sliderSettings={sliderSettings} itemsArr={items}/>
+  return <Slider {...sliderSettings}>
+    {getItems()}
+  </Slider>
 }
