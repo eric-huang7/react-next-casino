@@ -1,4 +1,3 @@
-import {ResetPasswordButton} from "./ResetPasswordButton";
 import {EmailEnteringContainer} from "./EmailEnteringContainer/EmailEnteringContainer";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -13,6 +12,7 @@ import {InputContainer} from "./EmailEnteringContainer/InputContainer";
 import Connect from "../../helpers/connect";
 import SelectModal from "../modal/SelectModal";
 import {Box} from "@chakra-ui/react";
+import SubmitButton from "../buttons/SubmitButton";
 
 export const ForgotPasswordComponent = ({t}) => {
   const dispatch = useDispatch();
@@ -112,10 +112,7 @@ export const ForgotPasswordComponent = ({t}) => {
         onClose={closeForgotPasswordHandler}
         onBack={showResendContainerClickHandler}
         title={t('forgotPasswordForm.headings.resendEmail')}
-        footer={<ResetPasswordButton
-          text={t('forgotPasswordForm.buttonsText.resend')}
-          whichForm={'forgotPasswordForm'}
-        />}
+        footer={<SubmitButton title={t('forgotPasswordForm.buttonsText.resend')} form="forgotPasswordForm"/>}
       >
         <InputContainer
           register={register}
@@ -131,10 +128,7 @@ export const ForgotPasswordComponent = ({t}) => {
         onClose={closeForgotPasswordHandler}
         onBack={userLogin ? false : backButtonClickHandler}
         title={t('forgotPasswordForm.headings.forgotPassword')}
-        footer={<ResetPasswordButton
-          text={t('forgotPasswordForm.buttonsText.resetPassword')}
-          whichForm={'forgotPasswordForm'}
-        />}
+        footer={<SubmitButton title={t('forgotPasswordForm.buttonsText.resetPassword')} form="forgotPasswordForm"/>}
       >
         <Box p={4}>
           <EmailEnteringContainer

@@ -1,5 +1,4 @@
 import {Box} from '@chakra-ui/react'
-import {ResetPasswordButton} from '../ResetPasswordButton'
 import {useDispatch} from 'react-redux'
 import {showChangePasswordPopup, showTwoFaPopup} from '../../../redux/popups/action'
 import {useForm} from 'react-hook-form'
@@ -12,6 +11,7 @@ import {changePasswordLogin} from '../../../redux/user/action'
 import {InstructionsSendContainer} from '../InstructionsSendContainer/InstructionsSendContainer'
 import Connect from "../../../helpers/connect"
 import SelectModal from "../../modal/SelectModal"
+import SubmitButton from "../../buttons/SubmitButton";
 
 export const ChangePasswordContainer = ({t, token}) => {
   const dispatch = useDispatch()
@@ -71,7 +71,6 @@ export const ChangePasswordContainer = ({t, token}) => {
     <SelectModal
       isOpen={true}
       width={380}
-      height={100}
       onClose={closeForgotPasswordHandler}
       title={t('forgotPasswordForm.headings.passwordChanged')}
     >
@@ -86,13 +85,9 @@ export const ChangePasswordContainer = ({t, token}) => {
     <SelectModal
       isOpen={true}
       width={380}
-      height={100}
       onClose={closeForgotPasswordHandler}
       title={t('forgotPasswordForm.headings.changePassword')}
-      footer={<ResetPasswordButton
-        text={t('forgotPasswordForm.buttonsText.submit')}
-        whichForm={'changePasswordWindowForm'}
-      />}
+      footer={<SubmitButton title={t('forgotPasswordForm.buttonsText.submit')} form="changePasswordWindowForm"/>}
     >
       <Box p={4}>
         <PasswordInputsContainer
