@@ -13,7 +13,6 @@ export default function EmailConfirmation (props) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-
     if (props.token) {
       let sendData = {
         type: 3,
@@ -39,29 +38,19 @@ export default function EmailConfirmation (props) {
         clearTimeout(timer)
       }
     }
-
   }, [])
 
   return (
-
-    <>
-      <MainLayout>
-        <HomePageContainer
-          t={t}
-        />
-      </MainLayout>
-
-    </>
+    <MainLayout>
+      <HomePageContainer t={t}/>
+    </MainLayout>
   )
 }
 
 export const getServerSideProps = async (context) => {
-
   let token = null
   if (context.query.token) {
     token = context.query.token
-  } else {
-
   }
 
   return ({
