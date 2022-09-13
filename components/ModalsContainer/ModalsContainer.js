@@ -109,9 +109,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>
 
       {isShowModal.isShowTournamentsDetails && <ErrorEmpty>
-        <TournamentModalDetails
-          t={t}
-        />
+        <TournamentModalDetails t={t}/>
       </ErrorEmpty>}
 
       {isShowModal.isShowForgotPassword && <ErrorEmpty>
@@ -119,10 +117,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>}
 
       {isShowModal.isShowChangePassword && token && <ErrorEmpty>
-        <ChangePasswordContainer
-          t={t}
-          token={token}
-        />
+        <ChangePasswordContainer t={t} token={token}/>
       </ErrorEmpty>}
 
       {isShowModal.isShowEmailValidationSuccess && <ErrorEmpty>
@@ -130,10 +125,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>}
 
       {isShowModal.isShowEmailValidationError && <ErrorEmpty>
-        <EmailValidationError
-          t={t}
-          emailError={emailError}
-        />
+        <EmailValidationError t={t} emailError={emailError}/>
       </ErrorEmpty>}
 
       {isShowModal.isShowTwoFaPopup && <ErrorEmpty>
@@ -141,43 +133,29 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
       </ErrorEmpty>}
 
       {isShowModal.isShowMobilePaymentsStepper && <ErrorEmpty>
-        <MobilePaymentsStepper
-          userAuth={userInfo}
-        />
+        <MobilePaymentsStepper userAuth={userInfo} />
       </ErrorEmpty>}
 
       {isShowModal.isShowCreditCardModal && <ErrorEmpty>
-        <PaymentsCardWrapper
-          paymentsData={paymentsData}
-          userInfo={userInfo}
-        />
+        <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo}/>
       </ErrorEmpty>}
 
       {isShowModal.isShowCryptoModal && <ErrorEmpty>
-        <PaymentsCryptoWrapper
-          paymentsData={paymentsData}
-        />
+        <PaymentsCryptoWrapper paymentsData={paymentsData} />
       </ErrorEmpty>}
 
-      {isShowModal.isShowSearchModal && <SearchGamesModal
-        isShowSearchModal={isShowModal.isShowSearchModal}
-        t={t}
-      />}
+      {isShowModal.isShowSearchModal && <SearchGamesModal isShowSearchModal={isShowModal.isShowSearchModal} t={t}/>}
 
       {isShowModal.isShowPlaySafe && <ErrorEmpty>
         <PlaySafeMainWrapper/>
       </ErrorEmpty>}
 
       {!userInfo.isAuthenticated && registerShow && <ErrorEmpty>
-        <RegisterSignup
-          isShow={registerShow}
-        />
+        <RegisterSignup isShow={registerShow} />
       </ErrorEmpty>}
 
       {!userInfo.isAuthenticated && logInShow && <ErrorEmpty>
-        <LogIn
-          isShow={logInShow}
-        />
+        <LogIn isShow={logInShow} />
       </ErrorEmpty>}
 
       {userInfo.isAuthenticated && <ErrorEmpty>

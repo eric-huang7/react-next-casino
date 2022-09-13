@@ -63,7 +63,8 @@ const SelectModal = ({
           onClick={onBack}
         />}
       </ModalHeader>
-      <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}/>
+      <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}
+        _focus={{ boxShadow: 'none' }} />
       <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white" h="100%" display="block">
         {children}
       </ModalBody>

@@ -1,11 +1,10 @@
 import {useDispatch} from "react-redux";
 import {useEffect, useRef} from "react";
 import {showEmailValidationErrorPopup, showForgotPasswordPopup} from "../../../redux/popups/action";
-import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
-import {ResendButton} from "../EmailEnteringContainer/ResendButton";
 import {ErrorTextBlock} from "./ErrorTextBlock";
 import {Box} from "@chakra-ui/react";
 import SelectModal from "../../modal/SelectModal";
+import LinkButton from "../../buttons/LinkButton";
 
 export const EmailValidationError = ({t, emailError}) => {
   const dispatch = useDispatch();
@@ -47,12 +46,11 @@ export const EmailValidationError = ({t, emailError}) => {
           text={emailError === 'used_token' ? 'forgotPasswordForm.errors.errorEmailValidationToken' : 'forgotPasswordForm.errors.errorEmailValidationOther'}
           t={t}
         />
-        <div className={styles.resendButtonContainer}>
-          <ResendButton
-            t={t}
-            showResendContainerClickHandler={showResendContainerClickHandler}
-          />
-        </div>
+        <Box>
+          <LinkButton onClick={showResendContainerClickHandler} fontSize="14px">
+            {t('forgotPasswordForm.buttonsText.resendConfirmation')}
+          </LinkButton>
+        </Box>
       </Box>
     </SelectModal>
   )

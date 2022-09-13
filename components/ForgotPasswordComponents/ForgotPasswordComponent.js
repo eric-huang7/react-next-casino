@@ -89,10 +89,12 @@ export const ForgotPasswordComponent = ({t}) => {
         onBack={userLogin ? false : backButtonClickHandler}
         title={t('forgotPasswordForm.headings.instructionsSent')}
       >
-        <InstructionsSendContainer
-          t={t}
-          text={'forgotPasswordForm.instructionsSentText'}
-        />
+        <Box p={4}>
+          <InstructionsSendContainer
+            t={t}
+            text={'forgotPasswordForm.instructionsSentText'}
+          />
+        </Box>
       </SelectModal>}
 
       {successSendEmail && <SelectModal
@@ -101,29 +103,33 @@ export const ForgotPasswordComponent = ({t}) => {
         onBack={userLogin ? false : backButtonClickHandler}
         title={t('forgotPasswordForm.headings.emailSent')}
       >
-        <InstructionsSendContainer
-          t={t}
-          text={'forgotPasswordForm.emailConfirmInstructionsSend'}
-        />
+        <Box p={4}>
+          <InstructionsSendContainer
+            t={t}
+            text={'forgotPasswordForm.emailConfirmInstructionsSend'}
+          />
+        </Box>
       </SelectModal>}
 
-      {showResendContainer && <SelectModal
+      {!(successSendPswd || successSendEmail) && showResendContainer && <SelectModal
         isOpen={true}
         onClose={closeForgotPasswordHandler}
         onBack={showResendContainerClickHandler}
         title={t('forgotPasswordForm.headings.resendEmail')}
         footer={<SubmitButton title={t('forgotPasswordForm.buttonsText.resend')} form="forgotPasswordForm"/>}
       >
-        <InputContainer
-          register={register}
-          handleSubmit={handleSubmit}
-          onSubmitHandler={onSubmitEmailResendHandler}
-          errors={errors}
-          t={t}
-          requestError={requestError}
-        />
+        <Box p={4}>
+          <InputContainer
+            register={register}
+            handleSubmit={handleSubmit}
+            onSubmitHandler={onSubmitEmailResendHandler}
+            errors={errors}
+            t={t}
+            requestError={requestError}
+          />
+        </Box>
       </SelectModal>}
-      {!(successSendPswd && successSendEmail && showResendContainer) && <SelectModal
+      {!(successSendPswd || successSendEmail || showResendContainer) && <SelectModal
         isOpen={true}
         onClose={closeForgotPasswordHandler}
         onBack={userLogin ? false : backButtonClickHandler}

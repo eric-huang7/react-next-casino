@@ -30,7 +30,7 @@ export const SearchGamesModal = ({t}) => {
         >
           <SearchBar width="100%" />
         </ModalHeader>
-        <ModalCloseButton color="white" fontSize={18} top="20px" />
+        <ModalCloseButton color="white" fontSize={18} top="20px" _focus={{ boxShadow: 'none' }} />
         <ModalBody p={0}>
           <SearchGamesContainer searchGames={searchGames} />
         </ModalBody>

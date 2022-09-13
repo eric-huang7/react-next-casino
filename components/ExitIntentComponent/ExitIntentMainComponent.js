@@ -33,7 +33,8 @@ export const ExitIntentMainComponent = ({t, showPopup, exit, type, isShowExitInt
               {t("exitIntentPopup.heading")}
             </Text>
           </HStack>
-          <ModalCloseButton bg="transparent" color="white" fontSize={18} _hover={{color: "#fff"}}/>
+          <ModalCloseButton bg="transparent" color="white" fontSize={18} _hover={{color: "#fff"}}
+              _focus={{ boxShadow: 'none' }}/>
 
           <HStack justifyContent="center" alignItems="center" minH="70px" p="20px" w="100%">
             <Text fontSize="16px" color="accent.850" fontWeight="600" fontFamily="Lithograph" textAlign="center">
