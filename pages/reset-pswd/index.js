@@ -7,43 +7,28 @@ import {useEffect} from "react";
 import {showChangePasswordPopup} from "../../redux/popups/action";
 import {useDispatch} from "react-redux";
 
-
-
 export default function ResetPswd(props) {
   const {t} = useTranslation('common');
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
-
     if (props.token) {
       dispatch(showChangePasswordPopup(true));
     }
-
   }, [router])
 
   return (
-
-    <>
-      <MainLayout
-        token={props.token}
-      >
-        <HomePageContainer
-          t={t}
-        />
-      </MainLayout>
-
-    </>
+    <MainLayout token={props.token}>
+      <HomePageContainer t={t}/>
+    </MainLayout>
   )
 }
 
 export const getServerSideProps = async (context) => {
-
   let token = null;
   if (context.query.token) {
     token = context.query.token;
-  } else {
-
   }
 
   return ({
