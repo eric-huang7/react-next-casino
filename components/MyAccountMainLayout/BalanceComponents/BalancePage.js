@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import { useSelector } from 'react-redux'
 import { BalanceInfoContainer } from './BalanceInfoContainer'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'

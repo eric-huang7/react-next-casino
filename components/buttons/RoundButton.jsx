@@ -13,7 +13,7 @@ const RoundButton = ({title, w = "121px", h = "34px", solid, onClick, fontFamily
     _hover={{ bg: solid ? "primary.500" : "#eee" }}
     {...props}
   >
-    <Text casing="none" fontSize={{base: 16, lg: 18}} color={solid ? "white" : "#747272"}
+    <Text casing="none" fontSize={{base: 14, lg: 18}} color={solid ? "white" : "#747272"}
           fontFamily={fontFamily} whiteSpace="pre-line">
       {title}
     </Text>

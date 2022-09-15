@@ -1,6 +1,5 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import { useDispatch } from 'react-redux'
-import { chakra, Text } from "@chakra-ui/react"
+import { chakra, Text, Box, Image } from "@chakra-ui/react"
 import { patchUserActiveCurrency } from '../../../redux/user/action'
 
 import { numberTransformer } from '../../../helpers/numberTransformer'
@@ -11,7 +10,7 @@ import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
 import {showDepositModal} from "../../../redux/popups/action";
 import {useRouter} from "next/router";
 
-export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) => {
+export const TableRow = ({ t, index, balanceData, currencyData, rates = [], rateUsd }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -40,17 +39,22 @@ export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) 
   }
 
   return currency ? (
-    <chakra.tr h="51px" fontSize="15px" color="#808080" fontFamily="Verdana">
+    <chakra.tr h="51px" fontSize="15px" color="#808080" fontFamily="Verdana" bg={index % 2 === 0 ? "#fafafa": "#eeeeee"}>
       {Number(balanceData.is_default) === 0
-        ? <chakra.td className={`${styles.tableDataActive} ${styles.tableActiveChoose}`}>
+        ? <chakra.td pl="30px">
             <Text color="primary.500" cursor="pointer" onClick={chooseClickHandler}>
               {t('myAccount.balance.table.items.select')}
             </Text>
           </chakra.td>
-        : <chakra.td className={`${styles.tableDataActive} ${styles.active}`}>
-            <p>
-              {t('myAccount.balance.table.items.active')}
-            </p>
+        : <chakra.td>
+            <HStack spacing={0}>
+              <HStack w="30px" justifyContent="center">
+                <Image src="/assets/img/myAccount/balance/active.webp" alt="" />
+              </HStack>
+              <Text color="primary.500">
+                {t('myAccount.balance.table.items.active')}
+              </Text>
+            </HStack>
           </chakra.td>
       }
       <chakra.td>

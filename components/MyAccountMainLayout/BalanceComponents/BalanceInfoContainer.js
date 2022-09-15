@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import { TableContainer } from './TableContainer'
 import { useDispatch } from 'react-redux'
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
@@ -8,6 +7,8 @@ import {TotalBalance} from "./TotalBalance";
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {addCurrencyToUserList} from "../../../redux/user/action";
 import {useDisclosure} from "@chakra-ui/hooks";
+import { Box } from "@chakra-ui/react";
+import RoundButton from "../../buttons/RoundButton";
 
 export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   const dispatch = useDispatch();
@@ -30,12 +31,17 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
   return balanceInfo?.balance?.success && !currency.loading ? (
     <>
       <TotalBalance t={t} rates={rates} rateUsd={rateUsd} currencies={currencies}/>
-      <div className={styles.tableContainerWrapper}>
+      <Box overflowX="auto">
         <TableContainer currency={currency} balanceInfo={balanceInfo} t={t} rates={rates} rateUsd={rateUsd} />
-      </div>
-      <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
-        {t('myAccount.balance.buttons.addCurrency')}
-      </button>
+      </Box>
+      <Box p="20px">
+        <RoundButton
+          onClick={addCurrencyClickHandler}
+          title={t('myAccount.balance.buttons.addCurrency')}
+          w="auto"
+          solid
+        />
+      </Box>
 
       <SelectCurrencyModal
         isOpen={isOpen}
