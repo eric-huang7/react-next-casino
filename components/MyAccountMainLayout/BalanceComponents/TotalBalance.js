@@ -1,6 +1,12 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
 import {useEffect, useState} from "react";
-import {useTranslation} from "next-i18next";
+import { Text } from "@chakra-ui/react";
+import {Box, Stack} from "@chakra-ui/layout";
+
+const Label = ({children, ...props}) => <Text p={0} m={0} {...props}>{children}</Text>
+const CryptoText = ({children, ...props}) => <Text fontSize="22px" fontWeight={600} {...props}>{children}</Text>
+const FiatText = ({children, ...props}) => <Text fontSize="18px" fontWeight={700} color="#888" {...props}>
+  {children}
+</Text>
 
 export const TotalBalance = ({ rates, rateUsd, currencies, t }) => {
   const [total, setTotal] = useState({crypto: 0, fiat: 0});
@@ -45,24 +51,24 @@ export const TotalBalance = ({ rates, rateUsd, currencies, t }) => {
     }
   }, [rates, currencies, rateUsd]);
 
-  return rateUsd ? (
-    <div className={styles.balanceHeader}>
-      <div>
-        <div>{t('myAccount.balance.fiatAndSpotBalance')}</div>
-        <div className={styles.balanceCrypto}>
-          {total.totalBtc} BTC <span className={styles.balanceFiat}>{total.totalUsd && <span>≈ {total.totalUsd} USD</span>}</span>
-        </div>
-      </div>
-      <div>
-        <div>{t('myAccount.balance.spotBalance')}</div>
-        <div className={styles.balanceCrypto}>{total.cryptoBtc} BTC</div>
-        {total.cryptoUsd && <div className={styles.balanceFiat}>≈ {total.cryptoUsd} USD</div>}
-      </div>
-      <div>
-        <div>{t('myAccount.balance.fiatBalance')}</div>
-        <div className={styles.balanceCrypto}>{total.fiatBtc} BTC</div>
-        {total.fiatUsd && <div className={styles.balanceFiat}>≈ {total.fiatUsd} USD</div>}
-      </div>
-    </div>
-  ) : null
+  return rateUsd && (
+    <Stack direction={{base: "column", lg: "row"}} pb="30px" justifyContent="space-between" alignItems="flex-start">
+      <Box>
+        <Label>{t('myAccount.balance.fiatAndSpotBalance')}</Label>
+        <CryptoText>
+          {total.totalBtc} BTC <FiatText>{total.totalUsd && <span>≈ {total.totalUsd} USD</span>}</FiatText>
+        </CryptoText>
+      </Box>
+      <Box>
+        <Label>{t('myAccount.balance.spotBalance')}</Label>
+        <CryptoText>{total.cryptoBtc} BTC</CryptoText>
+        {total.cryptoUsd && <FiatText>≈ {total.cryptoUsd} USD</FiatText>}
+      </Box>
+      <Box>
+        <Label>{t('myAccount.balance.fiatBalance')}</Label>
+        <CryptoText>{total.fiatBtc} BTC</CryptoText>
+        {total.fiatUsd && <FiatText>≈ {total.fiatUsd} USD</FiatText>}
+      </Box>
+    </Stack>
+  )
 }

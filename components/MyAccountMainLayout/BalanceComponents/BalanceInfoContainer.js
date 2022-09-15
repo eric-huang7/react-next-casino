@@ -27,28 +27,24 @@ export const BalanceInfoContainer = ({ t, balanceInfo, currency }) => {
     onClose();
   }
 
-  if (balanceInfo?.balance?.success && !currency.loading) {
-    return (
-      <>
-        <TotalBalance t={t} rates={rates} rateUsd={rateUsd} currencies={currencies}/>
-        <div className={styles.tableContainerWrapper}>
-          <TableContainer currency={currency} balanceInfo={balanceInfo} t={t} rates={rates} rateUsd={rateUsd} />
-        </div>
-        <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
-          {t('myAccount.balance.buttons.addCurrency')}
-        </button>
+  return balanceInfo?.balance?.success && !currency.loading ? (
+    <>
+      <TotalBalance t={t} rates={rates} rateUsd={rateUsd} currencies={currencies}/>
+      <div className={styles.tableContainerWrapper}>
+        <TableContainer currency={currency} balanceInfo={balanceInfo} t={t} rates={rates} rateUsd={rateUsd} />
+      </div>
+      <button onClick={() => addCurrencyClickHandler()} className={styles.addCurrencyButton}>
+        {t('myAccount.balance.buttons.addCurrency')}
+      </button>
 
-        <SelectCurrencyModal
-          isOpen={isOpen}
-          onClose={onClose}
-          onSelect={onSelectCurrency}
-        />
-      </>
-    )
-  } else {
-    return (
-      <LoadingComponent t={t}/>
-    )
-  }
+      <SelectCurrencyModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSelect={onSelectCurrency}
+      />
+    </>
+  ) : (
+    <LoadingComponent t={t}/>
+  )
 
 }
