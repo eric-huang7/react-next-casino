@@ -57,8 +57,8 @@ export const SideMenu = ({ t, userInform }) => {
   const router = useRouter()
 
   return (
-    <Box maxW="336px" w="100%" bg="#eeeeee" p={0} spacing={0} m={0}>
-      <HStack w="100%" h={{base: "70px", lg: "93px"}} alignItems="center" justifyContent="center" bg="primary.500"
+    <Box maxW={{base: "100%", lg: "336px"}} w="100%" bg="#eeeeee" p={0} spacing={0} m={0}>
+      <HStack w="100%" h={{base: "60px", lg: "93px"}} alignItems="center" justifyContent="center" bg="primary.500"
         borderBottom="1px solid #ffffff" m={0}>
         <Text as="h2"  fontSize={{base: "20px", lg: "24px"}} fontWeight={400} letterSpacing="1px" color="white"
           fontFamily="Verdana" textAlign="center" textTransform="uppercase"
