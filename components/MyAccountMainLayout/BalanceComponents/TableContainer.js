@@ -4,6 +4,7 @@ import {TableRow} from "./TableRow";
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {useState} from "react";
 import {BalanceItemMobile} from "./BalanceItemMobile";
+import { Table, Thead, Tr, Th, Text } from '@chakra-ui/react';
 import {FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
 import {currencyInfo} from "../../../helpers/currencyInfo";
 
@@ -15,31 +16,31 @@ export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
     {
       name: 'currency',
       title: t("myAccount.balance.table.headings.currency"),
-      style: styles.headingCurrency,
+      style: {w: {base: "150px", lg: "210px"}},
       sort: true
     },
     {
       name: 'amount',
       title: t("myAccount.balance.table.headings.amount"),
-      style: styles.headingAmount,
+      style: {},
       sort: true
     },
     {
       name: 'cashout',
       title: t("myAccount.balance.table.headings.cashout"),
-      style: styles.headingCashout,
+      style: {w: {base: "90px", lg: "120px"}},
       sort: true
     },
     {
       name: 'amountBtc',
       title: t("myAccount.balance.table.headings.amountBtc"),
-      style: styles.headingCashout,
+      style: {},
       sort: true
     },
     {
       name: 'actions',
       title: t("myAccount.balance.table.headings.actions"),
-      style: styles.headingActions
+      style: {w: {base: "97px", lg: "259px"}},
     }
   ]
 

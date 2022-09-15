@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { Text } from "@chakra-ui/react";
-import {Box, Stack} from "@chakra-ui/layout";
+import {Box, HStack, Stack} from "@chakra-ui/layout";
 
 const Label = ({children, ...props}) => <Text p={0} m={0} {...props}>{children}</Text>
 const CryptoText = ({children, ...props}) => <Text fontSize="22px" fontWeight={600} {...props}>{children}</Text>
@@ -52,7 +52,8 @@ export const TotalBalance = ({ rates, rateUsd, currencies, t }) => {
   }, [rates, currencies, rateUsd]);
 
   return rateUsd && (
-    <Stack direction={{base: "column", lg: "row"}} pb="30px" justifyContent="space-between" alignItems="flex-start">
+    <Stack direction={{base: "column", lg: "row"}} pb="30px" justifyContent="space-between" alignItems="flex-start"
+           mx={{base: "25px", lg: 0}} spacing={{base: 4, lg: 2}}>
       <Box>
         <Label>{t('myAccount.balance.fiatAndSpotBalance')}</Label>
         <CryptoText>
