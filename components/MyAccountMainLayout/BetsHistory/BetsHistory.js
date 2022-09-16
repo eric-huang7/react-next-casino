@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/BetsHistory/BetsHistory.module.scss'
 import { Heading } from '../ComponentsForPages/Heading'
 import { TrxHistoryLinksContainer } from '../TrxHistory/TrxHistoryLinksContainer'
 import { BetsHistoryTableContainer } from './BetsHistoryTableContainer'
@@ -10,28 +9,26 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 export const BetsHistory = ({ t, router }) => {
   const userInfo = useSelector((store) => store.authInfo)
 
-  if (!userInfo.loadingUserBetsData) {
-    return (
-      <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.betHistory'}/>
-        <TrxHistoryLinksContainer t={t} router={router}/>
+  return (
+    <div>
+      <Heading t={t} heading={'myAccount.pageHeadings.betHistory'}/>
 
-        <Box py="34px">
-          <Text>{t("myAccount.history.bets.textBlock")}</Text>
-        </Box>
+      {!userInfo.loadingUserBetsData ? (
+        <>
+          <TrxHistoryLinksContainer t={t} router={router}/>
 
-        <ErrorText>
-          <BetsHistoryTableContainer betsData={userInfo.userBetsData} t={t}/>
-        </ErrorText>
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.betHistory'}/>
+          <Box py="34px">
+            <Text>{t("myAccount.history.bets.textBlock")}</Text>
+          </Box>
+
+          <ErrorText>
+            <BetsHistoryTableContainer betsData={userInfo.userBetsData} t={t}/>
+          </ErrorText>
+        </>
+      ) : (
         <LoadingComponent t={t}/>
-      </div>
-    )
-  }
+      )}
 
+    </div>
+  )
 }

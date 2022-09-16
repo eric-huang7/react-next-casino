@@ -1,9 +1,11 @@
-import styles from '../../../../styles/MyAccount/BetsHistory/BetsHistory.module.scss'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
 import * as math from 'mathjs'
-export const BetsHistoryRow = ({ betData }) => {
+import { chakra } from "@chakra-ui/react"
 
+const Cell = ({children}) => <chakra.td textAlign="left" p="12px 10px">{children}</chakra.td>
+
+export const BetsHistoryRow = ({ betData, index }) => {
   const router = useRouter()
 
   let currency = betData.currency_abrv
@@ -13,29 +15,27 @@ export const BetsHistoryRow = ({ betData }) => {
   let date = dateFormatter(betData.time_created, router.locale)
 
   return (
-    <tr className={styles.betTableRow}>
-      <td>
+    <chakra.tr bg={index % 2 ? "#f5f5f5" : "#e1e1e1"}>
+      <Cell>
         {betData.game}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {bet}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {win}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {date}
-      </td>
-    </tr>
+      </Cell>
+    </chakra.tr>
   )
 }
 
 function gameItem (game) {
-
   if (game.indexOf('&amp;amp;') === -1) {
     return game
   } else {
     return game.replace('&amp;amp;', '&')
   }
-
 }
