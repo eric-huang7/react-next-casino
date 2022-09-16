@@ -71,77 +71,63 @@ export const BonusPageInfoContainer = ({ t, bonusInfo, currency }) => {
 
   }
 
-  if (bonusInfo?.activePendingBonuses?.success && !currency.loading) {
-
-    if (bonusInfo.activePendingBonuses.bonuses.length === 0) {
-      return (
-        <>
-          <div className={styles.noBonusesContainer}>
-            <p className={styles.noBonusesText}>{t('myAccount.bonusPage.noBonuses')}</p>
-            <div className={styles.bonusesLinkWrapper}>
-              <Link href={'/accounts/history/history/bonus'}><a>{t('myAccount.bonusPage.bonusHistoryLink')} &gt;&gt;</a></Link>
-            </div>
+  return (bonusInfo?.activePendingBonuses?.success && !currency.loading) ? (
+    bonusInfo.activePendingBonuses.bonuses.length === 0 ? (
+      <>
+        <div className={styles.noBonusesContainer}>
+          <p className={styles.noBonusesText}>{t('myAccount.bonusPage.noBonuses')}</p>
+          <div className={styles.bonusesLinkWrapper}>
+            <Link href={'/accounts/history/history/bonus'}><a>{t('myAccount.bonusPage.bonusHistoryLink')} &gt;&gt;</a></Link>
           </div>
+        </div>
+        <ErrorEmpty>
+          <AddPromoCodeContainer
+            promoCodeInputHandler={promoCodeInputHandler}
+            savePromoCodeClickHandler={savePromoCodeClickHandler}
+            promoCodeValue={promoCodeValue}
+            isCenter={false}
+            t={t}
+            promoErrorValue={promoErrorValue}
+            promoDepositText={promoDepositText}
+          />
+        </ErrorEmpty>
+      </>
+    ) : (
+      <div>
+        <div className={styles.mainContainer}>
+          {bonusInfo.activePendingBonuses.bonuses.map((bonus) => (
+            <ErrorText key={`${bonus.id} bonus key`}>
+              <BonusItemContainer
+                activateBonusClickHandler={activateBonusClickHandler}
+                cancelBonusClickHandler={cancelBonusClickHandler}
+                key={`${bonus.id} bonus key`}
+                currencyData={currency}
+                bonusData={bonus}
+                t={t}
+              />
+            </ErrorText>
+          ))}
           <ErrorEmpty>
             <AddPromoCodeContainer
               promoCodeInputHandler={promoCodeInputHandler}
               savePromoCodeClickHandler={savePromoCodeClickHandler}
               promoCodeValue={promoCodeValue}
-              isCenter={false}
+              isCenter={true}
               t={t}
               promoErrorValue={promoErrorValue}
               promoDepositText={promoDepositText}
             />
           </ErrorEmpty>
-        </>
-
-      )
-    } else {
-      return (
-        <div>
-          <div className={styles.mainContainer}>
-            {
-              bonusInfo.activePendingBonuses.bonuses.map((bonus) => {
-                return (
-                  <ErrorText key={`${bonus.id} bonus key`}>
-                    <BonusItemContainer
-                      activateBonusClickHandler={activateBonusClickHandler}
-                      cancelBonusClickHandler={cancelBonusClickHandler}
-                      key={`${bonus.id} bonus key`}
-                      currencyData={currency}
-                      bonusData={bonus}
-                      t={t}
-                    />
-                  </ErrorText>
-                )
-              })
-            }
-            <ErrorEmpty>
-              <AddPromoCodeContainer
-                promoCodeInputHandler={promoCodeInputHandler}
-                savePromoCodeClickHandler={savePromoCodeClickHandler}
-                promoCodeValue={promoCodeValue}
-                isCenter={true}
-                t={t}
-                promoErrorValue={promoErrorValue}
-                promoDepositText={promoDepositText}
-              />
-            </ErrorEmpty>
-          </div>
-          {
-            bonusInfo.activePendingBonuses.bonuses.length % 2 === 0 ? <div className={styles.divider}></div> : ''
-          }
-
-          <div className={styles.bonusesLinkWrapper}>
-            <Link
-              href={'/accounts/history/history/bonus'}><a>{t('myAccount.bonusPage.bonusHistoryLink')} &gt;&gt;</a></Link>
-          </div>
         </div>
-      )
-    }
-  } else {
-    return (
-      <LoadingComponent t={t}/>
+        {
+          bonusInfo.activePendingBonuses.bonuses.length % 2 === 0 ? <div className={styles.divider}></div> : ''
+        }
+
+        <div className={styles.bonusesLinkWrapper}>
+          <Link
+            href={'/accounts/history/history/bonus'}><a>{t('myAccount.bonusPage.bonusHistoryLink')} &gt;&gt;</a></Link>
+        </div>
+      </div>
     )
-  }
+  ) : <LoadingComponent t={t}/>
 }

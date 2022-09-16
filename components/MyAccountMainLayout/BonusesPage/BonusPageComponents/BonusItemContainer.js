@@ -7,14 +7,25 @@ import {useDispatch, useSelector} from "react-redux";
 import {showTermsModal} from "../../../../redux/popups/action";
 import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
 import {BonusTermsCheck} from "../BonusTermsCheck";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react'
 
 export const BonusItemContainer = ({
-                                     t,
-                                     bonusData,
-                                     currencyData,
-                                     activateBonusClickHandler,
-                                     cancelBonusClickHandler,
-                                   }) => {
+   t,
+   bonusData,
+   currencyData,
+   activateBonusClickHandler,
+   cancelBonusClickHandler,
+ }) => {
   const router = useRouter()
   const dispatch = useDispatch()
 
@@ -45,37 +56,33 @@ export const BonusItemContainer = ({
   const wagerOrFreeSpinsAmount = isFS ? Number(bonusData.free_spins_awarded)
     : (bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`)
 
+  const values = [
+    {key: t(amountName), value: amount},
+    {key: t(wagerOrFreeSpins), value: wagerOrFreeSpinsAmount},
+    {key: isFS
+        ? t('myAccount.bonusPage.bonusItems.freeSpinsRemaining')
+        : t('myAccount.bonusPage.bonusItems.wagerPercent'),
+      value: isFS ? bonusData.free_spins_remaining : `${wagerPercent}%`},
+    {key: t('myAccount.bonusPage.bonusItems.dateReceived'), value: dateReceived},
+    {key: t('myAccount.bonusPage.bonusItems.expiryDate'), value: expiryDate},
+  ]
+
   return <ErrorText>
     <div className={styles.bonusItemContainer}>
       <div className={styles.bonusItemHeading}>
         <p className={styles.headingText}>{title}</p>
         <p className={`${styles.bonusItemStatus} ${bonusData.status !== '1' && styles.pendingStatus}`}>{t(stage)}</p>
       </div>
-      <ul className={styles.bonusInfoList}>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountName}>{t(amountName)}</div>
-          <div className={styles.amountValue}>{amount}</div>
-        </li>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountWagerReq}>{t(wagerOrFreeSpins)}</div>
-          <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
-        </li>
-        {isFS ? <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.freeSpinsRemaining')}</div>
-          <div className={styles.wagerPercentValue}>{bonusData.free_spins_remaining}</div>
-        </li> : <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.wagerPercent')}</div>
-          <div className={styles.wagerPercentValue}>{wagerPercent}%</div>
-        </li>}
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.dateReceived}>{t('myAccount.bonusPage.bonusItems.dateReceived')}</div>
-          <div className={styles.dateReceivedValue}>{dateReceived}</div>
-        </li>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.expiryDate}>{t('myAccount.bonusPage.bonusItems.expiryDate')}</div>
-          <div className={styles.expiryDate}>{expiryDate}</div>
-        </li>
-      </ul>
+      <TableContainer>
+        <Table variant='striped' colorScheme='grey'>
+          <Tbody>
+            {values.map((item, index) => (<Tr>
+              <Td>{item.key}</Td>
+              <Td>{item.value}</Td>
+            </Tr>))}
+          </Tbody>
+        </Table>
+      </TableContainer>
       <div className={styles.termsWrapper}>
         {isActive ? <BonusTermsCheck hideCheckbox onShowTerms={onShowTerms}/> : <BonusTermsCheck
           id={bonusData.id}
