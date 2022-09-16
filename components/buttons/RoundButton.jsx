@@ -5,8 +5,10 @@ const RoundButton = ({title, w = "121px", h = "34px", solid, onClick, fontFamily
   <PrimaryButton
     onClick={onClick}
     bg={solid ? "primary.500" : "#eee"}
-    h={h}
-    w={w}
+    minH={h}
+    minW={w}
+    h="fit-content"
+    w="fit-content"
     border="1px solid"
     borderColor={solid ? "primary.500" : "#9e9e9e"}
     borderRadius="17px"

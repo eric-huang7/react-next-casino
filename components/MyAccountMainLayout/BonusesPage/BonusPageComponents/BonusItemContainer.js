@@ -5,19 +5,17 @@ import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 import {setActivePendingBonusesTerms} from "../../../../redux/user/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showTermsModal} from "../../../../redux/popups/action";
-import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
 import {BonusTermsCheck} from "../BonusTermsCheck";
 import {
   Table,
-  Thead,
   Tbody,
-  Tfoot,
   Tr,
-  Th,
   Td,
-  TableCaption,
   TableContainer,
+  Text
 } from '@chakra-ui/react'
+import RoundButton from "../../../buttons/RoundButton";
+import {Badge, HStack, VStack} from "@chakra-ui/layout";
 
 export const BonusItemContainer = ({
    t,
@@ -68,14 +66,19 @@ export const BonusItemContainer = ({
   ]
 
   return <ErrorText>
-    <div className={styles.bonusItemContainer}>
-      <div className={styles.bonusItemHeading}>
-        <p className={styles.headingText}>{title}</p>
-        <p className={`${styles.bonusItemStatus} ${bonusData.status !== '1' && styles.pendingStatus}`}>{t(stage)}</p>
-      </div>
+    <VStack w="465px" borderBottom="1px solid #eeeeee" mb="35px" p="0 5px" alignItems="flex-start">
       <TableContainer>
         <Table variant='striped' colorScheme='grey'>
           <Tbody>
+            <Tr>
+              <Td><Text color="primary.500">{title}</Text></Td>
+              <Td textAlign="right">
+                <Badge fontSize="15px" px="30px" h="34px" lineHeight="34px" variant='solid' fontFamily="Verdana"
+                   textTransform="unset" borderRadius="17px" bg={bonusData.status === '1' ? "primary.500" : "#9e9e9e"}>
+                  {t(stage)}
+                </Badge>
+              </Td>
+            </Tr>
             {values.map((item, index) => (<Tr>
               <Td>{item.key}</Td>
               <Td>{item.value}</Td>
@@ -83,7 +86,7 @@ export const BonusItemContainer = ({
           </Tbody>
         </Table>
       </TableContainer>
-      <div className={styles.termsWrapper}>
+      <HStack w="100%" justifyContent="space-between" alignItems="center" p="20px 0" pr="8px">
         {isActive ? <BonusTermsCheck hideCheckbox onShowTerms={onShowTerms}/> : <BonusTermsCheck
           id={bonusData.id}
           onAccept={acceptTerms}
@@ -91,20 +94,14 @@ export const BonusItemContainer = ({
           isTermsChecked={authInfo.activePendingBonusesTerms[bonusData.id]}
         />}
         {isActive ? (
-          <button
-            onClick={() => cancelBonusClickHandler(bonusData)}
-            className={styles.cancelBonus}
-          >
-            {t('myAccount.bonusPage.bonusItems.cancelBonus')}
-          </button>
-        ) : isTermsChecked && <button
-          onClick={() => activateBonusClickHandler(bonusData)}
-          className={styles.activateBonus}
-        >
-          {t('myAccount.bonusPage.bonusItems.activateBonus')}
-        </button>}
-      </div>
-    </div>
+          <RoundButton fontSize="12px" onClick={() => cancelBonusClickHandler(bonusData)}
+                       title={t('myAccount.bonusPage.bonusItems.cancelBonus')}/>
+        ) : isTermsChecked &&
+          <RoundButton fontSize="12px" solid onClick={() => activateBonusClickHandler(bonusData)}
+                       title={t('myAccount.bonusPage.bonusItems.activateBonus')}/>
+        }
+      </HStack>
+    </VStack>
   </ErrorText>
 }
 
