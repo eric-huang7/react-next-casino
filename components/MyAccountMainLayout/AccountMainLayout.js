@@ -1,8 +1,8 @@
-import styles from '../../styles/MyAccount/MainLayout/MainLayout.module.scss'
 import { Header } from '../MainLayout/Header/Header'
 import { SideMenu } from './AccountLayoutConponents/SideMenu'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { Box } from "@chakra-ui/react"
 import {
   auth, getActiveUserSessions, getClosedUserSessions, getDocuments,
   getUserActivePendingBonuses,
@@ -23,6 +23,7 @@ import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import {MessageContainer} from "../MessageContainer/MessageContainer";
 import {TermsModal} from "../modals/TermsModal";
+import {Stack} from "@chakra-ui/layout";
 
 export const AccountMainLayout = ({ t, children }) => {
   const dispatch = useDispatch()
@@ -118,26 +119,26 @@ export const AccountMainLayout = ({ t, children }) => {
     }
   }, [router.pathname])
 
-  if (userInfo.isAuthenticated) {
-    return (
-      <>
-        <div className={styles.accountMainLayoutWrapper}>
-          <ErrorHeaderPage>
-            <Header t={t}/>
-          </ErrorHeaderPage>
-          {
-            isShowModal.showErrorPopup
-              ?
-              <ErrorEmpty>
-                <ErrorMessageContainer
-                  errorData={isShowModal}
-                  t={t}
-                />
-              </ErrorEmpty>
-              : <></>
+  return (
+    <Box bg="white" w="100%" h="100vh" overflowX="hidden" overflowY="auto">
+      <ErrorHeaderPage>
+        <Header t={t}/>
+      </ErrorHeaderPage>
+
+      {userInfo.isAuthenticated ?
+        <>
+          {isShowModal.showErrorPopup
+            ?
+            <ErrorEmpty>
+              <ErrorMessageContainer
+                errorData={isShowModal}
+                t={t}
+              />
+            </ErrorEmpty>
+            : <></>
           }
           {
-              isShowModal.showMessagePopup && <MessageContainer />
+            isShowModal.showMessagePopup && <MessageContainer/>
           }
           <ErrorEmpty>
             <DepositPage t={t}/>
@@ -168,29 +169,23 @@ export const AccountMainLayout = ({ t, children }) => {
           <MobileSideMenu t={t} userInform={userInfo}/>
 
           {isShowModal.isShowTermsModal && <ErrorEmpty>
-            <TermsModal />
+            <TermsModal/>
           </ErrorEmpty>}
 
-          <div className={styles.myAccountContainer}>
-            <div className={styles.accountInnerContainer}>
+          <Box p={{base: 0, lg: "0 30px"}} m="0 auto" maxW="1360px" w="100%">
+            <Stack direction={{base: "column", lg: "row"}} bg="white" w="100%" minH="700px">
               <SideMenu userInform={userInfo} t={t}/>
-              <section className={styles.accountMainContainer}>
+              <Box w="100%" p={{base: "0 16px 20px", lg: "0 20px 20px 30px"}}>
                 {children}
-              </section>
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <div className={styles.accountMainLayoutWrapper}>
+              </Box>
+            </Stack>
+          </Box>
+        </> : (
           <ErrorHeaderPage>
-            <Header t={t}/>
+
           </ErrorHeaderPage>
-        </div>
-      </>
-    )
-  }
+        )
+      }
+    </Box>
+  )
 }

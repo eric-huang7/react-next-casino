@@ -66,9 +66,9 @@ export const BonusItemContainer = ({
   ]
 
   return <ErrorText>
-    <VStack w="465px" borderBottom="1px solid #eeeeee" mb="35px" p="0 5px" alignItems="flex-start">
+    <VStack w={{base: "100%", lg: "465px"}} borderBottom="1px solid #eeeeee" mb="35px" p="0 5px" alignItems="flex-start">
       <TableContainer>
-        <Table variant='striped' colorScheme='grey'>
+        <Table variant="striped" colorScheme="grey">
           <Tbody>
             <Tr>
               <Td><Text color="primary.500">{title}</Text></Td>
