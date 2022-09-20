@@ -1,36 +1,25 @@
-import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.module.scss'
 import { currencyInfo } from '../../../../helpers/currencyInfo'
+import { HStack } from "@chakra-ui/react"
+import SelectField from "../../../form/SelectField";
 
-export const CurrencyBonusSelector = ({ t, currencyData, userInfo, setCurrencyFilter, currencyFilter }) => {
-
-  return (
-    <div className={styles.selectorWrapper}>
-      <label
-        htmlFor="currencySelectHistory"
-        className={styles.currencySelectLabel}
-      >
-        {t('myAccount.history.bonus.inputsLabels.currency')}
-      </label>
-      <select
-        onChange={(e) => setCurrencyFilter(e.target.value)}
-        className={styles.currencySelect}
-        id={'currencySelectHistory'}
-        value={currencyFilter}
-      >
-        <option key={`option currency select`} value={undefined}>{null}</option>
-        {
-          userInfo.balance.balances.map((el) => {
-            return (
-              <option
-                key={`${el.id} option currency select`}
-                value={el.currency_id}
-              >
-                {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
-              </option>
-            )
-          })
-        }
-      </select>
-    </div>
-  )
-}
+export const CurrencyBonusSelector = ({ t, currencyData, userInfo, setCurrencyFilter, currencyFilter }) => (
+  <HStack alignItems="center">
+    <SelectField value={currencyFilter} name="currencySelectHistory" onChange={(e) => setCurrencyFilter(e.target.value)}
+      label={t('myAccount.history.bonus.inputsLabels.currency')}
+    >
+      <option key={`option currency select`} value={undefined}>{null}</option>
+      {
+        userInfo.balance.balances.map((el) => {
+          return (
+            <option
+              key={`${el.id} option currency select`}
+              value={el.currency_id}
+            >
+              {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
+            </option>
+          )
+        })
+      }
+    </SelectField>
+  </HStack>
+)

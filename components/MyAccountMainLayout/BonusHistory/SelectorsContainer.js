@@ -1,13 +1,12 @@
-import styles from '../../../styles/MyAccount/BonusHistory/BonusHistory.module.scss'
-
 import { StatusSelector } from './Selectors/StatusSelector'
 import { useState } from 'react'
 import { FromDateSelector } from './Selectors/FromDateSelector'
-import { FilterButton } from './FilterButton'
 import { CurrencyBonusSelector } from './Selectors/CurrencyBonusSelector'
 import { useDispatch } from 'react-redux'
 import { getUserBonuses } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import RoundButton from "../../buttons/RoundButton";
+import { Stack } from "@chakra-ui/react";
 
 export const SelectorsContainer = ({ t, userInfo, currencyData }) => {
   const dispatch = useDispatch()
@@ -68,11 +67,18 @@ export const SelectorsContainer = ({ t, userInfo, currencyData }) => {
 
       dispatch(getUserBonuses(params))
     }
-
   }
 
   return (
-    <div className={styles.inputsContainer}>
+    <Stack
+      direction={{base: 'column', lg: 'row'}}
+      w="100%"
+      mt="26px"
+      mb="37px"
+      p="0 5px"
+      alignItems={{base: 'flex-start', lg: 'center'}}
+      justifyContent={{base: 'flex-start', lg: 'flex-start'}}
+    >
       <ErrorEmpty>
         <CurrencyBonusSelector
           setCurrencyFilter={setCurrencyFilter}
@@ -100,10 +106,8 @@ export const SelectorsContainer = ({ t, userInfo, currencyData }) => {
           t={t}
         />
       </ErrorEmpty>
-      <FilterButton
-        t={t}
-        filterButtonClickHandler={filterButtonClickHandler}
-      />
-    </div>
+      <RoundButton fontSize="12px" solid onClick={filterButtonClickHandler}
+                   title={t("myAccount.history.bonus.filterButton")}/>
+    </Stack>
   )
 }

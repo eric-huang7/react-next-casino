@@ -1,6 +1,5 @@
-import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.module.scss';
-
-
+import {HStack} from "@chakra-ui/react";
+import SelectField from "../../../form/SelectField";
 
 let months = [
   {name: 'myAccount.history.bonus.month.january', value: 0},
@@ -17,23 +16,13 @@ let months = [
   {name: 'myAccount.history.bonus.month.december', value: 11},
 ];
 
-export const MonthSelector = ({t, monthFilter, setMonthFilter}) => {
-
-
-  return (
-    <div className={styles.monthSelectorWrapper}>
-      <select
-        onChange={(e) => setMonthFilter(e.target.value)}
-        value={monthFilter}
-        className={styles.monthSelector}
-        name='monthContainer'
-        id="monthContainer"
-      >
-        <option value={undefined}>{null}</option>
-        {
-          months.map((el) => <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>)
-        }
-      </select>
-    </div>
-  )
-}
+export const MonthSelector = ({t, monthFilter, setMonthFilter}) => (
+  <HStack alignItems="center">
+    <SelectField value={monthFilter} name="monthContainer" onChange={(e) => setMonthFilter(e.target.value)}>
+      <option value={undefined}>{null}</option>
+      {months.map((el) =>
+        <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>)
+      }
+    </SelectField>
+  </HStack>
+)
