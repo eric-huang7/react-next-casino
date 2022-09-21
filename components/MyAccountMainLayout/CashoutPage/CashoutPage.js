@@ -1,10 +1,10 @@
-import styles from '../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 import { Heading } from '../ComponentsForPages/Heading'
 import { LinksBlock } from './PageComponents/LinksBlock'
 import { AvailableToCashoutBlock } from './PageComponents/AvailableToCashoutBlock'
 import { TryBitcoinContainer } from './PageComponents/TryBitcoinContainer'
 import { SelectPaymentContainer } from './PageComponents/SelectPaymentContainer/SelectPaymentContainer'
 import { useSelector } from 'react-redux'
+import { Box } from "@chakra-ui/react"
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
@@ -19,7 +19,7 @@ export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
   )
 
   return (
-    <div className={styles.mainContainer}>
+    <Box>
       <Heading t={t} heading={'myAccount.pageHeadings.cashoutPage'}/>
       {balanceInfo.balance && currency.currency
         ? <>
@@ -62,6 +62,6 @@ export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
           }
         </>
         : <LoadingComponent t={t}/>}
-    </div>
+    </Box>
   )
 }

@@ -1,33 +1,30 @@
-import styles from '../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
 import { LinkItem } from './LinkItem'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import { HStack } from "@chakra-ui/react"
+import {Box, Stack, Text} from "@chakra-ui/layout";
 
 export const LinksBlock = ({ t, balanceData, currencyData, activeLink, activeCurrencyId }) => {
 
   return (
-    <div className={styles.linksBlock}>
-      <div className={styles.textContainer}>
-        <p>{t('myAccount.cashoutPage.iWouldCashout')}</p>
-      </div>
-      <div className={styles.linksContainer}>
-        <ul className={styles.linksList}>
-          {
-            balanceData.map((el) => {
-              return (
-                <ErrorEmpty key={`${el.id} balance id`}>
-                  <LinkItem
-                    key={`${el.id} balance id`}
-                    balanceData={el}
-                    currencyData={currencyData}
-                    activeLink={activeLink}
-                    activeCurrencyId={activeCurrencyId}
-                  />
-                </ErrorEmpty>
-              )
-            })
-          }
-        </ul>
-      </div>
-    </div>
+    <Stack direction={{base: 'column', lg: 'row'}} pt="10px" alignItems={{base: 'flex-start', lg: 'center'}}>
+      <Box>
+        <Text my="16px" mr="24px" fontSize="16px" color="text.450" fontFamily="Verdana" whiteSpace="nowrap">
+          {t('myAccount.cashoutPage.iWouldCashout')}
+        </Text>
+      </Box>
+      <HStack flexWrap="wrap" spacing={0}>
+        {balanceData.map((el) => (
+          <ErrorEmpty key={`${el.id} balance id`}>
+            <LinkItem
+              key={`${el.id} balance id`}
+              balanceData={el}
+              currencyData={currencyData}
+              activeLink={activeLink}
+              activeCurrencyId={activeCurrencyId}
+            />
+          </ErrorEmpty>
+        ))}
+      </HStack>
+    </Stack>
   )
 }

@@ -2,7 +2,7 @@ import { numberTransformer } from '../../helpers/numberTransformer'
 import { patchUserActiveCurrency } from '../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import {Tr, Td} from "@chakra-ui/react"
-import {CurrencyItemShort} from "../MainLayout/Header/UserBlock/CurrencyItemShort";
+import CurrencyItemShort from "../currency/CurrencyItemShort";
 
 export const BalanceItem = ({ balanceData, currencyData, onSelect }) => {
   const dispatch = useDispatch()

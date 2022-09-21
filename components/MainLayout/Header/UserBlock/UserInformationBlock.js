@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 import {milliCurrencies, milliLimit} from "../../../../envs/currency";
 import LinkButton from "../../../buttons/LinkButton";
 import {HStack, VStack} from "@chakra-ui/layout";
-import {CurrencyItemShort} from "./CurrencyItemShort";
+import CurrencyItemShort from "../../../currency/CurrencyItemShort";
 
 export const UserInformationBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')

@@ -4,11 +4,11 @@ import { BalanceMenuContainer } from '../../../BalanceMenuContainer/BalanceMenuC
 import { numberTransformer } from '../../../../helpers/numberTransformer'
 import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
 import { currencyFinder } from '../../../../helpers/currencyFinder'
-import {CurrencyItemShort} from "./CurrencyItemShort";
 import {useTranslation} from "next-i18next";
 import {milliCurrencies, milliLimit} from "../../../../envs/currency";
 import {Text} from "@chakra-ui/layout";
 import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
+import CurrencyItemShort from "../../../currency/CurrencyItemShort";
 
 export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')

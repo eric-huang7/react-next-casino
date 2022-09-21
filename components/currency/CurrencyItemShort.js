@@ -1,9 +1,10 @@
-import {baseVariants} from "../../../../envs/currency";
-import CurrencyIcon from "../../../currency/CurrencyIcon";
+// import {baseVariants} from "../../../../envs/currency";
 import {Text} from "@chakra-ui/react";
 import {Box, HStack, VStack} from "@chakra-ui/layout";
+import CurrencyIcon from "./CurrencyIcon";
+import {baseVariants} from "../../envs/currency";
 
-export const CurrencyItemShort = ({ currencyData, isMilli }) => {
+const CurrencyItemShort = ({ currencyData, isMilli, fontProps = {}, hideBase = false, ...props }) => {
   const abbr = currencyData?.abbreviation
   const base = currencyData?.base
   let colorBase = '#4fadcf'
@@ -15,11 +16,11 @@ export const CurrencyItemShort = ({ currencyData, isMilli }) => {
   }
 
   return (
-    <HStack spacing={0}>
+    <HStack spacing={0} {...props}>
       <CurrencyIcon id={currencyData?.abbreviation} size={6} mx={2}/>
       <VStack alignItems="flex-start" spacing={0}>
-        <Text fontSize="14px" color="currency.500" fontFamily="Verdana">{isMilli && 'm'}{abbr}</Text>
-        {!!base && <Box
+        <Text fontSize="14px" color="currency.500" fontFamily="Verdana" {...fontProps}>{isMilli && 'm'}{abbr}</Text>
+        {!!base && !hideBase && <Box
           h="16px"
           lineHeight="16px"
           fontSize="12px"
@@ -37,3 +38,5 @@ export const CurrencyItemShort = ({ currencyData, isMilli }) => {
     </HStack>
   )
 }
+
+export default CurrencyItemShort;
