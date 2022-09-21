@@ -97,7 +97,8 @@ export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currency
       <p className={styles.containerHeading}>{t('myAccount.cashoutPage.selectPaymentContainer.heading')}</p>
       <div className={styles.paymentMethodWrapper}>
         <ul className={styles.methodsList}>
-          {typeOfCurrency.type === 3 ? <>
+          {typeOfCurrency.type === 3
+            ? <>
               <ErrorText>
                 <CreditCardPayment
                   t={t}
