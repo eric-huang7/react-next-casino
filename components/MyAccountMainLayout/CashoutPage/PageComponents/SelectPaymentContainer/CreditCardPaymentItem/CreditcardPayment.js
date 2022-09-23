@@ -1,6 +1,6 @@
 import { FormContainer } from './FormContainer'
 import ErrorText from '../../../../../ErrorBoundaryComponents/ErrorText'
-import {Box, HStack, Image, Stack} from '@chakra-ui/react'
+import {Box, HStack, Image, Stack, Text} from '@chakra-ui/react'
 import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons";
 import {numberTransformer} from "../../../../../../helpers/numberTransformer";
 

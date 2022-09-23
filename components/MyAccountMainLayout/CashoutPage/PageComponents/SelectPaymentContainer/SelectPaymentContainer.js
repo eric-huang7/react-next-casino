@@ -1,9 +1,10 @@
-import styles from '../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
 import {CreditCardPayment} from './CreditCardPaymentItem/CreditcardPayment'
 import {CryptoPaymentItem} from './CryptoPaymentContainer/CryptoPaymentContainer'
 import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
+import { Box } from '@chakra-ui/react'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
+import {Text} from "@chakra-ui/layout";
 
 export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currencyData, userInfo}) => {
   const router = useRouter()
@@ -93,49 +94,49 @@ export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currency
   ];
 
   return (
-    <div className={styles.selectMethodContainer}>
-      <p className={styles.containerHeading}>{t('myAccount.cashoutPage.selectPaymentContainer.heading')}</p>
-      <div className={styles.paymentMethodWrapper}>
-        <ul className={styles.methodsList}>
-          {typeOfCurrency.type === 3
-            ? <>
-              <ErrorText>
-                <CreditCardPayment
-                  t={t}
-                  isActive={activeItems.find((el) => el.name === 'creditCard')}
-                  typeOfCurrency={typeOfCurrency}
-                  activateItemClickHandler={activateItemClickHandler}
-                  userInfo={userInfo}
-                />
-              </ErrorText>
-              {paymentItems.map(item => (
-                <ErrorText key={item.name}>
-                  <CryptoPaymentItem
-                    t={t}
-                    isActive={activeItems.find((el) => el.name === item.name)}
-                    balanceData={balanceData}
-                    typeOfCurrency={item.data}
-                    chosenPayment={typeOfCurrency}
-                    activateItemClickHandler={activateItemClickHandler}
-                    userInfo={userInfo}
-                  />
-                </ErrorText>
-              ))}
-            </>
-            : <ErrorText>
-              <CryptoPaymentItem
+    <Box mb="50px">
+      <Text mt={0} mb="15px" pl="10px" fontSize="16px" color="text.450" fontFamily="Verdana">
+        {t('myAccount.cashoutPage.selectPaymentContainer.heading')}
+      </Text>
+      <Box m={0} p={0}>
+        {typeOfCurrency.type === 3
+          ? <>
+            <ErrorText>
+              <CreditCardPayment
                 t={t}
-                isActive={cryptoItem}
-                balanceData={balanceData}
+                isActive={activeItems.find((el) => el.name === 'creditCard')}
                 typeOfCurrency={typeOfCurrency}
-                // chosenPayment={typeOfCurrency}
                 activateItemClickHandler={activateItemClickHandler}
                 userInfo={userInfo}
               />
             </ErrorText>
-          }
-        </ul>
-      </div>
-    </div>
+            {paymentItems.map(item => (
+              <ErrorText key={item.name}>
+                <CryptoPaymentItem
+                  t={t}
+                  isActive={activeItems.find((el) => el.name === item.name)}
+                  balanceData={balanceData}
+                  typeOfCurrency={item.data}
+                  chosenPayment={typeOfCurrency}
+                  activateItemClickHandler={activateItemClickHandler}
+                  userInfo={userInfo}
+                />
+              </ErrorText>
+            ))}
+          </>
+          : <ErrorText>
+            <CryptoPaymentItem
+              t={t}
+              isActive={cryptoItem}
+              balanceData={balanceData}
+              typeOfCurrency={typeOfCurrency}
+              // chosenPayment={typeOfCurrency}
+              activateItemClickHandler={activateItemClickHandler}
+              userInfo={userInfo}
+            />
+          </ErrorText>
+        }
+      </Box>
+    </Box>
   )
 }
