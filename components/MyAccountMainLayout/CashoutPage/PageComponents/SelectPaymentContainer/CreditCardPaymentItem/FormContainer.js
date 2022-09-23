@@ -1,5 +1,4 @@
-import styles from '../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
-import { AmountInput } from './AmountInput'
+import AmountInput from '../AmountInput'
 import { useEffect, useState } from 'react'
 import { post_withdraw_url } from '../../../../../../redux/url/url'
 import { useRouter } from 'next/router'
@@ -8,8 +7,10 @@ import { getUserPayments, userBalance } from '../../../../../../redux/user/actio
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../../../helpers/connect";
 import RoundButton from "../../../../../buttons/RoundButton";
-import {Text} from "@chakra-ui/layout";
+import {Text, Box} from "@chakra-ui/layout";
 import InputFieldRound from "../../../../../form/InputFieldRound";
+import {numberTransformer} from "../../../../../../helpers/numberTransformer";
+import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
 
 export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
   const dispatch = useDispatch()
@@ -88,7 +89,7 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
   }, [router])
 
   return (
-    <div className={styles.paymentMethodFormWrapper}>
+    <Box py="45px">
       <form onSubmit={(e) => withdrawFormHandler(e)} id={'paymentForm'}>
         <ErrorEmpty>
           <AmountInput
@@ -97,6 +98,9 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
             amountInputHandler={amountInputHandler}
             amountValue={amountValue}
             valueError={valueError}
+            min={numberTransformer(`${typeOfCurrency.withdrawMin}`)}
+            max={numberTransformer(`${typeOfCurrency.withdrawMax}`)}
+            step={decimalStepCounter(typeOfCurrency.decimal)}
           />
         </ErrorEmpty>
 
@@ -126,6 +130,6 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
           type={"submit"}
         />
       </form>
-    </div>
+    </Box>
   )
 }

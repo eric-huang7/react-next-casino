@@ -1,11 +1,10 @@
-import styles from '../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
-import { PaymentInfoContainer } from '../PaymentInfoContainer'
 import { FormContainer } from './FormContainer'
 import ErrorText from '../../../../../ErrorBoundaryComponents/ErrorText'
 import CurrencyIcon from "../../../../../currency/CurrencyIcon";
 import { HStack, Stack, Box } from "@chakra-ui/react";
 import {Text} from "@chakra-ui/layout";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import {numberTransformer} from "../../../../../../helpers/numberTransformer";
 
 export const CryptoPaymentItem = ({
   t,
@@ -17,9 +16,7 @@ export const CryptoPaymentItem = ({
 }) => {
 
   return (
-    <Box onClick={() => activateItemClickHandler(isActive)} cursor="pointer"
-        className={`${styles.methodItem} ${isActive.isActive ? styles.activeMethodItem : ''}`}
-    >
+    <Box onClick={() => activateItemClickHandler(isActive)} cursor="pointer">
       <HStack alignItems="center" justifyContent="space-between" p="10px 0" mb="2px" bg="#eeeeee" minH="55px">
         <Stack
           direction={{base: 'column', lg: 'row'}}
@@ -34,11 +31,15 @@ export const CryptoPaymentItem = ({
             </Text>
           </HStack>
           <ErrorText>
-            <PaymentInfoContainer
-              t={t}
-              typeOfCurrency={typeOfCurrency}
-              chosenPayment={chosenPayment}
-            />
+            <HStack alignItems="center" minW="100px" pl="12px">
+              <Text m={0} fontSize="13px" color="text.450" fontFamily="Verdana" textAlign="right">
+                {t("myAccount.cashoutPage.selectPaymentContainer.cryptoPaymentDetails", {
+                  min_value: numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${typeOfCurrency.withdrawMin}`),
+                  max_value: numberTransformer(chosenPayment ? `${chosenPayment.withdrawMax}` : `${typeOfCurrency.withdrawMax}`),
+                  currency: typeOfCurrency.abbreviation
+                })}
+              </Text>
+            </HStack>
           </ErrorText>
         </Stack>
         <Box px="12px" color={isActive.isActive ? 'primary.500' : '#5f5f5f'}>
