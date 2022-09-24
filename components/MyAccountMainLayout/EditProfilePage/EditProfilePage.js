@@ -15,14 +15,14 @@ export const EditProfilePage = ({t}) => {
   if (currencyJurisdiction.loading_currency_jurisdiction || !userInfo.isAuthenticated) {
     return (
       <div>
-        <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
+        <Heading heading={t("myAccount.pageHeadings.editProfile")}/>
         <LoadingComponent t={t}/>
       </div>
     )
   } else {
     return (
       <div className={styles.editProfileMainContainer}>
-        <Heading t={t} heading={"myAccount.pageHeadings.editProfile"}/>
+        <Heading heading={t("myAccount.pageHeadings.editProfile")}/>
         <ErrorText>
           <EditProfileMainContainer currencyJurisdiction={currencyJurisdiction} userInfo={userInfo.user.user} t={t}/>
         </ErrorText>

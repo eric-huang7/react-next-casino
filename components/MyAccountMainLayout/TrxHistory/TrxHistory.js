@@ -18,7 +18,7 @@ export const TrxHistory = ({ t }) => {
   if (userInfo?.balance?.success && !currency.loading) {
     return (
       <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.trxHistory'}/>
+        <Heading heading={t('myAccount.pageHeadings.trxHistory')}/>
         <TrxHistoryLinksContainer t={t}/>
         <ErrorEmpty>
           <TrxHistoryInputsContainer
@@ -43,7 +43,7 @@ export const TrxHistory = ({ t }) => {
   } else {
     return (
       <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.trxHistory'}/>
+        <Heading heading={t('myAccount.pageHeadings.trxHistory')}/>
         <LoadingComponent t={t}/>
       </div>
     )

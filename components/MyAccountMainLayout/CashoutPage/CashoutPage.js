@@ -20,7 +20,7 @@ export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
 
   return (
     <Box>
-      <Heading t={t} heading={'myAccount.pageHeadings.cashoutPage'}/>
+      <Heading heading={t('myAccount.pageHeadings.cashoutPage')}/>
       {balanceInfo.balance && currency.currency
         ? <>
           <SecondHeading title={t("myAccount.cashoutPage.secondHeading")} />

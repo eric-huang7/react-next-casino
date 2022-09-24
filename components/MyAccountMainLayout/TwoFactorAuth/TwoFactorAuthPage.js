@@ -22,7 +22,7 @@ export const TwoFactorAuthPage = ({ t }) => {
 
     return (
       <div className={styles.twoFactorMainWrapper}>
-        <Heading t={t} heading={'myAccount.pageHeadings.googleAuth'}/>
+        <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
         <ErrorText>
           <SavedKeysBlock t={t} savedKeys={savedKeys}/>
         </ErrorText>
@@ -35,7 +35,7 @@ export const TwoFactorAuthPage = ({ t }) => {
 
       return (
         <div className={styles.twoFactorMainWrapper}>
-          <Heading t={t} heading={'myAccount.pageHeadings.googleAuth'}/>
+          <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
           <ErrorText>
             <TwoFactorAuthCompleteBlock authData={authData} t={t}/>
           </ErrorText>
@@ -45,7 +45,7 @@ export const TwoFactorAuthPage = ({ t }) => {
 
       return (
         <div className={styles.twoFactorMainWrapper}>
-          <Heading t={t} heading={'myAccount.pageHeadings.googleAuth'}/>
+          <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
           <ErrorText>
             <GoogleAuthContainer
               setSavedKeys={setSavedKeys}

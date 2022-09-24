@@ -14,17 +14,14 @@ export const DocumentsPage = ({ t }) => {
   if (documentsData.loadingDocuments) {
     return (
       <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.documents'}/>
+        <Heading heading={t('myAccount.pageHeadings.documents')}/>
         <LoadingComponent t={t}/>
       </div>
     )
   } else {
     return (
       <div className={styles.mainContainer}>
-        <Heading
-          t={t}
-          heading={'myAccount.pageHeadings.documents'}
-        />
+        <Heading heading={t('myAccount.pageHeadings.documents')}/>
         <FirstTextBlock t={t}/>
         <SecondTextBlock t={t}/>
         {

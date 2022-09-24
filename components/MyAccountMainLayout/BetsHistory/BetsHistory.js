@@ -11,7 +11,7 @@ export const BetsHistory = ({ t, router }) => {
 
   return (
     <div>
-      <Heading t={t} heading={'myAccount.pageHeadings.betHistory'}/>
+      <Heading heading={t('myAccount.pageHeadings.betHistory')}/>
 
       {!userInfo.loadingUserBetsData ? (
         <>

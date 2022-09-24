@@ -11,14 +11,14 @@ export const ProfileInfoPage = ({ t }) => {
   if (!userInfo.isAuthenticated || userInfo.loadingActiveSessions || userInfo.loadingClosedSessions || currencyJurisdiction.loading_currency_jurisdiction) {
     return (
       <div>
-        <Heading t={t} heading={'myAccount.pageHeadings.profileInfo'}/>
+        <Heading heading={t('myAccount.pageHeadings.profileInfo')}/>
         <LoadingComponent t={t}/>
       </div>
     )
   } else {
     return (
       <div>
-        <Heading t={t} heading={'myAccount.pageHeadings.profileInfo'}/>
+        <Heading heading={t('myAccount.pageHeadings.profileInfo')}/>
         <ErrorText>
           <UserInfoContainer
             userInfo={userInfo}
