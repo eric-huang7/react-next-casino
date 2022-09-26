@@ -24,8 +24,10 @@ import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import {MessageContainer} from "../MessageContainer/MessageContainer";
 import {TermsModal} from "../modals/TermsModal";
 import {Stack} from "@chakra-ui/layout";
+import {useTranslation} from "next-i18next";
 
-export const AccountMainLayout = ({ t, children }) => {
+export const AccountMainLayout = ({ children }) => {
+  const { t } = useTranslation('common');
   const dispatch = useDispatch()
   const isShowModal = useSelector((store) => store.popups)
   const userInfo = useSelector((userInfo) => userInfo.authInfo)

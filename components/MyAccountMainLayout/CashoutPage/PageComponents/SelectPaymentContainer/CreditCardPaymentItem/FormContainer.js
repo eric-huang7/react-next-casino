@@ -126,8 +126,8 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
           solid
           fontFamily="Verdana"
           fontSize={15}
-          form={"paymentForm"}
-          type={"submit"}
+          form="paymentForm"
+          type="submit"
         />
       </form>
     </Box>

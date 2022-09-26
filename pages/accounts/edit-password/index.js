@@ -1,15 +1,17 @@
 import {AccountMainLayout} from "../../../components/MyAccountMainLayout/AccountMainLayout";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import {ChangePasswordPage} from "../../../components/MyAccountMainLayout/ChangePasswordPage/ChangePasswordPage";
+import {Heading} from "../../../components/MyAccountMainLayout/ComponentsForPages/Heading";
+import {ChangePasswordForm} from "../../../components/MyAccountMainLayout/ChangePasswordPage/ChangePasswordForm";
 
 
 const EditPassword = () => {
   const { t } = useTranslation('common');
 
   return (
-    <AccountMainLayout t={t}>
-        <ChangePasswordPage t={t} />
+    <AccountMainLayout>
+        <Heading heading={t('myAccount.pageHeadings.changePassword')}/>
+        <ChangePasswordForm t={t}/>
     </AccountMainLayout>
   )
 }
