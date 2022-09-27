@@ -1,5 +1,4 @@
 import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
-import { LoaderComponent } from './LoaderComponent'
 
 export const ChooseFileContainer = ({ t, fileInputHandler, selectedFile, isUploading, fileError }) => {
 
@@ -20,7 +19,11 @@ export const ChooseFileContainer = ({ t, fileInputHandler, selectedFile, isUploa
             </span>
           }
         </label>
-        <LoaderComponent isUploading={isUploading}/>
+
+        <div className={`${styles.loaderBlock} ${isUploading ? styles.showLoaderBlock : ''}`}>
+          <img src={'/assets/icons/loader.gif'} alt="loader"/>
+        </div>
+
         <input
           onChange={(e) => fileInputHandler(e.target.files[0])}
           type={'file'}

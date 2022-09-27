@@ -2,7 +2,6 @@ import styles from '../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.
 import { ChangeDescriptionContainer } from './ChangeDescriptionContainer'
 import { StatusContainer } from './StatusContainer'
 import { DocumentDescriptionContainer } from './DocumentDescriptionContainer'
-import { DocumentNameContainer } from './DocumentNameContainer'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeDocuments, deleteDocuments, getDocuments } from '../../../../../redux/user/action'
@@ -40,10 +39,11 @@ export const DocumentItem = ({ t, document }) => {
   return (
     <div className={styles.documentItemWrapper}>
       <ErrorEmpty>
-        <DocumentNameContainer
-          t={t}
-          name={document.name}
-        />
+        <div  className={styles.documentNameContainer}>
+          <p>
+            {document.name}
+          </p>
+        </div>
       </ErrorEmpty>
       <div className={styles.documentChangingContainer}>
         <ErrorEmpty>

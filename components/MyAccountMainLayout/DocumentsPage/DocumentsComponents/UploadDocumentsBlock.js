@@ -1,12 +1,12 @@
 import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 import { ChooseFileContainer } from './ChooseFileContainer'
 import { FileDescriptionContainer } from './FileDescriptionContainer'
-import { SubmitButton } from './SubmitButton'
 import { useState } from 'react'
 import { document_url } from '../../../../redux/url/url'
 import { getDocuments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import Connect from "../../../../helpers/connect";
+import RoundButton from "../../../buttons/RoundButton";
 
 const fileTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'application/pdf', 'image/webp']
 
@@ -88,9 +88,17 @@ export const UploadDocumentsBlock = ({ t }) => {
         <span className={styles.errorMessage}>{descriptionError}</span>
       </form>
 
-      <SubmitButton
-        submitHandler={submitHandler}
-        t={t}
+      <RoundButton
+        onClick={submitHandler}
+        title={t("myAccount.documentsPage.uploadDocumentBlock.submit")}
+        w="auto"
+        solid
+        fontFamily="Verdana"
+        fontSize={15}
+        form="downloadDocumentForm"
+        type="submit"
+        ml="140px"
+        mb="60px"
       />
     </div>
   )

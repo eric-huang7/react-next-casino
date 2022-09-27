@@ -1,8 +1,6 @@
 import styles from "../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss";
 
-
 export const StatusContainer = ({t, status}) => {
-
   let statusStr = statusValue(`${status}`);
 
   return (
@@ -10,14 +8,10 @@ export const StatusContainer = ({t, status}) => {
       <p
         className={`${
           status === 1 
-            ?
-            styles.pending
-            :
-            status === 2 
-              ? 
-              styles.success 
-              : 
-              ''
+            ? styles.pending
+            : status === 2 
+              ? styles.success 
+              : ''
         }`}
       >
         {t(statusStr)}
