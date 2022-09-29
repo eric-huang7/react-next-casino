@@ -1,4 +1,6 @@
-import styles from '../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
+import RoundButton from "../../../../buttons/RoundButton";
+import {Textarea, Collapse} from "@chakra-ui/react";
+import {Box} from "@chakra-ui/layout";
 
 export const ChangeDescriptionContainer = ({
   t,
@@ -11,28 +13,33 @@ export const ChangeDescriptionContainer = ({
 }) => {
 
   return (
-    <div className={`${styles.documentChangeContainer} ${showChangeForm ? '' : styles.hideForm}`}>
-      <form id={`${'changeDocumentForm'}${document.id}`}>
-            <textarea
-              name={`${'changeDocumentDescription'}${document.id}`}
-              className={styles.changeDocumentDescription}
-              value={newDescription}
-              onChange={(e) => newDescriptionInputHandler(e.target.value)}
-            />
-      </form>
-      <button
-        type={'submit'}
-        className={styles.updateButton}
-        onClick={() => updateDocumentHandler(document)}
-      >
-        {t('myAccount.documentsPage.uploadedDocumentsBlock.updateDocument')}
-      </button>
-      <button
-        className={styles.cancelButton}
-        onClick={() => showChangeFormHandler(false)}
-      >
-        {t('myAccount.documentsPage.uploadedDocumentsBlock.cancel')}
-      </button>
-    </div>
+    <Collapse in={showChangeForm}>
+      <Box bg="inherit" maxH="300px" overflow="hidden" zIndex={2} position="relative">
+        <form id={`${'changeDocumentForm'}${document.id}`}>
+              <Textarea w="100%" minH="60px" mb="30px" bg="white"
+                name={`${'changeDocumentDescription'}${document.id}`}
+                // className={styles.changeDocumentDescription}
+                value={newDescription}
+                onChange={(e) => newDescriptionInputHandler(e.target.value)}
+              />
+        </form>
+        <RoundButton
+          onClick={() => updateDocumentHandler(document)}
+          title={t('myAccount.documentsPage.uploadedDocumentsBlock.updateDocument')}
+          w="auto"
+          solid
+          fontFamily="Verdana"
+          fontSize={15}
+          form={`${'changeDocumentForm'}${document.id}`}
+          type="submit"
+        />
+        <RoundButton
+          // className={styles.cancelButton}
+          ml={4}
+          title={t('myAccount.documentsPage.uploadedDocumentsBlock.cancel')}
+          onClick={() => showChangeFormHandler(false)}
+        />
+      </Box>
+    </Collapse>
   )
 }
