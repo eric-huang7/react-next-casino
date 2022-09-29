@@ -1,4 +1,5 @@
 import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
+import {Text} from "@chakra-ui/layout";
 
 export const ChooseFileContainer = ({ t, fileInputHandler, selectedFile, isUploading, fileError }) => {
 
@@ -7,14 +8,11 @@ export const ChooseFileContainer = ({ t, fileInputHandler, selectedFile, isUploa
       <div className={styles.chooseFileBlock}>
         <label htmlFor="chooseFileInput">{t('myAccount.documentsPage.uploadDocumentBlock.attachment')}</label>
         <label htmlFor="chooseFileInput" className={styles.chooseFileFakeInput}>
-          {
-            selectedFile
-              ?
-              <span className={styles.chosenFileName}>
+          {selectedFile
+            ? <span className={styles.chosenFileName}>
               {t('myAccount.documentsPage.uploadDocumentBlock.chosenFile')} {selectedFile.name}
             </span>
-              :
-              <span className={styles.labelText}>
+            : <span className={styles.labelText}>
                {t('myAccount.documentsPage.uploadDocumentBlock.chooseFile')}
             </span>
           }

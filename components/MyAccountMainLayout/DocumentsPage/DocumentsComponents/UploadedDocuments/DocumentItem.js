@@ -1,4 +1,3 @@
-import styles from '../../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 import { ChangeDescriptionContainer } from './ChangeDescriptionContainer'
 import { StatusContainer } from './StatusContainer'
 import { DocumentDescriptionContainer } from './DocumentDescriptionContainer'
@@ -44,8 +43,7 @@ export const DocumentItem = ({ t, document, index }) => {
         gridTemplateColumns={{base: "auto", lg: "1.5fr 4fr 1fr"}}
          gridTemplateRows={{base: "auto auto auto", lg: "auto"}}
         p="20px 15px"
-        minW="420px"
-         // className={styles.documentItemWrapper}
+        minW={{base: "100%", lg: "420px"}}
     >
       <ErrorEmpty>
         <Box order={{base: 1, lg: 1}}>

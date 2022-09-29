@@ -18,7 +18,6 @@ export const ChangeDescriptionContainer = ({
         <form id={`${'changeDocumentForm'}${document.id}`}>
               <Textarea w="100%" minH="60px" mb="30px" bg="white"
                 name={`${'changeDocumentDescription'}${document.id}`}
-                // className={styles.changeDocumentDescription}
                 value={newDescription}
                 onChange={(e) => newDescriptionInputHandler(e.target.value)}
               />
@@ -34,7 +33,6 @@ export const ChangeDescriptionContainer = ({
           type="submit"
         />
         <RoundButton
-          // className={styles.cancelButton}
           ml={4}
           title={t('myAccount.documentsPage.uploadedDocumentsBlock.cancel')}
           onClick={() => showChangeFormHandler(false)}
