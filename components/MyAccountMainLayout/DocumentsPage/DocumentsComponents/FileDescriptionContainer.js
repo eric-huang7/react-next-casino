@@ -2,7 +2,7 @@ import {Text, Textarea} from "@chakra-ui/react"
 import {HStack} from "@chakra-ui/layout";
 
 export const FileDescriptionContainer = ({t, descriptionInputHandler, description}) => (
-  <HStack alignItems="flex-start" mb="30px" position="relative" zIndex={2}>
+  <HStack alignItems="flex-start" mb="30px" position="relative" zIndex={2} spacing={0}>
     <label htmlFor="fileDescriptionField">
       <Text fontSize={15} color="text.450" fontFamily="Verdana" w="140px">
         {t("myAccount.documentsPage.uploadDocumentBlock.description")}

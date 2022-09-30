@@ -1,6 +1,5 @@
-import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss';
-import {useState} from "react";
-import {Text} from "@chakra-ui/react";
+import {List, Text} from "@chakra-ui/react";
+import CollapsedItem from "./CollapsedItem";
 
 const list1 = [
   "myAccount.documentsPage.secondTextBlock.creditCardInnerTextBlock.text1",
@@ -16,41 +15,21 @@ const list2 = [
   "myAccount.documentsPage.secondTextBlock.bankWithdrawalInnerTextBlock.text4",
   "myAccount.documentsPage.secondTextBlock.bankWithdrawalInnerTextBlock.text5",
 ];
-export const SecondTextBlock = ({t}) => {
-  const [closeFirstBlock, setCloseFirstBlock] = useState(false);
-  const [closeSecondBlock, setCloseSecondBlock] = useState(false);
 
+export const SecondTextBlock = ({t}) => (
+  <>
+    <Text fontSize={15} ml="20px" color="text.450" fontFamily="Verdana" p="0 10px 0 0">
+      {t("myAccount.documentsPage.secondTextBlock.textHeading")}
+    </Text>
 
-  return (
-    <>
-      <p className={styles.secondListTextBlock}>
-        {t("myAccount.documentsPage.secondTextBlock.textHeading")}
-      </p>
-      <ul className={styles.textList}>
-        <li>
-          {t("myAccount.documentsPage.secondTextBlock.netellerOrSkrill")}
-        </li>
-        <li className={closeFirstBlock ? styles.upIndicator : ""}>
-          {t("myAccount.documentsPage.secondTextBlock.creditCard")} <span onClick={() => setCloseFirstBlock(!closeFirstBlock)}>{t("myAccount.documentsPage.more")}</span>
-          <ul className={`${styles.textList} ${styles.innerTextList} ${closeFirstBlock ? "" : styles.hideTextList}`}>
-            {list1.map((item, index) => (<Text key={index} as="li">
-              {t(item)}
-            </Text>))}
-          </ul>
-        </li>
-        <li className={closeSecondBlock ? styles.upIndicator : ""}>
-          {t("myAccount.documentsPage.secondTextBlock.bankWithdrawal")} <span onClick={() => setCloseSecondBlock(!closeSecondBlock)}>{t("myAccount.documentsPage.more")}</span>
-          <ul className={`${styles.textList} ${styles.innerTextList} ${closeSecondBlock ? "" : styles.hideTextList}`}>
-            {list2.map((item, index) => (<Text key={index} as="li">
-              {t(item)}
-            </Text>))}
-          </ul>
-        </li>
-      </ul>
-      <p className={`${styles.secondListTextBlock} ${styles.secondTextBlock}`}>
-        {t("myAccount.documentsPage.secondTextBlock.pleaseNote")}
-      </p>
-    </>
+    <List spacing={3} py={3}>
+      <CollapsedItem t={t} title={t("myAccount.documentsPage.secondTextBlock.netellerOrSkrill")}/>
+      <CollapsedItem t={t} list={list1} title={t("myAccount.documentsPage.secondTextBlock.creditCard")}/>
+      <CollapsedItem t={t} list={list2} title={t("myAccount.documentsPage.secondTextBlock.bankWithdrawal")}/>
+    </List>
 
-  )
-}
+    <Text fontSize={15} ml="20px" color="text.450" fontFamily="Verdana" p="0 10px 0 0">
+      {t("myAccount.documentsPage.secondTextBlock.pleaseNote")}
+    </Text>
+  </>
+)
