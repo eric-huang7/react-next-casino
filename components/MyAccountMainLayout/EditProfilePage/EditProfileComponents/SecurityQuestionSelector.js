@@ -15,45 +15,41 @@ const listOfSecurityQuestions = [
 
 // myAccount.editProfilePage.secQuestionsList.question_1
 
-export const SecurityQuestionSelector = ({t, disableEdit, value, genderSelectorHandler}) => {
-
-
-  return (
-    <div className={styles.selectorWrapper}>
-      <div className={styles.labelWrapper}>
-        <label htmlFor="securityQuestionsSelector">{t("myAccount.editProfilePage.secQuestion")}</label>
-      </div>
-      <div className={styles.selectorsContainer}>
-        {
-          disableEdit
-            ?
-            <select
-              id="securityQuestionsSelector"
-              value={value}
-              disabled={disableEdit}
-              onChange={(e) => genderSelectorHandler(e.target.value)}
-            >
-              <option value={0}>{t("myAccount.editProfilePage.fieldAlreadySpec")}</option>
-            </select>
-            :
-            <select
-              id="securityQuestionsSelector"
-              value={value}
-              // disabled={disableEdit}
-              onChange={(e) => genderSelectorHandler(e.target.value)}
-            >
-              <option value={0}>{null}</option>
-              {
-                listOfSecurityQuestions.map((question) => {
-                  return (
-                    <option key={`${question.id} security question`} value={t(question.question)}>{t(question.question)}</option>
-                  )
-                })
-              }
-              <option value={'enter'}>{t("myAccount.editProfilePage.secQuestionsList.question_11")}</option>
-            </select>
-        }
-      </div>
+export const SecurityQuestionSelector = ({t, disableEdit, value, genderSelectorHandler}) => (
+  <div className={styles.selectorWrapper}>
+    <div className={styles.labelWrapper}>
+      <label htmlFor="securityQuestionsSelector">{t("myAccount.editProfilePage.secQuestion")}</label>
     </div>
-  )
-}
+    <div className={styles.selectorsContainer}>
+      {
+        disableEdit
+          ?
+          <select
+            id="securityQuestionsSelector"
+            value={value}
+            disabled={disableEdit}
+            onChange={(e) => genderSelectorHandler(e.target.value)}
+          >
+            <option value={0}>{t("myAccount.editProfilePage.fieldAlreadySpec")}</option>
+          </select>
+          :
+          <select
+            id="securityQuestionsSelector"
+            value={value}
+            // disabled={disableEdit}
+            onChange={(e) => genderSelectorHandler(e.target.value)}
+          >
+            <option value={0}>{null}</option>
+            {
+              listOfSecurityQuestions.map((question) => {
+                return (
+                  <option key={`${question.id} security question`} value={t(question.question)}>{t(question.question)}</option>
+                )
+              })
+            }
+            <option value={'enter'}>{t("myAccount.editProfilePage.secQuestionsList.question_11")}</option>
+          </select>
+      }
+    </div>
+  </div>
+)

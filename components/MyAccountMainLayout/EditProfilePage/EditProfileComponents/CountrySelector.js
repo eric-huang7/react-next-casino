@@ -7,8 +7,6 @@ import {useRouter} from "next/router";
 export const CountrySelector = ({t, countrySelectorHandler, value, disableEdit}) => {
   const router = useRouter();
 
-
-
   return (
     <div className={styles.selectorWrapper}>
       <div className={styles.labelWrapper}>

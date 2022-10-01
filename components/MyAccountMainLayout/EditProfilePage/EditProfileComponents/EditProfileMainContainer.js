@@ -15,6 +15,7 @@ import {phone_number_url} from '../../../../redux/url/url'
 import { SecurityQuestionSelector } from './SecurityQuestionSelector'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../helpers/connect";
+import { Text } from "@chakra-ui/react"
 
 export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) => {
 
@@ -177,25 +178,20 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
 
   return (
     <div className={styles.mainContainer}>
-      <p className={styles.textInfo}>
+      <Text fontSize={16} color="text.450" fontFamily="Verdana">
         {t('myAccount.editProfilePage.textBlock')}
-      </p>
-      {
-        currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
-          ?
-          <ErrorEmpty>
-            <InputContainer
-              t={t}
-              inputName={t('myAccount.editProfilePage.fullName')}
-              inputId={'nameInput'}
-              value={fullName}
-              valueHandler={fullNameInputHandler}
-              disableEdit={false}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
+      </Text>
+      {currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
+        && <ErrorEmpty>
+          <InputContainer
+            t={t}
+            inputName={t('myAccount.editProfilePage.fullName')}
+            inputId={'nameInput'}
+            value={fullName}
+            valueHandler={fullNameInputHandler}
+            disableEdit={false}
+          />
+        </ErrorEmpty>}
       <ErrorEmpty>
         <InputContainer
           t={t}
