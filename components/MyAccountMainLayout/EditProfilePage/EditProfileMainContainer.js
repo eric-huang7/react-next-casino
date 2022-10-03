@@ -1,21 +1,21 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss'
-import { InputContainer } from './InputContainer'
-import { BirthDaySelectorContainer } from './BirthDaySelectorContainer'
-import { GenderSelector } from './GenderSelector'
-import { CountrySelector } from './CountrySelector'
-import { TimeZoneSelector } from './TimeZoneSelector'
-import { ButtonsBlock } from './ButtonsBlock'
-import { EmailSmsChecksContainer } from './EmailSmsChecksContainer'
+import styles from '../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss'
+import BirthDaySelectorContainer from './components/BirthDaySelectorContainer'
+import { GenderSelector } from './components/GenderSelector'
+import { CountrySelector } from './components/CountrySelector'
+import { TimeZoneSelector } from './components/TimeZoneSelector'
+import { ButtonsBlock } from './components/ButtonsBlock'
+import { EmailSmsChecksContainer } from './components/EmailSmsChecksContainer'
 import { useState } from 'react'
-import { birthdayFormatter } from '../../../../helpers/dateTranslator'
-import { patchUserData } from '../../../../redux/user/action'
+import { birthdayFormatter } from '../../../helpers/dateTranslator'
+import { patchUserData } from '../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
-import {phone_number_url} from '../../../../redux/url/url'
-import { SecurityQuestionSelector } from './SecurityQuestionSelector'
-import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
-import Connect from "../../../../helpers/connect";
+import {phone_number_url} from '../../../redux/url/url'
+import { SecurityQuestionSelector } from './components/SecurityQuestionSelector'
+import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import Connect from "../../../helpers/connect";
 import { Text } from "@chakra-ui/react"
+import InputContainer from "./components/InputContainer";
 
 export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) => {
 
@@ -178,7 +178,7 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
 
   return (
     <div className={styles.mainContainer}>
-      <Text fontSize={16} color="text.450" fontFamily="Verdana">
+      <Text fontSize={16} color="text.450" fontFamily="Verdana" mb="45px">
         {t('myAccount.editProfilePage.textBlock')}
       </Text>
       {currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
@@ -215,76 +215,72 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
           bYear={bYear}
         />
       </ErrorEmpty>
-      {
-        currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
-          ?
-          <>
-            <ErrorEmpty>
-              <GenderSelector
-                t={t}
-                value={gender}
-                genderSelectorHandler={genderSelectorHandler}
-                disableEdit={userInfo.gender ? true : false}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <CountrySelector
-                value={country}
-                countrySelectorHandler={countrySelectorHandler}
-                disableEdit={userInfo.country_code ? true : false}
-                t={t}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <InputContainer
-                t={t}
-                inputName={t('myAccount.editProfilePage.city')}
-                inputId={'cityInput'}
-                value={city}
-                valueHandler={cityInputHandler}
-                disableEdit={userInfo.city ? true : false}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <InputContainer
-                t={t}
-                inputName={t('myAccount.editProfilePage.address')}
-                inputId={'addressInput'}
-                value={address}
-                valueHandler={addressInputHandler}
-                disableEdit={(address_1 + ' ' + address_2).trim() ? true : false}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <InputContainer
-                t={t}
-                inputName={t('myAccount.editProfilePage.postalCode')}
-                inputId={'postalCodeInput'}
-                value={postalCode}
-                valueHandler={postalCodeInputHandler}
-                disableEdit={userInfo.postal_code ? true : false}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <InputContainer
-                t={t}
-                inputName={t('myAccount.editProfilePage.mobile')}
-                inputId={'mobileInput'}
-                value={mobile}
-                valueHandler={mobileInputHandler}
-                disableEdit={userInfo.unconfirmed_phone ? true : false}
-                phoneError={phoneError}
-              />
-            </ErrorEmpty>
-          </>
-          :
-          <></>
+      {currencyJurisdiction.currency_jurisdiction.success && currencyJurisdiction.currency_jurisdiction.results.length
+        && <>
+          <ErrorEmpty>
+            <GenderSelector
+              t={t}
+              value={gender}
+              genderSelectorHandler={genderSelectorHandler}
+              disableEdit={userInfo.gender ? true : false}
+            />
+          </ErrorEmpty>
+          <ErrorEmpty>
+            <CountrySelector
+              value={country}
+              countrySelectorHandler={countrySelectorHandler}
+              disableEdit={userInfo.country_code ? true : false}
+              t={t}
+            />
+          </ErrorEmpty>
+          <ErrorEmpty>
+            <InputContainer
+              t={t}
+              inputName={t('myAccount.editProfilePage.city')}
+              inputId={'cityInput'}
+              value={city}
+              valueHandler={cityInputHandler}
+              disableEdit={userInfo.city ? true : false}
+            />
+          </ErrorEmpty>
+          <ErrorEmpty>
+            <InputContainer
+              t={t}
+              inputName={t('myAccount.editProfilePage.address')}
+              inputId={'addressInput'}
+              value={address}
+              valueHandler={addressInputHandler}
+              disableEdit={(address_1 + ' ' + address_2).trim() ? true : false}
+            />
+          </ErrorEmpty>
+          <ErrorEmpty>
+            <InputContainer
+              t={t}
+              inputName={t('myAccount.editProfilePage.postalCode')}
+              inputId={'postalCodeInput'}
+              value={postalCode}
+              valueHandler={postalCodeInputHandler}
+              disableEdit={userInfo.postal_code ? true : false}
+            />
+          </ErrorEmpty>
+          <ErrorEmpty>
+            <InputContainer
+              t={t}
+              inputName={t('myAccount.editProfilePage.mobile')}
+              inputId={'mobileInput'}
+              value={mobile}
+              valueHandler={mobileInputHandler}
+              disableEdit={userInfo.unconfirmed_phone ? true : false}
+              phoneError={phoneError}
+            />
+          </ErrorEmpty>
+        </>
       }
       <ErrorEmpty>
         <SecurityQuestionSelector
           t={t}
           value={security_question_selector}
-          genderSelectorHandler={securityQuestionSelectorHandler}
+          onSelect={securityQuestionSelectorHandler}
           disableEdit={userInfo.security_question ? true : false}
         />
       </ErrorEmpty>

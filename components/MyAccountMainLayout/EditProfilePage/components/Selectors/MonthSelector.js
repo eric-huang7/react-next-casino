@@ -1,5 +1,4 @@
-import styles from "../../../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss";
-
+import Selector from "../Selector";
 
 let months = [
   {name: 'myAccount.history.bonus.month.january', value: 0},
@@ -16,20 +15,11 @@ let months = [
   {name: 'myAccount.history.bonus.month.december', value: 11},
 ];
 
-export const MonthSelector = ({t, month, monthSelectorHandler, disableEdit}) => {
-
-  return (
-    <div className={styles.monthSelect}>
-      <select
-        value={month}
-        onChange={(e) => monthSelectorHandler(e.target.value)}
-        disabled={disableEdit}
-      >
-        <option value={undefined}>{null}</option>
-        {
-          months.map((el) => <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>)
-        }
-      </select>
-    </div>
-  )
-}
+export const MonthSelector = ({t, month, monthSelectorHandler, disableEdit}) => (
+  <Selector value={month} disabled={disableEdit} onChange={(e) => monthSelectorHandler(e.target.value)}>
+      <option value={undefined}>{null}</option>
+      {months.map((el) =>
+        <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>
+      )}
+  </Selector>
+)
