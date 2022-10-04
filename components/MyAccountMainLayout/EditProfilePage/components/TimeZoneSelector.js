@@ -1,18 +1,10 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss';
-
-
+import Selector from "./Selector";
+import SelectContainer from "./SelectContainer";
 
 export const TimeZoneSelector = ({t, timeZoneSelectorHandler, timeZone}) => (
-  <div className={styles.selectorWrapper}>
-    <div className={styles.labelWrapper}>
-      <label htmlFor="timeZoneSelector">{t("myAccount.editProfilePage.timeZone")}</label>
-    </div>
-    <div className={styles.selectorsContainer}>
-      <select
-        id="timeZoneSelector"
-        value={timeZone ? timeZone : "Etc/UTC"}
-        onChange={(e) => timeZoneSelectorHandler(e.target.value)}
-      >
+  <SelectContainer label={t("myAccount.editProfilePage.timeZone")} id="timeZoneSelector">
+    <Selector id="timeZoneSelector" value={timeZone ? timeZone : "Etc/UTC"}
+              onChange={(e) => timeZoneSelectorHandler(e.target.value)}>
         <option value={undefined}>{null}</option>
         <option value="Pacific/Pago_Pago">(GMT-11:00) American Samoa</option>
         <option value="Pacific/Midway">(GMT-11:00) International Date Line West</option>
@@ -164,7 +156,6 @@ export const TimeZoneSelector = ({t, timeZoneSelectorHandler, timeZone}) => (
         <option value="Pacific/Tongatapu">{"(GMT + 13:00) Nuku'alofa"}</option>
         <option value="Pacific/Apia">(GMT+13:00) Samoa</option>
         <option value="Pacific/Fakaofo">(GMT+13:00) Tokelau Is.</option>
-      </select>
-    </div>
-  </div>
+    </Selector>
+  </SelectContainer>
 )

@@ -1,9 +1,7 @@
-import styles from '../../../styles/MyAccount/UserInfoPage/EditProfilePage.module.scss'
 import BirthDaySelectorContainer from './components/BirthDaySelectorContainer'
 import { GenderSelector } from './components/GenderSelector'
 import { CountrySelector } from './components/CountrySelector'
 import { TimeZoneSelector } from './components/TimeZoneSelector'
-import { ButtonsBlock } from './components/ButtonsBlock'
 import { EmailSmsChecksContainer } from './components/EmailSmsChecksContainer'
 import { useState } from 'react'
 import { birthdayFormatter } from '../../../helpers/dateTranslator'
@@ -16,6 +14,8 @@ import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../helpers/connect";
 import { Text } from "@chakra-ui/react"
 import InputContainer from "./components/InputContainer";
+import RoundButton from "../../buttons/RoundButton";
+import {HStack, Box} from "@chakra-ui/layout";
 
 export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) => {
 
@@ -177,7 +177,7 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
   }
 
   return (
-    <div className={styles.mainContainer}>
+    <Box>
       <Text fontSize={16} color="text.450" fontFamily="Verdana" mb="45px">
         {t('myAccount.editProfilePage.textBlock')}
       </Text>
@@ -284,26 +284,16 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
           disableEdit={userInfo.security_question ? true : false}
         />
       </ErrorEmpty>
-      {
-        userInfo.security_question
-          ?
-          <></>
-          :
-          security_question_selector === 'enter'
-            ?
-            <ErrorEmpty>
-              <InputContainer
-                t={t}
-                inputName={t('myAccount.editProfilePage.enterSecQuestion')}
-                inputId={'questionInput'}
-                value={security_question}
-                valueHandler={securityQuestionInputHandler}
-                disableEdit={userInfo.security_question ? true : false}
-              />
-            </ErrorEmpty>
-            :
-            <></>
-      }
+      {!userInfo.security_question && security_question_selector === 'enter' && <ErrorEmpty>
+        <InputContainer
+          t={t}
+          inputName={t('myAccount.editProfilePage.enterSecQuestion')}
+          inputId={'questionInput'}
+          value={security_question}
+          valueHandler={securityQuestionInputHandler}
+          disableEdit={userInfo.security_question ? true : false}
+        />
+      </ErrorEmpty>}
       <ErrorEmpty>
         <InputContainer
           t={t}
@@ -330,7 +320,13 @@ export const EditProfileMainContainer = ({ t, userInfo, currencyJurisdiction }) 
           timeZone={timeZone}
         />
       </ErrorEmpty>
-      <ButtonsBlock saveButtonClickHandler={saveButtonClickHandler} t={t}/>
-    </div>
+      <HStack pl={{base: 0, lg: "180px"}}>
+        <RoundButton solid onClick={saveButtonClickHandler}
+                     title={t("myAccount.editProfilePage.saveButton")}/>
+
+        <RoundButton onClick={() => router.push('/accounts/profile-info')}
+                     title={t("myAccount.editProfilePage.cancelButton")}/>
+      </HStack>
+    </Box>
   )
 }
