@@ -116,7 +116,7 @@ export const PhoneVerification = ({ t, userInfo }) => {
               verifyCode={verifyCode}
               sendVerifyCodeHandler={sendVerifyCodeHandler}
             />
-          ) : (!userInfo.user.user.unconfirmed_phone ? (
+          ) : (!userInfo.user.user.unconfirmed_phone && false ? (
             <PhoneInputContainer
               t={t}
               phoneInputValue={phoneInputValue}
@@ -124,7 +124,7 @@ export const PhoneVerification = ({ t, userInfo }) => {
               phoneNumber={phoneNumber}
               sendPhoneNumberHandler={sendPhoneNumberHandler}
             />
-          ) : userInfo.user.user.phone_number && (!userInfo.user.user.unconfirmed_phone || userInfo.user.user.unconfirmed_phone) && (
+          ) : (userInfo.user.user.phone_number && (!userInfo.user.user.unconfirmed_phone || userInfo.user.user.unconfirmed_phone) || true) && (
             <PhoneAlreadyVerified
               t={t}
               userInfo={userInfo.user.user}

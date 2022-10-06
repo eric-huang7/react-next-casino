@@ -7,31 +7,28 @@ import { LastClosedSessionsBlock } from './LastClosedSessionsBlock/LastClosedSes
 import { GoogleAuthBlock } from './GoogleAuthBlock/GoogleAuthBlock'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
-export const UserInfoContainer = ({ t, userInfo, currencyJurisdiction }) => {
-
-  return (
-    <div>
-      <ErrorEmpty>
-        <UserInfoBlock userInfo={userInfo} t={t} currencyJurisdiction={currencyJurisdiction}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <PhoneVerification t={t} userInfo={userInfo}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <ChangePasswordBlock t={t} userInfo={userInfo}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <SocialNetworkBlock t={t} userInfo={userInfo}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <ActiveSessionsBlock t={t} userInfo={userInfo}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <LastClosedSessionsBlock t={t} userInfo={userInfo}/>
-      </ErrorEmpty>
-      <ErrorEmpty>
-        <GoogleAuthBlock t={t}/>
-      </ErrorEmpty>
-    </div>
-  )
-}
+export const UserInfoContainer = ({ t, userInfo, currencyJurisdiction }) => (
+  <div>
+    <ErrorEmpty>
+      <UserInfoBlock userInfo={userInfo} t={t} currencyJurisdiction={currencyJurisdiction}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <PhoneVerification t={t} userInfo={userInfo}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <ChangePasswordBlock t={t} userInfo={userInfo}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <SocialNetworkBlock t={t} userInfo={userInfo}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <ActiveSessionsBlock t={t} userInfo={userInfo}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <LastClosedSessionsBlock t={t} userInfo={userInfo}/>
+    </ErrorEmpty>
+    <ErrorEmpty>
+      <GoogleAuthBlock t={t}/>
+    </ErrorEmpty>
+  </div>
+)
