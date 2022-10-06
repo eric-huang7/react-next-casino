@@ -1,8 +1,10 @@
-import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
 import { VerifyCodeInputs } from './VerifyCodeInputs'
-import { useDispatch } from 'react-redux'
 import { VerifyPhoneUserInfoTable } from './VerifyPhoneUserInfoTable'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
+import Container from "./Container";
+import { HStack } from "@chakra-ui/react";
+import RoundButton from "../../../../buttons/RoundButton";
+import ErrorMessage from "../../../../typography/ErrorMessage";
 
 export const VerifyCodeInputContainer = ({
   t,
@@ -15,8 +17,7 @@ export const VerifyCodeInputContainer = ({
   verifyCode,
   sendVerifyCodeHandler
 }) => {
-  const dispatch = useDispatch()
-  let phoneNumber = userInfo.unconfirmed_phone.replaceAll('-', '').split('').map((el, ind) => {
+  let phoneNumber = userInfo?.unconfirmed_phone?.replaceAll('-', '')?.split('')?.map((el, ind) => {
     if (ind === 5 || ind === 6 || ind === 7) {
       return '*'
     } else {
@@ -25,7 +26,7 @@ export const VerifyCodeInputContainer = ({
   })
 
   return (
-    <div className={styles.verifyCodeContainer}>
+    <Container>
       <ErrorText>
         <VerifyPhoneUserInfoTable
           phoneNumber={phoneNumber}
@@ -33,12 +34,12 @@ export const VerifyCodeInputContainer = ({
           status={status}
         />
       </ErrorText>
-      <div className={styles.buttonsContainer}>
-        <button onClick={() => removePhoneNumberHandler()}
-                className={styles.removeNumberButton}>{t('myAccount.profilePage.phoneVerification.buttons.remove')}</button>
-        <button onClick={() => sendAgainVerifyCode()}
-                className={styles.verifyButton}>{t('myAccount.profilePage.phoneVerification.buttons.sendAgain')}</button>
-      </div>
+      <HStack alignItems="center">
+        <RoundButton onClick={removePhoneNumberHandler} solid
+                     title={t('myAccount.profilePage.phoneVerification.buttons.remove')}/>
+        <RoundButton onClick={sendAgainVerifyCode} solid
+                     title={t('myAccount.profilePage.phoneVerification.buttons.sendAgain')}/>
+      </HStack>
       <ErrorText>
         <VerifyCodeInputs
           verifyCodeInputHandler={verifyCodeInputHandler}
@@ -47,7 +48,7 @@ export const VerifyCodeInputContainer = ({
           sendVerifyCodeHandler={sendVerifyCodeHandler}
         />
       </ErrorText>
-      <span className={styles.errorMessage}>{phoneError}</span>
-    </div>
+      <ErrorMessage>{phoneError}</ErrorMessage>
+    </Container>
   )
 }
