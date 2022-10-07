@@ -8,26 +8,22 @@ export const ProfileInfoPage = ({ t }) => {
   const userInfo = useSelector((store) => store.authInfo)
   const currencyJurisdiction = useSelector((store) => store.currency)
 
-  if (!userInfo.isAuthenticated || userInfo.loadingActiveSessions || userInfo.loadingClosedSessions || currencyJurisdiction.loading_currency_jurisdiction) {
-    return (
-      <div>
-        <Heading heading={t('myAccount.pageHeadings.profileInfo')}/>
-        <LoadingComponent t={t}/>
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <Heading heading={t('myAccount.pageHeadings.profileInfo')}/>
-        <ErrorText>
+  const isLoading = !userInfo.isAuthenticated || userInfo.loadingActiveSessions || userInfo.loadingClosedSessions
+    || currencyJurisdiction.loading_currency_jurisdiction;
+
+  return (
+    <div>
+      <Heading heading={t('myAccount.pageHeadings.profileInfo')}/>
+      {isLoading
+        ? <LoadingComponent t={t}/>
+        : <ErrorText>
           <UserInfoContainer
             userInfo={userInfo}
             currencyJurisdiction={currencyJurisdiction.currency_jurisdiction}
             t={t}
           />
         </ErrorText>
-      </div>
-    )
-  }
-
+      }
+    </div>
+  )
 }

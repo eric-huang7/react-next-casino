@@ -1,4 +1,3 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { SessionsTable } from './SessionsTable'
 import { auth_type_id, is_admin, siteID } from '../../../../envs/envsForFetching'
 import {delete_user_session_url} from '../../../../redux/url/url'
