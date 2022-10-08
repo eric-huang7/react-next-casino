@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
+import Cell from "../../../table/Cell";
+import {chakra} from "@chakra-ui/react";
 
 export const TableRow = ({ t, sessionData }) => {
   const router = useRouter()
@@ -10,11 +12,11 @@ export const TableRow = ({ t, sessionData }) => {
   let device = sessionData.device
 
   return (
-    <tr>
-      <td>{date}</td>
-      <td>{ip}</td>
-      <td>{country}</td>
-      <td>{device}</td>
-    </tr>
+    <chakra.tr>
+      <Cell>{date}</Cell>
+      <Cell>{ip}</Cell>
+      <Cell>{country}</Cell>
+      <Cell>{device}</Cell>
+    </chakra.tr>
   )
 }

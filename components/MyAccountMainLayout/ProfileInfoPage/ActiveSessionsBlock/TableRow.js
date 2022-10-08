@@ -1,10 +1,8 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
 import {chakra} from "@chakra-ui/react";
 import RoundButton from "../../../buttons/RoundButton";
-
-const Cell = ({children}) => <chakra.td textAlign="center" p="12px 10px">{children}</chakra.td>;
+import Cell from "../../../table/Cell";
 
 export const TableRow = ({ t, sessionData, currentSession, closeSessionHandler, index }) => {
   const router = useRouter()
@@ -26,7 +24,6 @@ export const TableRow = ({ t, sessionData, currentSession, closeSessionHandler, 
           ? t('myAccount.profilePage.sessionsBlocks.current')
           : <RoundButton
               solid
-              // px="15px"
               onClick={() => closeSessionHandler(sessionData)}
               title={t('myAccount.profilePage.sessionsBlocks.close')}
             />

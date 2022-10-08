@@ -1,4 +1,3 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { TableRow } from './TableRow'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 import { chakra, Text } from "@chakra-ui/react"
