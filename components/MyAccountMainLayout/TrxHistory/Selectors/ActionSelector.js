@@ -1,17 +1,14 @@
-import styles from "../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss";
+import SelectField from "../../../form/SelectField";
+import {HStack} from "@chakra-ui/react";
 
-
-export const ActionSelector = ({t, setActionFilter}) => {
-
-
-  return (
-    <div className={styles.selectorWrapper}>
-      <label htmlFor="actionSelectHistory" className={styles.actionSelectLabel}>{t("myAccount.history.transactions.inputsLabels.action")}</label>
-      <select onChange={(e) => setActionFilter(e.target.value)} type="select" className={styles.actionSelect} id={'actionSelectHistory'}>
-        <option value={null}>{null}</option>
-        <option value={'Deposit'}>{t("myAccount.history.transactions.inputsItems.action.deposit")}</option>
-        <option value={'Withdrawal'}>{t("myAccount.history.transactions.inputsItems.action.withdrawal")}</option>
-      </select>
-    </div>
-  )
-}
+export const ActionSelector = ({t, setActionFilter}) => (
+  <HStack alignItems="center" mb="20px">
+    <SelectField name="actionSelectHistory" onChange={(e) => setActionFilter(e.target.value)}
+                 label={t('myAccount.history.transactions.inputsLabels.action')}
+    >
+      <option value={null}>{null}</option>
+      <option value={'Deposit'}>{t("myAccount.history.transactions.inputsItems.action.deposit")}</option>
+      <option value={'Withdrawal'}>{t("myAccount.history.transactions.inputsItems.action.withdrawal")}</option>
+    </SelectField>
+  </HStack>
+)

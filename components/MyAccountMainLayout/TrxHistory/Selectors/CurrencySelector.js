@@ -1,35 +1,21 @@
-import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 import { currencyInfo } from '../../../../helpers/currencyInfo'
+import SelectField from "../../../form/SelectField";
+import {HStack} from "@chakra-ui/react";
 
-export const CurrencySelector = ({ t, currencyData, userInfo, setCurrencyFilter }) => {
-
-  return (
-    <div className={styles.selectorWrapper}>
-      <label
-        htmlFor="currencySelectHistory"
-        className={styles.currencySelectLabel}
-      >
-        {t('myAccount.history.transactions.inputsLabels.currency')}
-      </label>
-      <select
-        onChange={(e) => setCurrencyFilter(e.target.value)}
-        className={styles.currencySelect}
-        id={'currencySelectHistory'}
-      >
-        <option key={`option currency select`} value={null}>{null}</option>
-        {
-          userInfo.balance.balances.map((el) => {
-            return (
-              <option
-                key={`${el.id} option currency select`}
-                value={el.currency_id}
-              >
-                {currencyInfo(currencyData.currency.results, el.currency_id)[0].abbreviation}
-              </option>
-            )
-          })
-        }
-      </select>
-    </div>
-  )
-}
+export const CurrencySelector = ({ t, currencyData, userInfo, setCurrencyFilter }) => (
+  <HStack alignItems="center">
+    <SelectField name="currencySelectHistory" onChange={(e) => setCurrencyFilter(e.target.value)}
+                 label={t('myAccount.history.transactions.inputsLabels.currency')}
+    >
+      <option key={`option currency select`} value={undefined}>{null}</option>
+      {userInfo.balance.balances.map((el) => (
+        <option
+          key={`${el.id} option currency select`}
+          value={el.currency_id}
+        >
+          {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
+        </option>
+      ))}
+    </SelectField>
+  </HStack>
+)

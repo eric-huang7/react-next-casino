@@ -106,7 +106,7 @@ export const SelectorsContainer = ({ t, userInfo, currencyData }) => {
           t={t}
         />
       </ErrorEmpty>
-      <RoundButton fontSize="12px" solid onClick={filterButtonClickHandler}
+      <RoundButton fontSize="15px" solid onClick={filterButtonClickHandler}
                    title={t("myAccount.history.bonus.filterButton")}/>
     </Stack>
   )

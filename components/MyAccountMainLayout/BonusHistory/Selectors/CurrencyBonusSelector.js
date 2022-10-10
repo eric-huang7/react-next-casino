@@ -8,18 +8,14 @@ export const CurrencyBonusSelector = ({ t, currencyData, userInfo, setCurrencyFi
       label={t('myAccount.history.bonus.inputsLabels.currency')}
     >
       <option key={`option currency select`} value={undefined}>{null}</option>
-      {
-        userInfo.balance.balances.map((el) => {
-          return (
-            <option
-              key={`${el.id} option currency select`}
-              value={el.currency_id}
-            >
-              {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
-            </option>
-          )
-        })
-      }
+      {userInfo.balance.balances.map((el) => (
+        <option
+          key={`${el.id} option currency select`}
+          value={el.currency_id}
+        >
+          {currencyInfo(currencyData.currency.results, el.currency_id)[0]?.abbreviation}
+        </option>
+      ))}
     </SelectField>
   </HStack>
 )

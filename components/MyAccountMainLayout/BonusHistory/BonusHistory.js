@@ -21,14 +21,14 @@ export const BonusHistory = ({ t, router }) => {
           </ErrorText>
 
           {userInfo?.loadingBonusesHistory
-              ? <LoadingComponent t={t}/>
-              : <ErrorText>
-                <BonusTableContainer
-                  currencyData={currency}
-                  userInfo={userInfo}
-                  t={t}
-                />
-              </ErrorText>
+            ? <LoadingComponent t={t}/>
+            : <ErrorText>
+              <BonusTableContainer
+                currencyData={currency}
+                userInfo={userInfo}
+                t={t}
+              />
+            </ErrorText>
           }
         </> : <LoadingComponent t={t}/>
       }

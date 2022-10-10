@@ -1,15 +1,14 @@
-import styles from '../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 import { CurrencySelector } from './Selectors/CurrencySelector'
 import { ActionSelector } from './Selectors/ActionSelector'
 import { StatusSelector } from './Selectors/StatusSelector'
-import { FilterButton } from './Selectors/FilterButton'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getUserPayments } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {Stack} from "@chakra-ui/react";
+import RoundButton from "../../buttons/RoundButton";
 
 export const TrxHistoryInputsContainer = ({ t, userInfo, currencyData, setWasFiltering }) => {
-
   const dispatch = useDispatch()
   const [currencyFilter, setCurrencyFilter] = useState(null)
   const [actionFilter, setActionFilter] = useState(null)
@@ -33,7 +32,15 @@ export const TrxHistoryInputsContainer = ({ t, userInfo, currencyData, setWasFil
   }
 
   return (
-    <div className={styles.inputsContainer}>
+    <Stack
+      direction={{base: 'column', lg: 'row'}}
+      w="100%"
+      mt="26px"
+      mb="37px"
+      p="0 5px"
+      alignItems={{base: 'flex-start', lg: 'center'}}
+      justifyContent={{base: 'flex-start', lg: 'flex-start'}}
+    >
       <ErrorEmpty>
         <CurrencySelector
           setCurrencyFilter={setCurrencyFilter}
@@ -49,19 +56,15 @@ export const TrxHistoryInputsContainer = ({ t, userInfo, currencyData, setWasFil
         />
       </ErrorEmpty>
 
-      <div className={styles.lastSelectorButtonWrapper}>
-        <ErrorEmpty>
-          <StatusSelector
-            setStatusFilter={setStatusFilter}
-            t={t}
-          />
-        </ErrorEmpty>
-
-        <FilterButton
-          filterButtonClickHandler={filterButtonClickHandler}
+      <ErrorEmpty>
+        <StatusSelector
+          setStatusFilter={setStatusFilter}
           t={t}
         />
-      </div>
-    </div>
+      </ErrorEmpty>
+
+      <RoundButton fontSize="15px" solid onClick={filterButtonClickHandler}
+                   title={t("myAccount.history.transactions.inputsItems.filterButton")}/>
+    </Stack>
   )
 }
