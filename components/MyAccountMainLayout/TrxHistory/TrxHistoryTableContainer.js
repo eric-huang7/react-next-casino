@@ -1,24 +1,36 @@
-import styles from '../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
-import { TrxTableHeading } from './TrxHistoryTable/TrxTableHeading'
 import { TrxTableRow } from './TrxHistoryTable/TrxTableRow'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 import {chakra, Text} from "@chakra-ui/react";
+import BodyText from "../../typography/BodyText";
+
+const columns = [
+  "myAccount.history.transactions.table.headings.date",
+  "myAccount.history.transactions.table.headings.status",
+  "myAccount.history.transactions.table.headings.action",
+  "myAccount.history.transactions.table.headings.paymentSystem",
+  "myAccount.history.transactions.table.headings.amount",
+]
 
 export const TrxHistoryTableContainer = ({ t, userInfo, currencyData, wasFiltering }) => {
   const noItems = wasFiltering && userInfo?.userPayments?.payments?.length === 0;
 
   return (
-    <div className={styles.tableContainerWrapper}>
-      <chakra.table cellSpacing={4}
-                    // className={styles.trxTableContainer}
-      >
+    <div>
+      <chakra.table cellSpacing={4} sx={{borderCollapse: "unset !important"}}>
         <chakra.thead>
-        <TrxTableHeading t={t}/>
+          <chakra.tr bg="#eeeeee" >
+            {columns.map(item => (
+              <chakra.th textAlign="left" p="12px 10px">
+                <Text fontSize="15px" color="#595656" fontFamily="Verdana">{t(item)}</Text>
+              </chakra.th>
+            ))}
+          </chakra.tr>
         </chakra.thead>
         {!noItems && <chakra.tbody>
-          {userInfo.userPayments.payments.map((paymentData) => (
+          {userInfo.userPayments.payments.map((paymentData, index) => (
             <ErrorEmpty key={`payment table key ${paymentData.id}`}>
               <TrxTableRow
+                index={index}
                 key={`payment table key ${paymentData.id}`}
                 currencyData={currencyData}
                 paymentData={paymentData}
@@ -29,9 +41,9 @@ export const TrxHistoryTableContainer = ({ t, userInfo, currencyData, wasFilteri
           ))}
         </chakra.tbody>}
       </chakra.table>
-      {noItems && <p className={styles.noDataFiltering}>
+      {noItems && <BodyText borderBottom="1px solid #b0b0b0" pb="15px">
         {t('myAccount.history.transactions.noItems')}
-      </p>}
+      </BodyText>}
     </div>
   )
 }

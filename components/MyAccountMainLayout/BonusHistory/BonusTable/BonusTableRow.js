@@ -2,8 +2,7 @@ import { currencyInfo } from '../../../../helpers/currencyInfo'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
 import {chakra} from "@chakra-ui/react";
-
-const Cell = ({children}) => <chakra.td textAlign="left" p="12px 10px">{children}</chakra.td>
+import Cell from "../../../table/Cell";
 
 export const BonusTableRow = ({ t, bonusData, currencyData, index }) => {
   const router = useRouter()

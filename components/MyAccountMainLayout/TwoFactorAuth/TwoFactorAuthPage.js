@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
 import { Heading } from '../ComponentsForPages/Heading'
 import { GoogleAuthContainer } from './GoogleAuthContainer'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,45 +17,23 @@ export const TwoFactorAuthPage = ({ t }) => {
     dispatch(getQrAuth())
   }, [])
 
-  if (isShowSavedKeys) {
-
-    return (
-      <div className={styles.twoFactorMainWrapper}>
-        <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
-        <ErrorText>
-          <SavedKeysBlock t={t} savedKeys={savedKeys}/>
-        </ErrorText>
-      </div>
-    )
-
-  } else {
-
-    if (authData.user.user.is_2fa_enabled || authData.isMayTwoFactorAuth) {
-
-      return (
-        <div className={styles.twoFactorMainWrapper}>
-          <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
-          <ErrorText>
-            <TwoFactorAuthCompleteBlock authData={authData} t={t}/>
-          </ErrorText>
-        </div>
-      )
-    } else {
-
-      return (
-        <div className={styles.twoFactorMainWrapper}>
-          <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
-          <ErrorText>
-            <GoogleAuthContainer
-              setSavedKeys={setSavedKeys}
-              setIsShowSavedKeys={setIsShowSavedKeys}
-              authData={authData}
-              t={t}
-            />
-          </ErrorText>
-        </div>
-      )
-    }
-  }
-
+  return (
+    <div>
+      <Heading heading={t('myAccount.pageHeadings.googleAuth')}/>
+      <ErrorText>
+      {isShowSavedKeys
+        ? <SavedKeysBlock t={t} savedKeys={savedKeys}/>
+        : (authData.user.user.is_2fa_enabled || authData.isMayTwoFactorAuth
+          ? <TwoFactorAuthCompleteBlock authData={authData} t={t}/>
+          : <GoogleAuthContainer
+            setSavedKeys={setSavedKeys}
+            setIsShowSavedKeys={setIsShowSavedKeys}
+            authData={authData}
+            t={t}
+          />
+        )
+      }
+      </ErrorText>
+    </div>
+  )
 }

@@ -32,7 +32,6 @@ export const BonusHistory = ({ t, router }) => {
           }
         </> : <LoadingComponent t={t}/>
       }
-
     </div>
   )
 }
