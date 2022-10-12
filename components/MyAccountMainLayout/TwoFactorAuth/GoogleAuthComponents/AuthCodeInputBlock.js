@@ -1,4 +1,9 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
+import BodyText from "../../../typography/BodyText";
+import ErrorMessage from "../../../typography/ErrorMessage";
+import RoundButton from "../../../buttons/RoundButton";
+import Container from "../../ProfileInfoPage/ProfileInfoComponents/PhoneVerification/Container";
+import {Input} from "@chakra-ui/input";
+import {HStack} from "@chakra-ui/react";
 
 export const AuthCodeInputBlock = ({
   t,
@@ -6,24 +11,27 @@ export const AuthCodeInputBlock = ({
   googleKEyInputHandler,
   googleKeyValue,
   googleAuthError
-}) => {
-
-  return (
-    <div className={styles.authKeyInputBlock}>
-      <p
-        className={styles.keyInputHeading}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textOne')}</p>
-      <p
-        className={styles.enterKeyText}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textTwo')}</p>
-      <p className={styles.errorMessage}>{googleAuthError}</p>
-      <form onSubmit={(e) => confirmButtonClickHandler(e)}>
-        <div className={styles.inputsBlock}>
-          <input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text"
-                 className={styles.inputCode}/>
-          <button type={'submit'} onClick={(e) => confirmButtonClickHandler(e)} className={styles.confirmButton}>
-            {t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.confirmButton')}
-          </button>
-        </div>
-      </form>
-    </div>
-  )
-}
+}) => (
+  <Container>
+    <BodyText>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textOne')}</BodyText>
+    <BodyText bold pb="25px">{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textTwo')}</BodyText>
+    <ErrorMessage>{googleAuthError}</ErrorMessage>
+    <form onSubmit={confirmButtonClickHandler}>
+      <HStack alignItems="center" justifyContent="space-between" pt="27px">
+        <Input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text"
+               w="229px"
+               h="38px"
+               borderRadius="5px" bg="white"
+               border="none"
+               outline="none"
+               mr="10px"
+               fontSize="15px"
+               color="text.450"
+               fontFamily="Verdana"
+        />
+        <RoundButton type="submit" solid onClick={confirmButtonClickHandler}
+          title={t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.confirmButton')} />
+      </HStack>
+    </form>
+  </Container>
+)

@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
 import { TextBlock } from './GoogleAuthComponents/TextBlock'
 import { QrcodeContainer } from './GoogleAuthComponents/QrcodeContainer'
 import { AuthCodeInputBlock } from './GoogleAuthComponents/AuthCodeInputBlock'
@@ -68,7 +67,7 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
             t={t}
           />
         </ErrorText>
-        <p className={styles.lastText}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</p>
+        <BodyText py="35px">{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</BodyText>
         {showModal && <GoogleAuthConfirmModal t={t} onClose={() => setShowModal(false)} onConfirm={onConfirm} />}
       </Box>
     )
