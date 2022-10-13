@@ -1,7 +1,6 @@
-import {Button, Input, Text} from "@chakra-ui/react";
 import {Box} from "@chakra-ui/layout";
 
-const LinkButton = ({
+const InputButton = ({
   children, fontFamily = "Verdana", fontSize = 15, onClick, align = "flex-start", ...props
 }) => (
   <Box
@@ -26,4 +25,4 @@ const LinkButton = ({
   </Box>
 )
 
-export default LinkButton;
+export default InputButton;

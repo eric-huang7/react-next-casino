@@ -1,4 +1,9 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
+import BodyText from "../../../typography/BodyText";
+import ErrorMessage from "../../../typography/ErrorMessage";
+import Container from "../../../form/Container";
+import RoundButton from "../../../buttons/RoundButton";
+import {HStack} from "@chakra-ui/react";
+import {Input} from "@chakra-ui/input";
 
 export const TwoFactorCompleteInputsBlock = ({
   t,
@@ -7,24 +12,26 @@ export const TwoFactorCompleteInputsBlock = ({
   deactivateInputHandler,
   deactivateError
 }) => (
-  <div className={styles.deactivateAuthInputsBlock}>
-    <p
-      className={styles.deactivateHeading}>{t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.deactivateGoogleAuth')}</p>
-    <p
-      className={styles.deactivateInfo}>{t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.enterCurrentAuthCode')}</p>
-    <p className={styles.errorMessage}>{deactivateError}</p>
-    <form onSubmit={(e) => deactivateButtonClickHandler(e)}>
-      <div className={styles.inputsBlock}>
-        <input onChange={(e) => deactivateInputHandler(e.target.value)} type="text" className={styles.deactivateInput}
-               value={deactivateCodeValue}/>
-        <button
-          type={'submit'}
-          onClick={(e) => deactivateButtonClickHandler(e)}
-          className={styles.deactivateButton}
-        >
-          {t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.confirmButton')}
-        </button>
-      </div>
+  <Container>
+    <BodyText bold fontSize={18}>{t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.deactivateGoogleAuth')}</BodyText>
+    <BodyText pb={25}>{t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.enterCurrentAuthCode')}</BodyText>
+    {deactivateError && <ErrorMessage>{deactivateError}</ErrorMessage>}
+    <form onSubmit={deactivateButtonClickHandler}>
+      <HStack alignItems="center" justifyContent="space-between">
+        <Input onChange={(e) => deactivateInputHandler(e.target.value)} value={deactivateCodeValue} type="text"
+               w="229px"
+               h="38px"
+               borderRadius="5px" bg="white"
+               border="none"
+               outline="none"
+               mr="10px"
+               fontSize="15px"
+               color="text.450"
+               fontFamily="Verdana"
+        />
+        <RoundButton type="submit" solid onClick={deactivateButtonClickHandler}
+          title={t('myAccount.twoFactorAuthPage.twoFaCompleteContainer.confirmButton')} />
+      </HStack>
     </form>
-  </div>
+  </Container>
 )

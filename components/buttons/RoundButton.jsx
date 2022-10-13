@@ -2,7 +2,7 @@ import {Text} from "@chakra-ui/react";
 import PrimaryButton from "./PrimaryButton";
 
 const RoundButton = ({title, w = "121px", h = "34px", solid, onClick, fontFamily = "Myriad Pro",
-  fontSize = {base: 14, lg: 18}, ...props
+  fontSize = {base: 14, lg: 18}, uppercase, ...props
 }) => (
   <PrimaryButton
     onClick={onClick}
@@ -17,7 +17,7 @@ const RoundButton = ({title, w = "121px", h = "34px", solid, onClick, fontFamily
     _hover={{ bg: solid ? "primary.500" : "#eee" }}
     {...props}
   >
-    <Text casing="none" fontSize={fontSize} color={solid ? "white" : "#747272"}
+    <Text casing="none" fontSize={fontSize} color={solid ? "white" : "#747272"} textTransform={uppercase ? "uppercase" : "none"}
           fontFamily={fontFamily} whiteSpace="pre-line">
       {title}
     </Text>

@@ -1,32 +1,23 @@
-import styles from "../../../../styles/MyAccount/UserInfoPage/GoogleAuthConfirmModal.module.scss";
+import SelectModal from "../../../modal/SelectModal";
+import {VStack} from "@chakra-ui/layout";
+import RoundButton from "../../../buttons/RoundButton";
+import LinkButton from "../../../buttons/LinkButton";
+import BodyText from "../../../typography/BodyText";
 
 export const GoogleAuthConfirmModal = ({t, onClose, onConfirm }) => (
-  <div className={`${styles.forgotPasswordWrapper} `}>
-    <div className={styles.mainContainer}>
-      <div className={styles.instructionsBlock}>
-        <div className={styles.blockHeading}>
-          <div className={styles.emptyBlock}/>
-          <h3 className={`${styles.heading} ${styles.smallHeading}`}>{t('myAccount.twoFactorAuthPage.confirm.title')}</h3>
-          <button
-            onClick={onClose}
-            className={styles.closeButton}
-          >
-            <span className={styles.closeOne}></span>
-            <span className={styles.closeTwo}></span>
-          </button>
-        </div>
-        <div className={`${styles.innerContainer}`}>
-          {t('myAccount.twoFactorAuthPage.confirm.text')}
-          <div className={styles.buttonsWrapper}>
-            <button className={styles.confirmButton} onClick={onConfirm}>
-              {t('myAccount.twoFactorAuthPage.confirm.yes')}
-            </button>
-            <button className={styles.cancelButton} onClick={onClose}>
-              {t('myAccount.twoFactorAuthPage.confirm.no')}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <SelectModal
+    isOpen={true}
+    width={430}
+    headerHeight={70}
+    onClose={onClose}
+    title={t('myAccount.twoFactorAuthPage.confirm.title')}
+    scrollBehavior="outside"
+  >
+    <VStack w="100%" p={4} alignItems="center" textAlign="center">
+        <BodyText pb="25px">{t('myAccount.twoFactorAuthPage.confirm.text')}</BodyText>
+
+        <RoundButton px="30px" solid title={t('myAccount.twoFactorAuthPage.confirm.yes')} uppercase onClick={onConfirm}/>
+        <LinkButton onClick={onClose} py="15px">{t('myAccount.twoFactorAuthPage.confirm.no')}</LinkButton>
+    </VStack>
+  </SelectModal>
 )

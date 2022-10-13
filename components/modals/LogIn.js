@@ -39,19 +39,19 @@ export const LogIn = ({isShow}) => {
     dispatch(showLogin(false));
   }
 
-  const userInfo = useSelector((userInfo) => userInfo.authInfo);
+  const userInfo = useSelector(store => store.authInfo);
   const [loginData, setLoginData] = useState('');
   const [passwordData, setPasswordData] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    if (userInfo.error) {
+    if (userInfo?.error) {
       errorHelper(userInfo, router, setPasswordData, setErrorMessage, t);
     }
-    if (userInfo.isAuthenticated) {
+    if (userInfo?.isAuthenticated) {
       dispatch(showLogin(false));
     }
-  }, [userInfo.isAuthenticated, userInfo.error])
+  }, [userInfo?.isAuthenticated, userInfo?.error])
 
   useEffect(() => {
     setLoginData('');
@@ -140,14 +140,14 @@ export const LogIn = ({isShow}) => {
 }
 
 const errorHelper = (userInfo, router, setPasswordData, setErrorMessage, t) => {
-  if (userInfo.error.data.error_code === "ACCOUNT_SELF_EXCLUDED") {
+  if (userInfo?.error?.data?.error_code === "ACCOUNT_SELF_EXCLUDED") {
 
-    let timeAll = userInfo.error.data.extra_error_info.message.split(":")[1].trim();
+    let timeAll = userInfo?.error?.data?.extra_error_info?.message?.split(":")[1]?.trim();
     let timeExclude = dateFormatter(timeAll, router.locale);
 
     setPasswordData('');
     setErrorMessage(`${t('errors.selfExcluded')} ${timeExclude}`)
-  } else if (userInfo.error.data.error_code === "ACCOUNT_LOCKED") {
+  } else if (userInfo?.error?.data?.error_code === "ACCOUNT_LOCKED") {
     setPasswordData('');
     setErrorMessage(t('errors.accountLocked'));
   } else {

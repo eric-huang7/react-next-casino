@@ -15,9 +15,9 @@ export const AuthCodeInputBlock = ({
   <Container>
     <BodyText>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textOne')}</BodyText>
     <BodyText bold pb="25px">{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.codeInputBlock.textTwo')}</BodyText>
-    <ErrorMessage>{googleAuthError}</ErrorMessage>
+    {googleAuthError && <ErrorMessage>{googleAuthError}</ErrorMessage>}
     <form onSubmit={confirmButtonClickHandler}>
-      <HStack alignItems="center" justifyContent="space-between" pt="27px">
+      <HStack alignItems="center" justifyContent="space-between">
         <Input onChange={(e) => googleKEyInputHandler(e.target.value)} value={googleKeyValue} type="text"
                w="229px"
                h="38px"
