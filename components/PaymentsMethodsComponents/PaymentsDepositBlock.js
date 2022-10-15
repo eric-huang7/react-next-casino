@@ -1,7 +1,8 @@
-import styles from '../../styles/PaymentsMethodsPage/PaymentsDepositBlock.module.scss';
 import {PaymentDataItem} from "./PaymentDataItem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-
+import BodyText from "../typography/BodyText";
+import {Box} from "@chakra-ui/react";
+import {HStack} from "@chakra-ui/layout";
 
 const depositInfo = {
   depositId: 1,
@@ -16,8 +17,6 @@ const depositInfo = {
     maxLimit: "$ 5000"
   }
 }
-
-
 
 export const PaymentsDepositBlock = ({t, }) => {
   const {width} = useWindowDimensions();
@@ -47,15 +46,15 @@ export const PaymentsDepositBlock = ({t, }) => {
   }
 
   return (
-    <section className={styles.depositBlockWrapper}>
-      <h2 className={styles.depositHeading}>{t("paymentsMethodsPage.depositBlock.heading")}</h2>
-      <div className={styles.depositItemsWrapper}>
-        <div className={styles.depositsItemsFrame}>
-          {
-            usedArrItems.map((el) => el)
-          }
-        </div>
-      </div>
-    </section>
+    <Box w="100%" mt="55px">
+      <BodyText as="h2" bold textTransfor="uppercase" color="primary.500">
+        {t("paymentsMethodsPage.depositBlock.heading")}
+      </BodyText>
+      <Box w="100%" bg="rgba(0, 0, 0, 0.3)" p="13px" mt="30px">
+        <HStack border="1px solid #66686d" w="100%" minH="100%" p="20px" justifyContent="center" flexWrap="wrap">
+          {usedArrItems.map((el) => el)}
+        </HStack>
+      </Box>
+    </Box>
   )
 }

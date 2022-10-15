@@ -2,7 +2,6 @@ import styles from '../../styles/PaymentsMethodsPage/PaymentsDepositBlock.module
 import {useDispatch, useSelector} from "react-redux";
 import {showDepositModal} from "../../redux/popups/action";
 
-
 export const PaymentDataItem = ({t, dataInfo, type}) => {
   const dispatch = useDispatch();
   let isOpenDepositWindow = useSelector((state) => state.popups.isShowDepositModal)
@@ -11,7 +10,6 @@ export const PaymentDataItem = ({t, dataInfo, type}) => {
     dispatch(showDepositModal(true));
 
   }
-
 
   return (
     <div className={styles.depositItemMainWrapper}>

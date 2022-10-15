@@ -129,45 +129,32 @@ export const AccountMainLayout = ({ children }) => {
 
       {userInfo.isAuthenticated ?
         <>
-          {isShowModal.showErrorPopup
-            ?
-            <ErrorEmpty>
-              <ErrorMessageContainer
-                errorData={isShowModal}
-                t={t}
-              />
-            </ErrorEmpty>
-            : <></>
-          }
-          {
-            isShowModal.showMessagePopup && <MessageContainer/>
-          }
+          {isShowModal.showErrorPopup && <ErrorEmpty>
+            <ErrorMessageContainer
+              errorData={isShowModal}
+              t={t}
+            />
+          </ErrorEmpty>}
+
+          {isShowModal.showMessagePopup && <MessageContainer/>}
+
           <ErrorEmpty>
             <DepositPage t={t}/>
           </ErrorEmpty>
-          {
-            isShowModal.isShowCreditCardModal
-              ?
-              <ErrorEmpty>
-                <PaymentsCardWrapper
-                  paymentsData={paymentsData}
-                  userInfo={userInfo}
-                />
-              </ErrorEmpty>
-              :
-              <></>
-          }
-          {
-            isShowModal.isShowCryptoModal
-              ?
-              <ErrorEmpty>
-                <PaymentsCryptoWrapper
-                  paymentsData={paymentsData}
-                />
-              </ErrorEmpty>
-              :
-              <></>
-          }
+
+          {isShowModal.isShowCreditCardModal && <ErrorEmpty>
+            <PaymentsCardWrapper
+              paymentsData={paymentsData}
+              userInfo={userInfo}
+            />
+          </ErrorEmpty>}
+
+          {isShowModal.isShowCryptoModal && <ErrorEmpty>
+            <PaymentsCryptoWrapper
+              paymentsData={paymentsData}
+            />
+          </ErrorEmpty>}
+
           <MobileSideMenu t={t} userInform={userInfo}/>
 
           {isShowModal.isShowTermsModal && <ErrorEmpty>
@@ -182,11 +169,7 @@ export const AccountMainLayout = ({ children }) => {
               </Box>
             </Stack>
           </Box>
-        </> : (
-          <ErrorHeaderPage>
-
-          </ErrorHeaderPage>
-        )
+        </> : <ErrorHeaderPage />
       }
     </Box>
   )

@@ -7,9 +7,9 @@ import {getCurrency} from "../../redux/currency/action";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {getActiveBonuses} from "../../redux/bonuses/action";
 
-import styles from '../../styles/MyAccount/MyAccount.module.scss'
 import {AccountMainLayout} from "../../components/MyAccountMainLayout/AccountMainLayout";
 import {LoadingComponent} from "../../components/LoadingComponent/LoadingComponent";
+import { HStack } from "@chakra-ui/react";
 
 const Accounts = (props) => {
   const { t } = useTranslation('common');
@@ -35,13 +35,11 @@ const Accounts = (props) => {
 
 
   return (
-    <>
-      <AccountMainLayout t={t}>
-        <div className={styles.myAccountContainer}>
-          <LoadingComponent t={t} />
-        </div>
-      </AccountMainLayout>
-    </>
+    <AccountMainLayout t={t}>
+      <HStack alignItems="center" justifyContent="center">
+        <LoadingComponent t={t} />
+      </HStack>
+    </AccountMainLayout>
   )
 
 
