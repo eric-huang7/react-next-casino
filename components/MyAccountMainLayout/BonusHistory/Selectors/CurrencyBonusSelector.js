@@ -4,7 +4,7 @@ import SelectField from "../../../form/SelectField";
 
 export const CurrencyBonusSelector = ({ t, currencyData, userInfo, setCurrencyFilter, currencyFilter }) => (
   <HStack alignItems="center">
-    <SelectField value={currencyFilter} name="currencySelectHistory" onChange={(e) => setCurrencyFilter(e.target.value)}
+      <SelectField value={currencyFilter} name="currencySelectHistory" onChange={setCurrencyFilter}
       label={t('myAccount.history.bonus.inputsLabels.currency')}
     >
       <option key={`option currency select`} value={undefined}>{null}</option>

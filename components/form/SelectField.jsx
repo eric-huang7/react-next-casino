@@ -9,7 +9,7 @@ const SelectField = ({
       {label}
     </label>}
     <Select id={name} size={size} bg={bg} border={border} borderRadius="5px" value={value}
-            name={name} onChange={onChange} width={width} {...props}
+        name={name} onChange={(e) => onChange(e.target.value)} width={width} {...props}
     >
       {children}
     </Select>

@@ -4,7 +4,7 @@ import SelectContainer from "./SelectContainer";
 export const TimeZoneSelector = ({t, timeZoneSelectorHandler, timeZone}) => (
   <SelectContainer label={t("myAccount.editProfilePage.timeZone")} id="timeZoneSelector">
     <Selector id="timeZoneSelector" value={timeZone ? timeZone : "Etc/UTC"}
-              onChange={(e) => timeZoneSelectorHandler(e.target.value)}>
+              onChange={timeZoneSelectorHandler}>
         <option value={undefined}>{null}</option>
         <option value="Pacific/Pago_Pago">(GMT-11:00) American Samoa</option>
         <option value="Pacific/Midway">(GMT-11:00) International Date Line West</option>

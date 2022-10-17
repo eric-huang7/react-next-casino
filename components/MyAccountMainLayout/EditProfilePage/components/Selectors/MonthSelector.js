@@ -16,7 +16,7 @@ let months = [
 ];
 
 export const MonthSelector = ({t, month, monthSelectorHandler, disableEdit}) => (
-  <Selector value={month} disabled={disableEdit} onChange={(e) => monthSelectorHandler(e.target.value)}>
+  <Selector value={month} disabled={disableEdit} onChange={monthSelectorHandler}>
       <option value={undefined}>{null}</option>
       {months.map((el) =>
         <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>

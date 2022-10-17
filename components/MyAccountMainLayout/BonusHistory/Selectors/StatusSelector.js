@@ -3,7 +3,7 @@ import SelectField from "../../../form/SelectField";
 
 export const StatusSelector = ({ t, setStatusFilter, statusFilter }) => (
   <HStack alignItems="center" mb="20px">
-    <SelectField value={statusFilter} name="statusSelectHistory" onChange={(e) => setStatusFilter(e.target.value)}
+      <SelectField value={statusFilter} name="statusSelectHistory" onChange={setStatusFilter}
        label={t('myAccount.history.bonus.inputsLabels.status')}
     >
       <option value={undefined}>{null}</option>

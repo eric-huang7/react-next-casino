@@ -20,7 +20,7 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
 
   let itemsCount = 5;
   if (width <= 1165) {
-    itemsCount = 3;
+    itemsCount = 2;
   } else {
     itemsCount = 5;
   }

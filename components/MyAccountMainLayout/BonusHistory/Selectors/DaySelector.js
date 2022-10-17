@@ -6,7 +6,7 @@ export const DaySelector = ({setDayFilter, dayFilter}) => {
 
   return (
     <HStack alignItems="center">
-      <SelectField value={dayFilter} name="daySelector" onChange={(e) => setDayFilter(e.target.value)}>
+        <SelectField value={dayFilter} name="daySelector" onChange={setDayFilter}>
         <option value={undefined}>{null}</option>
         {
           daysArr.map((el) => <option key={el} value={el}>{el}</option>)

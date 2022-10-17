@@ -12,6 +12,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import usePlayGame from "../../hooks/usePlayGame";
 import {useTranslation} from "next-i18next";
 import LoadingItems from "./LoadingItems";
+import GamesFilterMenu from "./GamesFilterMenu";
 
 const titles = {
   'all-games': 'gamesPage.headings.allGames',
@@ -85,6 +86,8 @@ export const GamesContainer = (props) => {
       <SectionHeader px={{base: "16px", lg: "20px"}} fontSize={30} justifyContent={{base: 'center', lg: 'flex-start'}}>
         {t(titles[heading] || heading)}
       </SectionHeader>
+
+      <GamesFilterMenu px={{base: "16px", lg: "20px"}} />
 
       {searchQuery &&
         <Text w="100%" as="h3" fontFamily="Verdana" fontSize={20} textTransform="uppercase"

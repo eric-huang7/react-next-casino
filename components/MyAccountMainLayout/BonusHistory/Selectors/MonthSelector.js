@@ -18,7 +18,7 @@ let months = [
 
 export const MonthSelector = ({t, monthFilter, setMonthFilter}) => (
   <HStack alignItems="center">
-    <SelectField value={monthFilter} name="monthContainer" onChange={(e) => setMonthFilter(e.target.value)}>
+      <SelectField value={monthFilter} name="monthContainer" onChange={setMonthFilter}>
       <option value={undefined}>{null}</option>
       {months.map((el) =>
         <option key={`${el.value} month selector`} value={el.value}>{t(el.name)}</option>)

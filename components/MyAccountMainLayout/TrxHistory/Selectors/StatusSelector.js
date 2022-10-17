@@ -3,7 +3,7 @@ import {HStack} from "@chakra-ui/react";
 
 export const StatusSelector = ({t, setStatusFilter}) => (
   <HStack alignItems="center" mb="20px">
-    <SelectField name="statusSelectHistory" onChange={(e) => setStatusFilter(e.target.value)}
+      <SelectField name="statusSelectHistory" onChange={setStatusFilter}
                  label={t('myAccount.history.transactions.inputsLabels.status')}
     >
       <option value={null}>{null}</option>

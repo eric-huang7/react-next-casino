@@ -3,7 +3,7 @@ import {HStack} from "@chakra-ui/react";
 
 export const ActionSelector = ({t, setActionFilter}) => (
   <HStack alignItems="center" mb="20px">
-    <SelectField name="actionSelectHistory" onChange={(e) => setActionFilter(e.target.value)}
+      <SelectField name="actionSelectHistory" onChange={setActionFilter}
                  label={t('myAccount.history.transactions.inputsLabels.action')}
     >
       <option value={null}>{null}</option>

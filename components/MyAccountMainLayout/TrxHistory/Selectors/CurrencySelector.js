@@ -4,7 +4,7 @@ import {HStack} from "@chakra-ui/react";
 
 export const CurrencySelector = ({ t, currencyData, userInfo, setCurrencyFilter }) => (
   <HStack alignItems="center">
-    <SelectField name="currencySelectHistory" onChange={(e) => setCurrencyFilter(e.target.value)}
+      <SelectField name="currencySelectHistory" onChange={setCurrencyFilter}
                  label={t('myAccount.history.transactions.inputsLabels.currency')}
     >
       <option key={`option currency select`} value={undefined}>{null}</option>

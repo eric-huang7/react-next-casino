@@ -3,7 +3,7 @@ import SelectField from "../../../form/SelectField";
 
 export const YearSelector = ({t, setYearFilter, yearFilter}) => (
   <HStack alignItems="center">
-    <SelectField value={yearFilter} name="yearSelector" onChange={(e) => setYearFilter(e.target.value)}>
+      <SelectField value={yearFilter} name="yearSelector" onChange={setYearFilter}>
       <option value={undefined}>{null}</option>
       <option value={2016}>{2016}</option>
       <option value={2017}>{2017}</option>

@@ -7,7 +7,7 @@ export const YearSelector = ({t, year, yearSelectorHandler, disableEdit}) => {
 
 
   return (
-    <Selector value={year} disabled={disableEdit} onChange={(e) => yearSelectorHandler(e.target.value)}>
+    <Selector value={year} disabled={disableEdit} onChange={yearSelectorHandler}>
       <option value={undefined}>{null}</option>
       {
         yearsArr.map((el) => <option key={el} value={el}>{el}</option>)

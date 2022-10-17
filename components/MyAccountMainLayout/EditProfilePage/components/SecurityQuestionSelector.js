@@ -17,7 +17,7 @@ const listOfSecurityQuestions = [
 export const SecurityQuestionSelector = ({t, disableEdit, value, onSelect}) => (
   <SelectContainer label={t("myAccount.editProfilePage.secQuestion")} id="securityQuestionsSelector">
     <Selector id="securityQuestionsSelector" value={value} disabled={disableEdit}
-              onChange={(e) => onSelect(e.target.value)}>
+              onChange={onSelect}>
       {disableEdit
         ? <option value={0}>{t("myAccount.editProfilePage.fieldAlreadySpec")}</option>
         : <>

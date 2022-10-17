@@ -10,7 +10,7 @@ export const CountrySelector = ({t, countrySelectorHandler, value, disableEdit})
   return (
     <SelectContainer label={t("myAccount.editProfilePage.country")} id="countrySelector">
       <Selector id="countrySelector" value={value} disabled={disableEdit}
-                onChange={(e) => countrySelectorHandler(e.target.value)}>
+                onChange={countrySelectorHandler}>
         <option value={undefined}>{null}</option>
         {
           countryListAllIsoData.map((el) => {
