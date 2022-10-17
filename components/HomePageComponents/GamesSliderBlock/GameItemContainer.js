@@ -5,7 +5,7 @@ import {Text} from "@chakra-ui/layout";
 import {useState} from "react";
 
 export const GameItemContainer = ({
-  gameData, t, playFunClickHandler, playGameClickHAndler, fontSize="17px", user, ...props
+  gameData, t, playFunClickHandler, playGameClickHAndler, fontSize={base: "9px", lg: "17px"}, user, ...props
 }) => {
   const [hover, setHover] = useState(false);
 
