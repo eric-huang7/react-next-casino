@@ -64,8 +64,8 @@ export const GamesContainer = (props) => {
     return (
       <GamesItemErrorHandler key={`${el.id} ${el.name} game page`}>
         <GameItemContainer
-          w={{base: "160px", lg: "235px"}}
-          h={{base: "125px !important", lg: "160px !important"}}
+          w={{base: "145px", lg: "235px"}}
+          h={{base: "95px !important", lg: "160px !important"}}
           m={{base: "5px !important", lg: "10px !important"}}
           playGameClickHAndler={playGame}
           playFunClickHandler={playFun}
@@ -87,7 +87,7 @@ export const GamesContainer = (props) => {
         {t(titles[heading] || heading)}
       </SectionHeader>
 
-      <GamesFilterMenu px={{base: "16px", lg: "20px"}} />
+      <GamesFilterMenu px={{base: 0, lg: "20px"}} pb={5} />
 
       {searchQuery &&
         <Text w="100%" as="h3" fontFamily="Verdana" fontSize={20} textTransform="uppercase"
