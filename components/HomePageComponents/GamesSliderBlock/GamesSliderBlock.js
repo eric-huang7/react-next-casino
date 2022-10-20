@@ -10,6 +10,8 @@ import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
 import SectionHeader from "../../typography/SectionHeader";
 import ArrowButton from "../../buttons/ArrowButton";
 import usePlayGame from "../../../hooks/usePlayGame";
+import LoadingItems from "../../GamesPageComponents/LoadingItems";
+import {HStack} from "@chakra-ui/layout";
 
 export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loading, linkPath, titleImage}) => {
   const {height, width} = useWindowDimensions();
@@ -62,29 +64,33 @@ export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loadi
     prevArrow: <SamplePrevArrow/>
   }
 
-  return loading ? <h1>Loading...</h1> : (
+  return (
     <Box w="100%" maxW="1920px" m="auto" mb="30px">
       <SectionHeader path={linkPath}>
         {title} {count && `(${count})`}
       </SectionHeader>
       <Box w="100%" maxW="1920px" m="0 auto" position="relative">
-        <Slider {...sliderSettings}>
-          {slides?.map((el, ind) => {
-            return (
-              <div key={ind}>
-                <ErrorEmpty>
-                  <GameItemContainer
-                    playGameClickHAndler={playGame}
-                    playFunClickHandler={playFun}
-                    t={t}
-                    gameData={el}
-                    user={user}
-                  />
-                </ErrorEmpty>
-              </div>
-            )
-          })}
-        </Slider>
+        {loading
+          ? <HStack px={{base: "16px", lg: "50px"}}>
+              <LoadingItems height={{base: "95px", lg: "180px"}} width={{base: "145px", lg: "275px"}} />
+            </HStack>
+          : <Slider {...sliderSettings}>
+            {slides?.map((el, ind) => {
+              return (
+                <div key={ind}>
+                  <ErrorEmpty>
+                    <GameItemContainer
+                      playGameClickHAndler={playGame}
+                      playFunClickHandler={playFun}
+                      t={t}
+                      gameData={el}
+                      user={user}
+                    />
+                  </ErrorEmpty>
+                </div>
+              )
+            })}
+        </Slider>}
       </Box>
     </Box>
   )

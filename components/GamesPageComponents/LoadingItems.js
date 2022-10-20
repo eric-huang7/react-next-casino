@@ -17,15 +17,15 @@ const pulse = keyframes`
 
 const animation = `${pulse} 1.5s ease-in-out 0.5s infinite`
 
-const LoadingItems = () => {
+const LoadingItems = ({height = {base: "125px", lg: "160px"}, width = {base: "160px", lg: "235px"}}) => {
   const [isMobile] = useMediaQuery('(max-width: 30em)')
 
   return (isMobile ? [0,1] : [0,1,2,3,4]).map(key => (
     <Box m={{base: "5px !important", lg: "10px !important"}} key={key}
          bg="rgba(0, 0, 0, 0.21)"
          borderRadius="0.25rem"
-         h={{base: "125px", lg: "160px"}}
-         w={{base: "160px", lg: "235px"}}
+         h={height}
+         w={width}
          animation={animation}
     />
   ))

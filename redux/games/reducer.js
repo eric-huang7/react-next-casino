@@ -4,7 +4,7 @@ import {
   getJackpotGamesAction,
   getLatestGamesAction,
   getNewGamesAction,
-  getTableGamesAction, getTopGamesAction, setGames, setLoaded, setSearch, setSearchGames, setTotalRows
+  getTableGamesAction, getTopGamesAction, setFilter, setGames, setLoaded, setSearch, setSearchGames, setTotalRows
 } from "./action";
 
 const initialState = {
