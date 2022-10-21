@@ -132,7 +132,7 @@ export const DepositPage = () => {
     onClose()
   }
 
-  return popups.isShowDepositModal && (
+  return (popups.isShowDepositModal || true) && (
     <>
       <ErrorText>
         <DepositPageStepper

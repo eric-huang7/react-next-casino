@@ -14,10 +14,10 @@ const ModalTopHeader = ({
       width={{base: "100%", lg: '70vw', xl: '50vw'}}
     >
       <Text
-        fontFamily={router.locale === 'ru' ? "Arial" : "Lithograph"}
-        color="primary.500"
+        fontFamily="Montserrat"
+        color="white"
         fontSize={fontSize}
-        fontWeight={700}
+        fontWeight={900}
         letterSpacing="1px"
         textTransform="uppercase"
         textAlign="center"

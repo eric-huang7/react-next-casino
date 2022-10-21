@@ -35,21 +35,23 @@ const SelectModal = ({
         h={`${headerHeight}px`}
         minH={`${headerHeight}px`}
         borderRadius="15px 15px 0 0"
-        border="4px solid white"
-        bg="primary.500"
+        border="0px solid white"
+        bg="accent.950"
         overflow="hidden"
         p={0}
         display="flex"
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
         position="relative"
       >
         {title && <Text
           color="white"
-          fontFamily="Lithograph"
+          fontFamily="Montserrat"
           textAlign="center"
-          fontSize={20}
-          fontWeight={600}
+          fontSize={25}
+          textTransform="uppercase"
+          fontWeight={500}
+          px="21px"
         >
           {title}
         </Text>}
@@ -65,7 +67,7 @@ const SelectModal = ({
       </ModalHeader>
       <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}
         _focus={{ boxShadow: 'none' }} />
-      <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="white" h="100%" display="block">
+      <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="accent.950" h="100%" display="block">
         {children}
       </ModalBody>
       {footer && <ModalFooter pt={5} px={0} pb={0}>
