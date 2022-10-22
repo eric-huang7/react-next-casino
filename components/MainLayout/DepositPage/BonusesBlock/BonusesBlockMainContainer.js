@@ -1,9 +1,9 @@
 import { BonusesBlockContainer } from './BonusesBlockContainer'
 import {useState} from "react";
-import { Switch } from '@chakra-ui/react';
 import {Box, HStack, VStack, Text} from "@chakra-ui/layout";
 import {Input} from "@chakra-ui/input";
 import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
+import CustomSwitch from "../../../form/CustomSwitch";
 
 export const BonusesBlockMainContainer = (props) => {
   let {
@@ -32,24 +32,25 @@ export const BonusesBlockMainContainer = (props) => {
   }
 
   return (
-    <Box px={{base: "16px", lg: "24px"}}>
-      <HStack justifyContent="space-between" pb={{base: 2}} spacing={0}>
-        <Text fontSize="14px" color="text.250" fontFamily="Verdana" textTransform="uppercase">
-          {t('depositPage.bonusBlockHeading')}
+    <Box px={{base: "16px", lg: "20px"}}>
+      <HStack justifyContent="space-between" pb={{base: "20px"}} spacing={0} alignItems="center">
+        <Text fontSize={17} fontWeight={300} color="white" fontFamily="Montserrat" textTransform="capitalize">
+          {t('depositPage.bonusBlockHeading').toLowerCase()}
         </Text>
-        <Switch size='lg' id='isChecked' isChecked={isChecked} onChange={checkedInputHandler} colorScheme="primary" />
+        <CustomSwitch isChecked={isChecked} onChange={checkedInputHandler}/>
       </HStack>
 
       <HStack
-        h={showAllBonuses ? "auto" : "62px"}
+        h={showAllBonuses ? "auto" : "81px"}
         w="100%"
-        bg="grey.100"
-        border="0.75px solid"
-        borderColor="text.190"
-        alignItems="flex-start"
+        bg="accent.700"
+        border="0"
+        borderRadius="12px"
+        alignItems="center"
         justifyContent="space-between"
         overflow="hidden"
         spacing={0}
+        px="12px"
       >
         <BonusesBlockContainer
           showAllBonuses={showAllBonuses}

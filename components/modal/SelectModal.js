@@ -28,6 +28,7 @@ const SelectModal = ({
       h={height ?? "fit-content"}
       minH={height ?? "200px"}
       bg="transparent"
+      boxShadow="0px 0px 40px rgba(0, 0, 0, 0.9)"
       {...props}
     >
       {before}

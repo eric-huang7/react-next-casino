@@ -3,7 +3,7 @@ import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
 import SelectModal from "../../modal/SelectModal"
-import {DepositInputsContainer} from './DepositInputsContainer'
+import DepositCurrencySelector from './DepositCurrencySelector'
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
 import {ChoosePaymentMethod} from './ChoosePaymentMethod'
 import {DepositLastPage} from './DepositLastPage'
@@ -123,9 +123,9 @@ export const DepositPageStepper = (props) => {
           footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
           before={<ModalTopHeader title={t('depositPage.mainHeading')} />}
         >
-          <Box pb={4}>
+          <Box pb="34px">
             <ErrorText>
-              <DepositInputsContainer
+              <DepositCurrencySelector
                 userCurrency={userCurrency}
                 t={t}
                 userDepositValue={userDepositValue}
@@ -150,14 +150,14 @@ export const DepositPageStepper = (props) => {
               />
             </ErrorText>
 
-            <HStack w="100%" p={{base: "20px 16px 0px", lg: "40px 24px 10px"}} justifyContent="space-between">
-              {paymentImages.map((el) => (
-                <img key={el.id} src={el.src} alt=""/>
-              ))}
-            </HStack>
+            {/*<HStack w="100%" p={{base: "20px 16px 0px", lg: "40px 24px 10px"}} justifyContent="space-between">*/}
+            {/*  {paymentImages.map((el) => (*/}
+            {/*    <img key={el.id} src={el.src} alt=""/>*/}
+            {/*  ))}*/}
+            {/*</HStack>*/}
 
-            <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt={4}>
-              <Text fontSize="15px" fontWeight={600} fontFamily="Lithograph" color="primary.500" cursor="pointer">
+            <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt="40px">
+              <Text fontSize={18} fontWeight={400} fontFamily="Montserrat" color="white" cursor="pointer" textTransform="capitalize">
                 {isActiveBonusInput ? t("depositPage.iDontHaveBonusCodeButton") : t("depositPage.iHaveBonusCodeButton")}
               </Text>
             </HStack>
