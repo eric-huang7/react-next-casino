@@ -47,9 +47,9 @@ const Item = ({pulse}) => (
     animation={`${pulse} 1s ease-in-out 0s infinite alternate-reverse`}
   />
 )
-export const LoadingComponent = ({t, text}) => (
+export const LoadingComponent = ({t, text, height = "300px", ...props}) => (
   <>
-    <HStack h="300px" w="150px" alignItems="center" justifyContent="space-around" m="0 auto">
+    <HStack h={height} w="150px" alignItems="center" justifyContent="space-around" m="0 auto" {...props}>
       <Item pulse={pulse1} />
       <Item pulse={pulse2} />
       <Item pulse={pulse3} />

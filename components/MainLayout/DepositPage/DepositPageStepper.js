@@ -13,6 +13,7 @@ import ModalTopHeader from "../../modal/ModalTopHeader";
 import {setErrorUserDepositValue} from "../../../redux/userFinance/action";
 import {numberTransformer} from "../../../helpers/numberTransformer";
 import SubmitButton from "../../buttons/SubmitButton";
+import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
@@ -116,16 +117,16 @@ export const DepositPageStepper = (props) => {
       return (
         <SelectModal
           isOpen={true}
-          width={430}
+          width={500}
           headerHeight={70}
           onClose={closeDepositModalHandler}
           title={t("depositPage.innerHeading")}
           footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
           before={<ModalTopHeader title={t('depositPage.mainHeading')} />}
         >
-          <Box pb="34px">
+          <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
-              <DepositCurrencySelector
+              <SelectCurrencyDropdown
                 userCurrency={userCurrency}
                 t={t}
                 userDepositValue={userDepositValue}

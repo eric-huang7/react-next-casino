@@ -32,7 +32,7 @@ export const BonusesBlockMainContainer = (props) => {
   }
 
   return (
-    <Box px={{base: "16px", lg: "20px"}}>
+    <Box>
       <HStack justifyContent="space-between" pb={{base: "20px"}} spacing={0} alignItems="center">
         <Text fontSize={17} fontWeight={300} color="white" fontFamily="Montserrat" textTransform="capitalize">
           {t('depositPage.bonusBlockHeading').toLowerCase()}
