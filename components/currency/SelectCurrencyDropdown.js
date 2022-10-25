@@ -13,10 +13,10 @@ import ErrorText from '../ErrorBoundaryComponents/ErrorText'
 import {CurrencySelector} from "./CurrencySelector/CurrencySelector";
 import SelectModal from "../modal/SelectModal";
 import {HStack} from "@chakra-ui/react";
-import CurrencyDropdown from "./CurrencyDropdown";
-import CurrencyNetwork from "./CurrencyNetwork";
+import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
+import CurrencyNetwork from "./CurrencyDropdown/CurrencyNetwork";
 
-const SelectCurrencyDropdown = ({ onBack, onSelect }) => {
+const SelectCurrencyDropdown = ({ onSelect }) => {
   const {t} = useTranslation("common")
   const dispatch = useDispatch()
   const [cryptoFindArr, setCryptoFindArr] = useState([])
@@ -83,26 +83,25 @@ const SelectCurrencyDropdown = ({ onBack, onSelect }) => {
   ]
 
   return (<HStack pt="20px" pb="20px" spacing={4}>
-    <ErrorText>
-      <CurrencyDropdown
-          t={t}
-          isLoading={isLoading}
-          currencies={getCurrencies()}
-          backButtonClickHandler={onBack}
-          onSelect={onSelect}
-          userAuth={userAuth.isAuthenticated}
-          onFilter={cryptoFinder}
+    <CurrencyDropdown
+        t={t}
+        isLoading={isLoading}
+        currencies={getCurrencies()}
+        backButtonClickHandler={onBack}
+        onSelect={onSelect}
+        userAuth={userAuth.isAuthenticated}
+        onFilter={cryptoFinder}
+    />
+    <CurrencyNetwork
+        t={t}
+        isLoading={isLoading}
+        currencies={getCurrencies()}
+        backButtonClickHandler={onBack}
+        onSelect={onSelect}
+        userAuth={userAuth.isAuthenticated}
+        onFilter={cryptoFinder}
+        flex={1}
       />
-      <CurrencyNetwork
-          t={t}
-          isLoading={isLoading}
-          currencies={getCurrencies()}
-          backButtonClickHandler={onBack}
-          onSelect={onSelect}
-          userAuth={userAuth.isAuthenticated}
-          onFilter={cryptoFinder}
-        />
-    </ErrorText>
   </HStack>)
 }
 

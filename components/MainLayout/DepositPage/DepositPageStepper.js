@@ -93,6 +93,10 @@ export const DepositPageStepper = (props) => {
     }
   }
 
+  const onSelect = () => {
+    // TODO
+  }
+
   const getHeader = () => <Box
     position="absolute"
     top={{base: "-120px", lg: "-80px"}}
@@ -127,12 +131,8 @@ export const DepositPageStepper = (props) => {
           <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
               <SelectCurrencyDropdown
-                userCurrency={userCurrency}
+                onSelect={onSelect}
                 t={t}
-                userDepositValue={userDepositValue}
-                depositValueInputHandler={depositValueInputHandler}
-                currencySwitcherShowHandler={currencySwitcherShowHandler}
-                userDepositValueError={userDepositValueError}
               />
             </ErrorText>
 

@@ -1,18 +1,15 @@
-import {Text, Box, HStack} from "@chakra-ui/layout"
-import {useLayoutEffect, useRef, useState} from 'react'
+import {Text, Box} from "@chakra-ui/layout"
+import {useState} from 'react'
 import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons";
-import SearchInput from "./CurrencySelector/SearchInput";
-import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
-import {CurrencyList} from "./CurrencySelector/CurrencyList";
-import {CurrencyItem} from "./CurrencySelector/CurrencyItem";
-import {thinScroll} from "../../styles/theme";
+import SearchInput from "../CurrencySelector/SearchInput";
+import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
+import {thinScroll} from "../../../styles/theme";
+import CurrencyDropdownItem from "./CurrencyDropdownItem";
 
 const CurrencyDropdown = ({
    t,
-   onBack,
    onSelect,
-   userAuth,
    currencies = [],
    onFilter,
    isLoading
@@ -37,7 +34,7 @@ const CurrencyDropdown = ({
   }
 
   return (
-      <Menu>
+      <Menu closeOnSelect onChange={onSelect}>
           {({ isOpen }) => (
               <>
                   <MenuButton
@@ -67,12 +64,23 @@ const CurrencyDropdown = ({
                       <Box maxH="200px" overflowY="auto" css={thinScroll}>
                           {currencies.map((item, index) => item.list?.length > 0 ? (
                               <>
-                                  {item.title && <MenuItem key={index}>
-                                      <Text as="span" color="text.200" fontSize={18}>{item.title}</Text>
+                                  {item.title && <MenuItem
+                                    key={index}
+                                    _hover={{bg: 'transparent'}}
+                                    _active={{bg: 'transparent'}}
+                                    _focus={{bg: 'transparent'}}
+                                  >
+                                      <Text as="span" color="#E0B8B0" fontSize={16}>{item.title}</Text>
                                   </MenuItem>}
-                                  {item.list?.map((currencyData) => (<MenuItem key={index}>
+                                  {item.list?.map((currencyData) => (<MenuItem
+                                    key={index}
+                                    px={0}
+                                    _hover={{bg: 'transparent'}}
+                                    _active={{bg: 'transparent'}}
+                                    _focus={{bg: 'transparent'}}
+                                  >
                                       <ErrorEmpty key={`${currencyData.id} currency`}>
-                                          <CurrencyItem
+                                          <CurrencyDropdownItem
                                               currencyData={currencyData}
                                               onClick={() => onSelect(currencyData)}
                                               size={8}
@@ -86,7 +94,12 @@ const CurrencyDropdown = ({
                               </>
                           ) : null)}
                           {isEmpty() &&
-                          <MenuItem justifyContent="center">
+                          <MenuItem
+                            justifyContent="center"
+                            _hover={{bg: 'transparent'}}
+                            _active={{bg: 'transparent'}}
+                            _focus={{bg: 'transparent'}}
+                          >
                               <Text fontSize={18} fontWeight={600} color="text.300" maxW={200} textAlign="center">
                                   {t('selectCurrency.nothingFound')}
                               </Text>
