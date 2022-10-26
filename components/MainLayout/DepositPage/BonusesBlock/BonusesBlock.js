@@ -43,14 +43,15 @@ export const BonusesBlock = (props) => {
       px="5px"
       onClick={bonusClickHandler}
       cursor="pointer"
+      spacing={3}
     >
       <Image src={bonusImage} alt="" width={{base: "37px", lg: "50px"}} height={{base: "37px", lg: "50px"}} />
       <Box w={{base: "175px", lg: "255px"}}>
         <HStack
-          fontSize="14px"
+          fontSize="16px"
           lineHeight="24px"
-          color="text.180"
-          fontFamily="Verdana"
+          color="white"
+          fontFamily="Montserrat"
           flexWrap="nowrap"
         >
           <Text as="span"

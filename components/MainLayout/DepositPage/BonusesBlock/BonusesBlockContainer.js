@@ -2,7 +2,7 @@ import { BonusesBlock } from './BonusesBlock'
 import { BonusesDropdown } from './BonusesDropdown'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
 
-const iDontNeedBonus = { id: 1, heading: 'bonuses.bonusBlockInfoNotBonus', info: '', icon: '/assets/icons/stop.png' }
+const iDontNeedBonus = { id: 1, heading: 'bonuses.bonusBlockInfoNotBonus', info: '', icon: '/assets/icons/stop-icon.svg' }
 
 export const BonusesBlockContainer = (props) => {
   let {

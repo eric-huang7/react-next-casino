@@ -12,7 +12,8 @@ const CurrencyDropdown = ({
    onSelect,
    currencies = [],
    onFilter,
-   isLoading
+   isLoading,
+   value
  }) => {
   const [searchValue, setSearchValue] = useState('')
 
@@ -52,10 +53,15 @@ const CurrencyDropdown = ({
                       color="white"
                       borderRadius={12}
                       textAlign="left"
+                      fontWeight={400}
+
                       _hover={{bg: "accent.890", color: "white"}}
                       _active={{bg: "accent.890", color: "white"}}
                   >
-                      Currency
+                    {value
+                      ? <CurrencyDropdownItem currencyData={value} />
+                      : <Text fontSize={17} fontFamily="Montserrat">Currency</Text>
+                    }
                   </MenuButton>
 
                   <MenuList minW="240px" bg="accent.890" borderRadius={12} border="none" p="10px">
@@ -66,11 +72,16 @@ const CurrencyDropdown = ({
                               <>
                                   {item.title && <MenuItem
                                     key={index}
-                                    _hover={{bg: 'transparent'}}
-                                    _active={{bg: 'transparent'}}
-                                    _focus={{bg: 'transparent'}}
+                                    px="0"
+                                    w="calc(100% - 10px)"
+                                    _hover={{backgroundColor: 'transparent'}}
+                                    _active={{backgroundColor: 'transparent'}}
+                                    _focus={{backgroundColor: 'transparent'}}
+                                    bg={`transparent url('/assets/img/currency/line.svg') repeat-x center`}
                                   >
-                                      <Text as="span" color="#E0B8B0" fontSize={16}>{item.title}</Text>
+                                      <Text pl="15px" pr="20px" as="span" bg="accent.890" color="#E0B8B0" fontSize={16}>
+                                        {item.title}
+                                      </Text>
                                   </MenuItem>}
                                   {item.list?.map((currencyData) => (<MenuItem
                                     key={index}

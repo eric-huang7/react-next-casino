@@ -46,6 +46,7 @@ export const DepositPageStepper = (props) => {
   const dispatch = useDispatch()
   const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
   const [paymentMethods, setPaymentMethods] = useState(null)
+  const [selectedCurrency, setSelectedCurrency] = useState(null)
 
   const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
 
@@ -93,8 +94,9 @@ export const DepositPageStepper = (props) => {
     }
   }
 
-  const onSelect = () => {
-    // TODO
+  const onSelectCurrency = (value) => {
+    setSelectedCurrency(value);
+    console.log('onSelect', value)
   }
 
   const getHeader = () => <Box
@@ -131,7 +133,8 @@ export const DepositPageStepper = (props) => {
           <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
               <SelectCurrencyDropdown
-                onSelect={onSelect}
+                onSelect={onSelectCurrency}
+                value={selectedCurrency}
                 t={t}
               />
             </ErrorText>

@@ -16,7 +16,7 @@ import {HStack} from "@chakra-ui/react";
 import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
 import CurrencyNetwork from "./CurrencyDropdown/CurrencyNetwork";
 
-const SelectCurrencyDropdown = ({ onSelect }) => {
+const SelectCurrencyDropdown = ({ onSelect, value }) => {
   const {t} = useTranslation("common")
   const dispatch = useDispatch()
   const [cryptoFindArr, setCryptoFindArr] = useState([])
@@ -87,7 +87,8 @@ const SelectCurrencyDropdown = ({ onSelect }) => {
         t={t}
         isLoading={isLoading}
         currencies={getCurrencies()}
-        backButtonClickHandler={onBack}
+        value={value}
+        // backButtonClickHandler={onBack}
         onSelect={onSelect}
         userAuth={userAuth.isAuthenticated}
         onFilter={cryptoFinder}
@@ -96,7 +97,7 @@ const SelectCurrencyDropdown = ({ onSelect }) => {
         t={t}
         isLoading={isLoading}
         currencies={getCurrencies()}
-        backButtonClickHandler={onBack}
+        // backButtonClickHandler={onBack}
         onSelect={onSelect}
         userAuth={userAuth.isAuthenticated}
         onFilter={cryptoFinder}
