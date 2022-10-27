@@ -14,7 +14,7 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
     infoClickHandler(!isShow);
   }
 
-  let bonusInfo = bonusInfoCalculator(bonusData, userCurrency.userCurrencyData, t);
+  let bonusInfo = bonusInfoCalculator(bonusData, userCurrency?.userCurrencyData, t);
 
   const handleTerms = () => {
     closeButtonClickHandler();
@@ -31,20 +31,22 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
   return isShow && (
     <SelectModal
       isOpen={true}
-      width={340}
+      width={500}
+      headerHeight={70}
       onClose={closeButtonClickHandler}
       title={t('bonusInfoContainer.bonusInfo.heading')}
     >
         <BonusErrorHandler>
-          <Box w="100%" pb={4}>
+          <Box w="100%" pb={4} px="20px">
             <VStack
-              m="15px 10px 30px"
+              m="10px 0 21px"
               border="1px solid"
-              borderColor="grey.300"
+              borderColor="#5B3229"
               borderRadius="10px"
-              w="calc(100% - 20px)"
-              fontSize="12px"
-              color="text.250"
+              w="100%"
+              fontSize="16px"
+              fontFamily="Montserrat"
+              color="white"
               overflow="hidden"
               spacing={0}
             >
@@ -54,26 +56,32 @@ export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCur
                 minH="40px"
                 alignItems="stretch"
                 borderBottom={index === data.length - 1 ? "0px solid" : "1px solid"}
-                borderColor="grey.300"
+                borderColor="#5B3229"
               >
-                <Box p={1} w="50%" alignItems="center" display="flex">{item.label}</Box>
-                <Box p={1} w="50%" bg="grey.200" display="flex" textAlign="right" justifyContent="flex-end" overflow="hidden" alignItems="center" color="black">
+                <Box p={3} w="50%" alignItems="center" display="flex">{item.label}</Box>
+                <Box p={3} w="50%" bg="accent.890" display="flex" textAlign="right" justifyContent="flex-end"
+                     overflow="hidden" alignItems="center" color="white">
                   {item.value}
                 </Box>
               </HStack> : null)}
             </VStack>
 
-            {bonusInfo.min_deposit && <HStack bg="accent.500" minH="45px" p="5px 20px" mb="20px" spacing={3}>
-              <Image src={'/assets/icons/arrowsIcon-transparent.png'} alt="" width="40px" height="40px"/>
-              <Text fontFamily="Arial" color="white" fontSize="12px" m={0}>
+            {bonusInfo.min_deposit && <HStack bg="accent.700" minH="45px" p="16px 21px" mb="20px" borderRadius="12px"
+              spacing={5}>
+              <Image src={'/assets/icons/refresh.svg'} alt="" width="40px" height="40px"/>
+              <Text fontFamily="Montserrat" color="white" fontSize="15px" m={0}>
                 {bonusInfo.min_deposit}
               </Text>
             </HStack>}
 
-            <HStack onClick={handleTerms} justifyContent="center">
-              <Text color="accent.500" fontFamily="Lithograph" fontSize="14px" fontWeight={600} cursor="pointer">
-               {t("bonusInfoContainer.bonusTermsConditionsLink")}
+            <HStack justifyContent="center">
+              <Text color="white" fontFamily="Montserrat" fontSize="16px" fontWeight={400} onClick={handleTerms}
+                    cursor="pointer">
+               {t("bonusInfoContainer.generalBonus")} <Text as="span" color="primary.500">
+                  {t("bonusInfoContainer.bonusTermsConditionsLink")}
+                </Text>
               </Text>
+
             </HStack>
           </Box>
         </BonusErrorHandler>

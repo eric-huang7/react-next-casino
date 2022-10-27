@@ -40,15 +40,16 @@ export const BonusesBlock = (props) => {
       flexWrap="nowrap"
       alignItems="center"
       minH="60px"
-      px="5px"
+      px="0"
       onClick={bonusClickHandler}
       cursor="pointer"
       spacing={3}
     >
-      <Image src={bonusImage} alt="" width={{base: "37px", lg: "50px"}} height={{base: "37px", lg: "50px"}} />
+      <Image src={bonusImage} borderRadius={12} alt="" width={{base: "37px", lg: "50px"}}
+             height={{base: "37px", lg: "50px"}} />
       <Box w={{base: "175px", lg: "255px"}}>
         <HStack
-          fontSize="16px"
+          fontSize="15px"
           lineHeight="24px"
           color="white"
           fontFamily="Montserrat"
@@ -63,28 +64,26 @@ export const BonusesBlock = (props) => {
           >
             {t(bonusHeading)}
           </Text>
-          {canShowInfo && <Text as="span" textDecoration="underline" mr={0} onClick={bonusInfoClickHandler}>
+          {canShowInfo && <Text fontSize={14} as="span" textDecoration="underline" mr={0} onClick={bonusInfoClickHandler}>
               {t("bonuses.bonusBlockInfoLink")}
           </Text>}
         </HStack>
         <Text as="p"
-          color="primary.500"
+          color="#F39321"
           whiteSpace="nowrap"
-          textTransform="uppercase"
+          // textTransform="uppercase"
           overflow="hidden"
           textOverflow="ellipsis"
           sx={{
             base: {
               width: "255px",
-              fontSize: "15px",
-              fontFamily: "Segoe UI",
-              fontWeight: "normal",
+              fontSize: "14px",
+              fontFamily: "Montserrat",
               margin: "10px 0 0 -40px"
             },
             lg: {
-              fontSize: "12px",
-              fontWeight: "bold",
-              fontFamily: "Verdana",
+              fontSize: "14px",
+              fontFamily: "Montserrat",
               margin: "10px 0 0 0"
             }
           }}

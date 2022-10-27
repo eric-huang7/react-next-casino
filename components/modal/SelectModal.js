@@ -5,7 +5,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Text,
+  Text, Image,
 } from '@chakra-ui/react'
 import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
@@ -29,6 +29,7 @@ const SelectModal = ({
       minH={height ?? "200px"}
       bg="transparent"
       boxShadow="0px 0px 40px rgba(0, 0, 0, 0.9)"
+      borderRadius="15px"
       {...props}
     >
       {before}
@@ -65,13 +66,15 @@ const SelectModal = ({
           sx={{cursor: "pointer"}}
           onClick={onBack}
         />}
+        <Image src="/assets/icons/close.svg" color="white" fontSize={18} position="absolute" right={5}
+           top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`} _focus={{ boxShadow: 'none' }}
+           cursor="pointer" onClick={onClose}  />
       </ModalHeader>
-      <ModalCloseButton color="white" fontSize={18} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}
-        _focus={{ boxShadow: 'none' }} />
+
       <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="accent.950" h="100%" display="block">
         {children}
       </ModalBody>
-      {footer && <ModalFooter pt={5} px={0} pb={0}>
+      {footer && <ModalFooter pt={5} px={0} pb={0} borderRadius="15px">
         {footer}
       </ModalFooter>}
     </ModalContent>

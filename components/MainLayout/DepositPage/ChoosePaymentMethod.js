@@ -170,7 +170,6 @@ export const ChoosePaymentMethod = ({
         {getMethods()?.map((method, index) => (
           <VStack px="1.5%" key={index} w="30%" textAlign="center" spacing={0} pb={3} cursor="pointer">
             <VStack
-              bg="red"
               w="100%"
               h="50px"
               border="1px solid"

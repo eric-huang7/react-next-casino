@@ -7,7 +7,7 @@ const InputFieldRound = ({
     inputProps = {}, ...props
 }) => {
   return (
-    <FormControl mb={4} isInvalid={!!error} fontFamily="Verdana" {...props}>
+    <FormControl mb={4} isInvalid={!!error} fontFamily="Montserrat" {...props}>
       <FormLabel htmlFor={id} mb="5px" fontSize="14px" color="text.250">{label}</FormLabel>
       <InputGroup>
         <Input
@@ -15,23 +15,23 @@ const InputFieldRound = ({
           onInput={onChange}
           value={value}
           type={type}
-          height="45px"
-          fontSize="14px"
+          height="54px"
+          fontSize="16px"
           border="1px solid"
-          borderColor="grey.600"
-          borderRadius="5px"
-          bg="grey.200"
+          borderColor="accent.860"
+          borderRadius="12px"
+          bg="transparent"
           outline="none"
-          px={1}
-          color="text.400"
-          focusBorderColor="primary.500"
+          px="20px"
+          color="white"
+          focusBorderColor="accent.860"
           placeholder={placeholder}
           id={id}
           _placeholder={{
-            color: "text.400"
+            color: "white"
           }}
           _hover={{
-            borderColor: "grey.600"
+            borderColor: "accent.860"
           }}
           defaultValue={defaultValue}
           {...inputProps}

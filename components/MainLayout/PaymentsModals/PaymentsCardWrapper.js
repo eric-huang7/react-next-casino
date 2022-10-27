@@ -77,11 +77,10 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
     ) : (
       <SelectModal
         isOpen={true}
-        width={430}
+        width={500}
         onClose={closeCardPayment}
         onBack={backButtonClickHandler}
-        header={<Image src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
-                       layout={'fixed'} alt=""/>}
+        title={t("depositPage.innerHeading")}
         footer={<SubmitButton title={t('creditCardPayment.confirmButton')} onClick={() => setSubmitted(true)}/>}
       >
         <ErrorText>

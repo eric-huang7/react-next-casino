@@ -10,8 +10,8 @@ const ModalTopHeader = ({
     <Box
       position="absolute"
       top={top}
-      left={{base: 0, lg: `calc((${width} - 70vw) / 2)`, xl: `calc((${width} - 50vw) / 2)`}}
-      width={{base: "100%", lg: '70vw', xl: '50vw'}}
+      left={{base: 0, lg: `calc((${width} - 70vw) / 2)`, xl: `calc((${width} - 60vw) / 2)`}}
+      width={{base: "100%", lg: '70vw', xl: '60vw'}}
     >
       <Text
         fontFamily="Montserrat"

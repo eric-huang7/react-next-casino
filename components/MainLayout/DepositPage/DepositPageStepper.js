@@ -128,7 +128,7 @@ export const DepositPageStepper = (props) => {
           onClose={closeDepositModalHandler}
           title={t("depositPage.innerHeading")}
           footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
-          before={<ModalTopHeader title={t('depositPage.mainHeading')} />}
+          before={<ModalTopHeader width="500px" title={t('depositPage.mainHeading')} />}
         >
           <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
