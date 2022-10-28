@@ -42,9 +42,10 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
   return !userPayment?.paymentMethodData?.methodData ? (
     <SelectModal
       isOpen={true}
-      width={430}
+      width={500}
+      headerHeight={70}
       onClose={closeCardPayment}
-      onBack={backButtonClickHandler}
+      // onBack={backButtonClickHandler}
       header={<Image src={'/assets/img/depositWidget/cards.webp'} width={96} height={38}
                      layout={'fixed'} alt=""/>}
     >
@@ -55,7 +56,8 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
   ) : (paymentsData?.creditPaymentData?.data?.success ? (
       <SelectModal
         isOpen={true}
-        width={430}
+        width={500}
+        headerHeight={70}
         onClose={closeCardPayment}
         title={t("creditCardPayment.confirmHeading")}
       >
@@ -78,8 +80,9 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
       <SelectModal
         isOpen={true}
         width={500}
+        headerHeight={70}
         onClose={closeCardPayment}
-        onBack={backButtonClickHandler}
+        // onBack={backButtonClickHandler}
         title={t("depositPage.innerHeading")}
         footer={<SubmitButton title={t('creditCardPayment.confirmButton')} onClick={() => setSubmitted(true)}/>}
       >

@@ -28,7 +28,10 @@ const InputFieldRound = ({
           placeholder={placeholder}
           id={id}
           _placeholder={{
-            color: "white"
+            color: "white",
+            opacity: 1,
+            fontSize: 16,
+            fontFamily: "Montserrat"
           }}
           _hover={{
             borderColor: "accent.860"
@@ -38,7 +41,7 @@ const InputFieldRound = ({
         />
         {icon &&
           <InputRightElement
-            p="3px 5px 0"
+            p="3px 15px 0 0px"
             sx={iconStyle}
             h="calc(100% - 2px)"
             top="1px"

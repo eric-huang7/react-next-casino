@@ -190,16 +190,17 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           type="number"
           id={'usernameLogIn'}
           placeholder={t("creditCardPayment.creditCard")}
-          icon={<Image src="/assets/img/paymentsModals/card.webp" width="36px" height="31px" alt="" />}
+          icon={<Image src="/assets/icons/deposit/card.svg" width="28px" height="24px" alt="" />}
         />
         <InputFieldRound
-          w="35%"
+          w="45%"
           error={cardDateError}
           onChange={cardDateValue}
           value={dateInput}
           id={'dateInput'}
           placeholder={t("creditCardPayment.expiryDate")}
           autoComplete={"cc-exp"}
+          inputProps={{textAlign: "center"}}
         />
       </HStack>
       <HStack w="100%" alignItems="flex-start" spacing={4}>
@@ -209,19 +210,22 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           value={cardNameInput}
           id={'cardName'}
           placeholder={t("creditCardPayment.creditHolder")}
-          icon={<Image src="/assets/img/paymentsModals/user.webp" width="31px" height="31px" alt="" />}
+          icon={<Image src="/assets/icons/deposit/user.svg" width="26px" height="26px" alt="" />}
         />
         <InputFieldRound
-          w="35%"
+          w="45%"
           type="number"
           onChange={cvvInputHandler}
           value={cvvValue}
           id={'amountValueModal'}
           placeholder="CVV"
+          inputProps={{textAlign: "center"}}
         />
       </HStack>
       <VStack alignItems="flex-start" spacing={0} pb={4} w="100%">
-        <Text color="primary.500">{t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)</Text>
+        <Text fontSize={16} fontFamily="Montserrat" color="accent.550">
+          {t("creditCardPayment.amountValue")}(Min 20.00, max 4000.00)
+        </Text>
         <InputFieldRound
           type="number"
           error={amountError}
@@ -230,14 +234,14 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           defaultValue={`${userDepositValue}`}
         />
       </VStack>
-      <HStack>
-        <Image src={'/assets/img/paymentsModals/lock.webp'} layout={'fixed'} width={20} height={28} alt={'lock icon'}/>
+      <HStack justifyContent="flex-start" spacing={3} w="100%">
+        <Image src={'/assets/icons/deposit/lock.svg'} layout={'fixed'} width={20} height={28} alt={'lock icon'}/>
         <Text
-          fontSize="13px"
-          color="text.400"
-          fontFamily="Verdana"
+          fontSize="16px"
+          fontWeight={300}
+          color="#C1AFAB"
+          fontFamily="Montserrat"
           textAlign="center"
-          ml="15px"
         >
           {t("creditCardPayment.secureText")}
         </Text>
