@@ -53,7 +53,8 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
         <LoadingComponent t={t} text={'creditCardPayment.errors.errorPaymentMethod'}/>
       </VStack>
     </SelectModal>
-  ) : (paymentsData?.creditPaymentData?.data?.success ? (
+  )
+    : (paymentsData?.creditPaymentData?.data?.success ? (
       <SelectModal
         isOpen={true}
         width={500}
@@ -76,7 +77,8 @@ export const PaymentsCardWrapper = ({userInfo, paymentsData}) => {
           </Text>
         </VStack>
       </SelectModal>
-    ) : (
+    )
+        : (
       <SelectModal
         isOpen={true}
         width={500}

@@ -5,10 +5,10 @@ import {Text, VStack} from "@chakra-ui/layout";
 const CopyIcon = ({id, onClick}) => <chakra.label
   htmlFor={id}
   onClick={onClick}
-  w="31px"
-  h="31px"
+  w="22px"
+  h="22px"
   cursor="pointer"
-  bg='url("/assets/img/paymentsModals/copy.webp") no-repeat'>
+  bg='#AD4B1D url("/assets/icons/deposit/copy.svg") no-repeat'>
 </chakra.label>
 
 export const DepositAddressInput = ({addressData, t, memoData}) => {
@@ -20,7 +20,7 @@ export const DepositAddressInput = ({addressData, t, memoData}) => {
   return (
     <>
       <VStack w={{base: "100%", lg: "356px"}} alignItems="flex-start" spacing={0}>
-        <Text as="div" fontSize="16px" color="text.250" fontFamily="Verdana">
+        <Text as="div" fontSize="16px" color="white" fontFamily="Montserrat" fontWeight={300}>
           {t("cryptoPayment.depositAddress")}
         </Text>
 
@@ -28,7 +28,7 @@ export const DepositAddressInput = ({addressData, t, memoData}) => {
           value={addressData}
           id="depositAddressInput"
           icon={<CopyIcon id="depositAddressInput" onClick={handleCopy} />}
-          iconStyle={{ bg: "white", borderLeft: "1px solid" }}
+          iconStyle={{ bg: "#AD4B1D", borderLeft: "1px solid" }}
         />
       </VStack>
 
@@ -42,7 +42,7 @@ export const DepositAddressInput = ({addressData, t, memoData}) => {
             value={memoData}
             id="memoInput"
             icon={<CopyIcon id="memoInput" onClick={handleCopy} />}
-            iconStyle={{ bg: "white", borderLeft: "1px solid" }}
+            iconStyle={{ bg: "#AD4B1D", borderLeft: "1px solid" }}
           />
         </VStack>
       }

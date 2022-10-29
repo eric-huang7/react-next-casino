@@ -1,6 +1,6 @@
 import { Box, chakra } from "@chakra-ui/react";
 
-export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) => {
+export const TextBlock = ({t, value, currency, paymentsData, currenciesList, ...props}) => {
   let needToPayValue = `${paymentsData.data.sender_amount} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency} \n`;
 
   let needToPayRes = '';
@@ -23,17 +23,19 @@ export const TextBlock = ({t, value, currency, paymentsData, currenciesList}) =>
 
   return (
     <Box
-      fontSize="14px"
-      lineHeight="24px"
-      color="text.250"
-      fontFamily="Verdana"
+      fontSize="16px"
+      fontWeight={300}
+      lineHeight="22px"
+      color="white"
+      fontFamily="Montserrat"
       textAlign="center"
       whiteSpace="break-spaces"
+      {...props}
     >
       <span>{t("cryptoPayment.textBlock.firstBlock")}</span>
       <chakra.span
         color="primary.500"
-        fontWeight={600}
+        fontWeight={300}
       >
         {
           paymentsData.paymentMethod.paymentMethodData.methodData.hasOwnProperty("rate_from")

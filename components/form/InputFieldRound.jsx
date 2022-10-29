@@ -41,13 +41,14 @@ const InputFieldRound = ({
         />
         {icon &&
           <InputRightElement
-            p="3px 15px 0 0px"
+            p="3px 15px 0"
+            w="55px"
             sx={iconStyle}
             h="calc(100% - 2px)"
             top="1px"
             right="1px"
             borderRadius="0 5px 5px 0"
-            borderColor="grey.600 !important"
+            borderColor="#AD4B1D !important"
           >
             {icon}
           </InputRightElement>

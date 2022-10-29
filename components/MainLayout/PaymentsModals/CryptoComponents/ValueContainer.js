@@ -24,11 +24,13 @@ export const ValueContainer = ({value, currency, paymentsData, currenciesList}) 
 
   return (
     <chakra.h2
-      fontSize="30px"
-      color="text.500"
-      fontFamily="Verdana"
+      fontSize="28px"
+      lineHeight='26px'
+      fontWeight={300}
+      color="white"
+      fontFamily="Montserrat"
       textAlign="center"
-      pt="8px"
+      pt="25px"
       pb="24px"
     >
       {

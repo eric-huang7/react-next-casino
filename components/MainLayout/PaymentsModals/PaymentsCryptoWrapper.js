@@ -40,7 +40,7 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
       isOpen={true}
       width={430}
       onClose={closeCrypto}
-      onBack={whatDoBackButton}
+      // onBack={whatDoBackButton}
       title={t("cryptoPayment.heading")}
     >
       <VStack alignItems="center" p={4} spacing={0}>
@@ -59,6 +59,7 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
                   paymentsData={paymentsData.cryptoPaymentData}
                   currency={userCurrency}
                   currenciesList={currenciesList}
+                  pb="25px"
                 />
               </ErrorText>
               <ErrorEmpty>

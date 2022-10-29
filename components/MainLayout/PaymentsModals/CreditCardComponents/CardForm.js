@@ -181,7 +181,13 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
   }
 
   return (
-    <VStack p="20px 15px" spacing={0}>
+    <VStack p="10px 20px 30px" spacing={0}>
+      <HStack w="100%" h="54px" justifyContent="flex-start" alignItems="center" bg="#51241A" borderRadius="12px"
+              mb="25px" px="20px">
+        <Text fontSize={16} fontFamily="Montserrat" color="white" textTransform="capitalize">
+          {t('creditCardPayment.notCrypto')}
+        </Text>
+      </HStack>
       <HStack w="100%" alignItems="flex-start" spacing={4}>
         <InputFieldRound
           error={cardNumberError}
@@ -220,6 +226,21 @@ const CardForm = ({serverCardNumberError, userInfo, submitted, onSubmit}) => {
           id={'amountValueModal'}
           placeholder="CVV"
           inputProps={{textAlign: "center"}}
+        />
+      </HStack>
+      <HStack w="100%" alignItems="center" justifyContent="center" py={2}>
+        <Text fontSize={16} fontFamily="Montserrat" color="white" textTransform="uppercase">
+          {t('creditCardPayment.or')}
+        </Text>
+      </HStack>
+      <HStack w="100%" alignItems="flex-start" spacing={4}>
+        <InputFieldRound
+          error={cardNameErrorInput}
+          onChange={cardNameInputHandler}
+          value={cardNameInput}
+          id={'ewallet'}
+          placeholder={t("creditCardPayment.ewallet")}
+          icon={<Image src="/assets/icons/deposit/wallet.svg" width="24px" height="20px" alt="" />}
         />
       </HStack>
       <VStack alignItems="flex-start" spacing={0} pb={4} w="100%">

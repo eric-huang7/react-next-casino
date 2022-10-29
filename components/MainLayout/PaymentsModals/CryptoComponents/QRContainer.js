@@ -14,11 +14,11 @@ export const QRContainer = ({ qrData }) => {
 
   return (
     <Box
-      w="154px"
-      h="154px"
+      w="96px"
+      h="96px"
       border="1px solid rgba(43,47,46,0.11)"
     >
-      {src && <Image width="152px" height="152px" src={src} alt=""/>}
+      {src && <Image width="94px" height="94px" src={src} alt=""/>}
     </Box>
   )
 }
