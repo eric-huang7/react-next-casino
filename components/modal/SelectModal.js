@@ -11,8 +11,8 @@ import {ChevronLeftIcon} from "@chakra-ui/icons"
 import {ModalFooter} from "@chakra-ui/modal";
 
 const SelectModal = ({
-  isOpen, onClose, onBack, title, header, children, footer, width = 320, height, headerHeight = 56, before,
-  ...props
+  isOpen, onClose, onBack, title, header, children, footer, width = 320, height, headerHeight = 56, before, headerProps,
+  simpleClose = false, hideClose = false, ...props
 }) => (
   <Modal
     closeOnOverlayClick
@@ -45,6 +45,7 @@ const SelectModal = ({
         justifyContent="flex-start"
         alignItems="center"
         position="relative"
+        sx={headerProps}
       >
         {title && <Text
           color="white"
@@ -58,17 +59,16 @@ const SelectModal = ({
           {title}
         </Text>}
         {header}
-        {onBack && <ChevronLeftIcon
+        {onBack && <Image src="/assets/icons/deposit/arrow-left.svg"
           position="absolute"
-          w={10} h={10} left={0}
+          w="16px" h="16px" left={4}
           top={`calc(5px + (${headerHeight}px - 46px - 8px) / 2)`}
-          color="white"
           sx={{cursor: "pointer"}}
           onClick={onBack}
         />}
-        <Image src="/assets/icons/close.svg" color="white" fontSize={18} position="absolute" right={5}
-           top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`} _focus={{ boxShadow: 'none' }}
-           cursor="pointer" onClick={onClose}  />
+        {!hideClose && <Image src="/assets/icons/close.svg" color="white"
+           fontSize={18} position="absolute" right={5} top={`calc(12px + (${headerHeight}px - 46px - 8px) / 2)`}
+           _focus={{ boxShadow: 'none' }} cursor="pointer" onClick={onClose}  />}
       </ModalHeader>
 
       <ModalBody p={0} position="relative"  borderRadius="0 0 15px 15px" bg="accent.950" h="100%" display="block">

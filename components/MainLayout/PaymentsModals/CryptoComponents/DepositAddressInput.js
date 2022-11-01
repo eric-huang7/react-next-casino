@@ -19,7 +19,7 @@ export const DepositAddressInput = ({addressData, t, memoData}) => {
 
   return (
     <>
-      <VStack w={{base: "100%", lg: "356px"}} alignItems="flex-start" spacing={0}>
+      <VStack w="100%" alignItems="flex-start" spacing={0}>
         <Text as="div" fontSize="16px" color="white" fontFamily="Montserrat" fontWeight={300}>
           {t("cryptoPayment.depositAddress")}
         </Text>
@@ -33,7 +33,7 @@ export const DepositAddressInput = ({addressData, t, memoData}) => {
       </VStack>
 
       {memoData &&
-        <VStack w="356px" alignItems="flex-start" spacing={0} pt={2}>
+        <VStack w="100%" alignItems="flex-start" spacing={0} pt={2}>
           <Text as="div" fontSize="16px" color="text.250" fontFamily="Verdana">
             {t("cryptoPayment.memo")}
           </Text>
