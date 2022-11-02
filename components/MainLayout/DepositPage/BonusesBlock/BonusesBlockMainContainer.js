@@ -1,9 +1,8 @@
 import {useState} from "react";
-import {Box, HStack, VStack, Text} from "@chakra-ui/layout";
+import {Box, HStack, Text} from "@chakra-ui/layout";
 import {Input} from "@chakra-ui/input";
-import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
 import CustomSwitch from "../../../form/CustomSwitch";
-import {BonusesDropdown} from "./BonusesDropdown";
+import BonusesDropdown from "./BonusesDropdown";
 
 export const BonusesBlockMainContainer = (props) => {
   let {
@@ -19,18 +18,6 @@ export const BonusesBlockMainContainer = (props) => {
     bonusesArr
   } = props
 
-  const [showAllBonuses, setShowAllBonuses] = useState(false)
-
-  const showAllBonusesHandler = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    if (showAllBonuses) {
-      setShowAllBonuses(false)
-    } else {
-      setShowAllBonuses(true)
-    }
-  }
-
   return (
     <Box>
       <HStack justifyContent="space-between" pb={{base: "20px"}} spacing={0} alignItems="center">
@@ -40,19 +27,7 @@ export const BonusesBlockMainContainer = (props) => {
         <CustomSwitch isChecked={isChecked} onChange={checkedInputHandler}/>
       </HStack>
 
-      <HStack
-        h={showAllBonuses ? "auto" : "81px"}
-        w="100%"
-        bg="accent.700"
-        border="0"
-        borderRadius="12px"
-        alignItems="center"
-        justifyContent="space-between"
-        overflow="hidden"
-        spacing={0}
-        px="12px"
-      >
-        <BonusesDropdown
+      <BonusesDropdown
           showAllBonuses={showAllBonuses}
           userCurrency={userCurrency}
           t={t}
@@ -61,15 +36,8 @@ export const BonusesBlockMainContainer = (props) => {
           setDepositButtonText={setDepositButtonText}
           userDepositValue={userDepositValue}
           userSelectedBonus={userSelectedBonus}
-          allBonuses={bonusesArr}
-        />
-        {bonusesArr.length > 1 && <VStack h="60px" justifyContent="center">
-          {showAllBonuses
-            ? <ChevronUpIcon w={8} h={8} onClick={showAllBonusesHandler} color="primary.500" sx={{cursor: "pointer"}}/>
-            : <ChevronDownIcon w={8} h={8} onClick={showAllBonusesHandler} color="primary.500" sx={{cursor: "pointer"}}/>
-          }
-        </VStack>}
-      </HStack>
+          allBonuses={[...bonusesArr, ...bonusesArr, ...bonusesArr]}
+      />
 
       {isActiveBonusInput && <Box mt={2} w="100%">
         <Input
