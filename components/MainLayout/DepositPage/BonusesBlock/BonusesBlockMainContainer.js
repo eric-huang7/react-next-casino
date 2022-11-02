@@ -1,9 +1,9 @@
-import { BonusesBlockContainer } from './BonusesBlockContainer'
 import {useState} from "react";
 import {Box, HStack, VStack, Text} from "@chakra-ui/layout";
 import {Input} from "@chakra-ui/input";
 import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
 import CustomSwitch from "../../../form/CustomSwitch";
+import {BonusesDropdown} from "./BonusesDropdown";
 
 export const BonusesBlockMainContainer = (props) => {
   let {
@@ -52,7 +52,7 @@ export const BonusesBlockMainContainer = (props) => {
         spacing={0}
         px="12px"
       >
-        <BonusesBlockContainer
+        <BonusesDropdown
           showAllBonuses={showAllBonuses}
           userCurrency={userCurrency}
           t={t}
@@ -61,7 +61,7 @@ export const BonusesBlockMainContainer = (props) => {
           setDepositButtonText={setDepositButtonText}
           userDepositValue={userDepositValue}
           userSelectedBonus={userSelectedBonus}
-          bonusesArr={bonusesArr}
+          allBonuses={bonusesArr}
         />
         {bonusesArr.length > 1 && <VStack h="60px" justifyContent="center">
           {showAllBonuses

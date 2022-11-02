@@ -27,7 +27,6 @@ export const BonusesBlock = (props) => {
     setIsShowBonusInfo((prevState => !prevState));
   }
 
-
   const bonusClickHandler = () => {
     if (chooseBonusClickHandler) {
       chooseBonusClickHandler(bonusId)

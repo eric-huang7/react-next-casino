@@ -1,4 +1,4 @@
-import {HStack, Text, VStack} from "@chakra-ui/layout"
+import {Box, HStack, Text, VStack} from "@chakra-ui/layout"
 import {TextBlock} from './CryptoComponents/TextBlock'
 import {QRContainer} from './CryptoComponents/QRContainer'
 import {ValueContainer} from './CryptoComponents/ValueContainer'
@@ -14,16 +14,19 @@ import {useTranslation} from "next-i18next";
 import SelectModal from "../../modal/SelectModal";
 import {Image} from "@chakra-ui/react";
 import SubmitButton from "../../buttons/SubmitButton";
+import {useState} from "react";
 
 export const PaymentsCryptoWrapper = ({paymentsData}) => {
   const {t} = useTranslation('common')
   const dispatch = useDispatch()
+  const [isConfirmed, setIsConfirmed] = useState(false)
 
   const userCurrency = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const currenciesList = useSelector((store) => store.currency)
 
   const closeCrypto = () => {
+    setIsConfirmed(false);
     dispatch(showCryptoModal(false))
     dispatch(annulDeposit())
     dispatch(setStepDepositModal(1))
@@ -35,6 +38,11 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
     dispatch(showDepositModal(true));
     dispatch(annulDeposit());
     dispatch(setUserPaymentMethod(null))
+  }
+
+  const handleSubmit = () => {
+    console.log('handleSubmit');
+    setIsConfirmed(true);
   }
 
   return (
@@ -54,48 +62,63 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
         <Image src="/assets/icons/deposit/close.svg" color="white"
                fontSize={18} _focus={{ boxShadow: 'none' }} cursor="pointer" onClick={closeCrypto}  />
       </HStack>}
-      footer={<SubmitButton title="Confirm"/>}
+      footer={!isConfirmed && <SubmitButton title="Confirm" onClick={handleSubmit}/>}
     >
-      <VStack alignItems="center" p={4} spacing={0}>
-        {paymentsData.isCryptoPaymentDataLoading || currenciesList.loading
-          ? <LoadingComponent t={t} text={'loadingComponent'}/>
-          : (paymentsData.isCryptoPaymentError ? <>
-            <h2 style={{color: '#ff0000', textTransform: 'uppercase'}}>{t('cryptoPayment.error')}</h2>
-            <p
-              style={{color: '#ff0000'}}>{paymentsData.isCryptoPaymentError?.data?.extra_error_info?.message}</p>
-          </> : <>
-            <ErrorText>
-              <TextBlock
-                t={t}
-                value={userDepositValue}
-                paymentsData={paymentsData.cryptoPaymentData}
-                currency={userCurrency}
-                currenciesList={currenciesList}
-                pb="25px"
-              />
-            </ErrorText>
-            <ErrorEmpty>
-              <QRContainer
-                qrData={paymentsData.cryptoPaymentData.data.address}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <ValueContainer
-                value={userDepositValue}
-                paymentsData={paymentsData.cryptoPaymentData}
-                currency={userCurrency}
-                currenciesList={currenciesList}
-              />
-            </ErrorEmpty>
-            <ErrorEmpty>
-              <DepositAddressInput
-                t={t}
-                addressData={paymentsData.cryptoPaymentData.data.address}
-                memoData={paymentsData.cryptoPaymentData.data.memo}
-              />
-            </ErrorEmpty>
-          </>)
-        }
+      <VStack w="100%" alignItems="center" p={4} spacing={0}>
+        {isConfirmed
+          ? (<VStack h="380px" alignItems="center" justifyContent="flex-start" spacing={0}
+               bg="url('/assets/icons/deposit/check.svg') no-repeat center center">
+            <Text pt="35px" color="white" fontFamily="Montserrat" fontSize="24px" textAlign="center" fontWeight={300}>
+              You choose <Text as="span" color="primary.500">XX</Text> Bonus
+            </Text>
+            <Text maxW="70%" lineHeight="34px" pt="70px" color="white" fontFamily="Montserrat" fontSize="24px"
+                textAlign="center" fontWeight={300}>
+              Your Deposit has been
+              approved and bonus will
+              be awarded as per <Text as="span" color="primary.500">T&Cs</Text>
+            </Text>
+
+          </VStack>
+          ) : (
+            paymentsData.isCryptoPaymentDataLoading || currenciesList.loading
+              ? <LoadingComponent t={t} text={'loadingComponent'}/>
+              : (paymentsData.isCryptoPaymentError ? <>
+                <h2 style={{color: '#ff0000', textTransform: 'uppercase'}}>{t('cryptoPayment.error')}</h2>
+                <p
+                  style={{color: '#ff0000'}}>{paymentsData.isCryptoPaymentError?.data?.extra_error_info?.message}</p>
+              </> : <>
+                <ErrorText>
+                  <TextBlock
+                    t={t}
+                    value={userDepositValue}
+                    paymentsData={paymentsData.cryptoPaymentData}
+                    currency={userCurrency}
+                    currenciesList={currenciesList}
+                    pb="25px"
+                  />
+                </ErrorText>
+                <ErrorEmpty>
+                  <QRContainer
+                    qrData={paymentsData.cryptoPaymentData.data.address}
+                  />
+                </ErrorEmpty>
+                <ErrorEmpty>
+                  <ValueContainer
+                    value={userDepositValue}
+                    paymentsData={paymentsData.cryptoPaymentData}
+                    currency={userCurrency}
+                    currenciesList={currenciesList}
+                  />
+                </ErrorEmpty>
+                <ErrorEmpty>
+                  <DepositAddressInput
+                    t={t}
+                    addressData={paymentsData.cryptoPaymentData.data.address}
+                    memoData={paymentsData.cryptoPaymentData.data.memo}
+                  />
+                </ErrorEmpty>
+              </>)
+          )}
       </VStack>
     </SelectModal>
   )
