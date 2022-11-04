@@ -6,33 +6,29 @@ import { Text, HStack, Box, Image } from "@chakra-ui/react";
 export const BonusesBlock = (props) => {
   const {t} = useTranslation('promotionsPage');
   let {
-    isUseBonus,
     bonusHeading,
     bonusImage,
     bonusDescription,
-    bonusLink,
-    chooseBonusClickHandler,
+    onClick,
     bonusId,
-    classImageNotActive,
     bonusData,
     userCurrency,
-    canShowInfo
+    canShowInfo,
+    small
   } = props;
 
   const [isShowBonusInfo, setIsShowBonusInfo] = useState(false);
 
   const bonusInfoClickHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     e.stopPropagation();
     setIsShowBonusInfo((prevState => !prevState));
   }
 
   const bonusClickHandler = () => {
-    if (chooseBonusClickHandler) {
-      chooseBonusClickHandler(bonusId)
-    } else {
-    }
+    onClick && onClick(bonusId)
   }
+
   return (<>
     <HStack
       w="100%"
@@ -44,10 +40,13 @@ export const BonusesBlock = (props) => {
       cursor="pointer"
       spacing={3}
     >
-      <Image src={bonusImage} borderRadius={12} alt="" width={{base: "37px", lg: "50px"}}
-             height={{base: "37px", lg: "50px"}} />
-      <Box w={{base: "175px", lg: "255px"}}>
-        <HStack
+      <HStack justifyContent="center" alignItems="center" width={{base: "37px", lg: "50px"}}
+              height={{base: "37px", lg: "50px"}} >
+        <Image src={bonusImage} borderRadius={12} alt="" width={{base: "37px", lg: small ? "33px" : "50px"}}
+             height={{base: "37px", lg: small ? "33px" : "50px"}} />
+      </HStack>
+      <Box w={{base: "calc(100% - 70px)", lg: "calc(100% - 70px)"}}>
+        {!small && <HStack
           fontSize="15px"
           lineHeight="24px"
           color="white"
@@ -55,38 +54,49 @@ export const BonusesBlock = (props) => {
           flexWrap="nowrap"
         >
           <Text as="span"
+            fontSize="15px"
+            lineHeight="24px"
+            color="white"
+            fontFamily="Montserrat"
+            flexWrap="nowrap"
             textOverflow="ellipsis"
             display="block"
             overflow="hidden"
-            maxWidth="200px"
             whiteSpace="nowrap"
           >
             {t(bonusHeading)}
           </Text>
+        </HStack>}
+        <HStack
+          fontSize="15px"
+          lineHeight="24px"
+          color="white"
+          fontFamily="Montserrat"
+          flexWrap="nowrap"
+        >
+          <Text as="p"
+            color="#F39321"
+            whiteSpace="nowrap"
+            // textTransform="uppercase"
+            overflow="hidden"
+            textOverflow="ellipsis"
+            sx={{
+              base: {
+                fontSize: "14px",
+                fontFamily: "Montserrat",
+                margin: "10px 0 0 -40px"
+              },
+              lg: {
+                fontSize: "14px",
+                fontFamily: "Montserrat",
+                margin: "10px 0 0 0"
+              }
+            }}
+          >{bonusDescription}</Text>
           {canShowInfo && <Text fontSize={14} as="span" textDecoration="underline" mr={0} onClick={bonusInfoClickHandler}>
-              {t("bonuses.bonusBlockInfoLink")}
+            {t("bonuses.bonusBlockInfoLink")}
           </Text>}
         </HStack>
-        <Text as="p"
-          color="#F39321"
-          whiteSpace="nowrap"
-          // textTransform="uppercase"
-          overflow="hidden"
-          textOverflow="ellipsis"
-          sx={{
-            base: {
-              width: "255px",
-              fontSize: "14px",
-              fontFamily: "Montserrat",
-              margin: "10px 0 0 -40px"
-            },
-            lg: {
-              fontSize: "14px",
-              fontFamily: "Montserrat",
-              margin: "10px 0 0 0"
-            }
-          }}
-        >{bonusDescription}</Text>
       </Box>
     </HStack>
 

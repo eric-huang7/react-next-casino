@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {Box, HStack, Text} from "@chakra-ui/layout";
 import {Input} from "@chakra-ui/input";
 import CustomSwitch from "../../../form/CustomSwitch";
@@ -28,15 +27,14 @@ export const BonusesBlockMainContainer = (props) => {
       </HStack>
 
       <BonusesDropdown
-          showAllBonuses={showAllBonuses}
-          userCurrency={userCurrency}
-          t={t}
-          isUseBonus={isChecked}
-          chooseBonusClickHandler={chooseBonusClickHandler}
-          setDepositButtonText={setDepositButtonText}
-          userDepositValue={userDepositValue}
-          userSelectedBonus={userSelectedBonus}
-          allBonuses={[...bonusesArr, ...bonusesArr, ...bonusesArr]}
+        userCurrency={userCurrency}
+        t={t}
+        isUseBonus={isChecked}
+        chooseBonusClickHandler={chooseBonusClickHandler}
+        setDepositButtonText={setDepositButtonText}
+        userDepositValue={userDepositValue}
+        userSelectedBonus={userSelectedBonus}
+        allBonuses={bonusesArr}
       />
 
       {isActiveBonusInput && <Box mt={2} w="100%">

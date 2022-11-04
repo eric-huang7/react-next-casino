@@ -14,6 +14,7 @@ import {setErrorUserDepositValue} from "../../../redux/userFinance/action";
 import {numberTransformer} from "../../../helpers/numberTransformer";
 import SubmitButton from "../../buttons/SubmitButton";
 import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
+import BonusesSlider from "./BonusesBlock/BonusesSlider";
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
@@ -130,7 +131,9 @@ export const DepositPageStepper = (props) => {
           footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
           before={<ModalTopHeader width="500px" title={t('depositPage.mainHeading')} />}
         >
-          <Box pb="34px" px={{base: "16px", lg: "20px"}}>
+          {isActiveBonusInput
+            ? <BonusesSlider />
+            : <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
               <SelectCurrencyDropdown
                 onSelect={onSelectCurrency}
@@ -154,19 +157,12 @@ export const DepositPageStepper = (props) => {
               />
             </ErrorText>
 
-            {/*<HStack w="100%" p={{base: "20px 16px 0px", lg: "40px 24px 10px"}} justifyContent="space-between">*/}
-            {/*  {paymentImages.map((el) => (*/}
-            {/*    <img key={el.id} src={el.src} alt=""/>*/}
-            {/*  ))}*/}
-            {/*</HStack>*/}
-
             <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt="40px">
               <Text fontSize={18} fontWeight={400} fontFamily="Montserrat" color="white" cursor="pointer" textTransform="capitalize">
                 {isActiveBonusInput ? t("depositPage.iDontHaveBonusCodeButton") : t("depositPage.iHaveBonusCodeButton")}
               </Text>
             </HStack>
-
-          </Box>
+          </Box>}
         </SelectModal>
       )
     case 2:
