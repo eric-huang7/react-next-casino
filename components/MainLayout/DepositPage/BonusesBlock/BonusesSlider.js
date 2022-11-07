@@ -1,5 +1,7 @@
 import {useTranslation} from "next-i18next";
 import { Text, HStack, Box, Image } from "@chakra-ui/react";
+import {VStack} from "@chakra-ui/layout";
+import BonusesSlide from "./BonusesSlide";
 
 const BonusesSlider = (props) => {
   const {t} = useTranslation('promotionsPage');
@@ -18,7 +20,7 @@ const BonusesSlider = (props) => {
         Choose a bonus
       </Text>
       <HStack h={270} justifyContent="center" alignItems="center" width="100%">
-
+        <BonusesSlide />
       </HStack>
     </VStack>
   )
