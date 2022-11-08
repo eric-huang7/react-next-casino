@@ -11,22 +11,28 @@ const BonusesSlider = (props) => {
   const [active, setActive] = useState()
   const slides = [
     {
-      bonus: '50 Free Spains',
-      amount: '0.0256832',
-      abbr: 'BTC',
-      time: '1:20:35:5',
+      title: '50 Free Spains',
+      amount: '0.5',
+      abbr: 'LTC',
+      time: '1:10:30:0',
+      minDeposit: '$20.00',
+      bg: 'rgba(5, 174, 113, 0.73)'
     },
     {
-      bonus: '50 Free Spains',
+      title: '50 Free Spains',
       amount: '0.0256832',
       abbr: 'BTC',
       time: '1:20:35:5',
+      minDeposit: '$10.00',
+      bg: 'rgba(243, 147, 33, 0.6)'
     },
     {
-      bonus: '50 Free Spains',
-      amount: '0.0256832',
-      abbr: 'BTC',
-      time: '1:20:35:5',
+      title: '50 Free Spains',
+      amount: '0.1',
+      abbr: 'ETH',
+      time: '1:24:00:0',
+      minDeposit: '$30.00',
+      bg: 'rgba(37, 33, 243, 0.62)'
     }
   ];
 
@@ -71,6 +77,14 @@ const BonusesSlider = (props) => {
     prevArrow: <SamplePrevArrow/>
   }
 
+  const handleClick = (index) => {
+    if (active === index) {
+      setActive(undefined)
+    } else {
+      setActive(index)
+    }
+  }
+
   return (
     <VStack
       w="100%"
@@ -90,11 +104,13 @@ const BonusesSlider = (props) => {
             <BonusesSlide
               key={index}
               amount={item.amount}
-              bonus={item.bonus}
-              abbr={item.currency}
+              title={item.title}
+              abbr={item.abbr}
               time={item.time}
+              minDeposit={item.minDeposit}
+              bg={item.bg}
               active={active === index}
-              onClick={() => setActive(index)}
+              onClick={() => handleClick(index)}
             />
           ))}
         </Slider>
