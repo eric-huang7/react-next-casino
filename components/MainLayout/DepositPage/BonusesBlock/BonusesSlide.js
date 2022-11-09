@@ -2,8 +2,10 @@ import {useTranslation} from "next-i18next";
 import { Text, HStack, Box, Image } from "@chakra-ui/react";
 import {VStack} from "@chakra-ui/layout";
 import CurrencyIcon from "../../../currency/CurrencyIcon";
+import Countdown from "../../../Countdown";
+import React from "react";
 
-const BonusesSlide = ({amount = '', abbr = 'BTC', title, time, active = false, minDeposit, onClick, bg}) => {
+const BonusesSlide = ({amount = '', abbr = 'BTC', title, deadline, active = false, minDeposit, onClick, bg}) => {
   const {t} = useTranslation('common');
 
   return (
@@ -60,7 +62,7 @@ const BonusesSlide = ({amount = '', abbr = 'BTC', title, time, active = false, m
           <HStack minH="44px" justifyContent="center" alignItems="center" w="calc(100% - 30px)" bg="#AD4B1D"
             borderRadius="12px" mx="15px">
             <Text px="20px" fontSize={24} fontWeight={500} color="white" fontFamily="Montserrat" letterSpacing="0.25em">
-              {time}
+              <Countdown deadline={deadline} />
             </Text>
           </HStack>
         </VStack>

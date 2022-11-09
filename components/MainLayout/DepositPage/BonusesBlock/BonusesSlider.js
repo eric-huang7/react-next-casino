@@ -14,7 +14,7 @@ const BonusesSlider = (props) => {
       title: '50 Free Spains',
       amount: '0.5',
       abbr: 'LTC',
-      time: '1:10:30:0',
+      deadline: '11/12/2022',
       minDeposit: '$20.00',
       bg: 'rgba(5, 174, 113, 0.73)'
     },
@@ -22,7 +22,7 @@ const BonusesSlider = (props) => {
       title: '50 Free Spains',
       amount: '0.0256832',
       abbr: 'BTC',
-      time: '1:20:35:5',
+      deadline: '11/10/2022',
       minDeposit: '$10.00',
       bg: 'rgba(243, 147, 33, 0.6)'
     },
@@ -30,7 +30,7 @@ const BonusesSlider = (props) => {
       title: '50 Free Spains',
       amount: '0.1',
       abbr: 'ETH',
-      time: '1:24:00:0',
+      deadline: '11/09/2022',
       minDeposit: '$30.00',
       bg: 'rgba(37, 33, 243, 0.62)'
     }
@@ -106,7 +106,7 @@ const BonusesSlider = (props) => {
               amount={item.amount}
               title={item.title}
               abbr={item.abbr}
-              time={item.time}
+              deadline={item.deadline}
               minDeposit={item.minDeposit}
               bg={item.bg}
               active={active === index}
