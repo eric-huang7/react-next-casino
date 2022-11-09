@@ -163,8 +163,7 @@ export const RegisterSignup = ({t, isShow}) => {
   return (
     <div
       className={`${styles.registerSignupWrapper} ${isShow ? '' : styles.hideRegister} ${ui.hideForCurrency ? styles.hideRegisterForCurrency : ""}`}>
-      <div onClick={() => registerCloseButtonHandler()} className={styles.forClosePopup}></div>
-      <div onClick={(e) => closePopupHandler(e)} className={styles.registerMainBlock}>
+      <div className={styles.registerMainBlock}>
         <TopHeading />
         <div className={styles.registerInnerBlock}>
           <LowHeading registerCloseButtonHandler={registerCloseButtonHandler}/>
