@@ -158,7 +158,7 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         <LogIn isShow={logInShow} />
       </ErrorEmpty>}
 
-      {(userInfo.isAuthenticated) && <ErrorEmpty>
+      {userInfo.isAuthenticated && isShowModal.isShowDepositModal && <ErrorEmpty>
         <DepositPage />
       </ErrorEmpty>}
 

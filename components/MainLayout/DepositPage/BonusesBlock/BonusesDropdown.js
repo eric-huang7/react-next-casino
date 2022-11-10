@@ -13,6 +13,7 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import {Button} from "@chakra-ui/button";
+import useBonuses from "../../../../hooks/useBonuses";
 
 const iDontNeedBonus = {id: 1, heading: "bonuses.bonusBlockInfoNotBonus", info: "", icon: '/assets/icons/stop.png'};
 
@@ -26,11 +27,12 @@ const Item = ({ children, ...props}) => <MenuItem
 >{children}</MenuItem>
 
 const BonusesDropdown = ({
-  t, allBonuses, isUseBonus,
+  t, isUseBonus,
   chooseBonusClickHandler, userSelectedBonus, userCurrency
 }) => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [selected, setSelected] = useState();
+  const {allBonuses} = useBonuses();
 
   useEffect(() => {
     setIsEmpty(!(allBonuses?.length && isUseBonus));
@@ -101,7 +103,6 @@ const BonusesDropdown = ({
               isUseBonus={isUseBonus}
               chooseBonusClickHandler={chooseBonusClickHandler}
               bonusData={selected}
-              userCurrency={userCurrency}
               canShowInfo={true}
             />
           }
@@ -138,7 +139,6 @@ const BonusesDropdown = ({
                   bonusHeading={`bonuses.bonus_${el.id}.deposit_bonus.heading`}
                   bonusDescription={`${bonusDescription.max_bonus}${bonusDescription.free_spins_amount ? ` + ${bonusDescription.free_spins_amount} ${t('bonusInfoContainer.bonusInfo.freeSpins')}` : ''}`}
                   bonusData={el}
-                  userCurrency={userCurrency}
                   canShowInfo={true}
                 />
               </ErrorText>

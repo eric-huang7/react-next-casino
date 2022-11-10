@@ -5,15 +5,16 @@ import {useTranslation} from "next-i18next";
 import {bonusInfoCalculator} from "../../helpers/bonusInfoCalculator";
 import {HStack, Text, VStack} from "@chakra-ui/layout";
 import {useRouter} from "next/router";
+import {useSelector} from "react-redux";
 
-export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, userCurrency, fromDeposit}) => {
+export const BonusInfoContainer = ({isShow, infoClickHandler, bonusData, fromDeposit}) => {
   const router = useRouter();
   const {t} = useTranslation('common');
 
   const closeButtonClickHandler = (e) => {
     infoClickHandler(!isShow);
   }
-
+  const userCurrency = useSelector((state) => state.userFinance)
   let bonusInfo = bonusInfoCalculator(bonusData, userCurrency?.userCurrencyData, t);
 
   const handleTerms = () => {

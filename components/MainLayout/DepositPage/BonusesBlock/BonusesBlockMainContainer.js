@@ -14,7 +14,6 @@ export const BonusesBlockMainContainer = (props) => {
     setDepositButtonText,
     userDepositValue,
     userSelectedBonus,
-    bonusesArr
   } = props
 
   return (
@@ -34,7 +33,6 @@ export const BonusesBlockMainContainer = (props) => {
         setDepositButtonText={setDepositButtonText}
         userDepositValue={userDepositValue}
         userSelectedBonus={userSelectedBonus}
-        allBonuses={bonusesArr}
       />
 
       {isActiveBonusInput && <Box mt={2} w="100%">

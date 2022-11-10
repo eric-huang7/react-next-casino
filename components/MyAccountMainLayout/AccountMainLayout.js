@@ -138,9 +138,9 @@ export const AccountMainLayout = ({ children }) => {
 
           {isShowModal.showMessagePopup && <MessageContainer/>}
 
-          <ErrorEmpty>
+          {isShowModal.isShowDepositModal && <ErrorEmpty>
             <DepositPage t={t}/>
-          </ErrorEmpty>
+          </ErrorEmpty>}
 
           {isShowModal.isShowCreditCardModal && <ErrorEmpty>
             <PaymentsCardWrapper

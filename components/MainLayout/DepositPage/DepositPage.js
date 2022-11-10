@@ -132,7 +132,7 @@ export const DepositPage = () => {
     onClose()
   }
 
-  return (popups.isShowDepositModal || true) && (
+  return popups.isShowDepositModal && (
     <>
       <ErrorText>
         <DepositPageStepper
@@ -152,7 +152,6 @@ export const DepositPage = () => {
           setDepositButtonText={setDepositButtonText}
           buttonText={buttonText}
           userSelectedBonus={userSelectedBonus}
-          bonusesArr={bonusesArr}
         />
       </ErrorText>
       <SelectCurrencyModal

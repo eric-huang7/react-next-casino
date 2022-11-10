@@ -40,7 +40,6 @@ export const DepositPageStepper = (props) => {
     setDepositButtonText,
     buttonText,
     userSelectedBonus,
-    bonusesArr,
   } = props
 
   const router = useRouter()
@@ -153,7 +152,6 @@ export const DepositPageStepper = (props) => {
                 setDepositButtonText={setDepositButtonText}
                 userDepositValue={userDepositValue}
                 userSelectedBonus={userSelectedBonus}
-                bonusesArr={bonusesArr}
               />
             </ErrorText>
 

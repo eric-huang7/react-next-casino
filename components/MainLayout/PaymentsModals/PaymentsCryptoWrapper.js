@@ -14,16 +14,37 @@ import {useTranslation} from "next-i18next";
 import SelectModal from "../../modal/SelectModal";
 import {Image} from "@chakra-ui/react";
 import SubmitButton from "../../buttons/SubmitButton";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {iconsUrl} from "../../../helpers/imageUrl";
+import {BonusesBlock} from "../DepositPage/BonusesBlock/BonusesBlock";
+import useBonuses from "../../../hooks/useBonuses";
+import {BonusesItem} from "../DepositPage/BonusesBlock/BonusItem";
 
 export const PaymentsCryptoWrapper = ({paymentsData}) => {
   const {t} = useTranslation('common')
   const dispatch = useDispatch()
   const [isConfirmed, setIsConfirmed] = useState(false)
+  const [bonusData, setBonusData] = useState()
+
+  const {allBonuses} = useBonuses();
 
   const userCurrency = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
   const currenciesList = useSelector((store) => store.currency)
+  const userSelectedBonus = useSelector((state) => state.userBonus)
+
+  useEffect(() => {
+    if (allBonuses?.length > 0) {
+      if (userSelectedBonus) {
+        const selectedItem = allBonuses?.find(item => item.id === userSelectedBonus.id);
+
+        setBonusData(selectedItem || allBonuses[0])
+      } else {
+        setBonusData(allBonuses[0])
+      }
+    }
+
+  }, [allBonuses, userSelectedBonus]);
 
   const closeCrypto = () => {
     setIsConfirmed(false);
@@ -41,7 +62,6 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
   }
 
   const handleSubmit = () => {
-    console.log('handleSubmit');
     setIsConfirmed(true);
   }
 
@@ -117,6 +137,9 @@ export const PaymentsCryptoWrapper = ({paymentsData}) => {
                     memoData={paymentsData.cryptoPaymentData.data.memo}
                   />
                 </ErrorEmpty>
+                {bonusData && <Box pt="16px" w="100%">
+                  <BonusesItem bonusData={bonusData} />
+                </Box>}
               </>)
           )}
       </VStack>
