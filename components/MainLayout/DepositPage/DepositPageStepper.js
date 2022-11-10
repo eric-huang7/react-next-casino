@@ -170,7 +170,7 @@ export const DepositPageStepper = (props) => {
           width={430}
           headerHeight={70}
           onClose={closeDepositModalHandler}
-          onBack={() => stepHandler(0)}
+          // onBack={() => stepHandler(0)}
           title={t("depositPage.innerHeading")}
           before={getHeader()}
         >
