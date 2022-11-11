@@ -1,23 +1,22 @@
-import styles from '../../../../../styles/NotificationPopup/NotificationPopup.module.scss'
-import { MessagesContainer } from './MessagesContainer'
-import { MoreButton } from './MoreButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import { Image, chakra } from "@chakra-ui/react"
 import { browserNotifications } from '../../../../../helpers/browserNotifications'
 import {
   changeLocalUserSubscriptions,
   changeUserSubscriptions
 } from '../../../../../redux/userSubscriptions/action'
-import { NotifyIcon } from './NotifyIcon'
 import ErrorEmpty from '../../../../ErrorBoundaryComponents/ErrorEmpty'
 import { useTranslation } from 'next-i18next'
+import {HStack, Text, Box} from "@chakra-ui/layout";
+import {MessageItem} from "./MessageItem";
+import Link from "next/link";
 
 export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo }) => {
   const { t } = useTranslation('common')
-
   const dispatch = useDispatch()
-
   let timerCount = 0
+
   useEffect(() => {
     let timerShow = setInterval(() => {
       timerCount = timerCount + 1
@@ -26,8 +25,6 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
     return () => {
       if (timerCount >= 5) {
         checkReadMessages()
-      } else {
-
       }
       clearInterval(timerShow)
     }
@@ -62,20 +59,74 @@ export const NotificationPopup = ({ notifyData, checkReadMessages, subscriptInfo
     dispatch(changeUserSubscriptions(userData))
     dispatch(changeLocalUserSubscriptions(userData))
   }
+
   return (
-    <div className={`${styles.notificationPopupWrapper}`}>
-      <div className={styles.notificationHeading}>
-        <span>{t('notificationPopup.header.heading')}</span>
+    <Box
+      position="absolute"
+      top="45px"
+      right="-80px"
+      color="white"
+      w="301px"
+      maxH="840px"
+      p="5px 0px 10px 0px"
+      backgroundColor="black"
+      fontFamily="Franklin Gothic"
+    >
+      <HStack py="10px" px="15px" w="100%" justifyContent="space-between">
+        <Text
+          as="span"
+          fontSize="16px"
+          color="text.180"
+          fontFamily="Franklin Gothic"
+        >
+          {t('notificationPopup.header.heading')}
+        </Text>
+        <Image
+          w="28px"
+          h="19px"
+          mr="15px"
+          onClick={soundClickHandler}
+          src={`/assets/icons/notifications/${notifySubscript === 1 ? 'sound_on.svg' : 'sound_off.svg'}`}
+          alt=""
+        />
+      </HStack>
+
+      <Box maxH="720px" overflow="hidden">
         <ErrorEmpty>
-          <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+          {notifyData?.map((el) => {
+            return (
+              <ErrorEmpty key={`notification ${el.id}`}>
+                <MessageItem
+                  key={`notification ${el.id}`}
+                  messageType={el.type}
+                  text={el.text}
+                  additionalText={el.text_additional}
+                  icon={el.image}
+                  link={el.link}
+                  time={el.time_created}
+                />
+              </ErrorEmpty>
+            )
+          })}
         </ErrorEmpty>
-      </div>
-      <div className={styles.messagesBlock}>
-        <ErrorEmpty>
-          <MessagesContainer notifyData={notifyData}/>
-        </ErrorEmpty>
-      </div>
-      <MoreButton />
-    </div>
+      </Box>
+
+      <HStack
+        h="20px"
+        alignItems="flex-end"
+        justifyContent="center"
+        mt="5px"
+      >
+        <Link href={'/notifications'}>
+          <chakra.a
+            fontSize="14px"
+            lineHeight="18px"
+            color="text.250"
+          >
+            {t("notificationPopup.moreLink")}
+          </chakra.a>
+        </Link>
+      </HStack>
+    </Box>
   )
 }

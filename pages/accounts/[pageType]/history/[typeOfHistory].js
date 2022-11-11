@@ -6,7 +6,6 @@ import {TrxHistory} from "../../../../components/MyAccountMainLayout/TrxHistory/
 import {BetsHistory} from "../../../../components/MyAccountMainLayout/BetsHistory/BetsHistory";
 import {BonusHistory} from "../../../../components/MyAccountMainLayout/BonusHistory/BonusHistory";
 
-
 const TypeOfHistory = (props) => {
   const router = useRouter();
 
@@ -38,11 +37,9 @@ const TypeOfHistory = (props) => {
         </AccountMainLayout>
       )
   }
-
 }
 
 export const getServerSideProps = async (context) => {
-
   return ({
     props: {
       ...await serverSideTranslations(context.locale, ['promotionsPage', 'common']),

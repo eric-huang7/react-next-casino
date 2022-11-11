@@ -1,0 +1,11 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="strax" x="494" y="120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z" fill="#fff"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.857 2.39a.5.5 0 01.542 0l7.57 4.886a.5.5 0 010 .84l-7.71 4.956a.5.5 0 01-.536.003L2.802 8.738v.798a.5.5 0 00.229.42l6.96 4.486 7.3-4.644a.5.5 0 01.768.422v1.56c0 .511-.26.987-.689 1.263l-7.111 4.567a.5.5 0 01-.541 0L2.17 12.746l.541-.84 7.278 4.688 6.84-4.394a.5.5 0 00.23-.42v-.65l-6.802 4.327a.5.5 0 01-.54-.002l-7.228-4.66a1.5 1.5 0 01-.687-1.26v-1.7a.5.5 0 01.23-.422L9.857 2.39zM3.235 7.83l6.75 4.229 6.79-4.364-6.648-4.29L3.235 7.83z" fill="url(#oppaint0_linear)"/>
+        <defs>
+            <linearGradient id="oppaint0_linear" x1="4.204" y1="6.372" x2="18.088" y2="12.959" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#21BBC0"/>
+                <stop offset="1" stop-color="#1489C9"/>
+                <stop offset="1" stop-opacity="0"/>
+            </linearGradient>
+        </defs>
+    </svg>

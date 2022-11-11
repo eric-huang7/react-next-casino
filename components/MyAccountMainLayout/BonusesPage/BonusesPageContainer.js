@@ -9,7 +9,7 @@ export const BonusesPageContainer = ({ t }) => {
 
   return (
     <div>
-      <Heading t={t} heading={'myAccount.pageHeadings.bonuses'}/>
+      <Heading heading={t('myAccount.pageHeadings.bonuses')}/>
       <ErrorText>
         <BonusPageInfoContainer bonusInfo={bonusInfo} currency={currency} t={t}/>
       </ErrorText>

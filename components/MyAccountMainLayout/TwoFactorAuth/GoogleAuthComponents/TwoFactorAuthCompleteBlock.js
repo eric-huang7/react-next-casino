@@ -1,4 +1,3 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
 import { TextBlock } from './TextBlock'
 import { TwoFactorCompleteInputsBlock } from './TwoFactorCompleteInputsBlock'
 import { useState } from 'react'
@@ -8,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 import Connect from "../../../../helpers/connect";
+import { Box } from "@chakra-ui/react";
 
 export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
   const router = useRouter()
@@ -37,7 +37,7 @@ export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
   }
 
   return (
-    <div className={styles.googleAuthContainer}>
+    <Box pb="20px">
       <TextBlock t={t}/>
       <ErrorText>
         <TwoFactorCompleteInputsBlock
@@ -48,6 +48,6 @@ export const TwoFactorAuthCompleteBlock = ({ t, authData }) => {
           t={t}
         />
       </ErrorText>
-    </div>
+    </Box>
   )
 }

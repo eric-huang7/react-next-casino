@@ -1,8 +1,10 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
+import {chakra} from "@chakra-ui/react";
+import RoundButton from "../../../buttons/RoundButton";
+import Cell from "../../../table/Cell";
 
-export const TableRow = ({ t, sessionData, currentSession, closeSessionHandler }) => {
+export const TableRow = ({ t, sessionData, currentSession, closeSessionHandler, index }) => {
   const router = useRouter()
 
   let date = dateFormatter(sessionData.time_created, router.locale)
@@ -12,25 +14,21 @@ export const TableRow = ({ t, sessionData, currentSession, closeSessionHandler }
   let isCurrent = currentSession === sessionData.id
 
   return (
-    <tr>
-      <td>{date}</td>
-      <td>{ip}</td>
-      <td>{country}</td>
-      <td>{device}</td>
-      <td>
-        {
-          isCurrent
-            ?
-            t('myAccount.profilePage.sessionsBlocks.current')
-            :
-            <button
-              className={styles.sessionCloseButton}
+    <chakra.tr bg={index % 2 ? "#eeeeee" : "#ffffff"}>
+      <Cell>{date}</Cell>
+      <Cell>{ip}</Cell>
+      <Cell>{country}</Cell>
+      <Cell>{device}</Cell>
+      <Cell>
+        {isCurrent
+          ? t('myAccount.profilePage.sessionsBlocks.current')
+          : <RoundButton
+              solid
               onClick={() => closeSessionHandler(sessionData)}
-            >
-              {t('myAccount.profilePage.sessionsBlocks.close')}
-            </button>
+              title={t('myAccount.profilePage.sessionsBlocks.close')}
+            />
         }
-      </td>
-    </tr>
+      </Cell>
+    </chakra.tr>
   )
 }

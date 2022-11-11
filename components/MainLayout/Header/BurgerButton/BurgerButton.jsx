@@ -1,11 +1,8 @@
 import Image from 'next/image'
-import styles from '../../../../styles/Header/BurgerButton.module.scss'
 import {useDispatch, useSelector} from "react-redux";
+import {Box} from "@chakra-ui/react";
 import {showMobileMenu} from "../../../../redux/ui/action";
-import {NotificationCounter} from "./NotificationCounter";
-import ErrorEmpty from "../../../ErrorBoundaryComponents/ErrorEmpty";
-
-
+import {NotificationCounter} from "../UserBlock/NotificationCounter";
 
 export const BurgerButton = ({userLogined}) => {
   const dispatch = useDispatch();
@@ -20,7 +17,6 @@ export const BurgerButton = ({userLogined}) => {
     }
   });
 
-
   const burgerClickHandler = () => {
     if (isShowMobileMenu) {
       dispatch(showMobileMenu(false));
@@ -30,9 +26,13 @@ export const BurgerButton = ({userLogined}) => {
   }
 
   return (
-    <div
-      className={styles.burgerWrapper}
-      onClick={() => burgerClickHandler()}
+    <Box
+      display={{base: "block", lg: "none"}}
+      w="32px"
+      h="24px"
+      mr="11px"
+      position="relative"
+      onClick={burgerClickHandler}
     >
       <Image
         src={'/assets/icons/burger_icon.svg'}
@@ -40,13 +40,7 @@ export const BurgerButton = ({userLogined}) => {
         width={'32px'}
         height={'24px'}
       />
-      {(unreadMessages.length > 0 && userLogined)
-        ?
-        <ErrorEmpty>
-          <NotificationCounter unreadMessages={unreadMessages} />
-        </ErrorEmpty>
-        :
-        <></>}
-    </div>
+      {(unreadMessages.length > 0 && userLogined) && <NotificationCounter messageCount={unreadMessages.length} />}
+    </Box>
   )
 }

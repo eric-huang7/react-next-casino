@@ -1,13 +1,11 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
+import BodyText from "../../../typography/BodyText";
+import {Box} from "@chakra-ui/react";
 
-export const TextBlock = ({ t }) => {
-
-  return (
-    <div className={styles.textBlock}>
-      <p>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textOne')}</p>
-      <p>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textTwo')}</p>
-      <p>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textThree')}</p>
-      <p>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textFour')}</p>
-    </div>
-  )
-}
+export const TextBlock = ({ t }) => (
+  <Box>
+    <BodyText pb={4}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textOne')}</BodyText>
+    <BodyText pb={4}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textTwo')}</BodyText>
+    <BodyText pb={4}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textThree')}</BodyText>
+    <BodyText pb={4}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.textBlock.textFour')}</BodyText>
+  </Box>
+)

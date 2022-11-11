@@ -1,0 +1,11 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="jpy" x="178" y="96" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#ieclip0)">
+            <path d="M10.882 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z" fill="#F0F0F0"/>
+            <path d="M10.882 14.348a4.348 4.348 0 100-8.696 4.348 4.348 0 000 8.696z" fill="#D80027"/>
+        </g>
+        <defs>
+            <clipPath id="ieclip0">
+                <path fill="#fff" transform="translate(.882)" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
 import { useSelector } from 'react-redux'
 import { Heading } from '../ComponentsForPages/Heading'
 import { TrxHistoryInputsContainer } from './TrxHistoryInputsContainer'
@@ -15,38 +14,31 @@ export const TrxHistory = ({ t }) => {
 
   const [wasFiltering, setWasFiltering] = useState(false)
 
-  if (userInfo?.balance?.success && !currency.loading) {
-    return (
-      <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.trxHistory'}/>
-        <TrxHistoryLinksContainer t={t}/>
-        <ErrorEmpty>
-          <TrxHistoryInputsContainer
-            userInfo={userInfo}
-            currencyData={currency}
-            t={t}
-            setWasFiltering={setWasFiltering}
-          />
-        </ErrorEmpty>
-        {userInfo.loadingUserPayments
-          ?
-          <LoadingComponent t={t}/>
-          :
-          <ErrorText>
-            <TrxHistoryTableContainer
-              wasFiltering={wasFiltering} userInfo={userInfo} currencyData={currency} t={t}
+  return (
+    <div>
+      <Heading heading={t('myAccount.pageHeadings.trxHistory')}/>
+      {userInfo?.balance?.success && !currency.loading
+        ? <>
+          <TrxHistoryLinksContainer t={t}/>
+          <ErrorEmpty>
+            <TrxHistoryInputsContainer
+              userInfo={userInfo}
+              currencyData={currency}
+              t={t}
+              setWasFiltering={setWasFiltering}
             />
-          </ErrorText>
-        }
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.mainContainer}>
-        <Heading t={t} heading={'myAccount.pageHeadings.trxHistory'}/>
-        <LoadingComponent t={t}/>
-      </div>
-    )
-  }
-
+          </ErrorEmpty>
+          {userInfo.loadingUserPayments
+            ? <LoadingComponent t={t}/>
+            : <ErrorText>
+              <TrxHistoryTableContainer
+                wasFiltering={wasFiltering} userInfo={userInfo} currencyData={currency} t={t}
+              />
+            </ErrorText>
+          }
+        </>
+        : <LoadingComponent t={t}/>
+      }
+    </div>
+  )
 }

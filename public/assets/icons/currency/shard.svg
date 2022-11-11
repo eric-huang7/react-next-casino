@@ -1,0 +1,19 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="shard" x="24" y="460" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.247 17.36l-4.572-4.985-4.556 4.968 4.58 2.64 4.548-2.622z" fill="url(#nopaint0_linear_2298_3438)"/>
+        <path d="M9.072 0L1 15.11l2.898 1.656 5.174-5.692V0z" fill="url(#nopaint1_linear_2298_3438)"/>
+        <path d="M10.21 0l8.073 15.11-2.898 1.656-5.174-5.692V0z" fill="url(#nopaint2_linear_2298_3438)"/>
+        <defs>
+            <linearGradient id="nopaint0_linear_2298_3438" x1="9.683" y1="12.35" x2="9.683" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#05F"/>
+                <stop offset="1" stop-color="#00D1FF"/>
+            </linearGradient>
+            <linearGradient id="nopaint1_linear_2298_3438" x1="5.036" y1="0" x2="5.036" y2="16.766" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#05F"/>
+                <stop offset="1" stop-color="#00D1FF"/>
+            </linearGradient>
+            <linearGradient id="nopaint2_linear_2298_3438" x1="14.247" y1="0" x2="14.247" y2="16.766" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#05F"/>
+                <stop offset="1" stop-color="#00D1FF"/>
+            </linearGradient>
+        </defs>
+    </svg>

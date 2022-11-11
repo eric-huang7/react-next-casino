@@ -1,7 +1,4 @@
-import styles from '../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
-import { AmountInput } from './AmountInput'
-import { AddressInput } from './AddressInput'
-import { ButtonContainer } from './ButtonContainer'
+import AmountInput from '../AmountInput'
 import { useEffect, useState } from 'react'
 import { post_withdraw_url } from '../../../../../../redux/url/url'
 import { useRouter } from 'next/router'
@@ -9,6 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserPayments, userBalance } from '../../../../../../redux/user/action'
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../../../../../helpers/connect";
+import RoundButton from "../../../../../buttons/RoundButton";
+import {Text, Box} from "@chakra-ui/layout";
+import InputFieldRound from "../../../../../form/InputFieldRound";
+import {numberTransformer} from "../../../../../../helpers/numberTransformer";
+import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
 
 export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
   const dispatch = useDispatch()
@@ -87,7 +89,7 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
   }, [router])
 
   return (
-    <div className={styles.paymentMethodFormWrapper}>
+    <Box py="45px">
       <form onSubmit={(e) => withdrawFormHandler(e)} id={'paymentForm'}>
         <ErrorEmpty>
           <AmountInput
@@ -96,20 +98,38 @@ export const FormContainer = ({ t, typeOfCurrency, userInfo }) => {
             amountInputHandler={amountInputHandler}
             amountValue={amountValue}
             valueError={valueError}
+            min={numberTransformer(`${typeOfCurrency.withdrawMin}`)}
+            max={numberTransformer(`${typeOfCurrency.withdrawMax}`)}
+            step={decimalStepCounter(typeOfCurrency.decimal)}
           />
         </ErrorEmpty>
+
         <ErrorEmpty>
-          <AddressInput
-            t={t}
-            addressInputHandler={addressInputHandler}
-            addressValue={addressValue}
-            addressError={addressError}
+          <InputFieldRound
+            maxW={{base: '100%', lg: '338px'}}
+            label={t('myAccount.cashoutPage.selectPaymentContainer.address')}
+            error={addressError}
+            onChange={addressInputHandler}
+            value={addressValue}
+            id={'addressInput'}
+            mb="24px"
           />
         </ErrorEmpty>
-        <span className={styles.errorMessage}>{errorMessage}</span>
-        <span className={styles.successMessage}>{successMessage}</span>
-        <ButtonContainer withdrawFormHandler={withdrawFormHandler} t={t}/>
+
+        <Text fontSize={15} color="red.500">{errorMessage}</Text>
+        <Text fontSize={15} color="primary.500">{successMessage}</Text>
+
+        <RoundButton
+          onClick={withdrawFormHandler}
+          title={t("myAccount.cashoutPage.selectPaymentContainer.requestCashout")}
+          w="auto"
+          solid
+          fontFamily="Verdana"
+          fontSize={15}
+          form="paymentForm"
+          type="submit"
+        />
       </form>
-    </div>
+    </Box>
   )
 }

@@ -1,5 +1,3 @@
-import styles from '../../../../styles/MyAccount/TrxHistory/TrxHistory.module.scss'
-import { RecallButton } from './RecallButton'
 import { post_withdraw_url } from '../../../../redux/url/url'
 import { getUserPayments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
@@ -7,12 +5,16 @@ import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { currencyInfo } from '../../../../helpers/currencyInfo'
 import { useRouter } from 'next/router'
 import Connect from "../../../../helpers/connect";
+import Cell from "../../../table/Cell";
+import {chakra} from "@chakra-ui/react";
+import RoundButton from "../../../buttons/RoundButton";
 
 export const TrxTableRow = ({
   t,
   paymentData,
   currencyData,
-  userInfo
+  userInfo,
+  index
 }) => {
 
   const dispatch = useDispatch()
@@ -36,27 +38,32 @@ export const TrxTableRow = ({
   }
 
   return (
-    <tr className={styles.dataRow}>
-      <td>
+    <chakra.tr bg={index % 2 ? "#f5f5f5" : "#e1e1e1"}>
+      <Cell>
         {date}
-      </td>
-      <td
+      </Cell>
+      <Cell
         style={paymentData.status === 3 || paymentData.status === 4 ? { color: 'red' } : paymentData.status === 2 ? { color: 'green' } : { color: '#595656' }}>
         {t(status)}
-        {
-          paymentData.status === 1 && <RecallButton recallClickHandler={recallClickHandler} t={t}/>
-        }
-      </td>
-      <td>
+        {paymentData.status === 1 && <RoundButton
+          solid
+          ml={3}
+          px={4}
+          w="auto"
+          onClick={recallClickHandler}
+          title={t('myAccount.history.transactions.table.recallButton')}
+        />}
+      </Cell>
+      <Cell>
         {t(action)}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {t(paymentSystem)}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {`${amount} ${currency}`}
-      </td>
-    </tr>
+      </Cell>
+    </chakra.tr>
   )
 }
 

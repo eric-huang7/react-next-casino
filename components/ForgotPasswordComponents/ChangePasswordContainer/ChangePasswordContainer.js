@@ -1,31 +1,27 @@
-import styles from '../../../styles/ForgotPassword/ForgotPassword.module.scss'
-import { HeadingBlock } from '../HeadingBlock'
-import { ResetPasswordButton } from '../ResetPasswordButton'
-import { useDispatch } from 'react-redux'
-import { showChangePasswordPopup, showTwoFaPopup } from '../../../redux/popups/action'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { PasswordInputsContainer } from './PasswordInputsContainer'
-import { useState } from 'react'
-import { schemaChangePasswordWindow } from '../../../schemasForms/changePasswordWindowForm'
+import {Box} from '@chakra-ui/react'
+import {useDispatch} from 'react-redux'
+import {showChangePasswordPopup, showTwoFaPopup} from '../../../redux/popups/action'
+import {useForm} from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import {PasswordInputsContainer} from './PasswordInputsContainer'
+import {useState} from 'react'
+import {schemaChangePasswordWindow} from '../../../schemasForms/changePasswordWindowForm'
 import {token_url} from '../../../redux/url/url'
-import { changePasswordLogin } from '../../../redux/user/action'
-import { InstructionsSendContainer } from '../InstructionsSendContainer/InstructionsSendContainer'
-import Connect from "../../../helpers/connect";
+import {changePasswordLogin} from '../../../redux/user/action'
+import {InstructionsSendContainer} from '../InstructionsSendContainer/InstructionsSendContainer'
+import Connect from "../../../helpers/connect"
+import SelectModal from "../../modal/SelectModal"
+import SubmitButton from "../../buttons/SubmitButton";
 
-export const ChangePasswordContainer = ({ t, token }) => {
+export const ChangePasswordContainer = ({t, token}) => {
   const dispatch = useDispatch()
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
     resolver: yupResolver(schemaChangePasswordWindow),
   })
 
   const [requestError, setRequestError] = useState('')
   const [requestSuccess, setRequestSuccess] = useState(false)
-
-  const backButtonClickHandler = () => {
-
-  }
 
   const closeForgotPasswordHandler = () => {
     dispatch(showChangePasswordPopup(false))
@@ -71,56 +67,38 @@ export const ChangePasswordContainer = ({ t, token }) => {
     })
   }
 
-  if (requestSuccess) {
-    return (
-      <div className={`${styles.forgotPasswordWrapper} `}>
-        <div className={styles.mainContainer}>
-          <div className={styles.instructionsBlock}>
-            <HeadingBlock
-              t={t}
-              closeForgotPasswordHandler={closeForgotPasswordHandler}
-              whatDoBackButton={backButtonClickHandler}
-              text={'forgotPasswordForm.headings.passwordChanged'}
-              isShowBackButton={false}
-            />
-            <InstructionsSendContainer
-              t={t}
-              text={'forgotPasswordForm.successPasswordChange'}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className={`${styles.forgotPasswordWrapper} `}>
-        <div className={styles.mainContainer}>
-          <div className={styles.instructionsBlock}>
-            <HeadingBlock
-              t={t}
-              closeForgotPasswordHandler={closeForgotPasswordHandler}
-              isShowBackButton={false}
-              whatDoBackButton={backButtonClickHandler}
-              text={'forgotPasswordForm.headings.changePassword'}
-            />
-            <div className={styles.innerContainer}>
-              <PasswordInputsContainer
-                t={t}
-                errors={errors}
-                handleSubmit={handleSubmit}
-                onSubmitHandler={onSubmitHandler}
-                register={register}
-                requestError={requestError}
-              />
-            </div>
-          </div>
-          <ResetPasswordButton
-            t={t}
-            text={'forgotPasswordForm.buttonsText.submit'}
-            whichForm={'changePasswordWindowForm'}
-          />
-        </div>
-      </div>
-    )
-  }
+  return requestSuccess ? (
+    <SelectModal
+      isOpen={true}
+      width={380}
+      onClose={closeForgotPasswordHandler}
+      title={t('forgotPasswordForm.headings.passwordChanged')}
+    >
+      <Box p={4}>
+        <InstructionsSendContainer
+          t={t}
+          text={'forgotPasswordForm.successPasswordChange'}
+        />
+      </Box>
+    </SelectModal>
+  ) : (
+    <SelectModal
+      isOpen={true}
+      width={380}
+      onClose={closeForgotPasswordHandler}
+      title={t('forgotPasswordForm.headings.changePassword')}
+      footer={<SubmitButton title={t('forgotPasswordForm.buttonsText.submit')} form="changePasswordWindowForm"/>}
+    >
+      <Box p={4}>
+        <PasswordInputsContainer
+          t={t}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          onSubmitHandler={onSubmitHandler}
+          register={register}
+          requestError={requestError}
+        />
+      </Box>
+    </SelectModal>
+  )
 }

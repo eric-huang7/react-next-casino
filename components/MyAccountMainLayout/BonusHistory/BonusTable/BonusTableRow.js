@@ -1,9 +1,10 @@
-import styles from '../../../../styles/MyAccount/BonusHistory/BonusHistory.module.scss'
 import { currencyInfo } from '../../../../helpers/currencyInfo'
 import { dateFormatter } from '../../../../helpers/dateTranslator'
 import { useRouter } from 'next/router'
+import {chakra} from "@chakra-ui/react";
+import Cell from "../../../table/Cell";
 
-export const BonusTableRow = ({ t, bonusData, currencyData }) => {
+export const BonusTableRow = ({ t, bonusData, currencyData, index }) => {
   const router = useRouter()
 
   let title = bonusData.title ? bonusData.title : '-'
@@ -15,26 +16,26 @@ export const BonusTableRow = ({ t, bonusData, currencyData }) => {
   let date = dateFormatter(bonusData.time_redeemed, router.locale)
 
   return (
-    <tr className={styles.dataRow}>
-      <td>
+    <chakra.tr bg={index % 2 ? "#f5f5f5" : "#e1e1e1"}>
+      <Cell>
         {title}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {t(status)}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {amount}
-      </td>
-      <td className={styles.wagerData}>
+      </Cell>
+      <Cell>
         {wagerNumber}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {validUtil}
-      </td>
-      <td>
+      </Cell>
+      <Cell>
         {date}
-      </td>
-    </tr>
+      </Cell>
+    </chakra.tr>
   )
 }
 

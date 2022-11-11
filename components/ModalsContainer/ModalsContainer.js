@@ -1,6 +1,6 @@
 import { MessageContainer } from '../MessageContainer/MessageContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import {useCallback, useEffect, useMemo} from 'react'
+import {useEffect} from 'react'
 import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
 import { showLogin } from '../../redux/ui/action'
 import { showRegister } from '../../redux/ui/action'
@@ -13,14 +13,13 @@ import { DepositWidgetMainContainer } from '../MainLayout/DepositWidget/DepositW
 import { MobilePaymentsStepper } from '../MainLayout/PaymentsModals/MobilePaymentsStepper'
 import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
-import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
+// import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
-import { RegisterSignup } from '../MainLayout/RegisterSignup/RegisterSignup'
-import { LogIn } from '../MainLayout/LogIn/LogIn'
-import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
+import { RegisterSignup } from '../modals/RegisterSignup'
+import { LogIn } from '../modals/LogIn'
 import { DepositPage } from '../MainLayout/DepositPage/DepositPage'
 import { ManageSubscriptions } from '../MainLayout/ManageSubscriptions/ManageSubscriptions'
-import { TournamentModalDetails } from '../MainLayout/TournamentSidebar/TournamentModalDetails/TournamentModalDetails'
+import { TournamentModalDetails } from '../MainLayout/TournamentSidebar/TournamentModalDetails'
 import { ForgotPasswordComponent } from '../ForgotPasswordComponents/ForgotPasswordComponent'
 import { ChangePasswordContainer } from '../ForgotPasswordComponents/ChangePasswordContainer/ChangePasswordContainer'
 import { EmailValidationContainer } from '../ForgotPasswordComponents/EmailValidationContainer/EmailValidationContainer'
@@ -28,9 +27,9 @@ import { EmailValidationError } from '../ForgotPasswordComponents/EmailValidatio
 import { TwoFactorAutContainer } from '../TwoFactorAuthComponents/TwoFactorAutContainer'
 import { FooterAreaContainer } from '../FooterArea/FooterAreaContainer'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import {RedeemPage} from "../MainLayout/RedeemPage/RedeemPage";
-import {TournamentAwardModal} from "../MainLayout/TournamentAwardModal/TournamentAwardModal";
-import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
+import RedeemPage from "../modals/RedeemPage/RedeemPage";
+import TournamentAwardModal from "../modals/TournamentAwardModal";
+import {SearchGamesModal} from "../GamesPageComponents/SearchGamesModal";
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()
@@ -106,226 +105,80 @@ export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
         />
       </ExitIntentError>
       <ErrorEmpty>
-        <DepositWidgetMainContainer
-          userAuth={userInfo}
-          t={t}
-        />
+        <DepositWidgetMainContainer userAuth={userInfo} />
       </ErrorEmpty>
-      {isShowModal.isShowTournamentsDetails
-        ?
-        <ErrorEmpty>
-          <TournamentModalDetails
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        <></>
-      }
-      {isShowModal.isShowForgotPassword
-        ?
-        <ErrorEmpty>
-          <ForgotPasswordComponent
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        <></>
-      }
-      {
-        isShowModal.isShowChangePassword && token
-          ?
-          <ErrorEmpty>
-            <ChangePasswordContainer
-              t={t}
-              token={token}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowEmailValidationSuccess
-          ?
-          <ErrorEmpty>
-            <EmailValidationContainer t={t}/>
-          </ErrorEmpty>
-          :
-          <>
-          </>
-      }
-      {
-        isShowModal.isShowEmailValidationError
-          ?
-          <ErrorEmpty>
-            <EmailValidationError
-              t={t}
-              emailError={emailError}
-            />
-          </ErrorEmpty>
-          :
-          <>
-          </>
-      }
-      {
-        isShowModal.isShowTwoFaPopup
-          ?
-          <ErrorEmpty>
-            <TwoFactorAutContainer
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowMobilePaymentsStepper
-          ?
-          <ErrorEmpty>
-            <MobilePaymentsStepper
-              isShow={isShowModal.isShowMobilePaymentsStepper}
-              paymentsData={paymentsData}
-              userAuth={userInfo}
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowCreditCardModal
-          ?
-          <ErrorEmpty>
-            <PaymentsCardWrapper
-              isShow={isShowModal.isShowCreditCardModal}
-              paymentsData={paymentsData}
-              userInfo={userInfo}
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowCryptoModal
-          ?
-          <ErrorEmpty>
-            <PaymentsCryptoWrapper
-              isShow={isShowModal.isShowCryptoModal}
-              paymentsData={paymentsData}
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowSearchModal
-          ?
-          <SearchModalWindowWrapper
-            isShowSearchModal={isShowModal.isShowSearchModal}
-            t={t}
-          />
-          :
-          <></>
-      }
-      {
-        isShowModal.isShowPlaySafe
-          ?
-          <ErrorEmpty>
-            <PlaySafeMainWrapper/>
-          </ErrorEmpty>
-          :
-          <></>
-      }
-      {
-        userInfo.isAuthenticated
-          ?
-          ''
-          :
-          <ErrorEmpty>
-            <RegisterSignup
-              isShow={registerShow}
-              t={t}
-            />
-          </ErrorEmpty>
-      }
-      <ErrorEmpty>
-        <LogIn
-          isShow={logInShow}
-          t={t}
-        />
-      </ErrorEmpty>
-      {
-        isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
-          ?
-          <ErrorEmpty>
-            <SelectCurrencyWidget
-              t={t}
-              isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-              isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-              isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-            />
-          </ErrorEmpty>
-          :
-          <></>
-      }
 
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <DepositPage
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
-      {
-        userInfo.isAuthenticated
-          ?
-          <ErrorEmpty>
-            <ManageSubscriptions
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          ''
-      }
-      {
-        isShowModal.showMessagePopup && <MessageContainer />
-      }
-      {
-        userInfo.isAuthenticated && width > 1239
-          ?
-          <ErrorEmpty>
-            <FooterAreaContainer
-              userData={userInfo}
-              t={t}
-            />
-          </ErrorEmpty>
-          :
-          ''
-      }
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <RedeemPage
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
-      {userInfo.isAuthenticated
-        ?
-        <ErrorEmpty>
-          <TournamentAwardModal
-            t={t}
-          />
-        </ErrorEmpty>
-        :
-        ''
-      }
+      {isShowModal.isShowTournamentsDetails && <ErrorEmpty>
+        <TournamentModalDetails t={t}/>
+      </ErrorEmpty>}
+
+      {isShowModal.isShowForgotPassword && <ErrorEmpty>
+        <ForgotPasswordComponent t={t} />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowChangePassword && token && <ErrorEmpty>
+        <ChangePasswordContainer t={t} token={token}/>
+      </ErrorEmpty>}
+
+      {isShowModal.isShowEmailValidationSuccess && <ErrorEmpty>
+        <EmailValidationContainer t={t}/>
+      </ErrorEmpty>}
+
+      {isShowModal.isShowEmailValidationError && <ErrorEmpty>
+        <EmailValidationError t={t} emailError={emailError}/>
+      </ErrorEmpty>}
+
+      {isShowModal.isShowTwoFaPopup && <ErrorEmpty>
+        <TwoFactorAutContainer t={t} />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowMobilePaymentsStepper && <ErrorEmpty>
+        <MobilePaymentsStepper userAuth={userInfo} />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowCreditCardModal && <ErrorEmpty>
+        <PaymentsCardWrapper paymentsData={paymentsData} userInfo={userInfo}/>
+      </ErrorEmpty>}
+
+      {isShowModal.isShowCryptoModal && <ErrorEmpty>
+        <PaymentsCryptoWrapper paymentsData={paymentsData} />
+      </ErrorEmpty>}
+
+      {isShowModal.isShowSearchModal && <SearchGamesModal isShowSearchModal={isShowModal.isShowSearchModal} t={t}/>}
+
+      {isShowModal.isShowPlaySafe && <ErrorEmpty>
+        <PlaySafeMainWrapper/>
+      </ErrorEmpty>}
+
+      {!userInfo.isAuthenticated && registerShow && <ErrorEmpty>
+        <RegisterSignup isShow={registerShow} />
+      </ErrorEmpty>}
+
+      {!userInfo.isAuthenticated && logInShow && <ErrorEmpty>
+        <LogIn isShow={logInShow} />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && isShowModal.isShowDepositModal && <ErrorEmpty>
+        <DepositPage />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <ManageSubscriptions />
+      </ErrorEmpty>}
+
+      {isShowModal.showMessagePopup && <MessageContainer />}
+
+      {userInfo.isAuthenticated && width > 1239 && <ErrorEmpty>
+        <FooterAreaContainer userData={userInfo} t={t} />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <RedeemPage />
+      </ErrorEmpty>}
+
+      {userInfo.isAuthenticated && <ErrorEmpty>
+        <TournamentAwardModal/>
+      </ErrorEmpty>}
     </>
   )
 }

@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
-import styles from '../../../../styles/Header/Navigation.module.scss'
+import { Text, Box, HStack } from '@chakra-ui/react'
 
-export const Navigation = ({ isAuthenticated }) => {
+export const Navigation = () => {
   const { t } = useTranslation('common')
   const linksKey = [
     { key: 'home', route: '/' },
@@ -11,20 +11,26 @@ export const Navigation = ({ isAuthenticated }) => {
   ]
 
   return (
-    <nav className={styles.headerNavbar}>
-      <ul className={styles.headerNavbarList}>
-        {linksKey.map((link) => {
-          return (
-            <li key={link.key} className={styles.headerNavbarListItem}>
-              <Link href={link.route}>
-                {
-                  t(`header.navbarLinks.${link.key}`)
-                }
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+    <HStack display={{base: 'none', lg: 'flex'}}>
+      {linksKey.map((link) => (
+        <Box key={link.key}>
+          <Link href={link.route}>
+            <Text
+              whiteSpace="nowrap"
+              fontSize="21px"
+              lineHeight="60px"
+              color="text.50"
+              fontWeight="bold"
+              fontFamily="Lithograph"
+              textTransform="uppercase"
+              mr="20px"
+              cursor="pointer"
+            >
+              {t(`header.navbarLinks.${link.key}`)}
+            </Text>
+          </Link>
+        </Box>
+      ))}
+    </HStack>
   )
 }

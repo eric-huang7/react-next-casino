@@ -1,16 +1,16 @@
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import styles from '../../styles/TermsAndConditions/TermsAndConditions.module.scss';
 import {WhySlotsIdol} from "../../components/HomePageComponents/WhySlotsIdol/WhySlotsIdol";
 import {NewsBlock} from "../../components/HomePageComponents/NewsBlock/NewsBlock";
-import {TextBlock} from "../../components/TermsAndConditionsComponents/TextBlock";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
+import { Box } from "@chakra-ui/react";
 import {getCurrency} from "../../redux/currency/action";
 import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import {MainBlock} from "../../components/MainLayout/MainBlock";
+import {TextBlock} from "../../components/typography/TextBlock";
 
 
 const TermsConditions = () => {
@@ -19,29 +19,27 @@ const TermsConditions = () => {
 
   useEffect(() => {
     dispatch(getCurrency());
-
   }, []);
 
   return (
-    <>
-      <MainLayout>
-        <MainBlock title={t('heading')} />
-        {/*<PlayerBlock />*/}
-        <div className={styles.textWhyslotsBack}>
-          <ErrorEmpty>
-            <TextBlock
-              textHeading={'heading'}
-            />
-          </ErrorEmpty>
-          <ErrorText>
-          <WhySlotsIdol isBackShow={false}/>
-          </ErrorText>
-        </div>
-        <ErrorText>
-          <NewsBlock isBackShow={false}/>
-        </ErrorText>
-      </MainLayout>
-    </>
+    <MainLayout>
+      <MainBlock title={t('heading')} />
+      {/*<PlayerBlock />*/}
+
+      <Box pb="30px">
+        <ErrorEmpty>
+          <TextBlock title={t('heading')} content={t('text')} />
+        </ErrorEmpty>
+      </Box>
+
+      <ErrorText>
+        <WhySlotsIdol isBackShow={false}/>
+      </ErrorText>
+
+      <ErrorText>
+        <NewsBlock isBackShow={false}/>
+      </ErrorText>
+    </MainLayout>
   )
 }
 

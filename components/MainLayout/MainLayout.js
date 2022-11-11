@@ -1,17 +1,16 @@
 import { Header } from './Header/Header'
-import styles from '../../styles/MainLayout.module.scss'
 import { Footer } from './Footer/Footer'
 import { useSelector } from 'react-redux'
+import { Box } from '@chakra-ui/react'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
-import { TournamentMainContainer } from './TournamentSidebar/TournamentMainContainer'
-import { TournamentIcon } from './TournamentIcon/TournamentIcon'
+import { TournamentIcon } from './TournamentSidebar/TournamentIcon'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
-import MenuModal from "./MenuModal/MenuModal";
+import TournamentSidebar from "./TournamentSidebar/TournamentSidebar";
 
 const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
@@ -29,7 +28,12 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         emailError={emailError}
         withdrawConfirmError={withdrawConfirmError}
       />
-      <div className={styles.mainLayoutWrapper}>
+      <Box
+        backgroundColor="accent.850"
+        backgroundImage="url('/assets/img/mainLayoutImg/background.webp')"
+        overflow="hidden"
+        w="100%"
+      >
         <ErrorHeaderPage>
           <Header/>
         </ErrorHeaderPage>
@@ -38,10 +42,9 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
           userInform={userInfo}
         />
 
-        <TournamentIcon
-          toursref={toursref}
-        />
-        <TournamentMainContainer
+        <TournamentIcon toursref={toursref} />
+
+        <TournamentSidebar
           toursref={toursref}
           router={router}
           isShowModal={isShowModal}
@@ -50,12 +53,9 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         />
         {children}
         <ErrorEmpty>
-          <Footer
-            t={t}
-            userAuth={userInfo.isAuthenticated}
-          />
+          <Footer userAuth={userInfo.isAuthenticated}/>
         </ErrorEmpty>
-      </div>
+      </Box>
     </>
   )
 }

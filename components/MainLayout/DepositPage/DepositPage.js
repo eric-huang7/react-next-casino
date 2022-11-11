@@ -1,41 +1,40 @@
-import styles from '../../../styles/DepositPage/DepositPage.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {useEffect, useState} from 'react'
+import {useDisclosure} from "@chakra-ui/hooks";
 import {
   backButtonShouldDo, setStepDepositModal,
-  showCurrencySwitcher,
   showDepositModal,
-  showPaymentCurrencySwitcher
 } from '../../../redux/popups/action'
-import { DepositPageStepper } from './DepositPageStepper'
-import { setErrorUserDepositValue, setUserDepositValue } from '../../../redux/userFinance/action'
-import { setErrorUserPaymentMethod, setUserPaymentMethod } from '../../../redux/userFinance/action'
-import { setUserBonus } from '../../../redux/userBonus/action'
-import { bonusesFinder } from '../../../helpers/bonusesFinder'
-import { bonusesCalculator } from '../../../helpers/bonusesCalculator'
-import { useRouter } from 'next/router'
+import {DepositPageStepper} from './DepositPageStepper'
+import {setErrorUserDepositValue, setUserCurrencySwitcher, setUserDepositValue} from '../../../redux/userFinance/action'
+import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../redux/userFinance/action'
+import {setUserBonus} from '../../../redux/userBonus/action'
+import {bonusesFinder} from '../../../helpers/bonusesFinder'
+import {bonusesCalculator} from '../../../helpers/bonusesCalculator'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
+import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
+import {addCurrencyToUserList} from "../../../redux/user/action";
+import {useTranslation} from "next-i18next";
 
-export const DepositPage = ({ t }) => {
+export const DepositPage = () => {
   const dispatch = useDispatch()
-  const router = useRouter()
+  const {isOpen, onOpen, onClose} = useDisclosure()
+  const { t } = useTranslation('common')
 
   const userInfo = useSelector((state) => state.authInfo.user)
   const userLogin = useSelector((state) => state.authInfo.isAuthenticated)
-  const isShowDepositModal = useSelector((state) => state.popups)
+  const popups = useSelector((state) => state.popups)
   const userCurrency = useSelector((state) => state.userFinance)
   const userPayment = useSelector((state) => state.userFinance)
   const userDepositValue = useSelector((state) => state.userFinance?.depositValue)
-  const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
+
   const activeBonuses = useSelector((state) => state.bonuses)
   const userSelectedBonus = useSelector((state) => state.userBonus)
-  const currencyData = useSelector((store) => store.currency?.currency)
+  const backButtonShouldDoState = useSelector((state) => state.popups.actionForBackButton)
 
-  const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
-  const [showAllBonuses, setShowAllBonuses] = useState(false)
   const [chosenBonus, setChosenBonus] = useState({})
   const [bonusesArr, setBonusesArr] = useState([])
-  const [paymentMethods, setPaymentMethods] = useState(null)
+
 
   let newButtonText = `${t('depositPage.bonusInfo.playWith')} ${(userDepositValue < 0) ? '0' : Number(userDepositValue)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`
   const [buttonText, setNewButtonText] = useState(newButtonText)
@@ -66,20 +65,6 @@ export const DepositPage = ({ t }) => {
     setChosenBonus(userSelectedBonus.bonus_id)
   }, [userSelectedBonus.bonus_id])
 
-  const showAllBonusesHandler = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    if (showAllBonuses) {
-      setShowAllBonuses(false)
-    } else {
-      setShowAllBonuses(true)
-    }
-  }
-
-  const stepHandler = (step) => {
-    dispatch(setStepDepositModal(step + 1))
-  }
-
   const [isChecked, setIsChecked] = useState(true)
   const checkedInputHandler = (e) => {
     if (isChecked) {
@@ -91,30 +76,24 @@ export const DepositPage = ({ t }) => {
     }
   }
 
-  const bonusCodeInputActiveHandler = () => {
-    if (isActiveBonusInput) {
-      setIsActiveBonusInput(false)
-    } else {
-      setIsActiveBonusInput(true)
-    }
-  }
-  const hideCurrencyShowDepositModal = () => {
-    dispatch(showCurrencySwitcher(false))
-    dispatch(showDepositModal(true))
-  }
-  // const hidePaymentCurrencyShowDepositModal = () => {
-  //   dispatch(showDepositModal(true))
-  //   dispatch(showPaymentCurrencySwitcher(false))
-  // }
-
   const currencySwitcherShowHandler = () => {
-    dispatch(showCurrencySwitcher(true))
-    dispatch(showDepositModal(false))
-    dispatch(backButtonShouldDo(hideCurrencyShowDepositModal))
+    onOpen()
+  }
+
+  const onSelectCurrency = (currencyData) => {
+    dispatch(setUserCurrencySwitcher(currencyData))
+
+    if (userLogin) {
+      let currency = {
+        currency_id: currencyData.id
+      }
+      dispatch(addCurrencyToUserList(currency))
+    }
+
+    onBack()
   }
 
   const closeDepositModalHandler = () => {
-    setShowAllBonuses(false)
     dispatch(showDepositModal(false))
     dispatch(setUserBonus(0))
     dispatch(setErrorUserDepositValue(''))
@@ -126,10 +105,6 @@ export const DepositPage = ({ t }) => {
   const depositValueInputHandler = (value) => {
     dispatch(setUserDepositValue(value))
     setNewButtonText(`${t('depositPage.bonusInfo.playWith')} ${(value < 0) ? '0' : Number(value)} ${(userCurrency?.userCurrencyData?.symbol.length > 0) ? userCurrency?.userCurrencyData?.symbol : userCurrency?.userCurrencyData?.abbreviation}`)
-  }
-
-  const submitHandler = () => {
-
   }
 
   useEffect(() => {
@@ -147,47 +122,44 @@ export const DepositPage = ({ t }) => {
       setBonusesArr([])
     }
 
-  }, [userCurrency, isShowDepositModal.isShowDepositModal])
+  }, [userCurrency, popups.isShowDepositModal])
 
+  const onBack = () => {
+    if (backButtonShouldDoState !== false) {
+      backButtonShouldDoState()
+      dispatch(backButtonShouldDo(false))
+    }
+    onClose()
+  }
 
-
-  return (
-    <div className={`${styles.depositPageWrapper} ${isShowDepositModal.isShowDepositModal ? '' : styles.hide}`}>
-      <div className={styles.depositsMainBlock}>
-        <h2 className={`${router.locale === 'ru' ? styles.ru : ''}`}>{t('depositPage.mainHeading')}</h2>
-        <ErrorText>
-          <DepositPageStepper
-            currencyData={currencyData}
-            step={isShowDepositModal.depositModalStep}
-            t={t}
-            bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-            isActiveBonusInput={isActiveBonusInput}
-            checkedInputHandler={checkedInputHandler}
-            currencySwitcherShowHandler={currencySwitcherShowHandler}
-            closeDepositModalHandler={closeDepositModalHandler}
-            isChecked={isChecked}
-            userCurrency={userCurrency}
-            stepHandler={stepHandler}
-            submitHandler={submitHandler}
-            userDepositValue={userDepositValue}
-            depositValueInputHandler={depositValueInputHandler}
-            userDepositValueError={userDepositValueError}
-            userPayment={userPayment}
-            userInfo={userInfo}
-            showAllBonuses={showAllBonuses}
-            showAllBonusesHandler={showAllBonusesHandler}
-            chosenBonus={chosenBonus}
-            chooseBonusClickHandler={chooseBonusClickHandler}
-            setDepositButtonText={setDepositButtonText}
-            buttonText={buttonText}
-            userSelectedBonus={userSelectedBonus}
-            isShowDepositModal={isShowDepositModal.isShowDepositModal}
-            bonusesArr={bonusesArr}
-            paymentMethods={paymentMethods}
-            setPaymentMethods={setPaymentMethods}
-          />
-        </ErrorText>
-      </div>
-    </div>
+  return popups.isShowDepositModal && (
+    <>
+      <ErrorText>
+        <DepositPageStepper
+          step={popups.depositModalStep}
+          t={t}
+          checkedInputHandler={checkedInputHandler}
+          currencySwitcherShowHandler={currencySwitcherShowHandler}
+          closeDepositModalHandler={closeDepositModalHandler}
+          isChecked={isChecked}
+          userCurrency={userCurrency}
+          userDepositValue={userDepositValue}
+          depositValueInputHandler={depositValueInputHandler}
+          userPayment={userPayment}
+          userInfo={userInfo}
+          chosenBonus={chosenBonus}
+          chooseBonusClickHandler={chooseBonusClickHandler}
+          setDepositButtonText={setDepositButtonText}
+          buttonText={buttonText}
+          userSelectedBonus={userSelectedBonus}
+        />
+      </ErrorText>
+      <SelectCurrencyModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSelect={onSelectCurrency}
+        // onBack={onBack}
+      />
+    </>
   )
 }

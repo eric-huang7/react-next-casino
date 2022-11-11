@@ -1,11 +1,10 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss';
 import {TableHeading} from "./TableHeading";
 import {TableRow} from "./TableRow";
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {useState} from "react";
 import {BalanceItemMobile} from "./BalanceItemMobile";
-import {FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
-import {currencyInfo} from "../../../helpers/currencyInfo";
+import { chakra, Box, HStack } from '@chakra-ui/react';
+import {Select} from "@chakra-ui/select";
 
 export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
   const [sort, setSort] = useState('currency')
@@ -15,31 +14,31 @@ export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
     {
       name: 'currency',
       title: t("myAccount.balance.table.headings.currency"),
-      style: styles.headingCurrency,
+      style: {w: {base: "150px", lg: "210px"}},
       sort: true
     },
     {
       name: 'amount',
       title: t("myAccount.balance.table.headings.amount"),
-      style: styles.headingAmount,
+      style: {},
       sort: true
     },
     {
       name: 'cashout',
       title: t("myAccount.balance.table.headings.cashout"),
-      style: styles.headingCashout,
+      style: {w: {base: "90px", lg: "120px"}},
       sort: true
     },
     {
       name: 'amountBtc',
       title: t("myAccount.balance.table.headings.amountBtc"),
-      style: styles.headingCashout,
+      style: {},
       sort: true
     },
     {
       name: 'actions',
       title: t("myAccount.balance.table.headings.actions"),
-      style: styles.headingActions
+      style: {w: {base: "97px", lg: "259px"}},
     }
   ]
 
@@ -78,80 +77,72 @@ export const TableContainer = ({t, balanceInfo, currency, rates, rateUsd}) => {
 
   return (
     <>
-      <table className={styles.balanceTable} cellSpacing={0}>
+      <chakra.table minW="500px" w="100%" tableLayout="fixed" cellSpacing={0} display={{base: "none", lg: "table"}}>
         <thead>
           <TableHeading columns={columns} onSort={onSort} sort={sort} direction={direction} />
         </thead>
         <tbody>
-        {
-          sortedData().map((el) => {
-            return (
-              <ErrorText key={`${el.id} balance table item`}>
-                <TableRow
-                  key={`${el.id} balance table item`}
-                  currencyData={currency}
-                  t={t}
-                  balanceData={el}
-                  rates={rates}
-                  rateUsd={rateUsd}
-                />
-              </ErrorText>
-            )
-          })
-        }
+        {sortedData().map((el, index) => (
+          <ErrorText key={`${el.id} balance table item`}>
+            <TableRow
+              index={index}
+              key={`${el.id} balance table item`}
+              currencyData={currency}
+              t={t}
+              balanceData={el}
+              rates={rates}
+              rateUsd={rateUsd}
+            />
+          </ErrorText>
+        ))}
         </tbody>
-      </table>
-      <div className={styles.balanceTableMobile}>
-        <div className={`${styles.row} ${styles.inputsContainer}`}>
-          <label htmlFor="sortSelect">{t('myAccount.balance.sortBy')}</label>
-          <select
+      </chakra.table>
+      <Box  display={{base: "block", lg: "none"}}>
+        <HStack py="16px" px="24px">
+          <chakra.label htmlFor="sortSelect" w="40%" color="#969698" pr="16px">
+            {t('myAccount.balance.sortBy')}
+          </chakra.label>
+          <Select id="sortSelect" size='md' bg="#ededed" border="0.88px solid #8a8a8a"
             onChange={(e) => {
               const value = e.target.value?.split(':');
               setDirection(value[1] === 'asc')
               onSort(value[0])
             }}
-            id="sortSelect"
           >
-            {
-              columns.filter(item => item.sort).map((column) => (
-                <>
-                  <option
-                    key={`${column.name}`}
-                    value={`${column.name}:asc`}
-                    selected={sort === column.name && direction}
-                  >
-                    {column.title} {t('myAccount.balance.sortAsc')}
-                  </option>
-                  <option
-                    key={`${column.name}`}
-                    value={`${column.name}:desc`}
-                    selected={sort === column.name && !direction}
-                  >
-                    {column.title} {t('myAccount.balance.sortDesc')}
-                  </option>
-                </>
-              ))
-            }
-          </select>
-        </div>
+            {columns.filter(item => item.sort).map((column) => (
+              <>
+                <option
+                  key={`${column.name}`}
+                  value={`${column.name}:asc`}
+                  selected={sort === column.name && direction}
+                >
+                  {column.title} {t('myAccount.balance.sortAsc')}
+                </option>
+                <option
+                  key={`${column.name}`}
+                  value={`${column.name}:desc`}
+                  selected={sort === column.name && !direction}
+                >
+                  {column.title} {t('myAccount.balance.sortDesc')}
+                </option>
+              </>
+            ))}
+          </Select>
+        </HStack>
 
-        {
-          sortedData().map((el) => {
-            return (
-              <ErrorText key={`mobile-item-${el.id}`}>
-                <BalanceItemMobile
-                  currencyData={currency}
-                  t={t}
-                  balanceData={el}
-                  rates={rates}
-                  rateUsd={rateUsd}
-                  columns={getColumnsObject()}
-                />
-              </ErrorText>
-            )
-          })
-        }
-      </div>
+        {sortedData().map((el) => (
+          <ErrorText key={`mobile-item-${el.id}`}>
+            <BalanceItemMobile
+              currencyData={currency}
+              t={t}
+              balanceData={el}
+              rates={rates}
+              rateUsd={rateUsd}
+              columns={getColumnsObject()}
+            />
+          </ErrorText>
+        ))}
+      </Box>
     </>
   )
 }

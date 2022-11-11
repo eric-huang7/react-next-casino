@@ -19,7 +19,6 @@ export const showTournaments = createAction("SHOW_TOURNAMENTS");
 export const showTournamentsDetails = createAction("SHOW_TOURNAMENTS_DETAILS");
 export const showPlaySafe = createAction("SHOW_PLAY_SAFE");
 export const showSearchModal = createAction("SHOW_SEARCH_MODAL");
-export const showCurrencySwitcher = createAction("SHOW_CURRENCY_SWITCHER");
 export const showPaymentCurrencySwitcher = createAction("SHOW_PAYMENT_CURRENCY_SWITCHER");
 export const showDepositModal = createAction("SHOW_DEPOSIT_MODAL");
 export const setStepDepositModal = createAction("SET_DEPOSIT_STEP");

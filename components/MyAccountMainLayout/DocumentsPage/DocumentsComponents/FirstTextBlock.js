@@ -1,83 +1,39 @@
-import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss';
-import {useState} from "react";
+import { Text, List } from "@chakra-ui/react";
+import CollapsedItem from "./CollapsedItem";
 
+const list1 = [
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text1",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text2",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text3",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text4",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text5",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text6",
+  "myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text7"
+];
+const list2 = [
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text1",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text2",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text3",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text4",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text5",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text6",
+  "myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text7",
+];
+const list3 = [
+  "myAccount.documentsPage.firstTextBlock.proofDepositInnerTextBlock.text1",
+  "myAccount.documentsPage.firstTextBlock.proofDepositInnerTextBlock.text2"
+];
 
-export const FirstTextBlock = ({t}) => {
-  const [closeFirstBlock, setCloseFirstBlock] = useState(false);
-  const [closeSecondBlock, setCloseSecondBlock] = useState(false);
-  const [closeThirdBlock, setCloseThirdBlock] = useState(false);
+export const FirstTextBlock = ({t}) => (
+  <>
+    <Text fontSize={15} ml="20px" color="text.450" fontFamily="Verdana" p="0 10px 0 0">
+      {t("myAccount.documentsPage.firstTextBlock.textListHeading")}
+    </Text>
 
-  return (
-    <>
-      <p className={styles.textListHeading}>
-        {t("myAccount.documentsPage.firstTextBlock.textListHeading")}
-      </p>
-      <ul className={styles.textList}>
-        <li className={closeFirstBlock ? styles.upIndicator : ""}>
-          {t("myAccount.documentsPage.firstTextBlock.proofIdentity")} <span onClick={() => setCloseFirstBlock(!closeFirstBlock)}>{t("myAccount.documentsPage.more")}</span>
-          <ul className={`${styles.textList} ${styles.innerTextList} ${closeFirstBlock ? "" : styles.hideTextList}`}>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text1")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text2")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text3")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text4")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text5")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text6")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofIdentityInnerTextBlock.text7")}
-            </li>
-          </ul>
-        </li>
-        <li className={closeSecondBlock ? styles.upIndicator : ""}>
-          {t("myAccount.documentsPage.firstTextBlock.proofAddress")} <span onClick={() => setCloseSecondBlock(!closeSecondBlock)}>{t("myAccount.documentsPage.more")}</span>
-          <ul className={`${styles.textList} ${styles.innerTextList} ${closeSecondBlock ? "" : styles.hideTextList}`}>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text1")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text2")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text3")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text4")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text5")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text6")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofAddressInnerTextBlock.text7")}
-            </li>
-          </ul>
-        </li>
-        <li className={closeThirdBlock ? styles.upIndicator : ""}>
-          {t("myAccount.documentsPage.firstTextBlock.proofDeposit")} <span onClick={() => setCloseThirdBlock(!closeThirdBlock)}>{t("myAccount.documentsPage.more")}</span>
-          <ul className={`${styles.textList} ${styles.innerTextList} ${closeThirdBlock ? "" : styles.hideTextList}`}>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofDepositInnerTextBlock.text1")}
-            </li>
-            <li>
-              {t("myAccount.documentsPage.firstTextBlock.proofDepositInnerTextBlock.text2")}
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </>
-
-  )
-}
+    <List spacing={3} py={3}>
+      <CollapsedItem t={t} list={list1} title={t("myAccount.documentsPage.firstTextBlock.proofIdentity")}/>
+      <CollapsedItem t={t} list={list2} title={t("myAccount.documentsPage.firstTextBlock.proofAddress")}/>
+      <CollapsedItem t={t} list={list3} title={t("myAccount.documentsPage.firstTextBlock.proofDeposit")}/>
+    </List>
+  </>
+)

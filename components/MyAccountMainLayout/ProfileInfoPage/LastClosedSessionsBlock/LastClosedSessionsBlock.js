@@ -1,12 +1,15 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { SessionsTable } from './SessionsTable'
+import {Box} from "@chakra-ui/layout";
+import BodyText from "../../../typography/BodyText";
 
 export const LastClosedSessionsBlock = ({ t, userInfo }) => {
 
   return (
-    <div className={styles.activeSessionsMainBlock}>
-      <h3 className={styles.activeSessionsHeading}>{t('myAccount.profilePage.sessionsBlocks.closedSessions')}</h3>
+    <Box py="35px">
+      <BodyText as="h3" bold fontSize={17} mb="35px">
+        {t('myAccount.profilePage.sessionsBlocks.closedSessions')}
+      </BodyText>
       <SessionsTable t={t} sessionsInfo={userInfo.userClosedSessions}/>
-    </div>
+    </Box>
   )
 }

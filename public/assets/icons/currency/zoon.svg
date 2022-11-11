@@ -1,0 +1,10 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="zoon" x="312" y="508" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" fill="url(#sfpaint0_linear)"/>
+        <path d="M4.921 7.004l-1.887 4.313h1.168l.356-.325h.113v1.654H1l1.888-4.313H1.474l-.357.325h-.109V7.004h3.913zM8.39 7l.93.65V12l-.93.647H6.844l-.931-.645V7.649L6.844 7H8.39zM7.243 8.488v2.676l.222.154h.302l.223-.154V8.487l-.223-.154h-.302l-.222.154zM12.786 7l.931.65V12l-.931.647h-1.544l-.932-.645V7.649L11.242 7h1.544zM11.64 8.488v2.676l.223.154h.302l.222-.154V8.487l-.222-.154h-.302l-.223.154zM16.01 7.004l1.668 3.279V7.004H19v.09l-.26.287v4.872l.26.286v.09h-1.322L16.01 9.351v3.278h-1.323v-.09l.26-.286V7.38l-.26-.286v-.09h1.323z" fill="#fff"/>
+        <defs>
+            <linearGradient id="sfpaint0_linear" x1="2.5" y1="2.5" x2="17" y2="16.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFF908"/>
+                <stop offset="1" stop-color="#FA0000"/>
+            </linearGradient>
+        </defs>
+    </svg>

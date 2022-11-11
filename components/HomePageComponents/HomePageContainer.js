@@ -11,7 +11,7 @@ import {getJackpots} from "../../redux/gameData/action";
 import {getLatestWinners, getWinners} from "../../redux/gameData/action";
 import {getCurrency} from "../../redux/currency/action";
 import {useDispatch, useSelector} from "react-redux";
-import {SearchGamesContainer} from "../SearchGamesModalWindow/SearchGamesContainer";
+import {SearchGamesContainer} from "../GamesPageComponents/SearchGamesContainer";
 import ErrorText from "../ErrorBoundaryComponents/ErrorText";
 import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
 import {FaCertificate} from "react-icons/fa";
@@ -47,14 +47,13 @@ export const HomePageContainer = ({t}) => {
       {/*</ErrorText>*/}
       {/*API for jackpots will add in future */}
       <ChooseCategoryBlock searchRef={searchRef} isProvidersPage={false} t={t}/>
-      {
-        searchGames.length >= 0 && searchRef.current.value
-          ?
+      <div>
+        {searchGames.length > 0 ?(
           <ErrorEmpty>
-            <SearchGamesContainer t={t} searchGames={searchGames} searchBar={searchRef} heading={'all-games'}/>
+            <SearchGamesContainer t={t} searchGames={searchGames} heading={'all-games'}/>
           </ErrorEmpty>
-          :
-          <div>
+        ) : (
+          <>
             <ErrorText>
               <GamesSliderBlock
                 t={t}
@@ -79,42 +78,42 @@ export const HomePageContainer = ({t}) => {
                 linkPath="/games-page/jackpot-games"
               />
             </ErrorText>
-            <PromotionsBlock
-              t={t}
-              title={t('header.navbarLinks.promotions')}
-              titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}
-            />
-            <ErrorText>
-              <GamesSliderBlock
-                t={t}
-                titleImage={"/assets/img/gamesSlider/table_head.svg"}
-                title={t('gamesPage.headings.tableGames')}
-                titleIcon={<GiCardJackHearts />}
-                slides={games?.tableGames?.results?.slice()}
-                count={games?.tableGames?.rows}
-                loading={games.loadingTableGames}
-                linkPath="/games-page/table-games"
-              />
-            </ErrorText>
-            <ErrorText>
-              <TotalJackpotsAmount
-                t={t}
-                title={t('homePage.totalJackpotHeading')}
-                gameData={gameData}
-              />
-            </ErrorText>
-            <ErrorText>
-              <NewsBlock
-                t={t}
-                isBackShow={true}
-                titleImage={"/assets/img/newsSlider/news_heading.svg"}
-              />
-            </ErrorText>
-            <ErrorText>
-              <WhySlotsIdol t={t} title={t('homePage.whySlotsIdol')} isBackShow={true}/>
-            </ErrorText>
-          </div>
-      }
+          </>
+        )}
+        <PromotionsBlock
+          t={t}
+          title={t('header.navbarLinks.promotions')}
+          titleImage={"/assets/img/promotionsSlider/promotions_heading.svg"}
+        />
+        <ErrorText>
+          <GamesSliderBlock
+            t={t}
+            titleImage={"/assets/img/gamesSlider/table_head.svg"}
+            title={t('gamesPage.headings.tableGames')}
+            titleIcon={<GiCardJackHearts />}
+            slides={games?.tableGames?.results?.slice()}
+            count={games?.tableGames?.rows}
+            loading={games.loadingTableGames}
+            linkPath="/games-page/table-games"
+          />
+        </ErrorText>
+        <ErrorText>
+          <TotalJackpotsAmount
+            t={t}
+            title={t('homePage.totalJackpotHeading')}
+            gameData={gameData}
+          />
+        </ErrorText>
+        <ErrorText>
+          <NewsBlock
+            isBackShow={true}
+            titleImage={"/assets/img/newsSlider/news_heading.svg"}
+          />
+        </ErrorText>
+        <ErrorText>
+          <WhySlotsIdol t={t} title={t('homePage.whySlotsIdol')} isBackShow={true}/>
+        </ErrorText>
+      </div>
     </>
   )
 }

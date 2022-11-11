@@ -1,22 +1,20 @@
-import styles from '../../../styles/HomePage/PromotionsBlock.module.scss'
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { Box } from "@chakra-ui/react"
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import Link from "next/link";
 import {useDispatch, useSelector} from "react-redux";
 import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "../../PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
-import {getActiveBonuses, getAllBonuses} from "../../../redux/bonuses/action";
 import ErrorEmpty from "../../ErrorBoundaryComponents/ErrorEmpty";
-import {IoChevronForwardOutline} from "react-icons/io5";
+import SectionHeader from "../../typography/SectionHeader";
+import SectionLoading from "../../typography/SectionLoading";
+import SmallArrowButton from "../../buttons/SmallArrowButton";
 
 export const PromotionsBlock = ({t, title, titleImage}) => {
   const {height, width} = useWindowDimensions();
-  const dispatch = useDispatch();
 
   const userCurrency = useSelector((state) => state.userFinance);
 
@@ -67,14 +65,11 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
     }
   }
 
-
-// let data = promoData();
-
   function SampleNextArrow(props) {
     const {className, onClick} = props;
     return (
-      <div
-        className={styles.nextArr}
+      <SmallArrowButton
+        direction="next"
         onClick={onClick}
       />
     );
@@ -83,14 +78,13 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
   function SamplePrevArrow(props) {
     const {className, onClick} = props;
     return (
-      <div
-        className={styles.prevArr}
+      <SmallArrowButton
+        direction="prev"
         onClick={onClick}
       />
     );
   };
   const sliderSettings = {
-    // className: 'center',
     dots: false,
     infinite: true,
     speed: 500,
@@ -104,41 +98,37 @@ export const PromotionsBlock = ({t, title, titleImage}) => {
   }
 
   return (
-    <section className={`${styles.promotionsMainWrapper} _promotionsBlock`}>
-      <div className={styles.headingWrapper}>
-        <div className={styles.heading}>
-          <div className={styles.title}>{title} ({promotionsData?.activeBonuses?.offers?.length})</div>
-          <Link href={'/promotions'}><a className={styles.moreLink}>{t(`homePage.viewAll`)} <IoChevronForwardOutline /></a></Link>
-        </div>
-      </div>
-      {promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses ? (
-        <h2 className={styles.loadingEmptyPromotions}>{t('homePage.loading')}</h2>
-      ) : (promotionsData.activeBonuses.offers.length === 0 ? (
-          <h2 className={styles.loadingEmptyPromotions}>{t('homePage.checkLater')}</h2>
-        ) : (
-          <div className={styles.promotionsBackground}>
-            <div className={styles.promotionsSliderWrapper}>
-              <>
-                <Slider {...sliderSettings}>
-                  {promotionsData.activeBonuses.offers.map((el) => {
-                    let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+    <Box w="100%" bg="url('/assets/img/homeImg/home_header_bckgr.jpg')" pb="50px" overflow="hidden">
+      <SectionHeader path="/promotions">
+        {title} ({promotionsData?.activeBonuses?.offers?.length})
+      </SectionHeader>
 
-                    return (
-                      <ErrorEmpty key={el.id}>
-                        <PromotionItem
-                          key={el.id}
-                          bonusInfo={el}
-                          bonusCalculations={bonusCalculations}
-                        />
-                      </ErrorEmpty>
-                    )
-                  })}
-                </Slider>
-              </>
-            </div>
-          </div>
+      {promotionsData.loadingActiveBonuses && !promotionsData.activeBonuses ? (
+        <SectionLoading>{t('homePage.loading')}</SectionLoading>
+      ) : (promotionsData.activeBonuses.offers.length === 0 ? (
+          <SectionLoading>{t('homePage.checkLater')}</SectionLoading>
+        ) : (
+          <Box w="100%" p="30px 0">
+            <Box w={{base: "100%", lg: "1290px"}} m="18px auto" pt="10px" position="relative" justifyContent="center">
+              <Slider {...sliderSettings}>
+                {promotionsData.activeBonuses.offers?.map((el) => {
+                  let bonusCalculations = bonusesCalculator(el, userCurrency, t);
+
+                  return (
+                    <ErrorEmpty key={el.id}>
+                      <PromotionItem
+                        key={el.id}
+                        bonusInfo={el}
+                        bonusCalculations={bonusCalculations}
+                      />
+                    </ErrorEmpty>
+                  )
+                })}
+              </Slider>
+            </Box>
+          </Box>
         )
       )}
-    </section>
+    </Box>
   )
 }

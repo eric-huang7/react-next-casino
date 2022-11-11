@@ -16,11 +16,9 @@ import Connect from "../../helpers/connect";
 export default function EmailConfirmation (props) {
   const { t } = useTranslation('common')
   const dispatch = useDispatch()
-
   const [emailError, setEmailError] = useState(null)
 
   useEffect(() => {
-
     if (props.token) {
       let sendData = {
         type: 1,
@@ -59,31 +57,19 @@ export default function EmailConfirmation (props) {
         clearTimeout(timer)
       }
     }
-
   }, [])
 
   return (
-
-    <>
-      <MainLayout
-        emailError={emailError}
-      >
-        <HomePageContainer
-          t={t}
-        />
-      </MainLayout>
-
-    </>
+    <MainLayout emailError={emailError}>
+      <HomePageContainer t={t}/>
+    </MainLayout>
   )
 }
 
 export const getServerSideProps = async (context) => {
-
   let token = null
   if (context.query.token) {
     token = context.query.token
-  } else {
-
   }
 
   return ({

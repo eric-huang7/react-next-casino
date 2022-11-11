@@ -1,13 +1,17 @@
-import styles from '../../../styles/MyAccount/GamblingLimitsPage/GamblingLimitsPage.module.scss'
 import { SelectPeriodContainer } from './InputsConponents/SelectPeriodContainer'
-import { ButtonsContainer } from './InputsConponents/ButtonsContainer'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { patchUserData } from '../../../redux/user/action'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import BodyText from "../../typography/BodyText";
+import RoundButton from "../../buttons/RoundButton";
+import { HStack } from "@chakra-ui/react";
+import {useRouter} from "next/router";
+import {Box} from "@chakra-ui/layout";
 
 export const InputsBlock = ({ t, userInfo }) => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [selfExclusionExpiry, setSelfExclusionExpiry] = useState(86400000)
 
@@ -28,7 +32,7 @@ export const InputsBlock = ({ t, userInfo }) => {
   }
 
   return (
-    <div className={styles.inputsBlock}>
+    <Box p="20px 0 25px 0">
       <ErrorEmpty>
         <SelectPeriodContainer
           selfExclusionExpiry={selfExclusionExpiry}
@@ -36,10 +40,15 @@ export const InputsBlock = ({ t, userInfo }) => {
           t={t}
         />
       </ErrorEmpty>
-      <ButtonsContainer saveButtonHandler={saveButtonHandler} t={t}/>
-      <p className={styles.innerText}>
-        {t('myAccount.selfExclusionPage.textTwo')}
-      </p>
-    </div>
+      <HStack mb="45px">
+        <RoundButton onClick={saveButtonHandler} solid title={t('myAccount.selfExclusionPage.saveButton')} />
+        <RoundButton
+          ml={4}
+          onClick={() => router.push('/accounts/balance')}
+          title={t('myAccount.selfExclusionPage.cancelButton')}
+        />
+      </HStack>
+      <BodyText>{t('myAccount.selfExclusionPage.textTwo')}</BodyText>
+    </Box>
   )
 }

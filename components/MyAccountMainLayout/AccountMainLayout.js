@@ -1,8 +1,8 @@
-import styles from '../../styles/MyAccount/MainLayout/MainLayout.module.scss'
 import { Header } from '../MainLayout/Header/Header'
 import { SideMenu } from './AccountLayoutConponents/SideMenu'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { Box } from "@chakra-ui/react"
 import {
   auth, getActiveUserSessions, getClosedUserSessions, getDocuments,
   getUserActivePendingBonuses,
@@ -16,16 +16,18 @@ import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import { showLogin } from '../../redux/ui/action'
 import { ErrorMessageContainer } from './ErrorMessage/ErrorMessageContainer'
-import { SelectCurrencyWidget } from '../MainLayout/SelectCurrencyWidget/SelectCurrencyWidget'
 import { backButtonShouldDo, closeAll } from '../../redux/popups/action'
 import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
 import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import {MessageContainer} from "../MessageContainer/MessageContainer";
-import {TermsModal} from "../MainLayout/TermsModal/TermsModal";
+import {TermsModal} from "../modals/TermsModal";
+import {Stack} from "@chakra-ui/layout";
+import {useTranslation} from "next-i18next";
 
-export const AccountMainLayout = ({ t, children }) => {
+export const AccountMainLayout = ({ children }) => {
+  const { t } = useTranslation('common');
   const dispatch = useDispatch()
   const isShowModal = useSelector((store) => store.popups)
   const userInfo = useSelector((userInfo) => userInfo.authInfo)
@@ -64,8 +66,6 @@ export const AccountMainLayout = ({ t, children }) => {
         showModalKey === 'isShowCryptoModal'
         ||
         showModalKey === 'isShowMobilePaymentsStepper'
-        ||
-        showModalKey === 'isShowPaymentCurrencySwitcher'
         ||
         showModalKey === 'isShowCurrencySwitcher'
       ) {
@@ -121,95 +121,56 @@ export const AccountMainLayout = ({ t, children }) => {
     }
   }, [router.pathname])
 
-  if (userInfo.isAuthenticated) {
-    return (
-      <>
-        <div className={styles.accountMainLayoutWrapper}>
-          <ErrorHeaderPage>
-            <Header t={t}/>
-          </ErrorHeaderPage>
-          {
-            isShowModal.showErrorPopup
-              ?
-              <ErrorEmpty>
-                <ErrorMessageContainer
-                  errorData={isShowModal}
-                  t={t}
-                />
-              </ErrorEmpty>
-              : <></>
-          }
-          {
-              isShowModal.showMessagePopup && <MessageContainer />
-          }
-          <ErrorEmpty>
+  return (
+    <Box bg="white" w="100%" h="100vh" overflowX="hidden" overflowY="auto">
+      <ErrorHeaderPage>
+        <Header t={t}/>
+      </ErrorHeaderPage>
+
+      {userInfo.isAuthenticated ?
+        <>
+          {isShowModal.showErrorPopup && <ErrorEmpty>
+            <ErrorMessageContainer
+              errorData={isShowModal}
+              t={t}
+            />
+          </ErrorEmpty>}
+
+          {isShowModal.showMessagePopup && <MessageContainer/>}
+
+          {isShowModal.isShowDepositModal && <ErrorEmpty>
             <DepositPage t={t}/>
-          </ErrorEmpty>
-          {
-            isShowModal.isShowCreditCardModal
-              ?
-              <ErrorEmpty>
-                <PaymentsCardWrapper
-                  isShow={isShowModal.isShowCreditCardModal}
-                  paymentsData={paymentsData}
-                  userInfo={userInfo}
-                  t={t}
-                />
-              </ErrorEmpty>
-              :
-              <></>
-          }
-          {
-            isShowModal.isShowCryptoModal
-              ?
-              <ErrorEmpty>
-                <PaymentsCryptoWrapper
-                  isShow={isShowModal.isShowCryptoModal}
-                  paymentsData={paymentsData}
-                  t={t}
-                />
-              </ErrorEmpty>
-              :
-              <></>
-          }
+          </ErrorEmpty>}
+
+          {isShowModal.isShowCreditCardModal && <ErrorEmpty>
+            <PaymentsCardWrapper
+              paymentsData={paymentsData}
+              userInfo={userInfo}
+            />
+          </ErrorEmpty>}
+
+          {isShowModal.isShowCryptoModal && <ErrorEmpty>
+            <PaymentsCryptoWrapper
+              paymentsData={paymentsData}
+            />
+          </ErrorEmpty>}
+
           <MobileSideMenu t={t} userInform={userInfo}/>
-          {isShowModal.isShowCurrencySwitcher || isShowModal.isShowPaymentCurrencySwitcher
-            ?
-            <ErrorEmpty>
-              <SelectCurrencyWidget
-                t={t}
-                isShowCurrencySwitcher={isShowModal.isShowCurrencySwitcher}
-                isShowPaymentCurrencySwitcher={isShowModal.isShowPaymentCurrencySwitcher}
-                isShowMobileCryptoPayments={isShowModal.isShowMobileCryptoPayments}
-              />
-            </ErrorEmpty>
-            :
-            <></>}
-          {isShowModal.isShowTermsModal ?
-            <ErrorEmpty>
-              <TermsModal />
-            </ErrorEmpty>
-            : <></>}
-          <div className={styles.myAccountContainer}>
-            <div className={styles.accountInnerContainer}>
+
+          {isShowModal.isShowTermsModal && <ErrorEmpty>
+            <TermsModal/>
+          </ErrorEmpty>}
+
+          <Box p={{base: 0, lg: "0 30px"}} m="0 auto" maxW="1360px" w="100%">
+            <Stack direction={{base: "column", lg: "row"}} bg="white" w="100%" minH="700px">
               <SideMenu userInform={userInfo} t={t}/>
-              <section className={styles.accountMainContainer}>
+              <Box w="100%" p={{base: "0 16px 20px", lg: "0 20px 20px 30px"}}>
                 {children}
-              </section>
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <div className={styles.accountMainLayoutWrapper}>
-          <ErrorHeaderPage>
-            <Header t={t}/>
-          </ErrorHeaderPage>
-        </div>
-      </>
-    )
-  }
+              </Box>
+            </Stack>
+          </Box>
+        </> : <ErrorHeaderPage />
+      }
+    </Box>
+  )
 }

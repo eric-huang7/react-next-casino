@@ -1,6 +1,7 @@
-import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
 import { VerifyPhoneUserInfoTable } from './VerifyPhoneUserInfoTable'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
+import Container from "./Container";
+import RoundButton from "../../../../buttons/RoundButton";
 
 export const PhoneAlreadyVerified = ({ t, userInfo, status, removePhoneNumberHandler }) => {
   let phoneNumber = userInfo.phone_number ? userInfo.phone_number.replaceAll('-', '').split('').map((el, ind) => {
@@ -12,16 +13,16 @@ export const PhoneAlreadyVerified = ({ t, userInfo, status, removePhoneNumberHan
   }) : ''
 
   return (
-    <div className={styles.verifyCodeContainer}>
+    <Container>
       <ErrorText>
         <VerifyPhoneUserInfoTable phoneNumber={phoneNumber} t={t} status={status}/>
       </ErrorText>
-      <div className={styles.buttonsContainer}>
-        <button onClick={() => removePhoneNumberHandler()} className={styles.removeNumberButton}>
-          {t('myAccount.profilePage.phoneVerification.buttons.remove')}
-        </button>
+      <div>
+        <RoundButton onClick={removePhoneNumberHandler} solid w="auto" px="25px"
+          title={t('myAccount.profilePage.phoneVerification.buttons.remove')}
+        />
       </div>
-    </div>
+    </Container>
   )
 
 }

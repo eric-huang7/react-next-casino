@@ -1,6 +1,8 @@
-import styles from '../../styles/PaymentsMethodsPage/PaymentsWithdrawBlock.module.scss'
 import {PaymentDataItem} from "./PaymentDataItem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { Box } from "@chakra-ui/react";
+import BodyText from "../typography/BodyText";
+import {HStack} from "@chakra-ui/layout";
 
 const withdrawInfo = {
   depositId: 1,
@@ -40,15 +42,15 @@ export const PaymentsWithdrawBlock = ({t}) => {
     usedArrItems = arrItemsFullScreen;
   }
   return (
-    <section className={styles.withdrawBlockWrapper}>
-      <h2 className={styles.withdrawHeading}>{t("paymentsMethodsPage.withdrawBlock.heading")}</h2>
-      <div className={styles.withdrawItemsWrapper}>
-        <div className={styles.withdrawItemsFrame}>
-          {
-            usedArrItems.map((el) => el)
-          }
-        </div>
-      </div>
-    </section>
+    <Box w="100%" mt="55px">
+      <BodyText as="h2" bold textTransfor="uppercase" color="primary.500">
+        {t("paymentsMethodsPage.withdrawBlock.heading")}
+      </BodyText>
+      <Box w="100%" bg="rgba(0, 0, 0, 0.3)" p="13px" mt="30px">
+        <HStack border="1px solid #66686d" w="100%" minH="100%" p="20px" justifyContent="center" flexWrap="wrap">
+          {usedArrItems.map((el) => el)}
+        </HStack>
+      </Box>
+    </Box>
   )
 }

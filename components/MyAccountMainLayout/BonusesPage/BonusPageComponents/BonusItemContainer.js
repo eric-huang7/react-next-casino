@@ -5,16 +5,25 @@ import ErrorText from '../../../ErrorBoundaryComponents/ErrorText'
 import {setActivePendingBonusesTerms} from "../../../../redux/user/action";
 import {useDispatch, useSelector} from "react-redux";
 import {showTermsModal} from "../../../../redux/popups/action";
-import styles from "../../../../styles/MyAccount/BonusPage/BonusPage.module.scss";
 import {BonusTermsCheck} from "../BonusTermsCheck";
+import {
+  Table,
+  Tbody,
+  Tr,
+  Td,
+  TableContainer,
+  Text
+} from '@chakra-ui/react'
+import RoundButton from "../../../buttons/RoundButton";
+import {Badge, HStack, VStack} from "@chakra-ui/layout";
 
 export const BonusItemContainer = ({
-                                     t,
-                                     bonusData,
-                                     currencyData,
-                                     activateBonusClickHandler,
-                                     cancelBonusClickHandler,
-                                   }) => {
+   t,
+   bonusData,
+   currencyData,
+   activateBonusClickHandler,
+   cancelBonusClickHandler,
+ }) => {
   const router = useRouter()
   const dispatch = useDispatch()
 
@@ -45,38 +54,39 @@ export const BonusItemContainer = ({
   const wagerOrFreeSpinsAmount = isFS ? Number(bonusData.free_spins_awarded)
     : (bonusData.wager_requirements === null ? `0 ${currency}` : `${Number(bonusData.wager_requirements)} ${currency}`)
 
+  const values = [
+    {key: t(amountName), value: amount},
+    {key: t(wagerOrFreeSpins), value: wagerOrFreeSpinsAmount},
+    {key: isFS
+        ? t('myAccount.bonusPage.bonusItems.freeSpinsRemaining')
+        : t('myAccount.bonusPage.bonusItems.wagerPercent'),
+      value: isFS ? bonusData.free_spins_remaining : `${wagerPercent}%`},
+    {key: t('myAccount.bonusPage.bonusItems.dateReceived'), value: dateReceived},
+    {key: t('myAccount.bonusPage.bonusItems.expiryDate'), value: expiryDate},
+  ]
+
   return <ErrorText>
-    <div className={styles.bonusItemContainer}>
-      <div className={styles.bonusItemHeading}>
-        <p className={styles.headingText}>{title}</p>
-        <p className={`${styles.bonusItemStatus} ${bonusData.status !== '1' && styles.pendingStatus}`}>{t(stage)}</p>
-      </div>
-      <ul className={styles.bonusInfoList}>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountName}>{t(amountName)}</div>
-          <div className={styles.amountValue}>{amount}</div>
-        </li>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.amountWagerReq}>{t(wagerOrFreeSpins)}</div>
-          <div className={styles.amountWagerReqValue}>{wagerOrFreeSpinsAmount}</div>
-        </li>
-        {isFS ? <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.freeSpinsRemaining')}</div>
-          <div className={styles.wagerPercentValue}>{bonusData.free_spins_remaining}</div>
-        </li> : <li className={styles.bonusInfoListItem}>
-          <div className={styles.wagerPercent}>{t('myAccount.bonusPage.bonusItems.wagerPercent')}</div>
-          <div className={styles.wagerPercentValue}>{wagerPercent}%</div>
-        </li>}
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.dateReceived}>{t('myAccount.bonusPage.bonusItems.dateReceived')}</div>
-          <div className={styles.dateReceivedValue}>{dateReceived}</div>
-        </li>
-        <li className={styles.bonusInfoListItem}>
-          <div className={styles.expiryDate}>{t('myAccount.bonusPage.bonusItems.expiryDate')}</div>
-          <div className={styles.expiryDate}>{expiryDate}</div>
-        </li>
-      </ul>
-      <div className={styles.termsWrapper}>
+    <VStack w={{base: "100%", lg: "465px"}} borderBottom="1px solid #eeeeee" mb="35px" p="0 5px" alignItems="flex-start">
+      <TableContainer>
+        <Table variant="striped" colorScheme="grey">
+          <Tbody>
+            <Tr>
+              <Td><Text color="primary.500">{title}</Text></Td>
+              <Td textAlign="right">
+                <Badge fontSize="15px" px="30px" h="34px" lineHeight="34px" variant='solid' fontFamily="Verdana"
+                   textTransform="unset" borderRadius="17px" bg={bonusData.status === '1' ? "primary.500" : "#9e9e9e"}>
+                  {t(stage)}
+                </Badge>
+              </Td>
+            </Tr>
+            {values.map((item, index) => (<Tr>
+              <Td>{item.key}</Td>
+              <Td>{item.value}</Td>
+            </Tr>))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+      <HStack w="100%" justifyContent="space-between" alignItems="center" p="20px 0" pr="8px">
         {isActive ? <BonusTermsCheck hideCheckbox onShowTerms={onShowTerms}/> : <BonusTermsCheck
           id={bonusData.id}
           onAccept={acceptTerms}
@@ -84,20 +94,14 @@ export const BonusItemContainer = ({
           isTermsChecked={authInfo.activePendingBonusesTerms[bonusData.id]}
         />}
         {isActive ? (
-          <button
-            onClick={() => cancelBonusClickHandler(bonusData)}
-            className={styles.cancelBonus}
-          >
-            {t('myAccount.bonusPage.bonusItems.cancelBonus')}
-          </button>
-        ) : isTermsChecked && <button
-          onClick={() => activateBonusClickHandler(bonusData)}
-          className={styles.activateBonus}
-        >
-          {t('myAccount.bonusPage.bonusItems.activateBonus')}
-        </button>}
-      </div>
-    </div>
+          <RoundButton fontSize="12px" onClick={() => cancelBonusClickHandler(bonusData)}
+                       title={t('myAccount.bonusPage.bonusItems.cancelBonus')}/>
+        ) : isTermsChecked &&
+          <RoundButton fontSize="12px" solid onClick={() => activateBonusClickHandler(bonusData)}
+                       title={t('myAccount.bonusPage.bonusItems.activateBonus')}/>
+        }
+      </HStack>
+    </VStack>
   </ErrorText>
 }
 

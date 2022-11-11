@@ -1,27 +1,29 @@
 import { FaSort } from "react-icons/fa";
 import { FaSortDown } from "react-icons/fa";
 import { FaSortUp } from "react-icons/fa";
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss';
-
+import { Text, chakra } from '@chakra-ui/react';
+import {HStack} from "@chakra-ui/layout";
 
 export const TableHeading = ({onSort, columns, sort, direction}) => {
   return (
-    <tr className={styles.headingRow} >
-      <th className={styles.headingActive}>
-
-      </th>
+    <chakra.tr bg="white">
+      <chakra.th w={{base: "80px", lg: "135px"}} />
       {columns.map(column => (
-        <th
+        <chakra.th
           key={column.name}
-          className={column.style}
-          style={column.sort && {cursor: 'pointer'}}
+          sx={column.style}
           onClick={() => column.sort && onSort(column.name)}
+          cursor={column.sort ? 'pointer' : 'default'}
+          p="0 1px"
         >
-          <p>
-            {column.title} {sort === column.name ? (direction ? <FaSortDown /> : <FaSortUp />) : column.sort && <FaSort color="#999" />}
-          </p>
-        </th>
+          <HStack h="41px" justifyContent="center" spacing={0} bg="#eee">
+            <Text fontSize="15px" textAlign="center" lineHeight={1} fontFamily="Verdana" fontWeight={400}>
+              {column.title}
+            </Text>
+            {sort === column.name ? (direction ? <FaSortDown /> : <FaSortUp />) : column.sort && <FaSort color="#999" />}
+          </HStack>
+        </chakra.th>
       ))}
-    </tr>
+    </chakra.tr>
   )
 }

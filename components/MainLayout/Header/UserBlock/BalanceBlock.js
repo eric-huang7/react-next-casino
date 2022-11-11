@@ -1,14 +1,14 @@
-import styles from '../../../../styles/Header/BalanceBlock.module.scss'
 import {useEffect, useState} from 'react'
+import {HStack, VStack} from "@chakra-ui/react"
 import { BalanceMenuContainer } from '../../../BalanceMenuContainer/BalanceMenuContainer'
 import { numberTransformer } from '../../../../helpers/numberTransformer'
 import BalanceErrorBoundary from '../../../BalanceMenuContainer/BalanceErrorBoundary/BalanceErrorBoundary'
 import { currencyFinder } from '../../../../helpers/currencyFinder'
-import {svgSetter} from "../../../../helpers/iconNameFinder";
-import {CurrencyItemShort} from "./CurrencyItemShort";
 import {useTranslation} from "next-i18next";
-import {Withdrawable} from "./Withdrawable";
 import {milliCurrencies, milliLimit} from "../../../../envs/currency";
+import {Text} from "@chakra-ui/layout";
+import {ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons"
+import CurrencyItemShort from "../../../currency/CurrencyItemShort";
 
 export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
@@ -18,13 +18,6 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
   const [activeCurrency, setActiveCurrency] = useState(false)
   const [balance, setBalance] = useState(false)
   const [isMilli, setIsMilli] = useState(false)
-
-  useEffect(() => {
-    if (activeCurrency) {
-      const returnAbbr = false
-      svgSetter(activeCurrency, returnAbbr)
-    }
-  }, [activeCurrency])
 
   useEffect(() => {
     if (userCurrency.currency && userInfo.balance) {
@@ -79,45 +72,40 @@ export const BalanceBlock = ({ userInfo, userCurrency }) => {
     setIsShowBalanceList(false)
   }
 
-  return userCurrency.currency && userInfo.balance ? (
-    <div className={styles.userMainBlockUserInfoBlock}>
-      <div className={styles.userName}>
+  return userCurrency.currency && userInfo.balance && (
+    <VStack spacing={0} alignItems="flex-start" pr={5}>
+      <Text as="div" fontSize="12px" color="currency.500" fontFamily="Verdana">
           {userInfo.user.user.username}
-      </div>
-      <div
-        className={`${styles.userTextContainer} ${isShowBalanceList ? styles.active : ''} ${userInfo?.balance?.balances.length === 1 ? styles.indicatorOff : ''}`}
-        onMouseEnter={() => showBalanceListHandler()}
-        onMouseLeave={() => hideBalanceListHandler()}
+      </Text>
+      <HStack
+        minW="200px"
+        position="relative"
+        spacing={0}
+        cursor="pointer"
+        onMouseEnter={showBalanceListHandler}
+        onMouseLeave={hideBalanceListHandler}
       >
-        <span>
-          {balance}
-          <CurrencyItemShort currencyData={activeCurrency} isMilli={isMilli} />
-        </span>
-        {
-          isShowBalanceList && balanceData.length > 0
-            ?
-            <BalanceErrorBoundary>
-              <BalanceMenuContainer
-                balanceData={userInfo}
-                activeBalance={balanceData}
-                currencyData={userCurrency}
-              />
-            </BalanceErrorBoundary>
-            :
-            <></>
+        <Text fontSize="14px" color="currency.500" fontFamily="Verdana">{balance}</Text>
+        <CurrencyItemShort currencyData={activeCurrency} isMilli={isMilli} />
+        {isShowBalanceList
+          ? <ChevronUpIcon w={6} h={6} color="primary.500"/>
+          : <ChevronDownIcon w={6} h={6} color="primary.500"/>
         }
-      </div>
-      <div className={styles.userName} style={{marginTop: 15}}>
+        {isShowBalanceList && balanceData.length > 0 && <BalanceErrorBoundary>
+          <BalanceMenuContainer
+            balanceData={userInfo}
+            activeBalance={balanceData}
+            currencyData={userCurrency}
+          />
+        </BalanceErrorBoundary>}
+      </HStack>
+      <Text as="div" fontSize="12px" color="currency.500" fontFamily="Verdana" pt="15px">
         {t('header.userDesktopMenu.withdrawable')}
-      </div>
-      <div
-        className={`${styles.userTextContainerPlain}`}
-      >
-        <span>
-          {balance}
-          <Withdrawable currencyData={activeCurrency} isMilli={isMilli} />
-        </span>
-      </div>
-    </div>
-  ) : null
+      </Text>
+      <HStack spacing={0}>
+        <Text fontSize="14px" color="currency.500" fontFamily="Verdana">{balance}</Text>
+        <CurrencyItemShort currencyData={activeCurrency} isMilli={isMilli} />
+      </HStack>
+    </VStack>
+  )
 }

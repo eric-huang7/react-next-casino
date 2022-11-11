@@ -1,47 +1,47 @@
-import styles from '../../../styles/HomePage/WhySlotsIdol.module.scss'
 import { useTranslation } from 'next-i18next'
+import { Box, Image } from "@chakra-ui/react"
+import {HStack, Text, VStack} from "@chakra-ui/layout";
+import SectionHeaderCenter from "../../typography/SectionHeaderCenter";
+
+const images = [
+  {name: 'minute', key: 'whySlotsIdol.minuteRegistration', reverse: true},
+  {name: 'deposits', key: 'whySlotsIdol.InstantDeposits'},
+  {name: 'payouts', key: 'whySlotsIdol.FastPayouts', reverse: true},
+  {name: 'licensed', key: 'whySlotsIdol.LicensedAndRegulated'},
+]
 
 export const WhySlotsIdol = ({ isBackShow, title }) => {
   const { t } = useTranslation('common')
   return (
-    <div className={`${styles.whySlotsMainwrapper} ${isBackShow ? styles.backShow : ''}`}>
-      <div className={styles.headingWrapper}>
-        <div className={styles.heading}>
-          <div className={styles.title}>
-            {title}
-          </div>
-        </div>
-      </div>
-      <div className={styles.whySlotsItems}>
-        <div className={`${styles.minuteBlock} ${styles.whySlotsInnerItem}`}>
-          <div className={styles.minuteImg}>
-            <img src={'/assets/img/whySlotsIdol/minute.svg'} alt="minute"/>
-          </div>
-          <p className={styles.minuteDescr}>{t(`whySlotsIdol.minuteRegistration`)}</p>
-        </div>
-        <div className={`${styles.depositsBlock} ${styles.whySlotsInnerItem}`}>
-          <div className={styles.depositsImg}>
-            <img src={'/assets/img/whySlotsIdol/deposits.svg'} alt="deposits"/>
-          </div>
-          <p className={styles.depositsDescr}>{t(`whySlotsIdol.InstantDeposits`)}</p>
-        </div>
-        <div className={`${styles.payoutsBlock} ${styles.whySlotsInnerItem}`}>
-          <div className={styles.payoutsImg}>
-            <img src={'/assets/img/whySlotsIdol/payouts.svg'} alt="payouts"/>
-          </div>
-          <p className={styles.payoutsDescr}>{t(`whySlotsIdol.FastPayouts`)}</p>
-        </div>
-        <div className={`${styles.licensedBlock} ${styles.whySlotsInnerItem}`}>
-          <div className={styles.licensedImg}>
-            <img src={'/assets/img/whySlotsIdol/licensed.svg'} alt="licensed"/>
-          </div>
-          <p className={styles.licensedDescr}>{t(`whySlotsIdol.LicensedAndRegulated`)}</p>
-        </div>
-      </div>
-      <div className={styles.whySlotsInfoblock}>
-        <h1>{t(`whySlotsIdol.GetMoreCustomerSupport`)}</h1>
-        <p>{t(`whySlotsIdol.getSupportInnerText`)}</p>
-      </div>
-    </div>
+    <Box w="100%" backgroundImage="url('/assets/img/mainLayoutImg/section-bg-2.webp')" p="62px 0 85px 0">
+      <SectionHeaderCenter>{title}</SectionHeaderCenter>
+      <HStack w="90%" m="0 auto" alignItems={{base: "flex-start", lg: "center"}}
+              justifyContent="center" flexWrap="wrap" spacing={3}>
+        {images.map((item, index) => (
+          <Box
+            display="flex"
+            key={item.name}
+            alignItems="center"
+            flexDirection={{base: 'column', lg: item.reverse ? 'column-reverse' : 'column'}}
+            w={{base: '35%', lg: 'auto'}}
+            mt={{base: !item.reverse ? "50px !important" : 0, lg: 0}}
+            spacing={0}
+          >
+            <Image src={`/assets/img/whySlotsIdol/${item.name}.svg`} alt="" />
+            <Text variant="heading" size={{base: "xs", lg: "md"}} textAlign="center" maxW="68%" py={{base: 0, lg: "23px"}}>
+              {t(item.key)}
+            </Text>
+          </Box>
+        ))}
+      </HStack>
+      <Box backgroundColor="rgba(0,0,0,0.3)" w="100%" p="40px 0" mt="130px" textAlign="center">
+        <Text as="h1" variant="heading" size="lg" textAlign="center" mb="55px">
+          {t(`whySlotsIdol.GetMoreCustomerSupport`)}
+        </Text>
+        <Text variant="text" maxW={{base: "360px", lg: "933px"}} textAlign="center" m="auto">
+          {t(`whySlotsIdol.getSupportInnerText`)}
+        </Text>
+      </Box>
+    </Box>
   )
 }

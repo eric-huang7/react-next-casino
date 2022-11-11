@@ -1,4 +1,3 @@
-import styles from "../../styles/GamesPage/GamesPage.module.scss";
 import {
   allProvidersURL,
   chosenProviderURL,
@@ -9,6 +8,7 @@ import {
 } from "../../helpers/gamesURL";
 import {setGames, setTotalRows} from "../../redux/games/action";
 import {useDispatch, useSelector} from "react-redux";
+import {HStack, Text} from "@chakra-ui/layout";
 
 export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading}) => {
   const dispatch = useDispatch();
@@ -40,10 +40,20 @@ export const MoreButton = ({t, setPageCounter, pageCounter, gamesData, heading})
   }
 
   return (
-    <div className={styles.moreWrapper}>
+    <HStack
+      backgroundColor="accent.850"
+      backgroundImage="url('/assets/img/mainLayoutImg/header_bg.webp')"
+      w="100%"
+      h="85px"
+      mb="150px"
+      alignItems="center"
+      justifyContent="center"
+    >
       <img src={'/assets/img/moreButton/more-arrow-left.webp'} alt=""/>
-      <button onClick={() => moreButtonClickHAndler()} className={styles.moreButton}>{t("gamesPage.moreButton")}</button>
+        <Text variant="heading" size="lg" onClick={moreButtonClickHAndler} cursor="pointer">
+          {t("gamesPage.moreButton")}
+        </Text>
       <img src={'/assets/img/moreButton/more-arrow-right.webp'} alt=""/>
-    </div>
+    </HStack>
   )
 }

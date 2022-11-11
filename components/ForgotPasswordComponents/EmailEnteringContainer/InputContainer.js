@@ -1,43 +1,17 @@
-import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
-import {useRef, useState} from "react";
+import FloatingLabelField from "../../form/FloatingLabelField";
+import {Text, Box} from "@chakra-ui/layout";
 
-
-export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandler, requestError}) => {
-
-  const [moveLabel, setMoveLabel] = useState(false);
-
-  const labelMoveHandler = (e) => {
-    setMoveLabel(true);
-  }
-
-  const onBlurEmailHandler = (e) => {
-    if (e.target.value) {
-
-    } else {
-      setMoveLabel(false);
-    }
-  }
-
-
-  return (
-    <div className={styles.emailInputField}>
-      <form
-        id={'forgotPasswordForm'}
-        onSubmit={handleSubmit(onSubmitHandler)}
-      >
-        <label className={`${styles.emailLabel} ${moveLabel ? styles.moveLabel : ''} ${errors.email ? styles.errorEmailLabel : ''}`} htmlFor='forgotPasswordEmail'>{t('forgotPasswordForm.emailLabel')}</label>
-        <input
-          {...register("email")}
-          type="text"
-          className={errors.email ? styles.errorField : ""}
-          id={'forgotPasswordEmail'}
-          // onChange={(e) => labelMoveHandler(e)}
-          onFocus={(e) => labelMoveHandler(e)}
-          onBlur={(e) => onBlurEmailHandler(e)}
-        />
-      </form>
-      <span className={styles.emailError}>{t(errors.email?.message)}</span>
-      <p className={styles.emailError}>{t(requestError)}</p>
-    </div>
-  )
-}
+export const InputContainer = ({t, register, handleSubmit, errors, onSubmitHandler, requestError}) => (
+  <Box position="relative" maxW="100%" w="100%" flexShrink={0}>
+    <form id={'forgotPasswordForm'} onSubmit={handleSubmit(onSubmitHandler)}>
+      <FloatingLabelField
+        validation={{...register("email")}}
+        label={t('forgotPasswordForm.emailLabel')}
+        placeholder=" "
+        error={t(errors.email?.message)}
+        id={'forgotPasswordEmail'}
+      />
+    </form>
+    <Text fontSize={12} color="red.500">{t(requestError)}</Text>
+  </Box>
+)

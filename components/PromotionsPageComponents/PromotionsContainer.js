@@ -1,4 +1,3 @@
-import styles from '../../styles/PromotionsPage/PromotionsPage.module.scss'
 import { MainBlock } from '../../components/MainLayout/MainBlock'
 import { BonusesContainer } from './BonusesContainer/BonusesContainer'
 import { useSelector } from 'react-redux'
@@ -32,8 +31,7 @@ export const PromotionsContainer = () => {
   const userData = useSelector((store) => store.authInfo)
 
   return (
-    <div className={styles.promotionsWrapper}>
-      {/*<MainBlock dataForMainBlock={dataForMainBlock} userData={userData}/>*/}
+    <div>
       <MainBlock title={t('heading')}/>
       <BonusesContainer userData={userData} userCurrency={userCurrency} activeBonuses={activeBonuses}/>
     </div>

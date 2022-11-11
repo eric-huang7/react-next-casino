@@ -55,17 +55,14 @@ export const NotificationContainer = ({ messagesData }) => {
   }
 
   return (
-    <>
-      <BellNotification
-        showBellHandler={showBellHandler}
-        messageCount={unreadMessages.length}
-        hideBellHandler={hideBellHandler}
-        checkReadMessages={checkReadMessages}
-        isShowNotifications={isShowNotifications}
-        showMessages={showMessages}
-        subscriptInfo={subscriptInfo}
-      />
-    </>
-
+    <BellNotification
+      showBellHandler={showBellHandler}
+      messageCount={unreadMessages.length}
+      hideBellHandler={hideBellHandler}
+      checkReadMessages={checkReadMessages}
+      isShowNotifications={isShowNotifications}
+      showMessages={showMessages}
+      subscriptInfo={subscriptInfo}
+    />
   )
 }

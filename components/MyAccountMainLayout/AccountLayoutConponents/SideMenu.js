@@ -1,6 +1,6 @@
-import styles from '../../../styles/MyAccount/MainLayout/MainLayout.module.scss'
 import { SideMenuItem } from './SideMenuItem'
 import { useRouter } from 'next/router'
+import { Box, Text, HStack, VStack } from "@chakra-ui/react"
 
 const sideMenuListData = [
   {
@@ -57,17 +57,20 @@ export const SideMenu = ({ t, userInform }) => {
   const router = useRouter()
 
   return (
-    <aside className={styles.accountSideBlock}>
-      <h2 className={styles.accountHeading}>{t('myAccount.heading')}</h2>
-      <ul className={styles.accountLinksList}>
-        {
-          sideMenuListData.map((el) => {
-            return (
-              <SideMenuItem userInform={userInform} key={`${el.id} account link item`} t={t} data={el} router={router}/>
-            )
-          })
-        }
-      </ul>
-    </aside>
+    <Box maxW={{base: "100%", lg: "336px"}} w="100%" bg="#eeeeee" p={0} spacing={0} m={0}>
+      <HStack w="100%" h={{base: "60px", lg: "93px"}} alignItems="center" justifyContent="center" bg="primary.500"
+        borderBottom="1px solid #ffffff" m={0}>
+        <Text as="h2"  fontSize={{base: "20px", lg: "24px"}} fontWeight={400} letterSpacing="1px" color="white"
+          fontFamily="Verdana" textAlign="center" textTransform="uppercase"
+        >
+          {t('myAccount.heading')}
+        </Text>
+      </HStack>
+      <Box overflowY="auto">
+        {sideMenuListData.map((el) => (
+          <SideMenuItem userInform={userInform} key={`${el.id} account link item`} t={t} data={el} router={router}/>
+        ))}
+      </Box>
+    </Box>
   )
 }

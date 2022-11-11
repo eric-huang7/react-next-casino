@@ -1,11 +1,10 @@
-import styles from '../../styles/MessageContainer/Messagecontainer.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
+import { HStack } from "@chakra-ui/react"
 import { messagePopupDeactivate } from '../../redux/popups/action'
 import { MessageTextContainer } from './MessageTextContainer'
-import { CloseButton } from './CloseButton'
+import CloseIconButton from "../buttons/CloseIconButton";
 
 export const MessageContainer = () => {
-
   const dispatch = useDispatch()
   const popupData = useSelector((store) => store.popups)
 
@@ -14,9 +13,30 @@ export const MessageContainer = () => {
   }
 
   return (
-    <div style={{backgroundColor: popupData.messagePopupData.color}} className={styles.messageContainer}>
-      <MessageTextContainer messageType={popupData.messagePopupData.data}/>
-      <CloseButton closeMessagePopup={closeMessagePopup}/>
-    </div>
+    <HStack
+      sx={{
+        bg: popupData?.messagePopupData?.color,
+        '& a': {textDecoration: "underline"},
+        '& a:hover': {color: "#d5d5d5"},
+      }}
+      position="fixed"
+      top="20px"
+      right="20px"
+      minW="350px"
+      maxW="400px"
+      alignItems="flex-start"
+      flexWrap="nowrap"
+      zIndex={30}
+      bg="primary.500"
+      borderRadius="10px"
+      border="2px solid #fff"
+      p="0 10px"
+      fontSize="14px"
+      fontFamily="Verdana"
+      color="white"
+    >
+      <MessageTextContainer messageType={popupData?.messagePopupData?.data}/>
+      <CloseIconButton onClick={closeMessagePopup}/>
+    </HStack>
   )
 }

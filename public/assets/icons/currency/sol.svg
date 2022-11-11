@@ -1,0 +1,20 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="sol" x="125" y="220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10.846" cy="10" r="10" fill="#000"/>
+        <path d="M6.113 5.127a.419.419 0 01.3-.127h10.375c.189 0 .283.234.15.371l-2.05 2.102a.419.419 0 01-.3.127H4.213c-.19 0-.284-.234-.15-.371l2.05-2.102z" fill="url(#nzpaint0_linear)"/>
+        <path d="M6.113 12.927a.419.419 0 01.3-.127h10.375c.189 0 .283.234.15.371l-2.05 2.102a.419.419 0 01-.3.127H4.213c-.19 0-.284-.234-.15-.372l2.05-2.1z" fill="url(#nzpaint1_linear)"/>
+        <path d="M14.588 8.9c.112 0 .22.046.3.127l2.05 2.102c.133.137.039.371-.15.371H6.413a.419.419 0 01-.3-.127L4.063 9.27c-.134-.137-.04-.371.15-.371h10.375z" fill="url(#nzpaint2_linear)"/>
+        <defs>
+            <linearGradient id="nzpaint0_linear" x1="12.789" y1="2.134" x2="5.317" y2="16.085" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00FFA3"/>
+                <stop offset="1" stop-color="#DC1FFF"/>
+            </linearGradient>
+            <linearGradient id="nzpaint1_linear" x1="12.789" y1="2.134" x2="5.317" y2="16.085" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00FFA3"/>
+                <stop offset="1" stop-color="#DC1FFF"/>
+            </linearGradient>
+            <linearGradient id="nzpaint2_linear" x1="12.789" y1="2.134" x2="5.317" y2="16.085" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00FFA3"/>
+                <stop offset="1" stop-color="#DC1FFF"/>
+            </linearGradient>
+        </defs>
+    </svg>

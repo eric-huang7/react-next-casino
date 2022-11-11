@@ -1,13 +1,13 @@
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { MainBlock } from '../../components/HomePageComponents/MainBlock'
+import {useTranslation} from 'next-i18next'
+import {useRouter} from 'next/router'
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+import {MainBlock} from '../../components/HomePageComponents/MainBlock'
 import MainLayout from '../../components/MainLayout/MainLayout'
-import { ChooseCategoryBlock } from '../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock'
-import { useEffect, useRef, useState } from 'react'
-import { getCurrency } from '../../redux/currency/action'
-import { useDispatch, useSelector } from 'react-redux'
-import { GamesContainer } from '../../components/GamesPageComponents/GamesContainer'
+import {ChooseCategoryBlock} from '../../components/HomePageComponents/ChooseCategoryBlock/ChooseCategoryBlock'
+import {useEffect, useRef, useState} from 'react'
+import {getCurrency} from '../../redux/currency/action'
+import {useDispatch, useSelector} from 'react-redux'
+import {GamesContainer} from '../../components/GamesPageComponents/GamesContainer'
 import {
   allProvidersURL,
   chosenProviderURL,
@@ -23,12 +23,13 @@ import {setGames, setLoaded, setSearch, setTotalRows} from '../../redux/games/ac
 import ErrorEmpty from '../../components/ErrorBoundaryComponents/ErrorEmpty'
 import Connect from "../../helpers/connect";
 import {MoreButton} from "../../components/GamesPageComponents/MoreButton";
+import { SearchGamesContainer } from '../../components/GamesPageComponents/SearchGamesContainer'
 
 const GamesPage = (props) => {
   const dispatch = useDispatch()
-  const { t } = useTranslation('common')
+  const {t} = useTranslation('common')
   const router = useRouter()
-  const { id } = router.query
+  const {id} = router.query
   const myRef = useRef(null)
 
   // const searchRef = useRef('')
@@ -141,16 +142,21 @@ const GamesPage = (props) => {
         <ChooseCategoryBlock isProvidersPage={false} t={t}/>
 
         <ErrorEmpty>
-          <GamesContainer
-            heading={heading}
-            gamesData={isSearch ? searchGames : allGames}
-            pageCounter={pageCounter}
-            setPageCounter={setPageCounter}
-            isShowMoreButton={isShowMoreButton}
-            setIsShowMoreButton={setIsShowMoreButton}
-            t={t}
-            gamesError={gamesError}
-          />
+          {isSearch ? (
+            <SearchGamesContainer
+              heading={heading}
+              searchGames={searchGames}
+              t={t}
+            />
+          ) : (
+            <GamesContainer
+              heading={heading}
+              gamesData={allGames}
+              setPageCounter={setPageCounter}
+              t={t}
+              gamesError={gamesError}
+            />
+          )}
         </ErrorEmpty>
 
         {isLoaded && !isSearch && <MoreButton

@@ -2,9 +2,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../../components/MainLayout/MainLayout'
 // import { MainBlockWhyUseCrypto } from '../../components/WhyUseCrypto/MainBlockWhyUseCrypto'
-import { WhyUseBitcoinBlock } from '../../components/WhyUseCrypto/WhyUseBitcoinBlock'
+import InfoBlock from '../../components/WhyUseCrypto/InfoBlock'
 import { WhyUseBitcoinItemsContainer } from '../../components/WhyUseCrypto/WhyUseBitcoinItemsContainer/WhyUseBitcoinItemsContainer'
-import { GetStartedWith } from '../../components/WhyUseCrypto/GetStartedWith'
 import { GetStartedInstructionsContainer } from '../../components/WhyUseCrypto/GetStartedInstructionsContainer/GetStartedInstructionsContainer'
 import { NewsBlock } from '../../components/HomePageComponents/NewsBlock/NewsBlock'
 import { useEffect } from 'react'
@@ -25,9 +24,15 @@ const WhyUseCrypto = () => {
       <MainLayout>
         {/*<MainBlockWhyUseCrypto/>*/}
         <MainBlock title={t('footer.whyUseCrypto')}/>
-        <WhyUseBitcoinBlock t={t}/>
+        <InfoBlock
+          title={t('whyUseCryptoPage.whyUseBitcoinBlock.heading')}
+          text={t('whyUseCryptoPage.whyUseBitcoinBlock.infoText')}
+        />
         <WhyUseBitcoinItemsContainer t={t}/>
-        <GetStartedWith t={t}/>
+        <InfoBlock
+          title={t('whyUseCryptoPage.getStartedWithBlock.heading')}
+          text={t('whyUseCryptoPage.getStartedWithBlock.infoText')}
+        />
         <GetStartedInstructionsContainer t={t}/>
         <ErrorText>
           <NewsBlock t={t} isBackShow={false}/>

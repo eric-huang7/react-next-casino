@@ -1,7 +1,6 @@
 import React from "react";
 import {logErrorToMyService} from "../../../helpers/errorLoger";
 
-
 class BalanceItemError extends React.Component {
   constructor(props) {
     super(props);

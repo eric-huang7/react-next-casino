@@ -1,4 +1,7 @@
-import styles from '../../../../styles/MyAccount/BonusPage/BonusPage.module.scss'
+import RoundButton from "../../../buttons/RoundButton";
+import {HStack} from "@chakra-ui/react";
+import {Box, Text} from "@chakra-ui/layout";
+import InputField from "../../../form/InputField";
 
 export const AddPromoCodeContainer = ({
   t,
@@ -11,29 +14,45 @@ export const AddPromoCodeContainer = ({
 }) => {
 
   return (
-    <div className={`${styles.addPromoCodeContainer} ${isCenter ? '' : styles.positionLeft}`}>
-      <p className={styles.addPromoMainHeading}>{t('myAccount.bonusPage.addPromoCode.heading')}</p>
-      <p className={styles.addPromoText}>{t('myAccount.bonusPage.addPromoCode.addText')}</p>
-      <form onSubmit={(e) => savePromoCodeClickHandler(e)}>
-        <div className={styles.addPromoInputWrapper}>
+    <Box
+      alignSelf={isCenter ? "center" : "start"}
+      maxW="402px"
+      w="100%"
+      minH="144px"
+      borderRadius="5px"
+      bg="#eeeeee"
+      p="25px 17px 20px 23px"
+      m={isCenter ? "0 auto 30px auto" : "17px 0 30px 0px"}
+    >
+      <Text fontSize="15px" fontWeight={400} color="#595656" fontFamily="Verdana">
+        {t('myAccount.bonusPage.addPromoCode.heading')}
+      </Text>
+      <Text fontSize="15px" fontWeight={600} color="gray.850" fontFamily="Verdana">
+        {t('myAccount.bonusPage.addPromoCode.addText')}
+      </Text>
+      <form onSubmit={savePromoCodeClickHandler}>
+        <HStack alignItems="center" justifyContent="space-between" mt="32px">
 
-          <input
+          <InputField
+            error={promoErrorValue}
             onChange={(e) => promoCodeInputHandler(e.target.value)}
-            type="text"
-            className={styles.promoCodeInput}
             value={promoCodeValue}
+            fontSize={16}
+            px={2}
+            inputProps={{
+              maxW: "229px",
+              w: "100%",
+              h: "28px",
+              borderRadius: "5px",
+              bg: "white"
+            }}
+
           />
-          <button
-            type={'submit'}
-            onClick={(e) => savePromoCodeClickHandler(e)}
-            className={styles.savePromoButton}
-          >
-            {t('myAccount.bonusPage.addPromoCode.saveButton')}
-          </button>
-        </div>
+          <RoundButton fontSize="12px" solid onClick={savePromoCodeClickHandler}
+                       title={t('myAccount.bonusPage.addPromoCode.saveButton')}/>
+        </HStack>
       </form>
-      <span className={styles.promoDepositText}>{promoDepositText}</span>
-      <span className={styles.errorMessage}>{promoErrorValue}</span>
-    </div>
+      <Box fontSize={12} color="#595656">{promoDepositText ? promoDepositText : ''}</Box>
+    </Box>
   )
 }

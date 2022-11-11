@@ -1,4 +1,3 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
 import QRCode from 'qrcode'
 import { useEffect, useState } from 'react'
 
@@ -15,8 +14,8 @@ export const QrGenerator = ({ qrData }) => {
   }, [qrData])
 
   return (
-    <div className={styles.qrImageContainer}>
-      <img src={src} alt="qr code image" className={styles.qrCodeImage}/>
+    <div>
+      <img src={src} alt="qr code image" width="160px" height="160px"/>
     </div>
   )
 }

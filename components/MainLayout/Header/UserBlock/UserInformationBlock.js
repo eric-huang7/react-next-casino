@@ -1,13 +1,15 @@
-import styles from '../../../../styles/Header/UserBlock.module.scss'
-import { DesktopMenuContainer } from '../../../DesktopMenuComponents/DesktopMenuContainer'
+import { DesktopMenuContainer } from '../DesktopMenuComponents/DesktopMenuContainer'
 import {useEffect, useState} from 'react'
+import { Box, Text } from "@chakra-ui/react";
 import {numberTransformer} from "../../../../helpers/numberTransformer";
 import {currencyFinder} from "../../../../helpers/currencyFinder";
 import {showDepositModal} from "../../../../redux/popups/action";
 import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {HeaderBalance} from "./HeaderBalance";
 import {milliCurrencies, milliLimit} from "../../../../envs/currency";
+import LinkButton from "../../../buttons/LinkButton";
+import {HStack, VStack} from "@chakra-ui/layout";
+import CurrencyItemShort from "../../../currency/CurrencyItemShort";
 
 export const UserInformationBlock = ({ userInfo, userCurrency }) => {
   const { t } = useTranslation('common')
@@ -87,44 +89,33 @@ export const UserInformationBlock = ({ userInfo, userCurrency }) => {
     dispatch(showDepositModal(true))
   }
 
-  return userCurrency.currency && userInfo.balance ? (
-    <div className={styles.userMainBlockUserInfoBlock}>
-      <div className={`${styles.userTextContainer}`}>
-        <span className={styles.userName}>
-          {isRealGame ? (
-            <div className={styles.balance}>{t('header.realGame')} <HeaderBalance currencyData={activeCurrency}/></div>
-          ) : (
-            <div>
-              <div className={styles.balance}>
-                {balance} <HeaderBalance currencyData={activeCurrency} isMilli={isMilli}/>
-              </div>
-              <div className={styles.depositButton} onClick={closeDepositModalHandler}>
-                {t('tournaments.buttons.deposit')}
-              </div>
-            </div>
-          )}
-        </span>
-      </div>
-      <div
-        className={`${styles.userTextContainer} ${isShowLinksMenu ? styles.active : ''}`}
+  return userCurrency.currency && userInfo.balance && (
+    <HStack>
+      <HStack spacing={0} position="relative" alignItems="center" h="60px">
+        {isRealGame ? (<HStack flexWrap="nowrap">
+          <Text fontSize="14px" color="currency.500" fontFamily="Verdana">{t('header.realGame')}</Text>
+          <CurrencyItemShort currencyData={activeCurrency} />
+        </HStack>
+        ) : (<VStack spacing={1} alignItems="flex-start">
+          <HStack flexWrap="nowrap">
+            <Text fontSize="14px" color="currency.500" fontFamily="Verdana">{balance}</Text>
+            <CurrencyItemShort currencyData={activeCurrency} />
+          </HStack>
+          <LinkButton onClick={closeDepositModalHandler}>
+            {t('tournaments.buttons.deposit')}
+          </LinkButton>
+        </VStack>)}
+      </HStack>
+      <Box
+        pl={3}
         onMouseEnter={() => showLinksMenuHandler()}
         onMouseLeave={() => hideLinksMenuHandler()}
       >
-
-        <span className={styles.userName}>
-          <img src="/assets/img/avatars/Blue.webp" width={50} alt="" />
-        </span>
-        {
-          isShowLinksMenu
-            ? <DesktopMenuContainer onClose={hideLinksMenuHandler} userInfo={userInfo} userCurrency={userCurrency}/>
-            : null
+        <img src="/assets/img/avatars/Blue.webp" width={50} alt="" />
+        {isShowLinksMenu &&
+          <DesktopMenuContainer onClose={hideLinksMenuHandler} userInfo={userInfo} userCurrency={userCurrency}/>
         }
-      </div>
-    </div>
-  ) : (
-    <div className={styles.userMainBlockUserInfoBlock}>
-      <span>{'     '}</span>
-      <span>{'     '}</span>
-    </div>
+      </Box>
+    </HStack>
   )
 }

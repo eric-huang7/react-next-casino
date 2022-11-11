@@ -1,18 +1,30 @@
-import styles from '../../../styles/DepositPage/DepositPage.module.scss'
-import { DepositHeading } from './DepositHeading'
-import { DepositInputsContainer } from './DepositInputs/DepositInputsContainer'
-import { BonusesBlockMainContainer } from './BonusesBlock/BonusesBlockMainContainer'
-import { DepositImages } from './DepositPaymentsImages'
-import { BonusCodeActivator } from './BonusCodeActivator'
-import { DepositButtonSubmit } from './DepositButtonSubmit'
-import { ChoosePaymentMethod } from './ChoosePaymentMethod/ChoosePaymentMethod'
-import { DepositLastPage } from './DepositLastPage/DepositLastPage'
+import {useDispatch, useSelector} from "react-redux"
+import {useState} from "react"
+import {Box, HStack, Text} from "@chakra-ui/layout"
+import {useRouter} from "next/router";
+import SelectModal from "../../modal/SelectModal"
+import DepositCurrencySelector from './DepositCurrencySelector'
+import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
+import {ChoosePaymentMethod} from './ChoosePaymentMethod'
+import {DepositLastPage} from './DepositLastPage'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
-import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {setStepDepositModal} from "../../../redux/popups/action";
+import ModalTopHeader from "../../modal/ModalTopHeader";
+import {setErrorUserDepositValue} from "../../../redux/userFinance/action";
+import {numberTransformer} from "../../../helpers/numberTransformer";
+import SubmitButton from "../../buttons/SubmitButton";
+import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
+import BonusesSlider from "./BonusesBlock/BonusesSlider";
+
+const paymentImages = [
+  {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
+  {id: 2, src: '/assets/img/depositPage/skrill.svg', name: "skrill logo"},
+  {id: 3, src: '/assets/img/depositPage/eco_payz.svg', name: "eco_payz logo"},
+  {id: 4, src: '/assets/img/depositPage/bitcoin.svg', name: "bitcoin logo"},
+]
 
 export const DepositPageStepper = (props) => {
   let {
-    currencyData,
     step,
     t,
     closeDepositModalHandler,
@@ -20,47 +32,115 @@ export const DepositPageStepper = (props) => {
     currencySwitcherShowHandler,
     isChecked,
     checkedInputHandler,
-    isActiveBonusInput,
-    bonusCodeInputActiveHandler,
-    submitHandler,
-    stepHandler,
     depositValueInputHandler,
     userDepositValue,
-    userDepositValueError,
     userPayment,
     userInfo,
-    showAllBonuses,
-    showAllBonusesHandler,
     chooseBonusClickHandler,
     setDepositButtonText,
     buttonText,
     userSelectedBonus,
-    isShowDepositModal,
-    bonusesArr,
-    paymentMethods,
-    setPaymentMethods
   } = props
+
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const [isActiveBonusInput, setIsActiveBonusInput] = useState(false)
+  const [paymentMethods, setPaymentMethods] = useState(null)
+  const [selectedCurrency, setSelectedCurrency] = useState(null)
+
+  const userDepositValueError = useSelector((state) => state.userFinance.errorMessage)
+
+  const bonusCodeInputActiveHandler = () => {
+    if (isActiveBonusInput) {
+      setIsActiveBonusInput(false)
+    } else {
+      setIsActiveBonusInput(true)
+    }
+  }
+
+  const stepHandler = (step) => {
+    dispatch(setStepDepositModal(step + 1))
+  }
+
+  const submitButtonHandler = () => {
+    const max = Number(userCurrency?.userCurrencyData?.depositMax);
+    const min = Number(userCurrency?.userCurrencyData?.depositMin);
+    const decimal = userCurrency?.userCurrencyData?.decimal;
+
+    if (step === 1 || step === 3) {
+      if (userDepositValue < min && min > 0) {
+        dispatch(setErrorUserDepositValue(
+          t('depositPage.errors.wrongValueMin', {value: numberTransformer(min.toFixed(Math.min(9, decimal)))})
+        ))
+      } else if (userDepositValue > max && max > 0) {
+        dispatch(setErrorUserDepositValue(
+          t('depositPage.errors.wrongValueMax', {value: numberTransformer(max.toFixed(Math.min(9, decimal)))})
+        ))
+      } else if ((userDepositValue > 0) && !!userDepositValue) {
+
+        dispatch(setErrorUserDepositValue(''))
+
+        if (step === 3) {
+
+        } else {
+
+          stepHandler(step)
+        }
+
+      } else {
+
+        dispatch(setErrorUserDepositValue(t('depositPage.errors.wrongValue')))
+      }
+    }
+  }
+
+  const onSelectCurrency = (value) => {
+    setSelectedCurrency(value);
+    console.log('onSelect', value)
+  }
+
+  const getHeader = () => <Box
+    position="absolute"
+    top={{base: "-120px", lg: "-80px"}}
+    left="calc((430px - 100vw) / 2)"
+    width="100vw"
+  >
+    <Text
+      fontFamily={router.locale === 'ru' ? "Lithograph" : "Arial"}
+      color="primary.500"
+      fontSize="40px"
+      fontWeight={700}
+      letterSpacing="1px"
+      textTransform="uppercase"
+      textAlign="center"
+    >
+      {t('depositPage.mainHeading')}
+    </Text>
+  </Box>
 
   switch (step) {
     case  1:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
-              t={t}
-              closeDepositModalHandler={closeDepositModalHandler}
-            />
+        <SelectModal
+          isOpen={true}
+          width={500}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          title={t("depositPage.innerHeading")}
+          footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
+          before={<ModalTopHeader width="500px" title={t('depositPage.mainHeading')} />}
+        >
+          {isActiveBonusInput
+            ? <BonusesSlider />
+            : <Box pb="34px" px={{base: "16px", lg: "20px"}}>
             <ErrorText>
-              <DepositInputsContainer
-                userCurrency={userCurrency}
+              <SelectCurrencyDropdown
+                onSelect={onSelectCurrency}
+                value={selectedCurrency}
                 t={t}
-                userDepositValue={userDepositValue}
-                depositValueInputHandler={depositValueInputHandler}
-                currencySwitcherShowHandler={currencySwitcherShowHandler}
-                userDepositValueError={userDepositValueError}
               />
             </ErrorText>
-            <div className={styles.divider}></div>
+
             <ErrorText>
               <BonusesBlockMainContainer
                 t={t}
@@ -68,98 +148,69 @@ export const DepositPageStepper = (props) => {
                 checkedInputHandler={checkedInputHandler}
                 isActiveBonusInput={isActiveBonusInput}
                 userCurrency={userCurrency}
-                showAllBonuses={showAllBonuses}
-                showAllBonusesHandler={showAllBonusesHandler}
                 chooseBonusClickHandler={chooseBonusClickHandler}
                 setDepositButtonText={setDepositButtonText}
                 userDepositValue={userDepositValue}
                 userSelectedBonus={userSelectedBonus}
-                isShowDepositModal={isShowDepositModal}
-                bonusesArr={bonusesArr}
               />
             </ErrorText>
-            <DepositImages/>
-            <BonusCodeActivator
-              t={t}
-              isActiveBonusInput={isActiveBonusInput}
-              bonusCodeInputActiveHandler={bonusCodeInputActiveHandler}
-            />
-          </div>
-          <ErrorEmpty>
-            <DepositButtonSubmit
-              userPayment={userPayment}
-              userDepositValue={userDepositValue}
-              stepHandler={stepHandler}
-              step={step}
-              t={t}
-              buttonText={buttonText}
-              userCurrency={userCurrency}
-              userInfo={userInfo}
-              currencyData={currencyData}
-            />1
-          </ErrorEmpty>
 
-        </>
+            <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt="40px">
+              <Text fontSize={18} fontWeight={400} fontFamily="Montserrat" color="white" cursor="pointer" textTransform="capitalize">
+                {isActiveBonusInput ? t("depositPage.iDontHaveBonusCodeButton") : t("depositPage.iHaveBonusCodeButton")}
+              </Text>
+            </HStack>
+          </Box>}
+        </SelectModal>
       )
     case 2:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
-              t={t}
-              title={''}
-              closeDepositModalHandler={closeDepositModalHandler}
-              whatDoBackButton={() => stepHandler(0)}
-            />
+        <SelectModal
+          isOpen={true}
+          width={430}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          // onBack={() => stepHandler(0)}
+          title={t("depositPage.innerHeading")}
+          before={getHeader()}
+        >
+          <Box p={2}>
             <ErrorText>
               <ChoosePaymentMethod
                 t={t}
                 userPayment={userPayment}
                 paymentMethods={paymentMethods}
                 userCurrency={userCurrency}
-                isShowDepositModal={isShowDepositModal}
                 setPaymentMethods={setPaymentMethods}
                 stepHandler={() => stepHandler(step)}
               />
             </ErrorText>
-          </div>
-        </>
+          </Box>
+        </SelectModal>
       )
     case 3:
       return (
-        <>
-          <div className={styles.depositInnerBlockWrapper}>
-            <DepositHeading
+        <SelectModal
+          isOpen={true}
+          width={430}
+          headerHeight={70}
+          onClose={closeDepositModalHandler}
+          onBack={() => stepHandler(1)}
+          title={t("depositPage.innerHeading")}
+          footer={<SubmitButton title="Submit" onClick={submitButtonHandler} fontFamily="Lithograph"/>}
+          before={getHeader()}
+        >
+          <ErrorText>
+            <DepositLastPage
               t={t}
-              closeDepositModalHandler={closeDepositModalHandler}
-              whatDoBackButton={() => stepHandler(1)}
-            />
-            <ErrorText>
-              <DepositLastPage
-                t={t}
-                userDepositValue={userDepositValue}
-                depositValueInputHandler={depositValueInputHandler}
-                userDepositValueError={userDepositValueError}
-                userInfo={userInfo}
-                userCurrency={userCurrency}
-              />
-            </ErrorText>
-          </div>
-          <ErrorEmpty>
-            <DepositButtonSubmit
-              userPayment={userPayment}
               userDepositValue={userDepositValue}
-              submitHandler={submitHandler}
-              stepHandler={stepHandler}
-              step={step}
-              t={t}
-              buttonText={'Submit'}
-              userCurrency={userCurrency}
+              depositValueInputHandler={depositValueInputHandler}
+              userDepositValueError={userDepositValueError}
               userInfo={userInfo}
-              currencyData={currencyData}
+              userCurrency={userCurrency}
             />
-          </ErrorEmpty>
-        </>
+          </ErrorText>
+        </SelectModal>
       )
   }
 }

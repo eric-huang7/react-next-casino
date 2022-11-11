@@ -1,9 +1,6 @@
-import styles from '../../../../styles/PaymentsModals/PaymentsCrypto.module.scss';
-
+import {chakra} from "@chakra-ui/react";
 
 export const ValueContainer = ({value, currency, paymentsData, currenciesList}) => {
-
-  let paymentValue = `${value} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_to.currency}`;
 
   let needToPayValue = `${paymentsData.data.sender_amount} ${paymentsData.paymentMethod.paymentMethodData.methodData.currency_from.currency} \n`;
 
@@ -26,8 +23,15 @@ export const ValueContainer = ({value, currency, paymentsData, currenciesList}) 
   }
 
   return (
-    <h2
-      className={styles.valueText}
+    <chakra.h2
+      fontSize="28px"
+      lineHeight='26px'
+      fontWeight={300}
+      color="white"
+      fontFamily="Montserrat"
+      textAlign="center"
+      pt="25px"
+      pb="24px"
     >
       {
         paymentsData.paymentMethod.paymentMethodData.methodData.hasOwnProperty("rate_from")
@@ -36,6 +40,6 @@ export const ValueContainer = ({value, currency, paymentsData, currenciesList}) 
           :
           `${value} ${currency.userCurrencyData.abbreviation}`
       }
-    </h2>
+    </chakra.h2>
   )
 }

@@ -1,0 +1,10 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="vybe" x="50" y="244" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.493 20c5.522 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z" fill="#fff"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.828 3.871a1.4 1.4 0 01.301 1.957l-7.333 10a1.4 1.4 0 01-2.175.103l-3.666-4.118a1.4 1.4 0 012.09-1.862l2.516 2.825 6.31-8.604a1.4 1.4 0 011.957-.301z" fill="url(#qqpaint0_linear)"/>
+        <defs>
+            <linearGradient id="qqpaint0_linear" x1="10.5" y1="5" x2="10.5" y2="15" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8091ED"/>
+                <stop offset="1" stop-color="#A87BE2"/>
+            </linearGradient>
+        </defs>
+    </svg>

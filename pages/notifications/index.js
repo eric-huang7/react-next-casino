@@ -1,5 +1,5 @@
-import styles from '../../styles/NotificationsPage/NotificationsPage.module.scss'
 import { useTranslation } from 'next-i18next'
+import { Stack, Box } from '@chakra-ui/react'
 import MainLayout from '../../components/MainLayout/MainLayout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { MainBlockContainer } from '../../components/NotificationsPage/MainBlock/MainBlockContainer'
@@ -13,7 +13,6 @@ import ErrorText from '../../components/ErrorBoundaryComponents/ErrorText'
 
 const NotificationsPage = () => {
   const { t } = useTranslation('common')
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -26,21 +25,25 @@ const NotificationsPage = () => {
 
   return (
     <MainLayout t={t}>
-      <div className={styles.mainWrapper}>
-
-        {
-          userInfo.isAuthenticated ?
-            <div className={styles.innerWrapper}>
-              <ErrorText>
-                <MainBlockContainer notifyData={notifyData} userInfo={userInfo} t={t}/>
-              </ErrorText>
-              <ErrorEmpty>
-                <SideGamesContainer t={t}/>
-              </ErrorEmpty>
-            </div>
-            : ''
+      <Box w="100%" p={{base: 0, lg: "0 30px 0 30px"}} >
+        {userInfo.isAuthenticated &&
+          <Stack
+            direction={{base: 'column', lg: 'row'}}
+            maxW="1300px"
+            bg="rgba(0,0,0,0.3)"
+            m="0 auto 150px auto"
+            alignItems="flex-start"
+            spacing={0}
+          >
+            <ErrorText>
+              <MainBlockContainer notifyData={notifyData} userInfo={userInfo} t={t}/>
+            </ErrorText>
+            <ErrorEmpty>
+              <SideGamesContainer t={t}/>
+            </ErrorEmpty>
+          </Stack>
         }
-      </div>
+      </Box>
     </MainLayout>
   )
 }

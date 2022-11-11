@@ -1,11 +1,12 @@
-import styles from '../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
-import { CreditCardPayment } from './CreditCardPaymentItem/CreditcardPayment'
-import { CryptoPaymentItem } from './CryptoPaymentContainer/CryptoPaymentContainer'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import {CreditCardPayment} from './CreditCardPaymentItem/CreditcardPayment'
+import {CryptoPaymentItem} from './CryptoPaymentContainer/CryptoPaymentContainer'
+import {useEffect, useState} from 'react'
+import {useRouter} from 'next/router'
+import { Box } from '@chakra-ui/react'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
+import {Text} from "@chakra-ui/layout";
 
-export const SelectPaymentContainer = ({ t, balanceData, typeOfCurrency, currencyData, userInfo }) => {
+export const SelectPaymentContainer = ({t, balanceData, typeOfCurrency, currencyData, userInfo}) => {
   const router = useRouter()
 
   let BTC = currencyData.filter((el) => el.abbreviation === 'BTC')[0]
@@ -80,13 +81,26 @@ export const SelectPaymentContainer = ({ t, balanceData, typeOfCurrency, currenc
     setActiveItems(newActiveItems)
   }
 
-  if (typeOfCurrency.type === 3) {
+  const cryptoItem = {
+    name: typeOfCurrency.abbreviation,
+    isActive: true,
+  }
 
-    return (
-      <div className={styles.selectMethodContainer}>
-        <p className={styles.containerHeading}>{t('myAccount.cashoutPage.selectPaymentContainer.heading')}</p>
-        <div className={styles.paymentMethodWrapper}>
-          <ul className={styles.methodsList}>
+  const paymentItems = [
+    {name: 'BTC', data: BTC},
+    {name: 'LTC', data: LTC},
+    {name: 'BCH', data: BCH},
+    {name: 'ETH', data: ETH}
+  ];
+
+  return (
+    <Box mb="50px">
+      <Text mt={0} mb="15px" pl="10px" fontSize="16px" color="text.450" fontFamily="Verdana">
+        {t('myAccount.cashoutPage.selectPaymentContainer.heading')}
+      </Text>
+      <Box m={0} p={0}>
+        {typeOfCurrency.type === 3
+          ? <>
             <ErrorText>
               <CreditCardPayment
                 t={t}
@@ -96,80 +110,33 @@ export const SelectPaymentContainer = ({ t, balanceData, typeOfCurrency, currenc
                 userInfo={userInfo}
               />
             </ErrorText>
-            <ErrorText>
-              <CryptoPaymentItem
-                t={t}
-                isActive={activeItems.find((el) => el.name === 'BTC')}
-                balanceData={balanceData}
-                typeOfCurrency={BTC}
-                chosenPayment={typeOfCurrency}
-                activateItemClickHandler={activateItemClickHandler}
-                userInfo={userInfo}
-              />
-            </ErrorText>
-            <ErrorText>
-              <CryptoPaymentItem
-                t={t}
-                isActive={activeItems.find((el) => el.name === 'LTC')}
-                balanceData={balanceData}
-                typeOfCurrency={LTC}
-                chosenPayment={typeOfCurrency}
-                activateItemClickHandler={activateItemClickHandler}
-                userInfo={userInfo}
-              />
-            </ErrorText>
-            <ErrorText>
-              <CryptoPaymentItem
-                t={t}
-                isActive={activeItems.find((el) => el.name === 'BCH')}
-                balanceData={balanceData}
-                typeOfCurrency={BCH}
-                chosenPayment={typeOfCurrency}
-                activateItemClickHandler={activateItemClickHandler}
-                userInfo={userInfo}
-              />
-            </ErrorText>
-            <ErrorText>
-              <CryptoPaymentItem
-                t={t}
-                isActive={activeItems.find((el) => el.name === 'ETH')}
-                balanceData={balanceData}
-                typeOfCurrency={ETH}
-                chosenPayment={typeOfCurrency}
-                activateItemClickHandler={activateItemClickHandler}
-                userInfo={userInfo}
-              />
-            </ErrorText>
-          </ul>
-        </div>
-      </div>
-    )
-  } else {
-    const cryptoItem = {
-      name: typeOfCurrency.abbreviation,
-      isActive: true,
-    }
-
-    return (
-      <div className={styles.selectMethodContainer}>
-        <p className={styles.containerHeading}>{t('myAccount.cashoutPage.selectPaymentContainer.heading')}</p>
-        <div className={styles.paymentMethodWrapper}>
-          <ul className={styles.methodsList}>
-            <ErrorText>
-              <CryptoPaymentItem
-                t={t}
-                isActive={cryptoItem}
-                balanceData={balanceData}
-                typeOfCurrency={typeOfCurrency}
-                // chosenPayment={typeOfCurrency}
-                activateItemClickHandler={activateItemClickHandler}
-                userInfo={userInfo}
-              />
-            </ErrorText>
-          </ul>
-        </div>
-      </div>
-    )
-  }
-
+            {paymentItems.map(item => (
+              <ErrorText key={item.name}>
+                <CryptoPaymentItem
+                  t={t}
+                  isActive={activeItems.find((el) => el.name === item.name)}
+                  balanceData={balanceData}
+                  typeOfCurrency={item.data}
+                  chosenPayment={typeOfCurrency}
+                  activateItemClickHandler={activateItemClickHandler}
+                  userInfo={userInfo}
+                />
+              </ErrorText>
+            ))}
+          </>
+          : <ErrorText>
+            <CryptoPaymentItem
+              t={t}
+              isActive={cryptoItem}
+              balanceData={balanceData}
+              typeOfCurrency={typeOfCurrency}
+              // chosenPayment={typeOfCurrency}
+              activateItemClickHandler={activateItemClickHandler}
+              userInfo={userInfo}
+            />
+          </ErrorText>
+        }
+      </Box>
+    </Box>
+  )
 }

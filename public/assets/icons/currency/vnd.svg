@@ -1,0 +1,11 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="vnd" x="25" y="244" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#qoclip0)">
+            <path d="M10.5 20c5.523 0 10-4.477 10-10s-4.477-10-10-10S.5 4.477.5 10s4.477 10 10 10z" fill="#D80027"/>
+            <path d="M10.5 5.217l1.08 3.322h3.492l-2.826 2.053 1.08 3.321L10.5 11.86l-2.825 2.053 1.079-3.321-2.826-2.053h3.493L10.5 5.217z" fill="#FFDA44"/>
+        </g>
+        <defs>
+            <clipPath id="qoclip0">
+                <path fill="#fff" transform="translate(.5)" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

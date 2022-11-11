@@ -1,0 +1,14 @@
+<svg width="24" height="25" fill="none" viewBox="-2 -2 24 25" id="theta" x="252" y="25" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.792 1.94l.993-.994h10.43l.993.994v18.013l-.993.993H4.785l-.993-.993V1.94zm1.987.993v16.026h8.442V2.933H5.78z" fill="url(#pbpaint0_linear)"/>
+        <path d="M13.16 13.79H11v2.262H9.051V13.79h-2.16v-1.949h6.27v1.949zm0-5.583H11V5.944H9.051v2.263h-2.16v1.948h6.27V8.207z" fill="url(#pbpaint1_linear)"/>
+        <defs>
+            <linearGradient id="pbpaint0_linear" x1="10" y1=".946" x2="10" y2="20.946" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2BD2CD"/>
+                <stop offset="1" stop-color="#2AC4DA"/>
+            </linearGradient>
+            <linearGradient id="pbpaint1_linear" x1="10" y1=".946" x2="10" y2="20.946" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2BD2CD"/>
+                <stop offset="1" stop-color="#2AC4DA"/>
+            </linearGradient>
+        </defs>
+    </svg>

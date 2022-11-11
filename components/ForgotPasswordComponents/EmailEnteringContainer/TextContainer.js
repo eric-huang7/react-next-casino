@@ -1,33 +1,31 @@
-import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
-
+import { Text } from "@chakra-ui/react"
 
 export const TextContainer = ({t}) => {
-
   const liveChatClick = () => {
-
     const liveChatButton = document.getElementById('lhc_status_widget_v2').contentWindow.document.body.childNodes[0];
     liveChatButton.click();
   }
 
   return (
     <>
-      <p className={styles.instructionsText}>
+      <Text fontSize="16px" lineHeight="22px" color="text.300" textIndent="15px" mb="24px">
         {t('forgotPasswordForm.textBlocks.instructionsText')}
-      </p>
-      <p className={styles.supportText}>
+      </Text>
+      <Text  fontSize="16px" lineHeight="22px" color="text.300" mb="16px">
         <span>
           {t('forgotPasswordForm.textBlocks.supportText.firstPart')}
         </span>
-        <span
-          className={styles.supportLink}
-          onClick={() => liveChatClick()}
+        <Text as="span"
+          cursor="pointer"
+          color="primary.500"
+          onClick={liveChatClick}
         >
           {` ${t('forgotPasswordForm.textBlocks.supportText.support')} ` }
-        </span>
+        </Text>
         <span>
           {t('forgotPasswordForm.textBlocks.supportText.secondPart')}
         </span>
-      </p>
+      </Text>
     </>
   )
 }

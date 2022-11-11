@@ -1,14 +1,9 @@
-import styles from "../../../styles/ForgotPassword/ForgotPassword.module.scss";
+import { Text, VStack } from "@chakra-ui/react";
 
-
-export const ErrorTextBlock = ({t, text}) => {
-
-
-    return (
-        <div className={styles.errorTextBlock}>
-            <p>
-                {t(text)}
-            </p>
-        </div>
-    )
-}
+export const ErrorTextBlock = ({t, text}) => (
+  <VStack alignItems="center">
+      <Text fontSize="16px" lineHeight="24px" color="text.200" textAlign="center">
+          {t(text)}
+      </Text>
+  </VStack>
+)

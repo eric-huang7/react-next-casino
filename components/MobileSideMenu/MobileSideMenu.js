@@ -1,15 +1,22 @@
-import Image from 'next/image'
-import styles from '../../styles/MobileSideMenu/MobileSideMenu.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { showMobileMenu } from '../../redux/ui/action'
-import { MobileListContainer } from './MobileSideComponents/MobileListContainer'
-import { LogoutButtonMobileMenu } from './MobileSideComponents/LogoutButtonMobileMenu'
-import { UserInfoBlock } from './MobileSideComponents/UserInfoBlock'
-import { SideLagSwitcherWrapper } from './MobileSideComponents/SideLagSwitcherWrapper'
-import { SideMenuLogo } from './MobileSideComponents/SideMenuLogo'
-import { SideMenuCloseComponent } from './MobileSideComponents/SideMenuCloseComponent'
+import { MobileListContainer } from './MobileListContainer'
+import { UserInfoBlock } from './UserInfoBlock'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Image,
+  Text,
+  chakra,
+  Box
+} from '@chakra-ui/react'
+import {HStack, VStack} from "@chakra-ui/layout";
 
 const socilaLinks = [
   { key: 'facebook', href: '#facebook', img: '/assets/img/mobileSideMenu/facebook.svg' },
@@ -48,13 +55,14 @@ export const MobileSideMenu = ({ t, userInform }) => {
   }, [isShowLogin, isShowRegister])
 
   return (
-    <div className={`${styles.sideMenuWrapper} ${isShowMobileMenu ? styles.showMobileMenu : ''}`}>
-      <div className={`${styles.sideMenuMainWrapper}`}>
-        <div className={styles.sideMenuHeader}>
-          <SideMenuCloseComponent
-            closeClickHandler={closeClickHandler}
-          />
-          <SideMenuLogo/>
+    <Drawer placement="right" onClose={closeClickHandler} isOpen={isShowMobileMenu} size="full">
+      <DrawerOverlay />
+      <DrawerContent bg="grey.850" p={0}>
+        <DrawerCloseButton color="white" _focus={{ boxShadow: 'none' }}/>
+        <DrawerHeader borderBottomWidth={0} display="flex" justifyContent="center">
+          <Image src={'/assets/img/mainLayoutImg/logo.webp'} width={102} height="auto" alt={'logo'}/>
+        </DrawerHeader>
+        <DrawerBody p={0}>
           <ErrorEmpty>
             <UserInfoBlock
               t={t}
@@ -62,37 +70,28 @@ export const MobileSideMenu = ({ t, userInform }) => {
               currency={currency}
             />
           </ErrorEmpty>
-          <div className={styles.mobileSideListWrapper}>
+          <Box bg="black">
             <MobileListContainer
               isAuth={userInform.isAuthenticated}
               t={t}
             />
-            <SideLagSwitcherWrapper
-              t={t}
-              isOpenLanguages={isOpenLanguages}
-              openLanguagesClickHandler={openLanguagesClickHandler}
-            />
-            <LogoutButtonMobileMenu
-              t={t}
-              isLogined={userInform.isAuthenticated}
-            />
-          </div>
-          <div className={styles.sideMenuFooter}>
-            <div className={styles.sideMenuFooterIconsBlock}>
-              {socilaLinks.map((el) => {
-                return (
-                  <a className={styles.socialLink} target="_blank" rel={'noreferrer'} key={`${el.key} footer`}
-                     href={el.href}>
-                    <Image className={styles.socialImage} height={35} width={35} src={el.img} alt={el.key}/>
-                  </a>
-                )
-              })}
-            </div>
-            <p className={styles.sideFooterRights}>{"2020 SlotsIdol.com&#169; All Rights Reserved"}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
 
+          <VStack w="100%" justifyContent="center" spacing={0} pb={2}>
+            <HStack justifyContent="center" alignItems="center" h={55}>
+              {socilaLinks.map((el) => (
+                <chakra.a target="_blank" rel={'noreferrer'} key={`${el.key} footer`}
+                   href={el.href}>
+                  <Image height={35} width={35} src={el.img} alt={el.key}/>
+                </chakra.a>
+              ))}
+            </HStack>
+            <Text textAlign="center" fontSize="12px" color="grey.400" whiteSpace="nowrap">
+              {"2020 SlotsIdol.com&#169; All Rights Reserved"}
+            </Text>
+          </VStack>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
   )
 }

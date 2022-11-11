@@ -7,7 +7,7 @@ export const GamblingLimitsPage = ({ t }) => {
 
   return (
     <div>
-      <Heading t={t} heading={'myAccount.pageHeadings.gamblingLimits'}/>
+      <Heading heading={t('myAccount.pageHeadings.gamblingLimits')}/>
       <MainBlock t={t} userInfo={userInfo.user.user}/>
     </div>
   )

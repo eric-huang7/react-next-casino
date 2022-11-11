@@ -7,8 +7,6 @@ import {getActiveBonuses} from "../../redux/bonuses/action";
 import {getTopGames} from "../../redux/games/action";
 import {bonusesFinder} from "../../helpers/bonusesFinder";
 
-
-
 export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
   const dispatch = useDispatch();
 
@@ -27,9 +25,7 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     if (typeof window !== "undefined") {
       const date = new Date().getTime() + 259200000; // milliseconds per 3 days 259200000
       localStorage.setItem("exitTime", `${date}`);
-
     }
-
   };
 
   const mouseEvent = (e) => {
@@ -51,7 +47,6 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
         setShowPopup(true);
       }
     }
-
   };
 
   useEffect(() => {
@@ -83,7 +78,6 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     }
   }, [showPopup, isShowPlayWindow, isShowDepositModal]);
 
-
   useEffect(() => {
     if (showPopup) {
       dispatch(getActiveBonuses(userCurrency?.userCurrencyData?.id));
@@ -97,17 +91,15 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
     return null
   }
 
+  let type;
+
   if (activeBonuses.activeBonuses?.success) {
     if (!userInfo.isAuthenticated) {
       let bonusesList = activeBonuses.activeBonuses.offers.slice(0, 3);
       if (bonusesList.length === 0) {
-        return (
-          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
-        )
+        type = "games"
       } else {
-        return (
-          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
-        )
+        type = "bonus"
       }
     } else if (userInfo.balance && userInfo.balance?.success) {
 
@@ -121,36 +113,23 @@ export const ExitIntentPopup = ({t, userInfo, isShowExitIntent}) => {
       });
 
       if (notEmptyBalance.length !== 0) {
-
-        return (
-          <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
-        )
+        type = "games"
       } else {
         let bonusesList = bonusesFinder(activeBonuses.activeBonuses?.offers, userCurrency).slice(0, 3);
         if (bonusesList.length === 0) {
-          return (
-            <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
-          )
+          type = "games"
         } else {
-          return (
-            <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"bonus"}/>
-          )
+          type = "bonus"
         }
       }
     } else {
-      return (
-        <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
-      )
+      type = "loading"
     }
   } else if (!activeBonuses.activeBonuses?.success && gamesList?.topGames?.success) {
-    return (
-      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"games"}/>
-    )
+    type = "games"
   } else {
-    return (
-      <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={"loading"}/>
-    )
+    type = "loading"
   }
 
-
+  return  <ExitIntentMainComponent exit={exit} isShowExitIntent={isShowExitIntent} t={t} showPopup={showPopup} type={type}/>
 }

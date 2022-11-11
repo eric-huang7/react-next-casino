@@ -1,0 +1,10 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="bzrx" x="96" y="316" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z" fill="url(#dipaint0_linear)"/>
+        <path d="M8.127.168a3.61 3.61 0 00.088-.016v4.735H6.09V.797C7.158.328 7.847.214 8.127.167zM8.974 15.017h2.808a2.886 2.886 0 002.884-2.89V9.313c0-1.597-1.29-2.89-2.884-2.89H.662a8.31 8.31 0 00-.553 2.13h11.673c.425 0 .759.334.759.76v2.799c0 .426-.334.76-.76.76H8.975a.752.752 0 01-.76-.76v-2.038H6.09v2.053c0 1.597 1.29 2.89 2.884 2.89z" fill="#fff"/>
+        <defs>
+            <linearGradient id="dipaint0_linear" x1="16.128" y1="16.848" x2="4.691" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#013CDA"/>
+                <stop offset="1" stop-color="#33DFCC"/>
+            </linearGradient>
+        </defs>
+    </svg>

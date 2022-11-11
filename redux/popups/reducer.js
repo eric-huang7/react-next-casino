@@ -6,7 +6,6 @@ import {
   setStepDepositModal, showChangePasswordPopup,
   showCreditCardModal,
   showCryptoModal,
-  showCurrencySwitcher,
   showDepositModal, showEmailValidationErrorPopup, showEmailValidationSuccessPopup,
   showExitIntentPopup, showForgotPasswordPopup,
   showManageSubscriptions,
@@ -124,12 +123,6 @@ const handlers = {
     return {
       ...state,
       isShowExitIntentPopup: payload,
-    }
-  },
-  [showCurrencySwitcher]: (state, {payload}) => {
-    return {
-      ...state,
-      isShowCurrencySwitcher: payload,
     }
   },
   [showPaymentCurrencySwitcher]: (state, {payload}) => {

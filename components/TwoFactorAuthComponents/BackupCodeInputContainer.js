@@ -1,5 +1,3 @@
-import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
-import {InstructionsTextContainer} from "./InstructionsTextContainer";
 import {BackupCodeInput} from "./FormsConponents/BackupCodeInput";
 import {useEffect, useRef, useState} from "react";
 import {qr_auth_url} from "../../redux/url/url";
@@ -8,7 +6,8 @@ import {showTwoFaPopup} from "../../redux/popups/action";
 import {useDispatch} from "react-redux";
 import {LoadingComponent} from "../LoadingComponent/LoadingComponent";
 import Connect from "../../helpers/connect";
-
+import {VStack, Text} from "@chakra-ui/layout";
+import {HStack} from "@chakra-ui/react";
 
 export const BackupCodeInputContainer = ({t}) => {
   const dispatch = useDispatch();
@@ -49,29 +48,27 @@ export const BackupCodeInputContainer = ({t}) => {
   }
 
   return (
-    <div className={styles.inputsBlock}>
+    <VStack>
+      {isLoading
+        ? <HStack mt="30px" h="60px" alignItems="center" justifyContent="center" overflow="hidden">
+          <LoadingComponent t={t}/>
+        </HStack>
+        : <>
+          <Text fontSize={{base: "14px", lg: "18px"}} lineHeight="22px" color="#707070" my="20px">
+            {t('twoFactorAuthPopup.instructionText')}
+          </Text>
 
-      {
-        isLoading
-          ?
-          <div className={styles.loadingWrapper}>
-            <LoadingComponent t={t}/>
-          </div>
-          :
-          <>
-            <InstructionsTextContainer
-              text={'twoFactorAuthPopup.instructionText'}
-              t={t}
-            />
-            <BackupCodeInput
-              error={authError}
-              value={value}
-              inputCodeHandler={inputCodeHandler}
-              backupCodeFormHandler={backupCodeFormHandler}
-            />
-            <p className={styles.errorMessage}>{t(authError)}</p>
-          </>
+          <BackupCodeInput
+            error={authError}
+            value={value}
+            inputCodeHandler={inputCodeHandler}
+            backupCodeFormHandler={backupCodeFormHandler}
+          />
+          <Text fontSize={{base: "12px", lg: "14px"}} lineHeight="22px" color="red">
+            {t(authError)}
+          </Text>
+        </>
       }
-    </div>
+    </VStack>
   )
 }

@@ -1,7 +1,4 @@
-import styles from '../../../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
-import { AmountInput } from './AmountInput'
-import { AddressInput } from './AddressInput'
-import { ButtonContainer } from './ButtonContainer'
+import AmountInput from '../AmountInput'
 import { useEffect, useRef, useState } from 'react'
 import {post_withdraw_url} from '../../../../../../redux/url/url'
 import { useRouter } from 'next/router'
@@ -10,6 +7,12 @@ import { getUserPayments, userBalance } from '../../../../../../redux/user/actio
 import ErrorEmpty from '../../../../../ErrorBoundaryComponents/ErrorEmpty'
 import {errorPopupActivate, messagePopupActivate} from '../../../../../../redux/popups/action'
 import Connect from "../../../../../../helpers/connect";
+import RoundButton from "../../../../../buttons/RoundButton";
+import {Text, Box} from "@chakra-ui/layout";
+import InputFieldRound from "../../../../../form/InputFieldRound";
+import {numberTransformer} from "../../../../../../helpers/numberTransformer";
+import {decimalStepCounter} from "../../../../../../helpers/decimalStepCounter";
+
 
 export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) => {
   const dispatch = useDispatch()
@@ -107,7 +110,7 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
   }, [router])
 
   return (
-    <div className={styles.paymentMethodFormWrapper}>
+    <Box py="45px">
       <form onSubmit={(e) => withdrawFormHandler(e)} id={'paymentForm'}>
         <ErrorEmpty>
           <AmountInput
@@ -118,39 +121,49 @@ export const FormContainer = ({ t, typeOfCurrency, chosenPayment, userInfo }) =>
             amountValue={amountValue}
             valueRef={valueRef}
             valueError={valueError}
+            min={numberTransformer(chosenPayment ? `${chosenPayment.withdrawMin}` : `${typeOfCurrency.withdrawMin}`)}
+            max={numberTransformer(chosenPayment ? `${chosenPayment.withdrawMax}` : `${typeOfCurrency.withdrawMax}`)}
+            step={decimalStepCounter(chosenPayment ? chosenPayment.decimal : typeOfCurrency.decimal)}
           />
         </ErrorEmpty>
-        <ErrorEmpty>
-          <AddressInput
-            t={t}
-            addressInputHandler={addressInputHandler}
-            addressValue={addressValue}
-            name={'myAccount.cashoutPage.selectPaymentContainer.address'}
-            addressError={addressError}
-          />
-        </ErrorEmpty>
-        {
-          typeOfCurrency.memo_req !== 0
-            ?
-            <ErrorEmpty>
-              <AddressInput
-                t={t}
-                addressInputHandler={memoAddressInputHandler}
-                addressValue={memoAddressValue}
-                name={'myAccount.cashoutPage.selectPaymentContainer.memoAddress'}
-              />
-            </ErrorEmpty>
-            :
-            <></>
-        }
 
-        <span className={styles.errorMessage}>{errorMessage}</span>
-        <span className={styles.successMessage}>{successMessage}</span>
-        <ButtonContainer
-          withdrawFormHandler={withdrawFormHandler}
-          t={t}
+        <ErrorEmpty>
+          <InputFieldRound
+            maxW={{base: '100%', lg: '338px'}}
+            label={t('myAccount.cashoutPage.selectPaymentContainer.address')}
+            error={addressError}
+            onChange={addressInputHandler}
+            value={addressValue}
+            id={'addressInput'}
+            mb="24px"
+          />
+        </ErrorEmpty>
+
+        {typeOfCurrency.memo_req !== 0 && <ErrorEmpty>
+          <InputFieldRound
+            maxW={{base: '100%', lg: '338px'}}
+            label={t('myAccount.cashoutPage.selectPaymentContainer.memoAddress')}
+            onChange={memoAddressInputHandler}
+            value={memoAddressValue}
+            id={'memoInput'}
+            mb="24px"
+          />
+        </ErrorEmpty>}
+
+        <Text fontSize={15} color="red.500">{errorMessage}</Text>
+        <Text fontSize={15} color="primary.500">{successMessage}</Text>
+
+        <RoundButton
+          onClick={withdrawFormHandler}
+          title={t("myAccount.cashoutPage.selectPaymentContainer.requestCashout")}
+          w="auto"
+          solid
+          fontFamily="Verdana"
+          fontSize={15}
+          form="paymentForm"
+          type="submit"
         />
       </form>
-    </div>
+    </Box>
   )
 }

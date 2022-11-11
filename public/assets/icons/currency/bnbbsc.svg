@@ -1,0 +1,12 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="bnbbsc" x="216" y="292" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#cmclip0)">
+            <path d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z" fill="#4D4D4D"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.868 8.713L10 5.58l3.132 3.135 1.823-1.822L10 1.935 5.045 6.89l1.823 1.823zM1.935 10l1.823-1.823L5.581 10l-1.823 1.823L1.935 10zm4.933 1.287L10 14.42l3.132-3.135 1.826 1.822L10 18.065 5.045 13.11l-.003-.003 1.826-1.82zM14.419 10l1.823-1.823L18.064 10l-1.822 1.823L14.419 10z" fill="#F3BA2F"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.032 10L10 7.961 8.497 9.468l-.174.174-.358.358-.004.003.004.004 2.032 2.032 2.035-2.036V10z" fill="#F3BA2F"/>
+        </g>
+        <defs>
+            <clipPath id="cmclip0">
+                <path fill="#fff" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

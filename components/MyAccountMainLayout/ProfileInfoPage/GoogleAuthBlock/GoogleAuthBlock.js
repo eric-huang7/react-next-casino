@@ -1,8 +1,9 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/GoogleAuth.module.scss'
-import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { auth } from '../../../../redux/user/action'
 import { useRouter } from 'next/router'
+import BodyText from "../../../typography/BodyText";
+import { Box } from "@chakra-ui/react";
+import RoundButton from "../../../buttons/RoundButton";
 
 export const GoogleAuthBlock = ({ t }) => {
   const router = useRouter()
@@ -19,17 +20,17 @@ export const GoogleAuthBlock = ({ t }) => {
   }
 
   return (
-    <div className={styles.googleAuthMainBlock}>
-      <h3 className={styles.googleAuthHeading}>{t('myAccount.profilePage.googleAuth.heading')}</h3>
+    <Box pt="25px" pb="35px">
+      <BodyText as="h3" bold fontSize={17} mb="35px">
+        {t('myAccount.profilePage.googleAuth.heading')}
+      </BodyText>
 
-      <Link href={'/accounts/two_factor'}>
-        <a
-          onClick={(e) => googleAuthClickHandler(e)}
-          className={styles.googleAuthLink}
-        >
-          {t('myAccount.profilePage.googleAuth.link')}
-        </a>
-      </Link>
-    </div>
+      <RoundButton
+        solid
+        onClick={googleAuthClickHandler}
+        leftIcon={<img src="/assets/img/myAccount/profileInfo/editProfileIcon.webp" width="20px" height="20px" />}
+        title={t('myAccount.profilePage.googleAuth.link')}
+      />
+    </Box>
   )
 }

@@ -1,0 +1,22 @@
+<svg width="25" height="24" fill="none" viewBox="-2 -2 25 24" id="coti" x="25" y="100" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#efclip0)">
+            <path d="M10.017 20c5.541 0 10-4.458 10-10s-4.459-10-10-10c-5.542 0-10 4.458-10 10s4.458 10 10 10z" fill="#fff"/>
+            <path d="M2.147 8.63c-.31 0-.414.103-.414.362v6.257c0 .259.104.362.414.362 3 .052 6.672-2.637 9.671-4.706v-7.24c-3 2.068-6.775 5.016-9.67 4.965z" fill="url(#efpaint0_linear)"/>
+            <path d="M17.87 11.422c.258 0 .413-.103.413-.362V4.802c0-.258-.103-.362-.413-.362-3.052-.051-6.672 2.638-9.672 4.707v7.189c3-2.017 6.775-4.965 9.672-4.914z" fill="url(#efpaint1_linear)"/>
+        </g>
+        <defs>
+            <linearGradient id="efpaint0_linear" x1="7.692" y1="14.706" x2="5.929" y2="4.71" gradientUnits="userSpaceOnUse">
+                <stop offset=".1" stop-color="#194AAD"/>
+                <stop offset=".5" stop-color="#248FCB"/>
+                <stop offset=".8" stop-color="#2BBFDF"/>
+            </linearGradient>
+            <linearGradient id="efpaint1_linear" x1="14.365" y1="3.831" x2="12.032" y2="17.058" gradientUnits="userSpaceOnUse">
+                <stop offset=".1" stop-color="#194AAD"/>
+                <stop offset=".5" stop-color="#248FCB"/>
+                <stop offset=".8" stop-color="#2BBFDF"/>
+            </linearGradient>
+            <clipPath id="efclip0">
+                <path fill="#fff" transform="translate(.017)" d="M0 0h20v20H0z"/>
+            </clipPath>
+        </defs>
+    </svg>

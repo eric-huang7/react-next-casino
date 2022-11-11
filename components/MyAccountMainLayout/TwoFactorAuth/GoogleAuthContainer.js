@@ -1,4 +1,3 @@
-import styles from '../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss'
 import { TextBlock } from './GoogleAuthComponents/TextBlock'
 import { QrcodeContainer } from './GoogleAuthComponents/QrcodeContainer'
 import { AuthCodeInputBlock } from './GoogleAuthComponents/AuthCodeInputBlock'
@@ -10,6 +9,8 @@ import { mayYwoFactorAuth } from '../../../redux/user/action'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import Connect from "../../../helpers/connect";
 import {GoogleAuthConfirmModal} from "./GoogleAuthComponents/GoogleAuthConfirmModal";
+import { Box } from "@chakra-ui/react";
+import BodyText from "../../typography/BodyText";
 
 export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedKeys }) => {
   const dispatch = useDispatch()
@@ -52,7 +53,7 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
     )
   } else {
     return (
-      <div className={styles.googleAuthContainer}>
+      <Box pb={3}>
         <TextBlock t={t}/>
         <ErrorText>
           <QrcodeContainer authData={authData.qrAuth} t={t}/>
@@ -66,9 +67,9 @@ export const GoogleAuthContainer = ({ t, authData, setIsShowSavedKeys, setSavedK
             t={t}
           />
         </ErrorText>
-        <p className={styles.lastText}>{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</p>
+        <BodyText py="35px">{t('myAccount.twoFactorAuthPage.twoFaNOTCompleteContainer.lowerText')}</BodyText>
         {showModal && <GoogleAuthConfirmModal t={t} onClose={() => setShowModal(false)} onConfirm={onConfirm} />}
-      </div>
+      </Box>
     )
   }
 

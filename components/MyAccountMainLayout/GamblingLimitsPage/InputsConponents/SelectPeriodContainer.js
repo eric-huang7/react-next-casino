@@ -1,9 +1,7 @@
-import styles from "../../../../styles/MyAccount/GamblingLimitsPage/GamblingLimitsPage.module.scss";
-
+import SelectField from "../../../form/SelectField";
+import {HStack} from "@chakra-ui/react";
 
 export const SelectPeriodContainer = ({t, selfExclusionExpiry, selfExclusionExpiryHandler}) => {
-
-
   const dayPeriod = 86400000;
   const weekPeriod = 604800000;
   const twoWeeksPeriod = 1209600000;
@@ -15,15 +13,14 @@ export const SelectPeriodContainer = ({t, selfExclusionExpiry, selfExclusionExpi
   const threeYearsPeriod = 94694400000;
   const foreverPeriod = -1;
 
-
   return (
-    <div className={styles.selectPeriodBlock}>
-      <label htmlFor="selectPeriodSelfExclusion" className={styles.labelSelectPeriod}>{t("myAccount.selfExclusionPage.period")}</label>
-      <select
-        id="selectPeriodSelfExclusion"
-        className={styles.selectPeriod}
+    <HStack alignItems="center" pb="40px">
+      <SelectField
+        ml="50px !important"
         value={selfExclusionExpiry}
-        onChange={(e) => selfExclusionExpiryHandler(e.target.value)}
+        name="selectPeriodSelfExclusion"
+          onChange={selfExclusionExpiryHandler}
+        label={t("myAccount.selfExclusionPage.period")}
       >
         <option value={dayPeriod}>{t("myAccount.selfExclusionPage.24Hours")}</option>
         <option value={weekPeriod}>{t("myAccount.selfExclusionPage.7Days")}</option>
@@ -35,7 +32,7 @@ export const SelectPeriodContainer = ({t, selfExclusionExpiry, selfExclusionExpi
         <option value={oneYearPeriod}>{t("myAccount.selfExclusionPage.1Year")}</option>
         <option value={threeYearsPeriod}>{t("myAccount.selfExclusionPage.3Years")}</option>
         <option value={foreverPeriod}>{t("myAccount.selfExclusionPage.Forever")}</option>
-      </select>
-    </div>
+      </SelectField>
+    </HStack>
   )
 }

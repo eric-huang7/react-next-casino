@@ -1,33 +1,35 @@
-import styles from '../../../../styles/MyAccount/CashoutPage/CashoutPage.module.scss'
 import Link from 'next/link'
-import {useEffect} from "react";
-import {svgSetter} from "../../../../helpers/iconNameFinder";
+import { chakra } from "@chakra-ui/react"
+import {HStack, Text} from "@chakra-ui/layout";
+import CurrencyItemShort from "../../../currency/CurrencyItemShort";
 
 export const LinkItem = ({ balanceData, currencyData, activeCurrencyId }) => {
-
-  let currency = currencyData.find((el) => Number(el.id) === Number(balanceData.currency_id))
-
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
+  let currency = currencyData?.find((el) => Number(el.id) === Number(balanceData.currency_id))
+  const isActive = Number(activeCurrencyId) === Number(currency.id);
 
   return (
-    <li className={`${styles.linkItem} ${Number(activeCurrencyId) === Number(currency.id) ? styles.activeLink : ''}`}>
+    <HStack border="2px solid" borderColor="primary.500" borderRadius="20px 20px 0 0" cursor="pointer"
+        mr="7px !important" mb="10px !important" minW="80px" h="50px" bg={isActive ? 'primary.500' : 'transparent'}
+    >
       <Link
         href={{
           pathname: `/accounts/cashout/${currency.abbreviation}`,
           query: { currency_id: `${currency.id}` }
         }}
       >
-        <a>
-          <div className={styles.currencyContainer}>
-            <div id={`currencyImageContainer${currency.id}`} className={styles.iconContainer}></div>
-            {currency.abbreviation}
-          </div>
-          <div className={styles.baseContainer}>{currency.base}</div>
-        </a>
+        <chakra.a>
+          <CurrencyItemShort
+            currencyData={currency}
+            hideBase
+            fontProps={{color: isActive ? 'white': 'primary.500', fontSize: '18px'}}
+            mr="7px"
+            py="2px"
+          />
+          <HStack h="16px" fontSize="12px" justifyContent="center" alignItems="center" w="100%" bg="primary.500">
+            <Text color="white" fontWeight={600} fontFamily="Verdana">{currency.base}</Text>
+          </HStack>
+        </chakra.a>
       </Link>
-    </li>
+    </HStack>
   )
 }

@@ -1,43 +1,39 @@
-import styles from '../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 import { Heading } from '../ComponentsForPages/Heading'
-import { SecontHeading } from './PageComponents/SecontHeading'
 import { LinksBlock } from './PageComponents/LinksBlock'
 import { AvailableToCashoutBlock } from './PageComponents/AvailableToCashoutBlock'
 import { TryBitcoinContainer } from './PageComponents/TryBitcoinContainer'
 import { SelectPaymentContainer } from './PageComponents/SelectPaymentContainer/SelectPaymentContainer'
 import { useSelector } from 'react-redux'
+import { Box } from "@chakra-ui/react"
 import { LoadingComponent } from '../../LoadingComponent/LoadingComponent'
 import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import SecondHeading from "../ComponentsForPages/SecondHeading";
 
 export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
   const balanceInfo = useSelector((store) => store.authInfo)
   const currency = useSelector((store) => store.currency)
 
-  if (balanceInfo.balance && currency.currency) {
+  let typeOfCurrency = balanceInfo.balance && currency?.currency?.results?.find(
+    (el) => Number(el.id) === Number(activeCurrencyId)
+  )
 
-    let typeOfCurrency = currency.currency.results.find((el) => Number(el.id) === Number(activeCurrencyId))
-
-    return (
-      <div className={styles.mainContainer}>
-        <Heading
-          t={t}
-          heading={'myAccount.pageHeadings.cashoutPage'}
-        />
-        <SecontHeading t={t}/>
-        <ErrorText>
-          <LinksBlock
-            balanceData={balanceInfo.balance.balances}
-            currencyData={currency.currency.results}
-            t={t}
-            activeLink={activeLink}
-            activeCurrencyId={activeCurrencyId}
-          />
-        </ErrorText>
-        {
-          typeOfCurrency
-            ?
-            <>
+  return (
+    <Box>
+      <Heading heading={t('myAccount.pageHeadings.cashoutPage')}/>
+      {balanceInfo.balance && currency.currency
+        ? <>
+          <SecondHeading title={t("myAccount.cashoutPage.secondHeading")} />
+          <ErrorText>
+            <LinksBlock
+              balanceData={balanceInfo.balance.balances}
+              currencyData={currency.currency.results}
+              t={t}
+              activeLink={activeLink}
+              activeCurrencyId={activeCurrencyId}
+            />
+          </ErrorText>
+          {typeOfCurrency && <>
               <ErrorText>
                 <AvailableToCashoutBlock
                   typeOfCurrency={typeOfCurrency}
@@ -55,39 +51,17 @@ export const CashoutPage = ({ t, activeLink, activeCurrencyId }) => {
                 />
               </ErrorText>
             </>
-            :
-            <></>
-        }
-        {
-          typeOfCurrency
-            ?
-            typeOfCurrency.type === 3
-              ?
-              <ErrorEmpty>
-                <TryBitcoinContainer
-                  btcCurrency={currency.currency.results.find((el) => el.abbreviation === 'BTC')}
-                  t={t}
-                />
-              </ErrorEmpty>
-              :
-              <></>
-            :
-            <></>
-        }
-
-      </div>
-    )
-  } else {
-
-    return (
-      <div className={styles.mainContainer}>
-        <Heading
-          t={t}
-          heading={'myAccount.pageHeadings.cashoutPage'}
-        />
-        <LoadingComponent t={t}/>
-      </div>
-    )
-  }
-
+          }
+          {typeOfCurrency && typeOfCurrency.type === 3 &&
+            <ErrorEmpty>
+              <TryBitcoinContainer
+                btcCurrency={currency.currency.results.find((el) => el.abbreviation === 'BTC')}
+                t={t}
+              />
+            </ErrorEmpty>
+          }
+        </>
+        : <LoadingComponent t={t}/>}
+    </Box>
+  )
 }

@@ -1,4 +1,3 @@
-import styles from '../../../../../styles/MyAccount/UserInfoPage/PhoneVerification.module.scss'
 import { PhoneInputContainer } from './PhoneInputContainer'
 import { VerifyCodeInputContainer } from './VerifyCodeInputContainer'
 import { useDispatch } from 'react-redux'
@@ -8,6 +7,7 @@ import { auth, patchUserData } from '../../../../../redux/user/action'
 import { PhoneAlreadyVerified } from './PhoneAlreadyVerified'
 import ErrorText from '../../../../ErrorBoundaryComponents/ErrorText'
 import Connect from "../../../../../helpers/connect";
+import { Box } from "@chakra-ui/react";
 
 export const PhoneVerification = ({ t, userInfo }) => {
   const dispatch = useDispatch()
@@ -100,51 +100,40 @@ export const PhoneVerification = ({ t, userInfo }) => {
       :
       t('myAccount.profilePage.phoneVerification.status.notVerified')
 
-  if (userInfo.user.user.unconfirmed_phone && !userInfo.user.user.phone_number) {
-    return (
-      <div className={styles.phoneVerificationContainer}>
-        <ErrorText>
-          <VerifyCodeInputContainer
-            status={status}
-            t={t}
-            userInfo={userInfo.user.user}
-            sendAgainVerifyCode={sendAgainVerifyCode}
-            phoneError={phoneError}
-            removePhoneNumberHandler={removePhoneNumberHandler}
-            verifyCodeInputHandler={verifyCodeInputHandler}
-            verifyCode={verifyCode}
-            sendVerifyCodeHandler={sendVerifyCodeHandler}
-          />
-        </ErrorText>
-      </div>
-    )
-  } else if (!userInfo.user.user.unconfirmed_phone) {
-    return (
-      <div className={styles.phoneVerificationContainer}>
-        <ErrorText>
-          <PhoneInputContainer
-            t={t}
-            phoneInputValue={phoneInputValue}
-            phoneError={phoneError}
-            phoneNumber={phoneNumber}
-            sendPhoneNumberHandler={sendPhoneNumberHandler}
-          />
-        </ErrorText>
-      </div>
-    )
-  } else if (userInfo.user.user.phone_number && (!userInfo.user.user.unconfirmed_phone || userInfo.user.user.unconfirmed_phone)) {
-    return (
-      <div className={styles.phoneVerificationContainer}>
-        <ErrorText>
-          <PhoneAlreadyVerified
-            t={t}
-            userInfo={userInfo.user.user}
-            removePhoneNumberHandler={removePhoneNumberHandler}
-            status={status}
-          />
-        </ErrorText>
-      </div>
-    )
-  }
-
+  return (
+    <Box p="35px 0" borderBottom="1px solid #eeeeee">
+      <ErrorText>
+        {userInfo.user.user.unconfirmed_phone && !userInfo.user.user.phone_number
+          ? (
+            <VerifyCodeInputContainer
+              status={status}
+              t={t}
+              userInfo={userInfo.user.user}
+              sendAgainVerifyCode={sendAgainVerifyCode}
+              phoneError={phoneError}
+              removePhoneNumberHandler={removePhoneNumberHandler}
+              verifyCodeInputHandler={verifyCodeInputHandler}
+              verifyCode={verifyCode}
+              sendVerifyCodeHandler={sendVerifyCodeHandler}
+            />
+          ) : (!userInfo.user.user.unconfirmed_phone ? (
+            <PhoneInputContainer
+              t={t}
+              phoneInputValue={phoneInputValue}
+              phoneError={phoneError}
+              phoneNumber={phoneNumber}
+              sendPhoneNumberHandler={sendPhoneNumberHandler}
+            />
+          ) : userInfo.user.user.phone_number && (!userInfo.user.user.unconfirmed_phone || userInfo.user.user.unconfirmed_phone) && (
+            <PhoneAlreadyVerified
+              t={t}
+              userInfo={userInfo.user.user}
+              removePhoneNumberHandler={removePhoneNumberHandler}
+              status={status}
+            />
+          ))
+        }
+      </ErrorText>
+    </Box>
+  )
 }

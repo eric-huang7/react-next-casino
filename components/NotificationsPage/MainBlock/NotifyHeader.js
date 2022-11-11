@@ -1,11 +1,10 @@
-import styles from '../../../styles/NotificationsPage/NotificationsPage.module.scss';
 import {useContext, useState} from "react";
 import {NotifyContext} from "../../NotifyContext/NotifyContext";
 import {setNotifyTypeTwo} from "../../../redux/notify/action";
 import {useDispatch, useSelector} from "react-redux";
+import {Text, HStack} from '@chakra-ui/react';
 import {browserNotifications} from "../../../helpers/browserNotifications";
 import {changeLocalUserSubscriptions, changeUserSubscriptions} from "../../../redux/userSubscriptions/action";
-import {NotifyIcon} from "./NotifyIcon";
 import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
 
 
@@ -60,12 +59,21 @@ export const NotifyHeader = ({t, notifyData, subscriptInfo}) => {
   }
 
   return (
-    <div className={styles.notifyHeader}>
-      <h3>{t("notificationsPage.header.heading")}</h3>
-      <span onClick={() => markReadClickHandler()}>{t("notificationsPage.header.markAsRead")}</span>
+    <HStack justifyContent="space-between" alignItems="center" p={{base: "16px 12px 16px 35px", lg: "16px 14px 16px 18px"}}>
+      <Text as="h3" fontSize="16px" lineHeight="30px" fontFamily="Verdana" color={{base: 'grey.700', lg: 'currency.500'}}>
+        {t("notificationsPage.header.heading")}
+      </Text>
+      <Text as="span" fontSize="14px" lineHeight="30px" color="primary.500" fontFamily="Verdana"
+            cursor="pointer" onClick={markReadClickHandler}>
+        {t("notificationsPage.header.markAsRead")}
+      </Text>
       <ErrorEmpty>
-        <NotifyIcon soundClickHandler={soundClickHandler} notifySubscript={subscriptInfo}/>
+        <img
+          onClick={soundClickHandler}
+          src={`/assets/icons/notifications/${notifySubscript === 1 ? 'sound_on.svg' : 'sound_off.svg'}`}
+          alt=""
+        />
       </ErrorEmpty>
-    </div>
+    </HStack>
   )
 }

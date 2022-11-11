@@ -1,10 +1,10 @@
-import styles from '../../../../styles/Header/UserBlock.module.scss'
 import { NotificationCounter } from './NotificationCounter'
 import { NotificationPopup } from './NotificationPopup/NotificationPopup'
 import { useContext, useEffect } from 'react'
 import { NotifyContext } from '../../../NotifyContext/NotifyContext'
 import { notificator } from '../../../../helpers/notificator'
 import ErrorEmpty from '../../../ErrorBoundaryComponents/ErrorEmpty'
+import { Box } from "@chakra-ui/react"
 
 export const BellNotification = ({
   messageCount,
@@ -37,28 +37,33 @@ export const BellNotification = ({
   }, [notifySocket.socket.current, subscriptInfo])
 
   return (
-    <div
+    <Box
       onMouseEnter={() => showBellHandler()}
       onMouseLeave={() => hideBellHandler()}
-      className={styles.userMainBlockBellIcon}
+      position="relative"
+      flexShrink="0"
+      w={{base: "30px", lg: "38px"}}
+      h={{base: "37px", lg: "45px"}}
+      marginRight="16px"
+      backgroundImage="url('/assets/icons/bell_icon.svg')"
+      backgroundPosition="center"
+      backgroundSize="cover"
+      backgroundRepeat="no-repeat"
+      cursor="pointer"
     >
       <ErrorEmpty>
         <NotificationCounter messageCount={messageCount}/>
       </ErrorEmpty>
 
-      {isShowNotifications
-        ?
-        <ErrorEmpty>
-          <NotificationPopup
-            hideBellHandler={hideBellHandler}
-            subscriptInfo={subscriptInfo}
-            checkReadMessages={checkReadMessages}
-            notifyData={showMessages}
-            isShowNotifications={isShowNotifications}
-          />
-        </ErrorEmpty>
-        : <></>
-      }
-    </div>
+      {isShowNotifications && <ErrorEmpty>
+        <NotificationPopup
+          hideBellHandler={hideBellHandler}
+          subscriptInfo={subscriptInfo}
+          checkReadMessages={checkReadMessages}
+          notifyData={showMessages}
+          isShowNotifications={isShowNotifications}
+        />
+      </ErrorEmpty>}
+    </Box>
   )
 }

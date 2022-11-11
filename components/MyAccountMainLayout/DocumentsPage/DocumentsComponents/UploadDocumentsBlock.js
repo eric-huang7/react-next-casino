@@ -1,12 +1,12 @@
-import styles from '../../../../styles/MyAccount/DocumentsPage/DocumentsPage.module.scss'
 import { ChooseFileContainer } from './ChooseFileContainer'
 import { FileDescriptionContainer } from './FileDescriptionContainer'
-import { SubmitButton } from './SubmitButton'
 import { useState } from 'react'
 import { document_url } from '../../../../redux/url/url'
 import { getDocuments } from '../../../../redux/user/action'
 import { useDispatch } from 'react-redux'
 import Connect from "../../../../helpers/connect";
+import RoundButton from "../../../buttons/RoundButton";
+import {Text, Box} from "@chakra-ui/react";
 
 const fileTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'application/pdf', 'image/webp']
 
@@ -66,8 +66,10 @@ export const UploadDocumentsBlock = ({ t }) => {
   }
 
   return (
-    <div className={styles.uploadDocumentsContainer}>
-      <p className={styles.uploadDocumentHeading}>{t('myAccount.documentsPage.uploadDocumentBlock.uploadDocument')}</p>
+    <Box mb="24px">
+      <Text fontSize={16} color="text.450" fontFamily="Verdana" py="24px">
+        {t('myAccount.documentsPage.uploadDocumentBlock.uploadDocument')}
+      </Text>
       <form
         id={'downloadDocumentForm'}
         onSubmit={(e) => submitHandler(e)}
@@ -85,13 +87,21 @@ export const UploadDocumentsBlock = ({ t }) => {
           description={description}
           descriptionError={descriptionError}
         />
-        <span className={styles.errorMessage}>{descriptionError}</span>
+        <Text fontSize={12} color="red.500" ml="140px" mb="20px">{descriptionError}</Text>
       </form>
 
-      <SubmitButton
-        submitHandler={submitHandler}
-        t={t}
+      <RoundButton
+        onClick={submitHandler}
+        title={t("myAccount.documentsPage.uploadDocumentBlock.submit")}
+        w="auto"
+        solid
+        fontFamily="Verdana"
+        fontSize={15}
+        form="downloadDocumentForm"
+        type="submit"
+        ml="140px"
+        mb="60px"
       />
-    </div>
+    </Box>
   )
 }

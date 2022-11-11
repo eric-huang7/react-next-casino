@@ -1,0 +1,13 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="ubt" x="96" y="484" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z" fill="url(#prpaint0_linear)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.941 14.357l-1.619 1.628h-5.22V5.48H6.49v8.933H4.373v-9.43L5.99 3.363h3.612l1.573 1.572h3.155l1.619 1.619V9.88l-.567.567.567.578-.008 3.332zm-4.72-7.304h2.62v2.355h-2.62V7.053zm2.612 4.461h-2.612v2.354h2.612v-2.354z" fill="#fff"/>
+        <defs>
+            <linearGradient id="prpaint0_linear" x1="4.825" y1="17.793" x2="18.477" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#AC3775"/>
+                <stop offset=".241" stop-color="#2D337F"/>
+                <stop offset=".495" stop-color="#449396"/>
+                <stop offset=".781" stop-color="#92B94E"/>
+                <stop offset="1" stop-color="#EFE34F"/>
+            </linearGradient>
+        </defs>
+    </svg>

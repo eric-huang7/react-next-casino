@@ -1,17 +1,22 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
-import { DepositButton } from './DepositButton'
 import { useDispatch } from 'react-redux'
 import { patchUserActiveCurrency } from '../../../redux/user/action'
-
-import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
-import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
-import {useEffect} from "react";
-import {svgSetter} from "../../../helpers/iconNameFinder";
-import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
+import {CurrencyItem} from "../../currency/CurrencySelector/CurrencyItem";
+import RoundButton from "../../buttons/RoundButton";
+import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
+import {showDepositModal} from "../../../redux/popups/action";
+import {useRouter} from "next/router";
+import {Box, Image} from "@chakra-ui/react";
+import {HStack, Text} from "@chakra-ui/layout";
+import LinkButton from "../../buttons/LinkButton";
+
+const Row = ({children}) => <HStack p="5px 0" alignItems="flex-start">{children}</HStack>
+const Label = ({children}) => <Box w="40%" color="#969698" pr="16px"><Text>{children}</Text></Box>
+const Value = ({children}) => <Box wordWrap="break-word"><Text>{children}</Text></Box>
 
 export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], rateUsd, columns }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
   const rate = currency ? rates[currency.id] : null;
@@ -28,76 +33,73 @@ export const BalanceItemMobile = ({ t, balanceData, currencyData, rates = [], ra
     dispatch(patchUserActiveCurrency(userData))
   }
 
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
+  const currencyButtonHandler = () => {
+    dispatch(setUserCurrencySwitcher(currency))
+    dispatch(showDepositModal(true))
+  }
 
+  const cashoutButtonHandler = (data) => {
+    router.push(data)
+  }
   return currency ? (
-    <div className={styles.tableRow}>
-      <div className={styles.row}>
-        <div className={styles.label}>
+    <Box m="8px 16px 24px" p="16px" borderRadius="16px" boxShadow="#ddd 0px 0px 7px">
+      <Row>
+        <Label>
           {columns.currency.title}
+        </Label>
+        <div>
+          <CurrencyItem currencyData={currency} />
         </div>
-        <div className={styles.tableCurrency}>
-          <CurrencyItem t={t} currencyData={currency} iconId="mobileIcon" />
-        </div>
-      </div>
-      <div className={styles.row}>
-        <div className={styles.label}>
+      </Row>
+      <Row>
+        <Label>
           {columns.amount.title}
-        </div>
-        <div className={styles.tableAmount}>
+        </Label>
+        <Value>
           {`${amount} ${currency?.abbreviation}`}
-        </div>
-      </div>
-      <div className={styles.row}>
-        <div className={styles.label}>
+        </Value>
+      </Row>
+      <Row>
+        <Label>
           {columns.cashout.title}
-        </div>
-        <div className={styles.tableCashOut}>
+        </Label>
+        <Value>
           {`${cashOut} ${currency?.abbreviation}`}
-        </div>
-      </div>
-      <div className={styles.row}>
-        <div className={styles.label}>
+        </Value>
+      </Row>
+      <Row>
+        <Label>
           {columns.amountBtc.title}
-        </div>
-        <div className={styles.tableCashOut}>
+        </Label>
+        <Value>
           {rate ? <span>{amountBtc} BTC<br/> ≈ {amountFiat} USD</span> : ''}
-        </div>
-      </div>
-      <div className={`${styles.row} ${styles.actionButtons}`}>
-        {currency?.isDepositEnabled === 1 && <ErrorEmpty>
-          <DepositButton currency={currency} t={t}/>
-        </ErrorEmpty>}
-        {currency?.isWithdrawEnabled === 1 && (<Link
-          href={{
-            pathname: `/accounts/cashout/${currency?.abbreviation}`,
-            query: { currency_id: `${currency?.id}` }
-          }}
-        >
-          <a className={styles.cashoutLink}>
-            {t('myAccount.balance.buttons.cashout')}
-          </a>
-        </Link>)}
-        <div className={styles.selectWrapper}>
-        {
-          Number(balanceData.is_default) === 0 ?
-            <div className={`${styles.tableDataActive} ${styles.tableActiveChoose}`}>
-              <div onClick={() => chooseClickHandler()}>
-                {t('myAccount.balance.table.items.select')}
-              </div>
-            </div>
-            :
-            <div className={`${styles.tableDataActive} ${styles.active}`}>
-              <div>
+        </Value>
+      </Row>
+      <HStack pt="30px" alignItems="center">
+        {currency?.isDepositEnabled === 1 && <RoundButton w="76px" h="25px" fontSize="12px"
+          onClick={currencyButtonHandler} solid title={t('myAccount.balance.buttons.deposit')} />}
+
+        {currency?.isWithdrawEnabled === 1 &&
+        <RoundButton w="76px" h="25px" fontSize="12px" onClick={() => cashoutButtonHandler( {
+          pathname: `/accounts/cashout/${currency?.abbreviation}`,
+          query: { currency_id: `${currency?.id}` }
+        })
+        } title={t('myAccount.balance.buttons.cashout')} />}
+
+        {Number(balanceData.is_default) === 0
+          ? <LinkButton onClick={chooseClickHandler} fontSize="14px">
+              {t('myAccount.balance.table.items.select')}
+            </LinkButton>
+          : <HStack spacing={0}>
+              <HStack w="30px" justifyContent="center">
+                <Image src="/assets/img/myAccount/balance/active.webp" width="19px" alt="" />
+              </HStack>
+              <Text color="primary.500">
                 {t('myAccount.balance.table.items.active')}
-              </div>
-            </div>
+              </Text>
+            </HStack>
         }
-        </div>
-      </div>
-    </div>
+      </HStack>
+    </Box>
   ) : null
 }

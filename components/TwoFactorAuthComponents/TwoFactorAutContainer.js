@@ -1,17 +1,15 @@
-import styles from "../../styles/TwoFaAuth/TwoFaAuth.module.scss";
 import {useEffect, useRef, useState} from "react";
-import {Heading} from "./Heading";
-import {ChangeWindowButton} from "./ChangeWindowButton";
 import {TwoFaCodeInputContainer} from "./TwoFaCodeInputContainer";
 import {BackupCodeInputContainer} from "./BackupCodeInputContainer";
 import {useDispatch} from "react-redux";
 import {showTwoFaPopup} from "../../redux/popups/action";
-
-
+import {Box} from "@chakra-ui/react";
+import SelectModal from "../modal/SelectModal";
+import LinkButton from "../buttons/LinkButton";
+import {HStack} from "@chakra-ui/layout";
 
 export const TwoFactorAutContainer = ({t}) => {
   const dispatch = useDispatch();
-
   const [showTwoFaInputCode, setShowTwoFaInputCode] = useState(true);
 
   const twoFaAuthRef = useRef();
@@ -38,32 +36,27 @@ export const TwoFactorAutContainer = ({t}) => {
   }
 
   return (
-    <div className={styles.twoFaAuthWrapper}>
-      <div className={styles.innerWrapper}>
-        <div ref={twoFaAuthRef} className={styles.mainContainer}>
-          <Heading
-            t={t}
-            text={showTwoFaInputCode ? 'twoFactorAuthPopup.headings.twoFaCode' : 'twoFactorAuthPopup.headings.backupCode'}
-            closeHandler={closeTwoFaAuthHandler}
-          />
-          {
-            showTwoFaInputCode
-              ?
-              <TwoFaCodeInputContainer
-                t={t}
-              />
-              :
-              <BackupCodeInputContainer
-                t={t}
-              />
+    <SelectModal
+      isOpen={true}
+      width={600}
+      onClose={closeTwoFaAuthHandler}
+      title={t(showTwoFaInputCode ? 'twoFactorAuthPopup.headings.twoFaCode' : 'twoFactorAuthPopup.headings.backupCode')}
+    >
+        <Box w="100%" pb={4}>
+          {showTwoFaInputCode
+            ? <TwoFaCodeInputContainer
+              t={t}
+            />
+            : <BackupCodeInputContainer
+              t={t}
+            />
           }
-          <ChangeWindowButton
-            t={t}
-            text={showTwoFaInputCode ? 'twoFactorAuthPopup.buttons.useBackupCode' : 'twoFactorAuthPopup.buttons.useTwoFaCode'}
-            changeWindowAction={changeWindowAction}
-          />
-        </div>
-      </div>
-    </div>
+          <HStack justifyContent="center">
+            <LinkButton onClick={changeWindowAction} fontSize="14px" mt="25px">
+              {t(showTwoFaInputCode ? 'twoFactorAuthPopup.buttons.useBackupCode' : 'twoFactorAuthPopup.buttons.useTwoFaCode')}
+            </LinkButton>
+          </HStack>
+        </Box>
+    </SelectModal>
   )
 }

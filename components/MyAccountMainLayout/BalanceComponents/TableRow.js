@@ -1,17 +1,18 @@
-import styles from '../../../styles/MyAccount/BalancePage/BalancePage.module.scss'
-import { DepositButton } from './DepositButton'
 import { useDispatch } from 'react-redux'
+import { chakra, Text, Box, Image } from "@chakra-ui/react"
 import { patchUserActiveCurrency } from '../../../redux/user/action'
 
-import Link from 'next/link'
 import { numberTransformer } from '../../../helpers/numberTransformer'
-import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
-import {useEffect} from "react";
-import {svgSetter} from "../../../helpers/iconNameFinder";
-import {CurrencyItem} from "../../MainLayout/SelectCurrencyWidget/CurrencySelector/CurrencyItem";
+import {CurrencyItem} from "../../currency/CurrencySelector/CurrencyItem";
+import {HStack} from "@chakra-ui/layout";
+import RoundButton from "../../buttons/RoundButton";
+import {setUserCurrencySwitcher} from "../../../redux/userFinance/action";
+import {showDepositModal} from "../../../redux/popups/action";
+import {useRouter} from "next/router";
 
-export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) => {
+export const TableRow = ({ t, index, balanceData, currencyData, rates = [], rateUsd }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   let currency = currencyData?.currency?.results?.find((el) => Number(el.id) === Number(balanceData.currency_id))
   const rate = currency ? rates[currency.id] : null;
@@ -28,56 +29,59 @@ export const TableRow = ({ t, balanceData, currencyData, rates = [], rateUsd }) 
     dispatch(patchUserActiveCurrency(userData))
   }
 
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
+  const currencyButtonHandler = () => {
+    dispatch(setUserCurrencySwitcher(currency))
+    dispatch(showDepositModal(true))
+  }
+
+  const cashoutButtonHandler = (data) => {
+    router.push(data)
+  }
 
   return currency ? (
-    <tr className={styles.tableRow}>
-      {
-        Number(balanceData.is_default) === 0 ?
-          <td className={`${styles.tableDataActive} ${styles.tableActiveChoose}`}>
-            <p onClick={() => chooseClickHandler()}>
+    <chakra.tr h="51px" fontSize="15px" color="#808080" fontFamily="Verdana" bg={index % 2 === 0 ? "#fafafa": "#eeeeee"}>
+      {Number(balanceData.is_default) === 0
+        ? <chakra.td pl="30px">
+            <Text color="primary.500" cursor="pointer" onClick={chooseClickHandler}>
               {t('myAccount.balance.table.items.select')}
-            </p>
-          </td>
-          :
-          <td className={`${styles.tableDataActive} ${styles.active}`}>
-            <p>
-              {t('myAccount.balance.table.items.active')}
-            </p>
-          </td>
+            </Text>
+          </chakra.td>
+        : <chakra.td>
+            <HStack spacing={0}>
+              <HStack w="30px" justifyContent="center">
+                <Image src="/assets/img/myAccount/balance/active.webp" alt="" />
+              </HStack>
+              <Text color="primary.500">
+                {t('myAccount.balance.table.items.active')}
+              </Text>
+            </HStack>
+          </chakra.td>
       }
-      <td className={styles.tableCurrency}>
-        <CurrencyItem t={t} currencyData={currency} />
-      </td>
-      <td className={styles.tableAmount}>
+      <chakra.td>
+        <CurrencyItem currencyData={currency} />
+      </chakra.td>
+      <chakra.td wordWrap="break-word">
         {`${amount} ${currency?.abbreviation}`}
-      </td>
-      <td className={styles.tableCashOut}>
+      </chakra.td>
+      <chakra.td wordWrap="break-word">
         {`${cashOut} ${currency?.abbreviation}`}
-      </td>
-      <td className={styles.tableCashOut}>
+      </chakra.td>
+      <chakra.td wordWrap="break-word">
         {rate ? <span>{amountBtc} BTC ≈ {amountFiat} USD</span> : ''}
-      </td>
-      <td className={styles.tableActions}>
-        <div>
-          {currency?.isDepositEnabled === 1 && <ErrorEmpty>
-            <DepositButton currency={currency} t={t}/>
-          </ErrorEmpty>}
-          {currency?.isWithdrawEnabled === 1 && (<Link
-            href={{
-              pathname: `/accounts/cashout/${currency?.abbreviation}`,
-              query: { currency_id: `${currency?.id}` }
-            }}
-          >
-            <a className={styles.cashoutLink}>
-              {t('myAccount.balance.buttons.cashout')}
-            </a>
-          </Link>)}
-        </div>
-      </td>
-    </tr>
+      </chakra.td>
+      <chakra.td>
+        <HStack alignItems="center" justifyContent="space-around">
+          {currency?.isDepositEnabled === 1 &&
+            <RoundButton onClick={currencyButtonHandler} solid title={t('myAccount.balance.buttons.deposit')} />}
+
+          {currency?.isWithdrawEnabled === 1 &&
+            <RoundButton onClick={() => cashoutButtonHandler( {
+                pathname: `/accounts/cashout/${currency?.abbreviation}`,
+                query: { currency_id: `${currency?.id}` }
+              })
+            } title={t('myAccount.balance.buttons.cashout')} />}
+        </HStack>
+      </chakra.td>
+    </chakra.tr>
   ) : null
 }

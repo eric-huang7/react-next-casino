@@ -1,16 +1,16 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/ActiveSessionsBlock.module.scss'
 import { SessionsTable } from './SessionsTable'
 import { auth_type_id, is_admin, siteID } from '../../../../envs/envsForFetching'
 import {delete_user_session_url} from '../../../../redux/url/url'
 import { useDispatch } from 'react-redux'
 import { getActiveUserSessions, getClosedUserSessions } from '../../../../redux/user/action'
 import Connect from "../../../../helpers/connect";
+import BodyText from "../../../typography/BodyText";
+import {Box} from "@chakra-ui/layout";
 
 export const ActiveSessionsBlock = ({ t, userInfo }) => {
   const dispatch = useDispatch()
 
   const closeSessionHandler = (session) => {
-
     let body1 = {
       site_id: siteID,
       auth_type_id: auth_type_id,
@@ -26,9 +26,9 @@ export const ActiveSessionsBlock = ({ t, userInfo }) => {
   }
 
   return (
-    <div className={styles.activeSessionsMainBlock}>
-      <h3 className={styles.activeSessionsHeading}>{t('myAccount.profilePage.sessionsBlocks.activeSessions')}</h3>
+    <Box py="35px">
+      <BodyText as="h3" bold fontSize={17} mb="35px">{t('myAccount.profilePage.sessionsBlocks.activeSessions')}</BodyText>
       <SessionsTable closeSessionHandler={closeSessionHandler} t={t} sessionsInfo={userInfo}/>
-    </div>
+    </Box>
   )
 }

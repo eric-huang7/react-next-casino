@@ -1,10 +1,8 @@
-import styles from '../../styles/BalanceMenu/BalanceMenu.module.scss'
 import { numberTransformer } from '../../helpers/numberTransformer'
 import { patchUserActiveCurrency } from '../../redux/user/action'
 import { useDispatch } from 'react-redux'
-import {useEffect} from "react";
-import {svgSetter} from "../../helpers/iconNameFinder";
-import {CurrencyItemShort} from "../MainLayout/Header/UserBlock/CurrencyItemShort";
+import {Tr, Td} from "@chakra-ui/react"
+import CurrencyItemShort from "../currency/CurrencyItemShort";
 
 export const BalanceItem = ({ balanceData, currencyData, onSelect }) => {
   const dispatch = useDispatch()
@@ -30,17 +28,18 @@ export const BalanceItem = ({ balanceData, currencyData, onSelect }) => {
   let currency = currencyData.currency.results.find((el) => Number(el.id) === Number(balanceData.currency_id))
   let amount = numberTransformer(parseFloat(balanceData.current_balance).toFixed(Math.min(9, currency?.decimal)))
 
-  useEffect(() => {
-    const returnAbbr = false
-    svgSetter(currency, returnAbbr)
-  }, [])
-
-  return currency ? (
-    <li onClick={() => onSelect ? onSelectHandler() : chooseClickHandler()} className={styles.balanceItem}>
-      <span>{amount}</span>
-      <span>
+  return currency && (
+    <Tr
+      h="50px"
+      minW="100px"
+      cursor="pointer"
+      color="white"
+      onClick={() => onSelect ? onSelectHandler() : chooseClickHandler()}
+    >
+      <Td py={1} px={2} w="fit-content">{amount}</Td>
+      <Td py={1} px={2} w="fit-content">
         <CurrencyItemShort currencyData={currency} />
-      </span>
-    </li>
-  ) : null
+      </Td>
+    </Tr>
+  )
 }

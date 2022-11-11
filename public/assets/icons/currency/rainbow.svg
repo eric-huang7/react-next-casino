@@ -1,0 +1,39 @@
+<svg width="24" height="24" fill="none" viewBox="-2 -2 24 24" id="rainbow" x="470" y="72" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.954 0 0 8.954 0 20h16.47A3.53 3.53 0 0120 16.47V0z" fill="url(#mppaint0_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 2.353c-9.746 0-17.647 7.9-17.647 17.647h14.118A3.53 3.53 0 0120 16.47V2.354z" fill="url(#mppaint1_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.294C11.878 5.294 5.294 11.878 5.294 20H16.47A3.53 3.53 0 0120 16.47V5.295z" fill="url(#mppaint2_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 7.647c-6.822 0-12.353 5.53-12.353 12.353h8.824A3.53 3.53 0 0120 16.47V7.648z" fill="url(#mppaint3_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 9.706C14.315 9.706 9.706 14.315 9.706 20h6.765A3.53 3.53 0 0120 16.47V9.707z" fill="url(#mppaint4_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 12.059A7.941 7.941 0 0012.059 20h4.411A3.53 3.53 0 0120 16.47V12.06z" fill="url(#mppaint5_linear_2116_2307)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 14.706A5.294 5.294 0 0014.706 20h1.765A3.53 3.53 0 0120 16.47v-1.764z" fill="url(#mppaint6_linear_2116_2307)"/>
+        <defs>
+            <linearGradient id="mppaint0_linear_2116_2307" x1="20" y1="0" x2="0" y2="27.222" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FD1F21"/>
+                <stop offset="1" stop-color="#D60000"/>
+            </linearGradient>
+            <linearGradient id="mppaint1_linear_2116_2307" x1="20" y1="2.353" x2="2.353" y2="26.373" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFA301"/>
+                <stop offset="1" stop-color="#F40"/>
+            </linearGradient>
+            <linearGradient id="mppaint2_linear_2116_2307" x1="20" y1="5.294" x2="5.294" y2="25.311" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFB41"/>
+                <stop offset="1" stop-color="#FFA001"/>
+            </linearGradient>
+            <linearGradient id="mppaint3_linear_2116_2307" x1="20" y1="7.647" x2="7.647" y2="24.461" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#03FC00"/>
+                <stop offset="1" stop-color="#01AF01"/>
+            </linearGradient>
+            <linearGradient id="mppaint4_linear_2116_2307" x1="20" y1="9.706" x2="9.706" y2="23.717" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#07ADFF"/>
+                <stop offset="1" stop-color="#0184FF"/>
+            </linearGradient>
+            <linearGradient id="mppaint5_linear_2116_2307" x1="20" y1="12.059" x2="12.059" y2="22.868" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#017DFF"/>
+                <stop offset="1" stop-color="#0010FF"/>
+            </linearGradient>
+            <linearGradient id="mppaint6_linear_2116_2307" x1="20" y1="14.706" x2="14.706" y2="21.912" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#AD17F0"/>
+                <stop offset="1" stop-color="#6801BC"/>
+            </linearGradient>
+        </defs>
+    </svg>

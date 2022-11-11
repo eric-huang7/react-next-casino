@@ -1,82 +1,109 @@
-import styles from '../../../../styles/DepositPage/DepositPage.module.scss';
 import {useTranslation} from "next-i18next";
 import {BonusInfoContainer} from "../../../BonusInfoComponents/BonusInfoContainer";
 import {useState} from "react";
-import BonusErrorHandler from "../../../BonusInfoComponents/ErrorHandlers/BonusErrorHandler";
-
+import { Text, HStack, Box, Image } from "@chakra-ui/react";
 
 export const BonusesBlock = (props) => {
   const {t} = useTranslation('promotionsPage');
   let {
-    isUseBonus,
     bonusHeading,
     bonusImage,
     bonusDescription,
-    bonusLink,
-    chooseBonusClickHandler,
+    onClick,
     bonusId,
-    classImageNotActive,
     bonusData,
-    userCurrency,
-    canShowInfo
+    canShowInfo,
+    small
   } = props;
 
   const [isShowBonusInfo, setIsShowBonusInfo] = useState(false);
 
   const bonusInfoClickHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     e.stopPropagation();
     setIsShowBonusInfo((prevState => !prevState));
   }
 
-
   const bonusClickHandler = () => {
-    if (chooseBonusClickHandler) {
-      chooseBonusClickHandler(bonusId)
-    } else {
-    }
+    onClick && onClick(bonusId)
   }
+
   return (<>
-    <div
-      onClick={() => bonusClickHandler()}
-      className={`${styles.activeBonusInfo} ${isUseBonus ? styles.activeBonusInfo : styles.notActiveBonusInfo}`}
+    <HStack
+      w="100%"
+      flexWrap="nowrap"
+      alignItems="center"
+      minH="60px"
+      px="0"
+      onClick={bonusClickHandler}
+      cursor="pointer"
+      spacing={3}
     >
-      <img className={styles[classImageNotActive]} src={bonusImage} alt="bonus image"/>
-      <div className={styles.bonusInfoBlock}>
-        <div className={styles.bonusHeadingBlock}>
-          <span className={styles.bonusInfoHeading}>{t(bonusHeading)}</span>
-          {
-            canShowInfo
-              ?
-              <span
-                className={styles.infoLable}
-                onClick={(e) => bonusInfoClickHandler(e)}
-              >
-                  {t("bonuses.bonusBlockInfoLink")}
-              </span>
-              :
-              <></>
-          }
+      <HStack justifyContent="center" alignItems="center" width={{base: "37px", lg: "50px"}}
+              height={{base: "37px", lg: "50px"}} >
+        <Image src={bonusImage} borderRadius={12} alt="" width={{base: "37px", lg: small ? "33px" : "50px"}}
+             height={{base: "37px", lg: small ? "33px" : "50px"}} />
+      </HStack>
+      <Box w={{base: "calc(100% - 70px)", lg: "calc(100% - 70px)"}}>
+        {!small && <HStack
+          fontSize="15px"
+          lineHeight="24px"
+          color="white"
+          fontFamily="Montserrat"
+          flexWrap="nowrap"
+        >
+          <Text as="span"
+            fontSize="15px"
+            lineHeight="24px"
+            color="white"
+            fontFamily="Montserrat"
+            flexWrap="nowrap"
+            textOverflow="ellipsis"
+            display="block"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
+            {t(bonusHeading)}
+          </Text>
+        </HStack>}
+        <HStack
+          fontSize="15px"
+          lineHeight="24px"
+          color="white"
+          fontFamily="Montserrat"
+          flexWrap="nowrap"
+        >
+          <Text as="p"
+            color="#F39321"
+            whiteSpace="nowrap"
+            // textTransform="uppercase"
+            overflow="hidden"
+            textOverflow="ellipsis"
+            sx={{
+              base: {
+                fontSize: "14px",
+                fontFamily: "Montserrat",
+                margin: "10px 0 0 -40px"
+              },
+              lg: {
+                fontSize: "14px",
+                fontFamily: "Montserrat",
+                margin: "10px 0 0 0"
+              }
+            }}
+          >{bonusDescription}</Text>
+          {canShowInfo && <Text fontSize={14} as="span" textDecoration="underline" mr={0} onClick={bonusInfoClickHandler}>
+            {t("bonuses.bonusBlockInfoLink")}
+          </Text>}
+        </HStack>
+      </Box>
+    </HStack>
 
-        </div>
-        <p className={styles.bonusDescriptionInfo}>{bonusDescription}</p>
-      </div>
-    </div>
-
-    {
-      isShowBonusInfo
-        ?
-        <BonusErrorHandler>
-          <BonusInfoContainer
-            bonusData={bonusData}
-            infoClickHandler={setIsShowBonusInfo}
-            isShow={isShowBonusInfo}
-            userCurrency={userCurrency}
-            fromDeposit={true}
-          />
-        </BonusErrorHandler>
-        :
-        <></>
-    }
+    {isShowBonusInfo && <BonusInfoContainer
+      bonusData={bonusData}
+      infoClickHandler={setIsShowBonusInfo}
+      isShow={isShowBonusInfo}
+      fromDeposit={true}
+    />}
   </>)
 }

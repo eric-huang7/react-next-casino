@@ -1,21 +1,16 @@
-import styles from '../../../../styles/MyAccount/UserInfoPage/TwoFactorAuthPage.module.scss';
+import BodyText from "../../../typography/BodyText";
+import { Box } from "@chakra-ui/react";
 
-
-export const SavedKeysBlock = ({t, savedKeys}) => {
-
-
-  return (
-    <div className={styles.savedKeysHeading}>
-      <h3 className={styles.keysHeading}>{t("myAccount.twoFactorAuthPage.savedKeysContainer.heading")}</h3>
-      <p className={styles.information}>{t("myAccount.twoFactorAuthPage.savedKeysContainer.textBlock")}</p>
-      {
-        savedKeys.map((el) => {
-          return (
-            <p key={`${el} save key`} className={styles.saveKey}>{el}</p>
-          )
-        })
-      }
-
-    </div>
-  )
-}
+export const SavedKeysBlock = ({t, savedKeys}) => (
+  <Box>
+    <BodyText bold>{t("myAccount.twoFactorAuthPage.savedKeysContainer.heading")}</BodyText>
+    <BodyText pb="30px">{t("myAccount.twoFactorAuthPage.savedKeysContainer.textBlock")}</BodyText>
+    {
+      savedKeys.map((el) => {
+        return (
+          <BodyText key={`${el} save key`}>{el}</BodyText>
+        )
+      })
+    }
+  </Box>
+)
