@@ -3,6 +3,7 @@ import ErrorMessage from "../../../typography/ErrorMessage";
 import Container from "../../../form/Container";
 import RoundButton from "../../../buttons/RoundButton";
 import {HStack} from "@chakra-ui/react";
+import InputFieldLight from "../../../form/InputFieldLight";
 
 export const TwoFactorCompleteInputsBlock = ({
   t,

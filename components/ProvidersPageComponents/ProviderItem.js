@@ -19,7 +19,7 @@ export const ProviderItem = ({t, providerData, text, onClick, ...props}) => (
   >
     <HStack w="100%" h={{base: "45px", lg: "95px"}} justifyContent="center" alignItems="center">
       {text
-        ? <Text fontSize={{base: "16px", lg: "24px"}} color="text.500" color="white" fontFamily="Verdana"
+        ? <Text fontSize={{base: "16px", lg: "24px"}} color="text.500" fontFamily="Verdana"
                 textTransform="uppercase">
           {text}
         </Text>

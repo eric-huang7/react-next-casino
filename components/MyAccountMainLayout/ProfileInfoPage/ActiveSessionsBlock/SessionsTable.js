@@ -17,8 +17,8 @@ export const SessionsTable = ({ t, sessionsInfo, closeSessionHandler }) => {
       <chakra.table sx={{borderCollapse: "unset !important"}}>
         <chakra.thead>
           <chakra.tr bg="#eeeeee" >
-            {columns.map(item => (
-              <chakra.th  p="12px 10px" h="53px">
+            {columns.map((item, index) => (
+              <chakra.th key={index} p="12px 10px" h="53px">
                 <Text fontSize="15px" color="#595656" fontFamily="Verdana">{item}</Text>
               </chakra.th>
             ))}

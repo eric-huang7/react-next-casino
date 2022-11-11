@@ -1,5 +1,5 @@
 import {chakra} from "@chakra-ui/react";
-import {HStack, Text} from "@chakra-ui/layout";
+import {HStack, Box, Text} from "@chakra-ui/layout";
 
 export const ChooseFileContainer = ({ t, fileInputHandler, selectedFile, isUploading, fileError }) => (
   <>

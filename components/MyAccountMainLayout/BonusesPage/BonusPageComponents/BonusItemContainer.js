@@ -79,7 +79,7 @@ export const BonusItemContainer = ({
                 </Badge>
               </Td>
             </Tr>
-            {values.map((item, index) => (<Tr>
+            {values.map((item, index) => (<Tr key={index}>
               <Td>{item.key}</Td>
               <Td>{item.value}</Td>
             </Tr>))}

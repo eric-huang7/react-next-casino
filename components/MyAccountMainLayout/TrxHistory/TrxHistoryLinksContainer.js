@@ -74,7 +74,7 @@ export const TrxHistoryLinksContainer = ({t}) => {
     <Tabs index={tabIndex} onChange={handleTabsChange} variant="unstyled">
       <TabList>
         {tabs.map((item, index) => (
-          <CustomTab>
+          <CustomTab key={index}>
             <Image src={tabIndex === index ? item.iconActive : item.icon} alt=''/>
             <Text as="span" pl={2}>{t(item.title)}</Text>
           </CustomTab>

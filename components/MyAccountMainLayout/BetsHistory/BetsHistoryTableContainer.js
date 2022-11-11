@@ -13,8 +13,8 @@ export const BetsHistoryTableContainer = ({ t, betsData }) => (
   <chakra.table cellSpacing={4} sx={{borderCollapse: "unset !important"}} w="100%">
     <chakra.thead>
       <chakra.tr bg="#eeeeee" >
-        {columns.map(item => (
-          <chakra.th textAlign="left" p="12px 10px">
+        {columns.map((item, index) => (
+          <chakra.th key={index} textAlign="left" p="12px 10px">
             <Text fontSize="15px" color="#595656" fontFamily="Verdana">{t(item)}</Text>
           </chakra.th>
           ))}

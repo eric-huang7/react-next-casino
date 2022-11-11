@@ -73,8 +73,8 @@ const ListDropdownItem = ({t, heading, path, img, blockData, isAuth, badge, onCl
                   </Text>
                 </Box>}
                 {el.blockData && <VStack pt={3} alignItems="flex-start">
-                  {el.blockData.map(item => (
-                    <chakra.a color="#fff" fontFamily="Arial" fontSize="16px" bg="#5d5d5d" textAlign="center"
+                  {el.blockData.map((item, index) => (
+                    <chakra.a key={index} color="#fff" fontFamily="Arial" fontSize="16px" bg="#5d5d5d" textAlign="center"
                       borderRadius="15px" border="2px solid #fff" href={item.path} _hover={{bg: "#5d5d5d"}}
                       minW="185px" p="10px"
                     >
