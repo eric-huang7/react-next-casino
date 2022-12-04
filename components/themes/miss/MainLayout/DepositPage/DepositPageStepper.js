@@ -2,20 +2,20 @@ import {useDispatch, useSelector} from "react-redux"
 import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
-import SelectModal from "../../modal/SelectModal"
-import DepositCurrencySelector from './DepositCurrencySelector'
+import SelectModal from "/components/modal/SelectModal"
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
-import {ChoosePaymentMethod} from './ChoosePaymentMethod'
-import {DepositLastPage} from './DepositLastPage'
-import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
-import {setStepDepositModal} from "../../../redux/popups/action";
-import ModalTopHeader from "../../modal/ModalTopHeader";
-import {setErrorUserDepositValue} from "../../../redux/userFinance/action";
-import {numberTransformer} from "../../../helpers/numberTransformer";
-import SubmitButton from "../../buttons/SubmitButton";
-import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
+import {ChoosePaymentMethod} from '/components/MainLayout/DepositPage/ChoosePaymentMethod'
+import {DepositLastPage} from '/components/MainLayout/DepositPage/DepositLastPage'
+import ErrorText from '/components/ErrorBoundaryComponents/ErrorText'
+import {setStepDepositModal} from "/redux/popups/action";
+import ModalTopHeader from "/components/modal/ModalTopHeader";
+import {setErrorUserDepositValue} from "/redux/userFinance/action";
+import {numberTransformer} from "/helpers/numberTransformer";
+import SubmitButton from "/components/buttons/SubmitButton";
+import SelectCurrencyDropdown from "/components/currency/SelectCurrencyDropdown";
 import BonusesSlider from "./BonusesBlock/BonusesSlider";
-import ThemeComponent from "../../ThemeComponent";
+import BonusSelector from "./BonusesBlock/BonusSelector";
+import {Menu} from "@chakra-ui/react";
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
@@ -129,7 +129,8 @@ export const DepositPageStepper = (props) => {
           onClose={closeDepositModalHandler}
           title={t("depositPage.innerHeading")}
           footer={<SubmitButton title={buttonText} onClick={submitButtonHandler} />}
-          before={<ModalTopHeader width="500px" title={t('depositPage.mainHeading')} />}
+          before={<ModalTopHeader width="500px" title={t('depositPage.mainHeading1')}
+                                  subtitle={t('depositPage.mainHeading2')} />}
         >
           {isActiveBonusInput
             ? <BonusesSlider />
@@ -141,10 +142,6 @@ export const DepositPageStepper = (props) => {
                 t={t}
               />
             </ErrorText>
-              <ThemeComponent
-                path='LoadingComponent/LoadingComponent'
-                t={t}
-              />
 
             <ErrorText>
               <BonusesBlockMainContainer
@@ -160,8 +157,14 @@ export const DepositPageStepper = (props) => {
               />
             </ErrorText>
 
-            <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt="40px">
-              <Text fontSize={18} fontWeight={400} fontFamily="Montserrat" color="white" cursor="pointer" textTransform="capitalize">
+            <ErrorText>
+              <Box w="100%" pt="20px">
+                <BonusSelector />
+              </Box>
+            </ErrorText>
+
+            <HStack onClick={bonusCodeInputActiveHandler} w="100%" justifyContent="center" pt="18px">
+              <Text fontSize={18} fontWeight={400} fontFamily="Montserrat" color="primary.900" cursor="pointer" textTransform="capitalize">
                 {isActiveBonusInput ? t("depositPage.iDontHaveBonusCodeButton") : t("depositPage.iHaveBonusCodeButton")}
               </Text>
             </HStack>

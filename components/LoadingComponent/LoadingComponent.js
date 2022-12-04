@@ -55,8 +55,8 @@ export const LoadingComponent = ({t, text, height = "300px", ...props}) => (
       <Item pulse={pulse3} />
       <Item pulse={pulse4} />
     </HStack>
-    <Text mt={0} mb="40px" color="grey.400" fontFamily="Arial" fontSize="16px">
+    {text && <Text mt={0} mb="40px" color="grey.400" fontFamily="Arial" fontSize="16px">
       {t(text)}
-    </Text>
+    </Text>}
   </>
 )
