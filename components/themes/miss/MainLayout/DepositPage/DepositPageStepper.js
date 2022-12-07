@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
-import SelectModal from "/components/modal/SelectModal"
+import SelectModal from "../../modal/SelectModal"
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
 import {ChoosePaymentMethod} from '/components/MainLayout/DepositPage/ChoosePaymentMethod'
 import {DepositLastPage} from '/components/MainLayout/DepositPage/DepositLastPage'

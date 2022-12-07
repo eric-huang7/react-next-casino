@@ -15,7 +15,6 @@ import {numberTransformer} from "../../../helpers/numberTransformer";
 import SubmitButton from "../../buttons/SubmitButton";
 import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
 import BonusesSlider from "./BonusesBlock/BonusesSlider";
-import ThemeComponent from "../../ThemeComponent";
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},
@@ -141,10 +140,6 @@ export const DepositPageStepper = (props) => {
                 t={t}
               />
             </ErrorText>
-              <ThemeComponent
-                path='LoadingComponent/LoadingComponent'
-                t={t}
-              />
 
             <ErrorText>
               <BonusesBlockMainContainer

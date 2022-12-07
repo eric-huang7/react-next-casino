@@ -5,7 +5,6 @@ import {
   backButtonShouldDo, setStepDepositModal,
   showDepositModal,
 } from '../../../redux/popups/action'
-import {DepositPageStepper} from './DepositPageStepper'
 import {setErrorUserDepositValue, setUserCurrencySwitcher, setUserDepositValue} from '../../../redux/userFinance/action'
 import {setErrorUserPaymentMethod, setUserPaymentMethod} from '../../../redux/userFinance/action'
 import {setUserBonus} from '../../../redux/userBonus/action'
@@ -15,6 +14,9 @@ import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
 import {SelectCurrencyModal} from "../../currency/SelectCurrencyModal";
 import {addCurrencyToUserList} from "../../../redux/user/action";
 import {useTranslation} from "next-i18next";
+import {getDynamicComponent} from "../../../helpers/theme";
+
+const DepositPageStepper = getDynamicComponent('MainLayout/DepositPage/DepositPageStepper', 'DepositPageStepper')
 
 export const DepositPage = () => {
   const dispatch = useDispatch()
