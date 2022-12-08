@@ -1,3 +1,4 @@
+import {MainBlock} from "./MainBlock";
 import {ChooseCategoryBlock} from "./ChooseCategoryBlock/ChooseCategoryBlock";
 import {GamesSliderBlock} from "./GamesSliderBlock/GamesSliderBlock";
 import {PromotionsBlock} from "./PromotionsBlock/PromotionsBlock";
@@ -5,20 +6,17 @@ import {TotalJackpotsAmount} from "./TotalJackpotsAmount/TotalJackpotsAmount";
 import {NewsBlock} from "./NewsBlock/NewsBlock";
 import {WhySlotsIdol} from "./WhySlotsIdol/WhySlotsIdol";
 import {useEffect, useRef} from "react";
-import {getGames, getGamesLobby, getJackpotGames, getNewGames, getTableGames} from "../../redux/games/action";
-import {getJackpots} from "../../redux/gameData/action";
-import {getLatestWinners, getWinners} from "../../redux/gameData/action";
-import {getCurrency} from "../../redux/currency/action";
+import {getGames, getGamesLobby, getJackpotGames, getNewGames, getTableGames} from "/redux/games/action";
+import {getJackpots} from "/redux/gameData/action";
+import {getLatestWinners, getWinners} from "/redux/gameData/action";
+import {getCurrency} from "/redux/currency/action";
 import {useDispatch, useSelector} from "react-redux";
-import {SearchGamesContainer} from "../GamesPageComponents/SearchGamesContainer";
-import ErrorText from "../ErrorBoundaryComponents/ErrorText";
-import ErrorEmpty from "../ErrorBoundaryComponents/ErrorEmpty";
+import {SearchGamesContainer} from "/components/GamesPageComponents/SearchGamesContainer";
+import ErrorText from "/components/ErrorBoundaryComponents/ErrorText";
+import ErrorEmpty from "/components/ErrorBoundaryComponents/ErrorEmpty";
 import {FaCertificate} from "react-icons/fa";
 import {GiCardJackHearts, GiStarsStack} from "react-icons/gi";
-import {getDynamicComponent} from "../../helpers/theme";
 // import NewGamesTitleImage from "/assets/img/gamesSlider/new_games_head.svg";
-
-const MainBlock = getDynamicComponent('HomePageComponents/MainBlock', 'MainBlock')
 
 export const HomePageContainer = ({t}) => {
   const dispatch = useDispatch();

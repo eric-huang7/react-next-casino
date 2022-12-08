@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { Box, Image } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import {useState} from 'react'
-import { showManageSubscriptions, showPlaySafe } from '../../../redux/popups/action'
+import { showManageSubscriptions, showPlaySafe } from '/redux/popups/action'
 import { useTranslation } from 'next-i18next'
 import {HStack, Text, VStack, Stack} from "@chakra-ui/layout";
-import {tel} from "../../../envs/contacts";
+import {tel} from "/envs/contacts";
 
 const Label = ({children, ...props}) => <Box
   whiteSpace="nowrap"

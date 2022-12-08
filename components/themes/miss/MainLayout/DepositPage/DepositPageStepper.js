@@ -2,7 +2,6 @@ import {useDispatch, useSelector} from "react-redux"
 import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
-import SelectModal from "../../modal/SelectModal"
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
 import {ChoosePaymentMethod} from '/components/MainLayout/DepositPage/ChoosePaymentMethod'
 import {DepositLastPage} from '/components/MainLayout/DepositPage/DepositLastPage'
@@ -16,6 +15,8 @@ import SelectCurrencyDropdown from "/components/currency/SelectCurrencyDropdown"
 import BonusesSlider from "./BonusesBlock/BonusesSlider";
 import BonusSelector from "./BonusesBlock/BonusSelector";
 import {Menu} from "@chakra-ui/react";
+
+const SelectModal = getDynamicComponent('modal/SelectModal')
 
 const paymentImages = [
   {id: 1, src: '/assets/img/depositPage/visa.svg', name: "visa logo"},

@@ -1,16 +1,21 @@
-import { Header } from './Header/Header'
-import { Footer } from './Footer/Footer'
+// import { Header } from './Header/Header'
+// import { Footer } from './Footer/Footer'
 import { useSelector } from 'react-redux'
 import { Box } from '@chakra-ui/react'
 import { MobileSideMenu } from '../MobileSideMenu/MobileSideMenu'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
-import { TournamentIcon } from './TournamentSidebar/TournamentIcon'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import ErrorHeaderPage from '../ErrorBoundaryComponents/ErrorBoundaryHeader'
 import { useTranslation } from 'next-i18next'
 import { ModalsContainer } from '../ModalsContainer/ModalsContainer'
 import TournamentSidebar from "./TournamentSidebar/TournamentSidebar";
+import {getDynamicComponent} from "../../helpers/theme";
+import {assetsPath} from "../../envs/theme";
+
+const Header = getDynamicComponent('MainLayout/Header/Header', 'Header')
+const Footer = getDynamicComponent('MainLayout/Footer/Footer', 'Footer')
+const TournamentIcon = getDynamicComponent('MainLayout/TournamentSidebar/TournamentIcon', 'TournamentIcon')
 
 const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
   const { t } = useTranslation('common');
@@ -30,7 +35,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
       />
       <Box
         backgroundColor="accent.850"
-        backgroundImage="url('/assets/img/mainLayoutImg/background.webp')"
+        backgroundImage={`url('${assetsPath}/img/mainLayoutImg/background.webp')`}
         overflow="hidden"
         w="100%"
       >

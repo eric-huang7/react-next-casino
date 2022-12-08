@@ -2,7 +2,10 @@ import { useTranslation } from 'next-i18next'
 import { Text, Box, Image } from '@chakra-ui/react'
 import {HStack} from "@chakra-ui/layout";
 import {Button} from "@chakra-ui/button";
-import {buttonGradient} from "../../../../styles/theme";
+// import {buttonGradient} from "../../../../styles/theme";
+import {getTheme} from "../../../../helpers/theme";
+
+const {buttonGradient} = getTheme();
 
 const MainBlock = () => {
   const { t } = useTranslation('common')

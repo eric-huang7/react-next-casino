@@ -1,23 +1,21 @@
 import {Box, HStack, Text, VStack} from "@chakra-ui/layout"
 import {TextBlock} from './CryptoComponents/TextBlock'
-import {QRContainer} from './CryptoComponents/QRContainer'
+import {QRContainer} from '/components/MainLayout/PaymentsModals/CryptoComponents/QRContainer'
 import {ValueContainer} from './CryptoComponents/ValueContainer'
 import {DepositAddressInput} from './CryptoComponents/DepositAddressInput'
 import {useDispatch, useSelector} from 'react-redux'
-import {setStepDepositModal, showCryptoModal, showDepositModal} from '../../../redux/popups/action'
-import {annulDeposit} from '../../../redux/deposits/action'
-import {LoadingComponent} from '../../LoadingComponent/LoadingComponent'
-import {setUserPaymentMethod} from '../../../redux/userFinance/action'
-import ErrorText from '../../ErrorBoundaryComponents/ErrorText'
-import ErrorEmpty from '../../ErrorBoundaryComponents/ErrorEmpty'
+import {setStepDepositModal, showCryptoModal, showDepositModal} from '/redux/popups/action'
+import {annulDeposit} from '/redux/deposits/action'
+import {LoadingComponent} from '/components/LoadingComponent/LoadingComponent'
+import {setUserPaymentMethod} from '/redux/userFinance/action'
+import ErrorText from '/components/ErrorBoundaryComponents/ErrorText'
+import ErrorEmpty from '/components/ErrorBoundaryComponents/ErrorEmpty'
 import {useTranslation} from "next-i18next";
-import SelectModal from "../../modal/SelectModal";
+import SelectModal from "/components/modal/SelectModal";
 import {Image} from "@chakra-ui/react";
-import SubmitButton from "../../buttons/SubmitButton";
+import SubmitButton from "/components/buttons/SubmitButton";
 import {useEffect, useState} from "react";
-import {iconsUrl} from "../../../helpers/imageUrl";
-import {BonusesBlock} from "../DepositPage/BonusesBlock/BonusesBlock";
-import useBonuses from "../../../hooks/useBonuses";
+import useBonuses from "/hooks/useBonuses";
 import {BonusesItem} from "../DepositPage/BonusesBlock/BonusItem";
 
 export const PaymentsCryptoWrapper = ({paymentsData}) => {

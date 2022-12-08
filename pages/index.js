@@ -1,7 +1,9 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../components/MainLayout/MainLayout'
-import { HomePageContainer } from '../components/HomePageComponents/HomePageContainer'
+import {getDynamicComponent} from "../helpers/theme";
+
+const HomePageContainer = getDynamicComponent('HomePageComponents/HomePageContainer', 'HomePageContainer');
 
 export default function Home () {
   const { t } = useTranslation('common')
