@@ -3,18 +3,18 @@ import {useState} from "react"
 import {Box, HStack, Text} from "@chakra-ui/layout"
 import {useRouter} from "next/router";
 import {BonusesBlockMainContainer} from './BonusesBlock/BonusesBlockMainContainer'
-import {ChoosePaymentMethod} from '/components/MainLayout/DepositPage/ChoosePaymentMethod'
-import {DepositLastPage} from '/components/MainLayout/DepositPage/DepositLastPage'
+import {ChoosePaymentMethod} from './ChoosePaymentMethod'
+import {DepositLastPage} from './DepositLastPage'
 import ErrorText from '/components/ErrorBoundaryComponents/ErrorText'
 import {setStepDepositModal} from "/redux/popups/action";
-import ModalTopHeader from "/components/modal/ModalTopHeader";
+import ModalTopHeader from "../../modal/ModalTopHeader";
 import {setErrorUserDepositValue} from "/redux/userFinance/action";
 import {numberTransformer} from "/helpers/numberTransformer";
-import SubmitButton from "/components/buttons/SubmitButton";
-import SelectCurrencyDropdown from "/components/currency/SelectCurrencyDropdown";
+import SubmitButton from "../../buttons/SubmitButton";
+import SelectCurrencyDropdown from "../../currency/SelectCurrencyDropdown";
 import BonusesSlider from "./BonusesBlock/BonusesSlider";
 import BonusSelector from "./BonusesBlock/BonusSelector";
-import {Menu} from "@chakra-ui/react";
+import {getDynamicComponent} from "../../../../../helpers/theme";
 
 const SelectModal = getDynamicComponent('modal/SelectModal')
 
