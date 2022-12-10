@@ -9,8 +9,8 @@ import {PromotionItem} from "./PromotionItem/PromotionItem";
 import {bonusesCalculator} from "/components/PromotionsPageComponents/BonusesContainer/bonusesCalculator";
 import {useEffect} from "react";
 import ErrorEmpty from "/components/ErrorBoundaryComponents/ErrorEmpty";
-import SectionHeader from "/components/typography/SectionHeader";
-import SectionLoading from "/components/typography/SectionLoading";
+import SectionHeader from "../../typography/SectionHeader";
+import SectionLoading from "../../typography/SectionLoading";
 import SmallArrowButton from "/components/buttons/SmallArrowButton";
 
 export const PromotionsBlock = ({t, title, titleImage}) => {

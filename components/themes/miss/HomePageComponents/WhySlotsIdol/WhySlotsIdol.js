@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { Box, Image } from "@chakra-ui/react"
 import {HStack, Text, VStack} from "@chakra-ui/layout";
 import React from "react";
+import {assetsPath} from "../../../../../envs/theme";
 
 const images = [
   {name: 'minute', key: 'whySlotsIdol.minuteRegistration', reverse: true},
@@ -13,7 +14,7 @@ const images = [
 export const WhySlotsIdol = ({ isBackShow, title }) => {
   const { t } = useTranslation('common')
   return (
-    <Box w="100%" bg="url('/assets/img/mainLayoutImg/why-bg.jpg')" p={{base: "50px 0 40px", lg: "70px 0 85px 0"}}>
+    <Box w="100%" bg={`url('${assetsPath}/img/mainLayoutImg/why-bg.jpg')`} p={{base: "50px 0 40px", lg: "70px 0 85px 0"}}>
       <Text pb="25px" textAlign="center" color="white" fontSize={{base: "20px", lg: "48px"}} fontFamily="Roboto"
             fontWeight={700}>
         {title.toUpperCase()}
@@ -35,7 +36,7 @@ export const WhySlotsIdol = ({ isBackShow, title }) => {
                   color="white">
               {t(item.key)}
             </Text>
-            <Image src={`/assets/img/whySlotsIdol/${item.name}.svg`} alt="" />
+            <Image src={`${assetsPath}/img/whySlotsIdol/${item.name}.svg`} alt="" />
           </VStack>
         ))}
       </HStack>

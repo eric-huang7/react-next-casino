@@ -5,6 +5,7 @@ import {JackpotsInfoBlock} from "./JackpotsInfoBlock";
 import ErrorText from "/components/ErrorBoundaryComponents/ErrorText";
 import {Box} from "@chakra-ui/react";
 import {HStack, Text} from "@chakra-ui/layout";
+import {assetsPath} from "../../../../../envs/theme";
 
 export const TotalJackpotsAmount = ({t, title, gameData}) => {
   const {height, width} = useWindowDimensions();
@@ -87,8 +88,8 @@ export const TotalJackpotsAmount = ({t, title, gameData}) => {
             fontFamily="Trebuchet" fontWeight={700} bg={{base: "white", lg: "transparent"}}>
         {title.toUpperCase()}
       </Text>
-      <Box position="relative" zIndex={4} w="100%" pb={{base: "50px", lg: "140px"}} bg="url('assets/img/jackpotBlock/jackpot-bg.jpg')"
-        >
+      <Box position="relative" zIndex={4} w="100%" pb={{base: "50px", lg: "140px"}}
+           bg={`url('${assetsPath}/img/jackpotBlock/jackpot-bg.jpg')`}>
         <Box
           h="197px"
           pt="60px"

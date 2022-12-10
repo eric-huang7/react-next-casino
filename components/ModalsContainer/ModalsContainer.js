@@ -10,9 +10,9 @@ import { ExitIntentPopup } from '../ExitIntentComponent/ExitIntentPopup'
 import { useTranslation } from 'next-i18next'
 import ErrorEmpty from '../ErrorBoundaryComponents/ErrorEmpty'
 import { DepositWidgetMainContainer } from '../MainLayout/DepositWidget/DepositWidgetMainContainer'
-import { MobilePaymentsStepper } from '../MainLayout/PaymentsModals/MobilePaymentsStepper'
-import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
-import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
+// import { MobilePaymentsStepper } from '../MainLayout/PaymentsModals/MobilePaymentsStepper'
+// import { PaymentsCardWrapper } from '../MainLayout/PaymentsModals/PaymentsCardWrapper'
+// import { PaymentsCryptoWrapper } from '../MainLayout/PaymentsModals/PaymentsCryptoWrapper'
 // import { SearchModalWindowWrapper } from '../SearchGamesModalWindow/SearchModalWindowWrapper'
 import { PlaySafeMainWrapper } from '../PlaySafeComponents/PlaySafeMainWrapper'
 import { RegisterSignup } from '../modals/RegisterSignup'
@@ -30,6 +30,11 @@ import useWindowDimensions from '../../hooks/useWindowDimensions'
 import RedeemPage from "../modals/RedeemPage/RedeemPage";
 import TournamentAwardModal from "../modals/TournamentAwardModal";
 import {SearchGamesModal} from "../GamesPageComponents/SearchGamesModal";
+import {getDynamicComponent} from "../../helpers/theme";
+
+const PaymentsCryptoWrapper = getDynamicComponent('MainLayout/PaymentsModals/PaymentsCryptoWrapper', 'PaymentsCryptoWrapper');
+const PaymentsCardWrapper = getDynamicComponent('MainLayout/PaymentsModals/PaymentsCardWrapper', 'PaymentsCardWrapper');
+const MobilePaymentsStepper = getDynamicComponent('MainLayout/PaymentsModals/MobilePaymentsStepper', 'MobilePaymentsStepper');
 
 export const ModalsContainer = ({token, emailError, withdrawConfirmError}) => {
   const dispatch = useDispatch()

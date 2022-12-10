@@ -11,7 +11,7 @@ import ArrowButton from "/components/buttons/ArrowButton";
 import usePlayGame from "/hooks/usePlayGame";
 import LoadingItems from "/components/GamesPageComponents/LoadingItems";
 import {HStack} from "@chakra-ui/layout";
-import SectionHeaderCount from "/components/typography/SectionHeaderCount";
+import SectionHeaderCount from "../../typography/SectionHeaderCount";
 
 export const GamesSliderBlock = ({t, title, titleIcon, slides = [], count, loading, linkPath, titleImage}) => {
   const {height, width} = useWindowDimensions();
