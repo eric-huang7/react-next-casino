@@ -13,7 +13,11 @@ import {getTheme} from "../helpers/theme";
 import {themeName} from "../envs/theme";
 
 if (themeName) {
-  require(`../styles/${process.env.NEXT_PUBLIC_THEME}/globals.scss`)
+  switch (themeName) {
+    case 'miss':
+      require(`../styles/miss/globals.scss`);
+      break;
+  }
 } else {
   require('../styles/globals.scss')
 }

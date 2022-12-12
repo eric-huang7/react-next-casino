@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:miss": "export NEXT_PUBLIC_THEME=miss && next dev",
     "build": "next build",
+    "build:miss": "export NEXT_PUBLIC_THEME=miss && next build",
     "start": "next start",
     "lint": "next lint",
     "startProd": "NODE_ENV=production node server.js"

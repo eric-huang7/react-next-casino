@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import {themeName} from "../envs/theme";
 
 export const getDynamicComponent =  (path, name) =>  {
-  const theme = process.env.NEXT_PUBLIC_THEME;
+  const theme = (process.env.NEXT_PUBLIC_THEME || '').trim();
   let Component, isExist;
 
   try {
@@ -33,7 +33,7 @@ export const getDynamicComponent =  (path, name) =>  {
 
 export const getTheme = () => {
     if (themeName) {
-      return require(`../styles/${process.env.NEXT_PUBLIC_THEME}/theme`)
+      return require(`../styles/${themeName}/theme`)
     } else {
       return require(`../styles/theme`)
     }
