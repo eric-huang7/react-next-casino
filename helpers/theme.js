@@ -2,18 +2,17 @@ import dynamic from "next/dynamic";
 import {themeName} from "../envs/theme";
 
 export const getDynamicComponent =  (path, name) =>  {
-  const theme = (process.env.NEXT_PUBLIC_THEME || '').trim();
   let Component, isExist;
 
   try {
-    require(`/components/themes/${theme}/${path}`);
+    require(`/components/themes/${themeName}/${path}`);
     isExist = true
   } catch (err) {
     isExist = false;
   }
 
   if (isExist) {
-    Component = dynamic(() => import(`/components/themes/${theme}/${path}`)
+    Component = dynamic(() => import(`/components/themes/${themeName}/${path}`)
         .then((result) => result[name || 'default']),
       {
         ssr: false,

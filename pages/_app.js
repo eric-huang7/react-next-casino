@@ -17,6 +17,9 @@ if (themeName) {
     case 'miss':
       require(`../styles/miss/globals.scss`);
       break;
+    case 'wine':
+      require(`../styles/wine/globals.scss`);
+      break;
   }
 } else {
   require('../styles/globals.scss')
