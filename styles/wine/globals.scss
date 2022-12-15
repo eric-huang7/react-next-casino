@@ -1,0 +1,285 @@
+@import './colors.module';
+
+@font-face {
+  font-family: 'Verdana';
+  src: url("/fonts/verdana/Verdana.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Verdana-Bold';
+  src: url("/fonts/verdana/Verdana-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Verdana-BoldItalic';
+  src: url("/fonts/verdana/Verdana-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Verdana-Italic';
+  src: url("/fonts/verdana/Verdana-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Source Sans';
+  src: url("/fonts/sourcesans/sourcesans.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans';
+  src: url("/fonts/sourcesans/sourcesans.woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans';
+  src: url("/fonts/sourcesans/sourcesans.woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Swiss721 BT";
+  src: url("/fonts/swiss721bt/swiss721BlackBt.ttf");
+}
+@font-face {
+  font-family: "Swiss721 LT";
+  src: url("/fonts/swiss721bt/swiss721BlackLt.otf");
+}
+@font-face {
+  font-family: "Lato Latin Sem Bd";
+  src: url("/fonts/lato/LatoLatinSemBd.ttf");
+}
+@font-face {
+  font-family: "Franklin Gothic";
+  src: url("/fonts/franklinGothic/franklingothic.ttf");
+}
+@font-face {
+  font-family: 'Segoe UI';
+  src: url("/fonts/segoeUI/SegoeUI.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe UI Bold';
+  src: url("/fonts/segoeUI/SegoeUIBold.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gobold';
+  src: url("/fonts/gobold/Gobold.otf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url("/fonts/myriadpro/MyriadPro.woff");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neon';
+  src: url("/fonts/neon/Neon_0.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Monoton';
+  src: url("/fonts/monoton/monoton.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lithograph';
+  src: url("/fonts/lithograph/Lithograph.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Lithograph';
+  src: url("/fonts/lithograph/LithographBold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Woodpecker';
+  src: url("/fonts/woodpecker/WOODPECKER-Demo.otf");
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Thin.ttf");
+  font-style: normal;
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Light.ttf");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Medium.ttf");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-ExtraBold.ttf");
+  font-style: normal;
+  font-weight: 800;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/fonts/montserrat/Montserrat-Black.ttf");
+  font-style: normal;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Thin.ttf");
+  font-style: normal;
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Light.ttf");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Medium.ttf");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/roboto/Roboto-Black.ttf");
+  font-style: normal;
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Trebuchet';
+  src: url("/fonts/trebuchet/trebuc.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+//html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Franklin Gothic;
+
+  width: 100%;
+
+  overflow-x: hidden;
+}
+
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#__next{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+
+  max-width: 100%;
+
+  margin: 0 auto;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+// Fix for slider color view
+._promotionsBlock div.slick-slide:nth-child(odd) > div > div > div {
+  & > div:nth-child(2) {
+  }
+
+  & .__promoHeading {
+    position: absolute;
+
+    & h3 {
+      //margin: 10px 10px;
+
+      //text-transform: uppercase;
+      //font-size: 24px;
+      //color: #ffffff;
+      //font-family: "Neon", Arial, sans-serif;
+      //text-shadow: $pink-text-shadow 3px 2px 43px, $pink-text-shadow 3px 2px 100px, $pink-text-shadow 3px 2px 100px;
+      //filter: drop-shadow(0px 2px 0.5px $pink-text-shadow);
+      //font-family: 'WOODPECKER Demo';
+      font-family: 'Woodpecker';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 46px;
+      text-align: center;
+    }
+  }
+}
+
+.loadingHeader {
+  margin: 0 auto;
+  text-align: center;
+  color: $red-color;
+}
+
+.errorBoundaryMessage {
+  margin: 0 auto;
+  text-align: center;
+  color: $red-color;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+}
+
+.slider-with-bg.slick-slider .slick-track .slick-slide:first-child{
+  background: white;
+  padding-left: 18px;
+}
+.slider-with-bg.slick-slider .slick-track .slick-slide {
+  background: white;
+}
