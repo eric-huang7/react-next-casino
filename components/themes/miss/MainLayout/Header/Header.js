@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, userBalance } from "/redux/user/action";
 import { useEffect, useState } from "react";
 import { Box, Image } from "@chakra-ui/react"
-import LangSwitcher from "/components/LangSwitcher/LangSwitcher";
+import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import { getActiveBonuses } from "/redux/bonuses/action";
 import { changeLocalUserSubscriptions } from "/redux/userSubscriptions/action";
 import { setUserCurrencySwitcher } from "/redux/userFinance/action";

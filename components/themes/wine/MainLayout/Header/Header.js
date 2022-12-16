@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, userBalance } from "/redux/user/action";
 import { useEffect, useState } from "react";
 import { Box, Image } from "@chakra-ui/react"
-import LangSwitcher from "/components/LangSwitcher/LangSwitcher";
+import LangSwitcher from "../../LangSwitcher/LangSwitcher";
 import { getActiveBonuses } from "/redux/bonuses/action";
 import { changeLocalUserSubscriptions } from "/redux/userSubscriptions/action";
 import { setUserCurrencySwitcher } from "/redux/userFinance/action";
@@ -13,6 +13,7 @@ import ErrorEmpty from "/components/ErrorBoundaryComponents/ErrorEmpty";
 import { AiOutlineMenu } from "react-icons/ai";
 import MenuModal from "../../modals/MenuModal";
 import {HStack} from "@chakra-ui/layout";
+import {assetsPath} from "../../../../../envs/theme";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -108,7 +109,7 @@ export const Header = () => {
               h="auto"
               m="2px 16px 2px 16px"
               style={{ cursor: "pointer" }}
-              src={"/assets/img/mainLayoutImg/logo.webp"}
+              src={`${assetsPath}/img/mainLayoutImg/logo.webp`}
               alt=""
             />
           </Link>

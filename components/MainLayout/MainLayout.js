@@ -32,7 +32,7 @@ const MainLayout = ({ children, token, emailError, withdrawConfirmError }) => {
         withdrawConfirmError={withdrawConfirmError}
       />
       <Box
-        backgroundColor="accent.850"
+        backgroundColor="bg.500"
         backgroundImage={`url('${assetsPath}/img/mainLayoutImg/background.webp')`}
         overflow="hidden"
         w="100%"

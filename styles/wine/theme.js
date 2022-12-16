@@ -149,6 +149,9 @@ const theme = extendTheme({
     scroll: {
       100: "#fda3a2",
       500: "#dcdcdc",
+    },
+    bg: {
+      500: '#E5E5E5'
     }
   },
 })
